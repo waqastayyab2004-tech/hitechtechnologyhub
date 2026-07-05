@@ -11,7 +11,7 @@ interface Message {
 
 const CHAT_API = 'http://localhost:3001/chat'
 
-const GREETING = `Hi! I'm Waqas AI ChatBot 🤖 — powered by Claude AI.
+const GREETING = `Hi! I'm Waqas AI ChatBot 🤖
 
 Ask me anything about:
 • Waqas's skills & experience
@@ -79,11 +79,17 @@ export default function AIChatbot() {
     fetch(CHAT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'ping', history: [] }),
-      signal: AbortSignal.timeout(2000),
+      body: JSON.stringify({ message: 'hello', history: [] }),
+      signal: AbortSignal.timeout(5000),
     })
       .then(r => r.json())
-      .then(d => setAiMode(d.model === 'offline' ? 'offline' : 'online'))
+      .then(d => {
+        if (d.model && d.model !== 'smart-fallback' && d.model !== 'offline' && d.model !== 'error') {
+          setAiMode('online')
+        } else {
+          setAiMode('offline')
+        }
+      })
       .catch(() => setAiMode('offline'))
   }, [])
 
@@ -119,7 +125,11 @@ export default function AIChatbot() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
 
-      setAiMode(data.model === 'offline' || data.model === 'error' ? 'offline' : 'online')
+      setAiMode(
+        data.model && data.model !== 'smart-fallback' && data.model !== 'offline' && data.model !== 'error'
+          ? 'online'
+          : 'offline'
+      )
       setTyping(false)
       setMessages(m => [...m, { role: 'bot', text: data.reply }])
     } catch {
@@ -173,8 +183,12 @@ export default function AIChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.9 }}
             transition={{ type: 'spring', damping: 20, stiffness: 260 }}
-            className="fixed bottom-24 left-4 z-50 w-[340px] sm:w-[380px] flex flex-col rounded-2xl overflow-hidden border border-accent-blue/30 shadow-[0_8px_60px_rgba(59,130,246,0.3)] bg-dark-800/95 backdrop-blur-md"
-            style={{ maxHeight: minimized ? 'auto' : '520px' }}
+            className="fixed bottom-24 left-2 sm:left-4 z-50 flex flex-col rounded-2xl overflow-hidden border border-accent-blue/30 shadow-[0_8px_60px_rgba(59,130,246,0.3)] bg-dark-800/95 backdrop-blur-md"
+            style={{
+              width: messages.length > 4 ? 'min(520px, calc(100vw - 16px))' : 'min(420px, calc(100vw - 16px))',
+              maxHeight: minimized ? 'auto' : messages.length > 4 ? '680px' : '560px',
+              transition: 'width 0.3s ease, max-height 0.3s ease',
+            }}
           >
             {/* Header */}
             <div className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-dark-900 to-dark-800 border-b border-white/8 flex-shrink-0">
@@ -218,7 +232,14 @@ export default function AIChatbot() {
             {/* Messages */}
             {!minimized && (
               <>
-                <div className="flex-1 overflow-y-auto p-4 space-y-3" style={{ minHeight: '320px', maxHeight: '380px' }}>
+                <div
+                  className="flex-1 overflow-y-auto p-4 space-y-3"
+                  style={{
+                    minHeight: '340px',
+                    maxHeight: messages.length > 4 ? '520px' : '420px',
+                    transition: 'max-height 0.3s ease',
+                  }}
+                >
                   {messages.map((m, i) => (
                     <div key={i} className={`flex gap-2 ${m.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                       {m.role === 'bot' && (
@@ -226,13 +247,21 @@ export default function AIChatbot() {
                           <RobotAvatar />
                         </div>
                       )}
-                      <div className={`max-w-[78%] px-3 py-2.5 rounded-2xl text-xs leading-relaxed whitespace-pre-wrap ${
+                      <div className={`max-w-[82%] px-3 py-2.5 rounded-2xl text-xs leading-relaxed ${
                         m.role === 'bot'
                           ? 'bg-dark-700 border border-white/8 text-gray-200 rounded-tl-none'
                           : 'bg-accent-blue text-white rounded-tr-none'
-                      }`}>
-                        {m.text}
-                      </div>
+                      }`}
+                        dangerouslySetInnerHTML={{
+                          __html: m.role === 'bot'
+                            ? m.text
+                                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                                .replace(/\n/g, '<br/>')
+                                .replace(/^(\d+\.) /gm, '<span class="font-semibold text-accent-blue">$1</span> ')
+                                .replace(/^• /gm, '<span class="text-accent-blue">•</span> ')
+                            : m.text.replace(/\n/g, '<br/>')
+                        }}
+                      />
                     </div>
                   ))}
                   {typing && (
