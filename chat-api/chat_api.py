@@ -156,6 +156,9 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
     def do_OPTIONS(self):
         self.send_response(200); self._cors(); self.end_headers()
+    def do_GET(self):
+        # Health check for Railway
+        self._out(200, {"status": "ok", "service": "Waqas AI ChatBot"})
     def do_POST(self):
         if self.path != "/chat":
             self.send_response(404); self.end_headers(); return
@@ -196,7 +199,9 @@ class Handler(BaseHTTPRequestHandler):
         self._cors(); self.end_headers(); self.wfile.write(body)
 
 def main():
-    port = int(os.environ.get("CHAT_PORT",3001))
+    # Railway uses PORT env var, local uses 3001
+    port = int(os.environ.get("PORT", os.environ.get("CHAT_PORT", 3001)))
+    host = "0.0.0.0"  # must bind to 0.0.0.0 for Railway
     if GROQ_API_KEY:     mode = f"Groq Llama3 FREE ✅  ({GROQ_API_KEY[:8]}...)"
     elif GEMINI_API_KEY: mode = f"Gemini FREE ✅  ({GEMINI_API_KEY[:8]}...)"
     elif ANTHROPIC_API_KEY: mode = f"Claude ✅  ({ANTHROPIC_API_KEY[:8]}...)"
@@ -212,7 +217,8 @@ def main():
 ║  3. export GROQ_API_KEY=gsk_... && python3 chat_api.py  ║
 ╚══════════════════════════════════════════════════════════╝
 """)
-    HTTPServer(("localhost", port), Handler).serve_forever()
+    print(f"  Server starting on {host}:{port}")
+    HTTPServer((host, port), Handler).serve_forever()
 
 if __name__ == "__main__":
     main()
