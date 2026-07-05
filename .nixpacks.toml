@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python311"]
+
+[phases.install]
+cmds = ["pip install -r chat-api/requirements.txt"]
+
+[start]
+cmd = "python3 chat-api/chat_api.py"
