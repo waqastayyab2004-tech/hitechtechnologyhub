@@ -39,7 +39,7 @@ export default function Hero() {
         >
 
           {/* ── Dual Avatar Row ── */}
-          <motion.div variants={item} className="flex items-center justify-center gap-6 sm:gap-10">
+          <motion.div variants={item} className="flex items-center justify-center gap-3 sm:gap-8">
 
             {/* Human avatar — AI illustrated version */}
             <div className="flex flex-col items-center gap-3">
@@ -51,7 +51,7 @@ export default function Hero() {
                 {/* Outer glow */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-blue/30 to-cyan-400/20 blur-xl scale-110" />
                 {/* Avatar frame */}
-                <div className="relative w-36 h-36 sm:w-48 sm:h-48 rounded-full border-2 border-accent-blue/60 overflow-hidden shadow-[0_0_40px_rgba(59,130,246,0.45)] bg-dark-800">
+                <div className="relative w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-accent-blue/60 overflow-hidden shadow-[0_0_40px_rgba(59,130,246,0.45)] bg-dark-800">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/waqas-avatar.jpg"
@@ -102,7 +102,7 @@ export default function Hero() {
                 {/* Outer glow — blue/cyan to match bot image colors */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/25 to-accent-blue/20 blur-xl scale-110" />
                 {/* Bot image frame */}
-                <div className="relative w-36 h-36 sm:w-48 sm:h-48 rounded-full border-2 border-cyan-400/70 overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.6)] bg-[#0d2433]">
+                <div className="relative w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-cyan-400/70 overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.6)] bg-[#0d2433]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/aibot.png"
@@ -170,7 +170,7 @@ export default function Hero() {
             {/* Expertise pills */}
             <div className="flex flex-wrap items-center justify-center gap-2">
               {['IT Consultant', 'Corporate IT Expert', 'IT Infrastructure', 'IT Service Delivery', 'Office Technology', 'AI Engineer', 'Azure Security'].map(tag => (
-                <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-dark-700 border border-white/10 text-gray-300">
+                <span key={tag} className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-dark-700 border border-white/10 text-gray-300">
                   {tag}
                 </span>
               ))}
@@ -183,7 +183,7 @@ export default function Hero() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
               AI · Automation · Cloud · Cybersecurity · IT Infrastructure
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
               Learn AI.{' '}
               <span className="gradient-text">Build Smarter.</span>
               <br />
@@ -348,17 +348,17 @@ function FloatingAIElements() {
       ══════════════════════════════ */}
 
       {/* Robot 1 — walks right, bottom area, blue */}
-      <div className="walk-bot-1 opacity-25">
+      <div className="walk-bot-1 opacity-25 hidden sm:block">
         <WalkingRobot color="#3B82F6" accent="#06B6D4" size={56} eyeColor="#60d0ff" />
       </div>
 
       {/* Robot 2 — walks left, slightly higher, yellow/green */}
-      <div className="walk-bot-2 opacity-20">
+      <div className="walk-bot-2 opacity-20 hidden sm:block">
         <WalkingRobot color="#4a8888" accent="#FACC15" size={44} eyeColor="#FACC15" />
       </div>
 
       {/* Robot 3 — walks right, different level, purple */}
-      <div className="walk-bot-3 opacity-15">
+      <div className="walk-bot-3 opacity-15 hidden sm:block">
         <WalkingRobot color="#5a4a88" accent="#8B5CF6" size={38} eyeColor="#a78bfa" />
       </div>
 
@@ -1073,7 +1073,7 @@ function AIBotAvatarSVG() {
 /* ── Animated connection beam between avatars ── */
 function ConnectionBeam() {
   return (
-    <svg width="80" height="24" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg">
+    <svg width="56" height="24" viewBox="0 0 56 24" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.8" />
@@ -1082,18 +1082,18 @@ function ConnectionBeam() {
         </linearGradient>
       </defs>
       {/* Base line */}
-      <line x1="0" y1="12" x2="80" y2="12" stroke="#3B82F6" strokeWidth="1" opacity="0.2" strokeDasharray="4 3" />
+      <line x1="0" y1="12" x2="56" y2="12" stroke="#3B82F6" strokeWidth="1" opacity="0.2" strokeDasharray="4 3" />
       {/* Animated beam */}
-      <line x1="0" y1="12" x2="80" y2="12" stroke="url(#beamGrad)" strokeWidth="2" opacity="0.7">
+      <line x1="0" y1="12" x2="56" y2="12" stroke="url(#beamGrad)" strokeWidth="2" opacity="0.7">
         <animate attributeName="stroke-dashoffset" from="20" to="-20" dur="1.4s" repeatCount="indefinite" />
         <animate attributeName="opacity" values="0.4;0.9;0.4" dur="1.4s" repeatCount="indefinite" />
       </line>
       {/* Data packet dots */}
       <circle cx="0" cy="12" r="3.5" fill="#3B82F6">
-        <animateMotion dur="1.4s" repeatCount="indefinite" path="M0,0 L80,0" />
+        <animateMotion dur="1.4s" repeatCount="indefinite" path="M0,0 L56,0" />
       </circle>
       <circle cx="0" cy="12" r="2.5" fill="#FACC15">
-        <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.7s" path="M0,0 L80,0" />
+        <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.7s" path="M0,0 L56,0" />
       </circle>
     </svg>
   )
