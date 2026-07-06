@@ -17,6 +17,8 @@ const topics = [
     border: 'border-purple-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]',
     count: '12 articles',
+    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80',
+    highlights: ['GPT-4 & Claude APIs', 'Prompt Engineering', 'AI Agents & Tools', 'Local LLMs (Ollama)', 'RAG Pipelines'],
   },
   {
     icon: Zap,
@@ -27,6 +29,8 @@ const topics = [
     border: 'border-yellow-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]',
     count: '8 articles',
+    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&q=80',
+    highlights: ['n8n & Make.com', 'Python Automation', 'Cron Jobs & Daemons', 'Email & Calendar Bots', 'API Integrations'],
   },
   {
     icon: Shield,
@@ -37,6 +41,8 @@ const topics = [
     border: 'border-red-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(239,68,68,0.2)]',
     count: '6 articles',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80',
+    highlights: ['Zero Trust Architecture', 'Threat Detection', 'Endpoint Security', 'Network Hardening', 'IAM & MFA'],
   },
   {
     icon: Cloud,
@@ -47,6 +53,8 @@ const topics = [
     border: 'border-blue-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]',
     count: '10 articles',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80',
+    highlights: ['Azure & AWS Basics', 'Cloud Migration', 'IaaS / PaaS / SaaS', 'Cost Optimisation', 'Hybrid Cloud'],
   },
   {
     icon: Code,
@@ -57,6 +65,8 @@ const topics = [
     border: 'border-green-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]',
     count: '15 articles',
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&q=80',
+    highlights: ['Python Scripting', 'TypeScript & Node', 'REST APIs', 'Bash & Shell', 'Git & Version Control'],
   },
   {
     icon: Network,
@@ -67,6 +77,8 @@ const topics = [
     border: 'border-cyan-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(6,182,212,0.2)]',
     count: '7 articles',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80',
+    highlights: ['TCP/IP & Subnetting', 'DNS & DHCP', 'VLANs & Trunking', 'Firewall Rules', 'VPN & SD-WAN'],
   },
   {
     icon: Terminal,
@@ -77,6 +89,8 @@ const topics = [
     border: 'border-orange-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(249,115,22,0.2)]',
     count: '9 articles',
+    image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&q=80',
+    highlights: ['Shell Scripting', 'System Hardening', 'Process Management', 'File Permissions', 'SSH & Remote Access'],
   },
   {
     icon: Server,
@@ -87,6 +101,8 @@ const topics = [
     border: 'border-sky-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(14,165,233,0.2)]',
     count: '8 articles',
+    image: 'https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=400&q=80',
+    highlights: ['Active Directory', 'Group Policy (GPO)', 'WSUS & Patching', 'Hyper-V', 'PowerShell Admin'],
   },
   {
     icon: Mail,
@@ -97,6 +113,8 @@ const topics = [
     border: 'border-indigo-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(99,102,241,0.2)]',
     count: '11 articles',
+    image: 'https://images.unsplash.com/photo-1633419461186-7d40a38105ec?w=400&q=80',
+    highlights: ['Exchange Online', 'SharePoint & Teams', 'Intune MDM/MAM', 'OneDrive Admin', 'Conditional Access'],
   },
   {
     icon: Globe,
@@ -107,6 +125,8 @@ const topics = [
     border: 'border-blue-400/20',
     glow: 'hover:shadow-[0_0_20px_rgba(147,197,253,0.2)]',
     count: '14 articles',
+    image: 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=400&q=80',
+    highlights: ['Entra ID / Azure AD', 'Azure DevOps', 'App Services & VMs', 'Azure Monitor', 'ARM & Bicep'],
   },
   {
     icon: Container,
@@ -117,6 +137,8 @@ const topics = [
     border: 'border-pink-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(236,72,153,0.2)]',
     count: '10 articles',
+    image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&q=80',
+    highlights: ['Docker & Compose', 'Kubernetes (K8s)', 'GitHub Actions CI/CD', 'Terraform / IaC', 'Monitoring & SRE'],
   },
   {
     icon: Lightbulb,
@@ -127,6 +149,8 @@ const topics = [
     border: 'border-amber-500/20',
     glow: 'hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]',
     count: '20 articles',
+    image: 'https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=400&q=80',
+    highlights: ['Productivity Tools', 'Troubleshooting Guides', 'Tool Recommendations', 'Career Advice', 'Real-World Scenarios'],
   },
 ]
 
@@ -142,18 +166,46 @@ export default function TopicsPage() {
         </p>
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {topics.map((topic, i) => (
           <ScrollReveal key={topic.label} delay={i * 0.05}>
-            <div className={`glass-card p-6 transition-all duration-300 border ${topic.border} hover:-translate-y-1 ${topic.glow} cursor-pointer group h-full flex flex-col`}>
-              <div className={`w-11 h-11 rounded-xl ${topic.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <topic.icon className={`w-5 h-5 ${topic.color}`} />
+            <div className={`glass-card overflow-hidden transition-all duration-300 border ${topic.border} hover:-translate-y-1 ${topic.glow} cursor-pointer group h-full flex flex-col`}>
+              {/* Cover image */}
+              <div className="relative w-full h-40 overflow-hidden">
+                <img
+                  src={topic.image}
+                  alt={topic.label}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-70"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d1117]" />
+                {/* Icon badge over image */}
+                <div className={`absolute bottom-3 left-4 w-10 h-10 rounded-xl ${topic.bg} flex items-center justify-center border ${topic.border} backdrop-blur-sm`}>
+                  <topic.icon className={`w-5 h-5 ${topic.color}`} />
+                </div>
+                <span className={`absolute bottom-3 right-4 text-xs font-mono ${topic.color} opacity-80 bg-black/40 px-2 py-0.5 rounded-full backdrop-blur-sm`}>
+                  {topic.count}
+                </span>
               </div>
-              <h3 className="font-bold text-white mb-2 group-hover:text-accent-blue transition-colors">
-                {topic.label}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-4">{topic.description}</p>
-              <span className={`text-xs font-mono ${topic.color} opacity-70`}>{topic.count}</span>
+
+              {/* Body */}
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className={`font-bold text-white text-lg mb-1 group-hover:${topic.color} transition-colors`}>
+                  {topic.label}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">{topic.description}</p>
+
+                {/* Highlights */}
+                <ul className="mt-auto space-y-1.5">
+                  {topic.highlights.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-xs text-gray-400">
+                      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${topic.bg} border ${topic.border}`}
+                        style={{ backgroundColor: 'currentColor' }}
+                      />
+                      <span className={`${topic.color} opacity-90`}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </ScrollReveal>
         ))}

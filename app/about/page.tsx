@@ -1,395 +1,575 @@
-import type { Metadata } from 'next'
-import { Cpu, Zap, Shield, Cloud, Target, Calendar, Facebook, Linkedin, Mail, Brain, Network, Briefcase, Star, Phone, MessageCircle, Globe, Users, TrendingUp, Award } from 'lucide-react'
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
-import ScrollReveal from '@/components/ui/ScrollReveal'
+import {
+  Cpu, Zap, Shield, Cloud, Brain, Network, Briefcase, Star, Phone,
+  MessageCircle, Globe, Users, TrendingUp, Award, Mail, Linkedin,
+  Facebook, CheckCircle, Calendar, MapPin, GraduationCap, ExternalLink,
+  Download, Code, Server, Database, ChevronDown, ChevronUp,
+} from 'lucide-react'
+import NeuralNetwork from '@/components/ui/NeuralNetwork'
 
-export const metadata: Metadata = {
-  title: 'About',
-  description: 'Syed Waqas — IT Consultant, AI Engineer, Corporate IT Expert with 15+ years. 1M+ followers across social platforms. Based in Riyadh, Saudi Arabia.',
-}
+/* ─── DATA ─────────────────────────────────────────────────────────── */
 
-const roles = [
-  { icon: Briefcase, label: 'IT Service Delivery Lead', color: 'text-accent-blue', bg: 'bg-accent-blue/10' },
-  { icon: Globe, label: 'IT Consultant', color: 'text-cyan-400', bg: 'bg-cyan-500/10' },
-  { icon: Cpu, label: 'Senior IT System Engineer', color: 'text-blue-400', bg: 'bg-blue-500/10' },
-  { icon: Brain, label: 'AI Engineer & MLOps', color: 'text-purple-400', bg: 'bg-purple-500/10' },
-  { icon: Zap, label: 'Agentic AI Builder', color: 'text-yellow-400', bg: 'bg-yellow-500/10' },
-  { icon: Shield, label: 'Azure Security Certified', color: 'text-red-400', bg: 'bg-red-500/10' },
-  { icon: Cloud, label: 'Cloud & Infrastructure Pro', color: 'text-sky-400', bg: 'bg-sky-500/10' },
-  { icon: Network, label: 'CCNA & Networking Expert', color: 'text-green-400', bg: 'bg-green-500/10' },
-  { icon: Award, label: 'SAP Certified (3 certs)', color: 'text-orange-400', bg: 'bg-orange-500/10' },
-  { icon: Users, label: 'AI Trainer & Mentor', color: 'text-pink-400', bg: 'bg-pink-500/10' },
+const certifications = [
+  { name: 'Azure Security Engineer Associate', issuer: 'Microsoft', year: '2024', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/25' },
+  { name: 'SAP Python ML for SAP HANA', issuer: 'SAP', year: '2026', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/25' },
+  { name: 'SAP S/4HANA System Admin', issuer: 'SAP', year: '2022', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/25' },
+  { name: 'SAP Analytics Cloud', issuer: 'SAP', year: '2021', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/25' },
+  { name: 'AI-Driven Project Manager', issuer: 'QAS', year: '2025', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/25' },
+  { name: 'CCNA Security', issuer: 'Cisco', year: '2014', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/25' },
+  { name: 'ITIL v3 Foundation', issuer: 'Axelos', year: '2016', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/25' },
+  { name: 'PMP — 35 PDUs', issuer: 'PMI', year: '2018', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/25' },
+  { name: 'Microsoft 365 Admin', issuer: 'Microsoft', year: '2020', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/25' },
+  { name: 'MBA (iMBA)', issuer: 'Buckinghamshire Univ, UK', year: '2023', color: 'text-pink-400', bg: 'bg-pink-500/10', border: 'border-pink-500/25' },
+  { name: 'BSc Information Technology', issuer: 'University of Greenwich, UK', year: '2010', color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/25' },
 ]
 
-const topSkills = [
-  { label: 'IT Service Delivery', level: 99, color: 'bg-accent-blue' },
-  { label: 'IT Consulting & Advisory', level: 96, color: 'bg-cyan-400' },
-  { label: 'ServiceNow ITSM', level: 97, color: 'bg-blue-400' },
-  { label: 'Azure Security', level: 92, color: 'bg-red-400' },
-  { label: 'SAP Operations', level: 96, color: 'bg-orange-400' },
-  { label: 'M365 Administration', level: 94, color: 'bg-indigo-400' },
-  { label: 'AI & Automation', level: 88, color: 'bg-purple-400' },
-  { label: 'Cybersecurity', level: 91, color: 'bg-rose-400' },
-  { label: 'IT Infrastructure', level: 98, color: 'bg-sky-400' },
-  { label: 'Office Technology', level: 95, color: 'bg-teal-400' },
-  { label: 'Python & FastAPI', level: 82, color: 'bg-green-400' },
-  { label: 'Cloud Computing', level: 89, color: 'bg-blue-300' },
+const experience = [
+  {
+    role: 'Senior IT System Engineer / IT Service Delivery Lead',
+    company: 'SAP',
+    location: 'Riyadh, Saudi Arabia',
+    period: 'Jul 2019 – Present',
+    color: 'border-accent-blue',
+    badge: 'text-accent-blue',
+    highlights: [
+      'Enterprise IT field service & proactive monitoring across all network layers',
+      'Secure lifecycle management of IT assets — procurement via SAP Ariba (MENA)',
+      'Full ServiceNow ticket lifecycle aligned to SLAs & KPIs',
+      'Meeting room & digital signage tech: Poly, Crestron, Cisco, Logitech',
+      'Led IT onboarding/offboarding — Active Directory, Intune, M365',
+      'Built AI automation tools replacing manual workflows — saving hours daily',
+      'Trained team on AI adoption: Copilot, Claude, Gemini, ChatGPT in SAP context',
+    ],
+    skills: ['ServiceNow', 'SAP Ariba', 'Azure AD', 'Intune', 'M365', 'Python AI', 'ITIL'],
+  },
+  {
+    role: 'IT Support Specialist (IT SPOC)',
+    company: 'SAP Saudi Arabia',
+    location: 'Riyadh · Jeddah · AlKhobar',
+    period: 'Jan 2015 – Jun 2019',
+    color: 'border-cyan-500',
+    badge: 'text-cyan-400',
+    highlights: [
+      'Single point of contact for IT across 3 Saudi Arabia office locations',
+      'Managed SAP S/4HANA, SAP Analytics Cloud, SAP BTP operations',
+      'HP Server administration, Windows/Linux/macOS support',
+      'Network infrastructure — Cisco/Aruba LAN/WAN, NAC controllers',
+      'Vendor management and hardware procurement',
+    ],
+    skills: ['SAP S/4HANA', 'HP Servers', 'Cisco/Aruba', 'Windows', 'Linux'],
+  },
+  {
+    role: 'System Security Officer',
+    company: 'Banque Saudi Fransi',
+    location: 'Riyadh, Saudi Arabia',
+    period: '2012 – 2015',
+    color: 'border-red-500',
+    badge: 'text-red-400',
+    highlights: [
+      'Managed ATM and branch security systems, access control, 24/7 monitoring',
+      'CCTV & physical security infrastructure across branches',
+      'Incident response and security audit support',
+    ],
+    skills: ['Physical Security', 'CCTV', 'Access Control', 'Incident Response'],
+  },
 ]
 
-const socialProof = [
-  { platform: 'Facebook', handle: 'HiTech Technology HUB', followers: '71', growth: 'Growing daily', color: 'text-blue-500', bg: 'bg-blue-500/10', border: 'border-blue-500/20', icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61551726961739' },
-  { platform: 'LinkedIn', handle: 'syedwaqastayyab', followers: '500+', growth: 'Connections', color: 'text-blue-400', bg: 'bg-blue-400/10', border: 'border-blue-400/20', icon: Linkedin, href: 'https://www.linkedin.com/in/syedwaqastayyab/' },
-  { platform: 'Community', handle: 'IT & AI Community', followers: '1M+', growth: 'Across platforms', color: 'text-accent-yellow', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20', icon: Users, href: '#' },
-  { platform: 'Reach', handle: 'Tech Content Views', followers: '100K+', growth: 'Monthly reach', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', icon: TrendingUp, href: '#' },
+const projects = [
+  {
+    emoji: '🤖',
+    title: 'Waqas AI Hub',
+    subtitle: 'macOS AI Dashboard',
+    desc: 'Native macOS Swift app + FastAPI backend integrating Gmail, SAP Outlook, Calendar, ServiceNow tickets, and WhatsApp SLA alerts in one dashboard.',
+    tags: ['FastAPI', 'Python', 'Swift', 'ServiceNow', 'Twilio'],
+    status: 'Live',
+    color: 'border-accent-blue',
+  },
+  {
+    emoji: '📦',
+    title: 'IT Asset Manager',
+    subtitle: 'Enterprise Web App',
+    desc: 'Full-stack Flask app replacing Excel-based asset tracking at SAP. KPI dashboard, Excel import/export, AI chat widget, full audit log.',
+    tags: ['Python', 'Flask', 'SQLite', 'Chart.js'],
+    status: 'Live',
+    color: 'border-cyan-500',
+  },
+  {
+    emoji: '🔔',
+    title: 'SNOW SLA Pipeline',
+    subtitle: 'WhatsApp Automation',
+    desc: 'Python daemons polling ServiceNow every 5 min — fires WhatsApp via Twilio 30 min before SLA breach. Zero manual checking.',
+    tags: ['Python', 'ServiceNow', 'Twilio', 'REST API'],
+    status: 'Live',
+    color: 'border-green-500',
+  },
+  {
+    emoji: '🌐',
+    title: 'HiTecH AI HUB',
+    subtitle: 'Personal Brand Website',
+    desc: 'This site — Next.js 14, TypeScript, Tailwind CSS, AI chatbot, blog, hire page. Deployed on Cloudflare Pages.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Cloudflare'],
+    status: 'Live',
+    color: 'border-purple-500',
+  },
+  {
+    emoji: '🔗',
+    title: 'SAP O365 MCP Server',
+    subtitle: 'Claude AI ↔ M365 Bridge',
+    desc: 'MCP server giving Claude AI direct access to SAP Outlook, Calendar, OneDrive, SharePoint via OAuth2 + Microsoft Graph API.',
+    tags: ['Python', 'OAuth2', 'Graph API', 'MCP'],
+    status: 'Live',
+    color: 'border-orange-500',
+  },
+  {
+    emoji: '📊',
+    title: 'SNOW SLA Predictor',
+    subtitle: 'Python ML Model',
+    desc: 'ML model on real SAP ServiceNow data predicting ticket SLA breaches before they happen — scikit-learn Random Forest pipeline.',
+    tags: ['Python', 'scikit-learn', 'Pandas', 'SAP BTP'],
+    status: 'In Dev',
+    color: 'border-yellow-500',
+  },
 ]
 
-const socialLinks = [
+const skillDomains = [
+  {
+    icon: Server,
+    title: 'IT Service Delivery',
+    color: 'text-accent-blue',
+    bg: 'bg-accent-blue/10',
+    items: ['ServiceNow ITSM', 'SLA & KPI Management', 'ITIL v3', 'Incident Management', 'Problem Management', 'Change Management', 'Asset Lifecycle'],
+  },
+  {
+    icon: Shield,
+    title: 'Cybersecurity & Azure',
+    color: 'text-red-400',
+    bg: 'bg-red-500/10',
+    items: ['Azure Security Engineer', 'Zero Trust Architecture', 'Intune MDM', 'MFA & Conditional Access', 'Defender for M365', 'Endpoint Security', 'CCNA Security'],
+  },
+  {
+    icon: Globe,
+    title: 'SAP & Enterprise',
+    color: 'text-orange-400',
+    bg: 'bg-orange-500/10',
+    items: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP', 'SAP Ariba', 'SAP Build', 'SAP HANA ML', 'SAP IT Operations'],
+  },
+  {
+    icon: Cpu,
+    title: 'M365 & Office Tech',
+    color: 'text-indigo-400',
+    bg: 'bg-indigo-500/10',
+    items: ['Microsoft 365 Admin', 'Exchange Online', 'SharePoint', 'Teams Admin', 'M365 Copilot', 'Digital Signage', 'Meeting Room AV'],
+  },
+  {
+    icon: Brain,
+    title: 'AI & Automation',
+    color: 'text-purple-400',
+    bg: 'bg-purple-500/10',
+    items: ['Agentic AI', 'Python ML / MLOps', 'LLMs & Prompt Engineering', 'FastAPI', 'Flask', 'Next.js', 'REST APIs', 'PowerShell'],
+  },
+  {
+    icon: Network,
+    title: 'Infrastructure & Cloud',
+    color: 'text-sky-400',
+    bg: 'bg-sky-500/10',
+    items: ['Azure / Hybrid Cloud', 'IaaS / PaaS', 'Cisco / Aruba Networking', 'LAN / WAN', 'HP Servers', 'Windows / Linux / macOS', 'NAC Controllers'],
+  },
+]
+
+const stats = [
+  { value: '15+', label: 'Years in IT', color: 'text-accent-blue' },
+  { value: '100+', label: 'Projects Delivered', color: 'text-cyan-400' },
+  { value: '13', label: 'Certifications', color: 'text-purple-400' },
+  { value: '1M+', label: 'Community Followers', color: 'text-yellow-400' },
+]
+
+const contacts = [
   { icon: Phone, label: '+966 505803073', href: 'tel:+966505803073', color: 'text-green-400', bg: 'bg-green-500/10' },
   { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/966505803073', color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
   { icon: Mail, label: 'waqastayyab2004@gmail.com', href: 'mailto:waqastayyab2004@gmail.com', color: 'text-red-400', bg: 'bg-red-500/10' },
-  { icon: Linkedin, label: 'linkedin.com/in/syedwaqastayyab', href: 'https://www.linkedin.com/in/syedwaqastayyab/', color: 'text-blue-400', bg: 'bg-blue-500/10' },
+  { icon: Linkedin, label: 'syedwaqastayyab', href: 'https://www.linkedin.com/in/syedwaqastayyab/', color: 'text-blue-400', bg: 'bg-blue-500/10' },
   { icon: Facebook, label: 'HiTech Technology HUB', href: 'https://www.facebook.com/profile.php?id=61551726961739', color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
 ]
 
-const skills = [
-  'IT Service Delivery', 'IT Consulting', 'SLA & KPI Management', 'ITIL v3', 'PMP (35 PDUs)',
-  'ServiceNow ITSM', 'SNOW Knowledge Base', 'Incident Management', 'Problem Management',
-  'Azure Security Engineer', 'Zero Trust Architecture', 'Endpoint & Identity Mgmt', 'Intune MDM',
-  'MFA & Conditional Access', 'Defender for M365', 'Cybersecurity Risk',
-  'SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP', 'SAP Ariba', 'SAP Build',
-  'Microsoft 365', 'Exchange Online', 'SharePoint', 'Teams Admin', 'M365 Copilot',
-  'Digital Signage', 'Office Technology', 'Meeting Room Tech',
-  'Python', 'FastAPI', 'Flask', 'Next.js', 'TypeScript', 'PowerShell', 'REST APIs',
-  'Agentic AI', 'Claude AI', 'Machine Learning', 'MLOps', 'LLMs', 'Prompt Engineering',
-  'SAP HANA Python ML', 'AI-Driven Project Management',
-  'Cloud Computing', 'Azure', 'Hybrid Cloud', 'IaaS / PaaS',
-  'CCNA Security', 'Cisco / Aruba', 'LAN / WAN', 'NAC Controllers',
-  'HP Servers', 'Windows / Linux / macOS', 'Vendor Management', 'IT Asset Management',
-  'English (Fluent)', 'Arabic (Fluent)',
-]
+/* ─── PAGE ─────────────────────────────────────────────────────────── */
 
-const timeline = [
-  { year: '2026', title: 'HiTecH AI HUB Launched', desc: 'Personal brand website with Next.js, full blog, hire page, and AI tech showcase.' },
-  { year: '2026', title: 'SAP Python ML Certification', desc: 'Developing AI Models with Python ML Client for SAP HANA — issued May 2026.' },
-  { year: '2025', title: 'AI-Driven Project Manager Cert', desc: 'Certified in 10X Productivity with Generative AI — QAS, Dec 2025.' },
-  { year: '2024', title: 'Azure Security Engineer Certified', desc: 'Microsoft Certified: Azure Security Engineer Associate — Jul 2024.' },
-  { year: '2023', title: 'MBA Completed', desc: 'Master of Business Administration (iMBA) — Buckinghamshire New University, UK.' },
-  { year: '2022', title: 'SAP S/4HANA Certified', desc: 'SAP Certified Technology Consultant — SAP S/4HANA System Administration.' },
-  { year: '2019', title: 'Promoted to Senior IT System Engineer @ SAP', desc: 'Led IT infrastructure, service delivery, and cloud operations for SAP Saudi Arabia.' },
-  { year: '2015', title: 'Joined SAP as IT Support Specialist', desc: 'IT SPOC for SAP Saudi Arabia — Riyadh, Jeddah, AlKhobar locations.' },
-  { year: '2012', title: 'System Security Officer — Banque Saudi Fransi', desc: 'Managed ATM and branch security systems, access control, 24/7 monitoring.' },
-]
+export default function PortfolioPage() {
+  const [expandedJob, setExpandedJob] = useState<number | null>(0)
+  const [showAllCerts, setShowAllCerts] = useState(false)
 
-export default function AboutPage() {
+  const displayedCerts = showAllCerts ? certifications : certifications.slice(0, 6)
+
   return (
-    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      {/* Header */}
-      <ScrollReveal className="text-center mb-12">
-        <h1 className="section-heading mb-4">About <span className="gradient-text">Waqas</span></h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Senior IT System Engineer · IT Service Delivery Lead · IT Consultant · AI/ML Enthusiast
-        </p>
-      </ScrollReveal>
+    <div className="min-h-screen bg-dark-900">
 
-      {/* ── Main profile — 3 column on desktop ── */}
-      <ScrollReveal>
-        <div className="glass-card p-7 md:p-10 mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* ── HERO — full-bleed photo with dark overlay ─────────────── */}
+      <section className="relative overflow-hidden pt-16">
 
-            {/* LEFT — Skills panel */}
-            <div className="md:col-span-1">
-              <h3 className="text-sm font-bold text-accent-blue uppercase tracking-widest mb-4 flex items-center gap-2">
-                <Star className="w-4 h-4" /> Top Skills
-              </h3>
-              <div className="space-y-3">
-                {topSkills.map((s) => (
-                  <div key={s.label}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs text-gray-300 font-medium">{s.label}</span>
-                      <span className="text-xs text-gray-500 font-mono">{s.level}%</span>
-                    </div>
-                    <div className="h-1.5 bg-dark-700 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full rounded-full ${s.color}`}
-                        style={{ width: `${s.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Contact quick links */}
-              <h3 className="text-sm font-bold text-accent-blue uppercase tracking-widest mt-7 mb-4 flex items-center gap-2">
-                <Phone className="w-4 h-4" /> Contact
-              </h3>
-              <div className="space-y-2">
-                {socialLinks.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target={s.href.startsWith('http') ? '_blank' : undefined}
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium ${s.bg} ${s.color} border border-current/20 hover:opacity-80 transition-opacity w-full`}
-                  >
-                    <s.icon className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span className="truncate">{s.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* RIGHT — Profile info */}
-            <div className="md:col-span-2 flex flex-col gap-6">
-              {/* Avatar + name row */}
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
-                <div className="flex-shrink-0 flex flex-col items-center gap-2">
-                  <div className="relative w-36 h-36">
-                    <div className="absolute inset-0 rounded-full border-2 border-dashed border-accent-blue/40 animate-spin-slow scale-110" />
-                    <div className="absolute inset-0 rounded-full bg-accent-blue/10 blur-xl scale-110" />
-                    <div className="relative w-36 h-36 rounded-full border-2 border-accent-blue/60 overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.4)] bg-dark-800">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/waqas-pro.jpg" alt="Syed Waqas Tayyab" className="w-full h-full object-cover" style={{objectPosition:'center 10%'}} />
-                    </div>
-                    <span className="absolute bottom-1.5 right-1.5 w-4 h-4 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
-                  </div>
-                </div>
-
-                <div className="flex-1 text-center sm:text-left">
-                  <h2 className="text-2xl font-bold text-white mb-0.5">Syed Waqas Tayyab</h2>
-                  <p className="text-accent-blue font-semibold text-sm mb-0.5">Senior IT System Engineer · IT Service Delivery Lead · IT Consultant</p>
-                  <p className="text-cyan-400 font-medium text-sm mb-3">AI Engineer · SAP · Riyadh, Saudi Arabia · 15+ Years IT</p>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-4 max-w-xl">
-                    AI, ML, Agentic AI, Cyber &amp; Cloud expert with 15+ years and 100+ projects at SAP and leading organisations.
-                    IT Service Delivery Lead, Azure Security Certified Engineer, MBA graduate.
-                    Training young IT professionals to adopt AI faster — bridging corporate knowledge gaps.
-                  </p>
-                  {/* 1M+ followers badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-yellow-500/15 to-orange-500/10 border border-yellow-500/30 mb-4">
-                    <TrendingUp className="w-4 h-4 text-accent-yellow" />
-                    <span className="text-accent-yellow font-bold text-sm">1M+ Followers</span>
-                    <span className="text-gray-400 text-xs">across social platforms</span>
-                  </div>
-                  {/* Role pills */}
-                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                    {roles.map((role) => (
-                      <span key={role.label} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${role.bg} ${role.color} border border-current/20`}>
-                        <role.icon className="w-3.5 h-3.5" />
-                        {role.label}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+        {/* Subtle dark background with glow — no photo here, photo is on the right */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-dark-900" />
+          <div className="absolute right-0 top-0 w-[700px] h-full"
+            style={{ background: 'linear-gradient(to left, rgba(59,130,246,0.06) 0%, transparent 70%)' }} />
+          <div className="absolute right-1/4 top-1/3 w-96 h-96 rounded-full blur-[140px]"
+            style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%)' }} />
         </div>
-      </ScrollReveal>
 
-      {/* ── Social Proof — 1M+ followers ── */}
-      <ScrollReveal delay={0.08}>
-        <div className="glass-card p-7 mb-12 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent pointer-events-none" />
-          <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-6">
-              <TrendingUp className="w-5 h-5 text-accent-yellow" />
-              <h3 className="text-xl font-bold text-white">Social Reach &amp; Community</h3>
-              <span className="ml-auto badge bg-yellow-500/10 text-accent-yellow border border-yellow-500/30 text-xs font-bold px-3 py-1">
-                1M+ Total Followers
-              </span>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {socialProof.map((s) => (
-                <a key={s.platform} href={s.href} target="_blank" rel="noopener noreferrer"
-                  className={`glass-card p-4 flex flex-col items-center gap-2 text-center border ${s.border} hover:-translate-y-1 transition-all duration-200`}>
-                  <div className={`w-10 h-10 rounded-xl ${s.bg} flex items-center justify-center`}>
-                    <s.icon className={`w-5 h-5 ${s.color}`} />
+        {/* Content — sits above background */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full py-12">
+
+            {/* LEFT — text */}
+            <div className="flex flex-col justify-center">
+              {/* Open to work badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full w-fit mb-6"
+                style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.30)' }}>
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-accent-blue text-xs font-semibold">Open to Work · MENA + Remote</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 whitespace-nowrap">
+                Syed <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-cyan-400 to-purple-400">Waqas Tayyab</span>
+              </h1>
+
+              <p className="text-xl text-accent-blue font-bold mb-2">
+                Senior IT System Engineer · IT Service Delivery Lead
+              </p>
+              <p className="text-sm text-cyan-400 font-medium mb-6 flex items-center gap-2">
+                <MapPin className="w-4 h-4 flex-shrink-0" /> Riyadh, Saudi Arabia · SAP · 15+ Years IT
+              </p>
+
+              <p className="text-gray-300 text-base leading-relaxed mb-8 max-w-lg">
+                AI, ML, Agentic AI, Cyber &amp; Cloud expert with 15+ years and 100+ projects at SAP.
+                Azure Security Certified. MBA graduate. Building automation systems that save hours daily.
+              </p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-4 gap-3 mb-8 max-w-lg">
+                {stats.map((s) => (
+                  <div key={s.label} className="p-3 text-center rounded-xl"
+                    style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.10)' }}>
+                    <div className={`text-xl font-black ${s.color}`}>{s.value}</div>
+                    <div className="text-gray-400 text-[10px] leading-tight mt-0.5">{s.label}</div>
                   </div>
-                  <div className={`text-2xl font-black ${s.color}`}>{s.followers}</div>
-                  <div className="text-white text-xs font-semibold">{s.platform}</div>
-                  <div className="text-gray-500 text-xs">{s.growth}</div>
+                ))}
+              </div>
+
+              {/* CTA buttons */}
+              <div className="flex flex-wrap gap-3">
+                <Link href="/hire" className="btn-primary px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
+                  <Briefcase className="w-4 h-4" /> Hire Me
+                </Link>
+                <Link href="/contact" className="btn-outline px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
+                  <Mail className="w-4 h-4" /> Get in Touch
+                </Link>
+                <a href="https://www.linkedin.com/in/syedwaqastayyab/"
+                  target="_blank" rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-lg text-sm font-semibold inline-flex items-center gap-2"
+                  style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)', color: '#d1d5db' }}>
+                  <Linkedin className="w-4 h-4" /> LinkedIn
                 </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* Mission */}
-      <ScrollReveal delay={0.1}>
-        <div className="glass-card p-8 mb-12 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-transparent pointer-events-none" />
-          <div className="relative z-10">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Target className="w-5 h-5 text-accent-blue" /> Mission
-            </h3>
-            <blockquote className="text-gray-300 text-lg leading-relaxed border-l-2 border-accent-blue pl-5">
-              &ldquo;AI, ML, Agentic AI, Cyber &amp; Cloud — daily news, tech tips, tricks &amp; tutorials
-              for IT enthusiasts and pros. Elevate your learning &amp; stay ahead of the IT game
-              in the modern era of AI.&rdquo;
-            </blockquote>
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* ── Neuron / Neural Network Dashboard ── */}
-      <ScrollReveal delay={0.12}>
-        <div className="glass-card p-6 mb-12 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-accent-blue/5 pointer-events-none" />
-          <div className="relative z-10">
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-              <Brain className="w-5 h-5 text-purple-400" /> Neural Knowledge Map
-            </h3>
-            <div className="flex flex-col lg:flex-row gap-6 items-start">
-              {/* Neuron SVG */}
-              <div className="flex-shrink-0 w-full lg:w-72 h-56">
-                <NeuronDashboard />
               </div>
-              {/* Domain stats */}
-              <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {[
-                  { domain: 'IT Service Delivery', years: '11y', projects: '100+', color: 'text-accent-blue', bg: 'bg-accent-blue/10' },
-                  { domain: 'Cybersecurity', years: '13y', projects: '50+', color: 'text-red-400', bg: 'bg-red-500/10' },
-                  { domain: 'Cloud & Azure', years: '8y', projects: '40+', color: 'text-sky-400', bg: 'bg-sky-500/10' },
-                  { domain: 'SAP Operations', years: '11y', projects: '60+', color: 'text-orange-400', bg: 'bg-orange-500/10' },
-                  { domain: 'AI & ML', years: '3y', projects: '15+', color: 'text-purple-400', bg: 'bg-purple-500/10' },
-                  { domain: 'Networking', years: '15y', projects: '80+', color: 'text-green-400', bg: 'bg-green-500/10' },
-                  { domain: 'M365 & Office Tech', years: '9y', projects: '45+', color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
-                  { domain: 'Automation', years: '5y', projects: '30+', color: 'text-yellow-400', bg: 'bg-yellow-500/10' },
-                  { domain: 'Infrastructure', years: '15y', projects: '70+', color: 'text-cyan-400', bg: 'bg-cyan-500/10' },
-                ].map((d) => (
-                  <div key={d.domain} className={`${d.bg} rounded-xl p-3 border border-current/10`}>
-                    <div className={`text-xs font-bold ${d.color} mb-1`}>{d.domain}</div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-white text-sm font-bold">{d.projects}</span>
-                      <span className="text-gray-500 text-xs">{d.years}</span>
-                    </div>
+            </div>
+
+            {/* RIGHT — your photo, clearly visible */}
+            <div className="hidden lg:flex items-center justify-center relative">
+              {/* Glow ring behind photo */}
+              <div className="absolute w-[380px] h-[380px] rounded-full blur-[60px]"
+                style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.25) 0%, rgba(139,92,246,0.15) 50%, transparent 70%)' }} />
+
+              {/* Photo card */}
+              <div className="relative z-10 flex flex-col items-center">
+                {/* Rotating border ring */}
+                <div className="relative w-72 h-72 sm:w-80 sm:h-80">
+                  {/* Animated gradient ring */}
+                  <div className="absolute inset-0 rounded-full p-[3px] animate-spin"
+                    style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4, #3B82F6)', animationDuration: '8s' }}>
+                    <div className="w-full h-full rounded-full bg-dark-900" />
                   </div>
+                  {/* Photo */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/waqas-pro.jpg"
+                    alt="Syed Waqas Tayyab"
+                    className="absolute inset-[4px] w-[calc(100%-8px)] h-[calc(100%-8px)] rounded-full object-cover object-top"
+                    style={{ boxShadow: '0 0 40px rgba(59,130,246,0.3)' }}
+                  />
+                  {/* Available badge on photo */}
+                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap z-20"
+                    style={{ background: 'rgba(8,14,24,0.95)', border: '1px solid rgba(59,130,246,0.5)', boxShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                    <span className="text-white text-xs font-semibold">Available for Projects</span>
+                  </div>
+                </div>
+
+                {/* Floating tech tags around the photo */}
+                <div className="mt-8 flex flex-wrap justify-center gap-2 max-w-xs">
+                  {[
+                    { label: '☁️ Azure Security', text: '#93c5fd', border: 'rgba(59,130,246,0.4)', bg: 'rgba(59,130,246,0.12)' },
+                    { label: '🟠 SAP S/4HANA',   text: '#fdba74', border: 'rgba(249,115,22,0.4)',  bg: 'rgba(249,115,22,0.12)' },
+                    { label: '🤖 AI / ML',        text: '#c4b5fd', border: 'rgba(139,92,246,0.4)', bg: 'rgba(139,92,246,0.12)' },
+                    { label: '🎫 ServiceNow',     text: '#86efac', border: 'rgba(34,197,94,0.4)',  bg: 'rgba(34,197,94,0.12)'  },
+                    { label: '💼 M365 Admin',     text: '#a5b4fc', border: 'rgba(99,102,241,0.4)', bg: 'rgba(99,102,241,0.12)' },
+                    { label: '🐍 Python',         text: '#fde68a', border: 'rgba(234,179,8,0.4)',  bg: 'rgba(234,179,8,0.12)'  },
+                  ].map((t) => (
+                    <div key={t.label}
+                      className="px-3 py-1.5 rounded-lg text-xs font-semibold backdrop-blur-sm"
+                      style={{ background: t.bg, border: `1px solid ${t.border}`, color: t.text }}>
+                      {t.label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom fade into page */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, #080e18)' }} />
+        {/* Thin accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-px z-10"
+          style={{ background: 'linear-gradient(to right, transparent, rgba(59,130,246,0.4), transparent)' }} />
+      </section>
+
+      {/* ── QUICK CONTACT BAR ──────────────────────────────────────── */}
+      <section className="bg-dark-800/50 border-b border-white/5 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {contacts.map((c) => (
+              <a key={c.label} href={c.href}
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium ${c.bg} ${c.color} border border-current/20 hover:opacity-80 transition-opacity`}>
+                <c.icon className="w-3.5 h-3.5 flex-shrink-0" />
+                <span className="hidden sm:inline">{c.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+
+        {/* ── ABOUT ME ─────────────────────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Users className="w-5 h-5 text-accent-blue" />} title="About Me" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 glass-card p-7">
+              <p className="text-gray-300 leading-relaxed mb-4">
+                I&apos;m <span className="text-white font-semibold">Syed Waqas Tayyab</span>, a Senior IT System Engineer and IT Service Delivery Lead at <span className="text-accent-blue font-semibold">SAP Saudi Arabia</span> with over 15 years in corporate IT. I specialise in enterprise IT operations, AI automation, Azure security, SAP systems, and Microsoft 365.
+              </p>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                I hold an <span className="text-white font-semibold">MBA from Buckinghamshire New University, UK</span> and a <span className="text-white font-semibold">BSc IT from University of Greenwich, UK</span>, plus 13 professional certifications including Azure Security Engineer and SAP Python ML.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                My mission: bridge the gap between corporate IT and modern AI — training teams to adopt tools like Copilot, Claude, and Gemini, and building automation systems that save hours of manual work every day.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {['English (Fluent)', 'Arabic (Fluent)', 'Riyadh, KSA', 'MENA + Remote', 'Open to Work'].map((t) => (
+                  <span key={t} className="tag text-xs py-1 px-3">{t}</span>
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* Full skills cloud */}
-      <ScrollReveal delay={0.15}>
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-white mb-6">Tech Stack &amp; Skills</h3>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span key={skill} className="tag text-sm py-1 px-3">{skill}</span>
-            ))}
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* Timeline */}
-      <ScrollReveal delay={0.2}>
-        <h3 className="text-xl font-bold text-white mb-6">Career &amp; Achievements Timeline</h3>
-        <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent-blue via-accent-blue/30 to-transparent" />
-          <div className="space-y-6">
-            {timeline.map((item, i) => (
-              <ScrollReveal key={item.title} delay={i * 0.07} className="pl-12 relative">
-                <div className="absolute left-3 top-1.5 w-3 h-3 rounded-full bg-accent-blue border-2 border-dark-900 shadow-glow" />
-                <div className="glass-card p-5">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Calendar className="w-3.5 h-3.5 text-gray-500" />
-                    <span className="text-xs text-gray-500 font-mono">{item.year}</span>
-                  </div>
-                  <h4 className="font-semibold text-white mb-1">{item.title}</h4>
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
+            <div className="glass-card p-6 flex flex-col gap-5">
+              <div>
+                <div className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
+                  <GraduationCap className="w-3.5 h-3.5" /> Education
                 </div>
-              </ScrollReveal>
+                <div className="space-y-3">
+                  <div className="p-3 rounded-lg bg-pink-500/8 border border-pink-500/20">
+                    <div className="text-white text-sm font-semibold">MBA (iMBA)</div>
+                    <div className="text-pink-400 text-xs">Buckinghamshire New Univ · UK · 2023</div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-indigo-500/8 border border-indigo-500/20">
+                    <div className="text-white text-sm font-semibold">BSc Information Technology</div>
+                    <div className="text-indigo-400 text-xs">University of Greenwich · UK · 2010</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
+                  <TrendingUp className="w-3.5 h-3.5" /> Social Reach
+                </div>
+                <div className="space-y-2">
+                  {[
+                    { label: '1M+ Followers', sub: 'Across all platforms', color: 'text-yellow-400', bg: 'bg-yellow-500/10' },
+                    { label: '500+ LinkedIn', sub: 'syedwaqastayyab', color: 'text-blue-400', bg: 'bg-blue-500/10' },
+                    { label: '100K+ Monthly', sub: 'Tech content views', color: 'text-green-400', bg: 'bg-green-500/10' },
+                  ].map((s) => (
+                    <div key={s.label} className={`flex items-center gap-2.5 px-3 py-2 rounded-lg ${s.bg}`}>
+                      <span className={`text-sm font-bold ${s.color}`}>{s.label}</span>
+                      <span className="text-gray-500 text-xs">{s.sub}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SKILLS — Neural Brain Network ────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Brain className="w-5 h-5 text-purple-400" />} title="Skills Neural Network" />
+          <NeuralNetwork />
+        </section>
+
+        {/* ── EXPERIENCE ───────────────────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Briefcase className="w-5 h-5 text-cyan-400" />} title="Work Experience" />
+          <div className="space-y-4">
+            {experience.map((job, i) => (
+              <div key={job.role} className={`glass-card border-l-4 ${job.color} overflow-hidden`}>
+                <button
+                  onClick={() => setExpandedJob(expandedJob === i ? null : i)}
+                  className="w-full flex items-start justify-between gap-4 p-6 text-left hover:bg-white/2 transition-colors"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h3 className="text-white font-bold text-base">{job.role}</h3>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3 text-sm">
+                      <span className={`font-semibold ${job.badge}`}>{job.company}</span>
+                      <span className="text-gray-500 flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />{job.location}
+                      </span>
+                      <span className="text-gray-500 flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />{job.period}
+                      </span>
+                    </div>
+                  </div>
+                  {expandedJob === i
+                    ? <ChevronUp className="w-4 h-4 text-gray-400 flex-shrink-0 mt-1" />
+                    : <ChevronDown className="w-4 h-4 text-gray-400 flex-shrink-0 mt-1" />}
+                </button>
+                {expandedJob === i && (
+                  <div className="px-6 pb-6">
+                    <ul className="space-y-2 mb-4">
+                      {job.highlights.map((h) => (
+                        <li key={h} className="flex items-start gap-2 text-sm text-gray-400">
+                          <CheckCircle className="w-4 h-4 text-accent-blue flex-shrink-0 mt-0.5" />
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-1.5">
+                      {job.skills.map((s) => (
+                        <span key={s} className="tag text-xs py-1 px-2">{s}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
-        </div>
-      </ScrollReveal>
+        </section>
 
-      {/* CTA */}
-      <ScrollReveal delay={0.2} className="mt-14 text-center">
-        <Link href="/hire" className="btn-primary px-8 py-3.5 text-base inline-flex">
-          View Full Profile &amp; Hire Me
-        </Link>
-      </ScrollReveal>
+        {/* ── PROJECTS ─────────────────────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Code className="w-5 h-5 text-green-400" />} title="Projects I've Built" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {projects.map((p) => (
+              <div key={p.title} className={`glass-card border-l-4 ${p.color} p-5 hover:-translate-y-0.5 transition-all duration-200`}>
+                <div className="flex items-start justify-between mb-3">
+                  <div className="text-3xl">{p.emoji}</div>
+                  <span className={`text-xs font-bold px-2 py-1 rounded-full border ${p.status === 'Live' ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'}`}>
+                    {p.status}
+                  </span>
+                </div>
+                <h3 className="text-white font-bold text-sm mb-0.5">{p.title}</h3>
+                <p className="text-gray-500 text-xs mb-2">{p.subtitle}</p>
+                <p className="text-gray-400 text-xs leading-relaxed mb-3">{p.desc}</p>
+                <div className="flex flex-wrap gap-1">
+                  {p.tags.map((t) => (
+                    <span key={t} className="tag text-[10px] py-0.5 px-2">{t}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <Link href="/projects" className="btn-outline px-6 py-2.5 text-sm inline-flex items-center gap-2">
+              <ExternalLink className="w-4 h-4" /> View Full Project Details
+            </Link>
+          </div>
+        </section>
+
+        {/* ── CERTIFICATIONS ───────────────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Award className="w-5 h-5 text-yellow-400" />} title="Certifications & Education" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {displayedCerts.map((c) => (
+              <div key={c.name} className={`glass-card p-4 border ${c.border} flex items-start gap-3`}>
+                <div className={`w-8 h-8 rounded-lg ${c.bg} flex items-center justify-center flex-shrink-0`}>
+                  <Award className={`w-4 h-4 ${c.color}`} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-white text-sm font-semibold leading-snug">{c.name}</div>
+                  <div className={`text-xs font-medium mt-0.5 ${c.color}`}>{c.issuer} · {c.year}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {certifications.length > 6 && (
+            <div className="mt-4 text-center">
+              <button
+                onClick={() => setShowAllCerts(!showAllCerts)}
+                className="btn-outline px-5 py-2 text-sm inline-flex items-center gap-2"
+              >
+                {showAllCerts ? <><ChevronUp className="w-4 h-4" /> Show Less</> : <><ChevronDown className="w-4 h-4" /> Show All {certifications.length} Certs</>}
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* ── HIRE CTA ─────────────────────────────────────────────── */}
+        <section>
+          <div className="glass-card p-8 md:p-12 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/8 via-transparent to-purple-500/8 pointer-events-none" />
+            <div className="relative z-10">
+              <div className="w-16 h-16 rounded-2xl bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center mx-auto mb-5">
+                <Zap className="w-8 h-8 text-accent-blue" />
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
+                Let&apos;s Work Together
+              </h2>
+              <p className="text-gray-400 text-base max-w-xl mx-auto mb-7">
+                15+ years of IT expertise + AI/ML skills. Available for IT Service Delivery, AI Automation, Azure Security, SAP, M365, and Web App projects — MENA and remote.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link href="/hire" className="btn-primary px-7 py-3 text-sm font-semibold inline-flex items-center gap-2">
+                  <Briefcase className="w-4 h-4" /> View Services & Pricing
+                </Link>
+                <a href="mailto:waqastayyab2004@gmail.com" className="btn-outline px-7 py-3 text-sm font-semibold inline-flex items-center gap-2">
+                  <Mail className="w-4 h-4" /> Email Me
+                </a>
+                <a href="https://wa.me/966505803073" target="_blank" rel="noopener noreferrer"
+                  className="px-7 py-3 rounded-lg text-sm font-semibold bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 transition-all inline-flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
     </div>
   )
 }
 
-/* ── Animated Neural Network Dashboard SVG ── */
-function NeuronDashboard() {
-  const nodes = [
-    { id: 'in1', x: 40,  y: 40,  color: '#3B82F6', label: 'IT Ops' },
-    { id: 'in2', x: 40,  y: 100, color: '#06B6D4', label: 'SAP' },
-    { id: 'in3', x: 40,  y: 160, color: '#8B5CF6', label: 'Cloud' },
-    { id: 'in4', x: 40,  y: 220, color: '#10B981', label: 'Security' },
-    { id: 'h1',  x: 140, y: 60,  color: '#FACC15', label: 'AI/ML' },
-    { id: 'h2',  x: 140, y: 130, color: '#F97316', label: 'Automate' },
-    { id: 'h3',  x: 140, y: 200, color: '#EC4899', label: 'DevOps' },
-    { id: 'out', x: 240, y: 130, color: '#3B82F6', label: 'Impact' },
-  ]
-  const edges = [
-    ['in1','h1'],['in1','h2'],['in2','h1'],['in2','h2'],['in2','h3'],
-    ['in3','h2'],['in3','h3'],['in4','h3'],['in4','h2'],
-    ['h1','out'],['h2','out'],['h3','out'],
-  ]
-  const nodeMap = Object.fromEntries(nodes.map(n => [n.id, n]))
+/* ─── Section Header helper ────────────────────────────────────────── */
+function SectionHeader({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
-    <svg viewBox="0 0 290 260" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <defs>
-        <filter id="nodeGlow">
-          <feGaussianBlur stdDeviation="2.5" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-      {/* Edges */}
-      {edges.map(([a, b], i) => {
-        const na = nodeMap[a], nb = nodeMap[b]
-        return (
-          <line key={i} x1={na.x} y1={na.y} x2={nb.x} y2={nb.y}
-            stroke={na.color} strokeWidth="1" opacity="0.25"
-            strokeDasharray="4 3">
-            <animate attributeName="stroke-dashoffset" values="20;0" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.15;0.45;0.15" dur={`${2 + i * 0.2}s`} repeatCount="indefinite"/>
-          </line>
-        )
-      })}
-      {/* Travelling pulses */}
-      {edges.slice(0,6).map(([a,b], i) => {
-        const na = nodeMap[a], nb = nodeMap[b]
-        return (
-          <circle key={i} r="3" fill={na.color} opacity="0.9" filter="url(#nodeGlow)">
-            <animateMotion dur={`${1.5 + i * 0.3}s`} repeatCount="indefinite" begin={`${i * 0.4}s`}>
-              <mpath href={`#edge-${i}`}/>
-            </animateMotion>
-            <animateMotion dur={`${1.5 + i * 0.3}s`} repeatCount="indefinite" begin={`${i * 0.4}s`}
-              path={`M${na.x},${na.y} L${nb.x},${nb.y}`}/>
-          </circle>
-        )
-      })}
-      {/* Nodes */}
-      {nodes.map((n) => (
-        <g key={n.id}>
-          {/* Glow ring */}
-          <circle cx={n.x} cy={n.y} r="16" fill={n.color} opacity="0.08">
-            <animate attributeName="r" values="12;18;12" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.06;0.14;0.06" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          {/* Node */}
-          <circle cx={n.x} cy={n.y} r="12" fill="#0d1824" stroke={n.color} strokeWidth="1.5" filter="url(#nodeGlow)"/>
-          <circle cx={n.x} cy={n.y} r="6" fill={n.color} opacity="0.8">
-            <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          {/* Label */}
-          <text x={n.id === 'out' ? n.x + 20 : n.id.startsWith('in') ? n.x - 16 : n.x}
-            y={n.y + 4}
-            fontFamily="monospace" fontSize="7" fill={n.color} opacity="0.7"
-            textAnchor={n.id === 'out' ? 'start' : n.id.startsWith('in') ? 'end' : 'middle'}>
-            {n.label}
-          </text>
-        </g>
-      ))}
-    </svg>
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-9 h-9 rounded-xl bg-dark-700 border border-white/8 flex items-center justify-center">
+        {icon}
+      </div>
+      <h2 className="text-xl font-black text-white">{title}</h2>
+      <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
+    </div>
   )
 }
