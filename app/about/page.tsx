@@ -221,6 +221,25 @@ export default function PortfolioPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full py-12">
 
+            {/* MOBILE ONLY — photo centred above text */}
+            <div className="flex lg:hidden justify-center mb-2">
+              <div className="relative w-44 h-44">
+                <div className="absolute inset-0 rounded-full p-[3px] animate-spin"
+                  style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4, #3B82F6)', animationDuration: '8s' }}>
+                  <div className="w-full h-full rounded-full bg-dark-900" />
+                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/waqas-pro.jpg" alt="Syed Waqas Tayyab"
+                  className="absolute inset-[4px] w-[calc(100%-8px)] h-[calc(100%-8px)] rounded-full object-cover object-top"
+                  style={{ boxShadow: '0 0 30px rgba(59,130,246,0.4)' }} />
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full whitespace-nowrap z-20"
+                  style={{ background: 'rgba(8,14,24,0.95)', border: '1px solid rgba(59,130,246,0.5)' }}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                  <span className="text-white text-[10px] font-semibold">Available for Projects</span>
+                </div>
+              </div>
+            </div>
+
             {/* LEFT — text */}
             <div className="flex flex-col justify-center">
               {/* Open to work badge */}
@@ -230,7 +249,7 @@ export default function PortfolioPage() {
                 <span className="text-accent-blue text-xs font-semibold">Open to Work · MENA + Remote</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 whitespace-nowrap">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
                 Syed <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-cyan-400 to-purple-400">Waqas Tayyab</span>
               </h1>
 
