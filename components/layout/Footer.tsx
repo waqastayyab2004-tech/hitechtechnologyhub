@@ -4,7 +4,7 @@ import { Zap, Facebook, Linkedin, Github, Mail, Heart } from 'lucide-react'
 const footerLinks = {
   Pages: [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
+    { href: '/about', label: 'Portfolio' },
     { href: '/topics', label: 'Topics' },
     { href: '/projects', label: 'Projects' },
   ],
