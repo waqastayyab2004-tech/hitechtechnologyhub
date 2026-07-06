@@ -12,7 +12,7 @@ const navLinks = [
   { href: '/topics', label: 'Topics' },
   { href: '/projects', label: 'Projects' },
   { href: '/blog', label: 'Blog' },
-  { href: '/resources', label: 'Resources' },
+  { href: '/resources', label: 'AI Tools' },
   { href: '/hire', label: '🎯 Hire Me', highlight: true },
   { href: '/contact', label: 'Contact' },
 ]

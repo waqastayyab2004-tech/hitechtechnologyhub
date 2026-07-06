@@ -10,7 +10,7 @@ const footerLinks = {
   ],
   Content: [
     { href: '/blog', label: 'Blog' },
-    { href: '/resources', label: 'Resources' },
+    { href: '/resources', label: 'AI Tools' },
     { href: '/contact', label: 'Contact' },
     { href: '/hire', label: '🎯 Hire Me' },
   ],
