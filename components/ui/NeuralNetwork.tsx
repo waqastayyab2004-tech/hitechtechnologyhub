@@ -405,7 +405,7 @@ export default function NeuralNetwork() {
               const dx=p.x-CX, dy=p.y-CY, dist=Math.sqrt(dx*dx+dy*dy)
               const ux=dx/dist, uy=dy/dist
               const lx=p.x+ux*(nr+16), ly=p.y+uy*(nr+16)
-              const anchor:string = ux<-0.3?'end':ux>0.3?'start':'middle'
+              const anchor: 'end' | 'start' | 'middle' = ux<-0.3?'end':ux>0.3?'start':'middle'
               return (
                 <g key={d.id} style={{cursor:'pointer'}}
                   onClick={() => setActive(prev => prev===d.id?null:d.id)}
