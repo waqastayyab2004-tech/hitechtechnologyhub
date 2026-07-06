@@ -172,6 +172,7 @@ export default function TopicsPage() {
             <div className={`glass-card overflow-hidden transition-all duration-300 border ${topic.border} hover:-translate-y-1 ${topic.glow} cursor-pointer group h-full flex flex-col`}>
               {/* Cover image */}
               <div className="relative w-full h-40 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={topic.image}
                   alt={topic.label}
