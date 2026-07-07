@@ -408,15 +408,15 @@ export default function Hero() {
    NEURAL EXPERTISE DIAGRAM
    ──────────────────────────────────────────────── */
 function NeuralExpertise() {
-  // Centre node + 6 domain nodes arranged in a hex
-  const cx = 300, cy = 130, r = 95
+  // Centre node — shifted slightly left so sub-skill labels have room on both sides
+  const cx = 320, cy = 145, r = 100
   const domains = [
-    { label: 'AI & MLOps',       color: '#8B5CF6', sub: ['AIOps','Automation','Python','SAP AI'] },
-    { label: 'Cybersecurity',    color: '#EF4444', sub: ['Azure Sec','Zero Trust','IAM','SIEM'] },
-    { label: 'Cloud & Infra',    color: '#3B82F6', sub: ['Azure','M365','Hybrid','IaaS'] },
-    { label: 'ServiceNow',       color: '#10B981', sub: ['ITSM','SLA Mgmt','SNOW Dev','Tickets'] },
-    { label: 'IT Operations',    color: '#F59E0B', sub: ['L2/L3','ITIL','SLAs','VIP Support'] },
-    { label: 'Corporate IT',     color: '#06B6D4', sub: ['Global MNCs','SAP','Endpoint','M365'] },
+    { label: 'AI & MLOps',    color: '#8B5CF6', sub: ['AIOps','Automation','Python','SAP AI'] },
+    { label: 'Cybersecurity', color: '#EF4444', sub: ['Azure Sec','Zero Trust','IAM','SIEM'] },
+    { label: 'Cloud & Infra', color: '#3B82F6', sub: ['Azure','M365','Hybrid','IaaS'] },
+    { label: 'ServiceNow',    color: '#10B981', sub: ['ITSM','SLA Mgmt','SNOW','Tickets'] },
+    { label: 'IT Operations', color: '#F59E0B', sub: ['L2/L3','ITIL','SLAs','VIP Support'] },
+    { label: 'Corporate IT',  color: '#06B6D4', sub: ['Global MNCs','SAP','Endpoint','M365'] },
   ]
   const nodes = domains.map((d, i) => {
     const angle = (i * 60 - 90) * Math.PI / 180
@@ -424,17 +424,17 @@ function NeuralExpertise() {
   })
 
   return (
-    <div className="w-full overflow-hidden rounded-2xl border border-white/5 bg-dark-800/40 backdrop-blur-sm p-2">
+    <div className="w-full rounded-2xl border border-white/5 bg-dark-800/40 backdrop-blur-sm p-2" style={{overflow:'hidden'}}>
       <style>{`
-        @keyframes pulse-node { 0%,100%{r:14;opacity:0.9} 50%{r:16;opacity:1} }
-        @keyframes pulse-centre { 0%,100%{r:20;opacity:1} 50%{r:23;opacity:0.8} }
-        @keyframes dash-flow { to { stroke-dashoffset: -40 } }
-        @keyframes node-glow { 0%,100%{filter:drop-shadow(0 0 4px currentColor)} 50%{filter:drop-shadow(0 0 12px currentColor)} }
-        .nn-edge { animation: dash-flow 2s linear infinite; stroke-dasharray: 6 4; }
-        .nn-node { animation: pulse-node 2.5s ease-in-out infinite; }
-        .nn-centre { animation: pulse-centre 3s ease-in-out infinite; }
+        @keyframes pulse-node   { 0%,100%{r:14;opacity:0.9} 50%{r:16;opacity:1} }
+        @keyframes pulse-centre { 0%,100%{r:20;opacity:1}   50%{r:23;opacity:0.8} }
+        @keyframes dash-flow    { to { stroke-dashoffset: -40 } }
+        .nn-edge   { animation: dash-flow 2s linear infinite; stroke-dasharray: 6 4; }
+        .nn-node   { animation: pulse-node   2.5s ease-in-out infinite; }
+        .nn-centre { animation: pulse-centre 3s   ease-in-out infinite; }
       `}</style>
-      <svg viewBox="0 0 600 260" width="100%" className="overflow-visible">
+      {/* viewBox wider (680) and taller (290) — plenty of room for all labels */}
+      <svg viewBox="0 0 680 290" width="100%" preserveAspectRatio="xMidYMid meet">
         <defs>
           <radialGradient id="centrGrad" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#60A5FA"/>
@@ -449,28 +449,26 @@ function NeuralExpertise() {
           <filter id="nnGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
 
-        {/* Edges from centre to domain nodes */}
+        {/* Edges */}
         {nodes.map((n,i) => (
-          <line key={i}
-            x1={cx} y1={cy} x2={n.x} y2={n.y}
+          <line key={i} x1={cx} y1={cy} x2={n.x} y2={n.y}
             stroke={n.color} strokeWidth="1.2" opacity="0.4"
-            className="nn-edge"
-            style={{animationDelay:`${i*0.33}s`}}
+            className="nn-edge" style={{animationDelay:`${i*0.33}s`}}
           />
         ))}
 
-        {/* Sub-skill nodes (small dots around each domain) */}
+        {/* Sub-skill dots + labels */}
         {nodes.map((n,i) =>
           n.sub.map((s, j) => {
             const a2 = ((i * 60 - 90) + (j - 1.5) * 18) * Math.PI / 180
-            const sr = 36, sx = n.x + sr * Math.cos(a2), sy = n.y + sr * Math.sin(a2)
+            const sr = 34, sx = n.x + sr * Math.cos(a2), sy = n.y + sr * Math.sin(a2)
             return (
               <g key={`${i}-${j}`}>
                 <line x1={n.x} y1={n.y} x2={sx} y2={sy} stroke={n.color} strokeWidth="0.7" opacity="0.25"/>
                 <circle cx={sx} cy={sy} r="3.5" fill={n.color} opacity="0.5">
                   <animate attributeName="opacity" values="0.3;0.7;0.3" dur={`${1.5+j*0.3}s`} repeatCount="indefinite"/>
                 </circle>
-                <text x={sx} y={sy - 7} textAnchor="middle" fontSize="6" fill={n.color} opacity="0.7" fontFamily="monospace">{s}</text>
+                <text x={sx} y={sy - 6} textAnchor="middle" fontSize="6" fill={n.color} opacity="0.75" fontFamily="monospace">{s}</text>
               </g>
             )
           })
