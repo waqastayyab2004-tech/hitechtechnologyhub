@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import {
   Shield, Cloud, Server, Zap, Monitor, Headphones,
@@ -276,6 +276,8 @@ export default function ServicesPage() {
   const [openProcess, setOpenProcess] = useState<number | null>(0)
   const [openFaq, setOpenFaq] = useState<number | null>(0)
 
+  useEffect(() => { document.title = 'IT Services — Syed Waqas Tayyab' }, [])
+
   return (
     <div className="min-h-screen bg-dark-900">
 
@@ -328,32 +330,34 @@ export default function ServicesPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-dark-800/50 border-y border-white/8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-black text-white mb-8">Meet Your IT Specialist</h2>
-          <div className="glass-card overflow-hidden">
-            <div className="flex flex-col md:flex-row">
-              {/* Photo */}
-              <div className="md:w-56 flex-shrink-0 relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/waqas-pro.jpg" alt="Syed Waqas Tayyab"
-                  className="w-full h-64 md:h-full object-cover object-top"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent md:bg-gradient-to-l"/>
-              </div>
-              {/* Info */}
-              <div className="flex-1 p-8">
+
+          {/* Card — dark navy background, photo right like reference */}
+          <div className="relative rounded-2xl overflow-hidden" style={{background:'linear-gradient(135deg,#0a1628 60%,#0d2040 100%)'}}>
+            {/* Subtle diagonal lines bg */}
+            <div className="absolute inset-0 opacity-10" style={{backgroundImage:'repeating-linear-gradient(120deg,transparent,transparent 40px,rgba(59,130,246,0.3) 40px,rgba(59,130,246,0.3) 41px)'}}/>
+
+            <div className="relative z-10 flex flex-col md:flex-row items-stretch">
+
+              {/* Left — text content */}
+              <div className="flex-1 p-8 md:p-10">
                 <h3 className="text-2xl font-black text-white mb-1">Syed Waqas Tayyab</h3>
                 <p className="text-accent-blue font-semibold text-sm mb-6">Senior IT System Engineer · IT Service Delivery Lead · AI Automation Specialist</p>
-                {/* Stats */}
-                <div className="flex flex-wrap gap-6 mb-6">
+
+                {/* Stats row */}
+                <div className="flex flex-wrap gap-8 mb-6 pb-6 border-b border-white/8">
                   {stats.map(s => (
                     <div key={s.label}>
-                      <div className="text-2xl font-black gradient-text">{s.value}</div>
-                      <div className="text-gray-500 text-xs mt-0.5">{s.label}</div>
+                      <div className="text-2xl font-black text-white">{s.value}</div>
+                      <div className="text-gray-500 text-xs mt-0.5 max-w-[120px] leading-snug">{s.label}</div>
                     </div>
                   ))}
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed mb-5">
+
+                <p className="text-gray-300 text-sm leading-relaxed mb-5">
                   A senior IT specialist with 15+ years managing enterprise IT operations, cybersecurity, cloud infrastructure, and AI automation across global multinationals — keeping critical systems secure, reliable, and ahead of the curve.
                 </p>
-                <div className="space-y-2 mb-6">
+
+                <div className="space-y-2 mb-8">
                   {expertPoints.map(p => (
                     <div key={p} className="flex items-start gap-2 text-sm text-gray-400">
                       <CheckCircle className="w-4 h-4 text-accent-blue flex-shrink-0 mt-0.5"/>
@@ -361,19 +365,37 @@ export default function ServicesPage() {
                     </div>
                   ))}
                 </div>
+
                 {/* CTA strip */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-5 border-t border-white/8">
-                  <p className="text-gray-300 text-sm font-medium max-w-sm">Ready to assess your IT challenge and help you solve it. Schedule a call to start.</p>
-                  <Link href="#contact-form" className="btn-primary text-sm px-6 py-2.5 whitespace-nowrap flex-shrink-0">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-6 border-t border-white/8">
+                  <p className="text-gray-200 font-medium text-sm max-w-xs leading-snug">Ready to assess your IT challenge and help you solve it. Schedule a call to start.</p>
+                  <Link href="#contact-form"
+                    className="flex-shrink-0 bg-accent-blue hover:bg-blue-500 text-white font-bold text-sm px-6 py-3 rounded-xl transition-colors whitespace-nowrap">
                     Request Consultation
                   </Link>
                 </div>
               </div>
+
+              {/* Right — photo with dark bg, cut-out style */}
+              <div className="relative md:w-72 flex-shrink-0 flex items-end justify-center overflow-hidden"
+                style={{background:'linear-gradient(180deg,#0d1e38 0%,#071020 100%)'}}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/waqas-pro.jpg"
+                  alt="Syed Waqas Tayyab — IT Specialist"
+                  className="w-full h-80 md:h-full object-cover object-top"
+                  style={{objectPosition:'center 0%'}}
+                />
+                {/* Bottom fade into dark */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#071020] to-transparent"/>
+                {/* Side fade into content area */}
+                <div className="absolute top-0 left-0 bottom-0 w-10 bg-gradient-to-r from-[#0a1628] to-transparent"/>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
-
       {/* ── WHY CHOOSE ME ─────────────────────────────────────────────── */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-12">
