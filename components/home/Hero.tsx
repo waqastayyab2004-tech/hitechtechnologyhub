@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, ChevronDown, Briefcase, MapPin, Sparkles, Globe, Award, Users, Linkedin, Github, Mail } from 'lucide-react'
 import NewsTicker from '@/components/home/NewsTicker'
+import NeuralNetwork from '@/components/ui/NeuralNetwork'
 
 const container = {
   hidden: { opacity: 0 },
@@ -272,13 +273,13 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* ── Neural Network Expertise Diagram ── */}
-          <motion.div variants={item} className="w-full max-w-3xl mx-auto">
+          {/* ── Neural Skill Network (same as Portfolio page) ── */}
+          <motion.div variants={item} className="w-full max-w-4xl mx-auto">
             <p className="text-center text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse inline-block mr-2" />
-              Expertise Network
+              Neural Skill Network
             </p>
-            <NeuralExpertise />
+            <NeuralNetwork />
           </motion.div>
 
           {/* ── Buttons ── */}
