@@ -1,5 +1,5 @@
 ---
-title: "How AI Replaced 80% of My Manual IT Work at SAP — A Real Story"
+title: "How AI Replaced 80% of My Manual IT Work — A Real Story"
 date: "2026-07-01"
 excerpt: "After 15 years in enterprise IT, I automated the tasks that were eating my day — ServiceNow tickets, email triage, asset reports, SLA monitoring. Here's exactly what I built and the numbers behind it."
 tags: ["AI", "Automation", "ServiceNow", "Python", "IT Operations"]
@@ -10,7 +10,12 @@ featured: true
 
 ## The Problem Nobody Talks About in Corporate IT
 
-Every IT engineer in a multinational company knows the feeling: you spend more time *managing information* than *actually solving problems*. At SAP Saudi Arabia, I was responsible for 200+ users across 3 offices, 1,500+ assets, and a ServiceNow queue that never stopped.
+Every IT engineer in a multinational company knows the feeling: you spend more time *managing information* than *actually solving problems*. At a global enterprise, I was responsible for a few hundred users across multiple offices, 1,500+ assets, and a ServiceNow queue that never stopped.
+
+<div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
+<img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format&fit=crop" alt="AI automation and circuit technology" style="width:100%; height:280px; object-fit:cover; display:block;"/>
+<p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Photo: Unsplash</p>
+</div>
 
 The honest breakdown of my day before automation:
 
@@ -71,9 +76,9 @@ schedule.every(5).minutes.do(check_sla_breaches)
 
 ### 2. Daily Email Summary Agent
 
-Every morning, a Python script reads my SAP Outlook inbox via Microsoft Graph API, groups emails by priority, and produces a clean action list:
+Every morning, a Python script reads the corporate Outlook inbox via Microsoft Graph API, groups emails by priority, and produces a clean action list:
 
-> "3 tickets assigned · 1 vendor quote needs approval · 2 meeting invites · 1 urgent from MD"
+> "3 tickets assigned · 1 vendor quote needs approval · 2 meeting invites · 1 urgent from senior leadership"
 
 **Result:** Email triage time dropped from 40 minutes to 5 minutes per day.
 
@@ -81,7 +86,7 @@ Every morning, a Python script reads my SAP Outlook inbox via Microsoft Graph AP
 
 Replaced an Excel file with 1,500+ rows that three people were editing simultaneously (and breaking). Built a Flask web app with proper search, filters, audit logs, and AI chat.
 
-**Result:** Asset query time from 10 minutes (Excel search) to 10 seconds (AI chat: *"show me all MacBooks assigned to Jeddah office under warranty"*).
+**Result:** Asset query time from 10 minutes (Excel search) to 10 seconds (AI chat: *"show me all MacBooks assigned to the branch office under warranty"*).
 
 ## The Numbers After 6 Months
 
@@ -130,6 +135,40 @@ Replaced an Excel file with 1,500+ rows that three people were editing simultane
 </table>
 </div>
 
+## Automation ROI at a Glance
+
+<div style="margin: 2rem 0;">
+<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:500px; display:block; margin:0 auto;">
+  <rect width="500" height="200" fill="#0f172a" rx="12"/>
+  <text x="250" y="24" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">Daily Time Reclaimed by Automation (minutes)</text>
+  <!-- Bars -->
+  <rect x="40" y="130" width="60" height="35" fill="#f87171" rx="4" opacity="0.8"/>
+  <rect x="40" y="60" width="60" height="70" fill="#3b82f6" rx="4" opacity="0.9"/>
+  <text x="70" y="175" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Email</text>
+  <text x="70" y="55" fill="#60a5fa" font-size="10" text-anchor="middle" font-family="sans-serif">35m</text>
+
+  <rect x="130" y="105" width="60" height="60" fill="#f87171" rx="4" opacity="0.8"/>
+  <rect x="130" y="40" width="60" height="65" fill="#3b82f6" rx="4" opacity="0.9"/>
+  <text x="160" y="175" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">SLA</text>
+  <text x="160" y="35" fill="#60a5fa" font-size="10" text-anchor="middle" font-family="sans-serif">45m</text>
+
+  <rect x="220" y="145" width="60" height="20" fill="#f87171" rx="4" opacity="0.8"/>
+  <rect x="220" y="100" width="60" height="45" fill="#3b82f6" rx="4" opacity="0.9"/>
+  <text x="250" y="175" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Assets</text>
+  <text x="250" y="95" fill="#60a5fa" font-size="10" text-anchor="middle" font-family="sans-serif">18m</text>
+
+  <rect x="310" y="155" width="60" height="10" fill="#f87171" rx="4" opacity="0.8"/>
+  <rect x="310" y="145" width="60" height="10" fill="#34d399" rx="4" opacity="0.9"/>
+  <text x="340" y="175" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="sans-serif">Reports</text>
+
+  <!-- Legend -->
+  <rect x="380" y="60" width="10" height="10" fill="#3b82f6" rx="2"/>
+  <text x="394" y="70" fill="#94a3b8" font-size="9" font-family="sans-serif">Saved</text>
+  <rect x="380" y="80" width="10" height="10" fill="#f87171" rx="2"/>
+  <text x="394" y="90" fill="#94a3b8" font-size="9" font-family="sans-serif">Remaining</text>
+</svg>
+</div>
+
 ## The Honest Reality Check
 
 AI didn't replace my job. It replaced the *worst parts* of my job — the repetitive, low-value administrative tasks that were draining my energy and preventing deep work.
@@ -138,7 +177,7 @@ The 100 minutes I recovered every day? I used them to:
 
 - Learn Python ML (leading to the SNOW SLA Predictor project)
 - Build better relationships with end users (instead of rushing them off calls)
-- Propose the PowerBI dashboard to IT leadership (which got approved)
+- Propose a PowerBI dashboard to IT leadership (which got approved)
 - Study for the Azure Security certification
 
 > **The engineers who thrive in the next decade won't be the ones who resist AI. They'll be the ones who use it to amplify what humans do best — judgment, relationships, creativity, and strategic thinking.**
@@ -153,3 +192,14 @@ If you're in corporate IT and want to start automating, here's the priority orde
 4. **Compliance checks** — scheduled PowerShell or Python scripts save hours of manual auditing
 
 Start small. One script. One problem. The compounding effect is real.
+
+<div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Start with one automation that solves a pain you feel every single day — motivation and relevance keep you going when the code gets hard.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Use the Microsoft Graph API for email and calendar automation — it's the most accessible enterprise API and has excellent Python SDKs.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Log every automation output to a file — when a script silently fails at 2 AM, logs are your only debugging tool.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Share your automations with your team early — peer review catches edge cases you can't see when you're the one who built it.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Track time saved in a simple spreadsheet — when it's time to justify your role or ask for a promotion, those numbers tell the story.</li>
+</ul>
+</div>

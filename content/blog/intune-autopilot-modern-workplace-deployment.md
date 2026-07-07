@@ -1,7 +1,7 @@
 ---
 title: "Modern Workplace Deployment: From Legacy to Intune/Autopilot in 90 Days"
 date: "2026-04-08"
-excerpt: "How I migrated 200+ users from SCCM legacy management to Microsoft Intune Autopilot, JamF, and zero-touch device provisioning — including the mistakes I made, what I'd do differently, and the exact rollout plan."
+excerpt: "How I migrated a few hundred users from SCCM legacy management to Microsoft Intune Autopilot, JamF, and zero-touch device provisioning — including the mistakes I made, what I'd do differently, and the exact rollout plan."
 tags: ["Intune", "Autopilot", "Modern Workplace", "SCCM", "JamF", "MDM"]
 author: "Syed Waqas Tayyab"
 readTime: "11 min read"
@@ -12,7 +12,12 @@ featured: false
 
 SCCM (now Microsoft Endpoint Configuration Manager) is a powerful tool. It's also a tool built for a world where everyone works in the office, on a corporate network, with a wired connection.
 
-By 2021, at SAP Saudi Arabia, that world was gone. Users were working from home, from client sites, from airports, from anywhere. SCCM's agent-based, on-premises-first model was straining under the pressure.
+<div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
+<img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop" alt="Modern office and workplace technology" style="width:100%; height:280px; object-fit:cover; display:block;"/>
+<p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Photo: Unsplash</p>
+</div>
+
+By 2021, at a multinational IT environment, that world was gone. Users were working from home, from client sites, from airports, from anywhere. SCCM's agent-based, on-premises-first model was straining under the pressure.
 
 The deciding factors that pushed us toward Modern Management:
 
@@ -111,12 +116,12 @@ For each wave, I sent a pre-enrollment email:
 macOS devices went through JamF, not Intune, because JamF provides much deeper macOS management. The JamF enrollment is simpler:
 
 1. User opens System Preferences → Management Profile
-2. Downloads and installs SAP MDM profile
+2. Downloads and installs the corporate MDM profile
 3. JamF runs automated policy — installs required apps, enforces FileVault
 4. Done in 15 minutes
 
 JamF apps deployed automatically:
-- SAP required software bundle
+- Required corporate software bundle
 - Microsoft Office for Mac
 - Defender for Endpoint (macOS)
 - VPN client
@@ -135,7 +140,7 @@ The key policy decision: **we did NOT enforce MDM on personal devices**. We gave
 
 ### Mistake 1: Deploying Conditional Access Without Report-Only First
 
-I did this in a previous role (not SAP). Blocked 30% of users from email on a Monday morning. Never again. Always run report-only for 2 weeks minimum.
+I did this in a previous role. Blocked 30% of users from email on a Monday morning. Never again. Always run report-only for 2 weeks minimum.
 
 ### Mistake 2: Not Communicating the "Why" to Users
 
@@ -151,7 +156,7 @@ Some users had legitimate exceptions — medical devices, specialist software, u
 
 ## Post-Migration Results
 
-After 90 days, the results across 200+ devices:
+After 90 days, the results across a few hundred devices:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
 <p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">📊 Before vs After Modern Workplace Rollout</p>
@@ -190,3 +195,14 @@ After 90 days, the results across 200+ devices:
 The 90-day timeline was aggressive but achievable. The key was the phased approach and the pilot-first mentality.
 
 Modern device management is not optional in 2026. It's the foundation of enterprise security.
+
+<div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Always run your Conditional Access policies in report-only mode for 2 weeks before enforcing — this reveals who would be blocked without any user impact.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Start your Intune pilot with the IT team — run every policy on yourselves first so you catch configuration issues before they affect business users.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Roll out to executives last, not first — by the time they enroll, your process should be smooth and your helpdesk documentation complete.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Frame MDM enrollment to users as data protection, not IT surveillance — "if your laptop is stolen, we can wipe it remotely" is far more compelling than "we're deploying policy compliance."</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Use JamF for macOS instead of Intune — deeper macOS policy control, simpler enrollment, and better compatibility with Apple-specific management features.</li>
+</ul>
+</div>

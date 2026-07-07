@@ -12,6 +12,11 @@ featured: false
 
 Every IT organisation has a dashboard graveyard. Reports that took weeks to build, that someone looked at three times, and that now sit forgotten in a SharePoint folder.
 
+<div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop" alt="Data analytics and PowerBI dashboard charts" style="width:100%; height:280px; object-fit:cover; display:block;"/>
+<p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Photo: Unsplash</p>
+</div>
+
 I built my first IT dashboard in 2018. By 2020, it was in the graveyard. I rebuilt it in 2022 with a different approach — this time anchored in the questions IT leadership actually asked, not the metrics I thought they should care about.
 
 The second dashboard gets reviewed every Monday.
@@ -22,10 +27,10 @@ The most common dashboard mistake: building from available data outward. You hav
 
 **The right approach:** Start by asking every person who will use the dashboard: *"What questions do you need answered each week to do your job?"*
 
-At SAP Saudi Arabia, the answers were:
-1. Country MD: "Are we meeting our SLAs? Any big issues this week?"
+At a large enterprise, the answers were:
+1. Senior Leadership: "Are we meeting our SLAs? Any big issues this week?"
 2. IT Manager: "Where are tickets backing up? Which engineer is overloaded?"
-3. CFO (quarterly): "What are we spending on IT? What's the asset refresh bill?"
+3. Finance (quarterly): "What are we spending on IT? What's the asset refresh bill?"
 4. IT Team: "What's open and due today?"
 
 Four users, four different dashboards — or four pages in one dashboard with the right navigation.
@@ -33,11 +38,11 @@ Four users, four different dashboards — or four pages in one dashboard with th
 ## The IT Operations Dashboard Architecture
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(245,158,11,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">📊 IT Dashboard Page Structure (SAP Saudi Arabia)</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">📊 IT Dashboard Page Structure</p>
 <div style="display:flex; flex-direction:column; gap:0.5rem;">
 <div style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25); border-radius:8px; padding:12px 16px;">
   <p style="color:#fbbf24; font-weight:700; font-size:0.85rem; margin:0;">Page 1: Executive Summary — SLA %, open tickets, critical issues</p>
-  <p style="color:#475569; font-size:0.77rem; margin:2px 0 0;">Audience: Country MD, SVP. Updated: daily. KPIs only, no details.</p>
+  <p style="color:#475569; font-size:0.77rem; margin:2px 0 0;">Audience: Senior Leadership. Updated: daily. KPIs only, no details.</p>
 </div>
 <div style="background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.25); border-radius:8px; padding:12px 16px;">
   <p style="color:#60a5fa; font-weight:700; font-size:0.85rem; margin:0;">Page 2: Ticket Operations — volume, by category, by engineer, aging</p>
@@ -49,7 +54,7 @@ Four users, four different dashboards — or four pages in one dashboard with th
 </div>
 <div style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.25); border-radius:8px; padding:12px 16px;">
   <p style="color:#a78bfa; font-weight:700; font-size:0.85rem; margin:0;">Page 4: Procurement Spend — monthly, vendor breakdown, YTD</p>
-  <p style="color:#475569; font-size:0.77rem; margin:2px 0 0;">Audience: CFO (quarterly review). Updated: monthly.</p>
+  <p style="color:#475569; font-size:0.77rem; margin:2px 0 0;">Audience: Finance (quarterly review). Updated: monthly.</p>
 </div>
 <div style="background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.25); border-radius:8px; padding:12px 16px;">
   <p style="color:#22d3ee; font-weight:700; font-size:0.85rem; margin:0;">Page 5: Onboarding KPIs — new hires, IT readiness on Day 1, offboarding</p>
@@ -82,9 +87,9 @@ For IT asset data maintained in SharePoint:
 
 SharePoint lists are ideal for small-to-medium asset registers (< 50,000 rows) — the query performance is excellent.
 
-### SAP Work Zone → PowerBI
+### Enterprise ERP Systems → PowerBI
 
-For SAP environments, SAP Work Zone can push metrics to SharePoint or expose OData APIs. Connect PowerBI via:
+For SAP or other ERP environments, expose metrics via:
 - OData endpoint if available (preferred)
 - SharePoint export if OData isn't configured
 - CSV export as last resort (loses real-time capability)
@@ -101,7 +106,7 @@ Reveals patterns — seasonal spikes, category growth, the impact of KB articles
 
 ### 3. Mean Time to Resolution by Priority (Card + Gauge)
 
-The CEO's first question: "How fast do we fix things?" This answers it clearly.
+The first question from leadership: "How fast do we fix things?" This answers it clearly.
 
 ### 4. Asset Warranty Expiry Timeline (Timeline/Calendar)
 
@@ -110,6 +115,48 @@ Shows the next 12 months of warranty expirations. Prevents budget surprises. Col
 ### 5. Open Tickets Aging (Heat Map or Matrix)
 
 Which tickets are oldest? By engineer? By category? This one prevents SLA breaches by making aged tickets visible before they breach.
+
+## Dashboard Design Scorecard
+
+<div style="margin: 2rem 0;">
+<svg viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:480px; display:block; margin:0 auto;">
+  <rect width="480" height="170" fill="#0f172a" rx="12"/>
+  <text x="240" y="22" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">Dashboard Design Principles — Right vs Wrong</text>
+  <!-- Headers -->
+  <text x="140" y="42" fill="#f87171" font-size="10" font-weight="700" text-anchor="middle" font-family="sans-serif">❌ Wrong</text>
+  <text x="340" y="42" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle" font-family="sans-serif">✓ Right</text>
+  <!-- Rows -->
+  <text x="20" y="62" fill="#64748b" font-size="9" font-family="sans-serif">Colour</text>
+  <rect x="60" y="52" width="155" height="16" fill="rgba(239,68,68,0.1)" rx="3"/>
+  <text x="137" y="63" fill="#f87171" font-size="9" text-anchor="middle" font-family="sans-serif">8 colours per chart</text>
+  <rect x="260" y="52" width="200" height="16" fill="rgba(16,185,129,0.1)" rx="3"/>
+  <text x="360" y="63" fill="#34d399" font-size="9" text-anchor="middle" font-family="sans-serif">3 colours (green/amber/red)</text>
+
+  <text x="20" y="86" fill="#64748b" font-size="9" font-family="sans-serif">Numbers</text>
+  <rect x="60" y="76" width="155" height="16" fill="rgba(239,68,68,0.1)" rx="3"/>
+  <text x="137" y="87" fill="#f87171" font-size="9" text-anchor="middle" font-family="sans-serif">94.2346% resolution</text>
+  <rect x="260" y="76" width="200" height="16" fill="rgba(16,185,129,0.1)" rx="3"/>
+  <text x="360" y="87" fill="#34d399" font-size="9" text-anchor="middle" font-family="sans-serif">Rounded: 94%, 4.2 hrs</text>
+
+  <text x="20" y="110" fill="#64748b" font-size="9" font-family="sans-serif">Charts</text>
+  <rect x="60" y="100" width="155" height="16" fill="rgba(239,68,68,0.1)" rx="3"/>
+  <text x="137" y="111" fill="#f87171" font-size="9" text-anchor="middle" font-family="sans-serif">12 charts on one page</text>
+  <rect x="260" y="100" width="200" height="16" fill="rgba(16,185,129,0.1)" rx="3"/>
+  <text x="360" y="111" fill="#34d399" font-size="9" text-anchor="middle" font-family="sans-serif">4–5 charts maximum</text>
+
+  <text x="20" y="134" fill="#64748b" font-size="9" font-family="sans-serif">Titles</text>
+  <rect x="60" y="124" width="155" height="16" fill="rgba(239,68,68,0.1)" rx="3"/>
+  <text x="137" y="135" fill="#f87171" font-size="9" text-anchor="middle" font-family="sans-serif">"Chart 1"</text>
+  <rect x="260" y="124" width="200" height="16" fill="rgba(16,185,129,0.1)" rx="3"/>
+  <text x="360" y="135" fill="#34d399" font-size="9" text-anchor="middle" font-family="sans-serif">"SLA Compliance — Last 30 Days"</text>
+
+  <text x="20" y="158" fill="#64748b" font-size="9" font-family="sans-serif">Audience</text>
+  <rect x="60" y="148" width="155" height="16" fill="rgba(239,68,68,0.1)" rx="3"/>
+  <text x="137" y="159" fill="#f87171" font-size="9" text-anchor="middle" font-family="sans-serif">One report for everyone</text>
+  <rect x="260" y="148" width="200" height="16" fill="rgba(16,185,129,0.1)" rx="3"/>
+  <text x="360" y="159" fill="#34d399" font-size="9" text-anchor="middle" font-family="sans-serif">Separate pages by audience</text>
+</svg>
+</div>
 
 ## Design Principles That Make Dashboards Readable
 
@@ -130,6 +177,17 @@ The best dashboard in the world fails if people don't open it. Adoption tactics 
 1. **Include it in Monday's IT meeting** — pull it up on screen, walk through it. Creates the habit.
 2. **Email the executive summary page every Monday morning** — one screenshot, three bullet points, no login required.
 3. **Ask for feedback in week 2** — "Is there anything you're not finding on here?" People will tell you exactly what they need.
-4. **Name it after the audience** — "IT Operations Dashboard - KSA" is for IT. "IT Service Report - MD View" is for leadership. Different names signal different purposes.
+4. **Name it after the audience** — "IT Operations Dashboard" is for IT. "IT Service Report — Leadership View" is for senior stakeholders. Different names signal different purposes.
 
 The goal is to become *the source of truth* for IT metrics. Once your dashboard is the thing people reference in meetings, it will always be maintained because there's a clear cost to letting it go stale.
+
+<div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Interview each dashboard audience before building anything — ask "what question do you need answered every week?" and build exactly that, nothing more.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Connect ServiceNow to PowerBI via the REST API rather than CSV exports — real-time refresh means your dashboard is always current without manual effort.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Email the executive summary page as a screenshot every Monday morning — one image, three bullet points, no portal login required creates the habit faster than any training.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Limit each page to 4–5 charts maximum — dashboards fail not because they lack data, but because they show too much and decision-makers can't find the signal.</li>
+<li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Build the asset warranty expiry timeline first — it tends to be the chart that immediately earns IT leadership's attention and buy-in for the entire dashboard project.</li>
+</ul>
+</div>
