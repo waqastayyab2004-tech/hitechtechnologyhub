@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, ChevronDown, Briefcase, MapPin, Sparkles } from 'lucide-react'
+import { ArrowRight, ChevronDown, Briefcase, MapPin, Sparkles, Globe, Award, Users, Linkedin, Github, Mail } from 'lucide-react'
+import NewsTicker from '@/components/home/NewsTicker'
 
 const container = {
   hidden: { opacity: 0 },
@@ -38,166 +39,244 @@ export default function Hero() {
           className="flex flex-col items-center gap-10"
         >
 
-          {/* ── Dual Avatar Row ── */}
-          <motion.div variants={item} className="flex items-center justify-center gap-3 sm:gap-8">
-
-            {/* Human avatar — AI illustrated version */}
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative">
-                {/* Animated rotating dashed ring */}
-                <div className="absolute inset-0 rounded-full border-2 border-dashed border-accent-blue/50 animate-spin-slow scale-110" />
-                {/* Second counter-rotate ring */}
-                <div className="absolute inset-0 rounded-full border border-cyan-400/30 animate-spin-slow scale-125" style={{animationDirection:'reverse', animationDuration:'15s'}} />
-                {/* Outer glow */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-blue/30 to-cyan-400/20 blur-xl scale-110" />
-                {/* Avatar frame */}
-                <div className="relative w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-accent-blue/60 overflow-hidden shadow-[0_0_40px_rgba(59,130,246,0.45)] bg-dark-800">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/waqas-avatar.jpg"
-                    alt="Syed Waqas Tayyab — AI Avatar"
-                    className="w-full h-full object-cover"
-                    style={{objectPosition:'center 5%'}}
-                  />
-                </div>
-                {/* Corner HUD brackets */}
-                <svg className="absolute -top-2 -left-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="2" cy="3" r="2" fill="#3B82F6"/>
-                </svg>
-                <svg className="absolute -top-2 -right-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="34" cy="3" r="2" fill="#3B82F6"/>
-                </svg>
-                <svg className="absolute -bottom-2 -left-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="2" cy="33" r="2" fill="#06B6D4"/>
-                </svg>
-                <svg className="absolute -bottom-2 -right-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="34" cy="33" r="2" fill="#06B6D4"/>
-                </svg>
-                {/* Live green dot */}
-                <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
-              </div>
-              <div className="text-center">
-                <span className="text-xs font-semibold text-accent-blue tracking-widest uppercase">Waqas</span>
-                <p className="text-xs text-gray-600 font-mono mt-0.5">IT Expert · SAP</p>
-              </div>
-            </div>
-
-            {/* Connection beam */}
-            <div className="flex flex-col items-center gap-1.5">
-              <ConnectionBeam />
-              <span className="text-xs text-gray-600 font-mono">AI + Human</span>
-            </div>
-
-            {/* AI Bot avatar */}
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative">
-                {/* Animated rotating dashed ring — cyan/blue for bot */}
-                <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-400/50 animate-spin-slow scale-110" />
-                {/* Counter-rotate ring */}
-                <div className="absolute inset-0 rounded-full border border-accent-blue/30 animate-spin-slow scale-125" style={{animationDirection:'reverse', animationDuration:'12s'}} />
-                {/* Outer glow — blue/cyan to match bot image colors */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/25 to-accent-blue/20 blur-xl scale-110" />
-                {/* Bot image frame */}
-                <div className="relative w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-cyan-400/70 overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.6)] bg-[#0d2433]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/aibot.png"
-                    alt="NEXUS-W1 AI Bot"
-                    className="w-full h-full object-cover object-center scale-110"
-                  />
-                  {/* Cyan tint overlay — ties to site theme */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/15 via-transparent to-transparent" />
-                </div>
-                {/* Corner HUD brackets — cyan for bot */}
-                <svg className="absolute -top-2 -left-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="2" cy="3" r="2" fill="#06B6D4"/>
-                </svg>
-                <svg className="absolute -top-2 -right-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="34" cy="3" r="2" fill="#06B6D4"/>
-                </svg>
-                <svg className="absolute -bottom-2 -left-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="2" cy="33" r="2" fill="#3B82F6"/>
-                </svg>
-                <svg className="absolute -bottom-2 -right-2 w-9 h-9" viewBox="0 0 36 36" fill="none">
-                  <path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" opacity="0.9"/>
-                  <circle cx="34" cy="33" r="2" fill="#3B82F6"/>
-                </svg>
-                {/* Processing pulse badge */}
-                <span className="absolute bottom-2 right-2 w-4 h-4 bg-cyan-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(6,182,212,0.9)] animate-pulse" />
-              </div>
-              <div className="text-center">
-                <span className="text-xs font-semibold text-cyan-400 tracking-widest uppercase">NEXUS-W1</span>
-                <p className="text-xs text-gray-600 font-mono mt-0.5">AI · HiTecH HUB</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ── Name + Title ── */}
+          {/* ── Hook Headline ── */}
           <motion.div variants={item} className="text-center">
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 border border-green-500/30 text-green-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                Open to Work · MENA + Remote
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-accent-blue/10 border border-accent-blue/30 text-accent-blue">
-                Available for Freelance Projects
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">
-              Syed Waqas Tayyab
-            </h2>
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-gray-400 mb-3">
-              <span className="flex items-center gap-1.5">
-                <Briefcase className="w-3.5 h-3.5 text-accent-blue" />
-                Senior IT System Engineer · SAP
-              </span>
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-accent-blue" />
-                Riyadh, Saudi Arabia
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-accent-yellow" />
-                AI Engineer · MLOps Enthusiast
-              </span>
-            </div>
-            {/* Expertise pills */}
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {['IT Consultant', 'Corporate IT Expert', 'IT Infrastructure', 'IT Service Delivery', 'Office Technology', 'AI Engineer', 'Azure Security'].map(tag => (
-                <span key={tag} className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-dark-700 border border-white/10 text-gray-300">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* ── Main Headline ── */}
-          <motion.div variants={item} className="text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-accent-blue/10 border border-accent-blue/30 text-accent-blue mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
-              AI · Automation · Cloud · Cybersecurity · IT Infrastructure
-            </span>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight">
               Learn AI.{' '}
               <span className="gradient-text">Build Smarter.</span>
               <br />
               Automate Everything.
             </h1>
-            <p className="mt-5 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Helping IT professionals and beginners understand AI, automation,
-              cloud technologies and cybersecurity through practical content.
+            <p className="mt-3 text-sm sm:text-base text-gray-500 max-w-xl mx-auto italic border-l-2 border-accent-blue/40 pl-4 text-left">
+              &ldquo;15+ years in enterprise IT — bridging real-world corporate knowledge with AI, Automation &amp; MLOps.&rdquo;
             </p>
-            {/* Tagline */}
-            <p className="mt-4 text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed italic border-l-2 border-accent-blue/40 pl-4 text-left">
-              &ldquo;With 15+ years in the IT industry, I help young IT professionals adopt AI faster —
-              bridging the gap between missing experience and real-world corporate knowledge.&rdquo;
+          </motion.div>
+
+          {/* ── Dual Avatar Row ── */}
+          <motion.div variants={item} className="w-full max-w-4xl mx-auto">
+            <div className="flex items-start justify-center gap-8 sm:gap-16 lg:gap-24">
+
+              {/* ── Human avatar ── */}
+              <div className="flex flex-col items-center gap-3">
+                <div className="relative flex items-center justify-center">
+                  <style>{`
+                    @keyframes orbit1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+                    @keyframes orbit2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+                    @keyframes orbit3{from{transform:rotate(45deg)}to{transform:rotate(405deg)}}
+                    @keyframes photoPulse{0%,100%{box-shadow:0 0 30px rgba(59,130,246,0.5),0 0 60px rgba(59,130,246,0.2)}50%{box-shadow:0 0 50px rgba(59,130,246,0.8),0 0 100px rgba(6,182,212,0.3)}}
+                    @keyframes scanLine{0%{top:0%;opacity:0.6}100%{top:100%;opacity:0}}
+                    @keyframes dotOrbit{from{transform:rotate(0deg) translateX(76px) rotate(0deg)}to{transform:rotate(360deg) translateX(76px) rotate(-360deg)}}
+                    @keyframes dotOrbit2{from{transform:rotate(180deg) translateX(92px) rotate(-180deg)}to{transform:rotate(540deg) translateX(92px) rotate(-540deg)}}
+                    @keyframes dotOrbit3{from{transform:rotate(90deg) translateX(108px) rotate(-90deg)}to{transform:rotate(450deg) translateX(108px) rotate(-450deg)}}
+                    @keyframes dataSync{0%,100%{opacity:0;transform:translateX(0) scale(0.5)}20%{opacity:1;transform:translateX(4px) scale(1)}80%{opacity:1;transform:translateX(52px) scale(1)}99%{opacity:0;transform:translateX(60px) scale(0.5)}}
+                    @keyframes dataSyncBack{0%,100%{opacity:0;transform:translateX(0) scale(0.5)}20%{opacity:1;transform:translateX(-4px) scale(1)}80%{opacity:1;transform:translateX(-52px) scale(1)}99%{opacity:0;transform:translateX(-60px) scale(0.5)}}
+                    .orbit-ring-1{animation:orbit1 8s linear infinite}
+                    .orbit-ring-2{animation:orbit2 12s linear infinite}
+                    .orbit-ring-3{animation:orbit3 6s linear infinite}
+                    .photo-pulse{animation:photoPulse 3s ease-in-out infinite}
+                    .scan-line{animation:scanLine 2.5s linear infinite}
+                    .dot-orbit-1{animation:dotOrbit 4s linear infinite}
+                    .dot-orbit-2{animation:dotOrbit2 6s linear infinite}
+                    .dot-orbit-3{animation:dotOrbit3 9s linear infinite}
+                    .data-pkt-fwd{animation:dataSync 2.4s ease-in-out infinite}
+                    .data-pkt-fwd2{animation:dataSync 2.4s ease-in-out infinite 0.8s}
+                    .data-pkt-fwd3{animation:dataSync 2.4s ease-in-out infinite 1.6s}
+                    .data-pkt-bwd{animation:dataSyncBack 2.4s ease-in-out infinite 0.4s}
+                    .data-pkt-bwd2{animation:dataSyncBack 2.4s ease-in-out infinite 1.2s}
+                    @keyframes botBob{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
+                    @keyframes botGlow{0%,100%{box-shadow:0 0 30px rgba(6,182,212,0.5),0 0 60px rgba(6,182,212,0.15)}50%{box-shadow:0 0 60px rgba(6,182,212,0.9),0 0 120px rgba(59,130,246,0.3)}}
+                    @keyframes ringBot1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+                    @keyframes ringBot2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+                    @keyframes orbitBot1{from{transform:rotate(0deg) translateX(76px) rotate(0deg)}to{transform:rotate(360deg) translateX(76px) rotate(-360deg)}}
+                    @keyframes orbitBot2{from{transform:rotate(120deg) translateX(90px) rotate(-120deg)}to{transform:rotate(480deg) translateX(90px) rotate(-480deg)}}
+                    @keyframes orbitBot3{from{transform:rotate(240deg) translateX(68px) rotate(-240deg)}to{transform:rotate(600deg) translateX(68px) rotate(-600deg)}}
+                    .bot-bob{animation:botBob 3s ease-in-out infinite}
+                    .bot-glow{animation:botGlow 3s ease-in-out infinite}
+                    .ring-b1{animation:ringBot1 9s linear infinite}
+                    .ring-b2{animation:ringBot2 6s linear infinite}
+                    .orbit-b1{animation:orbitBot1 3.5s linear infinite}
+                    .orbit-b2{animation:orbitBot2 5s linear infinite}
+                    .orbit-b3{animation:orbitBot3 7s linear infinite}
+                  `}</style>
+                  <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-gradient-to-br from-accent-blue/20 to-cyan-400/10 blur-2xl" />
+                  <div className="orbit-ring-1 absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full border border-dashed border-accent-blue/40" />
+                  <div className="orbit-ring-2 absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-cyan-400/15" />
+                  <div className="orbit-ring-3 absolute w-40 h-40 sm:w-52 sm:h-52 rounded-full border border-dashed border-purple-400/25" />
+                  <div className="absolute w-3 h-3 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,0.9)] dot-orbit-1" />
+                  <div className="absolute w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,0.9)] dot-orbit-2" />
+                  <div className="absolute w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.9)] dot-orbit-3" />
+                  <svg className="absolute z-10 w-48 h-48 sm:w-60 sm:h-60 pointer-events-none" viewBox="0 0 200 200">
+                    <defs><path id="nameCircle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/></defs>
+                    <text fontSize="10" fontFamily="'Inter',sans-serif" fontWeight="700" letterSpacing="3.5" fill="#93C5FD" opacity="0.9">
+                      <textPath href="#nameCircle" startOffset="0%">SYED WAQAS TAYYAB · IT EXPERT · </textPath>
+                    </text>
+                  </svg>
+                  <div className="photo-pulse relative w-32 h-32 sm:w-44 sm:h-44 rounded-full border-2 border-accent-blue/70 overflow-hidden bg-dark-800 z-20">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/waqas-avatar.jpg" alt="Syed Waqas Tayyab" className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
+                    <div className="scan-line absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-accent-blue/20 via-transparent to-transparent" />
+                  </div>
+                  <svg className="absolute -top-1 -left-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="3" r="2" fill="#3B82F6"/></svg>
+                  <svg className="absolute -top-1 -right-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="3" r="2" fill="#3B82F6"/></svg>
+                  <svg className="absolute -bottom-1 -left-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="33" r="2" fill="#06B6D4"/></svg>
+                  <svg className="absolute -bottom-1 -right-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="33" r="2" fill="#06B6D4"/></svg>
+                  <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,0.8)] z-30" />
+                </div>
+                {/* Open to Work — below human avatar only */}
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 border border-green-500/30 text-green-400 whitespace-nowrap">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                  Open to Work · MENA + Remote
+                </span>
+              </div>
+
+              {/* ── Data sync beam ── */}
+              <div className="flex flex-col items-center justify-center gap-2 self-center pb-4">
+                <div className="relative w-16 sm:w-20 h-6 flex items-center overflow-visible">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full h-px bg-gradient-to-r from-accent-blue/30 via-cyan-400/50 to-accent-blue/30" />
+                  </div>
+                  <div className="data-pkt-fwd absolute left-0 w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,1)]" />
+                  <div className="data-pkt-fwd2 absolute left-0 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,1)]" />
+                  <div className="data-pkt-fwd3 absolute left-0 w-1.5 h-1.5 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,1)]" />
+                  <div className="data-pkt-bwd absolute right-0 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_6px_rgba(167,139,250,1)]" />
+                  <div className="data-pkt-bwd2 absolute right-0 w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_5px_rgba(103,232,249,1)]" />
+                </div>
+                <span className="text-[9px] text-gray-600 font-mono whitespace-nowrap">AI + Human</span>
+              </div>
+
+              {/* ── Bot avatar ── */}
+              <div className="flex flex-col items-center gap-3">
+                <div className="relative flex items-center justify-center">
+                  <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-cyan-400/10 blur-3xl" />
+                  <div className="ring-b1 absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full border border-dashed border-cyan-400/30" />
+                  <div className="ring-b2 absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-accent-blue/15" />
+                  <div className="absolute w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)] orbit-b1" />
+                  <div className="absolute w-2 h-2 rounded-full bg-accent-blue shadow-[0_0_6px_rgba(59,130,246,1)] orbit-b2" />
+                  <div className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,1)] orbit-b3" />
+                  <div className="bot-bob relative z-10">
+                    <div className="bot-glow relative w-32 h-32 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-cyan-400/70 bg-[#060e1a] flex items-center justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/ai-robot-icon.png" alt="Waqas AI BOT" className="w-4/5 h-4/5 object-contain"/>
+                      <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/15 via-transparent to-transparent pointer-events-none" />
+                    </div>
+                  </div>
+                  <svg className="absolute -top-1 -left-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="3" r="2" fill="#06B6D4"/></svg>
+                  <svg className="absolute -top-1 -right-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="3" r="2" fill="#06B6D4"/></svg>
+                  <svg className="absolute -bottom-1 -left-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="33" r="2" fill="#3B82F6"/></svg>
+                  <svg className="absolute -bottom-1 -right-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="33" r="2" fill="#3B82F6"/></svg>
+                  <span className="absolute bottom-2 right-2 w-4 h-4 bg-cyan-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(6,182,212,0.9)] animate-pulse z-20" />
+                </div>
+                {/* Available for Freelance — below bot only */}
+                <div className="text-center">
+                  <p className="text-xs font-semibold text-cyan-400 tracking-widest uppercase mb-2">Waqas AI BOT</p>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-accent-blue/10 border border-accent-blue/30 text-accent-blue whitespace-nowrap">
+                    Available for Freelance Projects
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
+
+          {/* ── Name + Title ── */}
+          <motion.div variants={item} className="text-center w-full max-w-3xl mx-auto">
+
+            {/* Role + Location + Specialty — single clean row */}
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-gray-400 mb-5">
+              <span className="flex items-center gap-1.5">
+                <Briefcase className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" />
+                Senior IT System Engineer
+              </span>
+              <span className="text-gray-700 hidden sm:block">·</span>
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" />
+                Riyadh, Saudi Arabia
+              </span>
+              <span className="text-gray-700 hidden sm:block">·</span>
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-accent-yellow flex-shrink-0" />
+                AI, Automation &amp; MLOps Enthusiast
+              </span>
+            </div>
+
+            {/* Skills pills — balanced 2 rows */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-2 max-w-2xl mx-auto">
+              {['Azure Security Certified', 'M365', 'L2/L3 IT Infrastructure Expert', 'Cybersecurity', 'ServiceNow', 'SAP Specialist', 'AI Engineer', 'IT Infrastructure'].map(tag => (
+                <span key={tag} className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-dark-700 border border-white/10 text-gray-300 whitespace-nowrap">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Divider label */}
+            <p className="text-[10px] text-gray-600 font-semibold uppercase tracking-widest my-3">Expert In</p>
+
+            {/* Skills pills — Row 2: Domain expertise */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {[
+                { label: 'Multinational Corporations', color: 'text-cyan-400 border-cyan-400/30 bg-cyan-400/5' },
+                { label: 'Corporate IT Setup', color: 'text-accent-blue border-accent-blue/30 bg-accent-blue/5' },
+                { label: 'Enterprise IT Firms', color: 'text-purple-400 border-purple-400/30 bg-purple-400/5' },
+                { label: 'Global IT Operations', color: 'text-emerald-400 border-emerald-400/30 bg-emerald-400/5' },
+                { label: 'IT Service Management', color: 'text-orange-400 border-orange-400/30 bg-orange-400/5' },
+              ].map(({ label, color }) => (
+                <span key={label} className={`px-2.5 py-1 rounded-full text-[11px] font-semibold border whitespace-nowrap ${color}`}>
+                  {label}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── Contact & Profile Bar ── */}
+          <motion.div variants={item} className="w-full max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="flex-1 h-px bg-white/5" />
+              <span className="text-[10px] text-gray-600 font-semibold uppercase tracking-widest">Connect</span>
+              <div className="flex-1 h-px bg-white/5" />
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <a href="https://www.linkedin.com/in/syedwaqastayyab/" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#0A66C2]/10 border border-[#0A66C2]/30 text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors whitespace-nowrap">
+                <Linkedin className="w-3 h-3 flex-shrink-0" /> LinkedIn
+              </a>
+              <a href="https://wa.me/966505803073" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/20 transition-colors whitespace-nowrap">
+                <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+              <a href="https://github.com/waqas-syed" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-white/5 border border-white/15 text-gray-300 hover:bg-white/10 transition-colors whitespace-nowrap">
+                <Github className="w-3 h-3 flex-shrink-0" /> GitHub
+              </a>
+              <a href="mailto:waqastayyab2004@gmail.com"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-accent-blue/10 border border-accent-blue/30 text-accent-blue hover:bg-accent-blue/20 transition-colors whitespace-nowrap">
+                <Mail className="w-3 h-3 flex-shrink-0" /> Email Me
+              </a>
+              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 whitespace-nowrap">
+                <Globe className="w-3 h-3 flex-shrink-0" /> MENA · KSA
+              </span>
+              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 whitespace-nowrap">
+                <Award className="w-3 h-3 flex-shrink-0" /> 13 Certs
+              </span>
+              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-purple-500/10 border border-purple-500/30 text-purple-400 whitespace-nowrap">
+                <Users className="w-3 h-3 flex-shrink-0" /> Open to Hire
+              </span>
+            </div>
+          </motion.div>
+
+          {/* ── Live News Ticker ── */}
+          <motion.div variants={item} className="w-full max-w-3xl mx-auto">
+            <NewsTicker />
+          </motion.div>
+
+          {/* ── Neural Network Expertise Diagram ── */}
+          <motion.div variants={item} className="w-full max-w-3xl mx-auto">
+            <p className="text-center text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse inline-block mr-2" />
+              Expertise Network
             </p>
+            <NeuralExpertise />
           </motion.div>
 
           {/* ── Buttons ── */}
@@ -235,6 +314,77 @@ export default function Hero() {
             ))}
           </motion.div>
 
+          {/* ── AI + Human Collaboration Section ── */}
+          <motion.div variants={item} className="w-full max-w-4xl mx-auto">
+            <div className="relative rounded-2xl border border-cyan-400/15 bg-gradient-to-br from-dark-800/80 via-dark-800/60 to-accent-blue/5 backdrop-blur-sm overflow-hidden p-6 sm:p-8">
+              {/* Background glow */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-400/8 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent-blue/8 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Header */}
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="flex-1 h-px bg-gradient-to-r from-transparent to-cyan-400/30" />
+                <span className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-xs font-bold text-cyan-400 uppercase tracking-widest whitespace-nowrap">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                  AI + Human Collaboration
+                </span>
+                <div className="flex-1 h-px bg-gradient-to-l from-transparent to-accent-blue/30" />
+              </div>
+
+              {/* Two column layout */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+
+                {/* Left — old bot (Waqas AI BOT video) now here */}
+                <div className="flex flex-col items-center gap-4">
+                  <div className="relative flex items-center justify-center">
+                    {/* Glow */}
+                    <div className="absolute w-36 h-36 rounded-full bg-cyan-400/10 blur-2xl" />
+                    {/* Orbit ring */}
+                    <div className="absolute w-32 h-32 rounded-full border border-dashed border-cyan-400/25 ring-b1" />
+                    {/* Video in circle */}
+                    <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-cyan-400/60 bg-[#0d2433] shadow-[0_0_30px_rgba(6,182,212,0.4)]">
+                      <video
+                        src="/waqas-ai-bot.mp4"
+                        autoPlay loop muted playsInline
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/15 via-transparent to-transparent" />
+                    </div>
+                    {/* Pulse badge */}
+                    <span className="absolute bottom-1 right-1 w-3 h-3 bg-cyan-400 rounded-full border-2 border-dark-900 animate-pulse" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs font-bold text-cyan-400 tracking-widest uppercase">NEXUS-W1</p>
+                    <p className="text-[10px] text-gray-600 font-mono mt-0.5">Waqas AI BOT · HiTecH HUB</p>
+                  </div>
+                </div>
+
+                {/* Right — collaboration text */}
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
+                    Where Human Expertise<br />
+                    <span className="gradient-text">Meets Artificial Intelligence</span>
+                  </h3>
+                  <div className="flex flex-col gap-3">
+                    {[
+                      { icon: '🧠', text: 'AI accelerates decision-making — humans provide context, ethics, and judgement that machines can\'t replicate.' },
+                      { icon: '⚡', text: 'Automation handles repetitive IT tasks — freeing engineers to focus on architecture, strategy, and innovation.' },
+                      { icon: '🌐', text: '15+ years of enterprise IT knowledge, combined with AI tools, creates solutions no algorithm could design alone.' },
+                    ].map(({ icon, text }, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="text-base flex-shrink-0 mt-0.5">{icon}</span>
+                        <p className="text-xs text-gray-400 leading-relaxed">{text}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[11px] text-gray-600 italic border-l-2 border-cyan-400/30 pl-3 leading-relaxed">
+                    &ldquo;The future of IT is not AI replacing engineers — it&apos;s engineers who understand AI replacing those who don&apos;t.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
         </motion.div>
 
         {/* Scroll indicator */}
@@ -249,6 +399,104 @@ export default function Hero() {
         </motion.div>
       </div>
     </section>
+  )
+}
+
+/* ────────────────────────────────────────────────
+   NEURAL EXPERTISE DIAGRAM
+   ──────────────────────────────────────────────── */
+function NeuralExpertise() {
+  // Centre node + 6 domain nodes arranged in a hex
+  const cx = 300, cy = 130, r = 95
+  const domains = [
+    { label: 'AI & MLOps',       color: '#8B5CF6', sub: ['AIOps','Automation','Python','SAP AI'] },
+    { label: 'Cybersecurity',    color: '#EF4444', sub: ['Azure Sec','Zero Trust','IAM','SIEM'] },
+    { label: 'Cloud & Infra',    color: '#3B82F6', sub: ['Azure','M365','Hybrid','IaaS'] },
+    { label: 'ServiceNow',       color: '#10B981', sub: ['ITSM','SLA Mgmt','SNOW Dev','Tickets'] },
+    { label: 'IT Operations',    color: '#F59E0B', sub: ['L2/L3','ITIL','SLAs','VIP Support'] },
+    { label: 'Corporate IT',     color: '#06B6D4', sub: ['Global MNCs','SAP','Endpoint','M365'] },
+  ]
+  const nodes = domains.map((d, i) => {
+    const angle = (i * 60 - 90) * Math.PI / 180
+    return { ...d, x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
+  })
+
+  return (
+    <div className="w-full overflow-hidden rounded-2xl border border-white/5 bg-dark-800/40 backdrop-blur-sm p-2">
+      <style>{`
+        @keyframes pulse-node { 0%,100%{r:14;opacity:0.9} 50%{r:16;opacity:1} }
+        @keyframes pulse-centre { 0%,100%{r:20;opacity:1} 50%{r:23;opacity:0.8} }
+        @keyframes dash-flow { to { stroke-dashoffset: -40 } }
+        @keyframes node-glow { 0%,100%{filter:drop-shadow(0 0 4px currentColor)} 50%{filter:drop-shadow(0 0 12px currentColor)} }
+        .nn-edge { animation: dash-flow 2s linear infinite; stroke-dasharray: 6 4; }
+        .nn-node { animation: pulse-node 2.5s ease-in-out infinite; }
+        .nn-centre { animation: pulse-centre 3s ease-in-out infinite; }
+      `}</style>
+      <svg viewBox="0 0 600 260" width="100%" className="overflow-visible">
+        <defs>
+          <radialGradient id="centrGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#60A5FA"/>
+            <stop offset="100%" stopColor="#1D4ED8"/>
+          </radialGradient>
+          {domains.map((d,i) => (
+            <radialGradient key={i} id={`ng${i}`} cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor={d.color} stopOpacity="0.9"/>
+              <stop offset="100%" stopColor={d.color} stopOpacity="0.4"/>
+            </radialGradient>
+          ))}
+          <filter id="nnGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+
+        {/* Edges from centre to domain nodes */}
+        {nodes.map((n,i) => (
+          <line key={i}
+            x1={cx} y1={cy} x2={n.x} y2={n.y}
+            stroke={n.color} strokeWidth="1.2" opacity="0.4"
+            className="nn-edge"
+            style={{animationDelay:`${i*0.33}s`}}
+          />
+        ))}
+
+        {/* Sub-skill nodes (small dots around each domain) */}
+        {nodes.map((n,i) =>
+          n.sub.map((s, j) => {
+            const a2 = ((i * 60 - 90) + (j - 1.5) * 18) * Math.PI / 180
+            const sr = 36, sx = n.x + sr * Math.cos(a2), sy = n.y + sr * Math.sin(a2)
+            return (
+              <g key={`${i}-${j}`}>
+                <line x1={n.x} y1={n.y} x2={sx} y2={sy} stroke={n.color} strokeWidth="0.7" opacity="0.25"/>
+                <circle cx={sx} cy={sy} r="3.5" fill={n.color} opacity="0.5">
+                  <animate attributeName="opacity" values="0.3;0.7;0.3" dur={`${1.5+j*0.3}s`} repeatCount="indefinite"/>
+                </circle>
+                <text x={sx} y={sy - 7} textAnchor="middle" fontSize="6" fill={n.color} opacity="0.7" fontFamily="monospace">{s}</text>
+              </g>
+            )
+          })
+        )}
+
+        {/* Domain node circles */}
+        {nodes.map((n,i) => (
+          <g key={i} filter="url(#nnGlow)">
+            <circle cx={n.x} cy={n.y} r="14" fill={`url(#ng${i})`} className="nn-node"
+              style={{animationDelay:`${i*0.4}s`, color: n.color}}/>
+            <circle cx={n.x} cy={n.y} r="14" fill="none" stroke={n.color} strokeWidth="1" opacity="0.6"/>
+            <text x={n.x} y={n.y + 26} textAnchor="middle" fontSize="7.5" fontWeight="bold"
+              fill={n.color} fontFamily="'Inter',sans-serif" opacity="0.9">{n.label}</text>
+          </g>
+        ))}
+
+        {/* Centre node */}
+        <g filter="url(#nnGlow)">
+          <circle cx={cx} cy={cy} r="20" fill="url(#centrGrad)" className="nn-centre"/>
+          <circle cx={cx} cy={cy} r="20" fill="none" stroke="#60A5FA" strokeWidth="1.5" opacity="0.7"/>
+          <circle cx={cx} cy={cy} r="26" fill="none" stroke="#3B82F6" strokeWidth="0.6" strokeDasharray="3 4" opacity="0.4">
+            <animateTransform attributeName="transform" type="rotate" from={`0 ${cx} ${cy}`} to={`360 ${cx} ${cy}`} dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <text x={cx} y={cy - 4} textAnchor="middle" fontSize="7" fontWeight="bold" fill="white" fontFamily="monospace">WAQAS</text>
+          <text x={cx} y={cy + 6} textAnchor="middle" fontSize="5.5" fill="#93C5FD" fontFamily="monospace">15yr+</text>
+        </g>
+      </svg>
+    </div>
   )
 }
 
