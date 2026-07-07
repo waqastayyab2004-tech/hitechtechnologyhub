@@ -10,12 +10,12 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'Portfolio' },
   { href: '/services', label: 'IT Services' },
-  { href: '/topics', label: 'Topics' },
+  { href: '/industries', label: 'Industries' },
+  { href: '/insights', label: 'Insights' },
   { href: '/projects', label: 'Projects' },
   { href: '/blog', label: 'Blog' },
   { href: '/resources', label: 'AI Tools' },
-  { href: '/hire', label: '🎯 Hire Me', highlight: true },
-  { href: '/contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact Us', highlight: true },
 ]
 
 export default function Navbar() {
