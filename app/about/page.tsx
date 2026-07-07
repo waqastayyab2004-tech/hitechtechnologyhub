@@ -249,7 +249,7 @@ export default function PortfolioPage() {
                 <span className="text-accent-blue text-xs font-semibold">Open to Work · MENA + Remote</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 whitespace-nowrap">
                 Syed <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-cyan-400 to-purple-400">Waqas Tayyab</span>
               </h1>
 
