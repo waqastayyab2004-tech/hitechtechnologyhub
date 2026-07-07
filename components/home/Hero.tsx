@@ -53,23 +53,23 @@ export default function Hero() {
           </motion.div>
 
           {/* ── Dual Avatar Row ── */}
-          <motion.div variants={item} className="w-full max-w-4xl mx-auto">
-            <div className="flex items-start justify-center gap-8 sm:gap-16 lg:gap-24">
+          <motion.div variants={item} className="w-full max-w-4xl mx-auto px-2">
+            <div className="flex items-start justify-center gap-3 sm:gap-12 lg:gap-24">
 
               {/* ── Human avatar ── */}
-              <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-col items-center gap-2 sm:gap-3">
                 <div className="relative flex items-center justify-center">
                   <style>{`
                     @keyframes orbit1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
                     @keyframes orbit2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
                     @keyframes orbit3{from{transform:rotate(45deg)}to{transform:rotate(405deg)}}
-                    @keyframes photoPulse{0%,100%{box-shadow:0 0 30px rgba(59,130,246,0.5),0 0 60px rgba(59,130,246,0.2)}50%{box-shadow:0 0 50px rgba(59,130,246,0.8),0 0 100px rgba(6,182,212,0.3)}}
+                    @keyframes photoPulse{0%,100%{box-shadow:0 0 20px rgba(59,130,246,0.5),0 0 40px rgba(59,130,246,0.2)}50%{box-shadow:0 0 40px rgba(59,130,246,0.8),0 0 80px rgba(6,182,212,0.3)}}
                     @keyframes scanLine{0%{top:0%;opacity:0.6}100%{top:100%;opacity:0}}
-                    @keyframes dotOrbit{from{transform:rotate(0deg) translateX(76px) rotate(0deg)}to{transform:rotate(360deg) translateX(76px) rotate(-360deg)}}
-                    @keyframes dotOrbit2{from{transform:rotate(180deg) translateX(92px) rotate(-180deg)}to{transform:rotate(540deg) translateX(92px) rotate(-540deg)}}
-                    @keyframes dotOrbit3{from{transform:rotate(90deg) translateX(108px) rotate(-90deg)}to{transform:rotate(450deg) translateX(108px) rotate(-450deg)}}
-                    @keyframes dataSync{0%,100%{opacity:0;transform:translateX(0) scale(0.5)}20%{opacity:1;transform:translateX(4px) scale(1)}80%{opacity:1;transform:translateX(52px) scale(1)}99%{opacity:0;transform:translateX(60px) scale(0.5)}}
-                    @keyframes dataSyncBack{0%,100%{opacity:0;transform:translateX(0) scale(0.5)}20%{opacity:1;transform:translateX(-4px) scale(1)}80%{opacity:1;transform:translateX(-52px) scale(1)}99%{opacity:0;transform:translateX(-60px) scale(0.5)}}
+                    @keyframes dotOrbit{from{transform:rotate(0deg) translateX(52px) rotate(0deg)}to{transform:rotate(360deg) translateX(52px) rotate(-360deg)}}
+                    @keyframes dotOrbit2{from{transform:rotate(180deg) translateX(64px) rotate(-180deg)}to{transform:rotate(540deg) translateX(64px) rotate(-540deg)}}
+                    @keyframes dotOrbit3{from{transform:rotate(90deg) translateX(76px) rotate(-90deg)}to{transform:rotate(450deg) translateX(76px) rotate(-450deg)}}
+                    @keyframes dataSync{0%,100%{opacity:0;transform:translateX(0) scale(0.5)}20%{opacity:1;transform:translateX(4px) scale(1)}80%{opacity:1;transform:translateX(36px) scale(1)}99%{opacity:0;transform:translateX(44px) scale(0.5)}}
+                    @keyframes dataSyncBack{0%,100%{opacity:0;transform:translateX(0) scale(0.5)}20%{opacity:1;transform:translateX(-4px) scale(1)}80%{opacity:1;transform:translateX(-36px) scale(1)}99%{opacity:0;transform:translateX(-44px) scale(0.5)}}
                     .orbit-ring-1{animation:orbit1 8s linear infinite}
                     .orbit-ring-2{animation:orbit2 12s linear infinite}
                     .orbit-ring-3{animation:orbit3 6s linear infinite}
@@ -83,13 +83,13 @@ export default function Hero() {
                     .data-pkt-fwd3{animation:dataSync 2.4s ease-in-out infinite 1.6s}
                     .data-pkt-bwd{animation:dataSyncBack 2.4s ease-in-out infinite 0.4s}
                     .data-pkt-bwd2{animation:dataSyncBack 2.4s ease-in-out infinite 1.2s}
-                    @keyframes botBob{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
-                    @keyframes botGlow{0%,100%{box-shadow:0 0 30px rgba(6,182,212,0.5),0 0 60px rgba(6,182,212,0.15)}50%{box-shadow:0 0 60px rgba(6,182,212,0.9),0 0 120px rgba(59,130,246,0.3)}}
+                    @keyframes botBob{0%,100%{transform:translateY(0px)}50%{transform:translateY(-6px)}}
+                    @keyframes botGlow{0%,100%{box-shadow:0 0 20px rgba(6,182,212,0.5),0 0 40px rgba(6,182,212,0.15)}50%{box-shadow:0 0 40px rgba(6,182,212,0.9),0 0 80px rgba(59,130,246,0.3)}}
                     @keyframes ringBot1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
                     @keyframes ringBot2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
-                    @keyframes orbitBot1{from{transform:rotate(0deg) translateX(76px) rotate(0deg)}to{transform:rotate(360deg) translateX(76px) rotate(-360deg)}}
-                    @keyframes orbitBot2{from{transform:rotate(120deg) translateX(90px) rotate(-120deg)}to{transform:rotate(480deg) translateX(90px) rotate(-480deg)}}
-                    @keyframes orbitBot3{from{transform:rotate(240deg) translateX(68px) rotate(-240deg)}to{transform:rotate(600deg) translateX(68px) rotate(-600deg)}}
+                    @keyframes orbitBot1{from{transform:rotate(0deg) translateX(52px) rotate(0deg)}to{transform:rotate(360deg) translateX(52px) rotate(-360deg)}}
+                    @keyframes orbitBot2{from{transform:rotate(120deg) translateX(64px) rotate(-120deg)}to{transform:rotate(480deg) translateX(64px) rotate(-480deg)}}
+                    @keyframes orbitBot3{from{transform:rotate(240deg) translateX(48px) rotate(-240deg)}to{transform:rotate(600deg) translateX(48px) rotate(-600deg)}}
                     .bot-bob{animation:botBob 3s ease-in-out infinite}
                     .bot-glow{animation:botGlow 3s ease-in-out infinite}
                     .ring-b1{animation:ringBot1 9s linear infinite}
@@ -98,80 +98,84 @@ export default function Hero() {
                     .orbit-b2{animation:orbitBot2 5s linear infinite}
                     .orbit-b3{animation:orbitBot3 7s linear infinite}
                   `}</style>
-                  <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-gradient-to-br from-accent-blue/20 to-cyan-400/10 blur-2xl" />
-                  <div className="orbit-ring-1 absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full border border-dashed border-accent-blue/40" />
-                  <div className="orbit-ring-2 absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-cyan-400/15" />
-                  <div className="orbit-ring-3 absolute w-40 h-40 sm:w-52 sm:h-52 rounded-full border border-dashed border-purple-400/25" />
-                  <div className="absolute w-3 h-3 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,0.9)] dot-orbit-1" />
-                  <div className="absolute w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,0.9)] dot-orbit-2" />
-                  <div className="absolute w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.9)] dot-orbit-3" />
-                  <svg className="absolute z-10 w-48 h-48 sm:w-60 sm:h-60 pointer-events-none" viewBox="0 0 200 200">
+                  {/* Mobile: w-36 (144px), sm+: w-56 (224px) — orbit rings scale with photo */}
+                  <div className="absolute w-36 h-36 sm:w-56 sm:h-56 rounded-full bg-gradient-to-br from-accent-blue/20 to-cyan-400/10 blur-2xl" />
+                  <div className="orbit-ring-1 absolute w-32 h-32 sm:w-52 sm:h-52 rounded-full border border-dashed border-accent-blue/40" />
+                  <div className="orbit-ring-2 absolute w-36 h-36 sm:w-60 sm:h-60 rounded-full border border-cyan-400/15" />
+                  <div className="orbit-ring-3 absolute w-28 h-28 sm:w-44 sm:h-44 rounded-full border border-dashed border-purple-400/25" />
+                  <div className="absolute w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,0.9)] dot-orbit-1" />
+                  <div className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,0.9)] dot-orbit-2" />
+                  <div className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,0.9)] dot-orbit-3" />
+                  {/* Circular name — hidden on mobile, shown sm+ */}
+                  <svg className="absolute z-10 hidden sm:block w-52 h-52 pointer-events-none" viewBox="0 0 200 200">
                     <defs><path id="nameCircle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/></defs>
                     <text fontSize="10" fontFamily="'Inter',sans-serif" fontWeight="700" letterSpacing="3.5" fill="#93C5FD" opacity="0.9">
                       <textPath href="#nameCircle" startOffset="0%">SYED WAQAS TAYYAB · IT EXPERT · </textPath>
                     </text>
                   </svg>
-                  <div className="photo-pulse relative w-32 h-32 sm:w-44 sm:h-44 rounded-full border-2 border-accent-blue/70 overflow-hidden bg-dark-800 z-20">
+                  {/* Photo: mobile w-24, sm w-40 */}
+                  <div className="photo-pulse relative w-24 h-24 sm:w-40 sm:h-40 rounded-full border-2 border-accent-blue/70 overflow-hidden bg-dark-800 z-20">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/waqas-avatar.jpg" alt="Syed Waqas Tayyab" className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
                     <div className="scan-line absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
                     <div className="absolute inset-0 bg-gradient-to-t from-accent-blue/20 via-transparent to-transparent" />
                   </div>
-                  <svg className="absolute -top-1 -left-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="3" r="2" fill="#3B82F6"/></svg>
-                  <svg className="absolute -top-1 -right-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="3" r="2" fill="#3B82F6"/></svg>
-                  <svg className="absolute -bottom-1 -left-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="33" r="2" fill="#06B6D4"/></svg>
-                  <svg className="absolute -bottom-1 -right-1 w-8 h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="33" r="2" fill="#06B6D4"/></svg>
-                  <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,0.8)] z-30" />
+                  <svg className="absolute -top-1 -left-1 w-6 h-6 sm:w-8 sm:h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="3" r="2" fill="#3B82F6"/></svg>
+                  <svg className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="3" r="2" fill="#3B82F6"/></svg>
+                  <svg className="absolute -bottom-1 -left-1 w-6 h-6 sm:w-8 sm:h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="33" r="2" fill="#06B6D4"/></svg>
+                  <svg className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 z-30" viewBox="0 0 36 36" fill="none"><path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="33" r="2" fill="#06B6D4"/></svg>
+                  <span className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 w-3 h-3 sm:w-4 sm:h-4 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,0.8)] z-30" />
                 </div>
-                {/* Open to Work — below human avatar only */}
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 border border-green-500/30 text-green-400 whitespace-nowrap">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                  Open to Work · MENA + Remote
+                {/* Name shown only on mobile below photo */}
+                <p className="sm:hidden text-[9px] font-bold text-accent-blue tracking-widest uppercase text-center">SYED WAQAS TAYYAB</p>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-green-500/10 border border-green-500/30 text-green-400 whitespace-nowrap">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                  <span className="hidden xs:inline">Open to Work · </span>MENA + Remote
                 </span>
               </div>
 
               {/* ── Data sync beam ── */}
-              <div className="flex flex-col items-center justify-center gap-2 self-center pb-4">
-                <div className="relative w-16 sm:w-20 h-6 flex items-center overflow-visible">
+              <div className="flex flex-col items-center justify-center gap-1.5 self-center pb-6 flex-shrink-0">
+                <div className="relative w-10 sm:w-16 h-5 flex items-center overflow-visible">
                   <div className="absolute inset-0 flex items-center">
                     <div className="w-full h-px bg-gradient-to-r from-accent-blue/30 via-cyan-400/50 to-accent-blue/30" />
                   </div>
-                  <div className="data-pkt-fwd absolute left-0 w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,1)]" />
-                  <div className="data-pkt-fwd2 absolute left-0 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,1)]" />
-                  <div className="data-pkt-fwd3 absolute left-0 w-1.5 h-1.5 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,1)]" />
-                  <div className="data-pkt-bwd absolute right-0 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_6px_rgba(167,139,250,1)]" />
-                  <div className="data-pkt-bwd2 absolute right-0 w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_5px_rgba(103,232,249,1)]" />
+                  <div className="data-pkt-fwd absolute left-0 w-2 h-2 rounded-full bg-accent-blue shadow-[0_0_6px_rgba(59,130,246,1)]" />
+                  <div className="data-pkt-fwd2 absolute left-0 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_5px_rgba(6,182,212,1)]" />
+                  <div className="data-pkt-fwd3 absolute left-0 w-1 h-1 rounded-full bg-yellow-400 shadow-[0_0_4px_rgba(250,204,21,1)]" />
+                  <div className="data-pkt-bwd absolute right-0 w-1.5 h-1.5 rounded-full bg-purple-400 shadow-[0_0_5px_rgba(167,139,250,1)]" />
+                  <div className="data-pkt-bwd2 absolute right-0 w-1 h-1 rounded-full bg-cyan-300 shadow-[0_0_4px_rgba(103,232,249,1)]" />
                 </div>
-                <span className="text-[9px] text-gray-600 font-mono whitespace-nowrap">AI + Human</span>
+                <span className="text-[8px] sm:text-[9px] text-gray-600 font-mono whitespace-nowrap">AI + Human</span>
               </div>
 
               {/* ── Bot avatar ── */}
-              <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-col items-center gap-2 sm:gap-3">
                 <div className="relative flex items-center justify-center">
-                  <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-cyan-400/10 blur-3xl" />
-                  <div className="ring-b1 absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full border border-dashed border-cyan-400/30" />
-                  <div className="ring-b2 absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-accent-blue/15" />
-                  <div className="absolute w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)] orbit-b1" />
-                  <div className="absolute w-2 h-2 rounded-full bg-accent-blue shadow-[0_0_6px_rgba(59,130,246,1)] orbit-b2" />
-                  <div className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,1)] orbit-b3" />
+                  <div className="absolute w-36 h-36 sm:w-56 sm:h-56 rounded-full bg-cyan-400/10 blur-3xl" />
+                  <div className="ring-b1 absolute w-32 h-32 sm:w-52 sm:h-52 rounded-full border border-dashed border-cyan-400/30" />
+                  <div className="ring-b2 absolute w-36 h-36 sm:w-60 sm:h-60 rounded-full border border-accent-blue/15" />
+                  <div className="absolute w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)] orbit-b1" />
+                  <div className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent-blue shadow-[0_0_6px_rgba(59,130,246,1)] orbit-b2" />
+                  <div className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,1)] orbit-b3" />
                   <div className="bot-bob relative z-10">
-                    <div className="bot-glow relative w-32 h-32 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-cyan-400/70 bg-[#060e1a] flex items-center justify-center">
+                    {/* Bot image: mobile w-24, sm w-40 */}
+                    <div className="bot-glow relative w-24 h-24 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-cyan-400/70 bg-[#060e1a] flex items-center justify-center">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src="/ai-robot-icon.png" alt="Waqas AI BOT" className="w-4/5 h-4/5 object-contain"/>
                       <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/15 via-transparent to-transparent pointer-events-none" />
                     </div>
                   </div>
-                  <svg className="absolute -top-1 -left-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="3" r="2" fill="#06B6D4"/></svg>
-                  <svg className="absolute -top-1 -right-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="3" r="2" fill="#06B6D4"/></svg>
-                  <svg className="absolute -bottom-1 -left-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="33" r="2" fill="#3B82F6"/></svg>
-                  <svg className="absolute -bottom-1 -right-1 w-8 h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="33" r="2" fill="#3B82F6"/></svg>
-                  <span className="absolute bottom-2 right-2 w-4 h-4 bg-cyan-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(6,182,212,0.9)] animate-pulse z-20" />
+                  <svg className="absolute -top-1 -left-1 w-6 h-6 sm:w-8 sm:h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="3" r="2" fill="#06B6D4"/></svg>
+                  <svg className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M18 3 L32 3 Q34 3 34 5 L34 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="3" r="2" fill="#06B6D4"/></svg>
+                  <svg className="absolute -bottom-1 -left-1 w-6 h-6 sm:w-8 sm:h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M2 18 L2 31 Q2 33 4 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="33" r="2" fill="#3B82F6"/></svg>
+                  <svg className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 z-20" viewBox="0 0 36 36" fill="none"><path d="M34 18 L34 31 Q34 33 32 33 L18 33" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round"/><circle cx="34" cy="33" r="2" fill="#3B82F6"/></svg>
+                  <span className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 w-3 h-3 sm:w-4 sm:h-4 bg-cyan-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(6,182,212,0.9)] animate-pulse z-20" />
                 </div>
-                {/* Available for Freelance — below bot only */}
                 <div className="text-center">
-                  <p className="text-xs font-semibold text-cyan-400 tracking-widest uppercase mb-2">Waqas AI BOT</p>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-accent-blue/10 border border-accent-blue/30 text-accent-blue whitespace-nowrap">
-                    Available for Freelance Projects
+                  <p className="text-[10px] sm:text-xs font-semibold text-cyan-400 tracking-widest uppercase mb-1.5">Waqas AI BOT</p>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-accent-blue/10 border border-accent-blue/30 text-accent-blue whitespace-nowrap">
+                    <span className="hidden sm:inline">Available for </span>Freelance Projects
                   </span>
                 </div>
               </div>
@@ -181,6 +185,9 @@ export default function Hero() {
 
           {/* ── Name + Title ── */}
           <motion.div variants={item} className="text-center w-full max-w-3xl mx-auto">
+
+            {/* Live News Ticker */}
+            <NewsTicker />
 
             {/* Role + Location + Specialty — single clean row */}
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-gray-400 mb-5">
