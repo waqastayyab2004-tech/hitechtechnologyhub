@@ -272,11 +272,6 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* ── Live News Ticker ── */}
-          <motion.div variants={item} className="w-full max-w-3xl mx-auto">
-            <NewsTicker />
-          </motion.div>
-
           {/* ── Neural Network Expertise Diagram ── */}
           <motion.div variants={item} className="w-full max-w-3xl mx-auto">
             <p className="text-center text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-3">
