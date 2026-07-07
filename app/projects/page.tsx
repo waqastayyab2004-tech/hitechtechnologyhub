@@ -4,25 +4,26 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'Real-world apps built by Syed Waqas Tayyab — Waqas AI Hub, IT Asset Manager, SNOW Automation, and more. AI, automation, Python, and web development.',
+  description: 'Real-world apps, automation pipelines, and enterprise IT systems built by Syed Waqas Tayyab — AI dashboards, ServiceNow automation, PowerBI, SAP integrations, and more.',
 }
 
 const projects = [
+  // ── LIVE PERSONAL APPS ───────────────────────────────────────────────
   {
     icon: '/app-wahub.png',
     iconAlt: 'Waqas AI Hub',
     title: 'Waqas AI Hub',
     subtitle: 'Personal AI-Powered Desktop Dashboard',
-    description: 'A native macOS app + FastAPI web dashboard replacing terminal commands for all daily SAP IT work. Single click to view emails, calendar, ServiceNow tickets, OneDrive files, and WhatsApp SLA alerts.',
+    description: 'A native macOS Swift app + FastAPI web dashboard that replaces terminal commands for all daily SAP IT work. Single click to view emails, calendar, ServiceNow tickets, OneDrive files, and WhatsApp SLA alerts — all in one Teams-style interface.',
     highlights: [
       'Native macOS Swift + WebKit wrapper — launches like any desktop app',
-      'FastAPI backend integrating Gmail, SAP O365 (Outlook, Calendar, OneDrive, SharePoint)',
-      'ServiceNow live ticket dashboard — SNOW cookies auto-pasted from Safari',
-      'WhatsApp SLA breach alerts via Twilio — fires before tickets breach',
+      'FastAPI backend: Gmail, SAP O365 (Outlook, Calendar, OneDrive, SharePoint)',
+      'ServiceNow live ticket dashboard — auto-loads SNOW session from Safari',
+      'WhatsApp SLA breach alerts via Twilio — fires 30 min before breach',
       'Teams-style layout: icon rail, section panel, browser-style tabs',
       'Auto-starts via LaunchAgent — always running on login',
-      'Email summarization agent — runs every morning, summarizes SAP inbox',
-      'Dark theme with 6 colour schemes, sidebar collapse, keyboard shortcuts',
+      'Email summarisation agent — runs every morning, condenses SAP inbox to action list',
+      '6 colour themes, collapsible sidebar, keyboard shortcuts (⌘1–9, ⌘R, ⌘K)',
     ],
     tags: ['FastAPI', 'Python', 'Swift', 'SAP O365', 'ServiceNow', 'Twilio', 'macOS'],
     status: 'Live',
@@ -37,14 +38,14 @@ const projects = [
     iconAlt: 'IT Asset Manager',
     title: 'IT Asset Manager',
     subtitle: 'Enterprise IT Asset Tracking Web App',
-    description: 'A full-stack web application replacing Excel-based IT asset tracking at SAP IT, RUH02. Manages laptops, iPhones, iPads, monitors, printers, and data centre equipment across the MENA region.',
+    description: 'A full-stack web application replacing Excel-based IT asset tracking at SAP IT, RUH02. Manages 1,500–2,000+ active assets (laptops, iPhones, iPads, monitors, printers, data centre) across the MENA region — modelled directly on SAP\'s ISP ERP system workflows.',
     highlights: [
-      'Dashboard with KPI stats, Chart.js analytics, low-stock alerts, 6-month trend charts',
-      'Asset list with search, filter, sort, pagination — click any row to see full detail',
-      'Add/Edit with 5 mandatory fields, duplicate serial number detection',
-      'Excel import (Add Only / Add+Update modes) with header garbage filtering',
+      'KPI dashboard: Chart.js analytics, low-stock alerts, 6-month trend charts',
+      'Asset list with search, filter, sort, pagination — full detail on row click',
+      'Add/Edit with duplicate serial number detection, 5 mandatory fields',
+      'Excel import (Add Only / Add+Update) with header garbage filtering',
       'Multi-sheet colour-coded Excel export by asset status',
-      'Bulk actions — status change and bulk delete with confirmation',
+      'Bulk actions — status change, bulk delete with confirmation',
       'Full audit log per asset — every change tracked with timestamp',
       'Floating AI chat widget — natural language queries return card-format results',
     ],
@@ -61,16 +62,16 @@ const projects = [
     iconEmoji: '🔔',
     title: 'SNOW SLA Automation Pipeline',
     subtitle: 'ServiceNow Monitoring & WhatsApp Alerts',
-    description: 'A Python automation pipeline that monitors ServiceNow tickets 24/7 and fires WhatsApp messages before SLA breaches. Zero manual checking — runs as background daemons via cron.',
+    description: 'A Python automation pipeline monitoring ServiceNow tickets 24/7 and firing WhatsApp alerts before SLA breaches. Zero manual checking — runs as background daemons via cron every 5 minutes.',
     highlights: [
-      'Polls ServiceNow REST API every 5 minutes for new ticket assignments',
-      'Calculates SLA breach time — alerts 30 minutes before breach',
-      'Sends WhatsApp messages via Twilio to +966 505803073',
-      'Email summarizer runs daily at 9 AM — SAP Outlook inbox → action list',
+      'Polls ServiceNow REST API every 5 minutes for new & at-risk tickets',
+      'Calculates SLA breach time — fires WhatsApp 30 minutes before breach via Twilio',
+      'Daily 9 AM email summariser — SAP Outlook inbox → prioritised action list',
       'Dual trigger: SNOW API + SAP email scanning (survives expired cookies)',
-      'Runs as background daemon — auto-restarts via LaunchAgent',
-      'JSON output mode for live dashboard integration',
-      'Logs all alerts to /tmp/ with timestamps for audit trail',
+      'JSON output mode for live dashboard integration into Waqas AI Hub',
+      'Runs as background daemon — auto-restarts via macOS LaunchAgent',
+      'Full timestamp audit log in /tmp/ for every alert fired',
+      'Handles 50–60 tickets/month per engineer, 1,000–1,500/year total',
     ],
     tags: ['Python', 'ServiceNow', 'Twilio', 'REST API', 'Cron', 'SAP O365'],
     status: 'Live',
@@ -84,24 +85,24 @@ const projects = [
     icon: null,
     iconEmoji: '🌐',
     title: 'HiTecH AI HUB Website',
-    subtitle: 'Personal Brand & Technology Blog',
-    description: 'This website — a production-ready personal technology brand site built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Full blog system, hire page, AI chatbot, and SEO optimisation.',
+    subtitle: 'Personal Brand & Technology Platform',
+    description: 'This website — a production-ready personal technology brand built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Live IT news ticker, neural network skill map, animated hero, full blog, hire page, and Cloudflare Pages deployment.',
     highlights: [
-      'Next.js 14 App Router with static export — deploys to Vercel/Cloudflare/Netlify free',
-      'Blog system powered by Markdown files — add posts without touching code',
-      'AI chatbot (Waqas AI ChatBot) — connected to Claude claude-haiku-4-5 via local API',
-      'Full /hire page with CV, 13 certifications, experience timeline, freelance services',
-      'Walking robots + cloud tech icons animated in hero background',
-      'Neural network dashboard on About page with skill progress bars',
-      '1M+ social proof section with live follower counts',
-      'Fully responsive, SEO optimised, Open Graph + Twitter Card metadata',
+      'Next.js 14 App Router — static export on Cloudflare Pages (global CDN)',
+      'Live IT/AI news ticker: RSS feeds from TechCrunch, The Verge, Ars Technica, Wired',
+      'Animated neural network expertise diagram with 6 skill domains',
+      'Animated hero: dual avatar with data-sync beam, orbit rings, mobile-responsive',
+      'Blog system with Markdown — add posts without touching code',
+      'Full /portfolio page: 4 work roles, 13+ certs, 7 skill domains, 8 projects',
+      'Neural Network skill explorer on About page (71 skills, 8 domains)',
+      'Fully responsive (mobile + desktop), SEO optimised, Open Graph metadata',
     ],
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Claude AI'],
+    tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Cloudflare Pages'],
     status: 'Live',
     category: 'Web Application · Personal Brand',
     color: 'border-purple-500',
     glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.2)]',
-    github: 'https://github.com/waqas-syed',
+    github: 'https://github.com/waqastayyab2004-tech/hitechtechnologyhub',
     demo: 'https://www.hitechtechnologyhub.com',
   },
   {
@@ -109,16 +110,16 @@ const projects = [
     iconEmoji: '🤖',
     title: 'SAP O365 MCP Server',
     subtitle: 'Claude AI ↔ SAP Microsoft 365 Bridge',
-    description: 'A Model Context Protocol server that gives Claude AI direct access to SAP Outlook, Calendar, OneDrive, and SharePoint — enabling natural language control of enterprise M365 services.',
+    description: 'A Model Context Protocol (MCP) server giving Claude AI direct access to SAP Outlook, Calendar, OneDrive, and SharePoint — enabling natural language control of enterprise M365 services from any Claude session.',
     highlights: [
-      'OAuth2 authentication with SAP Azure AD (bypasses Conditional Access)',
-      'localhost:8080 redirect URI workaround for non-managed Mac',
-      'Read/search SAP Outlook emails with full attachment support',
-      'Query SAP Calendar — list, create, update meetings',
-      'Browse OneDrive files — list, download, upload documents',
-      'SharePoint site search and document access',
+      'OAuth2 authentication with SAP Azure AD — bypasses Conditional Access on non-managed Mac',
+      'localhost:8080 redirect URI workaround (device code flow blocked by SAP policy)',
+      'Read/search SAP Outlook emails — full content + attachment support',
+      'Query SAP Calendar — list, create, update meetings via Graph API',
+      'Browse OneDrive (49.87 GB) — list, download, upload documents',
+      'SharePoint site search across 10 internal SAP sites',
       'Token auto-refresh — stays connected without manual re-auth',
-      'Used by Waqas AI Hub and Claude Code sessions daily',
+      'Used daily in Waqas AI Hub + Claude Code sessions',
     ],
     tags: ['Python', 'FastAPI', 'OAuth2', 'Microsoft Graph API', 'MCP', 'SAP Azure AD'],
     status: 'Live',
@@ -128,23 +129,147 @@ const projects = [
     github: 'https://github.com/waqas-syed',
     demo: '#',
   },
+
+  // ── SAP ENTERPRISE PROJECTS ──────────────────────────────────────────
+  {
+    icon: null,
+    iconEmoji: '📊',
+    title: 'SAP PowerBI IT Operations Dashboard',
+    subtitle: 'Enterprise KPI & Analytics Automation · SAP',
+    description: 'PowerBI dashboards for real-time IT KPIs at SAP Saudi Arabia — asset lifecycle, ServiceNow SLA stats, ticket volume trends, onboarding completion rates, and procurement spend. Integrated with SharePoint and SAP Work Zone for live data feeds accessible by IT leadership.',
+    highlights: [
+      'Real-time IT KPI dashboards: asset count, SLA %, ticket volumes by category',
+      'SAP Work Zone / SAP JAM integration — published to all KSA IT team members',
+      'SharePoint data connectors — live feeds from SNOW and SAP ISP asset system',
+      'Monthly procurement spend tracking (MENA device approvals ~200–300K SAR/mo)',
+      'Onboarding/offboarding completion metrics for IT leadership reporting',
+      'Used by SVP MEA-North, Country MDs, and IT managers for decision-making',
+      'Self-service model — non-technical stakeholders read dashboards independently',
+      'Replaced manual monthly Excel reports sent via email',
+    ],
+    tags: ['PowerBI', 'SharePoint', 'SAP Work Zone', 'SAP JAM', 'ServiceNow', 'Data Analytics'],
+    status: 'Live',
+    category: 'Enterprise Analytics · SAP IT',
+    color: 'border-sky-500',
+    glowColor: 'shadow-[0_0_30px_rgba(14,165,233,0.2)]',
+    github: '#',
+    demo: '#',
+  },
+  {
+    icon: null,
+    iconEmoji: '📱',
+    title: 'MENA Device Approval & Procurement Workflow',
+    subtitle: 'Power Apps + SAP Ariba Automation · SAP',
+    description: 'A Power Apps-based IT device approval system for the SAP MENA region — replacing manual email chains for device procurement. Handles end-user device requests, management approvals, and SAP Ariba purchase order creation, processing 200–300K SAR/month in hardware approvals.',
+    highlights: [
+      'Power Apps front-end for employee device requests (laptops, mobiles, accessories)',
+      'Multi-level approval workflow: user → IT manager → country MD → SAP Ariba PO',
+      'SAP Ariba integration — approved requests auto-create PR/PO in procurement system',
+      'Managed MENA device approvals: ~200–300K SAR/month, ~600K SAR/year',
+      'Covers SAP offices: Riyadh (200+ users), Jeddah, Al-Khobar, and wider MENA',
+      'Power Automate flows for notifications, escalations, and approval reminders',
+      'Replaced 100% of manual email-based approval process',
+      'Device catalogue synced with approved vendor list (Lenovo, Apple, Samsung)',
+    ],
+    tags: ['Power Apps', 'Power Automate', 'SAP Ariba', 'SharePoint', 'M365', 'PR/PO Workflow'],
+    status: 'Live',
+    category: 'Enterprise Automation · SAP IT',
+    color: 'border-indigo-500',
+    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.2)]',
+    github: '#',
+    demo: '#',
+  },
+  {
+    icon: null,
+    iconEmoji: '🏢',
+    title: 'SAP Saudi Arabia IT Infrastructure Projects',
+    subtitle: 'Office Moves, Renovations & AV Deployments · SAP',
+    description: 'Led multiple large-scale IT infrastructure deployments across SAP Saudi Arabia offices — including the Riyadh head office renovation, Jeddah and Al-Khobar remote office setups, and Meeting Room Technology (MTR) upgrades with a combined project value exceeding 1.2M SAR.',
+    highlights: [
+      'Riyadh Head Office renovation: complete IT infrastructure rebuild — 1.2M SAR project',
+      'Jeddah & Al-Khobar remote office IT setup and network rollout (WAN/LAN)',
+      '15 meeting rooms: MS Teams MTR, Logitech Rally, Poly Pano, Evoko booking, Crestron',
+      'Digital signage deployment: SVM system across all KSA offices',
+      'Network: Cisco switches, Aruba Wireless, NAC controllers, ISP/WAN connectivity',
+      'HP server room assets: setup, racking, cabling, SCCM deployment',
+      'SAP Board & CEO-level meeting AV setups: LEAP, Crown Plaza, Germany IBS broadcasts',
+      'Coordinated vendors: Destiny, Beetra — end-to-end from PR/PO to commissioning',
+    ],
+    tags: ['IT Infrastructure', 'Cisco', 'Aruba', 'MS Teams MTR', 'Crestron', 'SAP Ariba', 'Project Management'],
+    status: 'Live',
+    category: 'IT Infrastructure · Project Management',
+    color: 'border-teal-500',
+    glowColor: 'shadow-[0_0_30px_rgba(20,184,166,0.2)]',
+    github: '#',
+    demo: '#',
+  },
+  {
+    icon: null,
+    iconEmoji: '🔐',
+    title: 'Modern Workplace & Endpoint Security Rollout',
+    subtitle: 'Intune / Autopilot / SCCM / Azure AD · SAP MENA',
+    description: 'Designed and executed the Modern Workplace endpoint management transition for SAP MENA — migrating from legacy SCCM to Microsoft Intune/Autopilot, Azure AD (Entra ID), and zero-touch device provisioning. Covers Windows, macOS (JamF), iOS, and Android platforms across 3 Saudi offices.',
+    highlights: [
+      'Microsoft Intune + Autopilot: zero-touch Windows provisioning for new hires',
+      'JamF: macOS MDM — SAP-certified app deployment, compliance, FileVault',
+      'Azure AD (Entra ID): SSO, MFA, Conditional Access policies for MENA users',
+      'Trellix/McAfee + HIPS + SCCM compliance checks — frontend compliancy checker',
+      'Defender for M365: endpoint detection, threat response, Secure Score improvement',
+      'iOS & Android MDM: SAP-certified apps on mobiles, remote wipe capability',
+      'Company Portal + Software Centre: self-service app deployment for 200+ users',
+      'TLM/Cloud/OneDrive/SharePoint data backup and recovery procedures',
+    ],
+    tags: ['Microsoft Intune', 'Autopilot', 'SCCM', 'Azure AD', 'JamF', 'Trellix', 'Defender', 'MDM'],
+    status: 'Live',
+    category: 'Cybersecurity · Modern Workplace',
+    color: 'border-red-500',
+    glowColor: 'shadow-[0_0_30px_rgba(239,68,68,0.2)]',
+    github: '#',
+    demo: '#',
+  },
+  {
+    icon: null,
+    iconEmoji: '🏦',
+    title: 'Bank ATM & Branch Security System',
+    subtitle: 'Physical Security Infrastructure · Banque Saudi Fransi',
+    description: 'Managed the complete ATM and branch physical security infrastructure for Banque Saudi Fransi across Riyadh head office and multiple branches — including access control, CCTV, IoT sensors, burglar/fire alarms, and 24/7 security command centre operations.',
+    highlights: [
+      'Managed G4S MultiMax access control — employee access cards for HQ and all branches',
+      'Siecep ATM security management tool — health monitoring for ATM network',
+      'CCTV, IoT sensors, burglar & fire alarm systems across all branches',
+      'Security command centre operations — incident recording to management',
+      'IT ticket management via BMC Remedy — monitoring and processing',
+      'Vanguard security software — user privilege management and audit',
+      '24/7 business continuity monitoring for banking security systems',
+      'Testing & maintenance: access control, sensors, CCTV, alarm systems',
+    ],
+    tags: ['BMC Remedy', 'G4S MultiMax', 'Siecep', 'Vanguard', 'CCTV', 'Access Control', 'Banking IT'],
+    status: 'Live',
+    category: 'Physical Security · Banking IT',
+    color: 'border-rose-500',
+    glowColor: 'shadow-[0_0_30px_rgba(244,63,94,0.2)]',
+    github: '#',
+    demo: '#',
+  },
+
+  // ── IN DEVELOPMENT ───────────────────────────────────────────────────
   {
     icon: null,
     iconEmoji: '📊',
     title: 'SNOW SLA Breach Predictor',
     subtitle: 'Python ML Model on Real ServiceNow Data',
-    description: 'A machine learning model built on real SAP ServiceNow ticket data that predicts which tickets will breach SLA before they do — combining 11 years of IT operations knowledge with Python ML.',
+    description: 'A machine learning model built on real SAP ServiceNow ticket data that predicts which tickets will breach SLA — combining 11 years of IT operations expertise with Python ML. Designed as a proof of capability for SAP ML Engineer role transition.',
     highlights: [
-      'Uses real SAP ServiceNow historical ticket data for training',
-      'Python scikit-learn pipeline — Random Forest + feature engineering',
-      'Features: ticket age, priority, category, assignment group, time of day',
+      'Training data: real SAP ServiceNow tickets — 1,000–1,500/year over multiple years',
+      'scikit-learn pipeline — Random Forest + feature engineering',
+      'Features: ticket age, priority, category, assignment group, time-of-day, SLA target',
       'Predicts breach probability per ticket with confidence score',
-      'Integrates with existing SNOW WhatsApp alert pipeline',
-      'Dashboard visualisation of at-risk tickets',
-      'Demonstrates SAP BTP + AI/ML integration',
-      'Evidence pack for SAP ML Engineer role application',
+      'Integrates with existing SNOW WhatsApp alert pipeline for real-time scoring',
+      'Dashboard visualisation of at-risk tickets by category and engineer',
+      'SAP BTP deployment path — shows SAP + Python ML convergence',
+      'Evidence piece for SAP ML Engineer role application (internal)',
     ],
-    tags: ['Python', 'scikit-learn', 'Pandas', 'SAP BTP', 'ServiceNow', 'ML'],
+    tags: ['Python', 'scikit-learn', 'Pandas', 'SAP BTP', 'ServiceNow', 'ML', 'Random Forest'],
     status: 'In Development',
     category: 'AI / ML · Predictive Analytics',
     color: 'border-yellow-500',
@@ -169,15 +294,15 @@ export default function ProjectsPage() {
           <span className="gradient-text">Projects</span> I&apos;ve Built
         </h1>
         <p className="section-subheading">
-          Real-world apps, automation pipelines, and AI integrations — deployed and running daily.
+          Real-world apps, enterprise systems, and AI integrations — deployed and running daily across SAP and beyond.
         </p>
         {/* Stats */}
         <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 mt-8">
           {[
             { value: '100+', label: 'Projects Delivered' },
-            { value: '4', label: 'Live Apps Running' },
+            { value: '10', label: 'Showcased Here' },
             { value: '15+', label: 'Years Building' },
-            { value: '0', label: 'Excel Files Needed' },
+            { value: '1.2M+', label: 'SAR Projects Managed' },
           ].map(s => (
             <div key={s.label} className="text-center">
               <div className="text-2xl font-black gradient-text">{s.value}</div>
@@ -185,18 +310,29 @@ export default function ProjectsPage() {
             </div>
           ))}
         </div>
+
+        {/* Category legend */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+          {[
+            { label: 'Personal Apps', color: 'bg-accent-blue/10 border-accent-blue/30 text-accent-blue' },
+            { label: 'SAP Enterprise', color: 'bg-orange-500/10 border-orange-500/30 text-orange-400' },
+            { label: 'Cybersecurity', color: 'bg-red-500/10 border-red-500/30 text-red-400' },
+            { label: 'In Development', color: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400' },
+          ].map(c => (
+            <span key={c.label} className={`px-3 py-1 rounded-full text-xs font-semibold border ${c.color}`}>{c.label}</span>
+          ))}
+        </div>
       </ScrollReveal>
 
       {/* Projects */}
       <div className="space-y-8">
         {projects.map((project, i) => (
-          <ScrollReveal key={project.title} delay={i * 0.07}>
+          <ScrollReveal key={project.title} delay={i * 0.05}>
             <div className={`glass-card border-l-4 ${project.color} p-7 md:p-9 ${project.glowColor} transition-all duration-300 hover:-translate-y-0.5`}>
               <div className="flex flex-col lg:flex-row gap-8">
 
                 {/* Left — icon + meta */}
                 <div className="flex flex-col items-center lg:items-start gap-4 lg:w-56 flex-shrink-0">
-                  {/* App icon */}
                   <div className="relative">
                     {project.icon ? (
                       <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-white/10">
@@ -208,7 +344,6 @@ export default function ProjectsPage() {
                         {project.iconEmoji}
                       </div>
                     )}
-                    {/* Status badge overlaid */}
                     <span className={`absolute -bottom-2 -right-2 badge border text-xs ${statusColors[project.status]}`}>
                       {project.status}
                     </span>
@@ -218,23 +353,33 @@ export default function ProjectsPage() {
                     <p className="text-xs text-gray-500 leading-snug">{project.category}</p>
                   </div>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-1.5 justify-center lg:justify-start">
                     {project.tags.map(t => (
                       <span key={t} className="tag text-xs">{t}</span>
                     ))}
                   </div>
 
-                  {/* Buttons */}
                   <div className="flex gap-2 w-full mt-auto">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer"
-                      className="btn-outline text-xs py-2 px-3 flex-1 justify-center">
-                      <Github className="w-3.5 h-3.5" /> GitHub
-                    </a>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer"
-                      className="btn-primary text-xs py-2 px-3 flex-1 justify-center">
-                      <ExternalLink className="w-3.5 h-3.5" /> Demo
-                    </a>
+                    {project.github !== '#' ? (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer"
+                        className="btn-outline text-xs py-2 px-3 flex-1 justify-center">
+                        <Github className="w-3.5 h-3.5" /> GitHub
+                      </a>
+                    ) : (
+                      <span className="btn-outline text-xs py-2 px-3 flex-1 justify-center opacity-40 cursor-not-allowed">
+                        <Github className="w-3.5 h-3.5" /> Private
+                      </span>
+                    )}
+                    {project.demo !== '#' ? (
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                        className="btn-primary text-xs py-2 px-3 flex-1 justify-center">
+                        <ExternalLink className="w-3.5 h-3.5" /> Live
+                      </a>
+                    ) : (
+                      <span className="btn-primary text-xs py-2 px-3 flex-1 justify-center opacity-40 cursor-not-allowed">
+                        <ExternalLink className="w-3.5 h-3.5" /> Internal
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -243,8 +388,6 @@ export default function ProjectsPage() {
                   <h2 className="text-2xl font-black text-white mb-0.5">{project.title}</h2>
                   <p className="text-accent-blue font-semibold text-sm mb-3">{project.subtitle}</p>
                   <p className="text-gray-300 text-sm leading-relaxed mb-5">{project.description}</p>
-
-                  {/* Highlights */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {project.highlights.map((h, j) => (
                       <div key={j} className="flex items-start gap-2 text-sm text-gray-400">
@@ -269,7 +412,7 @@ export default function ProjectsPage() {
             <h3 className="text-xl font-bold text-white">Want Something Built?</h3>
           </div>
           <p className="text-gray-400 text-sm mb-5">
-            15+ years of IT experience + AI/ML skills. I build automation tools, web apps, and AI integrations that actually solve real problems.
+            15+ years of enterprise IT + AI/ML skills. I build automation tools, web apps, and AI integrations that solve real problems — from MENA-scale SAP deployments to personal AI dashboards.
           </p>
           <a href="/contact" className="btn-primary inline-flex px-8 py-3">
             Discuss a Project
