@@ -210,15 +210,15 @@ export default function AgentTeam() {
             {/* Agent nodes */}
             {NODES.map((node) => {
               const isActive = active === node.id
-              const scale = isActive ? 1.2 : 1
-              const r = isActive ? 32 : 26
+              const scale = isActive ? 1.15 : 1
+              const r = isActive ? 38 : 32
 
               return (
                 <g key={node.id}
                   style={{ cursor: 'pointer', transition: 'transform 0.2s', transformOrigin: `${node.cx}px ${node.cy}px`, transform: `scale(${scale})` }}
                   onClick={() => setActive(active === node.id ? null : node.id)}>
                   {/* Outer ring */}
-                  <circle cx={node.cx} cy={node.cy} r={r + 8}
+                  <circle cx={node.cx} cy={node.cy} r={r + 10}
                     fill="none" stroke={node.color} strokeWidth="1"
                     opacity={isActive ? 0.6 : 0.25}
                     strokeDasharray={isActive ? '3 3' : '4 6'} />
@@ -226,25 +226,25 @@ export default function AgentTeam() {
                   <circle cx={node.cx} cy={node.cy} r={r}
                     fill={`url(#grad-${node.id})`}
                     filter="url(#node-glow)"
-                    stroke={node.color} strokeWidth={isActive ? 2 : 1}
+                    stroke={node.color} strokeWidth={isActive ? 2 : 1.5}
                     opacity={active && !isActive ? 0.4 : 1} />
-                  {/* Icon */}
-                  <text x={node.cx} y={node.cy - 5} textAnchor="middle"
-                    fontSize={isActive ? 18 : 15}
+                  {/* Icon — bigger */}
+                  <text x={node.cx} y={node.cy - 4} textAnchor="middle"
+                    fontSize={isActive ? 24 : 20}
                     style={{ userSelect: 'none' }}>
                     {node.icon}
                   </text>
                   {/* Name */}
-                  <text x={node.cx} y={node.cy + 10} textAnchor="middle"
-                    fontSize="7" fontWeight="bold" fill="white"
+                  <text x={node.cx} y={node.cy + 14} textAnchor="middle"
+                    fontSize="8" fontWeight="bold" fill="white"
                     fontFamily="monospace" opacity={0.95}
                     style={{ userSelect: 'none' }}>
                     {node.name}
                   </text>
                   {/* Label below node */}
-                  <text x={node.cx} y={node.cy + r + 16} textAnchor="middle"
-                    fontSize="7.5" fontWeight="600" fill={node.color}
-                    fontFamily="'Inter',sans-serif" opacity={active && !isActive ? 0.3 : 0.9}
+                  <text x={node.cx} y={node.cy + r + 18} textAnchor="middle"
+                    fontSize="8.5" fontWeight="600" fill={node.color}
+                    fontFamily="'Inter',sans-serif" opacity={active && !isActive ? 0.3 : 0.95}
                     style={{ userSelect: 'none' }}>
                     {node.role}
                   </text>
@@ -252,42 +252,61 @@ export default function AgentTeam() {
               )
             })}
 
-            {/* Hub — central node (Waqas + NEXUS) */}
+            {/* Hub — Waqas photo, bigger, IT Expert */}
             <g style={{ cursor: 'pointer' }} onClick={() => setActive(active === 'nexus' ? null : 'nexus')}>
               {/* Pulse rings */}
               {[1, 2, 3].map(n => (
                 <circle key={n} cx={HUB.cx} cy={HUB.cy}
-                  r={42 + n * 14 + Math.sin(pulse * 1.5 + n) * 4}
+                  r={60 + n * 16 + Math.sin(pulse * 1.5 + n) * 4}
                   fill="none" stroke={HUB.color}
                   strokeWidth="0.8"
-                  opacity={0.08 + (3 - n) * 0.04} />
+                  opacity={0.07 + (3 - n) * 0.04} />
               ))}
               {/* Rotating dashed ring */}
-              <circle cx={HUB.cx} cy={HUB.cy} r={50}
-                fill="none" stroke={HUB.color} strokeWidth="1"
-                opacity="0.3" strokeDasharray="6 4"
-                style={{ transformOrigin: `${HUB.cx}px ${HUB.cy}px`, transform: `rotate(${pulse * 30}deg)` }} />
-              {/* Main hub circle */}
-              <circle cx={HUB.cx} cy={HUB.cy} r={40}
+              <circle cx={HUB.cx} cy={HUB.cy} r={68}
+                fill="none" stroke={HUB.color} strokeWidth="1.5"
+                opacity="0.35" strokeDasharray="8 5"
+                style={{ transformOrigin: `${HUB.cx}px ${HUB.cy}px`, transform: `rotate(${pulse * 25}deg)` }} />
+              {/* Counter-rotate ring */}
+              <circle cx={HUB.cx} cy={HUB.cy} r={76}
+                fill="none" stroke="#3B82F6" strokeWidth="0.8"
+                opacity="0.2" strokeDasharray="4 8"
+                style={{ transformOrigin: `${HUB.cx}px ${HUB.cy}px`, transform: `rotate(${-pulse * 18}deg)` }} />
+              {/* Hub background circle — glow */}
+              <circle cx={HUB.cx} cy={HUB.cy} r={55}
                 fill={`url(#grad-nexus)`}
                 filter="url(#node-glow)"
-                stroke={HUB.color} strokeWidth="2" />
-              {/* Hub icon */}
-              <text x={HUB.cx} y={HUB.cy - 8} textAnchor="middle" fontSize="20" style={{ userSelect: 'none' }}>🤖</text>
-              {/* Hub labels */}
-              <text x={HUB.cx} y={HUB.cy + 10} textAnchor="middle"
-                fontSize="8" fontWeight="bold" fill="white" fontFamily="monospace" style={{ userSelect: 'none' }}>
-                NEXUS-W1
+                stroke={HUB.color} strokeWidth="2.5" />
+              {/* Clip path for photo */}
+              <defs>
+                <clipPath id="hubClip">
+                  <circle cx={HUB.cx} cy={HUB.cy} r={53} />
+                </clipPath>
+              </defs>
+              {/* Real photo */}
+              <image
+                href="/waqas-avatar.jpg"
+                x={HUB.cx - 53} y={HUB.cy - 53}
+                width={106} height={106}
+                clipPath="url(#hubClip)"
+                preserveAspectRatio="xMidYMin slice"
+              />
+              {/* Overlay tint */}
+              <circle cx={HUB.cx} cy={HUB.cy} r={53}
+                fill="url(#grad-nexus)" opacity="0.25"
+                clipPath="url(#hubClip)" />
+              {/* Name badge — sits below the circle */}
+              <rect x={HUB.cx - 46} y={HUB.cy + 57} width={92} height={32} rx="8"
+                fill="#0a1628" opacity="0.92" />
+              <text x={HUB.cx} y={HUB.cy + 70} textAnchor="middle"
+                fontSize="9" fontWeight="800" fill="white" fontFamily="'Inter',sans-serif"
+                style={{ userSelect: 'none' }}>
+                Syed Waqas Tayyab
               </text>
-              <text x={HUB.cx} y={HUB.cy + 22} textAnchor="middle"
-                fontSize="6.5" fill={HUB.color} fontFamily="monospace" style={{ userSelect: 'none' }}>
-                AI HUB
-              </text>
-              {/* Bottom label */}
-              <text x={HUB.cx} y={HUB.cy + 58} textAnchor="middle"
-                fontSize="8" fontWeight="700" fill={HUB.color}
-                fontFamily="'Inter',sans-serif" opacity="0.9" style={{ userSelect: 'none' }}>
-                AI Command Hub
+              <text x={HUB.cx} y={HUB.cy + 82} textAnchor="middle"
+                fontSize="7.5" fontWeight="600" fill={HUB.color} fontFamily="monospace"
+                style={{ userSelect: 'none' }}>
+                IT Expert · AI Specialist
               </text>
             </g>
           </svg>
