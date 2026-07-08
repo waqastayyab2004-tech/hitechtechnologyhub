@@ -329,9 +329,13 @@ export default function PortfolioPage() {
 
               {/* CTA buttons */}
               <div className="flex flex-wrap gap-3">
-                <Link href="/hire" className="btn-primary px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
-                  <Briefcase className="w-4 h-4" /> Hire Me
+                <Link href="/contact" className="btn-primary px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
+                  <Briefcase className="w-4 h-4" /> Available for Senior Roles
                 </Link>
+                <a href="/Waqas-Syed-CV.pdf" download="Waqas-Syed-CV.pdf"
+                  className="btn-outline px-6 py-3 text-sm font-semibold inline-flex items-center gap-2 border-green-500/40 text-green-400 hover:bg-green-500/10">
+                  <Download className="w-4 h-4" /> Download CV
+                </a>
                 <Link href="/contact" className="btn-outline px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
                   <Mail className="w-4 h-4" /> Get in Touch
                 </Link>
@@ -440,7 +444,7 @@ export default function PortfolioPage() {
                 My mission: bridge the gap between corporate IT and modern AI — training teams to adopt tools like Copilot, Claude, and Gemini, and building automation systems that save hours of manual work every day.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {['English (Fluent)', 'Arabic (Fluent)', 'Riyadh, KSA', 'MENA + Remote', 'Open to Work'].map((t) => (
+                {['English (Fluent)', 'Arabic (Fluent)', 'Riyadh, KSA', 'MENA + Remote', 'Open to Work', 'Iqama: Transferable'].map((t) => (
                   <span key={t} className="tag text-xs py-1 px-3">{t}</span>
                 ))}
               </div>

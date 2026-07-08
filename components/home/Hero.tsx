@@ -40,16 +40,41 @@ export default function Hero() {
           className="flex flex-col items-center gap-10"
         >
 
-          {/* ── Hook Headline ── */}
-          <motion.div variants={item} className="text-center">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight">
-              Learn AI.{' '}
-              <span className="gradient-text">Build Smarter.</span>
-              <br />
-              Automate Everything.
+          {/* ── Hero Headline — Senior IT Leader positioning ── */}
+          <motion.div variants={item} className="text-center w-full max-w-4xl mx-auto">
+            {/* Primary identity — what hiring managers & clients see first */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight mb-3">
+              Senior IT Leader &amp; Specialist
+              <span className="gradient-text"> Available for Hire</span>
             </h1>
-            <p className="mt-3 text-sm sm:text-base text-gray-500 max-w-xl mx-auto italic border-l-2 border-accent-blue/40 pl-4 text-left">
-              &ldquo;15+ years in enterprise IT — bridging real-world corporate knowledge with AI, Automation &amp; MLOps.&rdquo;
+            {/* Cert strip — top demanded certs front and centre */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+              {[
+                { label: 'Azure Security Certified', color: 'text-blue-400 border-blue-500/30 bg-blue-500/8' },
+                { label: 'SAP S/4HANA', color: 'text-orange-400 border-orange-500/30 bg-orange-500/8' },
+                { label: 'ITIL v3', color: 'text-cyan-400 border-cyan-500/30 bg-cyan-500/8' },
+                { label: 'CCNA Security', color: 'text-green-400 border-green-500/30 bg-green-500/8' },
+                { label: 'SAP AI Certified', color: 'text-purple-400 border-purple-500/30 bg-purple-500/8' },
+                { label: 'MBA · UK', color: 'text-pink-400 border-pink-500/30 bg-pink-500/8' },
+              ].map(c => (
+                <span key={c.label} className={`px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold border ${c.color}`}>
+                  {c.label}
+                </span>
+              ))}
+            </div>
+            {/* Two clear paths — job vs project */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
+              <Link href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-blue-500 transition-colors">
+                <Briefcase className="w-4 h-4" /> Open for Senior IT Roles
+              </Link>
+              <Link href="/services"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-dark-700 border border-white/15 text-gray-200 text-sm font-bold hover:bg-dark-600 transition-colors">
+                <Globe className="w-4 h-4" /> IT Outsourcing &amp; Contracts
+              </Link>
+            </div>
+            <p className="text-xs text-gray-500 italic">
+              15+ Years Enterprise IT · Riyadh, Saudi Arabia · Remote Worldwide · Iqama Transferable
             </p>
           </motion.div>
 
