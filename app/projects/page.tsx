@@ -23,7 +23,6 @@ interface Project {
     stakeholders: string
     timeline: string
     outcomes: string[]
-    budget?: string
   }
 }
 
@@ -90,7 +89,7 @@ const projects: Project[] = [
     description: 'Led the full migration of 200+ users from legacy SCCM to Microsoft Intune/Autopilot zero-touch provisioning and Azure AD. Completed in 90 days across Windows, macOS (JamF), iOS, and Android — zero business disruption.',
     highlights: ['Phased rollout: IT pilot → low-risk → standard → executives', 'Zero-touch Autopilot: new device setup 3.5 hrs → 45 minutes', 'JamF for macOS: FileVault, app bundle, Defender — 15-min enrollment', 'Conditional Access: legacy auth blocked, MFA + named locations enforced', 'Device compliance: 62% → 94% within 90 days', 'Microsoft Secure Score: 41% → 71% post-deployment', 'Zero C-suite escalations during entire rollout'],
     tags: ['Intune', 'Autopilot', 'Azure AD', 'JamF', 'SCCM', 'Change Management'],
-    pmDetails: { scope: 'Migrate 200+ users from on-premises SCCM legacy management to cloud-native Microsoft Intune/Autopilot across all device platforms.', objectives: ['Eliminate SCCM on-premises infrastructure dependency', 'Achieve zero-touch device provisioning for all new hires', 'Enforce device compliance from anywhere without VPN', 'Improve Secure Score by minimum 20 points'], stakeholders: 'IT team (delivery), 200+ end users (3 offices), IT Manager (sponsor), C-suite (executive users requiring white-glove)', timeline: '90 days (phased: 3 waves)', budget: 'Microsoft E3/E5 licensing (existing), no additional hardware cost', outcomes: ['Device compliance: 62% → 94%', 'New device setup: 3.5 hrs → 45 min', 'Remote device visibility: 30% → 100%', 'Secure Score: 41% → 71%'] },
+    pmDetails: { scope: 'Migrate 200+ users from on-premises SCCM legacy management to cloud-native Microsoft Intune/Autopilot across all device platforms.', objectives: ['Eliminate SCCM on-premises infrastructure dependency', 'Achieve zero-touch device provisioning for all new hires', 'Enforce device compliance from anywhere without VPN', 'Improve Secure Score by minimum 20 points'], stakeholders: 'IT team (delivery), 200+ end users (3 offices), IT Manager (sponsor), C-suite (executive users requiring white-glove)', timeline: '90 days (phased: 3 waves)', outcomes: ['Device compliance: 62% → 94%', 'New device setup: 3.5 hrs → 45 min', 'Remote device visibility: 30% → 100%', 'Secure Score: 41% → 71%'] },
   },
   {
     emoji: '🔐', group: 'Enterprise IT Implementations',
@@ -108,7 +107,7 @@ const projects: Project[] = [
     description: 'Led complete IT infrastructure rebuild for major head office renovation — 15 meeting rooms with full AV, Cisco/Aruba network rebuild, HP server room, and digital signage. Project value 1.2M SAR.',
     highlights: ['15 meeting rooms: Teams MTR, Logitech Rally, Poly Pano, Evoko booking', 'Cisco switch/router replacement: WAN, LAN, NAC, Aruba Wireless', 'HP server room: rack rebuild, cabling, SCCM deployment, UPS config', 'Digital signage (SVM/ITPP): all office floors deployed', 'Vendor management: Destiny and Beetra via SAP Ariba', '200+ users migrated — zero business disruption'],
     tags: ['Cisco', 'Aruba', 'HP Servers', 'Teams MTR', 'Crestron', 'SAP Ariba', 'Project Mgmt'],
-    pmDetails: { scope: 'Full IT infrastructure design, procurement, and deployment for a major head office renovation — covering network, server room, meeting rooms, and digital signage.', objectives: ['Deploy 15 fully-equipped Teams-certified meeting rooms', 'Rebuild core network with current-generation Cisco/Aruba hardware', 'Migrate 200+ users to new infrastructure with zero productivity loss', 'Complete within approved 1.2M SAR budget'], stakeholders: 'Country MD (sponsor), Facilities (build partner), IT team (delivery), Vendors: Destiny/Beetra, 200+ end users', timeline: '6 months (phased with renovation schedule)', budget: '1.2M SAR', outcomes: ['15 meeting rooms delivered and signed off by C-level', 'Network fully modernised — zero connectivity incidents post-go-live', '200+ users migrated in single weekend cutover', 'Completed on time and within budget'] },
+    pmDetails: { scope: 'Full IT infrastructure design, procurement, and deployment for a major head office renovation — covering network, server room, meeting rooms, and digital signage.', objectives: ['Deploy 15 fully-equipped Teams-certified meeting rooms', 'Rebuild core network with current-generation Cisco/Aruba hardware', 'Migrate 200+ users to new infrastructure with zero productivity loss', 'Complete project on schedule aligned to renovation timeline'], stakeholders: 'Country MD (sponsor), Facilities (build partner), IT team (delivery), Vendors: Destiny/Beetra, 200+ end users', timeline: '6 months (phased with renovation schedule)', outcomes: ['15 meeting rooms delivered and signed off by C-level', 'Network fully modernised — zero connectivity incidents post-go-live', '200+ users migrated in single weekend cutover', 'Completed on time aligned to renovation schedule'] },
   },
   {
     emoji: '🏗️', group: 'Enterprise IT Implementations',
@@ -144,7 +143,7 @@ const projects: Project[] = [
     description: 'Power Apps-based IT device approval system for MENA — replacing manual email chains. Handles employee requests, management approvals, and SAP Ariba PO creation. Processes 200–300K SAR/month in hardware approvals.',
     highlights: ['Power Apps front-end: employee device requests (laptops, mobiles, accessories)', 'Multi-level approval: user → IT manager → Country MD → SAP Ariba PO', 'SAP Ariba integration — approved requests auto-create PR/PO', 'Managed MENA device approvals: ~200–300K SAR/month, ~600K/year', 'Power Automate: notifications, escalations, approval reminders', 'Replaced 100% of manual email-based approval process'],
     tags: ['Power Apps', 'Power Automate', 'SAP Ariba', 'SharePoint', 'PR/PO Workflow'],
-    pmDetails: { scope: 'Automate the IT device approval and procurement workflow for the MENA region — replacing manual email chains with a governed Power Apps process.', objectives: ['Eliminate untracked email approvals', 'Enforce multi-level approval governance', 'Auto-create SAP Ariba POs on approval', 'Provide audit trail for all device procurement'], stakeholders: 'IT Manager (process owner), Country MD (final approval), Procurement/Finance, 200+ MENA employees (requestors)', timeline: '6 weeks development + rollout', budget: '200–300K SAR/month procurement volume managed', outcomes: ['100% of manual email approvals replaced', '200–300K SAR/month managed through governed workflow', 'Average approval time: 5 days → 2 days', 'Full audit trail available for all procurement decisions'] },
+    pmDetails: { scope: 'Automate the IT device approval and procurement workflow for the MENA region — replacing manual email chains with a governed Power Apps process.', objectives: ['Eliminate untracked email approvals', 'Enforce multi-level approval governance', 'Auto-create SAP Ariba POs on approval', 'Provide audit trail for all device procurement'], stakeholders: 'IT Manager (process owner), Country MD (final approval), Procurement/Finance, 200+ MENA employees (requestors)', timeline: '6 weeks development + rollout', outcomes: ['100% of manual email approvals replaced', 'Large-volume device procurement managed through governed workflow', 'Average approval time: 5 days → 2 days', 'Full audit trail available for all procurement decisions'] },
   },
 
   // ── GROUP 3: ITSM & Service Management ─────────────────────────
@@ -372,23 +371,17 @@ export default function ProjectsPage() {
                   <p className="text-gray-400 text-sm leading-relaxed">{selected.pmDetails.scope}</p>
                 </div>
 
-                {/* Timeline & Budget */}
+                {/* Timeline & Stakeholders */}
                 <div className="glass-card p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <Clock className="w-4 h-4 text-cyan-400"/>
-                    <h3 className="font-bold text-white text-sm uppercase tracking-wide">Timeline & Budget</h3>
+                    <h3 className="font-bold text-white text-sm uppercase tracking-wide">Timeline & Stakeholders</h3>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-start gap-2">
-                      <span className="text-xs text-gray-500 w-16 flex-shrink-0 pt-0.5">Timeline:</span>
+                      <span className="text-xs text-gray-500 w-24 flex-shrink-0 pt-0.5">Timeline:</span>
                       <span className="text-sm text-gray-300">{selected.pmDetails.timeline}</span>
                     </div>
-                    {selected.pmDetails.budget && (
-                      <div className="flex items-start gap-2">
-                        <span className="text-xs text-gray-500 w-16 flex-shrink-0 pt-0.5">Budget:</span>
-                        <span className="text-sm text-gray-300">{selected.pmDetails.budget}</span>
-                      </div>
-                    )}
                     <div className="flex items-start gap-2">
                       <span className="text-xs text-gray-500 w-16 flex-shrink-0 pt-0.5">Stakeholders:</span>
                       <span className="text-sm text-gray-400 leading-relaxed">{selected.pmDetails.stakeholders}</span>
