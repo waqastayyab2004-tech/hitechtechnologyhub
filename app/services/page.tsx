@@ -180,6 +180,29 @@ const services = [
     ],
     tools: ['Care Cloud', 'eClinicalWorks', 'Office Ally', 'Tebra', 'Athenahealth', 'HIPAA Compliant'],
   },
+  {
+    icon: Globe,
+    title: 'E-Commerce Setup, Support & Growth',
+    tagline: 'Launch, grow and scale your online store — Amazon to Shopify.',
+    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&auto=format&fit=crop',
+    mode: 'Remote · Global',
+    color: 'text-amber-400',
+    border: 'border-l-amber-500',
+    isEcom: true,
+    deliverables: [
+      'Amazon Seller Central setup, FBA configuration & listing',
+      'eBay store setup, listing optimisation & Global Shipping',
+      'Noon marketplace (MENA) account setup & management',
+      'Shopify store build — theme, payments, shipping & apps',
+      'Etsy shop setup for digital or handmade products',
+      'Product research, pricing strategy & competitor analysis',
+      'Amazon / eBay PPC ad campaign setup & management',
+      'Cross-platform inventory sync & order management tools',
+      'Customer service workflow & returns/dispute guidance',
+      'Seller account health monitoring & suspension recovery',
+    ],
+    tools: ['Amazon FBA', 'eBay', 'Noon', 'Shopify', 'Etsy', 'AutoDS', 'Sellbrite'],
+  },
 ]
 
 const processSteps = [
@@ -525,6 +548,29 @@ export default function ServicesPage() {
                     <Link href="/medical-billing"
                       className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-bold hover:bg-rose-500/20 transition-colors">
                       <span>🏥</span> See Full Service Details &amp; Get Free Billing Audit →
+                    </Link>
+                  </div>
+                )}
+
+                {/* E-Commerce — platforms + CTA */}
+                {(svc as any).isEcom && (
+                  <div className="mt-4 pt-4 border-t border-amber-500/15">
+                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Platforms We Support</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {[
+                        { label: '📦 Amazon', color: 'text-orange-300 border-orange-500/25 bg-orange-500/10' },
+                        { label: '🛍️ eBay', color: 'text-blue-300 border-blue-500/25 bg-blue-500/10' },
+                        { label: '🌙 Noon', color: 'text-yellow-300 border-yellow-500/25 bg-yellow-500/10' },
+                        { label: '🛒 Shopify', color: 'text-green-300 border-green-500/25 bg-green-500/10' },
+                        { label: '🎨 Etsy', color: 'text-pink-300 border-pink-500/25 bg-pink-500/10' },
+                        { label: '🌐 AliExpress', color: 'text-red-300 border-red-500/25 bg-red-500/10' },
+                      ].map(p => (
+                        <span key={p.label} className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${p.color}`}>{p.label}</span>
+                      ))}
+                    </div>
+                    <Link href="/contact"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold hover:bg-amber-500/20 transition-colors">
+                      <span>🛒</span> Get Free E-Commerce Consultation →
                     </Link>
                   </div>
                 )}
