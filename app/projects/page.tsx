@@ -1,742 +1,488 @@
-import type { Metadata } from 'next'
-import { Github, ExternalLink, CheckCircle, Star, Zap } from 'lucide-react'
-import ScrollReveal from '@/components/ui/ScrollReveal'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Real-world apps, automation pipelines, and enterprise IT systems built by Syed Waqas Tayyab — AI dashboards, ServiceNow automation, PowerBI, SAP integrations, and more.',
+import { useState, useEffect, useCallback } from 'react'
+import Link from 'next/link'
+import { CheckCircle, X, ExternalLink, Github, ArrowRight, Target, Users, Clock, TrendingUp, FileText } from 'lucide-react'
+
+/* ── TYPES ─────────────────────────────────────────────────────── */
+interface Project {
+  emoji: string
+  title: string
+  subtitle: string
+  description: string
+  highlights: string[]
+  tags: string[]
+  status: 'Live' | 'In Development' | 'Completed'
+  category: string
+  group: string
+  github?: string
+  demo?: string
+  pmDetails: {
+    scope: string
+    objectives: string[]
+    stakeholders: string
+    timeline: string
+    outcomes: string[]
+    budget?: string
+  }
 }
 
-const projects = [
-  // ── LIVE PERSONAL APPS ───────────────────────────────────────────────
+/* ── DATA ─────────────────────────────────────────────────────── */
+const projects: Project[] = [
+
+  // ── GROUP 1: Personal Apps & AI Tools ──────────────────────────
   {
-    icon: '/app-wahub.png',
-    iconAlt: 'Waqas AI Hub',
-    title: 'Waqas AI Hub',
-    subtitle: 'Personal AI-Powered Desktop Dashboard',
-    description: 'A native macOS Swift app + FastAPI web dashboard that replaces terminal commands for all daily SAP IT work. Single click to view emails, calendar, ServiceNow tickets, OneDrive files, and WhatsApp SLA alerts — all in one Teams-style interface.',
-    highlights: [
-      'Native macOS Swift + WebKit wrapper — launches like any desktop app',
-      'FastAPI backend: Gmail, SAP O365 (Outlook, Calendar, OneDrive, SharePoint)',
-      'ServiceNow live ticket dashboard — auto-loads SNOW session from Safari',
-      'WhatsApp SLA breach alerts via Twilio — fires 30 min before breach',
-      'Teams-style layout: icon rail, section panel, browser-style tabs',
-      'Auto-starts via LaunchAgent — always running on login',
-      'Email summarisation agent — runs every morning, condenses SAP inbox to action list',
-      '6 colour themes, collapsible sidebar, keyboard shortcuts (⌘1–9, ⌘R, ⌘K)',
-    ],
+    emoji: '🤖', group: 'Personal Apps & AI Tools',
+    title: 'Waqas AI Hub', subtitle: 'AI-Powered macOS Desktop Dashboard',
+    status: 'Live', category: 'AI Dashboard · macOS',
+    description: 'A native macOS Swift app + FastAPI web dashboard replacing terminal commands for all daily IT work. Single click to view emails, calendar, ServiceNow tickets, OneDrive files, and WhatsApp SLA alerts in one Teams-style interface.',
+    highlights: ['Native macOS Swift + WebKit wrapper — launches like any desktop app', 'FastAPI backend: Gmail, SAP O365 (Outlook, Calendar, OneDrive, SharePoint)', 'ServiceNow live ticket dashboard — auto-loads SNOW session from Safari', 'WhatsApp SLA breach alerts via Twilio — fires 30 min before breach', 'Email summarisation agent — runs every morning, condenses inbox to action list', '6 colour themes, collapsible sidebar, keyboard shortcuts (⌘1–9, ⌘R, ⌘K)'],
     tags: ['FastAPI', 'Python', 'Swift', 'SAP O365', 'ServiceNow', 'Twilio', 'macOS'],
-    status: 'Live',
-    category: 'AI Dashboard · macOS App',
-    color: 'border-accent-blue',
-    glowColor: 'shadow-[0_0_30px_rgba(59,130,246,0.25)]',
-    github: 'https://github.com/waqas-syed',
-    demo: '#',
+    github: 'https://github.com/waqas-syed', demo: '#',
+    pmDetails: { scope: 'Build a unified AI-powered dashboard replacing 6+ separate tools used daily for IT operations management.', objectives: ['Eliminate context-switching between 6+ tools', 'Automate daily email triage saving 35+ min/day', 'Surface SLA breach risks 30 minutes before breach', 'Create single pane of glass for all IT data sources'], stakeholders: 'Personal productivity tool for senior IT engineer managing daily operations', timeline: '3 months development, ongoing', outcomes: ['100+ minutes/day reclaimed from manual tasks', 'Zero SLA breaches for 6 consecutive months', 'Email triage time: 40 min → 5 min/day', 'All IT tools accessible via single interface'] },
   },
   {
-    icon: '/app-itasset.png',
-    iconAlt: 'IT Asset Manager',
-    title: 'IT Asset Manager',
-    subtitle: 'Enterprise IT Asset Tracking Web App',
-    description: 'A full-stack web application replacing Excel-based IT asset tracking at SAP IT, RUH02. Manages 1,500–2,000+ active assets (laptops, iPhones, iPads, monitors, printers, data centre) across the MENA region — modelled directly on SAP\'s ISP ERP system workflows.',
-    highlights: [
-      'KPI dashboard: Chart.js analytics, low-stock alerts, 6-month trend charts',
-      'Asset list with search, filter, sort, pagination — full detail on row click',
-      'Add/Edit with duplicate serial number detection, 5 mandatory fields',
-      'Excel import (Add Only / Add+Update) with header garbage filtering',
-      'Multi-sheet colour-coded Excel export by asset status',
-      'Bulk actions — status change, bulk delete with confirmation',
-      'Full audit log per asset — every change tracked with timestamp',
-      'Floating AI chat widget — natural language queries return card-format results',
-    ],
-    tags: ['Python', 'Flask', 'SQLite', 'Chart.js', 'HTML/CSS', 'JavaScript'],
-    status: 'Live',
-    category: 'Web Application · IT Tool',
-    color: 'border-cyan-500',
-    glowColor: 'shadow-[0_0_30px_rgba(6,182,212,0.2)]',
-    github: 'https://github.com/waqas-syed',
-    demo: '#',
+    emoji: '📦', group: 'Personal Apps & AI Tools',
+    title: 'IT Asset Manager', subtitle: 'Enterprise Asset Tracking Web App',
+    status: 'Live', category: 'Web Application · IT Tool',
+    description: 'Full-stack Flask web app replacing Excel-based IT asset tracking. Manages 1,500–2,000+ active assets across MENA — modelled on SAP ISP ERP workflows. Includes AI chat widget for natural language queries.',
+    highlights: ['KPI dashboard: Chart.js analytics, low-stock alerts, 6-month trend charts', 'Asset list with search, filter, sort, pagination — full detail on row click', 'Excel import (Add Only / Add+Update) with header garbage filtering', 'Multi-sheet colour-coded Excel export by asset status', 'Full audit log per asset — every change tracked with timestamp', 'Floating AI chat widget — natural language queries return card-format results'],
+    tags: ['Python', 'Flask', 'SQLite', 'Chart.js', 'JavaScript'],
+    github: 'https://github.com/waqas-syed', demo: '#',
+    pmDetails: { scope: 'Replace a broken shared Excel file with a proper asset management web application aligned to enterprise ERP workflows.', objectives: ['Eliminate duplicate serial numbers and data conflicts', 'Reduce asset query time from 10 min to under 30 sec', 'Enable audit trail for every asset change', 'Support bulk operations and Excel import/export'], stakeholders: 'IT team and management requiring accurate asset inventory for procurement and compliance', timeline: '6 weeks development', outcomes: ['1,500+ assets tracked with 100% accuracy', 'Asset query time: 10 min → 10 sec (via AI chat)', 'Zero duplicate serial numbers since deployment', 'Full audit trail enables compliance reporting'] },
   },
   {
-    icon: null,
-    iconEmoji: '🔔',
-    title: 'SNOW SLA Automation Pipeline',
-    subtitle: 'ServiceNow Monitoring & WhatsApp Alerts',
-    description: 'A Python automation pipeline monitoring ServiceNow tickets 24/7 and firing WhatsApp alerts before SLA breaches. Zero manual checking — runs as background daemons via cron every 5 minutes.',
-    highlights: [
-      'Polls ServiceNow REST API every 5 minutes for new & at-risk tickets',
-      'Calculates SLA breach time — fires WhatsApp 30 minutes before breach via Twilio',
-      'Daily 9 AM email summariser — SAP Outlook inbox → prioritised action list',
-      'Dual trigger: SNOW API + SAP email scanning (survives expired cookies)',
-      'JSON output mode for live dashboard integration into Waqas AI Hub',
-      'Runs as background daemon — auto-restarts via macOS LaunchAgent',
-      'Full timestamp audit log in /tmp/ for every alert fired',
-      'Handles 50–60 tickets/month per engineer, 1,000–1,500/year total',
-    ],
-    tags: ['Python', 'ServiceNow', 'Twilio', 'REST API', 'Cron', 'SAP O365'],
-    status: 'Live',
-    category: 'Automation · Monitoring',
-    color: 'border-green-500',
-    glowColor: 'shadow-[0_0_30px_rgba(34,197,94,0.2)]',
+    emoji: '🔔', group: 'Personal Apps & AI Tools',
+    title: 'SNOW SLA Automation Pipeline', subtitle: 'ServiceNow Monitoring & WhatsApp Alerts',
+    status: 'Live', category: 'Automation · Monitoring',
+    description: 'Python automation pipeline monitoring ServiceNow tickets 24/7 and firing WhatsApp messages before SLA breaches. Runs as background daemons via cron every 5 minutes.',
+    highlights: ['Polls ServiceNow REST API every 5 minutes for new & at-risk tickets', 'Calculates SLA breach time — fires WhatsApp 30 minutes before breach via Twilio', 'Daily 9 AM email summariser — SAP Outlook inbox → prioritised action list', 'JSON output mode for live dashboard integration', 'Runs as background daemon — auto-restarts via macOS LaunchAgent', 'Full timestamp audit log for every alert fired'],
+    tags: ['Python', 'ServiceNow', 'Twilio', 'REST API', 'Cron'],
     github: 'https://github.com/waqas-syed',
-    demo: '#',
+    pmDetails: { scope: 'Eliminate manual SLA monitoring by automating ticket surveillance and proactive breach alerts via WhatsApp.', objectives: ['Remove 45 min/day of manual SNOW monitoring', 'Alert engineers 30 min before any SLA breach', 'Create daily email summary of inbox priorities', 'Provide JSON feed for dashboard integration'], stakeholders: 'IT engineers responsible for SLA compliance, IT management reviewing metrics', timeline: '2 weeks development', outcomes: ['Zero SLA breaches for 6 months post-deployment', 'Daily monitoring time: 45 min → 0', '100% automated alert delivery via WhatsApp', 'Dual trigger: SNOW API + email scanning'] },
   },
   {
-    icon: null,
-    iconEmoji: '🌐',
-    title: 'HiTecH AI HUB Website',
-    subtitle: 'Personal Brand & Technology Platform',
-    description: 'This website — a production-ready personal technology brand built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Live IT news ticker, neural network skill map, animated hero, full blog, hire page, and Cloudflare Pages deployment.',
-    highlights: [
-      'Next.js 14 App Router — static export on Cloudflare Pages (global CDN)',
-      'Live IT/AI news ticker: RSS feeds from TechCrunch, The Verge, Ars Technica, Wired',
-      'Animated neural network expertise diagram with 6 skill domains',
-      'Animated hero: dual avatar with data-sync beam, orbit rings, mobile-responsive',
-      'Blog system with Markdown — add posts without touching code',
-      'Full /portfolio page: 4 work roles, 13+ certs, 7 skill domains, 8 projects',
-      'Neural Network skill explorer on About page (71 skills, 8 domains)',
-      'Fully responsive (mobile + desktop), SEO optimised, Open Graph metadata',
-    ],
-    tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Cloudflare Pages'],
-    status: 'Live',
-    category: 'Web Application · Personal Brand',
-    color: 'border-purple-500',
-    glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.2)]',
-    github: 'https://github.com/waqastayyab2004-tech/hitechtechnologyhub',
-    demo: 'https://www.hitechtechnologyhub.com',
+    emoji: '🌐', group: 'Personal Apps & AI Tools',
+    title: 'HiTecH AI HUB Website', subtitle: 'Personal Brand & Technology Platform',
+    status: 'Live', category: 'Web Application · Personal Brand',
+    description: 'Production-ready personal technology brand built with Next.js 14, TypeScript, Tailwind CSS. Live IT/AI news ticker, neural network skill map, animated hero, full blog, IT learning portal, and Cloudflare Pages deployment.',
+    highlights: ['Next.js 14 App Router — static export on Cloudflare Pages (global CDN)', 'Live IT/AI news ticker: RSS feeds from TechCrunch, The Verge, Ars Technica', 'Animated neural network expertise diagram with 6 skill domains', '24 projects page, 16 blog posts, IT Learning portal with 12 courses', 'IT Services, Industries, Medical Billing, Digital Marketing pages', 'Fully responsive (mobile + desktop), SEO optimised'],
+    tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Cloudflare Pages', 'Framer Motion'],
+    demo: 'https://www.hitechtechnologyhub.com', github: 'https://github.com/waqastayyab2004-tech/hitechtechnologyhub',
+    pmDetails: { scope: 'Build a professional personal brand website serving dual purpose: senior IT role attraction and IT outsourcing/freelance client conversion.', objectives: ['Attract senior IT hiring managers and HR recruiters', 'Convert outsourcing and freelance project enquiries', 'Showcase 24 real projects with PMP documentation', 'Establish thought leadership via blog and IT Learning'], stakeholders: 'Hiring managers (MENA + global), IT outsourcing clients (UK/US/EU), students seeking IT training', timeline: '3 months build, ongoing enhancement', outcomes: ['Full professional brand site live on global CDN', '24 projects, 16 blog posts, 12 courses published', 'IT Services, Training, Industries pages driving enquiries', 'Mobile + desktop optimised, SEO ready'] },
   },
   {
-    icon: null,
-    iconEmoji: '🤖',
-    title: 'SAP O365 MCP Server',
-    subtitle: 'Claude AI ↔ SAP Microsoft 365 Bridge',
-    description: 'A Model Context Protocol (MCP) server giving Claude AI direct access to SAP Outlook, Calendar, OneDrive, and SharePoint — enabling natural language control of enterprise M365 services from any Claude session.',
-    highlights: [
-      'OAuth2 authentication with SAP Azure AD — bypasses Conditional Access on non-managed Mac',
-      'localhost:8080 redirect URI workaround (device code flow blocked by SAP policy)',
-      'Read/search SAP Outlook emails — full content + attachment support',
-      'Query SAP Calendar — list, create, update meetings via Graph API',
-      'Browse OneDrive (49.87 GB) — list, download, upload documents',
-      'SharePoint site search across 10 internal SAP sites',
-      'Token auto-refresh — stays connected without manual re-auth',
-      'Used daily in Waqas AI Hub + Claude Code sessions',
-    ],
-    tags: ['Python', 'FastAPI', 'OAuth2', 'Microsoft Graph API', 'MCP', 'SAP Azure AD'],
-    status: 'Live',
-    category: 'AI Integration · MCP Server',
-    color: 'border-orange-500',
-    glowColor: 'shadow-[0_0_30px_rgba(249,115,22,0.2)]',
+    emoji: '🔗', group: 'Personal Apps & AI Tools',
+    title: 'SAP O365 MCP Server', subtitle: 'Claude AI ↔ Microsoft 365 Bridge',
+    status: 'Live', category: 'AI Integration · MCP Server',
+    description: 'Model Context Protocol server giving Claude AI direct access to SAP Outlook, Calendar, OneDrive, and SharePoint — enabling natural language control of enterprise M365 services from any Claude session.',
+    highlights: ['OAuth2 authentication with Azure AD — bypasses Conditional Access on non-managed Mac', 'Read/search SAP Outlook emails — full content + attachment support', 'Query SAP Calendar — list, create, update meetings via Graph API', 'Browse OneDrive (49.87 GB) — list, download, upload documents', 'SharePoint site search across 10 internal sites', 'Token auto-refresh — stays connected without manual re-auth'],
+    tags: ['Python', 'FastAPI', 'OAuth2', 'Microsoft Graph API', 'MCP', 'Azure AD'],
     github: 'https://github.com/waqas-syed',
-    demo: '#',
+    pmDetails: { scope: 'Enable natural language AI control of enterprise M365 services by building a Model Context Protocol integration layer.', objectives: ['Allow Claude AI to read and search corporate emails', 'Enable AI-assisted calendar management', 'Provide AI access to OneDrive and SharePoint documents', 'Bypass SAP Conditional Access on non-managed device'], stakeholders: 'Senior IT engineer using AI tools for daily operational efficiency', timeline: '3 weeks development', outcomes: ['Full M365 suite accessible via natural language', 'Used daily in Claude Code sessions and Waqas AI Hub', 'OAuth2 token refresh automated — zero manual re-auth', 'Enables AI-powered email and calendar management'] },
   },
 
-  // ── SAP ENTERPRISE PROJECTS ──────────────────────────────────────────
+  // ── GROUP 2: Enterprise IT Implementations ──────────────────────
   {
-    icon: null,
-    iconEmoji: '📊',
-    title: 'SAP PowerBI IT Operations Dashboard',
-    subtitle: 'Enterprise KPI & Analytics Automation · SAP',
-    description: 'PowerBI dashboards for real-time IT KPIs at SAP Saudi Arabia — asset lifecycle, ServiceNow SLA stats, ticket volume trends, onboarding completion rates, and procurement spend. Integrated with SharePoint and SAP Work Zone for live data feeds accessible by IT leadership.',
-    highlights: [
-      'Real-time IT KPI dashboards: asset count, SLA %, ticket volumes by category',
-      'SAP Work Zone / SAP JAM integration — published to all KSA IT team members',
-      'SharePoint data connectors — live feeds from SNOW and SAP ISP asset system',
-      'Monthly procurement spend tracking (MENA device approvals ~200–300K SAR/mo)',
-      'Onboarding/offboarding completion metrics for IT leadership reporting',
-      'Used by SVP MEA-North, Country MDs, and IT managers for decision-making',
-      'Self-service model — non-technical stakeholders read dashboards independently',
-      'Replaced manual monthly Excel reports sent via email',
-    ],
-    tags: ['PowerBI', 'SharePoint', 'SAP Work Zone', 'SAP JAM', 'ServiceNow', 'Data Analytics'],
-    status: 'Live',
-    category: 'Enterprise Analytics · SAP IT',
-    color: 'border-sky-500',
-    glowColor: 'shadow-[0_0_30px_rgba(14,165,233,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '🖥️', group: 'Enterprise IT Implementations',
+    title: 'Modern Workplace Migration', subtitle: 'SCCM → Intune/Autopilot · 200+ Users · 90 Days',
+    status: 'Completed', category: 'Change Management · MDM',
+    description: 'Led the full migration of 200+ users from legacy SCCM to Microsoft Intune/Autopilot zero-touch provisioning and Azure AD. Completed in 90 days across Windows, macOS (JamF), iOS, and Android — zero business disruption.',
+    highlights: ['Phased rollout: IT pilot → low-risk → standard → executives', 'Zero-touch Autopilot: new device setup 3.5 hrs → 45 minutes', 'JamF for macOS: FileVault, app bundle, Defender — 15-min enrollment', 'Conditional Access: legacy auth blocked, MFA + named locations enforced', 'Device compliance: 62% → 94% within 90 days', 'Microsoft Secure Score: 41% → 71% post-deployment', 'Zero C-suite escalations during entire rollout'],
+    tags: ['Intune', 'Autopilot', 'Azure AD', 'JamF', 'SCCM', 'Change Management'],
+    pmDetails: { scope: 'Migrate 200+ users from on-premises SCCM legacy management to cloud-native Microsoft Intune/Autopilot across all device platforms.', objectives: ['Eliminate SCCM on-premises infrastructure dependency', 'Achieve zero-touch device provisioning for all new hires', 'Enforce device compliance from anywhere without VPN', 'Improve Secure Score by minimum 20 points'], stakeholders: 'IT team (delivery), 200+ end users (3 offices), IT Manager (sponsor), C-suite (executive users requiring white-glove)', timeline: '90 days (phased: 3 waves)', budget: 'Microsoft E3/E5 licensing (existing), no additional hardware cost', outcomes: ['Device compliance: 62% → 94%', 'New device setup: 3.5 hrs → 45 min', 'Remote device visibility: 30% → 100%', 'Secure Score: 41% → 71%'] },
   },
   {
-    icon: null,
-    iconEmoji: '📱',
-    title: 'MENA Device Approval & Procurement Workflow',
-    subtitle: 'Power Apps + SAP Ariba Automation · SAP',
-    description: 'A Power Apps-based IT device approval system for the SAP MENA region — replacing manual email chains for device procurement. Handles end-user device requests, management approvals, and SAP Ariba purchase order creation, processing 200–300K SAR/month in hardware approvals.',
-    highlights: [
-      'Power Apps front-end for employee device requests (laptops, mobiles, accessories)',
-      'Multi-level approval workflow: user → IT manager → country MD → SAP Ariba PO',
-      'SAP Ariba integration — approved requests auto-create PR/PO in procurement system',
-      'Managed MENA device approvals: ~200–300K SAR/month, ~600K SAR/year',
-      'Covers SAP offices: Riyadh (200+ users), Jeddah, Al-Khobar, and wider MENA',
-      'Power Automate flows for notifications, escalations, and approval reminders',
-      'Replaced 100% of manual email-based approval process',
-      'Device catalogue synced with approved vendor list (Lenovo, Apple, Samsung)',
-    ],
-    tags: ['Power Apps', 'Power Automate', 'SAP Ariba', 'SharePoint', 'M365', 'PR/PO Workflow'],
-    status: 'Live',
-    category: 'Enterprise Automation · SAP IT',
-    color: 'border-indigo-500',
-    glowColor: 'shadow-[0_0_30px_rgba(99,102,241,0.2)]',
-    github: '#',
-    demo: '#',
-  },
-  {
-    icon: null,
-    iconEmoji: '🏢',
-    title: 'SAP Saudi Arabia IT Infrastructure Projects',
-    subtitle: 'Office Moves, Renovations & AV Deployments · SAP',
-    description: 'Led multiple large-scale IT infrastructure deployments across SAP Saudi Arabia offices — including the Riyadh head office renovation, Jeddah and Al-Khobar remote office setups, and Meeting Room Technology (MTR) upgrades with a combined project value exceeding 1.2M SAR.',
-    highlights: [
-      'Riyadh Head Office renovation: complete IT infrastructure rebuild — 1.2M SAR project',
-      'Jeddah & Al-Khobar remote office IT setup and network rollout (WAN/LAN)',
-      '15 meeting rooms: MS Teams MTR, Logitech Rally, Poly Pano, Evoko booking, Crestron',
-      'Digital signage deployment: SVM system across all KSA offices',
-      'Network: Cisco switches, Aruba Wireless, NAC controllers, ISP/WAN connectivity',
-      'HP server room assets: setup, racking, cabling, SCCM deployment',
-      'SAP Board & CEO-level meeting AV setups: LEAP, Crown Plaza, Germany IBS broadcasts',
-      'Coordinated vendors: Destiny, Beetra — end-to-end from PR/PO to commissioning',
-    ],
-    tags: ['IT Infrastructure', 'Cisco', 'Aruba', 'MS Teams MTR', 'Crestron', 'SAP Ariba', 'Project Management'],
-    status: 'Live',
-    category: 'IT Infrastructure · Project Management',
-    color: 'border-teal-500',
-    glowColor: 'shadow-[0_0_30px_rgba(20,184,166,0.2)]',
-    github: '#',
-    demo: '#',
-  },
-  {
-    icon: null,
-    iconEmoji: '🔐',
-    title: 'Modern Workplace & Endpoint Security Rollout',
-    subtitle: 'Intune / Autopilot / SCCM / Azure AD · SAP MENA',
-    description: 'Designed and executed the Modern Workplace endpoint management transition for SAP MENA — migrating from legacy SCCM to Microsoft Intune/Autopilot, Azure AD (Entra ID), and zero-touch device provisioning. Covers Windows, macOS (JamF), iOS, and Android platforms across 3 Saudi offices.',
-    highlights: [
-      'Microsoft Intune + Autopilot: zero-touch Windows provisioning for new hires',
-      'JamF: macOS MDM — SAP-certified app deployment, compliance, FileVault',
-      'Azure AD (Entra ID): SSO, MFA, Conditional Access policies for MENA users',
-      'Trellix/McAfee + HIPS + SCCM compliance checks — frontend compliancy checker',
-      'Defender for M365: endpoint detection, threat response, Secure Score improvement',
-      'iOS & Android MDM: SAP-certified apps on mobiles, remote wipe capability',
-      'Company Portal + Software Centre: self-service app deployment for 200+ users',
-      'TLM/Cloud/OneDrive/SharePoint data backup and recovery procedures',
-    ],
-    tags: ['Microsoft Intune', 'Autopilot', 'SCCM', 'Azure AD', 'JamF', 'Trellix', 'Defender', 'MDM'],
-    status: 'Live',
-    category: 'Cybersecurity · Modern Workplace',
-    color: 'border-red-500',
-    glowColor: 'shadow-[0_0_30px_rgba(239,68,68,0.2)]',
-    github: '#',
-    demo: '#',
-  },
-  {
-    icon: null,
-    iconEmoji: '🏦',
-    title: 'Bank ATM & Branch Security System',
-    subtitle: 'Physical Security Infrastructure · Banque Saudi Fransi',
-    description: 'Managed the complete ATM and branch physical security infrastructure for Banque Saudi Fransi across Riyadh head office and multiple branches — including access control, CCTV, IoT sensors, burglar/fire alarms, and 24/7 security command centre operations.',
-    highlights: [
-      'Managed G4S MultiMax access control — employee access cards for HQ and all branches',
-      'Siecep ATM security management tool — health monitoring for ATM network',
-      'CCTV, IoT sensors, burglar & fire alarm systems across all branches',
-      'Security command centre operations — incident recording to management',
-      'IT ticket management via BMC Remedy — monitoring and processing',
-      'Vanguard security software — user privilege management and audit',
-      '24/7 business continuity monitoring for banking security systems',
-      'Testing & maintenance: access control, sensors, CCTV, alarm systems',
-    ],
-    tags: ['BMC Remedy', 'G4S MultiMax', 'Siecep', 'Vanguard', 'CCTV', 'Access Control', 'Banking IT'],
-    status: 'Live',
-    category: 'Physical Security · Banking IT',
-    color: 'border-rose-500',
-    glowColor: 'shadow-[0_0_30px_rgba(244,63,94,0.2)]',
-    github: '#',
-    demo: '#',
-  },
-
-  // ── IN DEVELOPMENT ───────────────────────────────────────────────────
-  {
-    icon: null,
-    iconEmoji: '📊',
-    title: 'SNOW SLA Breach Predictor',
-    subtitle: 'Python ML Model on Real ServiceNow Data',
-    description: 'A machine learning model built on real SAP ServiceNow ticket data that predicts which tickets will breach SLA — combining 11 years of IT operations expertise with Python ML. Designed as a proof of capability for SAP ML Engineer role transition.',
-    highlights: [
-      'Training data: real SAP ServiceNow tickets — 1,000–1,500/year over multiple years',
-      'scikit-learn pipeline — Random Forest + feature engineering',
-      'Features: ticket age, priority, category, assignment group, time-of-day, SLA target',
-      'Predicts breach probability per ticket with confidence score',
-      'Integrates with existing SNOW WhatsApp alert pipeline for real-time scoring',
-      'Dashboard visualisation of at-risk tickets by category and engineer',
-      'SAP BTP deployment path — shows SAP + Python ML convergence',
-      'Evidence piece for SAP ML Engineer role application (internal)',
-    ],
-    tags: ['Python', 'scikit-learn', 'Pandas', 'SAP BTP', 'ServiceNow', 'ML', 'Random Forest'],
-    status: 'In Development',
-    category: 'AI / ML · Predictive Analytics',
-    color: 'border-yellow-500',
-    glowColor: 'shadow-[0_0_30px_rgba(234,179,8,0.2)]',
-    github: '#',
-    demo: '#',
-  },
-
-  // ── ENTERPRISE IMPLEMENTATIONS ───────────────────────────────────────
-  {
-    icon: null,
-    iconEmoji: '🖥️',
-    title: 'Modern Workplace Migration: SCCM → Intune/Autopilot',
-    subtitle: 'Enterprise Endpoint Transformation · 200+ Users',
-    description: 'Led the full migration of a 200+ user enterprise from legacy SCCM on-premises management to Microsoft Intune, Autopilot zero-touch provisioning, and Azure AD (Entra ID). Completed in 90 days across Windows, macOS (JamF), iOS, and Android platforms — zero business disruption.',
-    highlights: [
-      'Phased rollout: IT pilot (10) → low-risk (50) → standard (100) → executives (50)',
-      'Autopilot zero-touch: new device setup reduced from 3.5 hrs → 45 minutes',
-      'JamF for macOS: FileVault, SAP app bundle, Defender, VPN — 15-min enrollment',
-      'Azure AD Conditional Access: blocked legacy auth, enforced MFA and named locations',
-      'Device compliance rate improved from 62% to 94% within 90 days',
-      'Microsoft Secure Score improved from 41% to 71% post-deployment',
-      'Change management: comms plan, FAQ docs, per-wave user briefings',
-      'Zero helpdesk escalations from C-suite during rollout — white-glove exec delivery',
-    ],
-    tags: ['Intune', 'Autopilot', 'Azure AD', 'JamF', 'SCCM', 'Change Management', 'Zero Trust'],
-    status: 'Live',
-    category: 'Enterprise Implementation · Change Management',
-    color: 'border-sky-500',
-    glowColor: 'shadow-[0_0_30px_rgba(14,165,233,0.2)]',
-    github: '#',
-    demo: '#',
-  },
-  {
-    icon: null,
-    iconEmoji: '🔐',
-    title: 'Zero Trust Security Architecture Implementation',
-    subtitle: 'Azure Security Engineer · Enterprise Cybersecurity',
-    description: 'Designed and deployed a Zero Trust security architecture for a 200+ user multinational enterprise — including Conditional Access policies, MFA enforcement, Defender for M365, and endpoint compliance. Microsoft Secure Score raised from 41% to 78% over 12 months.',
-    highlights: [
-      'Conditional Access: 5 core policies — blocked legacy auth, enforced compliant devices',
-      'MFA deployment: named locations (office IPs) trusted, all external access requires MFA',
-      'Defender for M365: EDR enabled, threat policies tuned, Secure Score 41% → 78%',
-      'Privileged Identity Management (PIM): no permanent Global Admin accounts',
-      'Intune compliance policies: BitLocker, Defender, minimum OS version enforced',
-      'Data Loss Prevention (DLP): sensitivity labels applied to SharePoint and email',
-      'Security awareness training delivered to 200+ users — phishing simulation completed',
-      'Azure Sentinel (SIEM) pilot: custom alert rules for anomalous sign-in patterns',
-    ],
+    emoji: '🔐', group: 'Enterprise IT Implementations',
+    title: 'Zero Trust Security Architecture', subtitle: 'Azure Security · Secure Score 41% → 78%',
+    status: 'Completed', category: 'Cybersecurity · Enterprise',
+    description: 'Designed and deployed Zero Trust security architecture for a 200+ user multinational — Conditional Access, MFA, Defender for M365, PIM, DLP, and SIEM pilot. Secure Score raised from 41% to 78% over 12 months.',
+    highlights: ['5 Conditional Access policies — legacy auth blocked, compliant devices enforced', 'MFA: named locations trusted, all external access requires MFA', 'Defender for M365: EDR enabled, Secure Score 41% → 78%', 'PIM: no permanent Global Admin accounts', 'DLP: sensitivity labels on SharePoint and email', 'Security awareness: 200+ users trained, phishing simulation completed'],
     tags: ['Azure Security', 'Zero Trust', 'Conditional Access', 'MFA', 'Defender', 'PIM', 'DLP'],
-    status: 'Live',
-    category: 'Cybersecurity · Enterprise Implementation',
-    color: 'border-red-500',
-    glowColor: 'shadow-[0_0_30px_rgba(239,68,68,0.2)]',
-    github: '#',
-    demo: '#',
+    pmDetails: { scope: 'Implement Zero Trust security architecture aligned to Microsoft best practices across the full Microsoft 365 and Azure AD tenant.', objectives: ['Eliminate all legacy authentication attack vectors', 'Enforce device compliance as condition for resource access', 'Achieve 75%+ Microsoft Secure Score', 'Implement privileged access governance via PIM'], stakeholders: 'IT Manager (sponsor), CISO/Security (requirement owner), 200+ end users, Microsoft (vendor support)', timeline: '12 months (phased implementation)', outcomes: ['Secure Score: 41% → 78%', 'Legacy auth attacks: eliminated', 'Zero security incidents attributed to identity compromise', 'All admin access PIM-governed with audit trail'] },
   },
   {
-    icon: null,
-    iconEmoji: '🏢',
-    title: 'Riyadh Head Office IT Infrastructure Rebuild',
-    subtitle: 'Office Renovation · 15 Meeting Rooms · 1.2M SAR Project',
-    description: 'Led the complete IT infrastructure rebuild for a major head office renovation — 15 meeting rooms with full AV deployment, Cisco/Aruba network rebuild, HP server room rebuild, and digital signage rollout across all floors. Project value exceeded 1.2M SAR.',
-    highlights: [
-      '15 meeting rooms: MS Teams MTR, Logitech Rally, Poly Pano, Evoko booking systems',
-      'Cisco switch/router full replacement: WAN, LAN, NAC controllers, Aruba Wireless',
-      'HP server room: rack rebuild, cabling, SCCM deployment, UPS configuration',
-      'Digital signage (SVM/ITPP): content management across all office floors',
-      'Crestron presentation systems installed in 5 boardrooms',
-      'Vendor management: Destiny and Beetra — full PR/PO via SAP Ariba',
-      '200+ users migrated seamlessly — zero business disruption during renovation',
-      'Post-completion: C-level sign-off on all meeting rooms within 1 week',
-    ],
-    tags: ['IT Infrastructure', 'Cisco', 'Aruba', 'MS Teams MTR', 'Crestron', 'SAP Ariba', 'Project Management'],
-    status: 'Live',
-    category: 'IT Infrastructure · Project Management',
-    color: 'border-teal-500',
-    glowColor: 'shadow-[0_0_30px_rgba(20,184,166,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '🏢', group: 'Enterprise IT Implementations',
+    title: 'Riyadh HQ IT Infrastructure Rebuild', subtitle: '15 Meeting Rooms · 1.2M SAR · Zero Disruption',
+    status: 'Completed', category: 'IT Infrastructure · Project Management',
+    description: 'Led complete IT infrastructure rebuild for major head office renovation — 15 meeting rooms with full AV, Cisco/Aruba network rebuild, HP server room, and digital signage. Project value 1.2M SAR.',
+    highlights: ['15 meeting rooms: Teams MTR, Logitech Rally, Poly Pano, Evoko booking', 'Cisco switch/router replacement: WAN, LAN, NAC, Aruba Wireless', 'HP server room: rack rebuild, cabling, SCCM deployment, UPS config', 'Digital signage (SVM/ITPP): all office floors deployed', 'Vendor management: Destiny and Beetra via SAP Ariba', '200+ users migrated — zero business disruption'],
+    tags: ['Cisco', 'Aruba', 'HP Servers', 'Teams MTR', 'Crestron', 'SAP Ariba', 'Project Mgmt'],
+    pmDetails: { scope: 'Full IT infrastructure design, procurement, and deployment for a major head office renovation — covering network, server room, meeting rooms, and digital signage.', objectives: ['Deploy 15 fully-equipped Teams-certified meeting rooms', 'Rebuild core network with current-generation Cisco/Aruba hardware', 'Migrate 200+ users to new infrastructure with zero productivity loss', 'Complete within approved 1.2M SAR budget'], stakeholders: 'Country MD (sponsor), Facilities (build partner), IT team (delivery), Vendors: Destiny/Beetra, 200+ end users', timeline: '6 months (phased with renovation schedule)', budget: '1.2M SAR', outcomes: ['15 meeting rooms delivered and signed off by C-level', 'Network fully modernised — zero connectivity incidents post-go-live', '200+ users migrated in single weekend cutover', 'Completed on time and within budget'] },
   },
   {
-    icon: null,
-    iconEmoji: '📊',
-    title: 'ServiceNow ITSM Migration: IT Direct → SNOW',
-    subtitle: 'Full ITSM Platform Migration · ITIL-Aligned Service Design',
-    description: 'Managed the full migration from legacy IT Direct ticketing system to ServiceNow — including ticket data migration, SLA framework redesign, auto-assignment business rules, KB architecture, and user adoption training for 200+ users across 3 offices.',
-    highlights: [
-      'SLA framework redesigned: P1–P4 matrix with executive override rules',
-      'Auto-assignment business rules: category + location → correct team routing',
-      'KB article migration and quality audit: 80+ articles reviewed and updated',
-      'ServiceNow dashboard built: SLA %, ticket volume, aging A/R, FCR metrics',
-      'First Contact Resolution (FCR) improved to 75%+ post-migration',
-      'Change management: 200+ user training across Riyadh, Jeddah, Al-Khobar',
-      'Go-live completed with zero P1 tickets during cutover weekend',
-      'Monthly SLA reporting automated: PowerBI connected to SNOW REST API',
-    ],
-    tags: ['ServiceNow', 'ITIL v3', 'IT Direct', 'Migration', 'Change Management', 'PowerBI', 'SLA Design'],
-    status: 'Live',
-    category: 'ITSM · Change Management',
-    color: 'border-emerald-500',
-    glowColor: 'shadow-[0_0_30px_rgba(16,185,129,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '🏗️', group: 'Enterprise IT Implementations',
+    title: 'New Office Build-Out: IT Planning & Installation', subtitle: 'Jeddah & Al-Khobar Branches · End-to-End Design',
+    status: 'Completed', category: 'IT Infrastructure · Office Build-Out',
+    description: 'Led full IT technology planning and installation for new branch office build-outs — requirements gathering, design, procurement, installation, testing, and handover covering network, AV, workstations, printing, and security.',
+    highlights: ['IT requirements planning: floor plan review, network point layout, room AV design', 'Full BOM raised via SAP Ariba — approved before works began', 'Structured cabling: Cat6 to TIA-568 standard', 'Cisco switches and Aruba APs: VLANs configured, ISP circuit activated', 'Workstations Autopilot-enrolled on arrival — users operational Day 1', 'Handover: site acceptance testing, network diagram, admin guide delivered'],
+    tags: ['Network Design', 'Structured Cabling', 'Cisco', 'Autopilot', 'AV', 'SAP Ariba'],
+    pmDetails: { scope: 'Plan and deliver complete IT infrastructure for new branch office openings — from design through handover to local IT team.', objectives: ['Design IT infrastructure before construction begins', 'Ensure Day 1 operational readiness for all staff', 'Deliver structured cabling to professional standard', 'Provide complete documentation for ongoing support'], stakeholders: 'Office Manager (local sponsor), Facilities/Construction, IT Manager (sign-off), incoming branch staff', timeline: '8 weeks per location', outcomes: ['Branch offices fully operational on Day 1', 'Zero cabling or network rework required post-handover', 'All devices Autopilot-enrolled — zero IT setup required on arrival', 'Full documentation handed over to IT team'] },
   },
   {
-    icon: null,
-    iconEmoji: '📋',
-    title: 'IT Onboarding/Offboarding Automation Programme',
-    subtitle: '140+ Executives & Staff · DocuSign · SNOW · Azure AD',
-    description: 'Designed and implemented a standardised IT onboarding/offboarding programme covering 140+ employees including C-level executives — reducing Day 1 IT setup from 4 hours to 30 minutes through process automation, pre-staging, and DocuSign digital workflows.',
-    highlights: [
-      'Day 1 readiness: device pre-staged, accounts active, apps deployed before arrival',
-      'T-14 day trigger: IT request auto-raised in SNOW on HR confirmation',
-      'Azure AD provisioning: accounts, licenses, group memberships automated',
-      'DocuSign integration: asset assignment signed digitally — zero paper',
-      'Offboarding: account disable, device wipe, data backup — all within 2 hours',
-      '140+ onboardings completed including Country MD, CFO, COO-level executives',
-      'MENA coverage: Riyadh, Jeddah, Al-Khobar, Kuwait, Bahrain remote support',
-      'Reduced IT onboarding tickets by 60% through self-service pre-FAQ docs',
-    ],
-    tags: ['Azure AD', 'ServiceNow', 'DocuSign', 'Intune Autopilot', 'M365', 'Process Automation'],
-    status: 'Live',
-    category: 'Process Automation · Change Management',
-    color: 'border-violet-500',
-    glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '🖧', group: 'Enterprise IT Implementations',
+    title: 'Server Room & Network Device Replacement', subtitle: 'HP Servers · Cisco · Aruba Wi-Fi 6 · Weekend Cutover',
+    status: 'Completed', category: 'IT Infrastructure · Network Refresh',
+    description: 'Led end-of-life server and network infrastructure replacement — HP server rack rebuild, Cisco switch replacement, Aruba Wi-Fi 6 APs, and NAC reconfiguration. Completed in a weekend maintenance window with zero production impact.',
+    highlights: ['HP ProLiant server deployment: racking, cabling, RAID config, OS installation', 'Cisco 48-port PoE switch replacement: VLAN config migrated from legacy hardware', 'Aruba Wi-Fi 6 APs: coverage remapped, full wireless audit post-deployment', 'NAC Controllers: reconfigured for new hardware — 802.1X authentication verified', 'WAN/ISP failover tested: primary and secondary links verified post-cutover', 'Full network diagram updated and uploaded to SharePoint runbook'],
+    tags: ['HP Servers', 'Cisco', 'Aruba Wi-Fi 6', 'NAC', 'VLAN', 'SCCM'],
+    pmDetails: { scope: 'Replace end-of-life server and network infrastructure during planned maintenance window with zero business impact.', objectives: ['Decommission EOL hardware before warranty expiry', 'Deploy current-generation server and network equipment', 'Migrate all configurations with zero data loss', 'Complete within a single weekend maintenance window'], stakeholders: 'IT Manager (sponsor), Data Centre team, Network team, Business operations (impacted by downtime)', timeline: 'Friday 10 PM → Sunday 6 AM maintenance window', outcomes: ['100% hardware replacement completed in single weekend', 'Zero production incidents during or after cutover', 'Wi-Fi 6 upgrade: 40% improvement in wireless throughput', 'All VLAN configs and ACLs migrated without rework'] },
   },
   {
-    icon: null,
-    iconEmoji: '🎙️',
-    title: 'C-Suite & Board-Level Event AV Delivery',
-    subtitle: 'LEAP · Crown Plaza · Germany IBS Broadcasts · SAP Board Events',
-    description: 'Delivered AV and IT infrastructure for 50+ high-stakes executive events including SAP Board meetings, CEO-level sessions at LEAP, Crown Plaza conferences, and live broadcast to Germany IBS — supporting SVPs, MDs, CFOs, COOs, and visiting SAP AG board members.',
-    highlights: [
-      'LEAP 2023/2024: full AV setup, IT support for SAP booth and sessions',
-      'Germany IBS live broadcast: dual-path network, MS Teams, synchronized delivery',
-      'Crown Plaza executive offsite: 300+ attendee AV — zero incidents',
-      'CEO and Board-level meetings: dedicated IT presence, hot spare kit always ready',
-      'Pre-event protocol: 3-hour setup, full rehearsal, backup hotspot, spare device',
-      '5-year track record: zero AV failures at any executive event',
-      'Vendors coordinated: Destiny, Beetra — end-to-end from PR/PO to commissioning',
-      'Supported SAP EMEA President, Country MDs, Directors across MENA cluster',
-    ],
-    tags: ['AV Setup', 'MS Teams', 'Cisco', 'Executive Support', 'Event Management', 'VIP IT'],
-    status: 'Live',
-    category: 'Event Management · VIP IT Support',
-    color: 'border-orange-500',
-    glowColor: 'shadow-[0_0_30px_rgba(249,115,22,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '📊', group: 'Enterprise IT Implementations',
+    title: 'SAP PowerBI IT Operations Dashboard', subtitle: 'KPI Reporting · SAP Work Zone · C-Level Visibility',
+    status: 'Live', category: 'Analytics · Enterprise IT',
+    description: 'PowerBI dashboards for real-time IT KPIs — asset lifecycle, ServiceNow SLA stats, ticket volume trends, and procurement spend. Integrated with SharePoint and SAP Work Zone for live data feeds accessible by IT leadership.',
+    highlights: ['Page 1: Executive Summary — SLA %, open tickets, critical issues (MD view)', 'Page 2: Ticket Operations — volume, by category, by engineer, aging', 'Page 3: Asset Health — stock levels, warranty expiry, refresh planning', 'Page 4: Procurement Spend — monthly, vendor breakdown, YTD', 'SAP Work Zone integration — published to all KSA IT team members', 'Replaced manual monthly Excel reports sent via email'],
+    tags: ['PowerBI', 'SharePoint', 'SAP Work Zone', 'ServiceNow', 'REST API'],
+    pmDetails: { scope: 'Replace manual Excel-based IT reporting with live PowerBI dashboards accessible by all stakeholders from SAP Work Zone.', objectives: ['Provide real-time SLA visibility to IT management', 'Eliminate manual monthly Excel report generation', 'Give C-level single-page IT health overview', 'Enable self-service reporting for IT team members'], stakeholders: 'Country MD (executive view), IT Manager (operational view), Finance (procurement data), IT Team (daily view)', timeline: '4 weeks build + ongoing', outcomes: ['Manual monthly reports eliminated — 3 hrs/month saved', 'C-level reads dashboard every Monday without IT input', 'SLA breach rate visible in real-time — faster intervention', 'Procurement spend tracked monthly — 0 budget surprises'] },
   },
   {
-    icon: null,
-    iconEmoji: '🏦',
-    title: 'Bank ATM & Branch Security System Rollout',
-    subtitle: 'System Security Officer · Banque Saudi Fransi (2012–2015)',
-    description: 'Managed the full ATM and branch physical security infrastructure for Banque Saudi Fransi — including access control, CCTV, IoT security sensors, and 24/7 monitoring across Riyadh HQ and multiple branches. First enterprise security role — foundational to 15-year IT career.',
-    highlights: [
-      'ATM security: Siecep management tool — health monitoring for entire ATM network',
-      'G4S MultiMax access control: employee badges for HQ and all Saudi branches',
-      'CCTV infrastructure: installation, configuration, and 24/7 monitoring',
-      'IoT sensors: burglar alarms, fire alarm systems — regular testing and maintenance',
-      'Security incident recordings provided to management within SLA',
-      'BMC Remedy: ticket management, monitoring, and escalation processing',
-      'Banking platforms: Sicep, Vanguard, MultiMax, BMS — 24/7 business continuity',
-      'Coordinated with Head Office security command centre for all access management',
-    ],
-    tags: ['Physical Security', 'Access Control', 'CCTV', 'BMC Remedy', 'Siecep', 'G4S MultiMax', 'Banking IT'],
-    status: 'Live',
-    category: 'Physical Security · Banking IT',
-    color: 'border-rose-500',
-    glowColor: 'shadow-[0_0_30px_rgba(244,63,94,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '📱', group: 'Enterprise IT Implementations',
+    title: 'MENA Device Approval & Procurement Workflow', subtitle: 'Power Apps + SAP Ariba · 200–300K SAR/Month',
+    status: 'Live', category: 'Process Automation · Procurement',
+    description: 'Power Apps-based IT device approval system for MENA — replacing manual email chains. Handles employee requests, management approvals, and SAP Ariba PO creation. Processes 200–300K SAR/month in hardware approvals.',
+    highlights: ['Power Apps front-end: employee device requests (laptops, mobiles, accessories)', 'Multi-level approval: user → IT manager → Country MD → SAP Ariba PO', 'SAP Ariba integration — approved requests auto-create PR/PO', 'Managed MENA device approvals: ~200–300K SAR/month, ~600K/year', 'Power Automate: notifications, escalations, approval reminders', 'Replaced 100% of manual email-based approval process'],
+    tags: ['Power Apps', 'Power Automate', 'SAP Ariba', 'SharePoint', 'PR/PO Workflow'],
+    pmDetails: { scope: 'Automate the IT device approval and procurement workflow for the MENA region — replacing manual email chains with a governed Power Apps process.', objectives: ['Eliminate untracked email approvals', 'Enforce multi-level approval governance', 'Auto-create SAP Ariba POs on approval', 'Provide audit trail for all device procurement'], stakeholders: 'IT Manager (process owner), Country MD (final approval), Procurement/Finance, 200+ MENA employees (requestors)', timeline: '6 weeks development + rollout', budget: '200–300K SAR/month procurement volume managed', outcomes: ['100% of manual email approvals replaced', '200–300K SAR/month managed through governed workflow', 'Average approval time: 5 days → 2 days', 'Full audit trail available for all procurement decisions'] },
   },
 
-  // ── ASSET MANAGEMENT & TICKETING DEEP-DIVES ──────────────────────────
+  // ── GROUP 3: ITSM & Service Management ─────────────────────────
   {
-    icon: null,
-    iconEmoji: '📦',
-    title: 'Enterprise IT Asset Lifecycle Management Programme',
-    subtitle: '1,500–2,000+ Assets · SAP ISP ERP · Full Lifecycle',
-    description: 'Designed and operated the complete IT asset lifecycle management programme for a MENA multinational — from procurement and tagging through assignment, maintenance, and certified disposal. Replaced a shared Excel file with a structured ERP-aligned process tracking 1,500–2,000+ active devices across Riyadh, Jeddah, and Al-Khobar.',
-    highlights: [
-      'Asset categories: Lenovo laptops, MacBooks, iPhones, Samsung, iPads, printers, data centre equipment',
-      'Procurement: device approval manager for MENA via SAP Ariba — ~200–300K SAR/month',
-      'Receiving & tagging: every device tagged with SAP equipment number on arrival',
-      'Assignment: linked to employee in SAP ISP ERP — tracked with serial number and status',
-      'Regular LPA (Lean Performance Audit) scans — 100% inventory accuracy maintained',
-      'Warranty tracking: refresh planning 6 months ahead, zero surprise hardware failures',
-      'Disposal: 3-pass data wipe + vendor collection + disposal certificate — GDPR compliant',
-      'Onboarding/offboarding: device ready Day 1, wiped and returned to stock on last day',
-    ],
-    tags: ['SAP ISP ERP', 'SAP Ariba', 'CLEA App', 'Asset Lifecycle', 'LPA Scans', 'MENA'],
-    status: 'Live',
-    category: 'IT Asset Management · Enterprise',
-    color: 'border-amber-500',
-    glowColor: 'shadow-[0_0_30px_rgba(245,158,11,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '🔄', group: 'ITSM & Service Management',
+    title: 'ServiceNow ITSM Migration: IT Direct → SNOW', subtitle: '200+ Users · SLA Redesign · Change Management',
+    status: 'Completed', category: 'ITSM · Change Management',
+    description: 'Managed full migration from legacy IT Direct to ServiceNow — ticket data migration, SLA framework redesign, auto-assignment rules, KB architecture, and adoption training for 200+ users across 3 offices.',
+    highlights: ['SLA framework redesigned: P1–P4 matrix with executive override rules', 'Auto-assignment rules: category + location → correct team routing', '80+ KB articles migrated and quality-audited', 'ServiceNow dashboard: SLA %, volumes, aging A/R, FCR metrics', 'First Contact Resolution improved to 75%+ post-migration', 'Go-live completed with zero P1 tickets during cutover weekend'],
+    tags: ['ServiceNow', 'IT Direct', 'ITIL v3', 'Migration', 'Change Management', 'SLA Design'],
+    pmDetails: { scope: 'Migrate from legacy IT Direct ticketing system to ServiceNow with full ITIL v3 service design — including all historical data, KB articles, and user adoption.', objectives: ['Complete data migration from IT Direct with zero data loss', 'Redesign SLA framework aligned to ITIL v3 best practices', 'Train 200+ users across 3 office locations', 'Achieve go-live with zero P1 incidents during cutover'], stakeholders: 'IT Manager (sponsor), 200+ end users (3 offices), IT team (delivery), ServiceNow (platform)', timeline: '3 months (planning → go-live)', outcomes: ['Zero data loss during migration', 'FCR improved from <50% to 75%+', 'SLA compliance: 94%+ within 3 months of go-live', 'Monthly reporting fully automated via PowerBI + SNOW API'] },
   },
   {
-    icon: null,
-    iconEmoji: '🎫',
-    title: 'ServiceNow Ticketing: Ticket Creation, Assignment & Team Routing',
-    subtitle: '1,000–1,500 Tickets/Year · SLA-Aligned · Auto-Assignment Rules',
-    description: 'Built and operated the full ServiceNow ticket management system — from intake and categorisation through assignment, SLA tracking, escalation, and closure. Managed 50–60 tickets/month per engineer across 3 offices, with automated routing rules ensuring zero misassigned tickets.',
-    highlights: [
-      'Ticket intake: ServiceNow portal, email-to-ticket, and walk-in requests — all channels unified',
-      'Auto-assignment business rules: category + location → correct team/engineer automatically',
-      'Priority matrix: P1 (CEO/MD) → 15-min response, P2 → 30-min, P3 → 2-hr, P4 → 1-day',
-      'SLA monitoring: custom alerts at 70% SLA consumed — action before breach',
-      'Escalation paths: L1 → L2 → L3 → IT Manager — documented in every ticket',
-      'Template library: 30+ ticket templates for recurring issue types — consistent quality',
-      'Monthly SLA reporting: collection rate, aging A/R, FCR — auto-generated for IT manager',
-      'Handled 1,000–1,500 tickets/year — maintained 96%+ SLA compliance across all priorities',
-    ],
-    tags: ['ServiceNow', 'ITIL v3', 'SLA Management', 'Auto-Assignment', 'Escalation Management'],
-    status: 'Live',
-    category: 'ITSM · Ticketing Operations',
-    color: 'border-green-500',
-    glowColor: 'shadow-[0_0_30px_rgba(34,197,94,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '🎫', group: 'ITSM & Service Management',
+    title: 'ServiceNow Ticketing Operations Programme', subtitle: '1,000–1,500 Tickets/Year · Auto-Routing · 96%+ SLA',
+    status: 'Live', category: 'ITSM · Ticketing Operations',
+    description: 'Built and operated full ServiceNow ticket management — from intake and categorisation through assignment, SLA tracking, escalation, and closure. 50–60 tickets/month per engineer across 3 offices, with automated routing and 96%+ SLA compliance.',
+    highlights: ['Auto-assignment rules: category + location → correct team/engineer automatically', 'Priority matrix: P1 (exec) → 15-min, P2 → 30-min, P3 → 2-hr, P4 → 1-day response', 'SLA alerts at 70% consumed — action before breach', 'Template library: 30+ templates for recurring issue types', 'Monthly SLA report: auto-generated, 0 manual effort', '96%+ SLA compliance maintained across all priority levels'],
+    tags: ['ServiceNow', 'ITIL v3', 'SLA Management', 'Auto-Assignment', 'Escalation'],
+    pmDetails: { scope: 'Design and operate an ITIL v3-aligned ticket management system with automated routing, SLA monitoring, and performance reporting.', objectives: ['Eliminate misassigned tickets via automation', 'Maintain 95%+ SLA compliance across all priority levels', 'Provide real-time visibility into ticket performance', 'Reduce manual reporting effort to zero'], stakeholders: 'IT Manager (reporting), 200+ end users (requestors), IT engineers (assignees), C-level (executive SLA visibility)', timeline: 'Ongoing operations', outcomes: ['96%+ SLA compliance sustained', 'Zero misassigned tickets with auto-routing', '1,000–1,500 tickets/year managed systematically', 'Monthly SLA report: fully automated — 0 manual effort'] },
   },
   {
-    icon: null,
-    iconEmoji: '📚',
-    title: 'ServiceNow Knowledge Base: Creation, Review & Quality Programme',
-    subtitle: '80+ KB Articles · First-Call Resolution · ITIL v3 Aligned',
-    description: 'Built the ServiceNow Knowledge Base from scratch — migrating legacy IT Direct documentation, creating new articles, establishing quality standards, and running quarterly review cycles. The KB programme raised First Call Resolution (FCR) from below 50% to 75%+ by empowering users to self-serve.',
-    highlights: [
-      'KB article template: symptom → cause → resolution → escalation path (max 7 steps)',
-      'Migrated 80+ articles from IT Direct into ServiceNow KB with quality review',
-      'New articles created for top-20 ticket types (covering 80% of recurring issues)',
-      'KB article categories: Password Reset, VPN/Network, Devices, Apps, Onboarding, AV',
-      'Quarterly KB review cycle: articles flagged as outdated reviewed and updated or retired',
-      'Self-service portal linked to KB — users guided to articles before raising tickets',
-      'FCR improved from <50% to 75%+ within 6 months of KB programme launch',
-      'KB quality metrics tracked in ServiceNow: views, helpful ratings, ticket deflection rate',
-    ],
+    emoji: '📚', group: 'ITSM & Service Management',
+    title: 'ServiceNow Knowledge Base Programme', subtitle: '80+ Articles · FCR <50% → 75%+ · Self-Service',
+    status: 'Live', category: 'Knowledge Management · ITSM',
+    description: 'Built ServiceNow KB from scratch — migrated legacy documentation, created new articles, established quality standards, and ran quarterly review cycles. FCR improved from below 50% to 75%+ within 6 months.',
+    highlights: ['KB template: symptom → cause → resolution → escalation path', '80+ articles migrated from IT Direct with quality review', 'Top-20 ticket types: dedicated KB articles covering 80% of recurring issues', 'Quarterly review cycle: outdated articles updated or retired', 'Self-service portal linked to KB — users guided before raising tickets', 'FCR: from <50% to 75%+ within 6 months of launch'],
     tags: ['ServiceNow KB', 'Knowledge Management', 'ITIL v3', 'FCR Improvement', 'Self-Service'],
-    status: 'Live',
-    category: 'ITSM · Knowledge Management',
-    color: 'border-cyan-500',
-    glowColor: 'shadow-[0_0_30px_rgba(6,182,212,0.2)]',
-    github: '#',
-    demo: '#',
+    pmDetails: { scope: 'Build a high-quality ServiceNow Knowledge Base that empowers users to self-serve — reducing ticket volume and improving first-call resolution.', objectives: ['Create KB articles for top 20 recurring ticket types', 'Establish article quality standard and review process', 'Achieve 75%+ First Call Resolution within 6 months', 'Reduce repeat tickets on known issues by 40%+'], stakeholders: 'IT Manager (KB quality owner), IT engineers (article authors), 200+ end users (KB consumers)', timeline: '2 months initial build + quarterly ongoing maintenance', outcomes: ['80+ articles live and maintained', 'FCR: <50% → 75%+', 'Repeat tickets on known issues reduced by 45%', 'Quarterly review cycle embedded in IT operations calendar'] },
   },
   {
-    icon: null,
-    iconEmoji: '📽️',
-    title: 'Meeting Room Technology Rollout & Upgrade Programme',
-    subtitle: '15 Rooms · MS Teams MTR · Logitech Rally · Poly Pano · Evoko',
-    description: 'Planned and delivered a full meeting room technology upgrade across 15 rooms — from legacy video conferencing to Microsoft Teams Rooms (MTR) standard, including Logitech Rally, Poly Pano systems, Evoko room booking, and Crestron presentation systems in boardrooms. Zero business disruption during rollout.',
-    highlights: [
-      'Scope: 15 meeting rooms — small huddle (4-person) to large boardroom (30+ person)',
-      'MS Teams MTR: certified hardware deployed — seamless Teams meeting join from any room',
-      'Logitech Rally: 4K camera, Rally Mic Pods — deployed in 8 standard meeting rooms',
-      'Poly Pano: panoramic bar system — deployed in 4 open-plan collaboration spaces',
-      'Evoko room booking panels: real-time room availability, integrated with Exchange Online',
-      'Crestron systems: 5 boardrooms with wireless presentation, USB-C and HDMI switching',
-      'Cable management: full concealment, wall-plates, and trunking to professional standard',
-      'User training: 200+ staff trained — laminated quick-start guides in every room',
-    ],
-    tags: ['MS Teams MTR', 'Logitech Rally', 'Poly Pano', 'Evoko', 'Crestron', 'AV Integration', 'Exchange Online'],
-    status: 'Live',
-    category: 'AV & Meeting Room Technology',
-    color: 'border-purple-500',
-    glowColor: 'shadow-[0_0_30px_rgba(139,92,246,0.2)]',
-    github: '#',
-    demo: '#',
+    emoji: '👥', group: 'ITSM & Service Management',
+    title: 'IT Onboarding/Offboarding Automation', subtitle: '140+ Executives & Staff · Day 1 Setup: 4hrs → 30min',
+    status: 'Live', category: 'Process Automation · HR-IT',
+    description: 'Designed and implemented standardised IT onboarding/offboarding for 140+ employees including C-level executives — reducing Day 1 IT setup from 4 hours to 30 minutes through automation, pre-staging, and DocuSign digital workflows.',
+    highlights: ['Day 1 readiness: device pre-staged, accounts active, apps deployed before arrival', 'T-14 day trigger: IT request auto-raised in SNOW on HR confirmation', 'Azure AD provisioning: accounts, licenses, groups automated', 'DocuSign: asset assignment signed digitally — zero paper', 'Offboarding: account disable, device wipe, data backup within 2 hours', '140+ onboardings including Country MD, CFO, COO-level executives'],
+    tags: ['Azure AD', 'ServiceNow', 'DocuSign', 'Intune Autopilot', 'M365', 'Process Automation'],
+    pmDetails: { scope: 'Standardise and automate the IT onboarding/offboarding process to ensure Day 1 readiness for all employees and clean offboarding within the same day.', objectives: ['Reduce Day 1 IT setup time from 4 hours to under 45 minutes', 'Automate account provisioning via Azure AD', 'Eliminate paper-based asset assignment forms', 'Complete offboarding IT tasks within 2 hours of last day'], stakeholders: 'HR (process trigger), IT Manager (process owner), New employees (Day 1 experience), Managers (device requests), Finance (asset tracking)', timeline: '4 weeks design + implementation', outcomes: ['Day 1 setup: 4 hrs → 30 min', '140+ onboardings completed — zero Day 1 failures', 'IT offboarding ticket volume reduced 60%', 'Zero data exposure incidents during offboarding'] },
+  },
+
+  // ── GROUP 4: AV, Events & Physical Security ─────────────────────
+  {
+    emoji: '📽️', group: 'AV, Events & Physical Security',
+    title: 'Meeting Room Technology Rollout', subtitle: '15 Rooms · Teams MTR · Logitech Rally · Evoko',
+    status: 'Completed', category: 'AV & Meeting Room Technology',
+    description: 'Planned and delivered full meeting room technology upgrade across 15 rooms — legacy VC to Microsoft Teams Rooms standard with Logitech Rally, Poly Pano, Evoko booking, and Crestron boardroom systems. Zero business disruption.',
+    highlights: ['15 rooms: small huddle (4-person) to large boardroom (30+ person)', 'Teams MTR: certified hardware — seamless Teams meeting join from any room', 'Logitech Rally: 4K camera, Rally Mic Pods — 8 standard meeting rooms', 'Poly Pano: panoramic bar — 4 open-plan collaboration spaces', 'Evoko booking panels: real-time availability, integrated with Exchange Online', 'Crestron: 5 boardrooms — wireless presentation, USB-C and HDMI switching'],
+    tags: ['Teams MTR', 'Logitech Rally', 'Poly Pano', 'Evoko', 'Crestron', 'AV Integration'],
+    pmDetails: { scope: 'Upgrade all 15 meeting rooms from legacy video conferencing to Microsoft Teams Rooms standard — enabling one-touch meeting join for all users.', objectives: ['Replace all legacy VC equipment with Teams-certified hardware', 'Deploy room booking system integrated with Exchange Online', 'Train 200+ users on new room technology', 'Complete rollout with zero meeting cancellations'], stakeholders: 'Country MD (sponsor), IT Manager (delivery), Facilities, 200+ end users, Vendors: Logitech/Poly/Crestron', timeline: '3 months (phased room-by-room)', outcomes: ['15 rooms upgraded — all Teams-certified', '200+ users trained — laminated guides in every room', 'Room booking via Evoko — zero scheduling conflicts', '5-year track record: zero AV failures at any executive event'] },
   },
   {
-    icon: null,
-    iconEmoji: '🖧',
-    title: 'Server Room & Network Device Replacement Project',
-    subtitle: 'HP Servers · Cisco Switches · Aruba Wireless · Full Refresh',
-    description: 'Led the end-of-life server and network infrastructure replacement across the main office — decommissioning legacy HP servers, deploying new rack hardware, replacing Cisco switches and Aruba wireless access points, and migrating network configuration. All completed during a weekend maintenance window with zero production impact.',
-    highlights: [
-      'HP server rack decommission: old hardware sanitised, data wiped, vendor collected',
-      'New HP ProLiant server deployment: racking, cabling, RAID config, OS installation',
-      'Cisco switch replacement: new 48-port PoE switches — VLAN config migrated',
-      'Aruba wireless: replaced legacy APs with new Wi-Fi 6 hardware — coverage remapped',
-      'NAC Controllers: reconfigured for new hardware — 802.1X authentication verified',
-      'SCCM distribution point updated: all clients re-pointed post-migration',
-      'WAN/ISP failover tested: primary and secondary ISP links verified post-cutover',
-      'Full network diagram updated in Visio and uploaded to SharePoint runbook',
-    ],
-    tags: ['HP Servers', 'Cisco', 'Aruba Wireless', 'NAC', 'VLAN', 'SCCM', 'Network Infrastructure'],
-    status: 'Live',
-    category: 'IT Infrastructure · Network',
-    color: 'border-slate-400',
-    glowColor: 'shadow-[0_0_30px_rgba(148,163,184,0.15)]',
-    github: '#',
-    demo: '#',
+    emoji: '🎙️', group: 'AV, Events & Physical Security',
+    title: 'C-Suite & Board-Level Event Delivery', subtitle: 'LEAP · Crown Plaza · Germany IBS · 5yr Zero Failures',
+    status: 'Live', category: 'Event Management · VIP IT',
+    description: 'Delivered AV and IT for 50+ high-stakes executive events — SAP Board meetings, CEO sessions at LEAP, Crown Plaza conferences, and live Germany IBS broadcasts. Supported SVPs, MDs, CFOs, COOs, and SAP AG board members.',
+    highlights: ['LEAP 2023/2024: full AV setup and IT support for SAP sessions', 'Germany IBS live broadcast: dual-path network, Teams, synchronized delivery', 'Crown Plaza executive offsite: 300+ attendee AV — zero incidents', 'Pre-event protocol: 3-hour setup, rehearsal, backup hotspot, spare device', '5-year track record: zero AV failures at any executive event', 'Supported SAP EMEA President, Country MDs, Directors across MENA'],
+    tags: ['AV Setup', 'MS Teams', 'Executive Support', 'Event Management', 'VIP IT'],
+    pmDetails: { scope: 'Deliver reliable AV and IT infrastructure for all executive-level events — from weekly C-suite meetings to major external conferences and global broadcasts.', objectives: ['Ensure zero AV/IT failures at any C-suite or Board event', 'Deliver pre-event setup and testing 3 hours before every event', 'Maintain hot spare kit for immediate equipment swap', 'Support live broadcasts with dual-path redundancy'], stakeholders: 'Country MD, SVP MEA-North, CFO, COO, SAP AG Board members, Event coordinators', timeline: '50+ events over 5 years (ongoing)', outcomes: ['Zero AV/IT failures across 50+ executive events', '5-year consecutive perfect delivery record', 'Supported CEO-level meetings and SAP Board sessions', 'Germany IBS broadcasts delivered flawlessly on multiple occasions'] },
   },
   {
-    icon: null,
-    iconEmoji: '🏗️',
-    title: 'New Office Build-Out: IT Technology Planning & Installation',
-    subtitle: 'Jeddah & Al-Khobar Branch Offices · End-to-End IT Design',
-    description: 'Led the full IT technology planning and installation for new branch office build-outs — from requirements gathering and design through procurement, installation, testing, and handover. Covered network infrastructure, meeting rooms, workstations, printing, and security systems. Delivered on time and within budget.',
-    highlights: [
-      'IT requirements planning: floor plan review, user count, network point layout, room AV',
-      'Procurement: full BOM (Bill of Materials) raised via SAP Ariba — approved before works began',
-      'Structured cabling: Cat6 installation, patch panels, server cabinet build to TIA-568 standard',
-      'Network: Cisco switches and Aruba APs installed, VLANs configured, ISP circuit activated',
-      'Workstation deployment: laptops, monitors, docking stations — Autopilot enrolled on arrival',
-      'Meeting rooms: Teams MTR / Logitech devices, Evoko booking, projection or display mounted',
-      'Printing: network printers deployed, print server configured, user mapping completed',
-      'Handover: site acceptance testing, network diagram, admin guide delivered to IT team',
-    ],
-    tags: ['Office Build-Out', 'Network Design', 'Structured Cabling', 'Cisco', 'Autopilot', 'AV', 'SAP Ariba'],
-    status: 'Live',
-    category: 'IT Infrastructure · Office Build-Out',
-    color: 'border-lime-500',
-    glowColor: 'shadow-[0_0_30px_rgba(132,204,22,0.15)]',
-    github: '#',
-    demo: '#',
+    emoji: '🏦', group: 'AV, Events & Physical Security',
+    title: 'Bank ATM & Branch Security System', subtitle: 'Banque Saudi Fransi · G4S MultiMax · Siecep · 24/7',
+    status: 'Completed', category: 'Physical Security · Banking IT',
+    description: 'Managed full ATM and branch physical security infrastructure for Banque Saudi Fransi — access control, CCTV, IoT sensors, and 24/7 monitoring across Riyadh HQ and multiple branches.',
+    highlights: ['ATM security: Siecep management tool — full ATM network health monitoring', 'G4S MultiMax access control: employee badges for HQ and all branches', 'CCTV: installation, configuration, and 24/7 monitoring', 'IoT sensors: burglar alarms and fire systems — regular testing', 'BMC Remedy: ticket management and escalation processing', 'Banking platforms: Sicep, Vanguard, MultiMax, BMS — 24/7 continuity'],
+    tags: ['Physical Security', 'Access Control', 'CCTV', 'BMC Remedy', 'Siecep', 'G4S MultiMax'],
+    pmDetails: { scope: 'Manage complete physical security infrastructure for a banking institution — ATM systems, branch access control, CCTV, and alarm systems across all locations.', objectives: ['Ensure 24/7 ATM network health monitoring and alerting', 'Manage access control for HQ and all Saudi branches', 'Maintain CCTV coverage and incident recording capability', 'Ensure business continuity for all security platforms'], stakeholders: 'Branch Managers (access requests), Security Command Centre, IT Management, Regulatory Compliance', timeline: '3 years continuous operations (2012–2015)', outcomes: ['24/7 security operations maintained across all branches', 'Zero access control incidents during tenure', 'All CCTV evidence requests fulfilled within SLA', 'BMC Remedy ticket management established and optimised'] },
   },
 ]
 
+/* ── GROUPS ─────────────────────────────────────────────────────── */
+const GROUPS = [
+  { key: 'All', label: 'All Projects' },
+  { key: 'Personal Apps & AI Tools', label: '💻 Personal Apps & AI Tools' },
+  { key: 'Enterprise IT Implementations', label: '🏢 Enterprise Implementations' },
+  { key: 'ITSM & Service Management', label: '🎫 ITSM & Service Management' },
+  { key: 'AV, Events & Physical Security', label: '🎙️ AV, Events & Security' },
+]
+
 const statusColors: Record<string, string> = {
-  Live: 'bg-green-500/10 text-green-400 border-green-500/20',
-  'In Development': 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
-  'Coming Soon': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  Live: 'bg-green-500/15 text-green-400 border-green-500/30',
+  Completed: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
+  'In Development': 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30',
 }
 
+/* ── PAGE ─────────────────────────────────────────────────────── */
 export default function ProjectsPage() {
+  const [selected, setSelected] = useState<Project | null>(null)
+  const [activeGroup, setActiveGroup] = useState('All')
+
+  const close = useCallback(() => setSelected(null), [])
+
+  useEffect(() => {
+    if (!selected) return
+    document.body.style.overflow = 'hidden'
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
+    window.addEventListener('keydown', handleKey)
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', handleKey) }
+  }, [selected, close])
+
+  const filtered = activeGroup === 'All' ? projects : projects.filter(p => p.group === activeGroup)
+  const groupedFiltered = GROUPS.filter(g => g.key !== 'All').map(g => ({
+    ...g,
+    items: filtered.filter(p => p.group === g.key),
+  })).filter(g => g.items.length > 0)
+
+  const stats = [
+    { v: '100+', l: 'Projects Delivered' },
+    { v: '24', l: 'Showcased Here' },
+    { v: '15+', l: 'Years Experience' },
+    { v: '1.2M+', l: 'SAR Managed' },
+  ]
+
   return (
     <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
       {/* Header */}
-      <ScrollReveal className="text-center mb-14">
-        <h1 className="section-heading mb-4">
+      <div className="text-center mb-10">
+        <h1 className="section-heading mb-3">
           <span className="gradient-text">Projects</span> &amp; Implementations
         </h1>
-        <p className="section-subheading">
-          Real-world apps, enterprise implementations, change management, and AI integrations — delivered across global multinationals and beyond.
+        <p className="section-subheading mb-8">
+          Real-world apps, enterprise rollouts, change management, and AI integrations.<br/>
+          Click any project tile to view full PMP-style documentation.
         </p>
-        {/* Stats */}
-        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 mt-8">
-          {[
-            { value: '100+', label: 'Projects Delivered' },
-            { value: '24', label: 'Showcased Here' },
-            { value: '15+', label: 'Years Building' },
-            { value: '1.2M+', label: 'SAR Projects Managed' },
-          ].map(s => (
-            <div key={s.label} className="text-center">
-              <div className="text-2xl font-black gradient-text">{s.value}</div>
-              <div className="text-gray-500 text-sm mt-0.5">{s.label}</div>
+        <div className="flex flex-wrap justify-center gap-8 sm:gap-14">
+          {stats.map(s => (
+            <div key={s.l} className="text-center">
+              <div className="text-2xl font-black gradient-text">{s.v}</div>
+              <div className="text-gray-500 text-sm mt-0.5">{s.l}</div>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Category legend */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
-          {[
-            { label: 'Personal Apps', color: 'bg-accent-blue/10 border-accent-blue/30 text-accent-blue' },
-            { label: 'SAP Enterprise', color: 'bg-orange-500/10 border-orange-500/30 text-orange-400' },
-            { label: 'Cybersecurity', color: 'bg-red-500/10 border-red-500/30 text-red-400' },
-            { label: 'Change Management', color: 'bg-violet-500/10 border-violet-500/30 text-violet-400' },
-            { label: 'Infrastructure', color: 'bg-teal-500/10 border-teal-500/30 text-teal-400' },
-            { label: 'In Development', color: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400' },
-          ].map(c => (
-            <span key={c.label} className={`px-3 py-1 rounded-full text-xs font-semibold border ${c.color}`}>{c.label}</span>
-          ))}
+      {/* Filter pills */}
+      <div className="flex flex-wrap justify-center gap-2 mb-10">
+        {GROUPS.map(g => (
+          <button key={g.key} onClick={() => setActiveGroup(g.key)}
+            className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all ${
+              activeGroup === g.key ? 'bg-accent-blue border-accent-blue text-white' : 'bg-dark-700 border-white/10 text-gray-400 hover:border-accent-blue/40 hover:text-gray-300'
+            }`}>
+            {g.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Tile grid by group */}
+      {groupedFiltered.map(group => (
+        <div key={group.key} className="mb-12">
+          <h2 className="text-sm font-black text-gray-400 uppercase tracking-widest mb-5 px-1">{group.label}</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {group.items.map((project, i) => (
+              <button key={i} onClick={() => setSelected(project)}
+                className="glass-card p-5 flex flex-col items-start gap-3 text-left hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:border-accent-blue/30 transition-all duration-200 group">
+                {/* Icon */}
+                <span className="text-3xl">{project.emoji}</span>
+                {/* Title */}
+                <div className="flex-1 min-w-0">
+                  <p className="font-bold text-white text-sm leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
+                  <p className="text-gray-500 text-[11px] leading-snug line-clamp-2">{project.subtitle}</p>
+                </div>
+                {/* Footer */}
+                <div className="flex items-center justify-between w-full">
+                  <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border ${statusColors[project.status]}`}>
+                    {project.status}
+                  </span>
+                  <span className="text-[10px] text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity font-semibold">
+                    View →
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
-      </ScrollReveal>
+      ))}
 
-      {/* Projects */}
-      <div className="space-y-8">
-        {projects.map((project, i) => (
-          <ScrollReveal key={project.title} delay={i * 0.05}>
-            <div className={`glass-card border-l-4 ${project.color} p-7 md:p-9 ${project.glowColor} transition-all duration-300 hover:-translate-y-0.5`}>
-              <div className="flex flex-col lg:flex-row gap-8">
+      {/* ── PROJECT MODAL ─────────────────────────────────────────── */}
+      {selected && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto py-8 px-4"
+          style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
+          onClick={(e) => { if (e.target === e.currentTarget) close() }}>
+          <div className="w-full max-w-4xl bg-dark-800 border border-white/10 rounded-2xl shadow-2xl relative">
 
-                {/* Left — icon + meta */}
-                <div className="flex flex-col items-center lg:items-start gap-4 lg:w-56 flex-shrink-0">
-                  <div className="relative">
-                    {project.icon ? (
-                      <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-white/10">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={project.icon} alt={project.iconAlt} className="w-full h-full object-cover" />
+            {/* Modal header */}
+            <div className="flex items-start gap-4 p-7 border-b border-white/8">
+              <span className="text-4xl flex-shrink-0">{selected.emoji}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <h2 className="text-2xl font-black text-white">{selected.title}</h2>
+                  <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${statusColors[selected.status]}`}>
+                    {selected.status}
+                  </span>
+                </div>
+                <p className="text-accent-blue font-semibold text-sm mb-1">{selected.subtitle}</p>
+                <p className="text-gray-500 text-xs">{selected.category}</p>
+              </div>
+              <button onClick={close}
+                className="flex-shrink-0 w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center transition-colors">
+                <X className="w-4 h-4 text-gray-400"/>
+              </button>
+            </div>
+
+            {/* Modal body */}
+            <div className="p-7 space-y-6">
+
+              {/* Project Overview */}
+              <div className="glass-card p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <FileText className="w-4 h-4 text-accent-blue"/>
+                  <h3 className="font-bold text-white text-sm uppercase tracking-wide">Project Overview</h3>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">{selected.description}</p>
+              </div>
+
+              {/* PMP Details grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                {/* Scope */}
+                <div className="glass-card p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Target className="w-4 h-4 text-purple-400"/>
+                    <h3 className="font-bold text-white text-sm uppercase tracking-wide">Project Scope</h3>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">{selected.pmDetails.scope}</p>
+                </div>
+
+                {/* Timeline & Budget */}
+                <div className="glass-card p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Clock className="w-4 h-4 text-cyan-400"/>
+                    <h3 className="font-bold text-white text-sm uppercase tracking-wide">Timeline & Budget</h3>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <span className="text-xs text-gray-500 w-16 flex-shrink-0 pt-0.5">Timeline:</span>
+                      <span className="text-sm text-gray-300">{selected.pmDetails.timeline}</span>
+                    </div>
+                    {selected.pmDetails.budget && (
+                      <div className="flex items-start gap-2">
+                        <span className="text-xs text-gray-500 w-16 flex-shrink-0 pt-0.5">Budget:</span>
+                        <span className="text-sm text-gray-300">{selected.pmDetails.budget}</span>
                       </div>
-                    ) : (
-                      <div className="w-20 h-20 rounded-2xl bg-dark-700 border border-white/10 flex items-center justify-center text-4xl shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                        {project.iconEmoji}
-                      </div>
                     )}
-                    <span className={`absolute -bottom-2 -right-2 badge border text-xs ${statusColors[project.status]}`}>
-                      {project.status}
-                    </span>
-                  </div>
-
-                  <div className="text-center lg:text-left">
-                    <p className="text-xs text-gray-500 leading-snug">{project.category}</p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5 justify-center lg:justify-start">
-                    {project.tags.map(t => (
-                      <span key={t} className="tag text-xs">{t}</span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-2 w-full mt-auto">
-                    {project.github !== '#' ? (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer"
-                        className="btn-outline text-xs py-2 px-3 flex-1 justify-center">
-                        <Github className="w-3.5 h-3.5" /> GitHub
-                      </a>
-                    ) : (
-                      <span className="btn-outline text-xs py-2 px-3 flex-1 justify-center opacity-40 cursor-not-allowed">
-                        <Github className="w-3.5 h-3.5" /> Private
-                      </span>
-                    )}
-                    {project.demo !== '#' ? (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer"
-                        className="btn-primary text-xs py-2 px-3 flex-1 justify-center">
-                        <ExternalLink className="w-3.5 h-3.5" /> Live
-                      </a>
-                    ) : (
-                      <span className="btn-primary text-xs py-2 px-3 flex-1 justify-center opacity-40 cursor-not-allowed">
-                        <ExternalLink className="w-3.5 h-3.5" /> Internal
-                      </span>
-                    )}
+                    <div className="flex items-start gap-2">
+                      <span className="text-xs text-gray-500 w-16 flex-shrink-0 pt-0.5">Stakeholders:</span>
+                      <span className="text-sm text-gray-400 leading-relaxed">{selected.pmDetails.stakeholders}</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Right — details */}
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-2xl font-black text-white mb-0.5">{project.title}</h2>
-                  <p className="text-accent-blue font-semibold text-sm mb-3">{project.subtitle}</p>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-5">{project.description}</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {project.highlights.map((h, j) => (
-                      <div key={j} className="flex items-start gap-2 text-sm text-gray-400">
-                        <CheckCircle className="w-4 h-4 text-accent-blue flex-shrink-0 mt-0.5" />
-                        <span>{h}</span>
+                {/* Objectives */}
+                <div className="glass-card p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Target className="w-4 h-4 text-green-400"/>
+                    <h3 className="font-bold text-white text-sm uppercase tracking-wide">Project Objectives</h3>
+                  </div>
+                  <div className="space-y-1.5">
+                    {selected.pmDetails.objectives.map((o, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                        <span className="text-green-400 font-bold flex-shrink-0">{i + 1}.</span>
+                        {o}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Outcomes */}
+                <div className="glass-card p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <TrendingUp className="w-4 h-4 text-yellow-400"/>
+                    <h3 className="font-bold text-white text-sm uppercase tracking-wide">Outcomes & Results</h3>
+                  </div>
+                  <div className="space-y-1.5">
+                    {selected.pmDetails.outcomes.map((o, i) => (
+                      <div key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                        <CheckCircle className="w-3.5 h-3.5 text-yellow-400 flex-shrink-0 mt-0.5"/>
+                        {o}
                       </div>
                     ))}
                   </div>
                 </div>
 
               </div>
-            </div>
-          </ScrollReveal>
-        ))}
-      </div>
 
-      {/* CTA */}
-      <ScrollReveal delay={0.2} className="mt-14 text-center">
-        <div className="glass-card p-8 max-w-2xl mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <Zap className="w-5 h-5 text-accent-yellow" />
-            <h3 className="text-xl font-bold text-white">Want Something Built?</h3>
+              {/* Key Deliverables */}
+              <div className="glass-card p-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <CheckCircle className="w-4 h-4 text-accent-blue"/>
+                  <h3 className="font-bold text-white text-sm uppercase tracking-wide">Key Deliverables & Highlights</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {selected.highlights.map((h, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                      <CheckCircle className="w-3.5 h-3.5 text-accent-blue flex-shrink-0 mt-0.5"/>
+                      {h}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tech stack */}
+              <div className="glass-card p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <h3 className="font-bold text-white text-sm uppercase tracking-wide">Technologies & Tools</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {selected.tags.map(t => (
+                    <span key={t} className="tag text-xs">{t}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Links + CTA */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                {selected.github && selected.github !== '#' && (
+                  <a href={selected.github} target="_blank" rel="noopener noreferrer"
+                    className="btn-outline text-sm px-5 py-2.5 inline-flex items-center gap-2">
+                    <Github className="w-4 h-4"/> GitHub
+                  </a>
+                )}
+                {selected.demo && selected.demo !== '#' && (
+                  <a href={selected.demo} target="_blank" rel="noopener noreferrer"
+                    className="btn-primary text-sm px-5 py-2.5 inline-flex items-center gap-2">
+                    <ExternalLink className="w-4 h-4"/> Live Demo
+                  </a>
+                )}
+                <Link href="/contact"
+                  className="btn-outline text-sm px-5 py-2.5 inline-flex items-center gap-2 border-green-500/40 text-green-400 hover:bg-green-500/10 ml-auto">
+                  Discuss This Project <ArrowRight className="w-4 h-4"/>
+                </Link>
+              </div>
+
+            </div>
           </div>
-          <p className="text-gray-400 text-sm mb-5">
-            15+ years of enterprise IT + AI/ML skills. I build automation tools, web apps, and AI integrations that solve real problems — from MENA-scale SAP deployments to personal AI dashboards.
-          </p>
-          <a href="/contact" className="btn-primary inline-flex px-8 py-3">
-            Discuss a Project
-          </a>
         </div>
-      </ScrollReveal>
+      )}
+
     </div>
   )
 }
