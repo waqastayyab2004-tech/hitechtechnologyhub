@@ -232,7 +232,7 @@ const processSteps = [
   {
     num: '01',
     title: 'Discovery & Needs Assessment',
-    detail: 'A 30-minute consultation to understand your IT environment, pain points, and objectives. I review existing systems, identify risks, and define the scope.',
+    detail: 'A 30-minute consultation to understand your IT environment, pain points, and objectives. We review your existing systems, identify risks, and define the scope.',
     bullets: ['Current infrastructure and tooling review', 'Incident history and SLA gap analysis', 'Security posture and compliance assessment', 'Priority areas and quick-win identification'],
   },
   {
@@ -332,8 +332,8 @@ const faqs = [
   { q: 'What is the difference between Onsite and Remote IT services?', a: 'Onsite means I physically work at your location — ideal for infrastructure setup, device deployment, and hands-on technical work. Remote services cover everything that can be delivered digitally: cloud administration, ServiceNow, cybersecurity, automation development. Many engagements combine both depending on the phase.' },
   { q: 'How do your services compare to a full-time IT hire?', a: 'You get senior-level expertise (Azure-certified, 15+ years, C-suite track record) without the cost, benefits overhead, and management burden of a full-time employee. Most clients achieve better IT outcomes at 40–60% lower cost than a comparable in-house hire.' },
   { q: 'Do you work with small businesses or only large enterprises?', a: 'Both. My background is in global enterprises, but I apply the same rigour to SMBs — often delivering enterprise-quality IT management that was previously inaccessible to smaller organisations.' },
-  { q: 'What happens if something goes wrong outside working hours?', a: 'Critical support arrangements include defined response time SLAs and out-of-hours escalation protocols. I have 15 years of supporting C-suite executives — availability and responsiveness are non-negotiable in my practice.' },
-  { q: 'Do you sign NDAs?', a: 'Yes. All engagements include a mutual NDA before any access or information sharing. I have operated at the highest levels of corporate IT where confidentiality is essential and absolute.' },
+  { q: 'What happens if something goes wrong outside working hours?', a: 'Critical support arrangements include defined response time SLAs and out-of-hours escalation protocols. Our team brings 15+ years of supporting C-suite executives — availability and responsiveness are non-negotiable in every engagement.' },
+  { q: 'Do you sign NDAs?', a: 'Yes. All engagements include a mutual NDA before any access or information sharing. We operate at the highest levels of corporate IT where confidentiality is essential and absolute.' },
   { q: 'How quickly can you start?', a: 'Typically within 1–2 weeks of proposal agreement — NDA, access setup, and onboarding. For urgent situations, faster start is possible. Contact me to discuss your timeline.' },
 ]
 
@@ -481,7 +481,7 @@ export default function ServicesPage() {
           ))}
         </div>
         <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white font-semibold text-lg">Explore what I can do for your business</p>
+          <p className="text-white font-semibold text-lg">Explore what we can do for your business</p>
           <Link href="#contact-form" className="btn-primary px-8 py-3 whitespace-nowrap">Contact Me</Link>
         </div>
       </section>
@@ -491,7 +491,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="section-heading mb-3">The Right Service Delivery Model for You</h2>
-            <p className="section-subheading">Whether you need flexible part-time support, a dedicated specialist, or team augmentation — I have a model that fits.</p>
+            <p className="section-subheading">Whether you need flexible part-time support, a dedicated specialist, or team augmentation — we have a model that fits.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {deliveryModels.map((m, i) => (
@@ -789,7 +789,7 @@ export default function ServicesPage() {
                 <div className="space-y-5 mb-8">
                   {[
                     { n: '1', t: 'You describe your IT challenge in the form →' },
-                    { n: '2', t: 'I contact you after reviewing your requirements' },
+                    { n: '2', t: 'Our specialist contacts you after reviewing your requirements' },
                     { n: '3', t: 'We sign an NDA if needed to ensure full confidentiality' },
                     { n: '4', t: 'I submit a clear proposal with scope, timeline, and pricing' },
                   ].map(s => (

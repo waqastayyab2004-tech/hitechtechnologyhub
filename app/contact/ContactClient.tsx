@@ -181,7 +181,7 @@ export default function ContactClient() {
                       <CheckCircle className="w-8 h-8 text-green-400"/>
                     </div>
                     <h3 className="text-xl font-black text-white">Request Sent!</h3>
-                    <p className="text-gray-400 text-sm max-w-xs">Thank you. I&apos;ll review your requirements and contact you within 24 hours.</p>
+                    <p className="text-gray-400 text-sm max-w-xs">Thank you. Our team will review your requirements and contact you within 24 hours.</p>
                     <button onClick={() => setSubmitted(false)} className="btn-outline text-sm px-6 py-2">Send Another</button>
                   </div>
                 ) : (

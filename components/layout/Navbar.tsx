@@ -14,7 +14,7 @@ const navLinks = [
   { href: '/projects', label: 'Projects' },
   { href: '/blog', label: 'Blog' },
   { href: '/resources', label: 'AI Tools' },
-  { href: '/training', label: 'IT Training' },
+  { href: '/training', label: 'IT Learning' },
   { href: '/about', label: 'Portfolio' },
   { href: '/contact', label: 'Contact Us', highlight: true },
 ]
