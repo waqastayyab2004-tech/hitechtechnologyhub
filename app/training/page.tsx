@@ -94,7 +94,7 @@ const courses = [
     duration: '12 hours',
     students: '200+',
     rating: 4.9,
-    price: '$149',
+    price: '$',
     isFree: false,
     icon: '☁️',
     color: 'text-blue-400',
@@ -122,7 +122,7 @@ const courses = [
     duration: '16 hours',
     students: '150+',
     rating: 5.0,
-    price: '$199',
+    price: '$',
     isFree: false,
     icon: '🛡️',
     color: 'text-red-400',
@@ -150,7 +150,7 @@ const courses = [
     duration: '10 hours',
     students: '120+',
     rating: 4.8,
-    price: '$129',
+    price: '$',
     isFree: false,
     icon: '⚙️',
     color: 'text-emerald-400',
@@ -178,7 +178,7 @@ const courses = [
     duration: '14 hours',
     students: '180+',
     rating: 4.9,
-    price: '$159',
+    price: '$',
     isFree: false,
     icon: '⚡',
     color: 'text-yellow-400',
@@ -206,7 +206,7 @@ const courses = [
     duration: '18 hours',
     students: '90+',
     rating: 4.9,
-    price: '$179',
+    price: '$',
     isFree: false,
     icon: '🖥️',
     color: 'text-sky-400',
@@ -228,7 +228,7 @@ const courses = [
   },
   {
     id: 9,
-    title: 'Amazon FBA & Seller Central: Start Selling on Amazon',
+    title: 'E-Commerce: Learn Amazon & Start Selling Online',
     category: 'E-Commerce',
     level: 'Beginner',
     duration: '6 hours',
@@ -241,7 +241,7 @@ const courses = [
     border: 'border-orange-500/30',
     bg: 'bg-orange-500/8',
     badge: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
-    description: 'Complete beginner guide to selling on Amazon — account setup, product research, FBA logistics, listing optimisation, and getting your first sale. Includes MENA and international seller guidance.',
+    description: 'Learn how to sell on Amazon and expand your e-business — account setup, product research, FBA logistics, and listing optimisation. Covers Amazon, eBay, Noon, Shopify, and more platforms to grow your online income.',
     topics: [
       'Amazon Seller Central account setup (individual & professional)',
       'Product research: tools and strategies to find winners',
@@ -255,20 +255,20 @@ const courses = [
   },
   {
     id: 10,
-    title: 'Multi-Platform E-Commerce: Amazon, eBay, Noon & More',
+    title: 'E-Commerce: Master Amazon, eBay, Noon, Shopify & More — Expand Your E-Business',
     category: 'E-Commerce',
     level: 'Intermediate',
     duration: '14 hours',
     students: '150+',
     rating: 4.8,
-    price: '$139',
+    price: '$',
     isFree: false,
     icon: '🛒',
     color: 'text-amber-400',
     border: 'border-amber-500/30',
     bg: 'bg-amber-500/8',
     badge: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
-    description: 'Master selling across multiple e-commerce platforms — Amazon, eBay, Noon, Etsy, Shopify, and AliExpress. Learn platform differences, cross-listing tools, fulfilment strategies, and scaling to multiple markets simultaneously.',
+    description: 'Learn the tools and strategies to sell across all major e-commerce platforms — Amazon, eBay, Noon, Shopify, Etsy, and AliExpress. Learn to expand your e-business, reach global customers, and scale your online revenue step by step.',
     topics: [
       'Amazon: advanced FBA, brand registry, A+ content',
       'eBay: listing, pricing, eBay Global Shipping Programme',
@@ -283,15 +283,71 @@ const courses = [
     ],
     certificate: true,
   },
+  {
+    id: 11,
+    title: 'Digital Marketing: Social Media, SEO & Online Growth',
+    category: 'Digital Marketing',
+    level: 'Beginner',
+    duration: '8 hours',
+    students: '400+',
+    rating: 4.9,
+    price: 'Free',
+    isFree: true,
+    icon: '📱',
+    color: 'text-pink-400',
+    border: 'border-pink-500/30',
+    bg: 'bg-pink-500/8',
+    badge: 'bg-pink-500/15 text-pink-400 border-pink-500/30',
+    description: 'Learn digital marketing from scratch — how to grow your brand, attract customers, and drive sales using social media, SEO, email marketing, and paid ads. Ideal for businesses, freelancers, and IT professionals building an online presence.',
+    topics: [
+      'Social media marketing: LinkedIn, Instagram, Facebook, TikTok',
+      'Content strategy — what to post and when',
+      'SEO basics: get found on Google without paying',
+      'Email marketing: build and grow your email list',
+      'Paid ads intro: Google Ads and Meta Ads on a budget',
+      'Analytics: measuring what works with GA4 and Meta Insights',
+      'Personal branding for IT professionals and consultants',
+    ],
+  },
+  {
+    id: 12,
+    title: 'Advanced Digital Marketing & Growth Strategy',
+    category: 'Digital Marketing',
+    level: 'Intermediate',
+    duration: '16 hours',
+    students: '180+',
+    rating: 4.9,
+    price: '$',
+    isFree: false,
+    icon: '🚀',
+    color: 'text-fuchsia-400',
+    border: 'border-fuchsia-500/30',
+    bg: 'bg-fuchsia-500/8',
+    badge: 'bg-fuchsia-500/15 text-fuchsia-400 border-fuchsia-500/30',
+    description: 'Deep-dive into digital marketing strategy — advanced SEO, paid media management, marketing automation, funnel building, and data-driven growth. Learn the tools used by top marketing teams at global brands.',
+    topics: [
+      'Advanced SEO: technical SEO, backlinks, schema markup',
+      'Google Ads: search, display, shopping campaigns',
+      'Meta Ads: audience targeting, retargeting, lookalikes',
+      'LinkedIn marketing for B2B and professional services',
+      'Marketing automation: HubSpot, Mailchimp, ActiveCampaign',
+      'Sales funnel design: awareness → conversion → retention',
+      'Analytics deep dive: GA4, Search Console, Hotjar',
+      'Social media management tools: Buffer, Hootsuite, Later',
+      'Influencer and content creator partnerships',
+      'Building a digital marketing strategy from scratch',
+    ],
+    certificate: true,
+  },
 ]
 
-const categories = ['All', 'Career & IT Foundations', 'Microsoft 365 & Azure', 'Cybersecurity & Azure', 'ITSM & ServiceNow', 'AI & Automation', 'IT Infrastructure', 'E-Commerce']
+const categories = ['All', 'Career & IT Foundations', 'Microsoft 365 & Azure', 'Cybersecurity & Azure', 'ITSM & ServiceNow', 'AI & Automation', 'IT Infrastructure', 'E-Commerce', 'Digital Marketing']
 
 const stats = [
-  { v: '10', l: 'Courses Available', c: 'text-accent-blue' },
-  { v: '3,000+', l: 'Students Trained', c: 'text-green-400' },
+  { v: '12', l: 'Courses Available', c: 'text-accent-blue' },
+  { v: '3,500+', l: 'Students Trained', c: 'text-green-400' },
   { v: '4.9★', l: 'Average Rating', c: 'text-yellow-400' },
-  { v: '4', l: 'Free Courses', c: 'text-purple-400' },
+  { v: '5', l: 'Free Courses', c: 'text-purple-400' },
 ]
 
 /* ── PAGE ─────────────────────────────────────────────────────── */
@@ -527,7 +583,7 @@ export default function TrainingPage() {
                       <select required className="w-full bg-dark-700 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 focus:outline-none focus:border-accent-blue/50 transition-colors">
                         <option value="">Select a course…</option>
                         {courses.map(c => (
-                          <option key={c.id} value={c.title}>{c.isFree ? '🎁 ' : '🎓 '}{c.title} — {c.price}</option>
+                          <option key={c.id} value={c.title}>{c.isFree ? '🎁 Free — ' : '🎓 Paid — '}{c.title}</option>
                         ))}
                         <option value="corporate">Corporate / Team Training (custom)</option>
                       </select>
@@ -572,7 +628,7 @@ function CourseCard({ course }: { course: typeof courses[0] }) {
         <div className="flex items-start justify-between gap-3 mb-3">
           <span className="text-3xl">{course.icon}</span>
           <span className={`px-2.5 py-1 rounded-full text-[10px] font-black border ${course.badge}`}>
-            {course.price}
+            {course.isFree ? 'Free' : '$ Inquire'}
           </span>
         </div>
 
@@ -621,7 +677,7 @@ function CourseCard({ course }: { course: typeof courses[0] }) {
               ? 'bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20'
               : 'bg-accent-blue text-white hover:bg-blue-500'
           }`}>
-          {course.isFree ? <><Play className="w-3.5 h-3.5"/> Enroll Free</> : <><BookOpen className="w-3.5 h-3.5"/> Enroll — {course.price}</>}
+          {course.isFree ? <><Play className="w-3.5 h-3.5"/> Enroll Free</> : <><BookOpen className="w-3.5 h-3.5"/> Inquire &amp; Enroll</>}
         </a>
         <a href="#inquiry"
           className="px-4 py-2.5 rounded-xl text-xs font-bold bg-dark-700 border border-white/10 text-gray-300 hover:bg-dark-600 transition-colors whitespace-nowrap">

@@ -203,6 +203,29 @@ const services = [
     ],
     tools: ['Amazon FBA', 'eBay', 'Noon', 'Shopify', 'Etsy', 'AutoDS', 'Sellbrite'],
   },
+  {
+    icon: Zap,
+    title: 'Digital Marketing & Social Media',
+    tagline: 'Grow your brand, attract clients, and dominate your niche online.',
+    img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80&auto=format&fit=crop',
+    mode: 'Remote · Global',
+    color: 'text-pink-400',
+    border: 'border-l-pink-500',
+    isDigital: true,
+    deliverables: [
+      '📘 LinkedIn strategy for B2B and professional brand building',
+      '📸 Instagram & Facebook page setup, content & ads',
+      '▶️ YouTube channel setup and video SEO optimisation',
+      '🐦 Twitter/X and TikTok profile management',
+      '🔍 SEO setup: Google ranking, keyword strategy, meta tags',
+      '📧 Email marketing: list building, campaigns, automation',
+      '💰 Google Ads & Meta Ads setup and management',
+      'Google Analytics (GA4) + Search Console setup & reporting',
+      'Content calendar planning and scheduling tools setup',
+      'Personal brand strategy for IT consultants & freelancers',
+    ],
+    tools: ['LinkedIn', 'Meta Ads', 'Google Ads', 'GA4', 'Mailchimp', 'Canva', 'Buffer'],
+  },
 ]
 
 const processSteps = [
@@ -571,6 +594,30 @@ export default function ServicesPage() {
                     <Link href="/contact"
                       className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold hover:bg-amber-500/20 transition-colors">
                       <span>🛒</span> Get Free E-Commerce Consultation →
+                    </Link>
+                  </div>
+                )}
+
+                {/* Digital Marketing — social icons + CTA */}
+                {(svc as any).isDigital && (
+                  <div className="mt-4 pt-4 border-t border-pink-500/15">
+                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Platforms & Networks</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {[
+                        { label: '📘 LinkedIn', color: 'text-blue-300 border-blue-500/25 bg-blue-500/10' },
+                        { label: '📸 Instagram', color: 'text-pink-300 border-pink-500/25 bg-pink-500/10' },
+                        { label: '📘 Facebook', color: 'text-indigo-300 border-indigo-500/25 bg-indigo-500/10' },
+                        { label: '▶️ YouTube', color: 'text-red-300 border-red-500/25 bg-red-500/10' },
+                        { label: '🐦 X/Twitter', color: 'text-sky-300 border-sky-500/25 bg-sky-500/10' },
+                        { label: '🎵 TikTok', color: 'text-fuchsia-300 border-fuchsia-500/25 bg-fuchsia-500/10' },
+                        { label: '🔍 Google SEO', color: 'text-green-300 border-green-500/25 bg-green-500/10' },
+                      ].map(p => (
+                        <span key={p.label} className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${p.color}`}>{p.label}</span>
+                      ))}
+                    </div>
+                    <Link href="/contact"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-bold hover:bg-pink-500/20 transition-colors">
+                      <span>📱</span> Get Free Digital Marketing Consultation →
                     </Link>
                   </div>
                 )}
