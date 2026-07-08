@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, ChevronDown, Briefcase, MapPin, Sparkles, Globe, Award, Users, Linkedin, Github, Mail } from 'lucide-react'
 import NewsTicker from '@/components/home/NewsTicker'
 import NeuralNetwork from '@/components/ui/NeuralNetwork'
+import AgentTeam from '@/components/home/AgentTeam'
 
 const container = {
   hidden: { opacity: 0 },
@@ -324,6 +325,15 @@ export default function Hero() {
                 <div className="text-gray-500 text-sm mt-1">{stat.label}</div>
               </div>
             ))}
+          </motion.div>
+
+          {/* ── AI Agent Team ── */}
+          <motion.div variants={item} className="w-full max-w-5xl mx-auto">
+            <p className="text-center text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse inline-block mr-2" />
+              HiTecH AI Agent Team
+            </p>
+            <AgentTeam />
           </motion.div>
 
           {/* ── AI + Human Collaboration Section ── */}
