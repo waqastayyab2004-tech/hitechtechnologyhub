@@ -41,10 +41,10 @@ export default function Hero() {
         >
 
           {/* ── Hero Headline ── */}
-          <motion.div variants={item} className="text-center w-full max-w-4xl mx-auto">
+          <motion.div variants={item} className="text-center w-full max-w-3xl mx-auto">
 
             {/* Status badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-green-500/10 border border-green-500/30 text-green-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                 Open to Work · MENA + Remote
@@ -54,23 +54,31 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Main headline */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-2">
-              Senior IT Leader &amp; Specialist
-            </h1>
-            <p className="text-lg sm:text-xl font-semibold mb-1">
-              <span className="gradient-text">Azure Security</span>
-              <span className="text-gray-600 mx-2">·</span>
-              <span className="text-gray-300">SAP · AI &amp; Automation</span>
-              <span className="text-gray-600 mx-2">·</span>
-              <span className="text-gray-300">15+ Years Enterprise IT</span>
+            {/* Name — clean, readable */}
+            <p className="text-sm sm:text-base font-semibold text-gray-400 tracking-widest uppercase mb-1">
+              Syed Waqas Tayyab
             </p>
-            <p className="text-sm text-gray-600 mb-6">
+
+            {/* Title — smaller, professional */}
+            <h1 className="text-2xl sm:text-3xl font-black text-white leading-snug mb-1">
+              Senior IT Leader &amp; <span className="gradient-text">AI Specialist</span>
+            </h1>
+
+            {/* Tagline — the hook */}
+            <p className="text-base sm:text-lg text-gray-400 font-medium mb-1">
+              15+ Years · Azure Security · SAP · Cloud · Automation
+            </p>
+
+            {/* Hook lines */}
+            <p className="text-sm text-gray-500 mb-2">
+              Trusted by global enterprises to secure, scale, and automate IT operations.
+            </p>
+            <p className="text-xs text-gray-600 italic mb-5">
               Riyadh, Saudi Arabia · Remote Worldwide · Iqama Transferable
             </p>
 
             {/* Cert strip */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-7">
+            <div className="flex flex-wrap items-center justify-center gap-1.5 mb-6">
               {[
                 { label: 'Azure Security Certified', color: 'text-blue-400 border-blue-500/30' },
                 { label: 'SAP S/4HANA', color: 'text-orange-400 border-orange-500/30' },
@@ -79,28 +87,25 @@ export default function Hero() {
                 { label: 'SAP AI Certified', color: 'text-purple-400 border-purple-500/30' },
                 { label: 'MBA · UK', color: 'text-pink-400 border-pink-500/30' },
               ].map(c => (
-                <span key={c.label} className={`px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold border bg-white/3 ${c.color}`}>
+                <span key={c.label} className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold border bg-white/3 ${c.color}`}>
                   {c.label}
                 </span>
               ))}
             </div>
 
-            {/* Three equal CTAs — Hiring + Project + Consultation */}
+            {/* Three CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-blue-500 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.3)]">
-                <Briefcase className="w-4 h-4" />
-                Hire for Senior IT Role
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-blue-500 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.25)]">
+                <Briefcase className="w-4 h-4" /> Hire for Senior IT Role
               </Link>
               <Link href="/services"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-dark-700 border border-white/15 text-gray-200 text-sm font-bold hover:bg-dark-600 hover:border-white/25 transition-colors">
-                <Globe className="w-4 h-4" />
-                Outsource IT / Award Project
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-dark-700 border border-white/15 text-gray-200 text-sm font-bold hover:bg-dark-600 transition-colors">
+                <Globe className="w-4 h-4" /> Outsource IT / Award Project
               </Link>
               <Link href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-dark-700 border border-green-500/30 text-green-400 text-sm font-bold hover:bg-green-500/10 transition-colors">
-                <Award className="w-4 h-4" />
-                Free Consultation
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-dark-700 border border-green-500/30 text-green-400 text-sm font-bold hover:bg-green-500/10 transition-colors">
+                <Award className="w-4 h-4" /> Free Consultation
               </Link>
             </div>
 
