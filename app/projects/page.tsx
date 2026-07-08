@@ -332,12 +332,12 @@ export default function ProjectsPage() {
           <div className="w-full max-w-4xl bg-dark-800 border border-white/10 rounded-2xl shadow-2xl relative">
 
             {/* Modal header */}
-            <div className="flex items-start gap-4 p-7 border-b border-white/8">
-              <span className="text-4xl flex-shrink-0">{selected.emoji}</span>
+            <div className="flex items-start gap-4 p-6 border-b border-white/8">
+              <span className="text-4xl flex-shrink-0 mt-1">{selected.emoji}</span>
               <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-2 mb-1">
-                  <h2 className="text-2xl font-black text-white">{selected.title}</h2>
-                  <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${statusColors[selected.status]}`}>
+                <div className="flex items-start justify-between gap-3 mb-1">
+                  <h2 className="text-xl sm:text-2xl font-black text-white leading-tight">{selected.title}</h2>
+                  <span className={`flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] font-bold border mt-1 ${statusColors[selected.status]}`}>
                     {selected.status}
                   </span>
                 </div>
@@ -345,7 +345,7 @@ export default function ProjectsPage() {
                 <p className="text-gray-500 text-xs">{selected.category}</p>
               </div>
               <button onClick={close}
-                className="flex-shrink-0 w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center transition-colors">
+                className="flex-shrink-0 w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center transition-colors ml-1">
                 <X className="w-4 h-4 text-gray-400"/>
               </button>
             </div>
@@ -376,18 +376,18 @@ export default function ProjectsPage() {
 
                 {/* Timeline & Stakeholders */}
                 <div className="glass-card p-5">
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-2 mb-4">
                     <Clock className="w-4 h-4 text-cyan-400"/>
                     <h3 className="font-bold text-white text-sm uppercase tracking-wide">Timeline & Stakeholders</h3>
                   </div>
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-xs text-gray-500 w-24 flex-shrink-0 pt-0.5">Timeline:</span>
-                      <span className="text-sm text-gray-300">{selected.pmDetails.timeline}</span>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-1">Timeline</p>
+                      <p className="text-sm text-gray-300">{selected.pmDetails.timeline}</p>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-xs text-gray-500 w-16 flex-shrink-0 pt-0.5">Stakeholders:</span>
-                      <span className="text-sm text-gray-400 leading-relaxed">{selected.pmDetails.stakeholders}</span>
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-1">Stakeholders</p>
+                      <p className="text-sm text-gray-400 leading-relaxed">{selected.pmDetails.stakeholders}</p>
                     </div>
                   </div>
                 </div>
