@@ -89,7 +89,9 @@ const industries = [
     img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=700&q=80&auto=format&fit=crop',
     color: 'border-red-500',
     tagColor: 'bg-red-500/10 text-red-400 border-red-500/25',
-    desc: 'Secure, compliant IT for healthcare organisations — endpoint management, data protection, ITSM, and reliable infrastructure for clinical and administrative environments.',
+    ctaLink: '/medical-billing',
+    ctaLabel: 'Medical Billing & RCM Services →',
+    desc: 'Secure, compliant IT for healthcare organisations — plus full US Medical Billing & Revenue Cycle Management outsourcing for practices across the United States.',
     points: [
       'HIPAA/GDPR-aligned data handling and IT policies',
       'Medical device and endpoint management',
@@ -228,10 +230,15 @@ export default function IndustriesPage() {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-4 pt-4 border-t border-white/5">
+                    <div className="mt-4 pt-4 border-t border-white/5 flex flex-wrap gap-3">
                       <Link href="/contact" className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-blue hover:text-cyan-400 transition-colors">
                         Discuss this industry <ArrowRight className="w-3 h-3"/>
                       </Link>
+                      {(ind as any).ctaLink && (
+                        <Link href={(ind as any).ctaLink} className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-400 hover:text-red-300 transition-colors">
+                          {(ind as any).ctaLabel}
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
