@@ -159,6 +159,27 @@ const services = [
     ],
     tools: ['SAP Ariba', 'ServiceNow', 'PowerBI', 'SharePoint', 'DocuSign', 'Python'],
   },
+  {
+    icon: Shield,
+    title: 'Medical Billing & RCM Outsourcing',
+    tagline: 'Maximize collections. Eliminate billing errors. Focus on patient care.',
+    img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80&auto=format&fit=crop',
+    mode: 'Remote · US Practices',
+    color: 'text-rose-400',
+    border: 'border-l-rose-500',
+    isMedical: true,
+    deliverables: [
+      'Full Revenue Cycle Management (RCM) — end-to-end',
+      'Insurance eligibility verification & prior authorizations',
+      'Medical coding: ICD-10, CPT, HCPCS — payer compliant',
+      'Clean claim submission & rejection monitoring',
+      'A/R follow-up, denial management & appeals',
+      'Payment posting, patient billing & monthly KPI reports',
+      'HIPAA certified — patient data fully protected',
+      'Platforms: eCW, Office Ally, Tebra, Athenahealth & more',
+    ],
+    tools: ['Care Cloud', 'eClinicalWorks', 'Office Ally', 'Tebra', 'Athenahealth', 'HIPAA Compliant'],
+  },
 ]
 
 const processSteps = [
@@ -448,19 +469,37 @@ export default function ServicesPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
           {services.map((svc, i) => (
-            <div key={i} className={`glass-card overflow-hidden flex flex-col border-l-4 ${svc.border} hover:-translate-y-1 transition-transform duration-300`}>
+            <div key={i} className={`glass-card overflow-hidden flex flex-col border-l-4 ${svc.border} hover:-translate-y-1 transition-transform duration-300 ${(svc as any).isMedical ? 'ring-1 ring-rose-500/20' : ''}`}>
               <div className="h-44 overflow-hidden relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={svc.img} alt={svc.title} className="w-full h-full object-cover"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 to-transparent"/>
                 <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-dark-900/80 border border-white/10 text-gray-300">{svc.mode}</span>
+                {/* HiTecH branding badge for medical */}
+                {(svc as any).isMedical && (
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-500/20 border border-rose-500/40 text-rose-300">
+                    HiTecH Technology HUB
+                  </span>
+                )}
               </div>
               <div className="p-6 flex flex-col flex-1">
+                {/* Icon — use Heart for medical, otherwise service icon */}
                 <div className={`w-10 h-10 rounded-xl bg-dark-700 border border-white/10 flex items-center justify-center mb-4`}>
-                  <svc.icon className={`w-5 h-5 ${svc.color}`}/>
+                  {(svc as any).isMedical
+                    ? <span className="text-xl">🏥</span>
+                    : <svc.icon className={`w-5 h-5 ${svc.color}`}/>
+                  }
                 </div>
                 <h3 className="text-lg font-bold text-white mb-1">{svc.title}</h3>
                 <p className={`text-sm font-semibold ${svc.color} mb-4`}>{svc.tagline}</p>
+
+                {/* Medical — extra HiTecH branding tagline */}
+                {(svc as any).isMedical && (
+                  <p className="text-xs text-gray-500 italic mb-3 border-l-2 border-rose-500/40 pl-3">
+                    Delivered by HiTecH Technology HUB in partnership with certified HIPAA billing specialists (MTBC &amp; Bellmedex).
+                  </p>
+                )}
+
                 <div className="space-y-1.5 mb-5 flex-1">
                   {svc.deliverables.map(d => (
                     <div key={d} className="flex items-start gap-2 text-xs text-gray-500">
@@ -474,6 +513,21 @@ export default function ServicesPage() {
                     <span key={t} className="tag text-[10px]">{t}</span>
                   ))}
                 </div>
+                {/* Medical billing — specialties + full details link */}
+                {(svc as any).isMedical && (
+                  <div className="mt-4 pt-4 border-t border-rose-500/15">
+                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Specialties</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {['Mental Health', 'Internal Medicine', 'Chiropractic', 'Family Medicine', 'Transportation', 'DME'].map(s => (
+                        <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-500/10 border border-rose-500/20 text-rose-300">{s}</span>
+                      ))}
+                    </div>
+                    <Link href="/medical-billing"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-bold hover:bg-rose-500/20 transition-colors">
+                      <span>🏥</span> See Full Service Details &amp; Get Free Billing Audit →
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           ))}
