@@ -233,13 +233,18 @@ export default function Hero() {
                   <div className="absolute w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)] orbit-b1" />
                   <div className="absolute w-1.5 h-1.5 rounded-full bg-accent-blue shadow-[0_0_6px_rgba(59,130,246,1)] orbit-b2" />
                   <div className="absolute w-1 h-1 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,1)] orbit-b3" />
-                  {/* Bot image — same size as photo */}
-                  <div className="bot-bob relative z-10">
-                    <div className="bot-glow relative w-32 h-32 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-cyan-400/70 bg-[#060e1a] flex items-center justify-center">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/ai-robot-icon.png" alt="Waqas AI BOT" className="w-full h-full object-cover object-center"/>
-                      <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/15 via-transparent to-transparent pointer-events-none" />
-                    </div>
+                  {/* Bot circular name ring — matches human side */}
+                  <svg className="absolute z-10 w-44 h-44 pointer-events-none" viewBox="0 0 200 200">
+                    <defs><path id="botCircle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/></defs>
+                    <text fontSize="9.5" fontFamily="'Inter',sans-serif" fontWeight="700" letterSpacing="3" fill="#22D3EE" opacity="0.7">
+                      <textPath href="#botCircle" startOffset="0%">WAQAS AI BOT · HiTeCH HUB · </textPath>
+                    </text>
+                  </svg>
+                  {/* Bot image — same size as photo, no wrapper div */}
+                  <div className="bot-glow relative w-32 h-32 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-cyan-400/70 bg-[#060e1a] z-20 flex items-center justify-center bot-bob">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/ai-robot-icon.png" alt="Waqas AI BOT" className="w-full h-full object-cover object-center"/>
+                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/15 via-transparent to-transparent pointer-events-none" />
                   </div>
                   {/* HUD brackets */}
                   <svg className="absolute -top-1 -left-1 w-7 h-7 z-20" viewBox="0 0 36 36" fill="none"><path d="M18 3 L4 3 Q2 3 2 5 L2 18" stroke="#06B6D4" strokeWidth="2" strokeLinecap="round"/><circle cx="2" cy="3" r="2" fill="#06B6D4"/></svg>
