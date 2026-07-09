@@ -307,7 +307,7 @@ export default function ProjectsPage() {
                 {/* Title */}
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-white text-sm leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
-                  <p className="text-gray-500 text-[11px] leading-snug line-clamp-2">{project.subtitle}</p>
+                  <p className="text-gray-500 text-[10px] leading-snug line-clamp-1">{project.subtitle}</p>
                 </div>
                 {/* Footer */}
                 <div className="flex items-center justify-between w-full">
