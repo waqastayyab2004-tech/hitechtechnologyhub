@@ -257,7 +257,7 @@ export default function ProjectsPage() {
     { v: '100+', l: 'Projects Delivered' },
     { v: '24', l: 'Showcased Here' },
     { v: '15+', l: 'Years Experience' },
-    { v: '1.2M+', l: 'SAR Managed' },
+    { v: '20M+', l: 'SAR Managed' },
   ]
 
   return (
