@@ -493,12 +493,6 @@ export default function PortfolioPage() {
           <NeuralNetwork />
         </section>
 
-        {/* ── MIND MAP ─────────────────────────────────────────────── */}
-        <section>
-          <SectionHeader icon={<Brain className="w-5 h-5 text-yellow-400" />} title="IT Expertise Mind Map" />
-          <MindMap />
-        </section>
-
         {/* ── EXPERIENCE ───────────────────────────────────────────── */}
         <section>
           <SectionHeader icon={<Briefcase className="w-5 h-5 text-cyan-400" />} title="Work Experience" />
