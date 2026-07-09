@@ -99,9 +99,14 @@ export default function Footer() {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} HiTecH Technology HUB by Waqas. All rights reserved.
           </p>
-          <p className="text-gray-600 text-xs flex items-center gap-1">
-            Built with <Heart className="w-3 h-3 text-red-500" /> using Next.js & Tailwind CSS
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-gray-600 text-xs flex items-center gap-1">
+              Built with <Heart className="w-3 h-3 text-red-500" /> using Next.js & Tailwind CSS
+            </p>
+            <a href="/admin" className="text-gray-700 text-[10px] hover:text-gray-500 transition-colors">
+              ⚙️ Admin
+            </a>
+          </div>
         </div>
       </div>
     </footer>
