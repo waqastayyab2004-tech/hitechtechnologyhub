@@ -353,6 +353,106 @@ export default function TrainingPage() {
             ))}
           </div>
 
+          {/* ── FREE RESOURCES — CV Templates ─────────────────── */}
+          {activeCategory === 'All' && (
+            <section className="mb-10">
+              <div className="rounded-2xl border border-green-500/20 bg-gradient-to-br from-green-500/5 to-dark-800/60 overflow-hidden">
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-5 border-b border-green-500/15">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🎁</span>
+                    <div>
+                      <h2 className="text-base font-black text-white">Free Downloads — Professional CV Templates</h2>
+                      <p className="text-xs text-gray-500">Industry-specific Word templates built by a senior IT practitioner. Download, customise, and start applying.</p>
+                    </div>
+                  </div>
+                  <span className="flex-shrink-0 px-3 py-1.5 rounded-full text-[10px] font-black bg-green-500/15 border border-green-500/30 text-green-400 uppercase tracking-widest">
+                    100% Free · No Sign-up
+                  </span>
+                </div>
+
+                {/* Template cards */}
+                <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                  {[
+                    {
+                      file: 'CV-IT-Support-Engineer-L1-L2.docx',
+                      title: 'IT Support Engineer',
+                      level: 'L1 / L2',
+                      icon: '🖥️',
+                      color: 'text-sky-400 border-sky-500/25 bg-sky-500/8',
+                      desc: 'Perfect for your first IT role or moving from L1 to L2. Includes ServiceNow, M365, AD skills.',
+                      for: 'Entry Level · 0–3 years',
+                    },
+                    {
+                      file: 'CV-Senior-IT-System-Engineer.docx',
+                      title: 'Senior IT Engineer',
+                      level: 'Senior Level',
+                      icon: '⚙️',
+                      color: 'text-accent-blue border-accent-blue/25 bg-accent-blue/8',
+                      desc: 'Based on a real SAP senior engineer profile. Azure certs, ITSM, infrastructure, AI tools.',
+                      for: 'Mid–Senior · 5–15 years',
+                    },
+                    {
+                      file: 'CV-Azure-Cloud-Security-Engineer.docx',
+                      title: 'Azure Security Engineer',
+                      level: 'Specialist',
+                      icon: '🛡️',
+                      color: 'text-red-400 border-red-500/25 bg-red-500/8',
+                      desc: 'AZ-500 level CV. Zero Trust, Intune, Defender, SIEM, PIM. Highly in-demand role.',
+                      for: 'Specialist · 3–8 years',
+                    },
+                    {
+                      file: 'CV-IT-Consultant-Freelancer.docx',
+                      title: 'IT Consultant',
+                      level: 'Freelancer',
+                      icon: '💼',
+                      color: 'text-purple-400 border-purple-500/25 bg-purple-500/8',
+                      desc: 'For consultants and freelancers. Shows services, projects, engagement models.',
+                      for: 'Consultant · Freelance',
+                    },
+                    {
+                      file: 'CV-Career-Change-Into-IT.docx',
+                      title: 'Career Change → IT',
+                      level: 'Beginner',
+                      icon: '🚀',
+                      color: 'text-green-400 border-green-500/25 bg-green-500/8',
+                      desc: 'Transitioning from another field? Shows how to frame transferable skills + home lab projects.',
+                      for: 'Career Changer · Any',
+                    },
+                  ].map((t, i) => (
+                    <div key={i} className={`rounded-xl border ${t.color} p-4 flex flex-col gap-3 hover:-translate-y-0.5 transition-transform duration-200`}>
+                      <div className="flex items-start justify-between gap-2">
+                        <span className="text-2xl">{t.icon}</span>
+                        <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${t.color}`}>{t.level}</span>
+                      </div>
+                      <div>
+                        <p className="font-bold text-white text-sm mb-1">{t.title}</p>
+                        <p className="text-gray-500 text-[11px] leading-snug mb-2">{t.desc}</p>
+                        <p className="text-[10px] text-gray-600 italic">{t.for}</p>
+                      </div>
+                      <a
+                        href={`/cv-templates/${t.file}`}
+                        download={t.file}
+                        className="mt-auto flex items-center justify-center gap-2 py-2 rounded-lg bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-bold hover:bg-green-500/20 transition-colors"
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Download Word
+                      </a>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="px-5 pb-4">
+                  <p className="text-[11px] text-gray-600 italic">
+                    💡 <strong className="text-gray-500">Tip:</strong> All templates are fully editable Microsoft Word (.docx) files. Replace placeholder text with your own details. No sign-up required — just download and start.
+                  </p>
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* ── Learning Paths ── */}
           {activeCategory === 'All' && (
             <section className="mb-10">
