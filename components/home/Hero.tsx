@@ -311,40 +311,6 @@ export default function Hero() {
           </motion.div>
 
           {/* ── Buttons ── */}
-          <motion.div
-            variants={item}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link href="/blog" className="btn-primary text-base px-8 py-3.5">
-              Explore Articles <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/projects" className="btn-outline text-base px-8 py-3.5">
-              View Projects
-            </Link>
-            <Link href="/hire" className="btn-outline text-base px-8 py-3.5 border-green-500/40 text-green-400 hover:bg-green-500/10 hover:border-green-500/60">
-              Hire Me
-            </Link>
-          </motion.div>
-
-          {/* ── Stats ── */}
-          <motion.div
-            variants={item}
-            className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 pt-2"
-          >
-            {[
-              { value: '15+', label: 'Years IT Experience' },
-              { value: '100+', label: 'Projects & Implementations' },
-              { value: '13', label: 'Certifications' },
-              { value: 'IT Consultant', label: 'Corporate IT Expert' },
-              { value: '100%', label: 'Free Content' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl font-black gradient-text">{stat.value}</div>
-                <div className="text-gray-500 text-sm mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-
           {/* ── AI Agent Team ── */}
           <motion.div variants={item} className="w-full max-w-5xl mx-auto">
             <p className="text-center text-[10px] text-gray-500 font-semibold uppercase tracking-widest mb-3">
