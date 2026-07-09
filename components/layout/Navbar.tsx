@@ -21,19 +21,20 @@ const nav = [
   {
     label: 'Services',
     href: '/services',
+    seeAll: { href: '/services', label: 'View all IT services' },
     dropdown: [
       {
         group: 'What We Offer',
         items: [
           { href: '/services', icon: Server, label: 'IT Services', desc: 'Infrastructure, cloud, security & support' },
           { href: '/industries', icon: Globe, label: 'Industries', desc: 'Banking, energy, healthcare, telecom & more' },
-          { href: '/medical-billing', icon: Shield, label: 'Medical Billing', desc: 'US RCM outsourcing & revenue cycle' },
+          { href: '/medical-billing', icon: Shield, label: 'Medical Billing', desc: 'US RCM outsourcing & revenue cycle', badge: 'New' },
         ],
       },
       {
-        group: 'More',
+        group: 'Get Started',
         items: [
-          { href: '/contact', icon: Users, label: 'Free Consultation', desc: 'Talk to us — no commitment' },
+          { href: '/contact', icon: Users, label: 'Free Consultation', desc: 'Talk to us — no commitment', badge: 'Free' },
         ],
       },
     ],
@@ -41,6 +42,7 @@ const nav = [
   {
     label: 'Work',
     href: '/projects',
+    seeAll: { href: '/projects', label: 'View all projects' },
     dropdown: [
       {
         group: 'Portfolio',
@@ -61,11 +63,12 @@ const nav = [
   {
     label: 'Learn',
     href: '/training',
+    seeAll: { href: '/training', label: 'Browse all courses' },
     dropdown: [
       {
         group: 'Courses & Content',
         items: [
-          { href: '/training', icon: GraduationCap, label: 'IT Learning', desc: '12 courses — free & paid' },
+          { href: '/training', icon: GraduationCap, label: 'IT Learning', desc: '12 courses — free & paid', badge: '12 Courses' },
           { href: '/insights', icon: Lightbulb, label: 'Insights', desc: 'IT topics, guides, and trends' },
           { href: '/resources', icon: Cpu, label: 'AI Tools', desc: 'Top 20 AI tools for IT professionals' },
         ],
@@ -73,7 +76,7 @@ const nav = [
       {
         group: 'Free Downloads',
         items: [
-          { href: '/training', icon: FileText, label: 'CV Templates', desc: '5 free Word templates — download now' },
+          { href: '/training', icon: FileText, label: 'CV Templates', desc: '5 free Word templates — download now', badge: 'Free' },
         ],
       },
     ],
@@ -196,15 +199,29 @@ export default function Navbar() {
                                   <div className="w-8 h-8 rounded-lg bg-accent-blue/10 border border-accent-blue/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-accent-blue/20 transition-colors">
                                     <di.icon className="w-4 h-4 text-accent-blue" />
                                   </div>
-                                  <div className="min-w-0">
-                                    <p className="text-sm font-semibold text-white leading-tight group-hover/item:text-accent-blue transition-colors">{di.label}</p>
-                                    <p className="text-xs text-gray-500 leading-snug mt-0.5">{di.desc}</p>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-2 mb-0.5">
+                                      <p className="text-sm font-semibold text-white leading-tight group-hover/item:text-accent-blue transition-colors">{di.label}</p>
+                                      {(di as any).badge && (
+                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-accent-blue/15 text-accent-blue border border-accent-blue/20 flex-shrink-0">{(di as any).badge}</span>
+                                      )}
+                                    </div>
+                                    <p className="text-xs text-gray-500 leading-snug">{di.desc}</p>
                                   </div>
                                 </Link>
                               ))}
                             </div>
                           ))}
                         </div>
+                        {/* See all footer — GitHub/Stripe pattern */}
+                        {(item as any).seeAll && (
+                          <Link href={(item as any).seeAll.href}
+                            className="flex items-center justify-between px-4 py-3 text-xs font-semibold text-gray-500 hover:text-accent-blue transition-colors border-t border-white/6 group/sa"
+                            onClick={() => setActiveDropdown(null)}>
+                            <span>{(item as any).seeAll.label}</span>
+                            <ArrowRight className="w-3.5 h-3.5 group-hover/sa:translate-x-0.5 transition-transform" />
+                          </Link>
+                        )}
                         {/* Bottom accent line */}
                         <div className="h-px bg-gradient-to-r from-transparent via-accent-blue/30 to-transparent" />
                       </motion.div>
