@@ -30,9 +30,18 @@ export default function BlogPage() {
         <ScrollReveal className="mb-12">
           <Link href={`/blog/${featured.slug}`} className="block glass-card-hover p-8 md:p-10 group">
             <div className="flex flex-col md:flex-row gap-8">
-              {/* Featured image placeholder */}
-              <div className="w-full md:w-72 h-48 rounded-xl bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 flex items-center justify-center flex-shrink-0 border border-accent-blue/10">
-                <span className="text-4xl font-black gradient-text">FEATURED</span>
+              {/* Featured image */}
+              <div className="w-full md:w-72 h-48 rounded-xl overflow-hidden flex-shrink-0 border border-accent-blue/10 relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/sustainability-banner.avif"
+                  alt="Sustainable IT — Featured Article"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 to-transparent" />
+                <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-black bg-accent-yellow/20 border border-accent-yellow/30 text-accent-yellow">
+                  ★ FEATURED
+                </span>
               </div>
               <div className="flex-1">
                 <span className="badge bg-accent-yellow/10 text-accent-yellow border border-accent-yellow/20 mb-3">

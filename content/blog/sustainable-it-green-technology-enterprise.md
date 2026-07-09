@@ -9,8 +9,7 @@ featured: true
 ---
 
 <div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-<img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80&auto=format&fit=crop" alt="Sustainable IT and Green Technology" style="width:100%; height:280px; object-fit:cover; display:block;"/>
-<p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Photo: Unsplash</p>
+<img src="/sustainability-banner.avif" alt="Sustainable IT and Green Technology Enterprise Strategy" style="width:100%; height:320px; object-fit:cover; display:block;"/>
 </div>
 
 The conversation about sustainability in IT has shifted dramatically. It is no longer a CSR box-ticking exercise confined to annual reports — it is a board-level strategic imperative, a procurement criterion, and increasingly, a competitive differentiator in enterprise technology leadership.
