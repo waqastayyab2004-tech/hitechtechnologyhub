@@ -7,6 +7,11 @@ author: "Waqas Syed"
 readTime: "8 min read"
 featured: true
 ---
+<div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
+<img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&q=80&auto=format&fit=crop" alt="Claude Code AI coding assistant terminal" style="width:100%; height:280px; object-fit:cover; display:block;"/>
+<p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Photo: Unsplash</p>
+</div>
+
 
 # Claude Code Beginner Guide
 
