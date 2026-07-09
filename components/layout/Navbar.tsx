@@ -82,8 +82,12 @@ const nav = [
     ],
   },
   {
-    label: 'Blog',
+    label: 'Articles',
     href: '/blog',
+  },
+  {
+    label: 'Portfolio',
+    href: '/about',
   },
 ]
 

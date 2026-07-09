@@ -282,6 +282,170 @@ export default function ProjectsPage() {
         </div>
       </div>
 
+      {/* ── IT Portfolio Financial & Asset Analytics Dashboard ── */}
+      <div className="mb-12 rounded-2xl border border-white/8 bg-dark-800/40 backdrop-blur-sm overflow-hidden">
+
+        {/* Dashboard header */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-6 py-4 border-b border-white/8">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center">
+              <span className="text-lg">📊</span>
+            </div>
+            <div>
+              <h2 className="text-sm font-black text-white tracking-wide">IT Portfolio Analytics</h2>
+              <p className="text-[10px] text-gray-500">Assets managed · Projects delivered · Infrastructure handled across 15+ years</p>
+            </div>
+          </div>
+          <span className="flex items-center gap-1.5 text-[10px] font-bold text-green-400 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            Live Career Data
+          </span>
+        </div>
+
+        {/* Top KPI tiles — Fiori style */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-white/5">
+          {[
+            { label: 'IT Assets Managed', value: '20M+', sub: 'Device value over career', icon: '💻', color: 'text-accent-blue', bg: 'bg-accent-blue/5' },
+            { label: 'Device Units Handled', value: '2,000+', sub: 'Laptops · Phones · Tablets', icon: '📱', color: 'text-cyan-400', bg: 'bg-cyan-500/5' },
+            { label: 'Office Build-Outs', value: '5+', sub: 'Full IT from design→handover', icon: '🏗️', color: 'text-purple-400', bg: 'bg-purple-500/5' },
+            { label: 'Office Relocations', value: '3', sub: 'Riyadh · Jeddah · Al-Khobar', icon: '🏢', color: 'text-orange-400', bg: 'bg-orange-500/5' },
+            { label: 'Remote Offices', value: '4+', sub: 'MENA regional coverage', icon: '🌐', color: 'text-emerald-400', bg: 'bg-emerald-500/5' },
+            { label: 'Procurement Cycles', value: '8yr+', sub: 'SAP Ariba annual rounds', icon: '📋', color: 'text-yellow-400', bg: 'bg-yellow-500/5' },
+          ].map((kpi, i) => (
+            <div key={i} className={`${kpi.bg} px-4 py-5 flex flex-col gap-2`}>
+              <span className="text-xl">{kpi.icon}</span>
+              <div>
+                <div className={`text-xl font-black ${kpi.color}`}>{kpi.value}</div>
+                <div className="text-xs font-bold text-white mt-0.5">{kpi.label}</div>
+                <div className="text-[10px] text-gray-500 mt-0.5">{kpi.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Middle row: bar charts + breakdown */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-white/5">
+
+          {/* Asset category breakdown — horizontal bars */}
+          <div className="bg-dark-800/60 p-5 col-span-1">
+            <p className="text-xs font-black text-white uppercase tracking-widest mb-4">Asset Categories Managed</p>
+            <div className="space-y-3">
+              {[
+                { cat: 'Laptops (Lenovo / MacBook)', pct: 85, count: '800+', color: '#3b82f6' },
+                { cat: 'Mobile Phones (iPhone / Samsung)', pct: 70, count: '600+', color: '#06b6d4' },
+                { cat: 'Tablets & iPads', pct: 30, count: '250+', color: '#8b5cf6' },
+                { cat: 'Monitors & Peripherals', pct: 55, count: '500+', color: '#10b981' },
+                { cat: 'Printers & Label Printers', pct: 20, count: '100+', color: '#f59e0b' },
+                { cat: 'Server Room Equipment', pct: 15, count: '50+', color: '#ef4444' },
+                { cat: 'Meeting Room AV (MTR)', pct: 25, count: '15 rooms', color: '#f97316' },
+              ].map((item, i) => (
+                <div key={i}>
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-[11px] text-gray-400">{item.cat}</span>
+                    <span className="text-[11px] font-bold text-white">{item.count}</span>
+                  </div>
+                  <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full transition-all duration-1000"
+                      style={{ width: `${item.pct}%`, background: item.color }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Project type distribution — visual bars */}
+          <div className="bg-dark-800/60 p-5 col-span-1">
+            <p className="text-xs font-black text-white uppercase tracking-widest mb-4">Project Type Distribution</p>
+            <div className="space-y-3">
+              {[
+                { type: 'IT Infrastructure & Network', count: 6, total: 24, color: '#3b82f6' },
+                { type: 'Change Management & Rollouts', count: 5, total: 24, color: '#8b5cf6' },
+                { type: 'ITSM & Service Management', count: 4, total: 24, color: '#10b981' },
+                { type: 'AI & Automation Tools', count: 4, total: 24, color: '#f59e0b' },
+                { type: 'AV · Events · Security', count: 3, total: 24, color: '#ef4444' },
+                { type: 'Web & Personal Apps', count: 2, total: 24, color: '#06b6d4' },
+              ].map((item, i) => (
+                <div key={i}>
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-[11px] text-gray-400">{item.type}</span>
+                    <span className="text-[11px] font-bold text-white">{item.count} projects</span>
+                  </div>
+                  <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full"
+                      style={{ width: `${(item.count/item.total)*100}%`, background: item.color }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Mini donut legend */}
+            <div className="mt-4 pt-4 border-t border-white/5 grid grid-cols-2 gap-1.5">
+              {[
+                { label: 'Live / Running', count: 14, color: '#10b981' },
+                { label: 'Completed', count: 9, color: '#3b82f6' },
+                { label: 'In Development', count: 1, color: '#f59e0b' },
+              ].map((s, i) => (
+                <div key={i} className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: s.color }} />
+                  <span className="text-[10px] text-gray-400">{s.label}</span>
+                  <span className="text-[10px] font-bold ml-auto" style={{ color: s.color }}>{s.count}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Procurement & spend timeline */}
+          <div className="bg-dark-800/60 p-5 col-span-1">
+            <p className="text-xs font-black text-white uppercase tracking-widest mb-4">IT Procurement Activity</p>
+            <div className="space-y-2.5">
+              {[
+                { year: 'Device Approvals (MENA)', val: 'Large-scale annual', icon: '📦', color: 'text-accent-blue', bar: 90 },
+                { year: 'Office Build-Out (HQ)', val: 'Major capital project', icon: '🏗️', color: 'text-purple-400', bar: 75 },
+                { year: 'Server/Network Refresh', val: 'Full hardware cycle', icon: '🖧', color: 'text-cyan-400', bar: 60 },
+                { year: 'Meeting Room AV (15 rooms)', val: 'AV tech upgrade', icon: '📽️', color: 'text-orange-400', bar: 45 },
+                { year: 'Remote Office IT Setup', val: 'Multi-location', icon: '🌐', color: 'text-emerald-400', bar: 35 },
+                { year: 'Annual Device Refresh', val: 'Recurring cycle', icon: '🔄', color: 'text-yellow-400', bar: 80 },
+              ].map((row, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="text-base flex-shrink-0">{row.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[11px] text-gray-300 truncate">{row.year}</span>
+                      <span className={`text-[10px] font-semibold ${row.color} flex-shrink-0 ml-2`}>{row.val}</span>
+                    </div>
+                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+                      <div className="h-full rounded-full opacity-60"
+                        style={{ width: `${row.bar}%`, background: row.color.includes('accent-blue') ? '#3b82f6' : row.color.includes('purple') ? '#8b5cf6' : row.color.includes('cyan') ? '#06b6d4' : row.color.includes('orange') ? '#f97316' : row.color.includes('emerald') ? '#10b981' : '#facc15' }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom row: key metrics tiles */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/5 border-t border-white/5">
+          {[
+            { metric: 'Device Lifecycle Managed', value: 'Procurement → Disposal', icon: '🔄', detail: 'Full ITAM lifecycle: SAP Ariba → tagging → assignment → certified disposal' },
+            { metric: 'Office Relocations Delivered', value: '3 Offices · Zero Downtime', icon: '📦', detail: 'Riyadh HQ, Jeddah, Al-Khobar — all migrated without business disruption' },
+            { metric: 'Remote Office Build-Outs', value: '4+ Locations · From Design', detail: 'Full IT from floor-plan review → cabling → network → AV → handover', icon: '🏗️' },
+            { metric: 'Asset Compliance Rate', value: '99%+ Accuracy', icon: '✅', detail: 'LPA scans, warranty tracking, real-time SAP ISP ERP records — zero audit failures' },
+          ].map((tile, i) => (
+            <div key={i} className="bg-dark-800/60 px-5 py-4">
+              <div className="flex items-start gap-2 mb-2">
+                <span className="text-lg flex-shrink-0">{tile.icon}</span>
+                <div>
+                  <div className="text-xs font-black text-white">{tile.value}</div>
+                  <div className="text-[10px] text-accent-blue font-semibold mt-0.5">{tile.metric}</div>
+                </div>
+              </div>
+              <p className="text-[10px] text-gray-500 leading-relaxed">{tile.detail}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
       {/* Filter pills */}
       <div className="flex flex-wrap justify-center gap-2 mb-10">
         {GROUPS.map(g => (
