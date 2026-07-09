@@ -143,16 +143,37 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-14">
 
             {/* ── Logo ── */}
-            <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-accent-blue to-cyan-500 flex items-center justify-center shadow-[0_0_16px_rgba(59,130,246,0.4)] group-hover:shadow-[0_0_24px_rgba(59,130,246,0.6)] transition-all duration-300">
-                <Zap className="w-4 h-4 text-white" />
+            <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
+              <style>{`
+                @keyframes logoGlow {
+                  0%,100% { box-shadow: 0 0 10px rgba(59,130,246,0.3), 0 0 20px rgba(59,130,246,0.1); }
+                  50%      { box-shadow: 0 0 22px rgba(59,130,246,0.8), 0 0 40px rgba(6,182,212,0.35); }
+                }
+                @keyframes textGlow {
+                  0%,100% { text-shadow: 0 0 8px rgba(59,130,246,0.3); }
+                  50%      { text-shadow: 0 0 16px rgba(59,130,246,0.8), 0 0 30px rgba(6,182,212,0.4); }
+                }
+                @keyframes tagFade {
+                  0%,100% { opacity: 0.45; }
+                  50%      { opacity: 0.85; }
+                }
+                .logo-icon  { animation: logoGlow 3.5s ease-in-out infinite; }
+                .logo-text  { animation: textGlow 3.5s ease-in-out infinite; }
+                .logo-tag   { animation: tagFade 3.5s ease-in-out infinite; }
+              `}</style>
+
+              {/* Icon — bigger */}
+              <div className="logo-icon w-10 h-10 rounded-xl bg-gradient-to-br from-accent-blue to-cyan-500 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <Zap className="w-5 h-5 text-white" />
               </div>
+
+              {/* Text */}
               <div className="flex flex-col leading-none">
-                <span className="font-black text-sm tracking-tight">
+                <span className="logo-text font-black text-base tracking-tight">
                   <span className="text-accent-blue">HiTecH</span>
                   <span className="text-white"> AI HUB</span>
                 </span>
-                <span className="text-[8px] text-gray-600 font-medium tracking-wide hidden sm:block">
+                <span className="logo-tag text-[9px] text-gray-500 font-medium tracking-wide hidden sm:block mt-0.5">
                   IT Consulting · Training · AI
                 </span>
               </div>
