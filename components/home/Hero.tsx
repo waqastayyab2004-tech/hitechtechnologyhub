@@ -38,7 +38,7 @@ export default function Hero() {
           variants={container}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-center gap-10"
+          className="flex flex-col items-center gap-6"
         >
 
           {/* ── Hero Headline ── */}
@@ -55,31 +55,29 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Name — clean, readable */}
+            {/* Name */}
             <p className="text-sm sm:text-base font-semibold text-gray-400 tracking-widest uppercase mb-1">
               Syed Waqas Tayyab
             </p>
 
-            {/* Title — smaller, professional */}
+            {/* Title */}
             <h1 className="text-2xl sm:text-3xl font-black text-white leading-snug mb-1">
               Senior IT Leader &amp; <span className="gradient-text">AI Specialist</span>
             </h1>
 
-            {/* Tagline — the hook */}
+            {/* Tagline */}
             <p className="text-base sm:text-lg text-gray-400 font-medium mb-1">
               15+ Years · Azure Security · SAP · Cloud · Automation
             </p>
-
-            {/* Hook lines */}
-            <p className="text-sm text-gray-500 mb-2">
+            <p className="text-sm text-gray-500 mb-1">
               Trusted by global enterprises to secure, scale, and automate IT operations.
             </p>
-            <p className="text-xs text-gray-600 italic mb-5">
+            <p className="text-xs text-gray-600 italic mb-4">
               Riyadh, Saudi Arabia · Remote Worldwide · Iqama Transferable
             </p>
 
             {/* Cert strip */}
-            <div className="flex flex-wrap items-center justify-center gap-1.5 mb-6">
+            <div className="flex flex-wrap items-center justify-center gap-1.5 mb-5">
               {[
                 { label: 'Azure Security Certified', color: 'text-blue-400 border-blue-500/30' },
                 { label: 'SAP S/4HANA', color: 'text-orange-400 border-orange-500/30' },
@@ -95,7 +93,7 @@ export default function Hero() {
             </div>
 
             {/* Three CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
               <Link href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-blue-500 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.25)]">
                 <Briefcase className="w-4 h-4" /> Hire for Senior IT Role
@@ -108,6 +106,22 @@ export default function Hero() {
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-dark-700 border border-green-500/30 text-green-400 text-sm font-bold hover:bg-green-500/10 transition-colors">
                 <Award className="w-4 h-4" /> Free Consultation
               </Link>
+            </div>
+
+            {/* ── Social proof strip — visible above fold ── */}
+            <div className="flex flex-wrap items-center justify-center gap-5 py-3 px-5 rounded-2xl bg-white/3 border border-white/6">
+              {[
+                { v: '15+', l: 'Years IT Experience', c: 'text-accent-blue' },
+                { v: '100+', l: 'Projects Delivered', c: 'text-cyan-400' },
+                { v: '13+', l: 'Certifications', c: 'text-purple-400' },
+                { v: '20M+', l: 'SAR IT Assets', c: 'text-green-400' },
+                { v: '200+', l: 'Users Managed', c: 'text-yellow-400' },
+              ].map(s => (
+                <div key={s.l} className="text-center">
+                  <div className={`text-lg font-black ${s.c}`}>{s.v}</div>
+                  <div className="text-[10px] text-gray-500 mt-0.5">{s.l}</div>
+                </div>
+              ))}
             </div>
 
           </motion.div>
@@ -173,7 +187,7 @@ export default function Hero() {
                     </text>
                   </svg>
                   {/* Photo — same size as bot */}
-                  <div className="photo-pulse relative w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-accent-blue/70 overflow-hidden bg-dark-800 z-20">
+                  <div className="photo-pulse relative w-32 h-32 sm:w-44 sm:h-44 rounded-full border-2 border-accent-blue/70 overflow-hidden bg-dark-800 z-20">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/waqas-avatar.jpg" alt="Syed Waqas Tayyab" className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
                     <div className="scan-line absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
@@ -221,7 +235,7 @@ export default function Hero() {
                   <div className="absolute w-1 h-1 rounded-full bg-yellow-400 shadow-[0_0_6px_rgba(250,204,21,1)] orbit-b3" />
                   {/* Bot image — same size as photo */}
                   <div className="bot-bob relative z-10">
-                    <div className="bot-glow relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-cyan-400/70 bg-[#060e1a] flex items-center justify-center">
+                    <div className="bot-glow relative w-32 h-32 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-cyan-400/70 bg-[#060e1a] flex items-center justify-center">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src="/ai-robot-icon.png" alt="Waqas AI BOT" className="w-full h-full object-cover object-center"/>
                       <div className="absolute inset-0 bg-gradient-to-t from-cyan-400/15 via-transparent to-transparent pointer-events-none" />
@@ -246,14 +260,13 @@ export default function Hero() {
           </motion.div>
 
           {/* ── News Ticker + Connect ── */}
-          <motion.div variants={item} className="text-center w-full max-w-3xl mx-auto">
-
+          <motion.div variants={item} className="text-center w-full max-w-4xl mx-auto">
             {/* Live News Ticker */}
             <NewsTicker />
           </motion.div>
 
           {/* ── Connect Bar ── */}
-          <motion.div variants={item} className="w-full max-w-2xl mx-auto">
+          <motion.div variants={item} className="w-full max-w-3xl mx-auto">
             <div className="flex items-center gap-3 mb-3">
               <div className="flex-1 h-px bg-white/5" />
               <span className="text-[10px] text-gray-600 font-semibold uppercase tracking-widest">Connect</span>
