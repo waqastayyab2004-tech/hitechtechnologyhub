@@ -9,6 +9,7 @@ import {
   Download, Code, Server, Database, ChevronDown, ChevronUp,
 } from 'lucide-react'
 import NeuralNetwork from '@/components/ui/NeuralNetwork'
+import MindMap from '@/components/ui/MindMap'
 
 /* ─── DATA ─────────────────────────────────────────────────────────── */
 
@@ -490,6 +491,12 @@ export default function PortfolioPage() {
         <section>
           <SectionHeader icon={<Brain className="w-5 h-5 text-purple-400" />} title="Skills Neural Network" />
           <NeuralNetwork />
+        </section>
+
+        {/* ── MIND MAP ─────────────────────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Brain className="w-5 h-5 text-yellow-400" />} title="IT Expertise Mind Map" />
+          <MindMap />
         </section>
 
         {/* ── EXPERIENCE ───────────────────────────────────────────── */}
