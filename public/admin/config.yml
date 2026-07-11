@@ -4,6 +4,7 @@ backend:
   branch: main
   auth_type: pkce
   app_id: Ov23liaq453INZJuhL4P
+  base_url: https://hitechtechnologyhub.pages.dev
 
 media_folder: public/uploads
 public_folder: /uploads
