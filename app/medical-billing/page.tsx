@@ -385,16 +385,16 @@ export default function MedicalBillingPage() {
               <div className="min-w-[600px]">
 
                 {/* Level 1 — Team Lead */}
-                <div className="flex justify-center mb-0">
+                <div className="flex justify-center mb-0 mt-12">
                   <div className="flex flex-col items-center">
                     {/* Card */}
-                    <div className="relative bg-gradient-to-b from-[#1e3a5f] to-[#0f2040] border-2 border-accent-blue/50 rounded-2xl px-6 pt-2 pb-4 w-52 text-center shadow-[0_0_20px_rgba(59,130,246,0.25)]">
-                      {/* Photo */}
-                      <div className="flex justify-center -mt-8 mb-3">
-                        <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-accent-blue shadow-[0_0_12px_rgba(59,130,246,0.5)]">
+                    <div className="relative bg-gradient-to-b from-[#1e3a5f] to-[#0f2040] border-2 border-accent-blue/50 rounded-2xl px-6 pb-5 pt-16 w-56 text-center shadow-[0_0_20px_rgba(59,130,246,0.25)]">
+                      {/* Photo — floated above card */}
+                      <div className="absolute -top-9 left-1/2 -translate-x-1/2">
+                        <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-accent-blue shadow-[0_0_16px_rgba(59,130,246,0.6)] bg-dark-800">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src="/mujahid-billing-expert.jpg" alt="Mujahid Hussain"
-                            className="w-full h-full object-cover" style={{objectPosition:'center 0%'}}/>
+                            className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
                         </div>
                       </div>
                       <p className="text-sm font-black text-white">Mujahid Hussain</p>
@@ -421,10 +421,10 @@ export default function MedicalBillingPage() {
                       {/* Connector up */}
                       <div className="w-px h-8 bg-gradient-to-b from-rose-500/40 to-transparent"/>
                       {/* Card */}
-                      <div className={`bg-dark-800/80 border rounded-2xl px-4 pt-2 pb-4 w-[105px] text-center ${m.color}`}>
-                        {/* Photo placeholder */}
-                        <div className="flex justify-center -mt-6 mb-2">
-                          <div className={`w-12 h-12 rounded-full bg-dark-700 border-2 ${m.color.split(' ')[0]} flex items-center justify-center text-xl`}>
+                      <div className={`bg-dark-800/80 border rounded-2xl px-4 pt-12 pb-4 w-[110px] text-center relative ${m.color}`}>
+                        {/* Icon circle — above card */}
+                        <div className="absolute -top-6 left-1/2 -translate-x-1/2">
+                          <div className={`w-12 h-12 rounded-full bg-dark-700 border-2 ${m.color.split(' ')[0]} flex items-center justify-center text-2xl shadow-lg`}>
                             {m.icon}
                           </div>
                         </div>
