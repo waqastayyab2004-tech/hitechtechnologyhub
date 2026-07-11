@@ -382,16 +382,34 @@ export default function MedicalBillingPage() {
 
             {/* Org chart container */}
             <div className="overflow-x-auto pb-4">
-              <div className="min-w-[600px]">
+              <div className="min-w-[640px]">
 
-                {/* Level 1 — Team Lead */}
-                <div className="flex justify-center mb-0 mt-12">
+                {/* Level 1 — Head of Medical Services: Dr. Abbas */}
+                <div className="flex justify-center mt-12 mb-0">
                   <div className="flex flex-col items-center">
-                    {/* Card */}
-                    <div className="relative bg-gradient-to-b from-[#1e3a5f] to-[#0f2040] border-2 border-accent-blue/50 rounded-2xl px-6 pb-5 pt-16 w-56 text-center shadow-[0_0_20px_rgba(59,130,246,0.25)]">
-                      {/* Photo — floated above card */}
+                    <div className="relative bg-gradient-to-b from-[#0a2a1f] to-[#071820] border-2 border-emerald-500/60 rounded-2xl px-6 pb-5 pt-16 w-64 text-center shadow-[0_0_24px_rgba(16,185,129,0.3)]">
                       <div className="absolute -top-9 left-1/2 -translate-x-1/2">
-                        <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-accent-blue shadow-[0_0_16px_rgba(59,130,246,0.6)] bg-dark-800">
+                        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-emerald-400 shadow-[0_0_16px_rgba(16,185,129,0.7)] bg-dark-800">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src="/dr-abbas-profile.jpg" alt="Dr. Syed Abbas Tayyab"
+                            className="w-full h-full object-cover" style={{objectPosition:'center 8%'}}/>
+                        </div>
+                      </div>
+                      <p className="text-sm font-black text-white">Dr. Syed Abbas Tayyab</p>
+                      <p className="text-[10px] text-emerald-400 font-semibold mt-0.5">Head of Medical Services</p>
+                      <p className="text-[9px] text-gray-500 mt-1">Emergency Medicine · GMC UK · MRCEM</p>
+                    </div>
+                    {/* Connector down to Mujahid */}
+                    <div className="w-px h-8 bg-gradient-to-b from-emerald-500/60 to-accent-blue/40"/>
+                  </div>
+                </div>
+
+                {/* Level 2 — Team Lead: Mujahid */}
+                <div className="flex justify-center mb-0">
+                  <div className="flex flex-col items-center">
+                    <div className="relative bg-gradient-to-b from-[#1e3a5f] to-[#0f2040] border-2 border-accent-blue/50 rounded-2xl px-6 pb-5 pt-16 w-56 text-center shadow-[0_0_20px_rgba(59,130,246,0.25)]">
+                      <div className="absolute -top-9 left-1/2 -translate-x-1/2">
+                        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-accent-blue shadow-[0_0_16px_rgba(59,130,246,0.6)] bg-dark-800">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src="/mujahid-billing-expert.jpg" alt="Mujahid Hussain"
                             className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
@@ -404,11 +422,11 @@ export default function MedicalBillingPage() {
                     {/* Connector line down */}
                     <div className="w-px h-8 bg-gradient-to-b from-accent-blue/60 to-rose-500/40"/>
                     {/* Horizontal line */}
-                    <div className="w-full h-px bg-gradient-to-r from-transparent via-rose-500/40 to-transparent" style={{width:'480px'}}/>
+                    <div className="h-px bg-gradient-to-r from-transparent via-rose-500/40 to-transparent" style={{width:'540px'}}/>
                   </div>
                 </div>
 
-                {/* Level 2 — Team Members */}
+                {/* Level 3 — Team Members */}
                 <div className="flex justify-center gap-4">
                   {[
                     { name: 'Team Member', role: 'AR Specialist', sub: 'Accounts Receivable', icon: '💼', color: 'border-rose-500/40 shadow-[0_0_12px_rgba(239,68,68,0.2)]' },
