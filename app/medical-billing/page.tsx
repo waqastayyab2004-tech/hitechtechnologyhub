@@ -466,12 +466,11 @@ export default function MedicalBillingPage() {
                 `}</style>
                 <div className="relative">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-emerald-500/30 to-blue-500/20 blur-xl scale-110" />
-                  <div className="dr-glow relative w-48 h-48 rounded-full overflow-hidden border-2 border-emerald-400/60 z-10 flex items-center justify-center bg-gradient-to-br from-[#0a2a1f] to-[#0a1628]">
-                    {/* Medical professional icon placeholder */}
-                    <div className="text-center">
-                      <div className="text-6xl mb-1">👨‍⚕️</div>
-                      <p className="text-[10px] text-emerald-400 font-semibold">Dr. Syed Abbas</p>
-                    </div>
+                  <div className="dr-glow relative w-48 h-48 rounded-full overflow-hidden border-2 border-emerald-400/60 z-10 bg-[#0a1628]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/dr-abbas-profile.jpg" alt="Dr. Syed Abbas Tayyab"
+                      className="w-full h-full object-cover" style={{objectPosition:'center 8%'}}/>
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent"/>
                   </div>
                   <div className="absolute inset-0 rounded-full border border-dashed border-emerald-400/30 scale-110"
                     style={{animation:'orbit2 14s linear infinite'}}/>
