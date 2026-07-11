@@ -234,19 +234,49 @@ export default function MedicalBillingPage() {
           <div className="glass-card overflow-hidden mb-8">
             <div className="flex flex-col sm:flex-row gap-8 p-8">
 
-              {/* Circular photo — small like Portfolio page */}
+              {/* Photo — large circular with glow + badge + skill tags */}
               <div className="flex flex-col items-center gap-3 flex-shrink-0">
+                <style>{`
+                  @keyframes expertGlow {
+                    0%,100% { box-shadow: 0 0 20px rgba(239,68,68,0.4), 0 0 40px rgba(99,102,241,0.2); }
+                    50%     { box-shadow: 0 0 40px rgba(239,68,68,0.8), 0 0 80px rgba(99,102,241,0.4); }
+                  }
+                  .expert-glow { animation: expertGlow 3s ease-in-out infinite; }
+                `}</style>
+
+                {/* Outer glow ring */}
                 <div className="relative">
-                  <div className="w-36 h-36 rounded-full overflow-hidden border-3 border-rose-400/50 shadow-[0_0_30px_rgba(239,68,68,0.3)]">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-500/30 to-indigo-500/20 blur-xl scale-110" />
+                  {/* Photo circle */}
+                  <div className="expert-glow relative w-48 h-48 rounded-full overflow-hidden border-2 border-rose-400/60 z-10">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/mujahid-billing-expert.jpg" alt="Mujahid Hussain"
-                      className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
+                      className="w-full h-full object-cover" style={{objectPosition:'center 0%'}}/>
                   </div>
-                  <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,0.8)]"/>
+                  {/* Rotating dashed ring */}
+                  <div className="absolute inset-0 rounded-full border border-dashed border-rose-400/30 scale-110"
+                    style={{animation:'orbit1 12s linear infinite'}}/>
                 </div>
-                <div className="text-center">
-                  <p className="text-xs font-bold text-rose-400 uppercase tracking-widest">Team Lead</p>
-                  <p className="text-[10px] text-gray-600 font-mono mt-0.5">Bellmedex · 2021–Present</p>
+
+                {/* Available badge */}
+                <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-dark-700/90 border border-white/10 shadow-lg">
+                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0"/>
+                  <span className="text-xs font-semibold text-white">Available for Projects</span>
+                </div>
+
+                {/* Skill tags — like in screenshot */}
+                <div className="flex flex-wrap justify-center gap-1.5 max-w-[200px]">
+                  {[
+                    { label: '🏥 Medical Billing', color: 'border-rose-500/40 text-rose-300 bg-rose-500/8' },
+                    { label: '💳 AR Management', color: 'border-orange-500/40 text-orange-300 bg-orange-500/8' },
+                    { label: '🔍 Denial Mgmt', color: 'border-purple-500/40 text-purple-300 bg-purple-500/8' },
+                    { label: '📋 ICD-10/CPT', color: 'border-cyan-500/40 text-cyan-300 bg-cyan-500/8' },
+                    { label: '⚕️ HIPAA Certified', color: 'border-green-500/40 text-green-300 bg-green-500/8' },
+                  ].map(t => (
+                    <span key={t.label} className={`px-2.5 py-1 rounded-full text-[10px] font-semibold border ${t.color} whitespace-nowrap`}>
+                      {t.label}
+                    </span>
+                  ))}
                 </div>
               </div>
 
