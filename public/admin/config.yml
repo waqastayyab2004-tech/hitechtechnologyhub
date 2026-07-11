@@ -2,6 +2,7 @@ backend:
   name: github
   repo: waqastayyab2004-tech/hitechtechnologyhub
   branch: main
+  base_url: https://decapcms-github-gateway.netlify.app
 
 media_folder: public/uploads
 public_folder: /uploads
@@ -26,32 +27,3 @@ collections:
       - { label: "Read Time", name: readTime, widget: string, default: "8 min read" }
       - { label: "Featured?", name: featured, widget: boolean, default: false }
       - { label: "Article Content", name: body, widget: markdown }
-
-
-media_folder: public/uploads
-public_folder: /uploads
-
-site_url: https://hitechtechnologyhub.pages.dev
-display_url: https://hitechtechnologyhub.pages.dev
-
-collections:
-  - name: blog
-    label: Blog Articles
-    label_singular: Blog Article
-    folder: content/blog
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: title, widget: string }
-      - { label: "Publish Date", name: date, widget: datetime, format: "YYYY-MM-DD" }
-      - { label: "Excerpt / Summary", name: excerpt, widget: text }
-      - label: "Tags"
-        name: tags
-        widget: list
-      - { label: "Author", name: author, widget: string, default: "Waqas Syed" }
-      - { label: "Read Time", name: readTime, widget: string, default: "8 min read" }
-      - { label: "Featured?", name: featured, widget: boolean, default: false }
-      - label: "Article Content"
-        name: body
-        widget: markdown
