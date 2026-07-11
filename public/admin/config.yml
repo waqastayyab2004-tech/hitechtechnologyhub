@@ -2,17 +2,16 @@ backend:
   name: github
   repo: waqastayyab2004-tech/hitechtechnologyhub
   branch: main
-  base_url: https://hitechtechnologyhub.pages.dev
+  auth_type: pkce
+  app_id: Ov23liaq453INZJuhL4P
 
 media_folder: public/uploads
 public_folder: /uploads
 
-site_url: https://www.hitechtechnologyhub.com
-display_url: https://www.hitechtechnologyhub.com
-logo_url: https://www.hitechtechnologyhub.com/favicon.svg
+site_url: https://hitechtechnologyhub.pages.dev
+display_url: https://hitechtechnologyhub.pages.dev
 
 collections:
-  # ── Blog Articles ─────────────────────────────────────────────
   - name: blog
     label: Blog Articles
     label_singular: Blog Article
@@ -27,30 +26,9 @@ collections:
       - label: "Tags"
         name: tags
         widget: list
-        hint: "Add relevant tags e.g. AI, Cybersecurity, ServiceNow"
       - { label: "Author", name: author, widget: string, default: "Waqas Syed" }
-      - { label: "Read Time", name: readTime, widget: string, default: "8 min read", hint: "e.g. 8 min read" }
-      - { label: "Featured Article?", name: featured, widget: boolean, default: false }
-      - { label: "Cover Image", name: coverImage, widget: image, required: false, hint: "Upload a cover image for the article" }
+      - { label: "Read Time", name: readTime, widget: string, default: "8 min read" }
+      - { label: "Featured?", name: featured, widget: boolean, default: false }
       - label: "Article Content"
         name: body
         widget: markdown
-        hint: "Write your full article here. Use headings, bullet points, bold text."
-
-  # ── Projects ───────────────────────────────────────────────────
-  - name: settings
-    label: Site Settings
-    files:
-      - label: "Profile & Bio"
-        name: profile
-        file: content/settings/profile.json
-        fields:
-          - { label: "Full Name", name: name, widget: string }
-          - { label: "Job Title", name: title, widget: string }
-          - { label: "Tagline", name: tagline, widget: string }
-          - { label: "Location", name: location, widget: string }
-          - { label: "LinkedIn URL", name: linkedin, widget: string }
-          - { label: "WhatsApp Number", name: whatsapp, widget: string }
-          - { label: "Email", name: email, widget: string }
-          - { label: "Open to Work?", name: openToWork, widget: boolean, default: true }
-          - { label: "Available for Freelance?", name: availableFreelance, widget: boolean, default: true }
