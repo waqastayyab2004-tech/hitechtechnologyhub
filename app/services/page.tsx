@@ -12,7 +12,7 @@ import {
 /* ── DATA ──────────────────────────────────────────────────────────────── */
 
 const stats = [
-  { value: '15+', label: 'Years in IT Ops & Security' },
+  { value: '10+', label: 'Years in IT Ops & Security' },
   { value: '100+', label: 'Active service contracts' },
   { value: '99.9%', label: 'Uptime across SLAs' },
 ]
@@ -330,9 +330,9 @@ const testimonials = [
 
 const faqs = [
   { q: 'What is the difference between Onsite and Remote IT services?', a: 'Onsite means I physically work at your location — ideal for infrastructure setup, device deployment, and hands-on technical work. Remote services cover everything that can be delivered digitally: cloud administration, ServiceNow, cybersecurity, automation development. Many engagements combine both depending on the phase.' },
-  { q: 'How do your services compare to a full-time IT hire?', a: 'You get senior-level expertise (Azure-certified, 15+ years, C-suite track record) without the cost, benefits overhead, and management burden of a full-time employee. Most clients achieve better IT outcomes at 40–60% lower cost than a comparable in-house hire.' },
+  { q: 'How do your services compare to a full-time IT hire?', a: 'You get senior-level expertise (Azure-certified, 10+ years, C-suite track record) without the cost, benefits overhead, and management burden of a full-time employee. Most clients achieve better IT outcomes at 40–60% lower cost than a comparable in-house hire.' },
   { q: 'Do you work with small businesses or only large enterprises?', a: 'Both. My background is in global enterprises, but I apply the same rigour to SMBs — often delivering enterprise-quality IT management that was previously inaccessible to smaller organisations.' },
-  { q: 'What happens if something goes wrong outside working hours?', a: 'Critical support arrangements include defined response time SLAs and out-of-hours escalation protocols. Our team brings 15+ years of supporting C-suite executives — availability and responsiveness are non-negotiable in every engagement.' },
+  { q: 'What happens if something goes wrong outside working hours?', a: 'Critical support arrangements include defined response time SLAs and out-of-hours escalation protocols. Our team brings 10+ years of supporting C-suite executives — availability and responsiveness are non-negotiable in every engagement.' },
   { q: 'Do you sign NDAs?', a: 'Yes. All engagements include a mutual NDA before any access or information sharing. We operate at the highest levels of corporate IT where confidentiality is essential and absolute.' },
   { q: 'How quickly can you start?', a: 'Typically within 1–2 weeks of proposal agreement — NDA, access setup, and onboarding. For urgent situations, faster start is possible. Contact me to discuss your timeline.' },
 ]
@@ -379,7 +379,7 @@ export default function ServicesPage() {
               Senior IT consulting and managed services — <strong className="text-white">Onsite across MENA</strong> and <strong className="text-white">Remote globally</strong>. Enterprise-grade IT delivered with the speed and flexibility you actually need.
             </p>
             <p className="text-sm text-gray-500 italic mb-10 border-l-2 border-accent-blue/40 pl-4">
-              &ldquo;15+ years managing IT for global multinationals — now available to transform your operations, security, and automation without the overhead of a full department.&rdquo;
+              &ldquo;10+ years managing IT for global multinationals — now available to transform your operations, security, and automation without the overhead of a full department.&rdquo;
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="#contact-form" className="btn-primary text-base px-8 py-3.5">
@@ -421,7 +421,7 @@ export default function ServicesPage() {
                 </div>
 
                 <p className="text-gray-300 text-sm leading-relaxed mb-5">
-                  A senior IT specialist with 15+ years managing enterprise IT operations, cybersecurity, cloud infrastructure, and AI automation across global multinationals — keeping critical systems secure, reliable, and ahead of the curve.
+                  A senior IT specialist with 10+ years managing enterprise IT operations, cybersecurity, cloud infrastructure, and AI automation across global multinationals — keeping critical systems secure, reliable, and ahead of the curve.
                 </p>
 
                 <div className="space-y-2 mb-8">
@@ -666,6 +666,112 @@ export default function ServicesPage() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── MEET THE BILLING EXPERT ──────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/30">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="section-heading mb-3">Meet Our Medical Billing Expert</h2>
+            <p className="section-subheading">Our dedicated RCM specialist manages all medical billing operations — so you can focus entirely on patient care.</p>
+          </div>
+
+          <div className="glass-card overflow-hidden">
+            <div className="flex flex-col md:flex-row">
+              {/* Photo */}
+              <div className="md:w-64 flex-shrink-0 relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/mujahid-profile.jpg" alt="Mujahid Hussain — Medical Billing Expert"
+                  className="w-full h-72 md:h-full object-cover object-top"/>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent md:bg-gradient-to-l"/>
+              </div>
+
+              {/* Info */}
+              <div className="flex-1 p-8">
+                <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                  <div>
+                    <h3 className="text-2xl font-black text-white mb-1">Mujahid Hussain</h3>
+                    <p className="text-accent-blue font-semibold text-sm">Team Lead Operations · Medical Billing & RCM Specialist</p>
+                    <p className="text-gray-500 text-xs mt-1">Bellmedex Medical Billing Company · 2021 – Present</p>
+                  </div>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-green-500/10 border border-green-500/30 text-green-400 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>
+                    Available for RCM Projects
+                  </span>
+                </div>
+
+                {/* Stats */}
+                <div className="flex flex-wrap gap-6 mb-5 pb-5 border-b border-white/8">
+                  {[
+                    { v: '4+', l: 'Years RCM Experience' },
+                    { v: 'HIPAA', l: 'Certified' },
+                    { v: '98%+', l: 'Clean Claim Rate' },
+                    { v: '8+', l: 'Billing Platforms' },
+                  ].map(s => (
+                    <div key={s.l}>
+                      <div className="text-xl font-black gradient-text">{s.v}</div>
+                      <div className="text-gray-500 text-xs mt-0.5">{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                  A highly motivated and results-driven RCM professional with deep expertise in Medical Billing, AR management, denial resolution, and team leadership. Currently serving as Team Lead Operations at Bellmedex Medical Billing Company, supervising billing teams, training staff, and driving revenue cycle performance for US healthcare practices.
+                </p>
+
+                {/* Skills */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+                  <div>
+                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">RCM Expertise</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {['AR Management', 'Denial Management', 'Payment Posting', 'VOB', 'Prior Auth', 'Appeals', 'Team Leadership', 'Revenue Cycle'].map(s => (
+                        <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-accent-blue/10 border border-accent-blue/20 text-accent-blue">{s}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Billing Platforms</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {['eClinicalWorks', 'Trizetto', 'Kareo', 'Simple Practice', 'TheraNest', 'Medifusion', 'My Client Plus', 'Genesis'].map(s => (
+                        <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-dark-700 border border-white/10 text-gray-400">{s}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Specialties */}
+                <div className="mb-5">
+                  <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Specialties</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['Mental Health', 'Internal Medicine', 'Chiropractic', 'Family Medicine', 'Transportation / NEMT', 'DME'].map(s => (
+                      <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-500/10 border border-rose-500/20 text-rose-300">{s}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Contact */}
+                <div className="pt-5 border-t border-white/8">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-3">Medical Billing Inquiries — Contact Directly</p>
+                  <div className="flex flex-wrap gap-3">
+                    <a href="https://wa.me/923451525845" target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-colors">
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                      WhatsApp: +92 345 152 5845
+                    </a>
+                    <a href="mailto:adnanhamdani32@gmail.com"
+                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-blue/10 border border-accent-blue/25 text-accent-blue text-xs font-semibold hover:bg-accent-blue/20 transition-colors">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                      adnanhamdani32@gmail.com
+                    </a>
+                  </div>
+                  <p className="text-[10px] text-gray-600 mt-3 italic">
+                    For IT services, cybersecurity, and general enquiries — contact Waqas directly via WhatsApp (+966 505 803 073) or email waqastayyab2004@gmail.com
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
