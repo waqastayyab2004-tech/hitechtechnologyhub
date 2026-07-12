@@ -68,6 +68,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark scroll-smooth">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            var hash = window.location.hash;
+            if (hash && (hash.indexOf('invite_token=') > -1 || hash.indexOf('recovery_token=') > -1 || hash.indexOf('confirmation_token=') > -1)) {
+              window.location.replace('/admin/' + hash);
+            }
+          })();
+        `}} />
+      </head>
       <body className="bg-dark-900 text-gray-100 antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
