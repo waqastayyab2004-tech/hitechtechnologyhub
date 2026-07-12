@@ -312,6 +312,7 @@ const projects: Project[] = [
 /* ── GROUPS ─────────────────────────────────────────────────────── */
 const GROUPS = [
   { key: 'All', label: 'All Projects' },
+  { key: 'Daily IT Operations', label: '⚙️ Daily IT Operations' },
   { key: 'Personal Apps & AI Tools', label: '💻 Personal Apps & AI Tools' },
   { key: 'Enterprise IT Implementations', label: '🏢 Enterprise Implementations' },
   { key: 'ITSM & Service Management', label: '🎫 ITSM & Service Management' },
@@ -347,7 +348,7 @@ export default function ProjectsPage() {
 
   const stats = [
     { v: '100+', l: 'Projects Delivered' },
-    { v: '24', l: 'Showcased Here' },
+    { v: '34', l: 'Showcased Here' },
     { v: '15+', l: 'Years Experience' },
     { v: '20M+', l: 'SAR Managed' },
   ]
