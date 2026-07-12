@@ -254,11 +254,11 @@ const stats = [
 ]
 
 const contacts = [
-  { icon: Phone, label: '+966 505803073', href: 'tel:+966505803073', color: 'text-green-400', bg: 'bg-green-500/10' },
-  { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/966505803073', color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
-  { icon: Mail, label: 'waqastayyab2004@gmail.com', href: 'mailto:waqastayyab2004@gmail.com', color: 'text-red-400', bg: 'bg-red-500/10' },
-  { icon: Linkedin, label: 'syedwaqastayyab', href: 'https://www.linkedin.com/in/syedwaqastayyab/', color: 'text-blue-400', bg: 'bg-blue-500/10' },
-  { icon: Facebook, label: 'HiTech Technology HUB', href: 'https://www.facebook.com/profile.php?id=61551726961739', color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
+  { icon: Phone,         label: '+966 505803073',        href: 'tel:+966505803073',                                          color: 'text-green-400',  bg: 'bg-green-500/10',  emoji: '📞' },
+  { icon: MessageCircle, label: 'WhatsApp',               href: 'https://wa.me/966505803073',                                 color: 'text-emerald-400', bg: 'bg-emerald-500/10', emoji: '💬' },
+  { icon: Mail,          label: 'waqastayyab2004@gmail.com', href: 'mailto:waqastayyab2004@gmail.com',                       color: 'text-red-400',    bg: 'bg-red-500/10',    emoji: '✉️' },
+  { icon: Linkedin,      label: 'syedwaqastayyab',        href: 'https://www.linkedin.com/in/syedwaqastayyab/',              color: 'text-blue-400',   bg: 'bg-blue-500/10',   emoji: '🔗' },
+  { icon: Facebook,      label: 'HiTech Technology HUB',  href: 'https://www.facebook.com/profile.php?id=61551726961739',    color: 'text-indigo-400', bg: 'bg-indigo-500/10', emoji: '👍' },
 ]
 
 /* ─── PAGE ─────────────────────────────────────────────────────────── */
@@ -427,18 +427,46 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── QUICK CONTACT BAR ──────────────────────────────────────── */}
-      <section className="bg-dark-800/50 border-b border-white/5 py-4">
+      <section className="bg-dark-800/50 border-b border-white/5 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            {contacts.map((c) => (
-              <a key={c.label} href={c.href}
-                target={c.href.startsWith('http') ? '_blank' : undefined}
-                rel="noopener noreferrer"
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium ${c.bg} ${c.color} border border-current/20 hover:opacity-80 transition-opacity`}>
-                <c.icon className="w-3.5 h-3.5 flex-shrink-0" />
-                <span className="hidden sm:inline">{c.label}</span>
-              </a>
-            ))}
+
+            {/* Phone */}
+            <a href="tel:+966505803073"
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold bg-green-500/10 border border-green-500/25 text-green-400 hover:bg-green-500/20 transition-all">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+              <span>+966 505 803 073</span>
+            </a>
+
+            {/* WhatsApp */}
+            <a href="https://wa.me/966505803073" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 hover:bg-emerald-500/20 transition-all">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span>WhatsApp</span>
+            </a>
+
+            {/* Email */}
+            <a href="mailto:waqastayyab2004@gmail.com"
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold bg-red-500/10 border border-red-500/25 text-red-400 hover:bg-red-500/20 transition-all">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span className="hidden sm:inline">waqastayyab2004@gmail.com</span>
+              <span className="sm:hidden">Gmail</span>
+            </a>
+
+            {/* LinkedIn */}
+            <a href="https://www.linkedin.com/in/syedwaqastayyab/" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold bg-blue-500/10 border border-blue-500/25 text-blue-400 hover:bg-blue-500/20 transition-all">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+
+            {/* Facebook */}
+            <a href="https://www.facebook.com/profile.php?id=61551726961739" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm font-semibold bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 hover:bg-indigo-500/20 transition-all">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <span>Facebook</span>
+            </a>
+
           </div>
         </div>
       </section>
@@ -511,6 +539,28 @@ export default function PortfolioPage() {
         {/* ── SKILL DOMAINS GRID ───────────────────────────────────── */}
         <section>
           <SectionHeader icon={<Cpu className="w-5 h-5 text-cyan-400" />} title="Skill Domains" />
+
+          {/* Daily IT Operations highlight banner */}
+          <Link href="/projects#daily-operations"
+            className="block mb-6 p-5 rounded-2xl border-2 border-cyan-500/40 bg-gradient-to-r from-cyan-500/10 via-cyan-500/5 to-transparent hover:border-cyan-400/60 hover:from-cyan-500/15 transition-all group">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-3xl flex-shrink-0">⚙️</div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/25 px-2 py-0.5 rounded-full">Daily IT Operations</span>
+                    <span className="text-xs text-gray-500">10 Technical Areas · 200+ Users</span>
+                  </div>
+                  <h3 className="text-white font-black text-lg">See My Daily Skillset in Action</h3>
+                  <p className="text-gray-400 text-sm mt-0.5">Asset lifecycle · MDM · Endpoint security · M365 admin · Network · AV · Provisioning</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-bold text-sm group-hover:bg-cyan-500/30 transition-all flex-shrink-0">
+                View 10 Project Cards <span className="ml-1 group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </div>
+            </div>
+          </Link>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {skillDomains.map((domain) => {
               const Icon = domain.icon
