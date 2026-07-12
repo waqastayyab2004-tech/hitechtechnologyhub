@@ -530,6 +530,74 @@ export default function PortfolioPage() {
           </div>
         </section>
 
+        {/* ── DAILY IT OPERATIONS SHOWCASE ─────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Zap className="w-5 h-5 text-cyan-400" />} title="Daily IT Operations" />
+
+          {/* Hero banner */}
+          <div className="relative rounded-2xl overflow-hidden mb-6 border border-cyan-500/25"
+            style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(8,14,24,0.95) 50%, rgba(37,99,235,0.06) 100%)' }}>
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-0 left-0 w-64 h-64 rounded-full blur-[80px]" style={{ background: 'rgba(6,182,212,0.12)' }} />
+              <div className="absolute bottom-0 right-0 w-48 h-48 rounded-full blur-[60px]" style={{ background: 'rgba(37,99,235,0.10)' }} />
+            </div>
+            <div className="relative z-10 p-7 md:p-10">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0 border border-cyan-500/30"
+                  style={{ background: 'rgba(6,182,212,0.15)' }}>⚙️</div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="text-xs font-black uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/25 px-3 py-1 rounded-full">Live Daily · Enterprise IT</span>
+                    <span className="text-xs text-gray-500 font-mono">200+ users · 3 offices · Riyadh KSA</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">What I Do Every Day at Work</h2>
+                  <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
+                    Across 10 technical domains — from MDM and endpoint security to M365 administration,
+                    network ops, and meeting room AV — I keep enterprise IT running for 200+ users
+                    across 3 offices. Click any card below to read the full scope, SLAs, tools, and outcomes.
+                  </p>
+                </div>
+                <Link href="/projects"
+                  className="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl font-black text-sm border-2 transition-all hover:scale-105"
+                  style={{ background: 'rgba(6,182,212,0.15)', borderColor: 'rgba(6,182,212,0.5)', color: '#67e8f9' }}>
+                  My Projects →
+                </Link>
+              </div>
+
+              {/* 10 task area cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                {[
+                  { icon: '📦', title: 'IT Asset Lifecycle',     desc: '1,500–2,000+ devices · procurement to disposal',  color: '#f97316' },
+                  { icon: '📧', title: 'Email & Identity',       desc: 'Exchange Online · MFA · mailbox governance',       color: '#3b82f6' },
+                  { icon: '🛡️', title: 'Endpoint Security',      desc: 'Intune · Defender · BitLocker · CyberArk',         color: '#ef4444' },
+                  { icon: '🍎', title: 'macOS Fleet (Jamf)',      desc: 'FileVault · SSO certs · Self Service apps',        color: '#a3a3a3' },
+                  { icon: '📱', title: 'Mobile MDM',             desc: 'iOS/Android · ADE · Intune · compliance',          color: '#8b5cf6' },
+                  { icon: '💻', title: 'Windows Provisioning',   desc: 'Autopilot · SCCM · Day 1 ready in 45 min',        color: '#06b6d4' },
+                  { icon: '☁️', title: 'M365 Cloud Admin',       desc: 'Teams · SharePoint · OneDrive · 200+ users',      color: '#0ea5e9' },
+                  { icon: '🖨️', title: 'Print & Meeting AV',     desc: 'HP MFP fleet · Teams Rooms · Crestron · AV',      color: '#f59e0b' },
+                  { icon: '🔐', title: 'User Provisioning',      desc: 'Azure AD · onboarding · Day 1 in 30 min',         color: '#10b981' },
+                  { icon: '🌐', title: 'Network & VPN',          desc: 'Cisco · Aruba · 802.1X · GlobalProtect',          color: '#6366f1' },
+                ].map((task) => (
+                  <Link key={task.title} href="/projects"
+                    className="group flex flex-col gap-2 p-4 rounded-xl border transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                    style={{ background: `${task.color}08`, borderColor: `${task.color}25` }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${task.color}55` }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${task.color}25` }}>
+                    <span className="text-2xl">{task.icon}</span>
+                    <div>
+                      <p className="text-white font-bold text-xs leading-snug mb-1">{task.title}</p>
+                      <p className="text-gray-500 text-[10px] leading-snug">{task.desc}</p>
+                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: task.color }}>
+                      My Projects →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── SKILLS — Neural Brain Network ────────────────────────── */}
         <section>
           <SectionHeader icon={<Brain className="w-5 h-5 text-purple-400" />} title="Skills Neural Network" />
