@@ -8,11 +8,11 @@ import HomeSummary from '@/components/home/HomeSummary'
 export default function HomePage() {
   return (
     <>
+      <HireCTA />
       <Hero />
       <HomeSummary />
       <TopicsPreview />
       <ProjectsPreview />
-      <HireCTA />
       <Newsletter />
     </>
   )

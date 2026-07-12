@@ -57,9 +57,8 @@ export default function HireCTA() {
                 Syed Waqas Tayyab — 15+ years across IT Infrastructure, Operations, Service Delivery,
                 Office Technology, Azure Security, SAP and AI/ML. 13 certifications. MBA. Fluent in English &amp; Arabic.
               </p>
-              <p className="text-gray-500 mb-4 text-xs leading-relaxed max-w-xl italic border-l-2 border-accent-blue/30 pl-3">
-                &ldquo;Training and building AI expert teams — helping young IT professionals adopt AI faster
-                with the corporate industry knowledge most are missing.&rdquo;
+              <p className="text-gray-500 mb-1 text-xs leading-relaxed max-w-xl italic border-l-2 border-accent-blue/30 pl-3">
+                &ldquo;Your hub for enterprise IT consulting, free IT courses, AI automation, and real-world tech insights — all in one place.&rdquo;
               </p>
               {/* Highlights */}
               <div className="flex flex-wrap gap-2 mb-5 justify-center md:justify-start">
@@ -70,7 +69,7 @@ export default function HireCTA() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                <Link href="/hire" className="btn-primary text-sm px-6 py-2.5">
+                <Link href="/about" className="btn-primary text-sm px-6 py-2.5">
                   View Full Profile <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href="/contact" className="btn-outline text-sm px-6 py-2.5">
