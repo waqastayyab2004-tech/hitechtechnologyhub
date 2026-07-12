@@ -601,6 +601,42 @@ export default function PortfolioPage() {
           )}
         </section>
 
+        {/* ── DAILY OPERATIONS CTA ──────────────────────────────────── */}
+        <section>
+          <div className="glass-card p-8 md:p-10 relative overflow-hidden border border-cyan-500/20">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/6 via-transparent to-accent-blue/6 pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center flex-shrink-0">
+                <Server className="w-8 h-8 text-cyan-400" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+                  Daily Operations
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black text-white mb-2">
+                  See My Daily IT Skillset in Action
+                </h2>
+                <p className="text-gray-400 text-sm max-w-2xl leading-relaxed">
+                  From endpoint security and MDM to Microsoft 365 administration, network ops, and mobile device management — explore the 10 technical areas I manage every day across a 200+ user enterprise environment.
+                </p>
+                <div className="flex flex-wrap gap-2 mt-3 justify-center md:justify-start">
+                  {['Jamf MDM', 'Intune/Autopilot', 'Azure AD', 'Exchange Online', 'Defender', 'Cisco/Aruba', 'Teams Rooms', 'BitLocker', 'ServiceNow', 'Power BI'].map(tag => (
+                    <span key={tag} className="text-xs bg-white/5 border border-white/10 text-gray-300 px-2 py-0.5 rounded-full">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex-shrink-0">
+                <Link
+                  href="/projects#daily-operations"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-cyan-500/15 border border-cyan-500/35 text-cyan-300 hover:bg-cyan-500/25 hover:border-cyan-400/50 transition-all whitespace-nowrap"
+                >
+                  <ExternalLink className="w-4 h-4" /> View Daily Operations
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── HIRE CTA ─────────────────────────────────────────────── */}
         <section>
           <div className="glass-card p-8 md:p-12 text-center relative overflow-hidden">
