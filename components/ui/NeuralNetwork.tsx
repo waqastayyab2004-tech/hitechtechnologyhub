@@ -500,51 +500,51 @@ export default function NeuralNetwork() {
         </div>
 
         {/* Sidebar */}
-        <div className="xl:border-l border-white/5 p-5 flex flex-col gap-2 overflow-y-auto" style={{maxHeight:760}}>
+        <div className="xl:border-l border-white/5 p-5 flex flex-col gap-2.5 overflow-y-auto" style={{maxHeight:760}}>
           {!activeDomain ? (
             <>
-              <p className="text-gray-500 text-xs font-mono uppercase tracking-widest mb-1">All Domains</p>
+              <p className="text-gray-400 text-sm font-mono uppercase tracking-widest mb-2 font-bold">All Domains</p>
               {DOMAINS.map(d => (
                 <button key={d.id} onClick={() => setActive(d.id)}
-                  className="flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-150 hover:scale-[1.01]"
+                  className="flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-150 hover:scale-[1.01]"
                   style={{background:`${d.color}10`,border:`1px solid ${d.color}28`}}>
-                  <span className="text-2xl w-8 text-center flex-shrink-0">{d.icon}</span>
+                  <span className="text-3xl w-10 text-center flex-shrink-0">{d.icon}</span>
                   <div className="flex-1 min-w-0">
-                    <div className="font-bold text-sm font-mono leading-tight" style={{color:d.color}}>
+                    <div className="font-bold text-base font-mono leading-tight" style={{color:d.color}}>
                       {d.label.replace('\n',' ')}
                     </div>
-                    <div className="text-gray-500 text-xs font-mono">{d.stat}</div>
+                    <div className="text-gray-400 text-sm font-mono mt-0.5">{d.stat}</div>
                   </div>
-                  <span className="text-gray-500 text-sm">›</span>
+                  <span className="text-gray-400 text-lg">›</span>
                 </button>
               ))}
             </>
           ) : (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2.5">
               <button onClick={() => setActive(null)}
-                className="text-xs font-mono text-gray-500 hover:text-gray-200 transition-colors text-left tracking-wider mb-1">
+                className="text-sm font-mono text-gray-400 hover:text-gray-200 transition-colors text-left tracking-wider mb-1 font-bold">
                 ← ALL DOMAINS
               </button>
-              <div className="flex items-center gap-3 p-3 rounded-xl mb-1"
+              <div className="flex items-center gap-4 p-4 rounded-xl mb-1"
                 style={{background:`${activeDomain.color}12`,border:`1px solid ${activeDomain.color}35`}}>
-                <span className="text-4xl">{activeDomain.icon}</span>
+                <span className="text-5xl">{activeDomain.icon}</span>
                 <div>
-                  <h4 className="font-black text-white text-sm font-mono leading-tight">
+                  <h4 className="font-black text-white text-base font-mono leading-tight">
                     {activeDomain.label.replace('\n',' ')}
                   </h4>
-                  <p className="text-xs font-mono mt-0.5" style={{color:activeDomain.color}}>{activeDomain.stat}</p>
+                  <p className="text-sm font-mono mt-1" style={{color:activeDomain.color}}>{activeDomain.stat}</p>
                 </div>
               </div>
               {activeDomain.subSkills.map(sk => (
-                <div key={sk.id} className="flex items-center gap-3 px-3 py-2 rounded-lg"
+                <div key={sk.id} className="flex items-center gap-3 px-4 py-2.5 rounded-lg"
                   style={{background:`${activeDomain.color}08`,border:`1px solid ${activeDomain.color}20`}}>
-                  <span className="text-lg w-7 text-center flex-shrink-0">{sk.icon}</span>
+                  <span className="text-xl w-8 text-center flex-shrink-0">{sk.icon}</span>
                   <span className="text-sm font-mono font-semibold" style={{color:activeDomain.color}}>{sk.label}</span>
                 </div>
               ))}
               {activeDomain.link && (
                 <Link href={activeDomain.link}
-                  className="mt-2 flex items-center justify-center gap-2 w-full px-3 py-2.5 rounded-xl text-xs font-black font-mono tracking-wider transition-all hover:scale-[1.02]"
+                  className="mt-2 flex items-center justify-center gap-2 w-full px-3 py-3 rounded-xl text-sm font-black font-mono tracking-wider transition-all hover:scale-[1.02]"
                   style={{background:`${activeDomain.color}20`,border:`1px solid ${activeDomain.color}50`,color:activeDomain.color}}>
                   ⚙️ VIEW PROJECT CARDS →
                 </Link>
@@ -670,11 +670,11 @@ export default function NeuralNetwork() {
 
       {/* Footer */}
       <div className="border-t border-white/5 px-6 py-3 flex flex-wrap items-center gap-4">
-        <span className="text-gray-600 text-xs font-mono">{DOMAINS.reduce((s,d)=>s+d.subSkills.length,0)} SKILLS MAPPED</span>
+        <span className="text-gray-500 text-sm font-mono">{DOMAINS.reduce((s,d)=>s+d.subSkills.length,0)} SKILLS MAPPED</span>
         <span className="text-gray-700">·</span>
-        <span className="text-gray-600 text-xs font-mono">{DOMAINS.length} DOMAINS</span>
+        <span className="text-gray-500 text-sm font-mono">{DOMAINS.length} DOMAINS</span>
         <span className="text-gray-700">·</span>
-        <span className="text-gray-600 text-xs font-mono">CLICK ANY NODE TO SEE FULL EXPERIENCE</span>
+        <span className="text-gray-500 text-sm font-mono">CLICK ANY NODE TO SEE FULL EXPERIENCE</span>
       </div>
     </div>
   )
