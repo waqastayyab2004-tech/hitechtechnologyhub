@@ -747,11 +747,11 @@ export default function TrainingPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {(activeCategory === 'All'
-                  ? courses.filter(c => c.category === 'Corporate IT Training').slice(0, 4)
+                  ? courses.filter(c => c.category === 'Corporate IT Training').slice(0, 8)
                   : courses.filter(c => c.category === 'Corporate IT Training')
                 ).map(c => <CourseCard key={c.id} course={c} />)}
               </div>
-              {activeCategory === 'All' && courses.filter(c => c.category === 'Corporate IT Training').length > 4 && (
+              {activeCategory === 'All' && courses.filter(c => c.category === 'Corporate IT Training').length > 8 && (
                 <div className="mt-4 text-center">
                   <button onClick={() => setActiveCategory('Corporate IT Training')}
                     className="btn-outline px-6 py-2 text-sm inline-flex items-center gap-2">

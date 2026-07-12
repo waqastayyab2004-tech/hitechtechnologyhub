@@ -411,7 +411,7 @@ export default function ProjectsPage() {
 
   const stats = [
     { v: '100+', l: 'Projects Delivered' },
-    { v: '34', l: 'Showcased Here' },
+    { v: '35', l: 'Showcased Here' },
     { v: '15+', l: 'Years Experience' },
     { v: '20M+', l: 'SAR Managed' },
   ]
