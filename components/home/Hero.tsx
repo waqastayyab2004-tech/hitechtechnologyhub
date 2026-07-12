@@ -61,7 +61,7 @@ export default function Hero() {
             </p>
 
             {/* Title */}
-            <h1 className="text-2xl sm:text-3xl font-black text-white leading-snug mb-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-white leading-snug mb-1">
               Senior IT Leader &amp; <span className="gradient-text">AI Specialist</span>
             </h1>
 
