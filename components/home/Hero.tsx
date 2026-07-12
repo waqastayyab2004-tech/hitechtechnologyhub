@@ -93,7 +93,7 @@ export default function Hero() {
             </div>
 
             {/* Three CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
               <Link href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-blue-500 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.25)]">
                 <Briefcase className="w-4 h-4" /> Hire for Senior IT Role
@@ -105,6 +105,16 @@ export default function Hero() {
               <Link href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-dark-700 border border-green-500/30 text-green-400 text-sm font-bold hover:bg-green-500/10 transition-colors">
                 <Award className="w-4 h-4" /> Free Consultation
+              </Link>
+            </div>
+
+            {/* Portfolio link */}
+            <div className="flex items-center justify-center mb-5">
+              <Link href="/about"
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-semibold bg-white/4 border border-white/10 text-gray-300 hover:bg-white/8 hover:border-accent-blue/40 hover:text-white transition-all group">
+                <Users className="w-4 h-4 text-accent-blue" />
+                View My Full Portfolio & CV
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
