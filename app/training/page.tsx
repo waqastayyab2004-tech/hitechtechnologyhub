@@ -440,7 +440,7 @@ const featuredTracks = [
 function CourseCard({ course, size = 'normal' }: { course: typeof courses[0], size?: 'normal' | 'small' }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="glass-card overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300 group cursor-pointer">
+    <div className="glass-card overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300 group">
       {/* Thumbnail */}
       <div className={`relative overflow-hidden ${size === 'small' ? 'h-32' : 'h-44'}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -463,8 +463,8 @@ function CourseCard({ course, size = 'normal' }: { course: typeof courses[0], si
             Popular
           </span>
         )}
-        {/* Play button overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {/* Play button overlay — pointer-events-none so it doesn't block card buttons */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
             <Play className="w-4 h-4 text-white fill-white ml-0.5"/>
           </div>
