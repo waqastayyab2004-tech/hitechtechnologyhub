@@ -6,7 +6,7 @@ import {
   CheckCircle, ArrowRight, Lock, Star, Clock, Users,
   Award, ChevronDown, ChevronUp, Mail, Play, BookOpen,
   TrendingUp, Shield, Cloud, Server, Brain, Zap, Globe,
-  Home, Library, Search,
+  Home, Library, Search, Download,
 } from 'lucide-react'
 
 /* ── DATA ─────────────────────────────────────────────────────── */
@@ -648,111 +648,69 @@ export default function TrainingPage() {
             ))}
           </div>
 
-          {/* ── FREE RESOURCES — CV Templates ─────────────────── */}
+          {/* ── CATEGORY HEADER ──────────────────────────────── */}
+          <div className="mb-8">
+            {activeCategory === 'All' ? (
+              <div>
+                <h1 className="text-2xl font-black text-white mb-1">All Courses</h1>
+                <p className="text-gray-400 text-sm">{courses.length} courses · Free &amp; Professional · IT, AI, Cloud, Security, E-Commerce</p>
+              </div>
+            ) : (
+              <div>
+                <h1 className="text-2xl font-black text-white mb-1">{activeCategory}</h1>
+                <p className="text-gray-400 text-sm">{filtered.length} course{filtered.length !== 1 ? 's' : ''} available</p>
+              </div>
+            )}
+          </div>
+
+          {/* ── FREE RESOURCES — CV Templates ────────────────── */}
           {activeCategory === 'All' && (
             <section className="mb-10">
               <div className="rounded-2xl border border-green-500/20 bg-gradient-to-br from-green-500/5 to-dark-800/60 overflow-hidden">
-                {/* Header */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-5 border-b border-green-500/15">
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🎁</span>
                     <div>
                       <h2 className="text-base font-black text-white">Free Downloads — Professional CV Templates</h2>
-                      <p className="text-xs text-gray-500">Industry-specific Word templates built by a senior IT practitioner. Download, customise, and start applying.</p>
+                      <p className="text-xs text-gray-500">Industry-specific Word templates built by a senior IT practitioner.</p>
                     </div>
                   </div>
-                  <span className="flex-shrink-0 px-3 py-1.5 rounded-full text-[10px] font-black bg-green-500/15 border border-green-500/30 text-green-400 uppercase tracking-widest">
-                    100% Free · No Sign-up
-                  </span>
+                  <span className="flex-shrink-0 px-3 py-1.5 rounded-full text-[10px] font-black bg-green-500/15 border border-green-500/30 text-green-400 uppercase tracking-widest">100% Free · No Sign-up</span>
                 </div>
-
-                {/* Template cards */}
                 <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                   {[
-                    {
-                      file: 'CV-IT-Support-Engineer-L1-L2.docx',
-                      title: 'IT Support Engineer',
-                      level: 'L1 / L2',
-                      icon: '🖥️',
-                      color: 'text-sky-400 border-sky-500/25 bg-sky-500/8',
-                      desc: 'Perfect for your first IT role or moving from L1 to L2. Includes ServiceNow, M365, AD skills.',
-                      for: 'Entry Level · 0–3 years',
-                    },
-                    {
-                      file: 'CV-Senior-IT-System-Engineer.docx',
-                      title: 'Senior IT Engineer',
-                      level: 'Senior Level',
-                      icon: '⚙️',
-                      color: 'text-accent-blue border-accent-blue/25 bg-accent-blue/8',
-                      desc: 'Based on a real SAP senior engineer profile. Azure certs, ITSM, infrastructure, AI tools.',
-                      for: 'Mid–Senior · 5–15 years',
-                    },
-                    {
-                      file: 'CV-Azure-Cloud-Security-Engineer.docx',
-                      title: 'Azure Security Engineer',
-                      level: 'Specialist',
-                      icon: '🛡️',
-                      color: 'text-red-400 border-red-500/25 bg-red-500/8',
-                      desc: 'AZ-500 level CV. Zero Trust, Intune, Defender, SIEM, PIM. Highly in-demand role.',
-                      for: 'Specialist · 3–8 years',
-                    },
-                    {
-                      file: 'CV-IT-Consultant-Freelancer.docx',
-                      title: 'IT Consultant',
-                      level: 'Freelancer',
-                      icon: '💼',
-                      color: 'text-purple-400 border-purple-500/25 bg-purple-500/8',
-                      desc: 'For consultants and freelancers. Shows services, projects, engagement models.',
-                      for: 'Consultant · Freelance',
-                    },
-                    {
-                      file: 'CV-Career-Change-Into-IT.docx',
-                      title: 'Career Change → IT',
-                      level: 'Beginner',
-                      icon: '🚀',
-                      color: 'text-green-400 border-green-500/25 bg-green-500/8',
-                      desc: 'Transitioning from another field? Shows how to frame transferable skills + home lab projects.',
-                      for: 'Career Changer · Any',
-                    },
-                  ].map((t, i) => (
-                    <div key={i} className={`rounded-xl border ${t.color} p-4 flex flex-col gap-3 hover:-translate-y-0.5 transition-transform duration-200`}>
-                      <div className="flex items-start justify-between gap-2">
+                    { file: 'CV-IT-Support-Engineer-L1-L2.docx', title: 'IT Support Engineer', level: 'L1 / L2', icon: '🖥️', color: 'text-sky-400 border-sky-500/25 bg-sky-500/8', desc: 'Perfect for your first IT role or moving from L1 to L2. Includes ServiceNow, M365, AD skills.', exp: 'Entry Level · 0–3 years' },
+                    { file: 'CV-Senior-IT-Engineer.docx', title: 'Senior IT Engineer', level: 'Senior / Lead', icon: '🔧', color: 'text-blue-400 border-blue-500/25 bg-blue-500/8', desc: 'For senior engineers targeting IT manager or specialist roles at multinationals.', exp: 'Senior Level · 8+ years' },
+                    { file: 'CV-Azure-Security-Engineer.docx', title: 'Azure Security Engineer', level: 'Security / Cloud', icon: '🛡️', color: 'text-red-400 border-red-500/25 bg-red-500/8', desc: 'Optimised for Azure Security Engineer roles. Highlights Zero Trust, Defender, Conditional Access.', exp: 'Mid–Senior · 5+ years' },
+                    { file: 'CV-IT-Consultant.docx', title: 'IT Consultant', level: 'Consulting / ITSM', icon: '💼', color: 'text-purple-400 border-purple-500/25 bg-purple-500/8', desc: 'For freelance IT consultants and contract roles. Strong on ITSM, ServiceNow, client management.', exp: 'All Levels' },
+                    { file: 'CV-Career-Change-Into-IT.docx', title: 'Career Change into IT', level: 'Beginner / Switcher', icon: '🚀', color: 'text-emerald-400 border-emerald-500/25 bg-emerald-500/8', desc: 'Structured for career changers — highlights transferable skills and IT certifications.', exp: 'Career Switcher' },
+                  ].map(t => (
+                    <a key={t.file} href={`/cv-templates/${t.file}`} download
+                      className={`flex flex-col gap-3 p-4 rounded-xl border ${t.color} hover:-translate-y-0.5 transition-all duration-200 group`}>
+                      <div className="flex items-center justify-between">
                         <span className="text-2xl">{t.icon}</span>
-                        <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${t.color}`}>{t.level}</span>
+                        <span className={`text-[9px] font-black px-2 py-0.5 rounded-full border ${t.color}`}>{t.level}</span>
                       </div>
                       <div>
-                        <p className="font-bold text-white text-sm mb-1">{t.title}</p>
-                        <p className="text-gray-500 text-[11px] leading-snug mb-2">{t.desc}</p>
-                        <p className="text-[10px] text-gray-600 italic">{t.for}</p>
+                        <p className="text-white font-bold text-xs mb-1 group-hover:underline">{t.title}</p>
+                        <p className="text-gray-500 text-[10px] leading-snug mb-2">{t.desc}</p>
+                        <p className="text-[9px] text-gray-600">{t.exp}</p>
                       </div>
-                      <a
-                        href={`/cv-templates/${t.file}`}
-                        download={t.file}
-                        className="mt-auto flex items-center justify-center gap-2 py-2 rounded-lg bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-bold hover:bg-green-500/20 transition-colors"
-                      >
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Download Word
-                      </a>
-                    </div>
+                      <div className="flex items-center gap-1 text-[10px] font-bold mt-auto" style={{color: 'inherit'}}>
+                        <Download className="w-3 h-3"/> Download .docx
+                      </div>
+                    </a>
                   ))}
-                </div>
-
-                <div className="px-5 pb-4">
-                  <p className="text-[11px] text-gray-600 italic">
-                    💡 <strong className="text-gray-500">Tip:</strong> All templates are fully editable Microsoft Word (.docx) files. Replace placeholder text with your own details. No sign-up required — just download and start.
-                  </p>
                 </div>
               </div>
             </section>
           )}
 
-          {/* ── Learning Paths ── */}
+          {/* ── Learning Paths ────────────────────────────────── */}
           {activeCategory === 'All' && (
             <section className="mb-10">
-              <h2 className="text-lg font-black text-white mb-1">Build Skills for Your Goals</h2>
-              <p className="text-gray-500 text-sm mb-5">Curated learning paths for IT professionals, entrepreneurs, and career changers.</p>
+              <h2 className="text-lg font-black text-white mb-1">Learning Paths</h2>
+              <p className="text-gray-500 text-sm mb-5">Curated paths for IT professionals, entrepreneurs, and career changers.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                 {featuredTracks.map((track, i) => (
                   <div key={i} className={`rounded-xl border ${track.border} bg-gradient-to-br ${track.color} p-5 hover:-translate-y-0.5 transition-transform duration-200 cursor-pointer`}>
@@ -770,47 +728,69 @@ export default function TrainingPage() {
             </section>
           )}
 
-          {/* ── Popular courses row ── */}
-          {activeCategory === 'All' && (
+          {/* ── COURSE GRID ───────────────────────────────────── */}
+          {/* Corporate IT Training — shown first when active, or as a pinned section on All */}
+          {(activeCategory === 'Corporate IT Training' || activeCategory === 'All') && (
             <section className="mb-10">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-black text-white">Popular Courses</h2>
-                <span className="text-xs text-gray-500">Highly rated · Most enrolled</span>
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-lg">⚙️</span>
+                <h2 className="text-base font-black text-white">Corporate IT Training</h2>
+                <span className="text-xs bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 px-2.5 py-0.5 rounded-full font-bold">
+                  {courses.filter(c => c.category === 'Corporate IT Training').length} courses · Free
+                </span>
+                {activeCategory === 'All' && (
+                  <button onClick={() => setActiveCategory('Corporate IT Training')}
+                    className="ml-auto text-xs text-accent-blue hover:underline flex-shrink-0">
+                    View all →
+                  </button>
+                )}
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {popular.slice(0, 4).map(c => (
-                  <CourseCard key={c.id} course={c} />
-                ))}
+                {(activeCategory === 'All'
+                  ? courses.filter(c => c.category === 'Corporate IT Training').slice(0, 4)
+                  : courses.filter(c => c.category === 'Corporate IT Training')
+                ).map(c => <CourseCard key={c.id} course={c} />)}
               </div>
+              {activeCategory === 'All' && courses.filter(c => c.category === 'Corporate IT Training').length > 4 && (
+                <div className="mt-4 text-center">
+                  <button onClick={() => setActiveCategory('Corporate IT Training')}
+                    className="btn-outline px-6 py-2 text-sm inline-flex items-center gap-2">
+                    View all {courses.filter(c => c.category === 'Corporate IT Training').length} Corporate IT courses <ArrowRight className="w-4 h-4"/>
+                  </button>
+                </div>
+              )}
             </section>
           )}
 
-          {/* ── Free Courses ── */}
-          {free.length > 0 && (
-            <section className="mb-10">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="flex-1 h-px bg-green-500/20"/>
-                <h2 className="text-base font-black text-green-400 uppercase tracking-widest whitespace-nowrap">🎁 Free Courses</h2>
-                <div className="flex-1 h-px bg-green-500/20"/>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                {free.map(c => <CourseCard key={c.id} course={c} />)}
-              </div>
-            </section>
-          )}
-
-          {/* ── Professional Courses ── */}
-          {paid.length > 0 && (
-            <section className="mb-10">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="flex-1 h-px bg-accent-blue/20"/>
-                <h2 className="text-base font-black text-accent-blue uppercase tracking-widest whitespace-nowrap">🎓 Professional Courses</h2>
-                <div className="flex-1 h-px bg-accent-blue/20"/>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                {paid.map(c => <CourseCard key={c.id} course={c} />)}
-              </div>
-            </section>
+          {/* All other categories */}
+          {activeCategory !== 'Corporate IT Training' && filtered.filter(c => c.category !== 'Corporate IT Training').length > 0 && (
+            <>
+              {/* Group by category when All is selected */}
+              {activeCategory === 'All' ? (
+                ['AI & Automation', 'Cybersecurity & Azure', 'Microsoft 365 & Azure', 'IT Infrastructure', 'ITSM & ServiceNow', 'Career & IT Foundations', 'E-Commerce', 'Digital Marketing'].map(cat => {
+                  const catCourses = courses.filter(c => c.category === cat)
+                  if (!catCourses.length) return null
+                  return (
+                    <section key={cat} className="mb-10">
+                      <div className="flex items-center gap-3 mb-4">
+                        <h2 className="text-base font-black text-white">{cat}</h2>
+                        <span className="text-xs text-gray-500">{catCourses.length} courses</span>
+                        <button onClick={() => setActiveCategory(cat)} className="ml-auto text-xs text-accent-blue hover:underline flex-shrink-0">View all →</button>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        {catCourses.slice(0, 4).map(c => <CourseCard key={c.id} course={c} />)}
+                      </div>
+                    </section>
+                  )
+                })
+              ) : (
+                <section className="mb-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    {filtered.filter(c => c.category !== 'Corporate IT Training').map(c => <CourseCard key={c.id} course={c} />)}
+                  </div>
+                </section>
+              )}
+            </>
           )}
 
           {/* ── Professional Credentials ── */}
