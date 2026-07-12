@@ -186,7 +186,7 @@ const skillDomains = [
     color: 'text-accent-blue',
     bg: 'bg-accent-blue/10',
     link: undefined,
-    items: ['ServiceNow ITSM', 'IT Direct (BMC)', 'SLA & KPI Management', 'ITIL v3', 'Incident Management', 'Problem Management', 'Change Management', 'Asset Lifecycle (SAP ISP)', 'KB Creation & Templates'],
+    items: ['ServiceNow ITSM', 'IT Direct (BMC)', 'SLA & KPI Management', 'ITIL v3', 'Incident Management', 'Problem Management', 'Change Management', 'Asset Lifecycle (SAP ISP)', 'KB Creation & Templates', 'ServiceNow Walk-up Module', 'Queue Management (ITLC)'],
   },
   {
     icon: Shield,
@@ -210,7 +210,7 @@ const skillDomains = [
     color: 'text-indigo-400',
     bg: 'bg-indigo-500/10',
     link: undefined,
-    items: ['Microsoft 365 Admin', 'Exchange Online', 'SharePoint / OneDrive', 'Teams Admin & MTR', 'M365 Copilot', 'SCCM / Configuration Mgr', 'JamF (macOS MDM)', 'Digital Signage (SVM)', 'Evoko / Crestron / Poly Pano'],
+    items: ['Microsoft 365 Admin', 'Exchange Online', 'SharePoint / OneDrive', 'Teams Admin & MTR', 'M365 Copilot', 'SCCM / Configuration Mgr', 'JamF (macOS MDM)', 'Digital Signage (SVM / ITLC)', 'Evoko / Crestron / Poly Pano', 'PassVault / Secret Management'],
   },
   {
     icon: Brain,
@@ -242,7 +242,7 @@ const skillDomains = [
     color: 'text-cyan-400',
     bg: 'bg-cyan-500/10',
     link: '/projects#daily-operations',
-    items: ['IT Asset Lifecycle (1,500–2,000+ devices)', 'Email & Mailbox Administration', 'Endpoint Security & Compliance', 'macOS Fleet Management (Jamf)', 'Mobile MDM — iOS & Android', 'Windows Provisioning & Autopilot', 'M365 Cloud Collaboration Admin', 'Print Fleet & Meeting Room AV', 'User Provisioning & Offboarding', 'Network, VPN & 802.1X Support'],
+    items: ['IT Asset Lifecycle (1,500–2,000+ devices)', 'Email & Mailbox Administration', 'Endpoint Security & Compliance', 'macOS Fleet Management (Jamf)', 'Mobile MDM — iOS & Android', 'Windows Provisioning & Autopilot', 'M365 Cloud Collaboration Admin', 'Print Fleet & Meeting Room AV', 'User Provisioning & Offboarding', 'Network, VPN & 802.1X Support', 'ITLC Kiosk & Queue Monitor Setup'],
   },
 ]
 
