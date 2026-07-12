@@ -139,6 +139,18 @@ export default function Navbar() {
           ? 'bg-dark-900/90 backdrop-blur-xl border-b border-white/8 shadow-[0_1px_0_rgba(255,255,255,0.05),0_4px_24px_rgba(0,0,0,0.4)]'
           : 'bg-transparent'
       }`}>
+
+        {/* ── Tagline strip ── */}
+        <div className="w-full border-b border-white/5 overflow-hidden"
+          style={{ background: 'rgba(6,182,212,0.06)' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex items-center justify-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse flex-shrink-0" />
+            <p className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-cyan-400 text-center">
+              IT Consulting · AI Automation · Free IT Courses · Real-World Tech Insights
+            </p>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
 

@@ -1,4 +1,3 @@
-import WelcomeBanner from '@/components/home/WelcomeBanner'
 import Hero from '@/components/home/Hero'
 import HomeSummary from '@/components/home/HomeSummary'
 import TopicsPreview from '@/components/home/TopicsPreview'
@@ -9,7 +8,6 @@ import Newsletter from '@/components/home/Newsletter'
 export default function HomePage() {
   return (
     <>
-      <WelcomeBanner />
       <Hero />
       <HomeSummary />
       <TopicsPreview />
