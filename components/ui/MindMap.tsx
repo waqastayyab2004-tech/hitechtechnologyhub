@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 
 /* ── Mind Map Data ─────────────────────────────────────────────────
    Central node: Syed Waqas Tayyab
@@ -13,34 +14,47 @@ const MAP = {
     {
       id: 'itsm', label: 'ITSM &\nServiceNow', color: '#10b981', glow: 'rgba(16,185,129,0.7)', icon: '🎫', angle: -90,
       leaves: ['ServiceNow Admin', 'SLA Design (ITIL v3)', 'KB Management', 'Auto-Assignment Rules', '1,500+ Tickets/yr', 'IT Direct → SNOW Migration'],
+      link: undefined,
     },
     {
       id: 'cyber', label: 'Cybersecurity\n& Azure', color: '#ef4444', glow: 'rgba(239,68,68,0.7)', icon: '🛡️', angle: -45,
       leaves: ['Azure Security Eng.', 'Zero Trust Architecture', 'Conditional Access', 'Intune / Autopilot', 'Defender for M365', 'Secure Score 41%→78%'],
+      link: undefined,
     },
     {
       id: 'cloud', label: 'Cloud &\nMicrosoft 365', color: '#3b82f6', glow: 'rgba(59,130,246,0.7)', icon: '☁️', angle: 0,
       leaves: ['M365 Tenant Admin', 'Exchange Online', 'SharePoint / Teams', 'Azure AD / Entra ID', 'M365 Copilot', 'PowerShell Automation'],
+      link: undefined,
     },
     {
       id: 'infra', label: 'IT\nInfrastructure', color: '#8b5cf6', glow: 'rgba(139,92,246,0.7)', icon: '🖥️', angle: 45,
       leaves: ['Cisco / Aruba Network', 'HP Servers & Racking', 'LAN / WAN / VPN', 'Office Build-Outs', 'Server Room Mgmt', 'NAC Controllers'],
+      link: undefined,
     },
     {
       id: 'ai', label: 'AI &\nAutomation', color: '#f59e0b', glow: 'rgba(245,158,11,0.7)', icon: '⚡', angle: 90,
       leaves: ['Python Automation', 'Power Apps / Automate', 'SAP AI Hub (AIG02)', 'FastAPI Agents', 'WhatsApp Alert Bots', 'ML on SNOW Data'],
+      link: undefined,
     },
     {
       id: 'asset', label: 'IT Asset\nManagement', color: '#f97316', glow: 'rgba(249,115,22,0.7)', icon: '📦', angle: 135,
       leaves: ['2,000+ Device Lifecycle', 'SAP Ariba Procurement', 'LPA Inventory Scans', 'Warranty Tracking', 'Disposal & Certs', 'DocuSign Workflows'],
+      link: undefined,
     },
     {
       id: 'sap', label: 'SAP &\nEnterprise', color: '#ec4899', glow: 'rgba(236,72,153,0.7)', icon: '🟠', angle: 180,
       leaves: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP / Ariba', 'SAP Work Zone', 'SAP Build Apps', 'SAP ISP ERP'],
+      link: undefined,
     },
     {
       id: 'lead', label: 'Leadership\n& Strategy', color: '#06b6d4', glow: 'rgba(6,182,212,0.7)', icon: '🎯', angle: -135,
       leaves: ['MBA · UK', 'C-Suite IT Support', 'Vendor Management', 'PMP 35 PDUs', 'Change Management', 'MENA IT Strategy'],
+      link: undefined,
+    },
+    {
+      id: 'dailyops', label: 'Daily IT\nOperations', color: '#22d3ee', glow: 'rgba(34,211,238,0.7)', icon: '⚙️', angle: -112,
+      leaves: ['Asset Lifecycle Mgmt', 'Endpoint Security', 'macOS & Mobile MDM', 'Windows Provisioning', 'M365 Cloud Admin', 'Network & VPN Ops', 'Email & Identity', 'Print & AV Mgmt', 'User Provisioning', '802.1X & NAC'],
+      link: '/projects#daily-operations',
     },
   ],
 }
@@ -93,7 +107,7 @@ export default function MindMap() {
           <div className="w-9 h-9 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-lg">🧠</div>
           <div>
             <p className="text-sm font-black text-white tracking-wide">IT Expertise Mind Map</p>
-            <p className="text-[10px] text-gray-500">Click any branch to explore — 8 domains · 48 skills</p>
+            <p className="text-[10px] text-gray-500">Click any branch to explore — 9 domains · 58 skills</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -251,7 +265,7 @@ export default function MindMap() {
                   </p>
                 </div>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 mb-4">
                 {activeBranch.leaves.map((leaf, i) => (
                   <div key={i} className="flex items-center gap-2 text-xs text-gray-400">
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: activeBranch.color }} />
@@ -259,6 +273,13 @@ export default function MindMap() {
                   </div>
                 ))}
               </div>
+              {activeBranch.link && (
+                <Link href={activeBranch.link}
+                  className="mt-2 flex items-center justify-center gap-2 w-full px-3 py-2.5 rounded-xl text-xs font-bold border transition-all hover:scale-[1.02]"
+                  style={{ background: `${activeBranch.color}18`, border: `1px solid ${activeBranch.color}50`, color: activeBranch.color }}>
+                  ⚙️ View All Daily Ops Cards →
+                </Link>
+              )}
             </div>
           ) : (
             <div>
@@ -284,7 +305,7 @@ export default function MindMap() {
 
       {/* Footer */}
       <div className="px-5 py-3 border-t border-white/6 flex items-center justify-between">
-        <p className="text-[10px] text-gray-600">8 domains · 48 skills mapped · Click any node to expand</p>
+        <p className="text-[10px] text-gray-600">9 domains · 58 skills mapped · Click any node to expand</p>
         <div className="flex gap-2">
           {MAP.branches.map(b => (
             <button key={b.id} onClick={() => setActive(b.id)}

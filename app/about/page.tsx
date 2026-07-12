@@ -185,6 +185,7 @@ const skillDomains = [
     title: 'IT Service Delivery & ITSM',
     color: 'text-accent-blue',
     bg: 'bg-accent-blue/10',
+    link: undefined,
     items: ['ServiceNow ITSM', 'IT Direct (BMC)', 'SLA & KPI Management', 'ITIL v3', 'Incident Management', 'Problem Management', 'Change Management', 'Asset Lifecycle (SAP ISP)', 'KB Creation & Templates'],
   },
   {
@@ -192,6 +193,7 @@ const skillDomains = [
     title: 'Cybersecurity & Azure',
     color: 'text-red-400',
     bg: 'bg-red-500/10',
+    link: undefined,
     items: ['Azure Security Engineer', 'Zero Trust Architecture', 'Intune MDM / Autopilot', 'MFA & Conditional Access', 'Microsoft Defender for M365', 'Trellix / McAfee / HIPS', 'Azure AD (Entra ID)', 'CCNA Security', 'Endpoint Compliance (SCCM)'],
   },
   {
@@ -199,6 +201,7 @@ const skillDomains = [
     title: 'SAP & Enterprise Systems',
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
+    link: undefined,
     items: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP', 'SAP Ariba (Procurement)', 'SAP Build Apps', 'SAP Work Zone / JAM', 'SAP ISP (Asset ERP)', 'CLEA Lifecycle App', 'OTX Ordering App', 'SAP HANA ML'],
   },
   {
@@ -206,6 +209,7 @@ const skillDomains = [
     title: 'M365 & Modern Workplace',
     color: 'text-indigo-400',
     bg: 'bg-indigo-500/10',
+    link: undefined,
     items: ['Microsoft 365 Admin', 'Exchange Online', 'SharePoint / OneDrive', 'Teams Admin & MTR', 'M365 Copilot', 'SCCM / Configuration Mgr', 'JamF (macOS MDM)', 'Digital Signage (SVM)', 'Evoko / Crestron / Poly Pano'],
   },
   {
@@ -213,6 +217,7 @@ const skillDomains = [
     title: 'AI, Automation & Development',
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
+    link: undefined,
     items: ['Agentic AI (Claude / ChatGPT / Copilot)', 'Python ML / MLOps', 'LLMs & Prompt Engineering', 'Power Apps / Power Automate', 'PowerBI & Data Dashboards', 'FastAPI / Flask / Next.js', 'REST APIs & MCP Servers', 'PowerShell & Scripting', 'SAP Build Low-Code'],
   },
   {
@@ -220,6 +225,7 @@ const skillDomains = [
     title: 'Infrastructure, Cloud & Networking',
     color: 'text-sky-400',
     bg: 'bg-sky-500/10',
+    link: undefined,
     items: ['Azure / Hybrid Cloud (IaaS/PaaS)', 'Cisco Switches / Routers', 'Aruba Wireless / NAC Controllers', 'LAN / WAN / VPN', 'HP Servers', 'Windows / macOS / Linux', 'TCP/IP / DHCP / DNS', 'NAC Controllers', 'ISP / Intranet / Internet mgmt'],
   },
   {
@@ -228,6 +234,15 @@ const skillDomains = [
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/10',
     items: ['SAP Ariba PR & PO System', 'IT Asset Procurement (MENA)', 'Vendor Coordination (Destiny, Beetra)', 'DocuSign (HR/IT Workflows)', 'IT Budget Management (~600K SAR/yr)', 'Office Renovation Projects (1.2M SAR)', 'Supply Chain IT Integration'],
+    link: undefined,
+  },
+  {
+    icon: Zap,
+    title: 'Daily IT Operations',
+    color: 'text-cyan-400',
+    bg: 'bg-cyan-500/10',
+    link: '/projects#daily-operations',
+    items: ['IT Asset Lifecycle (1,500–2,000+ devices)', 'Email & Mailbox Administration', 'Endpoint Security & Compliance', 'macOS Fleet Management (Jamf)', 'Mobile MDM — iOS & Android', 'Windows Provisioning & Autopilot', 'M365 Cloud Collaboration Admin', 'Print Fleet & Meeting Room AV', 'User Provisioning & Offboarding', 'Network, VPN & 802.1X Support'],
   },
 ]
 
@@ -493,6 +508,41 @@ export default function PortfolioPage() {
           <NeuralNetwork />
         </section>
 
+        {/* ── SKILL DOMAINS GRID ───────────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Cpu className="w-5 h-5 text-cyan-400" />} title="Skill Domains" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {skillDomains.map((domain) => {
+              const Icon = domain.icon
+              const card = (
+                <div className={`glass-card p-5 flex flex-col gap-3 h-full transition-all duration-200 hover:-translate-y-1 ${domain.link ? 'cursor-pointer hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)]' : 'hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)]'}`}>
+                  <div className="flex items-center justify-between">
+                    <div className={`w-9 h-9 rounded-xl ${domain.bg} flex items-center justify-center flex-shrink-0`}>
+                      <Icon className={`w-5 h-5 ${domain.color}`} />
+                    </div>
+                    {domain.link && (
+                      <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${domain.bg} ${domain.color} border-current/30`}>
+                        View Cards →
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-white text-sm font-bold mb-2">{domain.title}</h3>
+                    <div className="flex flex-wrap gap-1">
+                      {domain.items.map((item) => (
+                        <span key={item} className="text-[10px] bg-white/5 border border-white/8 text-gray-400 px-2 py-0.5 rounded-full">{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )
+              return domain.link
+                ? <Link key={domain.title} href={domain.link}>{card}</Link>
+                : <div key={domain.title}>{card}</div>
+            })}
+          </div>
+        </section>
+
         {/* ── EXPERIENCE ───────────────────────────────────────────── */}
         <section>
           <SectionHeader icon={<Briefcase className="w-5 h-5 text-cyan-400" />} title="Work Experience" />
@@ -611,13 +661,13 @@ export default function PortfolioPage() {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                  Daily Operations
+                  ⚙️ Daily Operations · 10 Technical Areas
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black text-white mb-2">
                   See My Daily IT Skillset in Action
                 </h2>
                 <p className="text-gray-400 text-sm max-w-2xl leading-relaxed">
-                  From endpoint security and MDM to Microsoft 365 administration, network ops, and mobile device management — explore the 10 technical areas I manage every day across a 200+ user enterprise environment.
+                  10 detailed project cards covering every technical area I manage daily — asset lifecycle, MDM, endpoint security, M365, network ops, meeting room AV and more. Each card includes SLAs, outcomes, and full tech stack.
                 </p>
                 <div className="flex flex-wrap gap-2 mt-3 justify-center md:justify-start">
                   {['Jamf MDM', 'Intune/Autopilot', 'Azure AD', 'Exchange Online', 'Defender', 'Cisco/Aruba', 'Teams Rooms', 'BitLocker', 'ServiceNow', 'Power BI'].map(tag => (
@@ -625,12 +675,18 @@ export default function PortfolioPage() {
                   ))}
                 </div>
               </div>
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 flex flex-col gap-2">
                 <Link
                   href="/projects#daily-operations"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-cyan-500/15 border border-cyan-500/35 text-cyan-300 hover:bg-cyan-500/25 hover:border-cyan-400/50 transition-all whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 hover:border-cyan-400/60 transition-all whitespace-nowrap"
                 >
-                  <ExternalLink className="w-4 h-4" /> View Daily Operations
+                  ⚙️ View 10 Daily Ops Cards
+                </Link>
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2 rounded-xl font-semibold text-xs bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 transition-all whitespace-nowrap"
+                >
+                  <ExternalLink className="w-3 h-3" /> All 34 Projects
                 </Link>
               </div>
             </div>
