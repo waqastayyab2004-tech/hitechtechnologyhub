@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 
 /* ── Domain data with full experience context ─────────────────────── */
 const DOMAINS = [
@@ -11,6 +12,7 @@ const DOMAINS = [
     color: '#3B82F6',
     angle: 270,
     stat: '10+ yrs · 100+ projects',
+    link: undefined,
     summary: 'Enterprise IT field service, ServiceNow ITSM lifecycle, SLA/KPI ownership across SAP MENA.',
     did: [
       'Led full ServiceNow ticket lifecycle at SAP (2019–present)',
@@ -49,6 +51,7 @@ const DOMAINS = [
     angle: 315,
     stat: 'Azure Security Certified · CCNA Security',
     summary: 'Azure Security Engineer, Zero Trust architecture, Intune MDM/MAM, Defender for M365, physical & network security.',
+    link: undefined,
     did: [
       'System Security Officer at Banque Saudi Fransi (2012–2015) — ATM/branch security, 24/7 monitoring',
       'Administered access control (G4S MultiMax), CCTV, alarm systems across all branches',
@@ -87,6 +90,7 @@ const DOMAINS = [
     angle: 0,
     stat: '11+ yrs SAP · 5 certifications',
     summary: 'Deep SAP operations: S/4HANA admin, BTP, Ariba procurement, Analytics Cloud, HANA ML, and SAP AI Hub.',
+    link: undefined,
     did: [
       'SAP S/4HANA system admin and IT support across MENA (2015–present)',
       'Managed SAP Analytics Cloud, BTP, and Ariba procurement lifecycle for MENA',
@@ -124,6 +128,7 @@ const DOMAINS = [
     angle: 45,
     stat: 'M365 Admin Certified · 11+ yrs',
     summary: 'Full Microsoft 365 tenant admin: Exchange, Teams, SharePoint, OneDrive, Intune, Copilot, and AV/Signage.',
+    link: undefined,
     did: [
       'Full M365 tenant admin for SAP enterprise (Exchange Online, Teams, SharePoint, OneDrive)',
       'Deployed and managed M365 Copilot across SAP MENA',
@@ -162,6 +167,7 @@ const DOMAINS = [
     angle: 90,
     stat: '4 live AI apps · hours saved daily',
     summary: 'Built and deployed Agentic AI, LLM integrations, ML pipelines, and automation tools used live at SAP every day.',
+    link: undefined,
     did: [
       'Built Waqas AI Hub — macOS native Swift + FastAPI dashboard integrating Gmail, SAP M365, ServiceNow & WhatsApp',
       'Developed SNOW SLA Breach Predictor — Python scikit-learn Random Forest on real SAP ServiceNow data',
@@ -201,6 +207,7 @@ const DOMAINS = [
     angle: 135,
     stat: '15+ yrs infrastructure · 3 offices',
     summary: 'Azure hybrid cloud, Cisco/Aruba networking, HP servers, Windows/Linux/macOS — managed enterprise infrastructure across MENA.',
+    link: undefined,
     did: [
       'Managed LAN/WAN and NAC controllers across SAP Riyadh, Jeddah, AlKhobar offices',
       'Administered HP servers — setup, patching, monitoring, hardware replacement',
@@ -239,6 +246,7 @@ const DOMAINS = [
     angle: 180,
     stat: '4 live apps · full-stack Python & JS',
     summary: 'Full-stack developer: Python (FastAPI/Flask), TypeScript (Next.js), REST APIs, OAuth2, SQLite, PowerShell, Git, Docker.',
+    link: undefined,
     did: [
       'Built IT Asset Manager — full-stack Flask + SQLite + Chart.js (replaced Excel at SAP)',
       'Built HiTecH AI HUB website — Next.js 14 + TypeScript + Tailwind + AI chatbot (deployed Cloudflare)',
@@ -277,6 +285,7 @@ const DOMAINS = [
     angle: 225,
     stat: 'MBA · PMP · 1M+ community',
     summary: 'IT Service Delivery Lead at SAP, MBA graduate, PMP certified. Training teams on AI adoption. 1M+ tech community followers.',
+    link: undefined,
     did: [
       'IT Service Delivery Lead at SAP — led IT operations strategy across MENA',
       'Trained SAP teams on AI adoption: Claude, Copilot, Gemini, ChatGPT in enterprise workflows',
@@ -304,6 +313,50 @@ const DOMAINS = [
       { id: 'l6', label: 'Procurement',      icon: '💰' },
       { id: 'l7', label: '1M+ Community',    icon: '📱' },
       { id: 'l8', label: 'Tech Writing',     icon: '✍️' },
+    ],
+  },
+  {
+    id: 'dailyops',
+    label: 'Daily IT\nOperations',
+    icon: '⚙️',
+    color: '#22D3EE',
+    angle: 247,
+    stat: '10 areas · 200+ users · daily',
+    summary: 'Day-to-day enterprise IT operations across 10 technical domains — MDM, endpoint security, email admin, provisioning, network, AV and more.',
+    link: '/projects#daily-operations',
+    did: [
+      'Managed 1,500–2,000+ assets across full hardware lifecycle daily',
+      'Administered Exchange Online mailboxes, MFA, and shared mailbox governance',
+      'Monitored and remediated endpoint compliance via Intune and Defender daily',
+      'Managed macOS fleet (Jamf) — FileVault, SSO certs, Self Service apps',
+      'Enrolled and managed corporate iOS/Android devices via Jamf and Intune',
+      'Provisioned Windows devices via Autopilot — Day 1 ready in 45 min',
+      'Administered M365 Teams, SharePoint, OneDrive for 200+ users',
+      'Maintained HP MFP print fleet and 15 Teams Rooms AV systems',
+      'Completed user onboarding/offboarding within SLA — 140+ employees',
+      'Managed VPN, 802.1X Wi-Fi, NAC, and Cisco/Aruba network infrastructure',
+    ],
+    can: [
+      'Full enterprise MDM: Jamf (macOS/iOS) + Intune (Windows/Android)',
+      'Endpoint security compliance monitoring and remediation',
+      'Exchange Online, SharePoint, Teams, and OneDrive administration',
+      'User lifecycle: provisioning, MFA setup, access control, offboarding',
+      'Network and VPN support: Cisco, Aruba, GlobalProtect, 802.1X',
+      'Meeting room AV operations: Teams Rooms, Surface Hub, Crestron',
+    ],
+    tools: ['Jamf Pro', 'Microsoft Intune', 'Exchange Online', 'Azure AD', 'Cisco/Aruba', 'BitLocker', 'Defender', 'Teams Rooms', 'ServiceNow', 'GlobalProtect VPN'],
+    certs: ['Microsoft Intune / Autopilot (Modern Mgmt) — 2021', 'Azure Security Engineer Associate — 2024', 'ITIL v3 Foundation — 2017', 'Microsoft 365 Admin — 2020'],
+    subSkills: [
+      { id: 'do1', label: 'Asset Lifecycle',   icon: '📦' },
+      { id: 'do2', label: 'Email & Identity',  icon: '📧' },
+      { id: 'do3', label: 'Endpoint Security', icon: '🛡️' },
+      { id: 'do4', label: 'macOS MDM (Jamf)',  icon: '🍎' },
+      { id: 'do5', label: 'Mobile MDM',        icon: '📱' },
+      { id: 'do6', label: 'Win Autopilot',     icon: '💻' },
+      { id: 'do7', label: 'M365 Cloud',        icon: '☁️' },
+      { id: 'do8', label: 'Print & AV',        icon: '🖨️' },
+      { id: 'do9', label: 'User Provisioning', icon: '🔐' },
+      { id: 'do10', label: 'Network & VPN',    icon: '🌐' },
     ],
   },
 ]
@@ -489,6 +542,13 @@ export default function NeuralNetwork() {
                   <span className="text-sm font-mono font-semibold" style={{color:activeDomain.color}}>{sk.label}</span>
                 </div>
               ))}
+              {activeDomain.link && (
+                <Link href={activeDomain.link}
+                  className="mt-2 flex items-center justify-center gap-2 w-full px-3 py-2.5 rounded-xl text-xs font-black font-mono tracking-wider transition-all hover:scale-[1.02]"
+                  style={{background:`${activeDomain.color}20`,border:`1px solid ${activeDomain.color}50`,color:activeDomain.color}}>
+                  ⚙️ VIEW PROJECT CARDS →
+                </Link>
+              )}
             </div>
           )}
         </div>
@@ -595,6 +655,15 @@ export default function NeuralNetwork() {
                 </div>
               ))}
             </div>
+            {activeDomain.link && (
+              <div className="mt-5 flex justify-center">
+                <Link href={activeDomain.link}
+                  className="inline-flex items-center gap-3 px-8 py-3 rounded-xl font-black text-sm font-mono tracking-wider transition-all hover:scale-105"
+                  style={{background:`${activeDomain.color}20`,border:`2px solid ${activeDomain.color}60`,color:activeDomain.color}}>
+                  ⚙️ VIEW 10 DAILY OPS PROJECT CARDS →
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       )}
