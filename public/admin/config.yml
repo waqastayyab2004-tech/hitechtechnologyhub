@@ -9,6 +9,7 @@ site_url: https://hitechtechnologyhub.pages.dev
 display_url: https://hitechtechnologyhub.pages.dev
 
 collections:
+
   - name: blog
     label: Blog Articles
     label_singular: Blog Article
@@ -25,3 +26,93 @@ collections:
       - { label: "Read Time", name: readTime, widget: string, default: "8 min read" }
       - { label: "Featured?", name: featured, widget: boolean, default: false }
       - { label: "Article Content", name: body, widget: markdown }
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Subtitle", name: subtitle, widget: string }
+      - { label: "Emoji", name: emoji, widget: string, default: "🚀" }
+      - label: "Status"
+        name: status
+        widget: select
+        options: ["Live", "In Development", "Completed"]
+        default: "Completed"
+      - label: "Category"
+        name: category
+        widget: select
+        options:
+          - "Personal Apps & AI Tools"
+          - "Enterprise IT Projects"
+          - "IT Operations & ITSM"
+          - "Automation & Integration"
+          - "Security & Infrastructure"
+          - "Event & AV Delivery"
+          - "Other"
+      - { label: "Tags (comma separated)", name: tags, widget: list }
+      - { label: "Description", name: description, widget: text }
+      - { label: "Key Highlights", name: highlights, widget: list }
+      - { label: "GitHub URL", name: github, widget: string, required: false }
+      - { label: "Demo URL", name: demo, widget: string, required: false }
+      - { label: "Project Details", name: body, widget: markdown, required: false }
+
+  - name: courses
+    label: Courses
+    label_singular: Course
+    folder: content/courses
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - label: "Category"
+        name: category
+        widget: select
+        options:
+          - "AI & Automation"
+          - "Cybersecurity & Azure"
+          - "Microsoft 365 & Azure"
+          - "IT Infrastructure"
+          - "ITSM & ServiceNow"
+          - "E-Commerce"
+          - "Digital Marketing"
+          - "Career & IT Foundations"
+      - label: "Level"
+        name: level
+        widget: select
+        options: ["Beginner", "Intermediate", "Advanced"]
+        default: "Intermediate"
+      - { label: "Duration", name: duration, widget: string, default: "4h" }
+      - { label: "Students", name: students, widget: string, default: "100+" }
+      - { label: "Rating", name: rating, widget: number, default: 4.8, value_type: float }
+      - { label: "Free Course?", name: isFree, widget: boolean, default: false }
+      - { label: "Popular?", name: isPopular, widget: boolean, default: false }
+      - { label: "Instructor", name: instructor, widget: string, default: "Syed Waqas Tayyab" }
+      - { label: "Cover Image URL", name: img, widget: string }
+      - { label: "Skills (comma separated)", name: skills, widget: list }
+      - { label: "Description", name: description, widget: text }
+      - { label: "Course Topics", name: topics, widget: list }
+
+  - name: team
+    label: Team Members
+    label_singular: Team Member
+    folder: content/team
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: name, widget: string }
+      - { label: "Role / Title", name: role, widget: string }
+      - { label: "Department", name: department, widget: string, default: "Medical Billing" }
+      - { label: "Photo", name: photo, widget: image, required: false }
+      - { label: "Bio", name: bio, widget: text }
+      - { label: "Skills", name: skills, widget: list }
+      - { label: "Email", name: email, widget: string, required: false }
+      - { label: "LinkedIn", name: linkedin, widget: string, required: false }
+      - { label: "Featured?", name: featured, widget: boolean, default: false }
+      - { label: "Sort Order", name: order, widget: number, default: 10 }
