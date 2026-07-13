@@ -270,7 +270,7 @@ export default function PortfolioPage() {
   const displayedCerts = showAllCerts ? certifications : certifications.slice(0, 6)
 
   return (
-    <div className="min-h-screen bg-dark-900">
+    <div className="min-h-screen bg-dark-900 pt-20">
 
       {/* ── HERO — full-bleed photo with dark overlay ─────────────── */}
       <section className="relative overflow-hidden pt-16">

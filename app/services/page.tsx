@@ -346,7 +346,7 @@ export default function ServicesPage() {
   useEffect(() => { document.title = 'IT Services — Syed Waqas Tayyab' }, [])
 
   return (
-    <div className="min-h-screen bg-dark-900">
+    <div className="min-h-screen bg-dark-900 pt-20">
 
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <section className="relative pt-28 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">

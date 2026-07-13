@@ -85,7 +85,7 @@ export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false)
 
   return (
-    <div className="min-h-screen bg-dark-900">
+    <div className="min-h-screen bg-dark-900 pt-20">
 
       {/* ── FREE CONSULTATION FORM (TOP) ─────────────────────────── */}
       <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8">
