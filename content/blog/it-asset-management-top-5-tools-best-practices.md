@@ -9,7 +9,7 @@ featured: false
 ---
 
 <div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-<img src="/waqas-ai-factory.jpg" alt="Syed Waqas Tayyab — IT Expert & AI Engineer" style="width:100%; max-height:420px; object-fit:cover; object-position:center center; display:block;"/>
+<img src="/waqas-ai-expert.png" alt="Syed Waqas Tayyab — IT Expert &amp; AI Engineer" style="width:100%;height:300px;object-fit:cover;object-position:center 30%;display:block;"/>
 <p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Syed Waqas Tayyab · IT Expert & AI Engineer · HiTecH Technology HUB</p>
 </div>
 
@@ -18,6 +18,15 @@ featured: false
 Managing IT hardware at scale isn't a spreadsheet problem. It's a lifecycle problem — and every enterprise has a different tool trying to solve it. After 15 years managing 1,500–2,000+ devices across three offices in Saudi Arabia, I've worked hands-on with five of the leading platforms. Here's an honest comparison — and the practices that actually work regardless of which tool you use.
 
 ---
+
+<div style="display:flex;align-items:center;gap:16px;margin:2rem 0;padding:16px;border-radius:12px;background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.2);">
+  <img src="/waqas-ai-robotics.jpg" alt="Syed Waqas Tayyab" style="width:90px;height:110px;object-fit:cover;object-position:center top;border-radius:10px;flex-shrink:0;"/>
+  <div>
+    <p style="font-weight:800;color:#fff;margin:0 0 4px;">Syed Waqas Tayyab</p>
+    <p style="color:#60a5fa;font-size:0.8rem;margin:0 0 6px;">Senior IT System Engineer · SAP Saudi Arabia · 15+ Years</p>
+    <p style="color:#94a3b8;font-size:0.8rem;margin:0;">Azure Security Certified · SAP AI Hub · MBA · MENA IT Expert</p>
+  </div>
+</div>
 
 ## Why Most ITAM Programmes Fail
 
