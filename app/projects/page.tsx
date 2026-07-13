@@ -124,9 +124,9 @@ const projects: Project[] = [
     pmDetails: { scope: 'Maintain reliable network connectivity and security across three office locations — VPN, wireless, NAC, and core switching infrastructure.', objectives: ['99.9% network uptime across all office locations', 'Zero unauthorised device network access via NAC enforcement', 'VPN issues resolved within 30 minutes for business-critical users', 'ISP failover RTO: under 5 minutes'], stakeholders: 'All 200+ users (connectivity dependent), IT Manager, Security (NAC compliance), Facilities (physical infrastructure)', timeline: 'Ongoing daily operations', outcomes: ['99.9%+ network uptime across all three offices', 'Zero unauthorised device access since NAC deployment', 'VPN resolution time: under 30 minutes for business-critical users', 'ISP failover tested and confirmed: 4-minute RTO'], skillsApplied: ['Network Administration', 'Wireless Management', 'VPN Support', 'NAC Administration', 'VLAN Management', 'ISP Circuit Management'], toolsUsed: ['Cisco IOS Switches', 'Aruba APs / Aruba Central', 'GlobalProtect VPN', 'F5 BIG-IP', 'ForeScout NAC', '802.1X / RADIUS'], learnings: ['NAC quarantine for non-compliant devices enforces security policy better than any email reminder', 'Dual ISP failover only works if you test it quarterly — untested failover is not failover', '802.1X certificate-based Wi-Fi auth eliminates shared PSK vulnerabilities entirely'] },
   },
 
-  // ── GROUP 1: Personal Apps & AI Tools ──────────────────────────
+  // ── GROUP 1: Built Apps & Tools ──────────────────────────
   {
-    emoji: '🤖', group: 'Personal Apps & AI Tools',
+    emoji: '🤖', group: 'Built Apps & Tools',
     title: 'Waqas AI Hub', subtitle: 'AI-Powered macOS Desktop Dashboard',
     status: 'Live', category: 'AI Dashboard · macOS',
     description: 'A native macOS Swift app + FastAPI web dashboard replacing terminal commands for all daily IT work. Single click to view emails, calendar, ServiceNow tickets, OneDrive files, and WhatsApp SLA alerts in one Teams-style interface.',
@@ -136,7 +136,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Build a unified AI-powered dashboard replacing 6+ separate tools used daily for IT operations management.', objectives: ['Eliminate context-switching between 6+ tools', 'Automate daily email triage saving 35+ min/day', 'Surface SLA breach risks 30 minutes before breach', 'Create single pane of glass for all IT data sources'], stakeholders: 'Personal productivity tool for senior IT engineer managing daily operations', timeline: '3 months development, ongoing', outcomes: ['100+ minutes/day reclaimed from manual tasks', 'Zero SLA breaches for 6 consecutive months', 'Email triage time: 40 min → 5 min/day', 'All IT tools accessible via single interface'], skillsApplied: ['Python Development', 'REST API Integration', 'macOS App Development', 'System Architecture'], toolsUsed: ['Python 3.11', 'FastAPI', 'Swift/WebKit', 'Microsoft Graph API', 'Twilio API', 'LaunchAgent'], learnings: ['Integrating multiple enterprise APIs in a single dashboard reduces context-switching significantly', 'macOS Swift wrappers enable quick native-feel apps without full native development', 'Automation agents work best when triggered by schedules rather than manual execution'] },
   },
   {
-    emoji: '📦', group: 'Personal Apps & AI Tools',
+    emoji: '📦', group: 'Built Apps & Tools',
     title: 'IT Asset Manager', subtitle: 'Enterprise Asset Tracking Web App',
     status: 'Live', category: 'Web Application · IT Tool',
     description: 'Full-stack Flask web app replacing Excel-based IT asset tracking. Manages 1,500–2,000+ active assets across MENA — modelled on SAP ISP ERP workflows. Includes AI chat widget for natural language queries.',
@@ -146,7 +146,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Replace a broken shared Excel file with a proper asset management web application aligned to enterprise ERP workflows.', objectives: ['Eliminate duplicate serial numbers and data conflicts', 'Reduce asset query time from 10 min to under 30 sec', 'Enable audit trail for every asset change', 'Support bulk operations and Excel import/export'], stakeholders: 'IT team and management requiring accurate asset inventory for procurement and compliance', timeline: '6 weeks development', outcomes: ['1,500+ assets tracked with 100% accuracy', 'Asset query time: 10 min → 10 sec (via AI chat)', 'Zero duplicate serial numbers since deployment', 'Full audit trail enables compliance reporting'], skillsApplied: ['Full-Stack Development', 'Database Design', 'AI Integration', 'Enterprise Process Design'], toolsUsed: ['Python/Flask', 'SQLite', 'Chart.js', 'JavaScript', 'OpenPyXL', 'HTML/CSS'], learnings: ['A simple database-backed tool outperforms the best Excel file every time', 'AI chat widgets dramatically reduce the learning curve for non-technical users', 'Audit logs are not optional — they become essential at the first compliance question'] },
   },
   {
-    emoji: '🔔', group: 'Personal Apps & AI Tools',
+    emoji: '🔔', group: 'Built Apps & Tools',
     title: 'SNOW SLA Automation Pipeline', subtitle: 'ServiceNow Monitoring & WhatsApp Alerts',
     status: 'Live', category: 'Automation · Monitoring',
     description: 'Python automation pipeline monitoring ServiceNow tickets 24/7 and firing WhatsApp messages before SLA breaches. Runs as background daemons via cron every 5 minutes.',
@@ -156,7 +156,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Eliminate manual SLA monitoring by automating ticket surveillance and proactive breach alerts via WhatsApp.', objectives: ['Remove 45 min/day of manual SNOW monitoring', 'Alert engineers 30 min before any SLA breach', 'Create daily email summary of inbox priorities', 'Provide JSON feed for dashboard integration'], stakeholders: 'IT engineers responsible for SLA compliance, IT management reviewing metrics', timeline: '2 weeks development', outcomes: ['Zero SLA breaches for 6 months post-deployment', 'Daily monitoring time: 45 min → 0', '100% automated alert delivery via WhatsApp', 'Dual trigger: SNOW API + email scanning'], skillsApplied: ['Python Scripting', 'REST API Integration', 'Process Automation', 'SLA Management'], toolsUsed: ['Python 3.11', 'ServiceNow REST API', 'Twilio WhatsApp API', 'Microsoft Graph API', 'cron/LaunchAgent'], learnings: ['Proactive alerting at 70% SLA consumed is far more effective than alerting at breach', 'Dual-trigger systems (API + email) ensure coverage when one source fails', 'Automation daemons need watchdog processes — silent failures are the worst kind'] },
   },
   {
-    emoji: '🌐', group: 'Personal Apps & AI Tools',
+    emoji: '🌐', group: 'Built Apps & Tools',
     title: 'HiTecH AI HUB Website', subtitle: 'Personal Brand & Technology Platform',
     status: 'Live', category: 'Web Application · Personal Brand',
     description: 'Production-ready personal technology brand built with Next.js 14, TypeScript, Tailwind CSS. Live IT/AI news ticker, neural network skill map, animated hero, full blog, IT learning portal, and Cloudflare Pages deployment.',
@@ -166,7 +166,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Build a professional personal brand website serving dual purpose: senior IT role attraction and IT outsourcing/freelance client conversion.', objectives: ['Attract senior IT hiring managers and HR recruiters', 'Convert outsourcing and freelance project enquiries', 'Showcase 24 real projects with PMP documentation', 'Establish thought leadership via blog and IT Learning'], stakeholders: 'Hiring managers (MENA + global), IT outsourcing clients (UK/US/EU), students seeking IT training', timeline: '3 months build, ongoing enhancement', outcomes: ['Full professional brand site live on global CDN', '24 projects, 16 blog posts, 12 courses published', 'IT Services, Training, Industries pages driving enquiries', 'Mobile + desktop optimised, SEO ready'], skillsApplied: ['Next.js Development', 'UI/UX Design', 'SEO Optimisation', 'Content Strategy', 'Cloudflare Deployment'], toolsUsed: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Cloudflare Pages', 'RSS APIs'], learnings: ['Personal branding requires a clear dual audience strategy — job vs. consulting clearly separated', 'Static site deployment on Cloudflare Pages gives enterprise-grade performance for free', 'Live data features (news ticker, neural network) significantly increase engagement time'] },
   },
   {
-    emoji: '📱', group: 'Personal Apps & AI Tools',
+    emoji: '📱', group: 'Built Apps & Tools',
     title: 'HiTecH Page Manager', subtitle: 'Facebook Content Manager · Post Generator · Affiliate Tracker',
     status: 'Live', category: 'Web App · Social Media',
     description: 'A full-stack Flask web app for managing the HiTecH Technology HUB Facebook page — content calendar, AI-powered post generator, affiliate link tracker with click analytics, and Facebook OAuth integration. Built to replace manual social media management with an automated, data-driven workflow.',
@@ -209,7 +209,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '🔗', group: 'Personal Apps & AI Tools',
+    emoji: '🔗', group: 'Built Apps & Tools',
     title: 'SAP O365 MCP Server', subtitle: 'Claude AI ↔ Microsoft 365 Bridge',
     status: 'Live', category: 'AI Integration · MCP Server',
     description: 'Model Context Protocol server giving Claude AI direct access to SAP Outlook, Calendar, OneDrive, and SharePoint — enabling natural language control of enterprise M365 services from any Claude session.',
@@ -219,7 +219,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Enable natural language AI control of enterprise M365 services by building a Model Context Protocol integration layer.', objectives: ['Allow Claude AI to read and search corporate emails', 'Enable AI-assisted calendar management', 'Provide AI access to OneDrive and SharePoint documents', 'Bypass SAP Conditional Access on non-managed device'], stakeholders: 'Senior IT engineer using AI tools for daily operational efficiency', timeline: '3 weeks development', outcomes: ['Full M365 suite accessible via natural language', 'Used daily in Claude Code sessions and Waqas AI Hub', 'OAuth2 token refresh automated — zero manual re-auth', 'Enables AI-powered email and calendar management'], skillsApplied: ['OAuth2 Authentication', 'API Development', 'Microsoft Graph API', 'AI Tool Integration'], toolsUsed: ['Python/FastAPI', 'Microsoft Graph API', 'OAuth2/Azure AD', 'MCP Protocol', 'JSON/REST'], learnings: ['SAP Conditional Access can be bypassed legitimately using localhost redirect URIs', 'Token refresh automation is critical — expired tokens at 3 AM are not acceptable', 'MCP servers dramatically extend AI assistant capabilities beyond their training data'] },
   },
   {
-    emoji: '🔐', group: 'Personal Apps & AI Tools',
+    emoji: '🔐', group: 'Built Apps & Tools',
     title: 'Password Generator Pro', subtitle: 'Secure Password Tool · Python · macOS · Cybersecurity Compliant',
     status: 'Live', category: 'Cybersecurity · Desktop App',
     description: 'A native macOS desktop application that generates secure, cybersecurity-compliant passwords locally — no internet connection required. Supports three generation modes (Strong, Medium, Memorable), enforces best-practice password policies, stores history in a local encrypted SQLite database, and ships as a standalone .app bundle.',
@@ -279,9 +279,9 @@ const projects: Project[] = [
     },
   },
 
-  // ── GROUP 2: Enterprise IT Implementations ──────────────────────
+  // ── GROUP 2: Enterprise IT Rollouts ──────────────────────
   {
-    emoji: '🖥️', group: 'Enterprise IT Implementations',
+    emoji: '🖥️', group: 'Enterprise IT Rollouts',
     title: 'Modern Workplace Migration', subtitle: 'SCCM → Intune/Autopilot · 200+ Users · 90 Days',
     status: 'Completed', category: 'Change Management · MDM',
     description: 'Led the full migration of 200+ users from legacy SCCM to Microsoft Intune/Autopilot zero-touch provisioning and Azure AD. Completed in 90 days across Windows, macOS (JamF), iOS, and Android — zero business disruption.',
@@ -290,7 +290,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Migrate 200+ users from on-premises SCCM legacy management to cloud-native Microsoft Intune/Autopilot across all device platforms.', objectives: ['Eliminate SCCM on-premises infrastructure dependency', 'Achieve zero-touch device provisioning for all new hires', 'Enforce device compliance from anywhere without VPN', 'Improve Secure Score by minimum 20 points'], stakeholders: 'IT team (delivery), 200+ end users (3 offices), IT Manager (sponsor), C-suite (executive users requiring white-glove)', timeline: '90 days (phased: 3 waves)', outcomes: ['Device compliance: 62% → 94%', 'New device setup: 3.5 hrs → 45 min', 'Remote device visibility: 30% → 100%', 'Secure Score: 41% → 71%'], skillsApplied: ['Change Management', 'Microsoft Intune MDM', 'Azure AD Administration', 'Project Management', 'User Adoption'], toolsUsed: ['Microsoft Intune', 'Autopilot', 'Azure AD / Entra ID', 'JamF', 'Microsoft Endpoint Manager', 'Conditional Access'], learnings: ['Pilot with IT team first — never with executives — you need 2 weeks to find edge cases', 'Report-only mode for Conditional Access before enforcement prevents major incidents', 'User communication explaining the WHY reduces helpdesk tickets by 40%+ during rollout'] },
   },
   {
-    emoji: '🔐', group: 'Enterprise IT Implementations',
+    emoji: '🔐', group: 'Enterprise IT Rollouts',
     title: 'Zero Trust Security Architecture', subtitle: 'Azure Security · Secure Score 41% → 78%',
     status: 'Completed', category: 'Cybersecurity · Enterprise',
     description: 'Designed and deployed Zero Trust security architecture for a 200+ user multinational — Conditional Access, MFA, Defender for M365, PIM, DLP, and SIEM pilot. Secure Score raised from 41% to 78% over 12 months.',
@@ -299,7 +299,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Implement Zero Trust security architecture aligned to Microsoft best practices across the full Microsoft 365 and Azure AD tenant.', objectives: ['Eliminate all legacy authentication attack vectors', 'Enforce device compliance as condition for resource access', 'Achieve 75%+ Microsoft Secure Score', 'Implement privileged access governance via PIM'], stakeholders: 'IT Manager (sponsor), CISO/Security (requirement owner), 200+ end users, Microsoft (vendor support)', timeline: '12 months (phased implementation)', outcomes: ['Secure Score: 41% → 78%', 'Legacy auth attacks: eliminated', 'Zero security incidents attributed to identity compromise', 'All admin access PIM-governed with audit trail'], skillsApplied: ['Azure Security Engineering', 'Identity & Access Management', 'Security Architecture Design', 'Compliance Management'], toolsUsed: ['Azure AD / Entra ID', 'Microsoft Defender for M365', 'Intune Compliance Policies', 'PIM', 'DLP Policies', 'Microsoft Sentinel'], learnings: ['Named locations are the single highest-ROI Conditional Access configuration', 'PIM with approval workflows creates an audit trail that satisfies every compliance auditor', 'Secure Score is addictive once you start — gamification drives real security improvements'] },
   },
   {
-    emoji: '🏢', group: 'Enterprise IT Implementations',
+    emoji: '🏢', group: 'Enterprise IT Rollouts',
     title: 'Riyadh HQ IT Infrastructure Rebuild', subtitle: '15 Meeting Rooms · 1.2M SAR · Zero Disruption',
     status: 'Completed', category: 'IT Infrastructure · Project Management',
     description: 'Led complete IT infrastructure rebuild for major head office renovation — 15 meeting rooms with full AV, Cisco/Aruba network rebuild, HP server room, and digital signage. Project value 1.2M SAR.',
@@ -308,7 +308,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Full IT infrastructure design, procurement, and deployment for a major head office renovation — covering network, server room, meeting rooms, and digital signage.', objectives: ['Deploy 15 fully-equipped Teams-certified meeting rooms', 'Rebuild core network with current-generation Cisco/Aruba hardware', 'Migrate 200+ users to new infrastructure with zero productivity loss', 'Complete project on schedule aligned to renovation timeline'], stakeholders: 'Country MD (sponsor), Facilities (build partner), IT team (delivery), Vendors: Destiny/Beetra, 200+ end users', timeline: '6 months (phased with renovation schedule)', outcomes: ['15 meeting rooms delivered and signed off by C-level', 'Network fully modernised — zero connectivity incidents post-go-live', '200+ users migrated in single weekend cutover', 'Completed on time aligned to renovation schedule'], skillsApplied: ['IT Infrastructure Design', 'Project Management', 'Vendor Management', 'AV Systems Integration', 'Network Architecture'], toolsUsed: ['Cisco IOS', 'Aruba APs', 'HP ProLiant', 'MS Teams MTR', 'Crestron', 'SAP Ariba', 'Visio'], learnings: ['Pre-event AV testing 3 hours before (not 30 minutes) eliminates all discovery incidents', 'Vendor relationship investment pays dividends when you need emergency replacements', 'A complete network diagram in SharePoint saves days of troubleshooting in future'] },
   },
   {
-    emoji: '🏗️', group: 'Enterprise IT Implementations',
+    emoji: '🏗️', group: 'Enterprise IT Rollouts',
     title: 'New Office Build-Out: IT Planning & Installation', subtitle: 'Jeddah & Al-Khobar Branches · End-to-End Design',
     status: 'Completed', category: 'IT Infrastructure · Office Build-Out',
     description: 'Led full IT technology planning and installation for new branch office build-outs — requirements gathering, design, procurement, installation, testing, and handover covering network, AV, workstations, printing, and security.',
@@ -317,7 +317,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Plan and deliver complete IT infrastructure for new branch office openings — from design through handover to local IT team.', objectives: ['Design IT infrastructure before construction begins', 'Ensure Day 1 operational readiness for all staff', 'Deliver structured cabling to professional standard', 'Provide complete documentation for ongoing support'], stakeholders: 'Office Manager (local sponsor), Facilities/Construction, IT Manager (sign-off), incoming branch staff', timeline: '8 weeks per location', outcomes: ['Branch offices fully operational on Day 1', 'Zero cabling or network rework required post-handover', 'All devices Autopilot-enrolled — zero IT setup required on arrival', 'Full documentation handed over to IT team'], skillsApplied: ['IT Infrastructure Planning', 'Structured Cabling', 'Network Design', 'Project Coordination', 'Vendor Management'], toolsUsed: ['Cisco Switches', 'Aruba APs', 'Autopilot/Intune', 'Visio', 'SAP Ariba', 'Cat6 structured cabling'], learnings: ['IT planning must start at floor plan stage — retrofitting network points is expensive', 'Full BOM approved before any contractor starts prevents scope creep', 'Site acceptance testing with sign-off sheet protects against future disputes'] },
   },
   {
-    emoji: '🖧', group: 'Enterprise IT Implementations',
+    emoji: '🖧', group: 'Enterprise IT Rollouts',
     title: 'Server Room & Network Device Replacement', subtitle: 'HP Servers · Cisco · Aruba Wi-Fi 6 · Weekend Cutover',
     status: 'Completed', category: 'IT Infrastructure · Network Refresh',
     description: 'Led end-of-life server and network infrastructure replacement — HP server rack rebuild, Cisco switch replacement, Aruba Wi-Fi 6 APs, and NAC reconfiguration. Completed in a weekend maintenance window with zero production impact.',
@@ -326,7 +326,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Replace end-of-life server and network infrastructure during planned maintenance window with zero business impact.', objectives: ['Decommission EOL hardware before warranty expiry', 'Deploy current-generation server and network equipment', 'Migrate all configurations with zero data loss', 'Complete within a single weekend maintenance window'], stakeholders: 'IT Manager (sponsor), Data Centre team, Network team, Business operations (impacted by downtime)', timeline: 'Friday 10 PM → Sunday 6 AM maintenance window', outcomes: ['100% hardware replacement completed in single weekend', 'Zero production incidents during or after cutover', 'Wi-Fi 6 upgrade: 40% improvement in wireless throughput', 'All VLAN configs and ACLs migrated without rework'], skillsApplied: ['Network Infrastructure', 'Server Administration', 'Change Management', 'Risk Management', 'Technical Documentation'], toolsUsed: ['HP ProLiant', 'Cisco IOS', 'Aruba Wi-Fi 6', 'SCCM', 'Visio', 'NAC / 802.1X'], learnings: ['A detailed cutover checklist reviewed 48 hours before is the difference between smooth and chaotic', 'Dual ISP failover testing must be done with real traffic, not just ping tests', 'Updated network documentation in SharePoint paid off within 6 months when a new engineer joined'] },
   },
   {
-    emoji: '📊', group: 'Enterprise IT Implementations',
+    emoji: '📊', group: 'Enterprise IT Rollouts',
     title: 'SAP PowerBI IT Operations Dashboard', subtitle: 'KPI Reporting · SAP Work Zone · C-Level Visibility',
     status: 'Live', category: 'Analytics · Enterprise IT',
     description: 'PowerBI dashboards for real-time IT KPIs — asset lifecycle, ServiceNow SLA stats, ticket volume trends, and procurement spend. Integrated with SharePoint and SAP Work Zone for live data feeds accessible by IT leadership.',
@@ -335,7 +335,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Replace manual Excel-based IT reporting with live PowerBI dashboards accessible by all stakeholders from SAP Work Zone.', objectives: ['Provide real-time SLA visibility to IT management', 'Eliminate manual monthly Excel report generation', 'Give C-level single-page IT health overview', 'Enable self-service reporting for IT team members'], stakeholders: 'Country MD (executive view), IT Manager (operational view), Finance (procurement data), IT Team (daily view)', timeline: '4 weeks build + ongoing', outcomes: ['Manual monthly reports eliminated — 3 hrs/month saved', 'C-level reads dashboard every Monday without IT input', 'SLA breach rate visible in real-time — faster intervention', 'Procurement spend tracked monthly — 0 budget surprises'], skillsApplied: ['PowerBI Development', 'Data Analytics', 'Dashboard Design', 'ServiceNow API Integration', 'Stakeholder Management'], toolsUsed: ['Microsoft PowerBI', 'ServiceNow REST API', 'SharePoint Online', 'SAP Work Zone', 'Microsoft Excel'], learnings: ['Start with the question your manager asks most — not the data you have available', 'Publishing to SAP Work Zone increases viewership 10x vs. emailing a PDF', 'A dashboard that nobody reads is worse than no dashboard — user testing is essential'] },
   },
   {
-    emoji: '📱', group: 'Enterprise IT Implementations',
+    emoji: '📱', group: 'Enterprise IT Rollouts',
     title: 'MENA Device Approval & Procurement Workflow', subtitle: 'Power Apps + SAP Ariba · 200–300K SAR/Month',
     status: 'Live', category: 'Process Automation · Procurement',
     description: 'Power Apps-based IT device approval system for MENA — replacing manual email chains. Handles employee requests, management approvals, and SAP Ariba PO creation. Processes 200–300K SAR/month in hardware approvals.',
@@ -477,11 +477,11 @@ const projects: Project[] = [
 
 /* ── GROUPS ─────────────────────────────────────────────────────── */
 const GROUPS = [
-  { key: 'All', label: 'All Projects' },
-  { key: 'Daily IT Operations', label: '⚙️ Daily IT Operations' },
-  { key: 'Personal Apps & AI Tools', label: '💻 Personal Apps & AI Tools' },
-  { key: 'Enterprise IT Implementations', label: '🏢 Enterprise Implementations' },
-  { key: 'ITSM & Service Management', label: '🎫 ITSM & Service Management' },
+  { key: 'All',                          label: 'All Projects' },
+  { key: 'Daily IT Operations',          label: '⚙️ Daily IT Operations' },
+  { key: 'Built Apps & Tools',           label: '💻 Built Apps & Tools' },
+  { key: 'Enterprise IT Rollouts',       label: '🏢 Enterprise IT Rollouts' },
+  { key: 'ITSM & Service Management',    label: '🎫 ITSM & Service Management' },
   { key: 'AV, Events & Physical Security', label: '🎙️ AV, Events & Security' },
 ]
 
