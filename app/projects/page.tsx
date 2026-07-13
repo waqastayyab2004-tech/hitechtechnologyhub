@@ -166,6 +166,49 @@ const projects: Project[] = [
     pmDetails: { scope: 'Build a professional personal brand website serving dual purpose: senior IT role attraction and IT outsourcing/freelance client conversion.', objectives: ['Attract senior IT hiring managers and HR recruiters', 'Convert outsourcing and freelance project enquiries', 'Showcase 24 real projects with PMP documentation', 'Establish thought leadership via blog and IT Learning'], stakeholders: 'Hiring managers (MENA + global), IT outsourcing clients (UK/US/EU), students seeking IT training', timeline: '3 months build, ongoing enhancement', outcomes: ['Full professional brand site live on global CDN', '24 projects, 16 blog posts, 12 courses published', 'IT Services, Training, Industries pages driving enquiries', 'Mobile + desktop optimised, SEO ready'], skillsApplied: ['Next.js Development', 'UI/UX Design', 'SEO Optimisation', 'Content Strategy', 'Cloudflare Deployment'], toolsUsed: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Cloudflare Pages', 'RSS APIs'], learnings: ['Personal branding requires a clear dual audience strategy — job vs. consulting clearly separated', 'Static site deployment on Cloudflare Pages gives enterprise-grade performance for free', 'Live data features (news ticker, neural network) significantly increase engagement time'] },
   },
   {
+    emoji: '📱', group: 'Personal Apps & AI Tools',
+    title: 'HiTecH Page Manager', subtitle: 'Facebook Content Manager · Post Generator · Affiliate Tracker',
+    status: 'Live', category: 'Web App · Social Media',
+    description: 'A full-stack Flask web app for managing the HiTecH Technology HUB Facebook page — content calendar, AI-powered post generator, affiliate link tracker with click analytics, and Facebook OAuth integration. Built to replace manual social media management with an automated, data-driven workflow.',
+    highlights: [
+      'Content Calendar: schedule, create, edit, delete posts with status tracking (draft/scheduled/posted)',
+      'AI Post Generator: auto-generates social media captions and content ideas via API',
+      'Post Image Generator: creates high-quality branded post images via HTML/CSS rendering',
+      'Affiliate Link Tracker: add links, record clicks, track revenue — full CRUD with SQLite',
+      'Facebook OAuth: connect page, list pages, manage posts via Facebook Graph API',
+      'Dashboard: overview of upcoming posts, affiliate performance, and quick actions',
+      'Full SQLite backend — config and data persist across sessions',
+    ],
+    tags: ['Python', 'Flask', 'SQLite', 'Facebook Graph API', 'OAuth', 'HTML/CSS Image Rendering', 'Content Marketing'],
+    github: 'https://github.com/waqas-syed',
+    pmDetails: {
+      scope: 'Build a self-hosted social media management tool for the HiTecH Technology HUB Facebook page — replacing manual posting with a structured calendar, AI content generation, and affiliate tracking.',
+      objectives: [
+        'Replace manual post scheduling with a structured content calendar',
+        'Auto-generate post content using AI to reduce writing time',
+        'Track affiliate link performance with click counts and revenue data',
+        'Connect to Facebook Graph API for direct page management',
+        'Generate branded post images without a graphic design tool',
+      ],
+      stakeholders: 'Personal project — HiTecH Technology HUB Facebook page (1M+ community)',
+      timeline: '3 weeks development',
+      outcomes: [
+        'Full content calendar live — posts scheduled weeks in advance',
+        'AI post generator produces ready-to-publish captions instantly',
+        'Affiliate tracker logging clicks per link with revenue attribution',
+        'Post image generator producing branded social media graphics',
+        'Facebook OAuth connected — direct page post management from the app',
+      ],
+      skillsApplied: ['Python Flask Development', 'SQLite Database Design', 'Facebook Graph API Integration', 'OAuth 2.0 Authentication', 'HTML/CSS Image Generation', 'Content Strategy Automation'],
+      toolsUsed: ['Python 3', 'Flask', 'SQLite3', 'Facebook Graph API', 'OAuth 2.0', 'Jinja2 Templates', 'HTML/CSS renderer', 'Requests library'],
+      learnings: [
+        'Facebook Graph API requires careful scope management — page tokens vs user tokens have different expiry and permission levels',
+        'HTML/CSS-to-image rendering is the fastest way to generate consistent branded graphics without Photoshop',
+        'Content calendars with status tracking (draft → scheduled → posted) prevent duplicate posting and missed dates',
+      ],
+    },
+  },
+  {
     emoji: '🔗', group: 'Personal Apps & AI Tools',
     title: 'SAP O365 MCP Server', subtitle: 'Claude AI ↔ Microsoft 365 Bridge',
     status: 'Live', category: 'AI Integration · MCP Server',
@@ -471,7 +514,7 @@ export default function ProjectsPage() {
 
   const stats = [
     { v: '100+', l: 'Projects Delivered' },
-    { v: '36', l: 'Showcased Here' },
+    { v: '37', l: 'Showcased Here' },
     { v: '15+', l: 'Years Experience' },
     { v: '20M+', l: 'SAR Managed' },
   ]

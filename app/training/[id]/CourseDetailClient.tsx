@@ -107,6 +107,28 @@ const courses = [
       ]},
     ],
   },
+  { id: 113,
+    title: 'Build a Social Media Manager App with Python & Facebook API',
+    category: 'Corporate IT Training',
+    level: 'Intermediate', duration: '3h', students: '60+', rating: 4.9, isFree: true,
+    img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80&auto=format&fit=crop',
+    skills: ['Python', 'Flask', 'Facebook Graph API', 'OAuth 2.0', 'SQLite', 'Content Calendar', 'HTML/CSS Image Generation'],
+    description: 'Build a full-stack social media management app from scratch — featuring a content calendar, AI post generator, affiliate link tracker, and Facebook Graph API integration. Based on a real app built by the instructor to manage the HiTecH Technology HUB Facebook page (1M+ community).',
+    whatYouLearn: [
+      'Design and build a Flask app with SQLite for content management',
+      'Implement a content calendar with full CRUD and status tracking',
+      'Integrate Facebook Graph API with OAuth 2.0 for page management',
+      'Build an affiliate link tracker with click analytics',
+      'Generate branded social media images using HTML/CSS rendering',
+    ],
+    curriculum: [
+      { module: 'Module 1 — App Architecture & Database Design', lessons: ['Flask project structure: routes, templates, static files, config', 'SQLite database design: posts table, affiliates table, config store', 'Row factory pattern for dictionary-style query results', 'Init DB on startup: CREATE TABLE IF NOT EXISTS pattern', 'Config persistence: reading and writing a JSON config file'] },
+      { module: 'Module 2 — Content Calendar', lessons: ['Building the calendar view: list posts by date with status badges', 'New post form: title, caption, image URL, scheduled date, platform', 'Edit and delete post with confirmation dialog', 'Mark post as posted: status update and timestamp recording', 'Filtering posts by status: draft, scheduled, posted'] },
+      { module: 'Module 3 — Facebook Graph API Integration', lessons: ['Facebook App setup: create app, get App ID and App Secret in Meta Developer Portal', 'OAuth 2.0 flow: redirect to Facebook, handle callback, store access token', 'List pages the user manages via /me/accounts Graph API endpoint', 'Post text content to a page using the /{page-id}/feed endpoint', 'Refreshing long-lived page tokens to avoid expiry (60-day tokens)'] },
+      { module: 'Module 4 — AI Post Generator & Image Creator', lessons: ['AI post generation: calling an API to generate captions from a topic prompt', 'HTML template design for branded post images with logo and colour scheme', 'Base64-encoding a mascot/logo image for inline HTML embedding', 'Rendering HTML to PNG using a headless subprocess call', 'Serving generated images as downloadable files from a Flask route'] },
+      { module: 'Module 5 — Affiliate Link Tracker', lessons: ['Affiliate link data model: name, URL, description, click count, revenue', 'Recording a click: redirect route that logs before forwarding the user', 'Displaying click analytics per link on the dashboard', 'Update affiliate link details and revenue attribution in SQLite', 'Export affiliate data to CSV for performance reporting'] },
+    ],
+  },
 ]
 
 const levelColor: Record<string, string> = {
