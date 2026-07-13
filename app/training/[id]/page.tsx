@@ -1,7 +1,7 @@
 import CourseDetailClient from './CourseDetailClient'
 
 export function generateStaticParams() {
-  return [101,102,103,104,105,106,107,108,109,110,111,112,113,114].map(id => ({ id: String(id) }))
+  return [101,102,103,104,105,106,107,108,109,110,111,112,113,114,115].map(id => ({ id: String(id) }))
 }
 
 export default function CoursePage({ params }: { params: { id: string } }) {

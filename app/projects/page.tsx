@@ -444,6 +444,66 @@ const projects: Project[] = [
       ],
     },
   },
+  {
+    emoji: '📲', group: 'Daily IT Operations',
+    title: 'CLEA — SAP Asset Lifecycle Operations (Daily Use)', subtitle: 'SAP BTP · QR Scanning · On/Offboarding · Pool Stock · Power BI',
+    status: 'Live', category: 'IT Asset Management · SAP BTP',
+    description: 'Daily operational use of CLEA (Client Lifecycle Enterprise Application) — SAP BTP-hosted internal web and mobile app for end-to-end IT hardware lifecycle management. Covers new hire device assignment (on-boarding), monthly pool stock QR scanning in the IT storage room, equipment returns from leavers (off-boarding), goods receipt, and live KPI reporting via Power BI. Used daily for managing 89+ pool devices across 6 categories at RUH-SR01 Riyadh.',
+    highlights: [
+      'Monthly IT Storage Room Inventory: scan 89 devices (laptops, MacBooks, iPhones, iPads, Android, monitors) using mobile CLEA app + camera/QR scanner',
+      'On-boarding module: assign pre-staged devices to new joiners — links to ServiceNow ticket and SAP ISP ERP record',
+      'Off-boarding module: calendar-driven equipment recovery from leavers — return receipt, device wipe, back to pool',
+      'Goods Receipt: receive new hardware from SAP Ariba procurement, register in CLEA, ABC classification applied (S/N/R)',
+      'Pool Stock: IT Storage Room RUH-SR01 — 8 laptops, 20 MacBooks, 30 iPhones, 21 iPads, 7 monitors live tracked',
+      'IT Operational Dashboard: live KPIs — pending on-boardings, off-boardings in progress, missing device scan alerts',
+      'Power BI integration: global asset inventory reports across 18+ countries, missing data flags, inventory cycle tracking',
+      'Mass hardware pre-assignment: bulk assign devices to multiple users before Day 1 — reduces setup time to 30 min',
+    ],
+    tags: ['SAP BTP', 'CLEA App', 'QR Asset Scanning', 'SAP ISP', 'Power BI', 'Onboarding', 'Offboarding', 'IT Asset Management'],
+    pmDetails: {
+      scope: 'Daily operational management of IT hardware lifecycle using the CLEA SAP BTP application — covering on-boarding, pool stock management, off-boarding recovery, procurement intake, and Power BI KPI reporting.',
+      objectives: [
+        'Maintain 100% accurate pool stock records via monthly QR scan of all 89 devices in RUH-SR01',
+        'Ensure Day 1 device readiness for new hires — assigned before arrival using CLEA on-boarding module',
+        'Complete off-boarding hardware recovery within SLA — CLEA calendar triggers IT action on leaver confirmation',
+        'Receive and register all new hardware from SAP Ariba procurement via CLEA Goods Receipt',
+        'Surface missing device data and inventory KPIs via Power BI for management reporting',
+      ],
+      stakeholders: 'New hire employees (on-boarding), leaving employees (off-boarding), IT Manager (KPIs), Finance (asset cost tracking), Procurement (Goods Receipt), Global IT (Power BI reporting)',
+      timeline: 'Ongoing daily operations — monthly scan cycle, event-driven on/off-boarding',
+      outcomes: [
+        '89 pool devices accurately tracked in RUH-SR01 storage room across 6 categories',
+        'Monthly inventory scan completed within 5-day cycle window (2026-07-12 to 2026-07-17 cycle verified)',
+        'Zero hardware discrepancies — QR scan confirms physical inventory matches SAP system records',
+        'All on-boarding device assignments linked to SAP ISP, ServiceNow, and CLEA for full audit trail',
+        'Power BI dashboard covers 18+ countries — global inventory visibility for senior IT leadership',
+      ],
+      skillsApplied: [
+        'SAP BTP Application Administration',
+        'IT Asset Lifecycle Management',
+        'Mobile QR/Barcode Scanning Operations',
+        'Employee Onboarding/Offboarding IT Workflow',
+        'Goods Receipt & Procurement Integration (SAP Ariba)',
+        'Power BI Reporting & KPI Tracking',
+        'ABC Asset Classification (S/N/R)',
+        'IT Storage Room Inventory Management',
+      ],
+      toolsUsed: [
+        'CLEA (Client Lifecycle Enterprise Application) — SAP BTP',
+        'Mobile CLEA App (iOS/Android) — QR/barcode scanner',
+        'SAP ISP (IT asset ERP system)',
+        'SAP Ariba (procurement — Goods Receipt source)',
+        'ServiceNow ITSM (ticket integration)',
+        'Microsoft Power BI (global inventory KPI dashboard)',
+        'SAP BTP Cloud Foundry (eu10-004 region)',
+      ],
+      learnings: [
+        'Monthly QR scanning with the mobile app is the only reliable way to verify physical inventory matches system records — automated MDM compliance data alone misses devices in storage',
+        'CLEA\'s ABC classification (S=Standard, N=New, R=Repair/Return) is essential for procurement planning — without it, stock categories blur and refresh cycles become reactive',
+        'Linking on-boarding device assignment in CLEA to the ServiceNow ticket creates a single audit trail from procurement to user to return — critical for compliance audits',
+      ],
+    },
+  },
 
   // ── GROUP 4: AV, Events & Physical Security ─────────────────────
   {
@@ -514,7 +574,7 @@ export default function ProjectsPage() {
 
   const stats = [
     { v: '100+', l: 'Projects Delivered' },
-    { v: '37', l: 'Showcased Here' },
+    { v: '38', l: 'Showcased Here' },
     { v: '15+', l: 'Years Experience' },
     { v: '20M+', l: 'SAR Managed' },
   ]
