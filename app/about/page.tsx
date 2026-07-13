@@ -194,7 +194,7 @@ const skillDomains = [
     color: 'text-red-400',
     bg: 'bg-red-500/10',
     link: undefined,
-    items: ['Azure Security Engineer', 'Zero Trust Architecture', 'Intune MDM / Autopilot', 'MFA & Conditional Access', 'Microsoft Defender for M365', 'Trellix / McAfee / HIPS', 'Azure AD (Entra ID)', 'CCNA Security', 'Endpoint Compliance (SCCM)'],
+    items: ['Azure Security Engineer', 'Zero Trust Architecture', 'Intune MDM / Autopilot', 'MFA & Conditional Access', 'Microsoft Defender for M365', 'Trellix / McAfee / HIPS', 'Azure AD (Entra ID)', 'CCNA Security', 'Endpoint Compliance (SCCM)', 'Password Policy Enforcement', 'Password Generator (Python App)', 'Entropy-based Password Design', 'Passphrase Security Techniques'],
   },
   {
     icon: Globe,
@@ -218,7 +218,7 @@ const skillDomains = [
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
     link: undefined,
-    items: ['Agentic AI (Claude / ChatGPT / Copilot)', 'Python ML / MLOps', 'LLMs & Prompt Engineering', 'Power Apps / Power Automate', 'PowerBI & Data Dashboards', 'FastAPI / Flask / Next.js', 'REST APIs & MCP Servers', 'PowerShell & Scripting', 'SAP Build Low-Code'],
+    items: ['Agentic AI (Claude / ChatGPT / Copilot)', 'Python ML / MLOps', 'LLMs & Prompt Engineering', 'Power Apps / Power Automate', 'PowerBI & Data Dashboards', 'FastAPI / Flask / Next.js', 'REST APIs & MCP Servers', 'PowerShell & Scripting', 'SAP Build Low-Code', 'Tkinter GUI Development', 'PyInstaller App Packaging'],
   },
   {
     icon: Network,

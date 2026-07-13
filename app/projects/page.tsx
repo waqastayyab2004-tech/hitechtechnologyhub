@@ -175,6 +175,66 @@ const projects: Project[] = [
     github: 'https://github.com/waqas-syed',
     pmDetails: { scope: 'Enable natural language AI control of enterprise M365 services by building a Model Context Protocol integration layer.', objectives: ['Allow Claude AI to read and search corporate emails', 'Enable AI-assisted calendar management', 'Provide AI access to OneDrive and SharePoint documents', 'Bypass SAP Conditional Access on non-managed device'], stakeholders: 'Senior IT engineer using AI tools for daily operational efficiency', timeline: '3 weeks development', outcomes: ['Full M365 suite accessible via natural language', 'Used daily in Claude Code sessions and Waqas AI Hub', 'OAuth2 token refresh automated — zero manual re-auth', 'Enables AI-powered email and calendar management'], skillsApplied: ['OAuth2 Authentication', 'API Development', 'Microsoft Graph API', 'AI Tool Integration'], toolsUsed: ['Python/FastAPI', 'Microsoft Graph API', 'OAuth2/Azure AD', 'MCP Protocol', 'JSON/REST'], learnings: ['SAP Conditional Access can be bypassed legitimately using localhost redirect URIs', 'Token refresh automation is critical — expired tokens at 3 AM are not acceptable', 'MCP servers dramatically extend AI assistant capabilities beyond their training data'] },
   },
+  {
+    emoji: '🔐', group: 'Personal Apps & AI Tools',
+    title: 'Password Generator Pro', subtitle: 'Secure Password Tool · Python · macOS · Cybersecurity Compliant',
+    status: 'Live', category: 'Cybersecurity · Desktop App',
+    description: 'A native macOS desktop application that generates secure, cybersecurity-compliant passwords locally — no internet connection required. Supports three generation modes (Strong, Medium, Memorable), enforces best-practice password policies, stores history in a local encrypted SQLite database, and ships as a standalone .app bundle.',
+    highlights: [
+      'Three password modes: Strong (full charset), Medium (letters+digits), Memorable (word-based passphrase)',
+      'User controls: configurable length, toggle digits/symbols, password type selector',
+      'Cybersecurity compliant: meets 15-char minimum, uppercase+lowercase+digit+symbol requirements',
+      'One-click clipboard copy — password never touches a server or network',
+      'Password history stored locally in SQLite at ~/Library/Application Support — never in cloud',
+      'Memorable mode: generates passphrases easy to remember yet cryptographically adequate',
+      'Built as standalone macOS .app — no Python install required for end users',
+      'Foundation project demonstrating Python, GUI development, and local data persistence',
+    ],
+    tags: ['Python 3.14', 'Tkinter', 'SQLite', 'PyInstaller', 'macOS', 'Cybersecurity', 'Password Policy'],
+    github: 'https://github.com/waqas-syed',
+    pmDetails: {
+      scope: 'Build a secure, offline password generator that helps employees and users create strong, policy-compliant passwords that are easy to remember — packaged as a standalone macOS app.',
+      objectives: [
+        'Generate passwords meeting enterprise cybersecurity policy (length, complexity, entropy)',
+        'Provide a Memorable mode so users adopt strong passwords without writing them down',
+        'Store history locally — zero cloud or network exposure of generated passwords',
+        'Package as a double-click macOS .app — no setup required for non-technical users',
+        'Serve as a foundation Python project to build toward ML/AI engineering skills',
+      ],
+      stakeholders: 'Enterprise employees and IT professionals needing policy-compliant passwords; personal learning project for Python development',
+      timeline: '2 weeks development + packaging',
+      outcomes: [
+        'Standalone macOS .app shipped — runs without Python installed',
+        'All three generation modes working: Strong, Medium, Memorable',
+        'SQLite history persists across app restarts in ~/Library/Application Support',
+        'Clipboard copy works natively — no network calls at any point',
+        'App branding: Password Generator Pro — IT Tools by Waqas',
+      ],
+      skillsApplied: [
+        'Python 3.14 Development',
+        'Tkinter GUI Development',
+        'SQLite Database Design',
+        'Password Policy & Cybersecurity Compliance',
+        'macOS App Packaging with PyInstaller',
+        'Entropy-based Password Design',
+        'Passphrase / Memorable Password Techniques',
+      ],
+      toolsUsed: [
+        'Python 3.14',
+        'Tkinter / ttk (Aqua theme)',
+        'SQLite3',
+        'PyInstaller 6.x',
+        'macOS .app bundle (arm64)',
+        'string module (ascii_letters, digits, punctuation)',
+        'random.choice() — character pool generation',
+      ],
+      learnings: [
+        'Memorable passphrases (word combinations) are both user-friendly and cryptographically strong — better adoption than random strings',
+        'Storing generated passwords locally in ~/Library/Application Support is the right pattern — never in the app bundle or a shared location',
+        'PyInstaller packaging requires careful path handling — hardcoded paths break after distribution; os.path.expanduser() is essential',
+      ],
+    },
+  },
 
   // ── GROUP 2: Enterprise IT Implementations ──────────────────────
   {
@@ -411,7 +471,7 @@ export default function ProjectsPage() {
 
   const stats = [
     { v: '100+', l: 'Projects Delivered' },
-    { v: '35', l: 'Showcased Here' },
+    { v: '36', l: 'Showcased Here' },
     { v: '15+', l: 'Years Experience' },
     { v: '20M+', l: 'SAR Managed' },
   ]
