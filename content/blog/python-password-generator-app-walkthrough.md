@@ -9,8 +9,8 @@ featured: false
 ---
 
 <div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-<img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80&auto=format&fit=crop" alt="Python password generator desktop app" style="width:100%; height:280px; object-fit:cover; display:block;"/>
-<p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Photo: Unsplash</p>
+<img src="/waqas-ai-expert.png" alt="Syed Waqas Tayyab — IT Expert & AI Engineer" style="width:100%; height:320px; object-fit:cover; object-position:center top; display:block;"/>
+<p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Syed Waqas Tayyab · IT Expert & AI Engineer · HiTecH Technology HUB</p>
 </div>
 
 # Build a Password Generator Desktop App with Python — Complete Walkthrough
