@@ -9,7 +9,7 @@ featured: false
 ---
 
 <div style="margin: 1.5rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-<img src="/waqas-ai-expert.png" alt="Syed Waqas Tayyab — IT Expert & AI Engineer" style="width:100%; height:320px; object-fit:cover; object-position:center top; display:block;"/>
+<img src="/waqas-city-view.jpg" alt="Syed Waqas Tayyab — IT Expert & AI Engineer" style="width:100%; height:320px; object-fit:cover; object-position:center top; display:block;"/>
 <p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Syed Waqas Tayyab · IT Expert & AI Engineer · HiTecH Technology HUB</p>
 </div>
 
