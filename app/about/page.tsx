@@ -186,7 +186,7 @@ const skillDomains = [
     color: 'text-accent-blue',
     bg: 'bg-accent-blue/10',
     link: undefined,
-    items: ['ServiceNow ITSM', 'IT Direct (BMC)', 'SLA & KPI Management', 'ITIL v3', 'Incident Management', 'Problem Management', 'Change Management', 'Asset Lifecycle (SAP ISP)', 'KB Creation & Templates', 'ServiceNow Walk-up Module', 'Queue Management (ITLC)'],
+    items: ['ServiceNow ITSM', 'ServiceNow CSM/FSM Workspace', 'IT Direct (BMC)', 'SLA & KPI Management (IRT/MPT)', 'ITIL v3', 'Incident Management', 'Problem Management (Preventive Measures)', 'Change Management', 'Asset Lifecycle (SAP ISP)', 'KB Creation & Templates', 'ServiceNow Walk-up Module', 'Walk-up Queue & Channel Management', 'HCSM AI Copilot (Daily Use)', 'Catalog Task Management', 'Interaction Management (Phone/Chat/Walk-up)'],
   },
   {
     icon: Shield,
