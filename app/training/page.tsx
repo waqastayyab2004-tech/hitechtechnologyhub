@@ -14,11 +14,11 @@ import {
 const sidebarCategories = [
   { icon: Home,     label: 'All Courses',           key: 'All' },
   { icon: Award,    label: 'Corporate IT Training',  key: 'Corporate IT Training' },
+  { icon: BookOpen, label: '🎫 IT Ticketing & ITSM',      key: 'IT Ticketing & ITSM' },
   { icon: Brain,    label: 'AI & Automation',        key: 'AI & Automation' },
   { icon: Shield,   label: 'Cybersecurity & Azure',  key: 'Cybersecurity & Azure' },
   { icon: Cloud,    label: 'Microsoft 365 & Azure',  key: 'Microsoft 365 & Azure' },
   { icon: Server,   label: 'IT Infrastructure',      key: 'IT Infrastructure' },
-  { icon: BookOpen, label: 'ITSM & ServiceNow',      key: 'ITSM & ServiceNow' },
   { icon: Globe,    label: 'E-Commerce',             key: 'E-Commerce' },
   { icon: Zap,      label: 'Digital Marketing',      key: 'Digital Marketing' },
   { icon: Award,    label: 'Career & IT Foundations',key: 'Career & IT Foundations' },
@@ -279,7 +279,7 @@ const courses = [
   {
     id: 111,
     title: 'IT Link Center (ITLC) Walk-up Kiosk & Queue Monitor Setup',
-    category: 'Corporate IT Training',
+    category: 'IT Ticketing & ITSM',
     level: 'Intermediate', duration: '1h 30m', students: '80+', rating: 4.9,
     isFree: true, isPopular: false,
     img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80&auto=format&fit=crop',
@@ -416,7 +416,7 @@ const courses = [
   {
     id: 115,
     title: 'CLEA App: SAP IT Asset Lifecycle Management — Daily Operations',
-    category: 'Corporate IT Training',
+    category: 'IT Ticketing & ITSM',
     level: 'Intermediate', duration: '2h', students: '110+', rating: 4.9,
     isFree: true, isPopular: true,
     img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80&auto=format&fit=crop',
@@ -480,7 +480,7 @@ const courses = [
   {
     id: 116,
     title: 'ServiceNow CSM/FSM Workspace & HCSM AI Copilot for IT Support',
-    category: 'Corporate IT Training',
+    category: 'IT Ticketing & ITSM',
     level: 'Intermediate', duration: '2h 30m', students: '95+', rating: 4.9,
     isFree: true, isPopular: true,
     img: '/snow-ticketing-banner.jpg',
@@ -568,7 +568,7 @@ const courses = [
   {
     id: 3,
     title: 'ServiceNow Basics: Your First ITSM Dashboard',
-    category: 'ITSM & ServiceNow',
+    category: 'IT Ticketing & ITSM',
     level: 'Beginner', duration: '2h', students: '350+', rating: 4.8,
     isFree: true, isPopular: false,
     img: '/snow-logo.png',
@@ -643,7 +643,7 @@ const courses = [
   {
     id: 9,
     title: 'ServiceNow ITSM: Enterprise Configuration',
-    category: 'ITSM & ServiceNow',
+    category: 'IT Ticketing & ITSM',
     level: 'Intermediate', duration: '10h', students: '120+', rating: 4.8,
     isFree: false, isPopular: false,
     img: '/snow-csm-banner.jpg',
@@ -1002,12 +1002,34 @@ export default function TrainingPage() {
             </section>
           )}
 
+          {/* IT Ticketing & ITSM — pinned section */}
+          {(activeCategory === 'IT Ticketing & ITSM' || activeCategory === 'All') && (
+            <section className="mb-10">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-lg">🎫</span>
+                <h2 className="text-base font-black text-white">IT Ticketing & ITSM</h2>
+                <span className="text-xs bg-green-500/10 border border-green-500/25 text-green-400 px-2.5 py-0.5 rounded-full font-bold">
+                  {courses.filter(c => c.category === 'IT Ticketing & ITSM').length} courses · Free
+                </span>
+                {activeCategory === 'All' && (
+                  <button onClick={() => setActiveCategory('IT Ticketing & ITSM')}
+                    className="ml-auto text-xs text-accent-blue hover:underline flex-shrink-0">
+                    View all →
+                  </button>
+                )}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {courses.filter(c => c.category === 'IT Ticketing & ITSM').map(c => <CourseCard key={c.id} course={c} />)}
+              </div>
+            </section>
+          )}
+
           {/* All other categories */}
-          {activeCategory !== 'Corporate IT Training' && filtered.filter(c => c.category !== 'Corporate IT Training').length > 0 && (
+          {activeCategory !== 'Corporate IT Training' && activeCategory !== 'IT Ticketing & ITSM' && filtered.filter(c => c.category !== 'Corporate IT Training' && c.category !== 'IT Ticketing & ITSM').length > 0 && (
             <>
               {/* Group by category when All is selected */}
               {activeCategory === 'All' ? (
-                ['AI & Automation', 'Cybersecurity & Azure', 'Microsoft 365 & Azure', 'IT Infrastructure', 'ITSM & ServiceNow', 'Career & IT Foundations', 'E-Commerce', 'Digital Marketing'].map(cat => {
+                ['AI & Automation', 'Cybersecurity & Azure', 'Microsoft 365 & Azure', 'IT Infrastructure', 'Career & IT Foundations', 'E-Commerce', 'Digital Marketing'].map(cat => {
                   const catCourses = courses.filter(c => c.category === cat)
                   if (!catCourses.length) return null
                   return (

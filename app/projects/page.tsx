@@ -346,7 +346,7 @@ const projects: Project[] = [
 
   // ── GROUP 3: ITSM & Service Management ─────────────────────────
   {
-    emoji: '🔄', group: 'ITSM & Service Management',
+    emoji: '🔄', group: 'ITSM & Service Excellence',
     title: 'ServiceNow ITSM Migration: IT Direct → SNOW', subtitle: '200+ Users · SLA Redesign · Change Management',
     status: 'Completed', category: 'ITSM · Change Management',
     description: 'Managed full migration from legacy IT Direct to ServiceNow — ticket data migration, SLA framework redesign, auto-assignment rules, KB architecture, and adoption training for 200+ users across 3 offices.',
@@ -355,7 +355,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Migrate from legacy IT Direct ticketing system to ServiceNow with full ITIL v3 service design — including all historical data, KB articles, and user adoption.', objectives: ['Complete data migration from IT Direct with zero data loss', 'Redesign SLA framework aligned to ITIL v3 best practices', 'Train 200+ users across 3 office locations', 'Achieve go-live with zero P1 incidents during cutover'], stakeholders: 'IT Manager (sponsor), 200+ end users (3 offices), IT team (delivery), ServiceNow (platform)', timeline: '3 months (planning → go-live)', outcomes: ['Zero data loss during migration', 'FCR improved from <50% to 75%+', 'SLA compliance: 94%+ within 3 months of go-live', 'Monthly reporting fully automated via PowerBI + SNOW API'], skillsApplied: ['ITSM Implementation', 'Data Migration', 'SLA Design', 'Change Management', 'ITIL v3 Process Design'], toolsUsed: ['ServiceNow', 'IT Direct', 'PowerBI', 'ServiceNow REST API', 'Microsoft Excel'], learnings: ['SLA framework redesign should happen before migration, not during — retroactive changes cause confusion', 'Migrating KB articles requires a quality audit — bad articles transferred = bad knowledge base', 'Go-live on a Friday night with Monday morning review gives you the weekend to fix any issues'] },
   },
   {
-    emoji: '🎫', group: 'ITSM & Service Management',
+    emoji: '🎫', group: 'ITSM & Service Excellence',
     title: 'ServiceNow CSM/FSM Ticketing & Interaction Management', subtitle: '1,300+ Interactions · 65 SC Tasks/Month · CSM/FSM Workspace · HCSM CoPilot',
     status: 'Live', category: 'ITSM · ServiceNow CSM/FSM',
     description: 'Full daily operations using ServiceNow CSM/FSM Configurable Workspace — managing interactions, catalog tasks, incidents, service requests, and walk-up queue for an enterprise IT support team. Handles multiple ticket types (Interaction, Catalog Task, Incident, Problem, Service Request) with automated routing, SLA tracking, and AI-assisted resolution via HCSM CoPilot.',
@@ -415,7 +415,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '🤖', group: 'ITSM & Service Management',
+    emoji: '🤖', group: 'ITSM & Service Excellence',
     title: 'ServiceNow HCSM AI Copilot — Daily IT Support Operations', subtitle: 'AI-Assisted ITSM · Walk-up Queue · 1,300+ Interactions · CSM/FSM Workspace',
     status: 'Live', category: 'AI-Assisted ITSM · ServiceNow',
     description: 'Daily use of ServiceNow HCSM AI Copilot integrated into the CSM/FSM Configurable Workspace — accelerating IT support resolution across walk-up interactions, catalog tasks, hardware lifecycle requests, and onboarding tickets. AI Copilot surfaces relevant use cases and KB articles within the ticket in real time, reducing resolution time and improving first-contact resolution for 1,300+ interactions at the Riyadh support location.',
@@ -475,7 +475,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📚', group: 'ITSM & Service Management',
+    emoji: '📚', group: 'ITSM & Service Excellence',
     title: 'ServiceNow Knowledge Base Programme', subtitle: '80+ Articles · FCR <50% → 75%+ · Self-Service',
     status: 'Live', category: 'Knowledge Management · ITSM',
     description: 'Built ServiceNow KB from scratch — migrated legacy documentation, created new articles, established quality standards, and ran quarterly review cycles. FCR improved from below 50% to 75%+ within 6 months.',
@@ -484,7 +484,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Build a high-quality ServiceNow Knowledge Base that empowers users to self-serve — reducing ticket volume and improving first-call resolution.', objectives: ['Create KB articles for top 20 recurring ticket types', 'Establish article quality standard and review process', 'Achieve 75%+ First Call Resolution within 6 months', 'Reduce repeat tickets on known issues by 40%+'], stakeholders: 'IT Manager (KB quality owner), IT engineers (article authors), 200+ end users (KB consumers)', timeline: '2 months initial build + quarterly ongoing maintenance', outcomes: ['80+ articles live and maintained', 'FCR: <50% → 75%+', 'Repeat tickets on known issues reduced by 45%', 'Quarterly review cycle embedded in IT operations calendar'], skillsApplied: ['Knowledge Management', 'Content Writing', 'ITIL v3 KCS', 'Self-Service Design', 'FCR Improvement'], toolsUsed: ['ServiceNow KB Module', 'ServiceNow Self-Service Portal', 'ITIL v3 Framework', 'ServiceNow Analytics'], learnings: ['80% of recurring tickets can be resolved by 20% of well-written KB articles', 'KB article quality declines rapidly without a quarterly review cycle — set it as a recurring calendar item', 'Self-service portal placement (before ticket form) is the single biggest FCR driver'] },
   },
   {
-    emoji: '👥', group: 'ITSM & Service Management',
+    emoji: '👥', group: 'ITSM & Service Excellence',
     title: 'IT Onboarding/Offboarding Automation', subtitle: '140+ Executives & Staff · Day 1 Setup: 4hrs → 30min',
     status: 'Live', category: 'Process Automation · HR-IT',
     description: 'Designed and implemented standardised IT onboarding/offboarding for 140+ employees including C-level executives — reducing Day 1 IT setup from 4 hours to 30 minutes through automation, pre-staging, and DocuSign digital workflows.',
@@ -493,7 +493,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Standardise and automate the IT onboarding/offboarding process to ensure Day 1 readiness for all employees and clean offboarding within the same day.', objectives: ['Reduce Day 1 IT setup time from 4 hours to under 45 minutes', 'Automate account provisioning via Azure AD', 'Eliminate paper-based asset assignment forms', 'Complete offboarding IT tasks within 2 hours of last day'], stakeholders: 'HR (process trigger), IT Manager (process owner), New employees (Day 1 experience), Managers (device requests), Finance (asset tracking)', timeline: '4 weeks design + implementation', outcomes: ['Day 1 setup: 4 hrs → 30 min', '140+ onboardings completed — zero Day 1 failures', 'IT offboarding ticket volume reduced 60%', 'Zero data exposure incidents during offboarding'], skillsApplied: ['Process Automation', 'Azure AD Administration', 'Intune Device Management', 'DocuSign Integration', 'HR-IT Collaboration'], toolsUsed: ['Azure AD / Entra ID', 'Microsoft Intune/Autopilot', 'ServiceNow', 'DocuSign', 'Power Automate', 'M365 Admin Center'], learnings: ['T-14 day pre-trigger is the key — Day 1 failures happen because IT finds out on Day 0', 'DocuSign replaces paper forms and creates a legally admissible audit trail simultaneously', 'Offboarding is more security-critical than onboarding — a forgotten account is a vulnerability'] },
   },
   {
-    emoji: '🖥️', group: 'Daily IT Operations',
+    emoji: '🖥️', group: 'IT Ticketing & ITSM',
     title: 'IT Link Center (ITLC) Walk-up System Deployment', subtitle: '2 iPad Kiosks · Queue Monitor · ServiceNow Walk-up · Jamf MDM',
     status: 'Live', category: 'ITSM · ServiceNow · MDM',
     description: 'Designed, configured, and deployed a full IT Link Center Walk-up system for the Riyadh office — 2 iPad kiosks for user check-in, 1 large-screen queue monitor, and full backend integration with ServiceNow Walk-up module. Enables structured onsite and remote IT appointment management with a live agent dashboard.',
@@ -556,7 +556,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📲', group: 'Daily IT Operations',
+    emoji: '📲', group: 'IT Ticketing & ITSM',
     title: 'CLEA — SAP Asset Lifecycle Operations (Daily Use)', subtitle: 'SAP BTP · QR Scanning · On/Offboarding · Pool Stock · Power BI',
     status: 'Live', category: 'IT Asset Management · SAP BTP',
     description: 'Daily operational use of CLEA (Client Lifecycle Enterprise Application) — SAP BTP-hosted internal web and mobile app for end-to-end IT hardware lifecycle management. Covers new hire device assignment (on-boarding), monthly pool stock QR scanning in the IT storage room, equipment returns from leavers (off-boarding), goods receipt, and live KPI reporting via Power BI. Used daily for managing 89+ pool devices across 6 categories at RUH-SR01 Riyadh.',
@@ -652,7 +652,8 @@ const GROUPS = [
   { key: 'Daily IT Operations',          label: '⚙️ Daily IT Operations' },
   { key: 'Built Apps & Tools',           label: '💻 Built Apps & Tools' },
   { key: 'Enterprise IT Rollouts',       label: '🏢 Enterprise IT Rollouts' },
-  { key: 'ITSM & Service Management',    label: '🎫 ITSM & Service Management' },
+  { key: 'IT Ticketing & ITSM',          label: '🎫 IT Ticketing & ITSM' },
+  { key: 'ITSM & Service Excellence',    label: '🏆 ITSM & Service Excellence' },
   { key: 'AV, Events & Physical Security', label: '🎙️ AV, Events & Security' },
 ]
 
