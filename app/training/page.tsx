@@ -57,7 +57,7 @@ const courses = [
     category: 'Corporate IT Training',
     level: 'Intermediate', duration: '1h', students: '180+', rating: 4.8,
     isFree: true, isPopular: false,
-    img: 'https://images.unsplash.com/photo-1596526131083-e8c633064e2e?w=400&q=80&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=400&q=80&auto=format&fit=crop',
     instructor: 'Syed Waqas Tayyab',
     skills: ['Exchange Online', 'Microsoft 365', 'Email Security', 'Shared Mailboxes', 'Phishing Response'],
     description: 'Administer corporate email services in Microsoft 365 — mailbox quotas, retention policies, shared mailbox management, mass mailing permissions, and phishing response.',
