@@ -823,6 +823,64 @@ const projects: Project[] = [
       ],
     },
   },
+  {
+    emoji: '📦', group: 'Office Infrastructure & AV Technology',
+    title: 'IT Pickup Point — Signifi Digital Locker Deployment', subtitle: 'Self-Service IT Asset Collection · Signifi Smart Locker · 24/7 Access · Automated Tracking',
+    status: 'Live', category: 'IT Asset Management · Smart Locker',
+    description: 'Deployed a Signifi Digital Storage Locker system as a self-service IT Pickup Point — enabling employees to collect approved IT hardware orders (laptops, phones, accessories) at any time without IT staff involvement. The locker integrates with the asset management system for automated tracking, audit trails, and real-time inventory visibility. Powered by Signifi smart locker technology with SignifiVISION™ enterprise software.',
+    highlights: [
+      'Self-service IT asset collection: employees collect approved hardware orders 24/7 — no IT staff required at handover',
+      'Signifi Digital Storage Locker: modular blue geometric design, multi-compartment, touch screen interface panel',
+      'Branded as "IT Pickup Point" — visible in office lobby, employees directed via notification after order approval',
+      'Automated audit trail: every access event tied to authenticated user — who collected what and when',
+      'Integration with asset management: order approved in CLEA/SAP Ariba → item placed in locker → employee notified → collection logged',
+      'Flexible compartment sizes: accommodates laptops, MacBooks, iPhones, iPads, accessories, and peripherals',
+      'SignifiVISION™ enterprise software: real-time reports, centralized management, personalized alerts',
+      'Reduces IT staff time on manual handoffs — eliminates sign-out sheets and physical key management',
+    ],
+    tags: ['Signifi Digital Locker', 'IT Pickup Point', 'Self-Service', 'Asset Management', 'Smart Locker', 'Automated Tracking', 'SignifiVISION', '24/7 Access'],
+    pmDetails: {
+      scope: 'Deploy and operate a Signifi Digital Storage Locker as a self-service IT Pickup Point — integrating with asset management workflows to enable automated, authenticated, auditable hardware collection for employees.',
+      objectives: [
+        'Eliminate manual IT staff handoff for standard hardware orders — 24/7 self-service collection',
+        'Integrate locker with CLEA/SAP Ariba procurement flow for automated order-to-collection workflow',
+        'Provide full audit trail: every collection logged with user identity, timestamp, and asset serial number',
+        'Reduce IT helpdesk time spent on device handovers — reallocate to higher-value tasks',
+        'Improve employee experience: collect hardware on arrival, no waiting for IT team availability',
+      ],
+      stakeholders: 'IT team (operations), employees (end users), IT Manager (asset accountability), Finance (procurement audit), Facilities (locker placement)',
+      timeline: 'Deployment + integration: 2 weeks; ongoing daily operations',
+      outcomes: [
+        'IT Pickup Point live in office — employees self-collecting hardware orders daily',
+        'Zero manual handoff for standard orders — IT staff freed from routine collection appointments',
+        'Full audit trail: every collection event authenticated and logged in SignifiVISION',
+        'Asset record in CLEA/SAP ISP updated automatically on collection — no manual data entry',
+        'Employee satisfaction improved — no scheduling required for hardware collection',
+      ],
+      skillsApplied: [
+        'Smart Locker System Deployment (Signifi)',
+        'IT Asset Management Integration',
+        'Self-Service IT Workflow Design',
+        'SignifiVISION Enterprise Software Administration',
+        'Asset Lifecycle Automation',
+        'User Authentication & Access Control',
+        'Audit Trail & Compliance Management',
+      ],
+      toolsUsed: [
+        'Signifi Digital Storage Locker (hardware)',
+        'SignifiVISION™ enterprise software',
+        'CLEA (SAP BTP) — asset lifecycle integration',
+        'SAP Ariba — procurement-to-collection workflow',
+        'SAP ISP — asset record update on collection',
+        'ServiceNow — fulfilment ticket linked to locker assignment',
+      ],
+      learnings: [
+        'The locker placement matters more than the technology — lobby position with clear wayfinding signage reduced first-time user confusion to near zero',
+        'Notification timing is critical: employee must receive the "your item is ready to collect" message with clear instructions before arriving at the locker, not after',
+        'Digital lockers replace the weakest link in asset distribution — the sign-out sheet. An authenticated digital record is the only audit trail that survives a compliance review',
+      ],
+    },
+  },
 ]
 
 /* ── GROUPS ─────────────────────────────────────────────────────── */
@@ -834,6 +892,64 @@ const GROUPS = [
   { key: 'IT Ticketing & ITSM',          label: '🎫 IT Ticketing & ITSM' },
   { key: 'AV, Events & Physical Security',         label: '🎙️ AV, Events & Security' },
   { key: 'Office Infrastructure & AV Technology',  label: '🏢 Office & AV Technology' },
+  {
+    emoji: '📦', group: 'Office Infrastructure & AV Technology',
+    title: 'IT Pickup Point — Signifi Digital Locker Deployment', subtitle: 'Self-Service IT Asset Collection · Signifi Smart Locker · 24/7 Access · Automated Tracking',
+    status: 'Live', category: 'IT Asset Management · Smart Locker',
+    description: 'Deployed a Signifi Digital Storage Locker system as a self-service IT Pickup Point — enabling employees to collect approved IT hardware orders (laptops, phones, accessories) at any time without IT staff involvement. The locker integrates with the asset management system for automated tracking, audit trails, and real-time inventory visibility. Powered by Signifi smart locker technology with SignifiVISION™ enterprise software.',
+    highlights: [
+      'Self-service IT asset collection: employees collect approved hardware orders 24/7 — no IT staff required at handover',
+      'Signifi Digital Storage Locker: modular blue geometric design, multi-compartment, touch screen interface panel',
+      'Branded as "IT Pickup Point" — visible in office lobby, employees directed via notification after order approval',
+      'Automated audit trail: every access event tied to authenticated user — who collected what and when',
+      'Integration with asset management: order approved in CLEA/SAP Ariba → item placed in locker → employee notified → collection logged',
+      'Flexible compartment sizes: accommodates laptops, MacBooks, iPhones, iPads, accessories, and peripherals',
+      'SignifiVISION™ enterprise software: real-time reports, centralized management, personalized alerts',
+      'Reduces IT staff time on manual handoffs — eliminates sign-out sheets and physical key management',
+    ],
+    tags: ['Signifi Digital Locker', 'IT Pickup Point', 'Self-Service', 'Asset Management', 'Smart Locker', 'Automated Tracking', 'SignifiVISION', '24/7 Access'],
+    pmDetails: {
+      scope: 'Deploy and operate a Signifi Digital Storage Locker as a self-service IT Pickup Point — integrating with asset management workflows to enable automated, authenticated, auditable hardware collection for employees.',
+      objectives: [
+        'Eliminate manual IT staff handoff for standard hardware orders — 24/7 self-service collection',
+        'Integrate locker with CLEA/SAP Ariba procurement flow for automated order-to-collection workflow',
+        'Provide full audit trail: every collection logged with user identity, timestamp, and asset serial number',
+        'Reduce IT helpdesk time spent on device handovers — reallocate to higher-value tasks',
+        'Improve employee experience: collect hardware on arrival, no waiting for IT team availability',
+      ],
+      stakeholders: 'IT team (operations), employees (end users), IT Manager (asset accountability), Finance (procurement audit), Facilities (locker placement)',
+      timeline: 'Deployment + integration: 2 weeks; ongoing daily operations',
+      outcomes: [
+        'IT Pickup Point live in office — employees self-collecting hardware orders daily',
+        'Zero manual handoff for standard orders — IT staff freed from routine collection appointments',
+        'Full audit trail: every collection event authenticated and logged in SignifiVISION',
+        'Asset record in CLEA/SAP ISP updated automatically on collection — no manual data entry',
+        'Employee satisfaction improved — no scheduling required for hardware collection',
+      ],
+      skillsApplied: [
+        'Smart Locker System Deployment (Signifi)',
+        'IT Asset Management Integration',
+        'Self-Service IT Workflow Design',
+        'SignifiVISION Enterprise Software Administration',
+        'Asset Lifecycle Automation',
+        'User Authentication & Access Control',
+        'Audit Trail & Compliance Management',
+      ],
+      toolsUsed: [
+        'Signifi Digital Storage Locker (hardware)',
+        'SignifiVISION™ enterprise software',
+        'CLEA (SAP BTP) — asset lifecycle integration',
+        'SAP Ariba — procurement-to-collection workflow',
+        'SAP ISP — asset record update on collection',
+        'ServiceNow — fulfilment ticket linked to locker assignment',
+      ],
+      learnings: [
+        'The locker placement matters more than the technology — lobby position with clear wayfinding signage reduced first-time user confusion to near zero',
+        'Notification timing is critical: employee must receive the "your item is ready to collect" message with clear instructions before arriving at the locker, not after',
+        'Digital lockers replace the weakest link in asset distribution — the sign-out sheet. An authenticated digital record is the only audit trail that survives a compliance review',
+      ],
+    },
+  },
 ]
 
 const statusColors: Record<string, string> = {
@@ -866,7 +982,7 @@ export default function ProjectsPage() {
 
   const stats = [
     { v: '100+', l: 'Projects Delivered' },
-    { v: '43', l: 'Showcased Here' },
+    { v: '44', l: 'Showcased Here' },
     { v: '15+', l: 'Years Experience' },
     { v: '20M+', l: 'SAR Managed' },
   ]
@@ -902,14 +1018,14 @@ export default function ProjectsPage() {
             {GROUPS.map(g => {
               const count = g.key === 'All' ? projects.length : projects.filter(p => p.group === g.key).length
               return (
-                <button key={g.key} onClick={() => { setActiveGroup(g.key); setSearchQuery('') }}
+                <button key={g.key} onClick={() => { setActiveGroup(g.key ?? 'All'); setSearchQuery('') }}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors mb-0.5 ${
-                    activeGroup === g.key && !searchQuery
+                    activeGroup === (g.key ?? "") && !searchQuery
                       ? 'bg-accent-blue/10 text-accent-blue border border-accent-blue/20'
                       : 'text-gray-400 hover:bg-white/5 hover:text-white'
                   }`}>
-                  <span>{g.key === 'All' ? 'All Projects' : g.label.replace(/^[^\s]+\s/, '')}</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${activeGroup === g.key && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/5 text-gray-500'}`}>
+                  <span>{g.key === 'All' ? 'All Projects' : (g.label ?? '').replace(/^[^\s]+\s/, '')}</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${activeGroup === (g.key ?? "") && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/5 text-gray-500'}`}>
                     {count}
                   </span>
                 </button>
@@ -924,11 +1040,11 @@ export default function ProjectsPage() {
           {/* Mobile pills */}
           <div className="lg:hidden flex gap-2 overflow-x-auto pb-3 mb-4 scrollbar-hide">
             {GROUPS.map(g => (
-              <button key={g.key} onClick={() => { setActiveGroup(g.key); setSearchQuery('') }}
+              <button key={g.key} onClick={() => { setActiveGroup(g.key ?? "All"); setSearchQuery('') }}
                 className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
-                  activeGroup === g.key ? 'bg-accent-blue border-accent-blue text-white' : 'bg-dark-700 border-white/10 text-gray-400'
+                  activeGroup === (g.key ?? "") ? 'bg-accent-blue border-accent-blue text-white' : 'bg-dark-700 border-white/10 text-gray-400'
                 }`}>
-                {g.key === 'All' ? 'All' : g.label.replace(/^[^\s]+\s/, '')}
+                {g.key === 'All' ? 'All' : (g.label ?? '').replace(/^[^\s]+\s/, '')}
               </button>
             ))}
           </div>
@@ -936,7 +1052,7 @@ export default function ProjectsPage() {
           {/* Header */}
           <div className="mb-6">
             <h1 className="text-2xl font-black text-white mb-1">
-              {searchQuery ? `Search: "${searchQuery}"` : activeGroup === 'All' ? 'All Projects' : GROUPS.find(g => g.key === activeGroup)?.label.replace(/^[^\s]+\s/, '') ?? activeGroup}
+              {searchQuery ? `Search: "${searchQuery}"` : activeGroup === 'All' ? 'All Projects' : (GROUPS.find(g => g.key === activeGroup)?.label ?? activeGroup).replace(/^[^\s]+\s/, '')}
             </h1>
             <div className="flex flex-wrap gap-6 mt-3">
               {stats.map(s => (
@@ -974,7 +1090,7 @@ export default function ProjectsPage() {
             groupedFiltered.map(group => (
               <div key={group.key} className="mb-10" id={group.key === 'Daily IT Operations' ? 'daily-operations' : undefined}>
                 <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-sm font-black text-gray-300 uppercase tracking-widest">{group.label.replace(/^[^\s]+\s/, '')}</h2>
+                  <h2 className="text-sm font-black text-gray-300 uppercase tracking-widest">{(group.label ?? "").replace(/^[^\s]+\s/, "")}</h2>
                   <span className="text-[10px] text-gray-500 bg-white/5 px-2 py-0.5 rounded-full">{group.items.length}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
