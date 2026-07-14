@@ -1245,34 +1245,36 @@ export default function TrainingPage() {
 
           {/* ── Trainer Profile ── */}
           <section className="mb-8">
-            <div className="glass-card p-7 flex flex-col sm:flex-row items-center sm:items-start gap-6 border border-accent-blue/15">
-              {/* Circle photo */}
-              <div className="relative flex-shrink-0">
-                <div className="w-28 h-28 rounded-full overflow-hidden border-3 border-accent-blue/50 shadow-[0_0_30px_rgba(59,130,246,0.3)]"
-                  style={{ border: '3px solid rgba(59,130,246,0.5)' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/waqas-trainer.jpg" alt="Syed Waqas Tayyab — Instructor"
-                    className="w-full h-full object-cover object-top"/>
+            <div className="glass-card p-6 border border-accent-blue/15">
+              <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5">
+                {/* Circle photo — bigger */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-20 h-20 rounded-full overflow-hidden"
+                    style={{ border: '3px solid rgba(59,130,246,0.6)', boxShadow: '0 0 24px rgba(59,130,246,0.35)' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/waqas-trainer.jpg" alt="Syed Waqas Tayyab — Instructor"
+                      className="w-full h-full object-cover object-top"/>
+                  </div>
+                  <span className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-dark-900"/>
                 </div>
-                <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,0.8)]"/>
-              </div>
-              {/* Info */}
-              <div className="flex-1 text-center sm:text-left">
-                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-2">
-                  <span className="text-xs font-black uppercase tracking-widest text-accent-blue bg-accent-blue/10 border border-accent-blue/20 px-2.5 py-1 rounded-full">Your Instructor</span>
-                  <span className="text-xs font-bold text-green-400 bg-green-500/10 border border-green-500/20 px-2.5 py-1 rounded-full flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>Active Instructor
-                  </span>
-                </div>
-                <h3 className="text-xl font-black text-white mb-0.5">Syed Waqas Tayyab</h3>
-                <p className="text-accent-blue text-sm font-semibold mb-2">Senior IT System Engineer · AI & Automation Expert · SAP Saudi Arabia</p>
-                <p className="text-gray-400 text-sm leading-relaxed mb-3 max-w-xl">
-                  15+ years of enterprise IT experience at SAP — managing 200+ users across 3 offices. Azure Security Certified · SAP AI Hub Certified · MBA. Every course is built from real daily operations — no theory, no filler.
-                </p>
-                <div className="flex flex-wrap gap-1.5 justify-center sm:justify-start">
-                  {['Azure Security Certified', 'SAP AI Hub (AIG02)', 'ITIL v3', 'PMP 35 PDUs', '15+ Years Enterprise IT', 'MENA Region'].map(t => (
-                    <span key={t} className="text-[10px] bg-white/5 border border-white/10 text-gray-400 px-2 py-0.5 rounded-full">{t}</span>
-                  ))}
+                {/* Info — single row */}
+                <div className="flex-1 text-center sm:text-left">
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1.5">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-accent-blue bg-accent-blue/10 border border-accent-blue/20 px-2 py-0.5 rounded-full">Your Instructor</span>
+                    <span className="text-[10px] font-bold text-green-400 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>Active
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-black text-white mb-0.5">Syed Waqas Tayyab</h3>
+                  <p className="text-accent-blue text-xs font-semibold mb-1.5">Senior IT System Engineer · AI & Automation Expert · SAP Saudi Arabia · 15+ Years</p>
+                  <p className="text-gray-400 text-xs leading-relaxed mb-2 max-w-2xl">
+                    Azure Security Certified · SAP AI Hub Certified · MBA. All courses built from real daily enterprise IT operations.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 justify-center sm:justify-start">
+                    {['Azure Security Certified', 'SAP AI Hub (AIG02)', 'ITIL v3', 'PMP 35 PDUs', 'MENA Region'].map(t => (
+                      <span key={t} className="text-[10px] bg-white/5 border border-white/10 text-gray-400 px-2 py-0.5 rounded-full">{t}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
