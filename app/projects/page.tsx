@@ -653,7 +653,6 @@ const GROUPS = [
   { key: 'Built Apps & Tools',           label: '💻 Built Apps & Tools' },
   { key: 'Enterprise IT Rollouts',       label: '🏢 Enterprise IT Rollouts' },
   { key: 'IT Ticketing & ITSM',          label: '🎫 IT Ticketing & ITSM' },
-  { key: 'ITSM & Service Excellence',    label: '🏆 ITSM & Service Excellence' },
   { key: 'AV, Events & Physical Security', label: '🎙️ AV, Events & Security' },
 ]
 
