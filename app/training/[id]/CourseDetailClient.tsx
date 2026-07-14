@@ -250,7 +250,7 @@ const courses = [
     title: 'ServiceNow CSM/FSM Workspace & HCSM AI Copilot for IT Support',
     category: 'Corporate IT Training',
     level: 'Intermediate', duration: '2h 30m', students: '95+', rating: 4.9, isFree: true,
-    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format&fit=crop',
+    img: '/snow-ticketing-banner.jpg',
     skills: ['ServiceNow CSM/FSM', 'HCSM AI Copilot', 'Walk-up Queue', 'Interaction Management', 'Catalog Tasks', 'SLA IRT/MPT', 'ITIL v3'],
     description: 'Master the ServiceNow CSM/FSM Configurable Workspace for daily IT support operations — managing interactions, catalog tasks, incidents, walk-up queue, and using the HCSM AI Copilot for faster resolution. Based on real daily operations handling 1,300+ interactions and 65+ catalog tasks per month.',
     whatYouLearn: [
