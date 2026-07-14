@@ -1266,7 +1266,7 @@ export default function TrainingPage() {
                     </span>
                   </div>
                   <h3 className="text-lg font-black text-white mb-0.5">Syed Waqas Tayyab</h3>
-                  <p className="text-accent-blue text-xs font-semibold mb-1.5">Senior IT System Engineer · AI & Automation Expert · SAP Saudi Arabia · 15+ Years</p>
+                  <p className="text-accent-blue text-xs font-semibold mb-1.5">Senior IT System Engineer · IT Consultant · AI & Automation Expert · SAP Saudi Arabia · 15+ Years</p>
                   <p className="text-gray-400 text-xs leading-relaxed mb-2 max-w-2xl">
                     Azure Security Certified · SAP AI Hub Certified · MBA. All courses built from real daily enterprise IT operations.
                   </p>
