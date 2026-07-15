@@ -14,7 +14,7 @@ import {
 const stats = [
   { value: '15+', label: 'Years Enterprise IT' },
   { value: '44+', label: 'Projects Delivered' },
-  { value: '200+', label: 'Users Supported' },
+  { value: '50+', label: 'Vendors & Clients Managed' },
   { value: '0', label: 'SLA Breaches (6 mo)' },
 ]
 
