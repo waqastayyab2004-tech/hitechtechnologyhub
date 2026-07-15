@@ -135,6 +135,36 @@ Without integration, someone still has to update the asset record after collecti
 
 ---
 
+
+## Deployment Readiness: 11 Things to Verify Before Installation
+
+Signifi provides a deployment readiness checklist that must be completed before the installation team arrives. Key items:
+
+1. Site access permits and COI approved for third-party equipment
+2. Delivery path clear and elevator/dock booked
+3. Power outlet confirmed at placement location
+4. MAC address whitelisted with your IT/network team
+5. LAN port available and IP address assigned
+6. IT team member on standby during installation
+
+**Cost of getting this wrong:** Aborting installation after the technician is on-site costs 00. Short-notice cancellation (under 24 hours) costs 50. Extended troubleshooting beyond 15 minutes is billed at 50/hour. Completing the checklist properly avoids all of these.
+
+**30-day warranty:** Signifi covers all early-life failures and workmanship faults at no cost within 30 days of deployment.
+
+---
+
+## Daily Operations: The Delivery Status Lifecycle
+
+Every item managed through the locker system goes through a clear status progression:
+
+
+
+**7-day rule:** Items uncollected after 7 days are moved from the locker to the IT Link Center (ITLC) to free compartment space. A new ITLC pickup record is created and the employee is re-notified.
+
+**Emergency key:** A physical emergency key is held by the IT team. It opens all doors in a locker set simultaneously — used when a compartment is stuck or an item was placed in the wrong slot. This does not reset any app records.
+
+---
+
 ## Powered by Signifi
 
 The system deployed at our IT Link Center is powered by Signifi — a global leader in intelligent digital storage locker solutions for ITAM, retail, and enterprise environments.
