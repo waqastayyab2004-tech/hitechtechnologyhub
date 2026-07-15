@@ -629,28 +629,28 @@ export default function PortfolioPage() {
             </div>
           </Link>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skillDomains.map((domain) => {
               const Icon = domain.icon
               const card = (
-                <div className={`glass-card p-5 flex flex-col gap-3 h-full transition-all duration-200 hover:-translate-y-1 ${domain.link ? 'cursor-pointer hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)]' : 'hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)]'}`}>
+                <div className={`glass-card p-6 flex flex-col gap-4 h-full transition-all duration-200 hover:-translate-y-1 ${domain.link ? 'cursor-pointer hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)]' : 'hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)]'}`}>
                   <div className="flex items-center justify-between">
-                    <div className={`w-9 h-9 rounded-xl ${domain.bg} flex items-center justify-center flex-shrink-0`}>
-                      <Icon className={`w-5 h-5 ${domain.color}`} />
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-xl ${domain.bg} flex items-center justify-center flex-shrink-0`}>
+                        <Icon className={`w-5 h-5 ${domain.color}`} />
+                      </div>
+                      <h3 className="text-white text-base font-bold">{domain.title}</h3>
                     </div>
                     {domain.link && (
-                      <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${domain.bg} ${domain.color} border-current/30`}>
-                        View Cards →
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${domain.bg} ${domain.color} border-current/30 flex-shrink-0`}>
+                        View →
                       </span>
                     )}
                   </div>
-                  <div>
-                    <h3 className="text-white text-sm font-bold mb-2">{domain.title}</h3>
-                    <div className="flex flex-wrap gap-1">
-                      {domain.items.map((item) => (
-                        <span key={item} className="text-[10px] bg-white/5 border border-white/8 text-gray-400 px-2 py-0.5 rounded-full">{item}</span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2">
+                    {domain.items.map((item) => (
+                      <span key={item} className="text-xs bg-white/5 border border-white/10 text-gray-300 px-2.5 py-1 rounded-full">{item}</span>
+                    ))}
                   </div>
                 </div>
               )
@@ -658,6 +658,42 @@ export default function PortfolioPage() {
                 ? <Link key={domain.title} href={domain.link}>{card}</Link>
                 : <div key={domain.title}>{card}</div>
             })}
+          </div>
+        </section>
+
+        {/* ── TOP SKILLS PROGRESS BARS ─────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<Star className="w-5 h-5 text-yellow-400" />} title="Top Skills" />
+          <div className="glass-card p-6 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
+              {[
+                { skill: 'IT Service Delivery',       pct: 99, color: '#06b6d4' },
+                { skill: 'IT Infrastructure',          pct: 98, color: '#06b6d4' },
+                { skill: 'ServiceNow ITSM',            pct: 97, color: '#3b82f6' },
+                { skill: 'IT Consulting & Advisory',   pct: 96, color: '#8b5cf6' },
+                { skill: 'SAP Operations',             pct: 96, color: '#f97316' },
+                { skill: 'Office Technology (AV/MTR)', pct: 95, color: '#10b981' },
+                { skill: 'M365 Administration',        pct: 94, color: '#3b82f6' },
+                { skill: 'Cybersecurity',              pct: 91, color: '#ef4444' },
+                { skill: 'Cloud Computing',            pct: 89, color: '#0ea5e9' },
+                { skill: 'AI & Automation',            pct: 88, color: '#f59e0b' },
+                { skill: 'Python & FastAPI',           pct: 82, color: '#10b981' },
+                { skill: 'IT Asset Management',        pct: 99, color: '#06b6d4' },
+              ].map(({ skill, pct, color }) => (
+                <div key={skill} className="group">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-sm font-semibold text-gray-200">{skill}</span>
+                    <span className="text-sm font-black" style={{ color }}>{pct}%</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all duration-1000"
+                      style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}99, ${color})` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
