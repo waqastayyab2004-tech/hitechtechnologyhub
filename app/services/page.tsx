@@ -12,9 +12,10 @@ import {
 /* ── DATA ──────────────────────────────────────────────────────────────── */
 
 const stats = [
-  { value: '10+', label: 'Years in IT Ops & Security' },
-  { value: '100+', label: 'Active service contracts' },
-  { value: '99.9%', label: 'Uptime across SLAs' },
+  { value: '15+', label: 'Years Enterprise IT' },
+  { value: '44+', label: 'Projects Delivered' },
+  { value: '200+', label: 'Users Supported' },
+  { value: '0', label: 'SLA Breaches (6 mo)' },
 ]
 
 const expertPoints = [
