@@ -530,6 +530,53 @@ export default function PortfolioPage() {
           </div>
         </section>
 
+        {/* ── COMPETITIVE EDGE ── */}
+        <section>
+          <div className="rounded-2xl overflow-hidden border border-white/8"
+            style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(8,14,24,0.95) 50%, rgba(139,92,246,0.05) 100%)' }}>
+            <div className="px-6 py-5 border-b border-white/6 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-yellow-500/15 border border-yellow-500/30 flex items-center justify-center flex-shrink-0">
+                <Star className="w-4 h-4 text-yellow-400" />
+              </div>
+              <div>
+                <p className="text-white font-black text-sm">What Sets Me Apart</p>
+                <p className="text-gray-500 text-[10px]">Key differentiators over other Senior IT Engineers · For hiring managers</p>
+              </div>
+              <span className="ml-auto text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/25 text-green-400 flex-shrink-0">Open to Work</span>
+            </div>
+            <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                { icon: "🤖", title: "AI Tools in Production", desc: "Built & deployed 4 AI automation tools used daily at SAP. Not just familiar with AI — actively building with it in production.", tag: "Rare Combination", tc: "text-yellow-400 bg-yellow-500/10 border-yellow-500/25" },
+                { icon: "📊", title: "Zero SLA Breaches — 6 Months", desc: "1,300+ interactions managed via ServiceNow CSM/FSM with HCSM AI Copilot. 96%+ SLA compliance sustained consistently.", tag: "Proven Track Record", tc: "text-green-400 bg-green-500/10 border-green-500/25" },
+                { icon: "🏢", title: "End-to-End Office Build-Outs", desc: "Full IT & AV delivery for 3 offices — floor plan to handover. Teams Rooms, Cisco networking, structured cabling, signage.", tag: "Project Delivery", tc: "text-blue-400 bg-blue-500/10 border-blue-500/25" },
+                { icon: "🛡️", title: "Azure Security Engineer", desc: "Raised Microsoft Secure Score 41% → 78%. Zero Trust, Conditional Access, PIM — all live at 200+ user enterprise.", tag: "Microsoft Certified", tc: "text-cyan-400 bg-cyan-500/10 border-cyan-500/25" },
+                { icon: "🌍", title: "MENA Specialist — 15+ Years", desc: "Location responsible SAP Saudi Arabia across 3 offices. Fluent Arabic + English. Iqama transferable. Deep MENA enterprise IT knowledge.", tag: "Local + Global", tc: "text-orange-400 bg-orange-500/10 border-orange-500/25" },
+                { icon: "🎓", title: "MBA + 13 Certifications", desc: "MBA (UK) · Azure Security · SAP AI Hub (AIG02) · ITIL v3 · PMP. Business thinking + technical depth — not just a technician.", tag: "Academic + Professional", tc: "text-purple-400 bg-purple-500/10 border-purple-500/25" },
+              ].map(e => (
+                <div key={e.title} className="p-4 rounded-xl bg-white/3 border border-white/6 hover:bg-white/5 hover:border-white/10 transition-all flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl flex-shrink-0">{e.icon}</span>
+                    <h3 className="text-white text-sm font-bold leading-snug">{e.title}</h3>
+                  </div>
+                  <p className="text-gray-400 text-xs leading-relaxed flex-1">{e.desc}</p>
+                  <span className={"self-start text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border " + e.tc}>{e.tag}</span>
+                </div>
+              ))}
+            </div>
+            <div className="px-5 pb-5 flex flex-wrap gap-3">
+              <a href="/Waqas-Syed-CV.pdf" download className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-accent-blue text-white hover:bg-blue-500 transition-colors">
+                <Download className="w-4 h-4" /> Download CV
+              </a>
+              <Link href="/contact" className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 transition-colors">
+                <Mail className="w-4 h-4" /> Schedule a Call
+              </Link>
+              <a href="https://www.linkedin.com/in/syedwaqastayyab/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-blue-500/10 border border-blue-500/25 text-blue-400 hover:bg-blue-500/20 transition-colors">
+                <Linkedin className="w-4 h-4" /> View LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* ── DAILY IT OPERATIONS SHOWCASE ─────────────────────────── */}
         <section>
           <SectionHeader icon={<Zap className="w-5 h-5 text-cyan-400" />} title="Daily IT Operations" />
@@ -716,10 +763,11 @@ export default function PortfolioPage() {
               </div>
               <div className="space-y-3">
                 {[
-                  { role: 'Senior IT Service Delivery Manager', focus: 'IT Operations Lead · Large multinationals KSA/UAE', priority: '★ Top Target', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/25' },
-                  { role: 'IT Infrastructure & Workplace Tech Consultant', focus: 'AV · Smart Office · Vision 2030 build-outs', priority: 'High Value', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
-                  { role: 'ServiceNow Platform Administrator', focus: 'ITSM Specialist · CSM/FSM · HCSM AI Copilot', priority: 'Premium Pay', color: 'text-purple-400 bg-purple-500/10 border-purple-500/25' },
-                  { role: 'Enterprise AI Automation Engineer', focus: 'Python + LLMs + Enterprise APIs · 12 months target', priority: 'Future Focus', color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25' },
+                  { role: 'IT AI Engineer', focus: 'Python · LLMs · Enterprise AI Automation · SAP AI Hub · MLOps', priority: '★ Top Target', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/25' },
+                  { role: 'IT Service Delivery Manager', focus: 'IT Operations Lead · 200+ users · MENA multinationals', priority: '★ Top Target', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/25' },
+                  { role: 'IT Consultant', focus: 'Enterprise IT Advisory · Azure Security · M365 · SAP Systems', priority: 'High Value', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
+                  { role: 'ServiceNow Platform Administrator', focus: 'ITSM Specialist · CSM/FSM · HCSM AI Copilot · SLA Design', priority: 'Premium Pay', color: 'text-purple-400 bg-purple-500/10 border-purple-500/25' },
+                  { role: 'IT Infrastructure & Workplace Tech Lead', focus: 'AV · Smart Office · Office Build-Outs · Vision 2030', priority: 'High Value', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
                 ].map(t => (
                   <div key={t.role} className="flex items-start gap-3 p-3 rounded-xl bg-white/3 border border-white/6 hover:bg-white/5 transition-colors">
                     <div className="flex-1 min-w-0">
@@ -729,6 +777,11 @@ export default function PortfolioPage() {
                     <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full border flex-shrink-0 ${t.color}`}>{t.priority}</span>
                   </div>
                 ))}
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/6">
+                <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300 text-sm font-bold hover:bg-blue-500/25 transition-all">
+                  <Mail className="w-4 h-4" /> Contact Me About a Role
+                </Link>
               </div>
             </div>
 
@@ -746,24 +799,25 @@ export default function PortfolioPage() {
               </div>
               <div className="space-y-3">
                 {[
-                  { service: 'Office Build-Out IT & AV Consulting', detail: 'Design → Procure → Install → Handover · 4–12 weeks', rate: '500–1,500 SAR/day', color: 'text-green-400 bg-green-500/10 border-green-500/25' },
-                  { service: 'ServiceNow Implementation & Config', detail: 'SLA design · Auto-routing · KB architecture', rate: '800–2,000 SAR/day', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
-                  { service: 'Azure Security & M365 Deployment', detail: 'Zero Trust · Conditional Access · Intune/Autopilot', rate: '600–1,500 SAR/day', color: 'text-red-400 bg-red-500/10 border-red-500/25' },
-                  { service: 'IT Asset Management Setup (ITAM)', detail: 'Excel → Proper ITAM · Procurement workflow · Audit trail', rate: '400–800 SAR/day', color: 'text-orange-400 bg-orange-500/10 border-orange-500/25' },
-                  { service: 'Smart Locker / IT Pickup Point Consulting', detail: 'Signifi deployment · MENA niche expertise · Premium', rate: 'Custom rate', color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25' },
+                  { service: 'Office Build-Out IT & AV Consulting', detail: 'Design → Procure → Install → Handover · 4–12 weeks', color: 'text-green-400 bg-green-500/10 border-green-500/25' },
+                  { service: 'ServiceNow Implementation & Config', detail: 'SLA design · Auto-routing · KB architecture · CSM/FSM', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
+                  { service: 'Azure Security & M365 Deployment', detail: 'Zero Trust · Conditional Access · Intune/Autopilot', color: 'text-red-400 bg-red-500/10 border-red-500/25' },
+                  { service: 'IT Asset Management Setup (ITAM)', detail: 'Excel → Proper ITAM · Procurement workflow · Audit trail', color: 'text-orange-400 bg-orange-500/10 border-orange-500/25' },
+                  { service: 'Smart Locker / IT Pickup Point Consulting', detail: 'Signifi deployment · MENA niche expertise', color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25' },
+                  { service: 'AI Automation for IT Workflows', detail: 'Python agents · ServiceNow API · WhatsApp alerts · Dashboards', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/25' },
                 ].map(t => (
                   <div key={t.service} className="flex items-start gap-3 p-3 rounded-xl bg-white/3 border border-white/6 hover:bg-white/5 transition-colors">
                     <div className="flex-1 min-w-0">
                       <p className="text-white text-sm font-semibold leading-snug mb-0.5">{t.service}</p>
                       <p className="text-gray-500 text-xs">{t.detail}</p>
                     </div>
-                    <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full border flex-shrink-0 ${t.color} whitespace-nowrap`}>{t.rate}</span>
+                    <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border flex-shrink-0 ${t.color}`}>Inquire</span>
                   </div>
                 ))}
               </div>
               <div className="mt-4 pt-4 border-t border-white/6">
                 <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-300 text-sm font-bold hover:bg-purple-500/25 transition-all">
-                  Discuss a Project →
+                  <Mail className="w-4 h-4" /> Discuss a Project
                 </Link>
               </div>
             </div>
