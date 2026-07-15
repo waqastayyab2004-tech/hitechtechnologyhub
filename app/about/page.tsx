@@ -58,7 +58,7 @@ const experience = [
     location: 'Riyadh · Jeddah · AlKhobar',
     period: 'Jan 2015 – Jun 2019',
     color: 'border-white/15',
-    badge: 'text-cyan-400',
+    badge: 'text-accent-blue',
     highlights: [
       'Single point of contact for IT across 3 Saudi Arabia SAP office locations (EMEA Global IT team)',
       'Network: HP Servers, Cisco Switches, Routers, WAN, NAC Controllers, Aruba Wireless',
@@ -78,7 +78,7 @@ const experience = [
     location: 'Riyadh, Saudi Arabia',
     period: '2012 – 2015',
     color: 'border-white/15',
-    badge: 'text-red-400',
+    badge: 'text-accent-blue',
     highlights: [
       'Managed ATM & branch security systems — Siecep ATM security management tool',
       'G4S MultiMax access control — Head office & branches; employee access cards from Security command center',
@@ -94,7 +94,7 @@ const experience = [
     location: 'Riyadh, Saudi Arabia',
     period: '2011 – 2012',
     color: 'border-white/15',
-    badge: 'text-emerald-400',
+    badge: 'text-accent-blue',
     highlights: [
       'Setup and configuration of LAN, WAN, VPN — DHCP, TCP/IP, routing protocols',
       'Anti-virus installation and configuration: McAfee, OfficeScan',
