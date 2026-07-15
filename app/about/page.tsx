@@ -697,6 +697,80 @@ export default function PortfolioPage() {
           </div>
         </section>
 
+        {/* ── JOB & FREELANCER TARGETS ─────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<TrendingUp className="w-5 h-5 text-green-400" />} title="Career & Freelance Targets" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            {/* Full-Time Roles */}
+            <div className="glass-card p-6 border-t-2 border-blue-500/50">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center flex-shrink-0">
+                  <Briefcase className="w-4 h-4 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="text-white font-black text-sm">Full-Time Roles</h3>
+                  <p className="text-gray-500 text-[10px]">Senior enterprise positions — MENA + Remote</p>
+                </div>
+                <span className="ml-auto text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/25 text-green-400 flex-shrink-0">Open to Work</span>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { role: 'Senior IT Service Delivery Manager', focus: 'IT Operations Lead · Large multinationals KSA/UAE', priority: '★ Top Target', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/25' },
+                  { role: 'IT Infrastructure & Workplace Tech Consultant', focus: 'AV · Smart Office · Vision 2030 build-outs', priority: 'High Value', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
+                  { role: 'ServiceNow Platform Administrator', focus: 'ITSM Specialist · CSM/FSM · HCSM AI Copilot', priority: 'Premium Pay', color: 'text-purple-400 bg-purple-500/10 border-purple-500/25' },
+                  { role: 'Enterprise AI Automation Engineer', focus: 'Python + LLMs + Enterprise APIs · 12 months target', priority: 'Future Focus', color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25' },
+                ].map(t => (
+                  <div key={t.role} className="flex items-start gap-3 p-3 rounded-xl bg-white/3 border border-white/6 hover:bg-white/5 transition-colors">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white text-sm font-semibold leading-snug mb-0.5">{t.role}</p>
+                      <p className="text-gray-500 text-xs">{t.focus}</p>
+                    </div>
+                    <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full border flex-shrink-0 ${t.color}`}>{t.priority}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Freelance Projects */}
+            <div className="glass-card p-6 border-t-2 border-purple-500/50">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+                  <Globe className="w-4 h-4 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-white font-black text-sm">Freelance / Consulting</h3>
+                  <p className="text-gray-500 text-[10px]">Project-based · Remote + Onsite MENA</p>
+                </div>
+                <span className="ml-auto text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/25 text-purple-400 flex-shrink-0">Available</span>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { service: 'Office Build-Out IT & AV Consulting', detail: 'Design → Procure → Install → Handover · 4–12 weeks', rate: '500–1,500 SAR/day', color: 'text-green-400 bg-green-500/10 border-green-500/25' },
+                  { service: 'ServiceNow Implementation & Config', detail: 'SLA design · Auto-routing · KB architecture', rate: '800–2,000 SAR/day', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
+                  { service: 'Azure Security & M365 Deployment', detail: 'Zero Trust · Conditional Access · Intune/Autopilot', rate: '600–1,500 SAR/day', color: 'text-red-400 bg-red-500/10 border-red-500/25' },
+                  { service: 'IT Asset Management Setup (ITAM)', detail: 'Excel → Proper ITAM · Procurement workflow · Audit trail', rate: '400–800 SAR/day', color: 'text-orange-400 bg-orange-500/10 border-orange-500/25' },
+                  { service: 'Smart Locker / IT Pickup Point Consulting', detail: 'Signifi deployment · MENA niche expertise · Premium', rate: 'Custom rate', color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25' },
+                ].map(t => (
+                  <div key={t.service} className="flex items-start gap-3 p-3 rounded-xl bg-white/3 border border-white/6 hover:bg-white/5 transition-colors">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white text-sm font-semibold leading-snug mb-0.5">{t.service}</p>
+                      <p className="text-gray-500 text-xs">{t.detail}</p>
+                    </div>
+                    <span className={`text-[9px] font-black uppercase tracking-wider px-2 py-1 rounded-full border flex-shrink-0 ${t.color} whitespace-nowrap`}>{t.rate}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/6">
+                <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-300 text-sm font-bold hover:bg-purple-500/25 transition-all">
+                  Discuss a Project →
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         {/* ── EXPERIENCE ───────────────────────────────────────────── */}
         <section>
           <SectionHeader icon={<Briefcase className="w-5 h-5 text-cyan-400" />} title="Work Experience" />
