@@ -35,7 +35,7 @@ const experience = [
     company: 'SAP',
     location: 'Riyadh, Saudi Arabia',
     period: 'Jul 2019 – Present',
-    color: 'border-accent-blue',
+    color: 'border-white/15',
     badge: 'text-accent-blue',
     highlights: [
       'Location responsible for SAP Saudi Arabia — 3 offices (Riyadh 200+ users, Jeddah, Al-Khobar)',
@@ -57,7 +57,7 @@ const experience = [
     company: 'SAP Saudi Arabia',
     location: 'Riyadh · Jeddah · AlKhobar',
     period: 'Jan 2015 – Jun 2019',
-    color: 'border-cyan-500',
+    color: 'border-white/15',
     badge: 'text-cyan-400',
     highlights: [
       'Single point of contact for IT across 3 Saudi Arabia SAP office locations (EMEA Global IT team)',
@@ -77,7 +77,7 @@ const experience = [
     company: 'Banque Saudi Fransi',
     location: 'Riyadh, Saudi Arabia',
     period: '2012 – 2015',
-    color: 'border-red-500',
+    color: 'border-white/15',
     badge: 'text-red-400',
     highlights: [
       'Managed ATM & branch security systems — Siecep ATM security management tool',
@@ -93,7 +93,7 @@ const experience = [
     company: 'TSBS',
     location: 'Riyadh, Saudi Arabia',
     period: '2011 – 2012',
-    color: 'border-emerald-500',
+    color: 'border-white/15',
     badge: 'text-emerald-400',
     highlights: [
       'Setup and configuration of LAN, WAN, VPN — DHCP, TCP/IP, routing protocols',
@@ -112,7 +112,7 @@ const projects = [
     desc: 'Native macOS Swift app + FastAPI backend integrating Gmail, SAP Outlook, Calendar, ServiceNow tickets, and WhatsApp SLA alerts in one dashboard.',
     tags: ['FastAPI', 'Python', 'Swift', 'ServiceNow', 'Twilio'],
     status: 'Live',
-    color: 'border-accent-blue',
+    color: 'border-white/15',
   },
   {
     emoji: '📦',
@@ -121,7 +121,7 @@ const projects = [
     desc: 'Full-stack Flask app replacing Excel-based asset tracking at SAP. KPI dashboard, Excel import/export, AI chat widget, full audit log. Modelled on real SAP ISP ERP workflows.',
     tags: ['Python', 'Flask', 'SQLite', 'Chart.js', 'SAP ISP'],
     status: 'Live',
-    color: 'border-cyan-500',
+    color: 'border-white/15',
   },
   {
     emoji: '🔔',
