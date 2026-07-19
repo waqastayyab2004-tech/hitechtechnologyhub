@@ -280,6 +280,67 @@ export default function ResearchClient() {
           </div>
         </section>
 
+        {/* ── The Bigger Picture ── */}
+        <section>
+          <motion.div custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{once:true}}
+            className="rounded-2xl border border-accent-blue/15 bg-gradient-to-br from-accent-blue/5 via-dark-800/60 to-cyan-400/3 overflow-hidden">
+
+            {/* Header */}
+            <div className="px-6 pt-6 pb-4 border-b border-white/6">
+              <div className="flex items-center gap-2 mb-1">
+                <Zap className="w-4 h-4 text-accent-blue" />
+                <h3 className="text-lg font-black text-white">The Bigger Picture</h3>
+              </div>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Most people build <em>one</em> of these:
+                a CV, a portfolio, a GitHub, a personal website, or an ORCID profile.
+              </p>
+              <p className="text-sm text-white font-semibold mt-2">
+                I&apos;m building <span className="text-accent-blue">all of them together</span> so they reinforce each other.
+              </p>
+            </div>
+
+            {/* Flow chain */}
+            <div className="px-6 py-5">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0">
+                {[
+                  { label: 'ORCID',           icon: '🆔', sub: 'Academic ID',        color: 'border-green-500/30 bg-green-500/8 text-green-400'   },
+                  { label: 'Research Papers', icon: '📄', sub: 'Publications',       color: 'border-accent-blue/30 bg-accent-blue/8 text-accent-blue' },
+                  { label: 'Website',         icon: '🌐', sub: 'HiTecH AI HUB',      color: 'border-cyan-500/30 bg-cyan-500/8 text-cyan-400'       },
+                  { label: 'GitHub',          icon: '🐙', sub: 'Open Source',        color: 'border-violet-500/30 bg-violet-500/8 text-violet-400' },
+                  { label: 'Portfolio',       icon: '💼', sub: 'LinkedIn + CV',      color: 'border-orange-500/30 bg-orange-500/8 text-orange-400' },
+                  { label: 'AI Engineer',     icon: '🚀', sub: 'Career Goal',        color: 'border-pink-500/30 bg-pink-500/8 text-pink-400'       },
+                ].map((node, i, arr) => (
+                  <div key={node.label} className="flex sm:flex-col items-center gap-2 sm:gap-1 w-full sm:w-auto">
+                    {/* Node */}
+                    <div className={`flex flex-col items-center gap-1 px-3 py-2.5 rounded-xl border min-w-[90px] text-center ${node.color}`}>
+                      <span className="text-lg">{node.icon}</span>
+                      <span className="text-[11px] font-bold text-white leading-tight">{node.label}</span>
+                      <span className="text-[9px] opacity-70 leading-tight">{node.sub}</span>
+                    </div>
+                    {/* Arrow — hidden after last */}
+                    {i < arr.length - 1 && (
+                      <div className="flex sm:flex-col items-center gap-0 flex-shrink-0">
+                        {/* horizontal on mobile, vertical on sm+ */}
+                        <div className="w-4 h-px sm:w-px sm:h-4 bg-white/15" />
+                        <div className="text-white/30 text-xs sm:rotate-90 leading-none">▶</div>
+                        <div className="w-4 h-px sm:w-px sm:h-4 bg-white/15" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer statement */}
+            <div className="px-6 pb-5">
+              <p className="text-sm text-gray-400 italic border-l-2 border-accent-blue/40 pl-3 leading-relaxed">
+                &ldquo;That&apos;s a much stronger ecosystem than any single profile — each one feeds the next, and together they build an undeniable research identity.&rdquo;
+              </p>
+            </div>
+          </motion.div>
+        </section>
+
         {/* ── Research Interests — hierarchical identity ── */}
         <section>
           <SectionHeader icon={Brain} label="Research Interests" index={0} />
