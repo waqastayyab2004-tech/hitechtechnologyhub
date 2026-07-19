@@ -4,9 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
-  Brain, Shield, Cloud, Sparkles, FileText, FlaskConical,
+  Brain, Shield, Sparkles, FileText, FlaskConical,
   FolderGit2, Database, Mic, Award, ExternalLink, ChevronRight,
-  BookOpen, Cpu, Zap, Clock, CheckCircle2, Github,
+  BookOpen, Cpu, Zap, Clock, Github, User,
 } from 'lucide-react'
 
 const fadeUp = {
@@ -18,6 +18,48 @@ const fadeUp = {
 }
 
 /* ── Data ── */
+const PROFILES = [
+  {
+    label: 'ORCID',
+    desc: 'Academic identifier & publication record',
+    href: 'https://orcid.org/0009-0007-8361-6123',
+    icon: '🆔',
+    status: 'live',
+    color: 'border-green-500/20 bg-green-500/5 hover:border-green-500/40',
+    badge: 'text-green-400 bg-green-500/10 border-green-500/20',
+    badgeLabel: 'Active',
+  },
+  {
+    label: 'Google Scholar',
+    desc: 'Citation index & research metrics',
+    href: null,
+    icon: '🎓',
+    status: 'soon',
+    color: 'border-white/10 bg-white/3 hover:border-white/20',
+    badge: 'text-gray-500 bg-white/5 border-white/10',
+    badgeLabel: 'Coming Soon',
+  },
+  {
+    label: 'GitHub',
+    desc: 'Open source projects & code',
+    href: 'https://github.com/waqastayyab2004-tech',
+    icon: '🐙',
+    status: 'live',
+    color: 'border-accent-blue/20 bg-accent-blue/5 hover:border-accent-blue/40',
+    badge: 'text-accent-blue bg-accent-blue/10 border-accent-blue/20',
+    badgeLabel: 'Active',
+  },
+  {
+    label: 'LinkedIn',
+    desc: 'Professional profile & endorsements',
+    href: 'https://www.linkedin.com/in/syedwaqastayyab/',
+    icon: '💼',
+    status: 'live',
+    color: 'border-[#0A66C2]/20 bg-[#0A66C2]/5 hover:border-[#0A66C2]/40',
+    badge: 'text-[#0A66C2] bg-[#0A66C2]/10 border-[#0A66C2]/20',
+    badgeLabel: 'Active',
+  },
+]
 const INTERESTS = [
   { icon: Brain,    label: 'Enterprise AI',   desc: 'Applying large language models and agentic AI to enterprise IT workflows, automation, and decision support.', color: 'text-violet-400 bg-violet-500/10 border-violet-500/20' },
   { icon: Cpu,      label: 'AIOps',           desc: 'AI-driven IT operations — predictive incident management, automated remediation, and intelligent monitoring pipelines.', color: 'text-blue-400 bg-blue-500/10 border-blue-500/20' },
@@ -31,11 +73,12 @@ const PUBLICATIONS = [
 
 const CURRENT_RESEARCH = [
   {
-    title: 'AI for Enterprise IT Operations',
-    status: 'Active',
+    title: 'Enterprise AI Copilot for IT Operations',
+    status: 'Literature Review',
     desc: 'Investigating how agentic AI systems can autonomously handle L1/L2 IT support tickets, reduce MTTR, and integrate with ServiceNow ITSM workflows.',
     tags: ['Agentic AI', 'ServiceNow', 'ITSM', 'Claude API'],
     started: 'Jan 2026',
+    submission: 'Q4 2026',
   },
   {
     title: 'Human-AI Collaboration Framework',
@@ -43,6 +86,7 @@ const CURRENT_RESEARCH = [
     desc: 'Developing a practical framework for IT teams to integrate AI assistants into daily operations while maintaining human oversight, auditability, and trust.',
     tags: ['Human-AI Interaction', 'Enterprise', 'Governance'],
     started: 'Mar 2026',
+    submission: null,
   },
   {
     title: 'IT Asset Lifecycle Intelligence',
@@ -50,6 +94,7 @@ const CURRENT_RESEARCH = [
     desc: 'Using ML models to predict asset failure, optimal refresh cycles, and procurement patterns from historical CMDB and ERP data.',
     tags: ['ML', 'CMDB', 'SAP', 'Asset Management'],
     started: 'May 2026',
+    submission: null,
   },
 ]
 
@@ -158,6 +203,47 @@ export default function ResearchClient() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
 
+        {/* ── Research Profiles ── */}
+        <section>
+          <SectionHeader icon={User} label="Research Profiles" index={0} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+            {PROFILES.map((p, i) => (
+              <motion.div key={p.label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{once:true}}>
+                {p.href ? (
+                  <a href={p.href} target="_blank" rel="noopener noreferrer"
+                    className={`flex flex-col gap-3 p-4 rounded-2xl border transition-all group ${p.color}`}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl">{p.icon}</span>
+                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${p.badge}`}>{p.badgeLabel}</span>
+                    </div>
+                    <div>
+                      <p className="font-bold text-white text-sm group-hover:text-accent-blue transition-colors">{p.label}</p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">{p.desc}</p>
+                    </div>
+                    <div className="flex items-center gap-1 text-[11px] text-gray-600 group-hover:text-accent-blue transition-colors mt-auto">
+                      <ExternalLink className="w-3 h-3" /> View Profile
+                    </div>
+                  </a>
+                ) : (
+                  <div className={`flex flex-col gap-3 p-4 rounded-2xl border transition-all ${p.color} opacity-60`}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl">{p.icon}</span>
+                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${p.badge}`}>{p.badgeLabel}</span>
+                    </div>
+                    <div>
+                      <p className="font-bold text-white text-sm">{p.label}</p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">{p.desc}</p>
+                    </div>
+                    <div className="flex items-center gap-1 text-[11px] text-gray-600 mt-auto">
+                      <Clock className="w-3 h-3" /> Coming Soon
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         {/* ── Research Interests ── */}
         <section>
           <SectionHeader icon={Brain} label="Research Interests" index={0} />
@@ -216,9 +302,12 @@ export default function ResearchClient() {
                 <div className="flex items-start justify-between gap-4 mb-2">
                   <h3 className="font-bold text-white text-sm">{r.title}</h3>
                   <span className={`flex-shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
-                    r.status === 'Active' ? 'bg-green-500/10 border border-green-500/20 text-green-400' : 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
+                    r.status === 'Active' ? 'bg-green-500/10 border border-green-500/20 text-green-400' :
+                    r.status === 'Literature Review' ? 'bg-accent-blue/10 border border-accent-blue/20 text-accent-blue' :
+                    'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
                   }`}>
                     {r.status === 'Active' && <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1 animate-pulse" />}
+                    {r.status === 'Literature Review' && <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent-blue mr-1 animate-pulse" />}
                     {r.status}
                   </span>
                 </div>
@@ -228,6 +317,9 @@ export default function ResearchClient() {
                     <span key={tag} className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-white/5 border border-white/8 text-gray-500">{tag}</span>
                   ))}
                   <span className="ml-auto text-[10px] text-gray-700 flex items-center gap-1"><Clock className="w-3 h-3" /> Started {r.started}</span>
+                  {r.submission && (
+                    <span className="text-[10px] text-accent-blue flex items-center gap-1 font-semibold"><FileText className="w-3 h-3" /> Expected {r.submission}</span>
+                  )}
                 </div>
               </motion.div>
             ))}
