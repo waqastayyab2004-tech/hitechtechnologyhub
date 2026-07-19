@@ -280,23 +280,90 @@ export default function ResearchClient() {
           </div>
         </section>
 
-        {/* ── Research Interests ── */}
+        {/* ── Research Interests — hierarchical identity ── */}
         <section>
           <SectionHeader icon={Brain} label="Research Interests" index={0} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-            {INTERESTS.map((item, i) => (
-              <motion.div key={item.label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{once:true}}
-                className="p-5 rounded-2xl bg-dark-800/60 border border-white/8 hover:border-white/15 transition-colors">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center border ${item.color}`}>
-                    <item.icon className="w-4 h-4" />
-                  </div>
-                  <h3 className="font-bold text-white text-sm">{item.label}</h3>
+          <motion.div custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{once:true}}
+            className="mt-6 rounded-2xl bg-dark-800/60 border border-white/8 overflow-hidden">
+
+            {/* Core — Enterprise AI */}
+            <div className="p-6 border-b border-white/6 bg-gradient-to-r from-accent-blue/8 to-transparent">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-xl bg-accent-blue/20 border border-accent-blue/30 flex items-center justify-center">
+                  <Brain className="w-5 h-5 text-accent-blue" />
                 </div>
-                <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-black text-white text-base">Enterprise AI</h3>
+                    <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-accent-blue/20 border border-accent-blue/30 text-accent-blue uppercase tracking-wider">Core Focus</span>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-0.5">The foundation of my research identity</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-400 leading-relaxed ml-13 pl-1">
+                Applying large language models and agentic AI to enterprise IT workflows — turning complex operations into intelligent, autonomous systems that augment human decision-making.
+              </p>
+            </div>
+
+            {/* Branches */}
+            <div className="divide-y divide-white/5">
+              {[
+                {
+                  icon: Cpu,
+                  label: 'AIOps',
+                  rel: 'Applied arm of Enterprise AI',
+                  desc: 'AI-driven IT operations — predictive incident management, automated remediation, and intelligent monitoring pipelines that learn from enterprise environments.',
+                  color: 'text-blue-400',
+                  bg: 'bg-blue-500/8',
+                  border: 'border-blue-500/15',
+                },
+                {
+                  icon: Shield,
+                  label: 'Cloud Security',
+                  rel: 'Where AI meets risk management',
+                  desc: 'Zero Trust architecture, Azure Secure Score optimisation, and AI-assisted threat detection — securing the infrastructure that Enterprise AI runs on.',
+                  color: 'text-red-400',
+                  bg: 'bg-red-500/8',
+                  border: 'border-red-500/15',
+                },
+                {
+                  icon: Sparkles,
+                  label: 'Generative AI',
+                  rel: 'The engine powering it all',
+                  desc: 'Practical GenAI integration — RAG pipelines, prompt engineering, Claude/GPT tool use, and enterprise AI copilots grounded in real operational data.',
+                  color: 'text-cyan-400',
+                  bg: 'bg-cyan-500/8',
+                  border: 'border-cyan-500/15',
+                },
+              ].map((item, i) => (
+                <div key={item.label} className="flex items-start gap-4 p-5 hover:bg-white/2 transition-colors">
+                  {/* Tree line */}
+                  <div className="flex flex-col items-center flex-shrink-0 mt-1" style={{width:20}}>
+                    <div className="w-px flex-1 bg-white/10" style={{minHeight:8}} />
+                    <div className="w-2 h-2 rounded-full border-2 border-white/20 bg-dark-800 flex-shrink-0" />
+                    {i < 2 && <div className="w-px flex-1 bg-white/10" style={{minHeight:8}} />}
+                  </div>
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center border flex-shrink-0 ${item.bg} ${item.border}`}>
+                    <item.icon className={`w-4 h-4 ${item.color}`} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <h4 className="font-bold text-white text-sm">{item.label}</h4>
+                      <span className={`text-[10px] font-medium ${item.color} opacity-70`}>— {item.rel}</span>
+                    </div>
+                    <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Identity statement */}
+            <div className="px-6 py-4 bg-white/2 border-t border-white/6">
+              <p className="text-xs text-gray-600 italic text-center">
+                &ldquo;These aren&apos;t scattered interests — they tell a coherent story: making enterprise IT smarter, safer, and more autonomous through AI.&rdquo;
+              </p>
+            </div>
+          </motion.div>
         </section>
 
         {/* ── Publications ── */}
