@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import BackToTop from '@/components/ui/BackToTop'
+import AIChatbot from '@/components/ui/AIChatbot'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.hitechtechnologyhub.com'),
@@ -84,6 +85,7 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <BackToTop />
+        <AIChatbot />
       </body>
     </html>
   )

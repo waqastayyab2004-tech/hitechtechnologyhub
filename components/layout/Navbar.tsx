@@ -8,8 +8,9 @@ import {
   Zap, Menu, X, ChevronDown,
   Server, Shield, Globe, Brain, BookOpen, Briefcase,
   FileText, Lightbulb, Code, Users, ArrowRight,
-  GraduationCap, Cpu, Newspaper,
+  GraduationCap, Cpu, Newspaper, Search,
 } from 'lucide-react'
+import GlobalSearch from '@/components/ui/GlobalSearch'
 
 /* ── NAV STRUCTURE ─────────────────────────────────────────────
    Inspired by Vercel / Stripe / Linear:
@@ -98,7 +99,20 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
+  const [searchOpen, setSearchOpen] = useState(false)
   const closeTimer = useRef<NodeJS.Timeout>()
+
+  /* ⌘K / Ctrl+K global shortcut */
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setSearchOpen(v => !v)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -268,8 +282,19 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* ── Desktop Right: Status + CTA ── */}
+            {/* ── Desktop Right: Search + Status + CTA ── */}
             <div className="hidden lg:flex items-center gap-3">
+              {/* Search button */}
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/8 text-gray-400 hover:text-white transition-all duration-150 group"
+              >
+                <Search className="w-3.5 h-3.5" />
+                <span className="text-xs text-gray-500 group-hover:text-gray-300 hidden xl:block">Search...</span>
+                <kbd className="hidden xl:flex items-center gap-0.5 px-1.5 py-0.5 rounded border border-white/10 bg-white/5 text-[9px] text-gray-600 font-mono">
+                  ⌘K
+                </kbd>
+              </button>
               <span className="flex items-center gap-1.5 text-xs text-green-400 font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
                 Open to Work
@@ -281,8 +306,15 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* ── Mobile: Status dot + Hamburger ── */}
-            <div className="lg:hidden flex items-center gap-3">
+            {/* ── Mobile: Search + Status dot + Hamburger ── */}
+            <div className="lg:hidden flex items-center gap-2">
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="w-9 h-9 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <button
                 onClick={() => setMobileOpen(v => !v)}
@@ -303,6 +335,9 @@ export default function Navbar() {
         {/* ── Hairline progress bar on scroll ── */}
         {scrolled && <div className="h-px bg-gradient-to-r from-transparent via-accent-blue/40 to-transparent" />}
       </header>
+
+      {/* ── Global Search Modal ── */}
+      <GlobalSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* ── Mobile Full-Screen Drawer ──────────────────────────── */}
       <AnimatePresence>
