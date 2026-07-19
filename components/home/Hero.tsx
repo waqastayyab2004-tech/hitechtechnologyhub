@@ -309,6 +309,19 @@ export default function Hero() {
         style={{zIndex:10}}>
 
         <style>{`
+          /* Slow loading bar animations */
+          @keyframes barFwd{
+            0%   {transform:translateX(-100%);opacity:0}
+            10%  {opacity:1}
+            80%  {opacity:1}
+            100% {transform:translateX(250%);opacity:0}
+          }
+          @keyframes barBwd{
+            0%   {transform:translateX(100%);opacity:0}
+            10%  {opacity:1}
+            80%  {opacity:1}
+            100% {transform:translateX(-250%);opacity:0}
+          }
           /* Orbit rings */
           @keyframes orbitRing1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
           @keyframes orbitRing2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
@@ -321,7 +334,7 @@ export default function Hero() {
           @keyframes botGlow{0%,100%{box-shadow:0 0 20px rgba(6,182,212,.5),0 0 40px rgba(6,182,212,.15)}50%{box-shadow:0 0 40px rgba(6,182,212,.9),0 0 70px rgba(59,130,246,.3)}}
           /* Centre badge pulse */
           @keyframes badgePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.04);opacity:.9}}
-          /* Dot orbit around avatars */
+          /* Dot orbit */
           @keyframes dotOrbitL{from{transform:rotate(0deg) translateX(72px) rotate(0deg)}to{transform:rotate(360deg) translateX(72px) rotate(-360deg)}}
           @keyframes dotOrbitL2{from{transform:rotate(120deg) translateX(76px) rotate(-120deg)}to{transform:rotate(480deg) translateX(76px) rotate(-480deg)}}
           @keyframes dotOrbitR{from{transform:rotate(60deg) translateX(72px) rotate(-60deg)}to{transform:rotate(420deg) translateX(72px) rotate(-420deg)}}
@@ -337,11 +350,6 @@ export default function Hero() {
           .dot-l2{animation:dotOrbitL2 6s linear infinite}
           .dot-r1{animation:dotOrbitR 3.5s linear infinite}
           .dot-r2{animation:dotOrbitR2 5s linear infinite}
-          .pkt-fwd1{position:absolute;top:50%;transform:translateY(-50%);animation:pktFwd 2.2s ease-in-out infinite}
-          .pkt-fwd2{position:absolute;top:50%;transform:translateY(-50%);animation:pktFwd 2.2s ease-in-out infinite;animation-delay:.7s}
-          .pkt-fwd3{position:absolute;top:50%;transform:translateY(-50%);animation:pktFwd 2.2s ease-in-out infinite;animation-delay:1.4s}
-          .pkt-bwd1{position:absolute;top:50%;transform:translateY(-50%);animation:pktBwd 2.2s ease-in-out infinite;animation-delay:.35s}
-          .pkt-bwd2{position:absolute;top:50%;transform:translateY(-50%);animation:pktBwd 2.2s ease-in-out infinite;animation-delay:1.1s}
         `}</style>
 
         {/* Title above */}
@@ -390,42 +398,68 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── CENTRE: Data flow channel ── */}
-          <div className="flex-1 flex flex-col items-center gap-3 px-2 sm:px-4" style={{minWidth:120,maxWidth:220}}>
+          {/* ── CENTRE: Slow loading-bar data flow ── */}
+          <div className="flex-1 flex flex-col items-center gap-2 px-2 sm:px-4" style={{minWidth:130,maxWidth:230}}>
 
-            {/* Data flow beam */}
+            {/* Forward bars: Human → AI (knowledge/data labels) */}
             <div className="w-full flex flex-col gap-1.5">
-              {/* Forward stream (Waqas → Bot) */}
-              <div className="relative w-full h-2 rounded-full overflow-hidden" style={{background:'rgba(59,130,246,.08)'}}>
-                <div className="absolute inset-0 rounded-full" style={{background:'linear-gradient(90deg,transparent,rgba(59,130,246,.15),transparent)'}} />
-                <div className="pkt-fwd1 w-3 h-3 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,1)]" style={{marginTop:-2}} />
-                <div className="pkt-fwd2 w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,1)]" style={{marginTop:-1}} />
-                <div className="pkt-fwd3 w-2 h-2 rounded-full bg-white/60" style={{marginTop:0}} />
-              </div>
-              {/* Backward stream (Bot → Waqas) */}
-              <div className="relative w-full h-2 rounded-full overflow-hidden" style={{background:'rgba(6,182,212,.08)'}}>
-                <div className="absolute inset-0 rounded-full" style={{background:'linear-gradient(270deg,transparent,rgba(6,182,212,.15),transparent)'}} />
-                <div className="pkt-bwd1 w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)]" style={{marginTop:-2}} />
-                <div className="pkt-bwd2 w-2 h-2 rounded-full bg-violet-400 shadow-[0_0_6px_rgba(167,139,250,1)]" style={{marginTop:0}} />
-              </div>
+              {[
+                { label: 'Experience',  color: '#3B82F6', delay: '0s',    dur: '4s'  },
+                { label: 'Creativity',  color: '#06B6D4', delay: '1.3s',  dur: '5s'  },
+                { label: 'Judgement',   color: '#8B5CF6', delay: '2.6s',  dur: '4.5s'},
+                { label: 'Domain Know', color: '#10B981', delay: '0.7s',  dur: '6s'  },
+              ].map((b, i) => (
+                <div key={i} className="flex items-center gap-1.5">
+                  <span className="text-[8px] font-mono whitespace-nowrap w-16 text-right" style={{color: b.color, opacity: 0.7}}>{b.label}</span>
+                  <div className="flex-1 relative h-1.5 rounded-full overflow-hidden" style={{background:`${b.color}18`}}>
+                    <div className="absolute left-0 top-0 h-full rounded-full"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${b.color}, ${b.color}cc, transparent)`,
+                        animation: `barFwd ${b.dur} ease-in-out infinite`,
+                        animationDelay: b.delay,
+                        width: '45%',
+                      }} />
+                  </div>
+                  <span className="text-[8px] text-gray-700 font-mono">→</span>
+                </div>
+              ))}
             </div>
 
             {/* Centre badge */}
-            <div className="badge-pulse flex flex-col items-center gap-1 px-3 py-2 rounded-2xl bg-dark-800/80 border border-white/10 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,.4)]">
-              <div className="text-base font-black text-white leading-none">Human + AI</div>
+            <div className="badge-pulse flex flex-col items-center gap-1 px-3 py-2.5 rounded-2xl bg-dark-800/90 border border-white/10 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,.5)] my-1">
+              <div className="text-sm font-black text-white leading-none">Human + AI</div>
               <div className="text-[10px] text-accent-blue font-bold tracking-widest uppercase">= Real Magic</div>
               <div className="flex items-center gap-1 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
-                <span className="text-[9px] text-gray-600">Live Sync</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                <span className="text-[9px] text-gray-600">Data Sync</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" style={{animationDelay:'.5s'}} />
               </div>
             </div>
 
-            {/* Labels */}
-            <div className="flex items-center justify-between w-full px-1">
-              <span className="text-[8px] text-accent-blue/60 font-mono">Ideas →</span>
-              <span className="text-[8px] text-cyan-400/60 font-mono">← Results</span>
+            {/* Backward bars: AI → Human */}
+            <div className="w-full flex flex-col gap-1.5">
+              {[
+                { label: 'Insights',    color: '#22D3EE', delay: '0.5s',  dur: '4.5s'},
+                { label: 'Automation',  color: '#A78BFA', delay: '1.8s',  dur: '5s'  },
+                { label: 'Speed',       color: '#34D399', delay: '3.1s',  dur: '3.8s'},
+                { label: 'Scale',       color: '#F472B6', delay: '1.1s',  dur: '6s'  },
+              ].map((b, i) => (
+                <div key={i} className="flex items-center gap-1.5">
+                  <span className="text-[8px] text-gray-700 font-mono">←</span>
+                  <div className="flex-1 relative h-1.5 rounded-full overflow-hidden" style={{background:`${b.color}18`}}>
+                    <div className="absolute right-0 top-0 h-full rounded-full"
+                      style={{
+                        background: `linear-gradient(270deg, transparent, ${b.color}, ${b.color}cc, transparent)`,
+                        animation: `barBwd ${b.dur} ease-in-out infinite`,
+                        animationDelay: b.delay,
+                        width: '45%',
+                      }} />
+                  </div>
+                  <span className="text-[8px] font-mono whitespace-nowrap w-16" style={{color: b.color, opacity: 0.7}}>{b.label}</span>
+                </div>
+              ))}
             </div>
+
           </div>
 
           {/* ── RIGHT: Waqas Agentic Bot ── */}
