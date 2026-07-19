@@ -257,8 +257,8 @@ export default function GlobalSearch({ open, onClose }: Props) {
                 {groups.length === 0 && query.trim() ? (
                   <div className="flex flex-col items-center justify-center py-12 gap-2">
                     <Search className="w-8 h-8 text-gray-700" />
-                    <p className="text-sm text-gray-500">No results for <span className="text-white">"{query}"</span></p>
-                    <p className="text-xs text-gray-700">Try "azure", "python", "servicenow", "courses"</p>
+                    <p className="text-sm text-gray-500">No results for <span className="text-white">&ldquo;{query}&rdquo;</span></p>
+                    <p className="text-xs text-gray-700">Try &ldquo;azure&rdquo;, &ldquo;python&rdquo;, &ldquo;servicenow&rdquo;, &ldquo;courses&rdquo;</p>
                   </div>
                 ) : (
                   <div className="py-2">
