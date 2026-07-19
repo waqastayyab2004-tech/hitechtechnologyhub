@@ -391,7 +391,7 @@ export default function MedicalBillingPage() {
                       <div className="absolute -top-9 left-1/2 -translate-x-1/2">
                         <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-emerald-400 shadow-[0_0_16px_rgba(16,185,129,0.7)] bg-dark-800">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src="/dr-abbas-profile.jpg" alt="Dr. Syed Abbas Tayyab"
+                          <img src="/dr-abbas-tayyab.jpg" alt="Dr. Syed Abbas Tayyab"
                             className="w-full h-full object-cover" style={{objectPosition:'center 8%'}}/>
                         </div>
                       </div>
@@ -486,7 +486,7 @@ export default function MedicalBillingPage() {
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-emerald-500/30 to-blue-500/20 blur-xl scale-110" />
                   <div className="dr-glow relative w-48 h-48 rounded-full overflow-hidden border-2 border-emerald-400/60 z-10 bg-[#0a1628]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/dr-abbas-profile.jpg" alt="Dr. Syed Abbas Tayyab"
+                    <img src="/dr-abbas-tayyab.jpg" alt="Dr. Syed Abbas Tayyab"
                       className="w-full h-full object-cover" style={{objectPosition:'center 8%'}}/>
                     <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent"/>
                   </div>
