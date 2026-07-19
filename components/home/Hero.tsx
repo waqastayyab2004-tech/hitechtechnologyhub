@@ -222,23 +222,34 @@ export default function Hero() {
 
         {/* Headline */}
         <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight max-w-3xl">
-          Enterprise IT &amp;{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-cyan-400">
-            AI Automation
-          </span>{' '}
-          for Teams
+          className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight max-w-4xl">
+          Build, Protect &amp; Grow Your<br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-cyan-400 to-accent-blue bg-[length:200%_auto] animate-gradient-x">
+            Business with Enterprise IT
+          </span>
         </motion.h1>
 
-        {/* Subline */}
+        {/* Power line */}
         <motion.p custom={2} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-lg sm:text-xl text-gray-400 max-w-2xl leading-relaxed">
-          Senior IT consulting, cloud security &amp; AI-powered automation —
-          delivered onsite across MENA and remotely worldwide.
+          className="text-xl sm:text-2xl font-black text-white">
+          Outsource IT.{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-cyan-400">
+            Accelerate Everything.
+          </span>
+        </motion.p>
+
+        {/* Subline */}
+        <motion.p custom={3} variants={fadeUp} initial="hidden" animate="visible"
+          className="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
+          Senior IT consulting &amp; managed services —{' '}
+          <strong className="text-white">Onsite across MENA</strong> and{' '}
+          <strong className="text-white">Remote globally</strong>.
+          Enterprise-grade IT delivered with AI automation, Azure security,
+          and 15+ years of real enterprise experience.
         </motion.p>
 
         {/* CTAs */}
-        <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible"
+        <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible"
           className="flex flex-col sm:flex-row items-center gap-3">
           <Link href="/services"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-accent-blue hover:bg-blue-500 text-white text-sm font-bold transition-all shadow-[0_0_30px_rgba(59,130,246,0.35)] hover:shadow-[0_0_40px_rgba(59,130,246,0.55)]">
@@ -251,7 +262,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Search bar */}
-        <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible" className="w-full max-w-xl">
+        <motion.div custom={5} variants={fadeUp} initial="hidden" animate="visible" className="w-full max-w-xl">
           <form onSubmit={handleSearch} className="relative group">
             <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-accent-blue/40 to-cyan-400/40 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 blur-sm" />
             <div className="relative flex items-center bg-white/5 border border-white/10 rounded-2xl group-focus-within:border-accent-blue/40 transition-colors overflow-hidden">
@@ -275,7 +286,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Stats */}
-        <motion.div custom={5} variants={fadeUp} initial="hidden" animate="visible"
+        <motion.div custom={6} variants={fadeUp} initial="hidden" animate="visible"
           className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 pt-4 border-t border-white/6 w-full max-w-lg">
           {STATS.map(s => (
             <div key={s.label} className="text-center">
@@ -286,7 +297,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Cert badges */}
-        <motion.div custom={6} variants={fadeUp} initial="hidden" animate="visible"
+        <motion.div custom={7} variants={fadeUp} initial="hidden" animate="visible"
           className="flex flex-wrap items-center justify-center gap-2">
           {[
             { label: 'Azure Security', color: 'text-blue-400 border-blue-500/20 bg-blue-500/5' },
