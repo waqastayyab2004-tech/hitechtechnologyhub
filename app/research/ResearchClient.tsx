@@ -287,55 +287,88 @@ export default function ResearchClient() {
 
             {/* Header */}
             <div className="px-6 pt-6 pb-4 border-b border-white/6">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-3">
                 <Zap className="w-4 h-4 text-accent-blue" />
                 <h3 className="text-lg font-black text-white">The Bigger Picture</h3>
               </div>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Most people build <em>one</em> of these:
-                a CV, a portfolio, a GitHub, a personal website, or an ORCID profile.
+              <p className="text-sm text-gray-300 leading-relaxed mb-3">
+                I&apos;m a <strong className="text-white">Senior IT Engineer at SAP</strong> with 15+ years in enterprise IT — and I&apos;m now actively transitioning into AI research and engineering.
+                This isn&apos;t a side project. I&apos;m working on real research papers, building open-source tools used in production, and building the credentials to back it up.
               </p>
-              <p className="text-sm text-white font-semibold mt-2">
-                I&apos;m building <span className="text-accent-blue">all of them together</span> so they reinforce each other.
+              <p className="text-sm leading-relaxed">
+                Most people build <em className="text-gray-400">one</em> of these: a CV, a portfolio, a GitHub, a personal website, or an ORCID profile.
+                I&apos;m building <span className="text-accent-blue font-bold">all of them together</span> — so each one strengthens the next.
               </p>
             </div>
 
-            {/* Flow chain */}
-            <div className="px-6 py-5">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0">
+            {/* Flow chain with descriptions */}
+            <div className="px-6 py-6">
+              <div className="flex flex-col gap-0">
                 {[
-                  { label: 'ORCID',           icon: '🆔', sub: 'Academic ID',        color: 'border-green-500/30 bg-green-500/8 text-green-400'   },
-                  { label: 'Research Papers', icon: '📄', sub: 'Publications',       color: 'border-accent-blue/30 bg-accent-blue/8 text-accent-blue' },
-                  { label: 'Website',         icon: '🌐', sub: 'HiTecH AI HUB',      color: 'border-cyan-500/30 bg-cyan-500/8 text-cyan-400'       },
-                  { label: 'GitHub',          icon: '🐙', sub: 'Open Source',        color: 'border-violet-500/30 bg-violet-500/8 text-violet-400' },
-                  { label: 'Portfolio',       icon: '💼', sub: 'LinkedIn + CV',      color: 'border-orange-500/30 bg-orange-500/8 text-orange-400' },
-                  { label: 'AI Engineer',     icon: '🚀', sub: 'Career Goal',        color: 'border-pink-500/30 bg-pink-500/8 text-pink-400'       },
+                  {
+                    icon: '🆔', label: 'ORCID', color: 'border-green-500/30 bg-green-500/8 text-green-400',
+                    mine: 'ORCID 0009-0005-6754-3864 — registered and active. Every paper I publish will be permanently linked to this ID.',
+                    href: 'https://orcid.org/0009-0005-6754-3864',
+                  },
+                  {
+                    icon: '📄', label: 'Research Papers', color: 'border-accent-blue/30 bg-accent-blue/8 text-accent-blue',
+                    mine: 'Currently in Literature Review on "Enterprise AI Copilot for IT Operations." Expected Q4 2026. Writing from 15 years of real enterprise experience — not theory.',
+                    href: null,
+                  },
+                  {
+                    icon: '🌐', label: 'HiTecH AI HUB', color: 'border-cyan-500/30 bg-cyan-500/8 text-cyan-400',
+                    mine: 'This website — built entirely by me using Next.js, TypeScript, and Claude AI. It\'s both a portfolio and a live demonstration of what I build.',
+                    href: 'https://www.hitechtechnologyhub.com',
+                  },
+                  {
+                    icon: '🐙', label: 'GitHub', color: 'border-violet-500/30 bg-violet-500/8 text-violet-400',
+                    mine: 'Active repos: Enterprise IT Copilot, AI Asset Intelligence Platform, AIOps Research Lab, RAG Security Framework. Real tools, not toy projects.',
+                    href: 'https://github.com/waqastayyab2004-tech',
+                  },
+                  {
+                    icon: '💼', label: 'LinkedIn + CV', color: 'border-orange-500/30 bg-orange-500/8 text-orange-400',
+                    mine: '15+ years at SAP, 13+ certifications including Azure Security & SAP AI Hub, MBA from Buckinghamshire University UK. Every claim is verified.',
+                    href: 'https://www.linkedin.com/in/syedwaqastayyab/',
+                  },
+                  {
+                    icon: '🚀', label: 'AI Engineer Career', color: 'border-pink-500/30 bg-pink-500/8 text-pink-400',
+                    mine: 'The goal: Senior AI/ML Engineer or AI Research Engineer role in enterprise tech. This entire ecosystem is built to make that transition undeniable.',
+                    href: null,
+                  },
                 ].map((node, i, arr) => (
-                  <div key={node.label} className="flex sm:flex-col items-center gap-2 sm:gap-1 w-full sm:w-auto">
-                    {/* Node */}
-                    <div className={`flex flex-col items-center gap-1 px-3 py-2.5 rounded-xl border min-w-[90px] text-center ${node.color}`}>
-                      <span className="text-lg">{node.icon}</span>
-                      <span className="text-[11px] font-bold text-white leading-tight">{node.label}</span>
-                      <span className="text-[9px] opacity-70 leading-tight">{node.sub}</span>
-                    </div>
-                    {/* Arrow — hidden after last */}
-                    {i < arr.length - 1 && (
-                      <div className="flex sm:flex-col items-center gap-0 flex-shrink-0">
-                        {/* horizontal on mobile, vertical on sm+ */}
-                        <div className="w-4 h-px sm:w-px sm:h-4 bg-white/15" />
-                        <div className="text-white/30 text-xs sm:rotate-90 leading-none">▶</div>
-                        <div className="w-4 h-px sm:w-px sm:h-4 bg-white/15" />
+                  <div key={node.label} className="flex gap-4">
+                    {/* Left: icon + connector line */}
+                    <div className="flex flex-col items-center flex-shrink-0" style={{width:44}}>
+                      <div className={`w-11 h-11 rounded-xl border flex items-center justify-center text-xl flex-shrink-0 ${node.color}`}>
+                        {node.icon}
                       </div>
-                    )}
+                      {i < arr.length - 1 && (
+                        <div className="w-px flex-1 bg-white/10 my-1" style={{minHeight:24}} />
+                      )}
+                    </div>
+                    {/* Right: label + personal detail */}
+                    <div className={`flex-1 pb-5 ${i < arr.length - 1 ? 'border-b border-white/4' : ''}`}>
+                      <div className="flex items-center gap-2 mb-1 mt-2">
+                        <span className="font-bold text-white text-sm">{node.label}</span>
+                        {node.href && (
+                          <a href={node.href} target="_blank" rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-[10px] text-gray-600 hover:text-accent-blue transition-colors">
+                            <ExternalLink className="w-3 h-3" /> View
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-400 leading-relaxed">{node.mine}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Footer statement */}
-            <div className="px-6 pb-5">
-              <p className="text-sm text-gray-400 italic border-l-2 border-accent-blue/40 pl-3 leading-relaxed">
-                &ldquo;That&apos;s a much stronger ecosystem than any single profile — each one feeds the next, and together they build an undeniable research identity.&rdquo;
+            {/* Footer */}
+            <div className="px-6 pb-5 border-t border-white/6 pt-4">
+              <p className="text-sm text-gray-300 leading-relaxed">
+                <span className="text-white font-semibold">This is not a hobby.</span> I publish, build, and ship — and this page is the proof.
+                Every section here represents real work in progress, not aspirations.
               </p>
             </div>
           </motion.div>
