@@ -2,10 +2,12 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, ChevronDown, Briefcase, MapPin, Sparkles, Globe, Award, Users, Linkedin, Github, Mail } from 'lucide-react'
+import { ArrowRight, ChevronDown, Briefcase, MapPin, Sparkles, Globe, Award, Users, Linkedin, Github, Mail, Search } from 'lucide-react'
 import NewsTicker from '@/components/home/NewsTicker'
 import NeuralNetwork from '@/components/ui/NeuralNetwork'
 import AgentTeam from '@/components/home/AgentTeam'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const container = {
   hidden: { opacity: 0 },
@@ -21,6 +23,33 @@ const item = {
 }
 
 export default function Hero() {
+  const [query, setQuery] = useState('')
+  const router = useRouter()
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const q = query.trim()
+    if (!q) return
+    const ql = q.toLowerCase()
+    if (/course|learn|train|tutorial/.test(ql))           router.push('/training')
+    else if (/blog|article|read|post/.test(ql))           router.push('/blog')
+    else if (/project|portfolio|work|built/.test(ql))     router.push('/projects')
+    else if (/service|consult|hire|outsource/.test(ql))   router.push('/services')
+    else if (/contact|email|whatsapp|reach/.test(ql))     router.push('/contact')
+    else if (/about|cv|certif|skill|experience/.test(ql)) router.push('/about')
+    else if (/ai|tools|resource/.test(ql))                router.push('/resources')
+    else router.push(`/blog?q=${encodeURIComponent(q)}`)
+  }
+
+  const SUGGESTIONS = [
+    { label: '📚 IT Courses', href: '/training' },
+    { label: '🤖 AI Tools',   href: '/resources' },
+    { label: '💻 Projects',   href: '/projects' },
+    { label: '🤝 Hire Waqas', href: '/hire' },
+    { label: '📝 Articles',   href: '/blog' },
+    { label: '⚡ Services',   href: '/services' },
+  ]
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
       <HeroBackground />
@@ -115,7 +144,45 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* ── Social proof strip — visible above fold ── */}
+            {/* ── BIG HERO SEARCH BAR ── */}
+            <div className="w-full max-w-2xl mx-auto mb-6">
+              <p className="text-center text-xs text-gray-500 font-medium mb-3 uppercase tracking-widest">
+                🔍 Search anything — courses, articles, projects, services
+              </p>
+              <form onSubmit={handleSearch} className="relative group">
+                {/* Glow ring */}
+                <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-accent-blue via-cyan-400 to-accent-blue opacity-30 blur group-focus-within:opacity-60 transition-opacity duration-300" />
+                <div className="relative flex items-center bg-dark-800/90 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-xl group-focus-within:border-accent-blue/50 transition-colors">
+                  <Search className="w-5 h-5 text-gray-500 ml-5 flex-shrink-0" />
+                  <input
+                    type="text"
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                    placeholder="Try: AI courses, Python projects, hire IT consultant…"
+                    className="flex-1 bg-transparent px-4 py-4 text-base text-white placeholder-gray-600 focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="m-2 px-5 py-2.5 rounded-xl bg-accent-blue hover:bg-blue-500 text-white text-sm font-bold transition-all shadow-[0_0_16px_rgba(59,130,246,0.4)] hover:shadow-[0_0_24px_rgba(59,130,246,0.6)] flex items-center gap-2 flex-shrink-0"
+                  >
+                    Search
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </form>
+              {/* Quick suggestion chips */}
+              <div className="flex flex-wrap items-center justify-center gap-2 mt-3">
+                {SUGGESTIONS.map(s => (
+                  <Link
+                    key={s.label}
+                    href={s.href}
+                    className="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-gray-400 hover:bg-accent-blue/15 hover:border-accent-blue/30 hover:text-white transition-all"
+                  >
+                    {s.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-5 py-3 px-5 rounded-2xl bg-white/3 border border-white/6">
               {[
                 { v: '15+', l: 'Years IT Experience', c: 'text-accent-blue' },
