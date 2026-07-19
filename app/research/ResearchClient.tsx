@@ -22,7 +22,7 @@ const PROFILES = [
   {
     label: 'ORCID',
     desc: 'Academic identifier & publication record',
-    href: 'https://orcid.org/0009-0007-8361-6123',
+    href: 'https://orcid.org/0009-0005-6754-3864',
     icon: '🆔',
     status: 'live',
     color: 'border-green-500/20 bg-green-500/5 hover:border-green-500/40',
@@ -213,6 +213,26 @@ export default function ResearchClient() {
             {['Enterprise AI', 'AIOps', 'Cloud Security', 'Generative AI'].map(t => (
               <span key={t} className="px-3 py-1 rounded-full text-xs font-semibold bg-accent-blue/10 border border-accent-blue/20 text-accent-blue">{t}</span>
             ))}
+          </motion.div>
+
+          {/* Quick profile links on hero */}
+          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={4}
+            className="flex flex-wrap gap-3 mt-4">
+            <a href="https://orcid.org/0009-0005-6754-3864" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-all">
+              🆔 ORCID Profile
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <a href="https://www.linkedin.com/in/syedwaqastayyab/" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0A66C2]/10 border border-[#0A66C2]/20 text-[#4A9FE0] text-xs font-semibold hover:bg-[#0A66C2]/20 transition-all">
+              💼 LinkedIn Profile
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <a href="https://github.com/waqastayyab2004-tech" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 text-xs font-semibold hover:bg-white/10 transition-all">
+              🐙 GitHub
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </motion.div>
         </div>
       </div>
