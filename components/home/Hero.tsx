@@ -117,9 +117,13 @@ export default function Hero() {
         @keyframes floatYS{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         @keyframes spinCW{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
         @keyframes orbP{0%,100%{opacity:.2}50%{opacity:.45}}
-        .r-walk-r{position:absolute;bottom:9%;animation:walkR 22s linear infinite}
-        .r-walk-l{position:absolute;bottom:5%;animation:walkL 30s linear infinite;animation-delay:-13s}
+        .r-walk-r {position:absolute;bottom:9%; animation:walkR 22s linear infinite}
+        .r-walk-l {position:absolute;bottom:5%; animation:walkL 30s linear infinite;animation-delay:-13s}
         .r-walk-r2{position:absolute;bottom:17%;animation:walkR 38s linear infinite;animation-delay:-22s}
+        .r-walk-l2{position:absolute;bottom:13%;animation:walkL 26s linear infinite;animation-delay:-7s}
+        .r-walk-r3{position:absolute;bottom:22%;animation:walkR 44s linear infinite;animation-delay:-30s}
+        .r-walk-l3{position:absolute;bottom:25%;animation:walkL 52s linear infinite;animation-delay:-40s}
+        .r-walk-r4{position:absolute;bottom:3%; animation:walkR 32s linear infinite;animation-delay:-18s}
         .fi{animation:floatY 4s ease-in-out infinite}
         .fis{animation:floatYS 6s ease-in-out infinite}
         .sp{animation:spinCW 14s linear infinite}
@@ -139,14 +143,33 @@ export default function Hero() {
 
       {/* ── Walking robots (z-2, behind content) ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{zIndex:2}}>
+        {/* Bot 1 — blue, walks right, bottom 9%, size 52 */}
         <div className="r-walk-r opacity-[0.18] hidden sm:block">
           <WalkingRobot color="#3B82F6" accent="#06B6D4" size={52} />
         </div>
+        {/* Bot 2 — purple, walks left, bottom 5%, size 40 */}
         <div className="r-walk-l opacity-[0.13] hidden sm:block">
           <WalkingRobot color="#5B3A8A" accent="#8B5CF6" size={40} />
         </div>
+        {/* Bot 3 — green, walks right, bottom 17%, size 34 */}
         <div className="r-walk-r2 opacity-[0.10] hidden md:block">
           <WalkingRobot color="#1E6A5A" accent="#10B981" size={34} />
+        </div>
+        {/* Bot 4 — cyan, walks left, bottom 13%, size 44 */}
+        <div className="r-walk-l2 opacity-[0.14] hidden sm:block">
+          <WalkingRobot color="#0e4a5a" accent="#22D3EE" size={44} />
+        </div>
+        {/* Bot 5 — red/orange, walks right, bottom 22%, size 30 */}
+        <div className="r-walk-r3 opacity-[0.09] hidden md:block">
+          <WalkingRobot color="#7a2020" accent="#F97316" size={30} />
+        </div>
+        {/* Bot 6 — yellow, walks left, bottom 25%, size 28 (tiny patrol) */}
+        <div className="r-walk-l3 opacity-[0.08] hidden lg:block">
+          <WalkingRobot color="#5a4a00" accent="#FACC15" size={28} />
+        </div>
+        {/* Bot 7 — pink/magenta, walks right, bottom 3%, size 36 */}
+        <div className="r-walk-r4 opacity-[0.11] hidden md:block">
+          <WalkingRobot color="#6a1a4a" accent="#EC4899" size={36} />
         </div>
       </div>
 
