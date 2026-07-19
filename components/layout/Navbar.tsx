@@ -72,6 +72,7 @@ const nav = [
           { href: '/training', icon: GraduationCap, label: 'IT Learning', desc: '12 courses — free & paid', badge: '12 Courses' },
           { href: '/insights', icon: Lightbulb, label: 'Insights', desc: 'IT topics, guides, and trends' },
           { href: '/resources', icon: Cpu, label: 'AI Tools', desc: 'Top 20 AI tools for IT professionals' },
+          { href: '/research', icon: Newspaper, label: 'Research', desc: 'Publications, open source & datasets', badge: 'New' },
         ],
       },
       {
