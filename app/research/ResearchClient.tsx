@@ -23,7 +23,9 @@ const PROFILES = [
     label: 'ORCID',
     desc: 'Academic identifier & publication record',
     href: 'https://orcid.org/0009-0005-6754-3864',
-    icon: '🆔',
+    logo: (
+      <svg viewBox="0 0 256 256" className="w-8 h-8"><path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z" fill="#A6CE39"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-20.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1 4.6-10.1 10.1-10.1 10.1 4.6 10.1 10.1z" fill="#fff"/></svg>
+    ),
     status: 'live',
     color: 'border-green-500/20 bg-green-500/5 hover:border-green-500/40',
     badge: 'text-green-400 bg-green-500/10 border-green-500/20',
@@ -33,7 +35,9 @@ const PROFILES = [
     label: 'Google Scholar',
     desc: 'Citation index & research metrics',
     href: null,
-    icon: '🎓',
+    logo: (
+      <svg viewBox="0 0 512 512" className="w-8 h-8"><path d="M256 411.12L0 202.667 256 0l256 202.667z" fill="#4285F4"/><path d="M118.584 426.003C101.677 417.3 88 403.6 88 403.6V512l168-77.19-137.416-8.807z" fill="#356AC3"/><path d="M393.416 426.003C410.323 417.3 424 403.6 424 403.6V512L256 434.81l137.416-8.807z" fill="#A0C3FF"/><path d="M256 460.8c-97.2 0-176-78.8-176-176S158.8 108.8 256 108.8s176 78.8 176 176-78.8 176-176 176z" fill="#76A7FA"/><path d="M256 460.8c-97.2 0-176-78.8-176-176h352c0 97.2-78.8 176-176 176z" fill="#4285F4"/></svg>
+    ),
     status: 'soon',
     color: 'border-white/10 bg-white/3 hover:border-white/20',
     badge: 'text-gray-500 bg-white/5 border-white/10',
@@ -43,20 +47,24 @@ const PROFILES = [
     label: 'GitHub',
     desc: 'Open source projects & code',
     href: 'https://github.com/waqastayyab2004-tech',
-    icon: '🐙',
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    ),
     status: 'live',
-    color: 'border-accent-blue/20 bg-accent-blue/5 hover:border-accent-blue/40',
-    badge: 'text-accent-blue bg-accent-blue/10 border-accent-blue/20',
+    color: 'border-gray-500/20 bg-gray-500/5 hover:border-gray-400/40',
+    badge: 'text-gray-300 bg-gray-500/10 border-gray-500/20',
     badgeLabel: 'Active',
   },
   {
     label: 'LinkedIn',
     desc: 'Professional profile & endorsements',
     href: 'https://www.linkedin.com/in/syedwaqastayyab/',
-    icon: '💼',
+    logo: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    ),
     status: 'live',
     color: 'border-[#0A66C2]/20 bg-[#0A66C2]/5 hover:border-[#0A66C2]/40',
-    badge: 'text-[#0A66C2] bg-[#0A66C2]/10 border-[#0A66C2]/20',
+    badge: 'text-[#4A9FE0] bg-[#0A66C2]/10 border-[#0A66C2]/20',
     badgeLabel: 'Active',
   },
 ]
@@ -249,7 +257,9 @@ export default function ResearchClient() {
                   <a href={p.href} target="_blank" rel="noopener noreferrer"
                     className={`flex flex-col gap-3 p-4 rounded-2xl border transition-all group ${p.color}`}>
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl">{p.icon}</span>
+                      <div className="w-10 h-10 flex items-center justify-center">
+                        {p.logo}
+                      </div>
                       <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${p.badge}`}>{p.badgeLabel}</span>
                     </div>
                     <div>
@@ -263,7 +273,9 @@ export default function ResearchClient() {
                 ) : (
                   <div className={`flex flex-col gap-3 p-4 rounded-2xl border transition-all ${p.color} opacity-60`}>
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl">{p.icon}</span>
+                      <div className="w-10 h-10 flex items-center justify-center">
+                        {p.logo}
+                      </div>
                       <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${p.badge}`}>{p.badgeLabel}</span>
                     </div>
                     <div>
