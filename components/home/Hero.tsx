@@ -279,33 +279,171 @@ export default function Hero() {
 
       </div>
 
-      {/* ── Avatar pair ── */}
+      {/* ── Human + AI Collaboration Scene ── */}
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.7 }}
-        className="relative w-full max-w-2xl mx-auto px-4 pb-20 flex items-end justify-center gap-12 sm:gap-20"
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="relative w-full max-w-3xl mx-auto px-4 pb-24"
         style={{zIndex:10}}>
-        <div className="flex flex-col items-center gap-2">
-          <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-accent-blue/40 overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.25)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/waqas-avatar.jpg" alt="Waqas Syed" className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
+
+        <style>{`
+          /* Orbit rings */
+          @keyframes orbitRing1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+          @keyframes orbitRing2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+          /* Data packets left→right */
+          @keyframes pktFwd{0%{left:0%;opacity:0;transform:scale(.4)}15%{opacity:1;transform:scale(1)}85%{opacity:1;transform:scale(1)}100%{left:100%;opacity:0;transform:scale(.4)}}
+          /* Data packets right→left */
+          @keyframes pktBwd{0%{right:0%;opacity:0;transform:scale(.4)}15%{opacity:1;transform:scale(1)}85%{opacity:1;transform:scale(1)}100%{right:100%;opacity:0;transform:scale(.4)}}
+          /* Avatar pulse glow */
+          @keyframes avatarGlow{0%,100%{box-shadow:0 0 20px rgba(59,130,246,.5),0 0 40px rgba(59,130,246,.15)}50%{box-shadow:0 0 40px rgba(59,130,246,.9),0 0 70px rgba(6,182,212,.3)}}
+          @keyframes botGlow{0%,100%{box-shadow:0 0 20px rgba(6,182,212,.5),0 0 40px rgba(6,182,212,.15)}50%{box-shadow:0 0 40px rgba(6,182,212,.9),0 0 70px rgba(59,130,246,.3)}}
+          /* Centre badge pulse */
+          @keyframes badgePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.04);opacity:.9}}
+          /* Dot orbit around avatars */
+          @keyframes dotOrbitL{from{transform:rotate(0deg) translateX(72px) rotate(0deg)}to{transform:rotate(360deg) translateX(72px) rotate(-360deg)}}
+          @keyframes dotOrbitL2{from{transform:rotate(120deg) translateX(76px) rotate(-120deg)}to{transform:rotate(480deg) translateX(76px) rotate(-480deg)}}
+          @keyframes dotOrbitR{from{transform:rotate(60deg) translateX(72px) rotate(-60deg)}to{transform:rotate(420deg) translateX(72px) rotate(-420deg)}}
+          @keyframes dotOrbitR2{from{transform:rotate(200deg) translateX(76px) rotate(-200deg)}to{transform:rotate(560deg) translateX(76px) rotate(-560deg)}}
+          .ring1{animation:orbitRing1 8s linear infinite}
+          .ring2{animation:orbitRing2 12s linear infinite}
+          .ring3{animation:orbitRing1 6s linear infinite}
+          .ring4{animation:orbitRing2 10s linear infinite}
+          .avatar-glow{animation:avatarGlow 3s ease-in-out infinite}
+          .bot-glow{animation:botGlow 3s ease-in-out infinite}
+          .badge-pulse{animation:badgePulse 2.5s ease-in-out infinite}
+          .dot-l1{animation:dotOrbitL 4s linear infinite}
+          .dot-l2{animation:dotOrbitL2 6s linear infinite}
+          .dot-r1{animation:dotOrbitR 3.5s linear infinite}
+          .dot-r2{animation:dotOrbitR2 5s linear infinite}
+          .pkt-fwd1{position:absolute;top:50%;transform:translateY(-50%);animation:pktFwd 2.2s ease-in-out infinite}
+          .pkt-fwd2{position:absolute;top:50%;transform:translateY(-50%);animation:pktFwd 2.2s ease-in-out infinite;animation-delay:.7s}
+          .pkt-fwd3{position:absolute;top:50%;transform:translateY(-50%);animation:pktFwd 2.2s ease-in-out infinite;animation-delay:1.4s}
+          .pkt-bwd1{position:absolute;top:50%;transform:translateY(-50%);animation:pktBwd 2.2s ease-in-out infinite;animation-delay:.35s}
+          .pkt-bwd2{position:absolute;top:50%;transform:translateY(-50%);animation:pktBwd 2.2s ease-in-out infinite;animation-delay:1.1s}
+        `}</style>
+
+        {/* Title above */}
+        <div className="text-center mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-accent-blue/10 border border-accent-blue/25 text-accent-blue uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
+            Human + AI = Real Magic
+          </span>
+        </div>
+
+        {/* Main row */}
+        <div className="flex items-center justify-center gap-0">
+
+          {/* ── LEFT: Waqas ── */}
+          <div className="flex flex-col items-center gap-3 flex-shrink-0">
+            {/* Avatar with orbit rings + dots */}
+            <div className="relative flex items-center justify-center" style={{width:160,height:160}}>
+              {/* Glow blob */}
+              <div className="absolute inset-0 rounded-full bg-accent-blue/10 blur-2xl" />
+              {/* Orbit ring 1 */}
+              <div className="ring1 absolute rounded-full border border-dashed border-accent-blue/30" style={{width:148,height:148}} />
+              {/* Orbit ring 2 */}
+              <div className="ring2 absolute rounded-full border border-cyan-400/15" style={{width:158,height:158}} />
+              {/* Orbiting dots */}
+              <div className="absolute" style={{width:0,height:0,top:'50%',left:'50%'}}>
+                <div className="dot-l1 absolute w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,1)]" style={{marginTop:-5,marginLeft:-5}} />
+              </div>
+              <div className="absolute" style={{width:0,height:0,top:'50%',left:'50%'}}>
+                <div className="dot-l2 absolute w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,1)]" style={{marginTop:-4,marginLeft:-4}} />
+              </div>
+              {/* Photo */}
+              <div className="avatar-glow relative w-28 h-28 rounded-full border-2 border-accent-blue/60 overflow-hidden z-10">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/waqas-avatar.jpg" alt="Waqas" className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
+              </div>
+              {/* Online dot */}
+              <span className="absolute bottom-3 right-3 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(74,222,128,.8)] z-20" />
+            </div>
+            <div className="text-center">
+              <p className="text-sm font-black text-white tracking-wide">Waqas</p>
+              <p className="text-[11px] text-gray-500 mt-0.5">IT Consultant · AI Engineer</p>
+              <div className="flex items-center justify-center gap-1 mt-1.5">
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-green-500/10 border border-green-500/20 text-green-400">Human</span>
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-accent-blue/10 border border-accent-blue/20 text-accent-blue">15+ yrs</span>
+              </div>
+            </div>
           </div>
-          <p className="text-xs font-bold text-white">Waqas Syed</p>
-          <p className="text-[10px] text-gray-500">IT Consultant · AI Engineer</p>
-        </div>
-        <div className="flex flex-col items-center gap-1 flex-shrink-0 pb-10">
-          <div className="w-px h-10 bg-gradient-to-b from-transparent via-accent-blue/40 to-transparent" />
-          <span className="text-[9px] text-gray-700 font-mono uppercase tracking-widest">+AI</span>
-          <div className="w-px h-10 bg-gradient-to-b from-transparent via-cyan-400/40 to-transparent" />
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-cyan-400/40 overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.2)] bg-dark-800">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/nexus-bot.jpg" alt="NEXUS-W1" className="w-full h-full object-cover object-top"/>
-            <span className="absolute bottom-1.5 right-1.5 w-3 h-3 bg-cyan-400 rounded-full border-2 border-dark-900 animate-pulse" />
+
+          {/* ── CENTRE: Data flow channel ── */}
+          <div className="flex-1 flex flex-col items-center gap-3 px-2 sm:px-4" style={{minWidth:120,maxWidth:220}}>
+
+            {/* Data flow beam */}
+            <div className="w-full flex flex-col gap-1.5">
+              {/* Forward stream (Waqas → Bot) */}
+              <div className="relative w-full h-2 rounded-full overflow-hidden" style={{background:'rgba(59,130,246,.08)'}}>
+                <div className="absolute inset-0 rounded-full" style={{background:'linear-gradient(90deg,transparent,rgba(59,130,246,.15),transparent)'}} />
+                <div className="pkt-fwd1 w-3 h-3 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,1)]" style={{marginTop:-2}} />
+                <div className="pkt-fwd2 w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,1)]" style={{marginTop:-1}} />
+                <div className="pkt-fwd3 w-2 h-2 rounded-full bg-white/60" style={{marginTop:0}} />
+              </div>
+              {/* Backward stream (Bot → Waqas) */}
+              <div className="relative w-full h-2 rounded-full overflow-hidden" style={{background:'rgba(6,182,212,.08)'}}>
+                <div className="absolute inset-0 rounded-full" style={{background:'linear-gradient(270deg,transparent,rgba(6,182,212,.15),transparent)'}} />
+                <div className="pkt-bwd1 w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)]" style={{marginTop:-2}} />
+                <div className="pkt-bwd2 w-2 h-2 rounded-full bg-violet-400 shadow-[0_0_6px_rgba(167,139,250,1)]" style={{marginTop:0}} />
+              </div>
+            </div>
+
+            {/* Centre badge */}
+            <div className="badge-pulse flex flex-col items-center gap-1 px-3 py-2 rounded-2xl bg-dark-800/80 border border-white/10 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,.4)]">
+              <div className="text-base font-black text-white leading-none">Human + AI</div>
+              <div className="text-[10px] text-accent-blue font-bold tracking-widest uppercase">= Real Magic</div>
+              <div className="flex items-center gap-1 mt-0.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
+                <span className="text-[9px] text-gray-600">Live Sync</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              </div>
+            </div>
+
+            {/* Labels */}
+            <div className="flex items-center justify-between w-full px-1">
+              <span className="text-[8px] text-accent-blue/60 font-mono">Ideas →</span>
+              <span className="text-[8px] text-cyan-400/60 font-mono">← Results</span>
+            </div>
           </div>
-          <p className="text-xs font-bold text-cyan-400">NEXUS-W1</p>
-          <p className="text-[10px] text-gray-500">Waqas AI Bot</p>
+
+          {/* ── RIGHT: Waqas Agentic Bot ── */}
+          <div className="flex flex-col items-center gap-3 flex-shrink-0">
+            <div className="relative flex items-center justify-center" style={{width:160,height:160}}>
+              <div className="absolute inset-0 rounded-full bg-cyan-400/8 blur-2xl" />
+              <div className="ring3 absolute rounded-full border border-dashed border-cyan-400/25" style={{width:148,height:148}} />
+              <div className="ring4 absolute rounded-full border border-accent-blue/15" style={{width:158,height:158}} />
+              <div className="absolute" style={{width:0,height:0,top:'50%',left:'50%'}}>
+                <div className="dot-r1 absolute w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)]" style={{marginTop:-5,marginLeft:-5}} />
+              </div>
+              <div className="absolute" style={{width:0,height:0,top:'50%',left:'50%'}}>
+                <div className="dot-r2 absolute w-2 h-2 rounded-full bg-violet-400 shadow-[0_0_6px_rgba(167,139,250,1)]" style={{marginTop:-4,marginLeft:-4}} />
+              </div>
+              <div className="bot-glow relative w-28 h-28 rounded-full border-2 border-cyan-400/60 overflow-hidden bg-dark-900 z-10">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/nexus-bot.jpg" alt="Waqas Agentic Bot" className="w-full h-full object-cover object-top"/>
+              </div>
+              <span className="absolute bottom-3 right-3 w-3.5 h-3.5 bg-cyan-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(6,182,212,.9)] animate-pulse z-20" />
+            </div>
+            <div className="text-center">
+              <p className="text-sm font-black text-cyan-400 tracking-wide">Waqas Agentic Bot</p>
+              <p className="text-[11px] text-gray-500 mt-0.5">AI Automation · Claude Powered</p>
+              <div className="flex items-center justify-center gap-1 mt-1.5">
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">AI Agent</span>
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-violet-500/10 border border-violet-500/20 text-violet-400">Always On</span>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        {/* Bottom caption */}
+        <div className="text-center mt-8">
+          <p className="text-xs text-gray-600 max-w-md mx-auto leading-relaxed">
+            Neither alone achieves the best outcome —{' '}
+            <span className="text-white font-semibold">human judgement</span> and{' '}
+            <span className="text-cyan-400 font-semibold">AI capability</span> together unlock what neither can do alone.
+          </p>
+        </div>
+
       </motion.div>
 
       {/* Bottom fade */}
@@ -313,3 +451,4 @@ export default function Hero() {
     </section>
   )
 }
+
