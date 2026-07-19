@@ -210,7 +210,7 @@ export default function Hero() {
       </div>
 
       {/* ── Main content (z-10) ── */}
-      <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 flex flex-col items-center text-center gap-6" style={{zIndex:10}}>
+      <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 flex flex-col items-center text-center gap-4" style={{zIndex:10}}>
 
         {/* Available badge */}
         <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
@@ -220,33 +220,35 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — one clean line each */}
         <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight max-w-4xl">
-          Build, Protect &amp; Grow Your<br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-cyan-400 to-accent-blue bg-[length:200%_auto] animate-gradient-x">
+          className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight max-w-3xl">
+          Build, Protect &amp; Grow Your{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-cyan-400 to-accent-blue bg-[length:200%_auto] animate-gradient-x whitespace-nowrap">
             Business with Enterprise IT
           </span>
         </motion.h1>
 
-        {/* Power line */}
+        {/* Power line — compact */}
         <motion.p custom={2} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-xl sm:text-2xl font-black text-white">
+          className="text-lg sm:text-xl font-bold text-white/90">
           Outsource IT.{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-cyan-400">
             Accelerate Everything.
           </span>
         </motion.p>
 
-        {/* Subline */}
-        <motion.p custom={3} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
-          Senior IT consulting &amp; managed services —{' '}
-          <strong className="text-white">Onsite across MENA</strong> and{' '}
-          <strong className="text-white">Remote globally</strong>.
-          Enterprise-grade IT delivered with AI automation, Azure security,
-          and 15+ years of real enterprise experience.
-        </motion.p>
+        {/* Subline — short, punchy, no wrapping paragraph */}
+        <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible"
+          className="flex flex-wrap items-center justify-center gap-2 text-sm text-gray-400">
+          <span>🌍 Onsite across <strong className="text-white">MENA</strong></span>
+          <span className="text-white/20">·</span>
+          <span>🌐 <strong className="text-white">Remote</strong> worldwide</span>
+          <span className="text-white/20">·</span>
+          <span>🤖 AI automation &amp; Azure security</span>
+          <span className="text-white/20">·</span>
+          <span>⚡ 15+ years experience</span>
+        </motion.div>
 
         {/* CTAs */}
         <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible"
@@ -296,9 +298,9 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Cert badges */}
+        {/* Cert badges — compact single row */}
         <motion.div custom={7} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex flex-wrap items-center justify-center gap-2">
+          className="flex flex-wrap items-center justify-center gap-1.5">
           {[
             { label: 'Azure Security', color: 'text-blue-400 border-blue-500/20 bg-blue-500/5' },
             { label: 'SAP AI Hub',     color: 'text-orange-400 border-orange-500/20 bg-orange-500/5' },
@@ -307,7 +309,7 @@ export default function Hero() {
             { label: 'ITIL v3',       color: 'text-cyan-400 border-cyan-500/20 bg-cyan-500/5' },
             { label: 'MBA · UK',      color: 'text-pink-400 border-pink-500/20 bg-pink-500/5' },
           ].map(c => (
-            <span key={c.label} className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold border ${c.color}`}>{c.label}</span>
+            <span key={c.label} className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${c.color}`}>{c.label}</span>
           ))}
         </motion.div>
 
