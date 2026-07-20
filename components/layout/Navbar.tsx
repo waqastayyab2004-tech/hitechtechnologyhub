@@ -48,15 +48,16 @@ const nav = [
       {
         group: 'Portfolio',
         items: [
-          { href: '/projects', icon: Code, label: 'Projects', desc: '24 real implementations with PMP docs' },
-          { href: '/about', icon: Briefcase, label: 'Portfolio', desc: 'CV, experience, certifications' },
+          { href: '/projects', icon: Code,      label: 'Projects',   desc: '44 real implementations with PMP docs' },
+          { href: '/about',    icon: Briefcase, label: 'Portfolio',   desc: 'CV, experience, certifications' },
+          { href: '/research', icon: Newspaper, label: 'Research',    desc: 'Publications, open source & datasets', badge: 'New' },
         ],
       },
       {
-        group: 'Case Studies',
+        group: 'Hire Me',
         items: [
-          { href: '/projects', icon: FileText, label: 'Change Management', desc: 'SCCM→Intune, ServiceNow migrations' },
-          { href: '/projects', icon: Brain, label: 'AI & Automation', desc: 'Python pipelines, Power Apps, ML tools' },
+          { href: '/hire',    icon: Users,    label: 'Hire Waqas',        desc: 'Services, rates & engagement details' },
+          { href: '/contact', icon: FileText, label: 'Free Consultation', desc: 'Talk to me — no commitment', badge: 'Free' },
         ],
       },
     ],
@@ -86,10 +87,6 @@ const nav = [
   {
     label: 'Articles',
     href: '/blog',
-  },
-  {
-    label: 'Portfolio',
-    href: '/about',
   },
 ]
 
