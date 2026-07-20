@@ -210,7 +210,7 @@ export default function Hero() {
       </div>
 
       {/* ── Main content (z-10) ── */}
-      <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 flex flex-col items-center text-center gap-4" style={{zIndex:10}}>
+      <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 flex flex-col items-center text-center gap-4 overflow-hidden" style={{zIndex:10}}>
 
         {/* Available badge */}
         <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
@@ -222,7 +222,7 @@ export default function Hero() {
 
         {/* Headline — one clean line each */}
         <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight max-w-3xl">
+          className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight max-w-3xl">
           Build, Protect &amp; Grow Your{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-cyan-400 to-accent-blue bg-[length:200%_auto] animate-gradient-x whitespace-nowrap">
             Business with Enterprise IT
