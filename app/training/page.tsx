@@ -1398,7 +1398,7 @@ export default function TrainingPage() {
                     </div>
                   ) : (
                     <form className="space-y-4" onSubmit={e => { e.preventDefault(); setSubmitted(true) }}>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-semibold text-gray-300 mb-1.5">Full Name *</label>
                           <input type="text" placeholder="Your name" required

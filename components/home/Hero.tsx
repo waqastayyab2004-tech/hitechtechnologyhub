@@ -374,18 +374,18 @@ export default function Hero() {
         </div>
 
         {/* Main row */}
-        <div className="flex items-center justify-center gap-0">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-0">
 
           {/* ── LEFT: Waqas ── */}
           <div className="flex flex-col items-center gap-3 flex-shrink-0">
             {/* Avatar with orbit rings + dots */}
-            <div className="relative flex items-center justify-center" style={{width:160,height:160}}>
+            <div className="relative flex items-center justify-center" style={{width:130,height:130}}>
               {/* Glow blob */}
               <div className="absolute inset-0 rounded-full bg-accent-blue/10 blur-2xl" />
               {/* Orbit ring 1 */}
-              <div className="ring1 absolute rounded-full border border-dashed border-accent-blue/30" style={{width:148,height:148}} />
+              <div className="ring1 absolute rounded-full border border-dashed border-accent-blue/30" style={{width:118,height:118}} />
               {/* Orbit ring 2 */}
-              <div className="ring2 absolute rounded-full border border-cyan-400/15" style={{width:158,height:158}} />
+              <div className="ring2 absolute rounded-full border border-cyan-400/15" style={{width:128,height:128}} />
               {/* Orbiting dots */}
               <div className="absolute" style={{width:0,height:0,top:'50%',left:'50%'}}>
                 <div className="dot-l1 absolute w-2.5 h-2.5 rounded-full bg-accent-blue shadow-[0_0_8px_rgba(59,130,246,1)]" style={{marginTop:-5,marginLeft:-5}} />
@@ -394,7 +394,7 @@ export default function Hero() {
                 <div className="dot-l2 absolute w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,1)]" style={{marginTop:-4,marginLeft:-4}} />
               </div>
               {/* Photo */}
-              <div className="avatar-glow relative w-28 h-28 rounded-full border-2 border-accent-blue/60 overflow-hidden z-10">
+              <div className="avatar-glow relative w-24 h-24 rounded-full border-2 border-accent-blue/60 overflow-hidden z-10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/waqas-avatar.jpg" alt="Waqas" className="w-full h-full object-cover" style={{objectPosition:'center 5%'}}/>
               </div>
@@ -412,7 +412,7 @@ export default function Hero() {
           </div>
 
           {/* ── CENTRE: Slow loading-bar data flow ── */}
-          <div className="flex-1 flex flex-col items-center gap-2 px-2 sm:px-4" style={{minWidth:130,maxWidth:230}}>
+          <div className="flex-1 flex flex-col items-center gap-2 px-2 sm:px-4" style={{minWidth:0,maxWidth:230}}>
 
             {/* Forward bars: Human → AI (knowledge/data labels) */}
             <div className="w-full flex flex-col gap-1.5">
@@ -477,17 +477,17 @@ export default function Hero() {
 
           {/* ── RIGHT: Waqas Agentic Bot ── */}
           <div className="flex flex-col items-center gap-3 flex-shrink-0">
-            <div className="relative flex items-center justify-center" style={{width:160,height:160}}>
+            <div className="relative flex items-center justify-center" style={{width:130,height:130}}>
               <div className="absolute inset-0 rounded-full bg-cyan-400/8 blur-2xl" />
-              <div className="ring3 absolute rounded-full border border-dashed border-cyan-400/25" style={{width:148,height:148}} />
-              <div className="ring4 absolute rounded-full border border-accent-blue/15" style={{width:158,height:158}} />
+              <div className="ring3 absolute rounded-full border border-dashed border-cyan-400/25" style={{width:118,height:118}} />
+              <div className="ring4 absolute rounded-full border border-accent-blue/15" style={{width:128,height:128}} />
               <div className="absolute" style={{width:0,height:0,top:'50%',left:'50%'}}>
                 <div className="dot-r1 absolute w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,1)]" style={{marginTop:-5,marginLeft:-5}} />
               </div>
               <div className="absolute" style={{width:0,height:0,top:'50%',left:'50%'}}>
                 <div className="dot-r2 absolute w-2 h-2 rounded-full bg-violet-400 shadow-[0_0_6px_rgba(167,139,250,1)]" style={{marginTop:-4,marginLeft:-4}} />
               </div>
-              <div className="bot-glow relative w-28 h-28 rounded-full border-2 border-cyan-400/60 overflow-hidden bg-dark-900 z-10">
+              <div className="bot-glow relative w-24 h-24 rounded-full border-2 border-cyan-400/60 overflow-hidden bg-dark-900 z-10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/nexus-bot.jpg" alt="Waqas Agentic Bot" className="w-full h-full object-cover object-top"/>
               </div>

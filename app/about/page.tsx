@@ -333,7 +333,7 @@ export default function PortfolioPage() {
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-4 gap-3 mb-8 max-w-lg">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-lg">
                 {stats.map((s) => (
                   <div key={s.label} className="p-3 text-center rounded-xl"
                     style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.10)' }}>
@@ -612,7 +612,7 @@ export default function PortfolioPage() {
               </div>
 
               {/* 10 task area cards */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
                 {[
                   { icon: '📦', title: 'IT Asset Lifecycle',     desc: '1,500–2,000+ devices · procurement to disposal',  color: '#f97316' },
                   { icon: '📧', title: 'Email & Identity',       desc: 'Exchange Online · MFA · mailbox governance',       color: '#3b82f6' },
@@ -630,7 +630,7 @@ export default function PortfolioPage() {
                     style={{ background: `${task.color}08`, borderColor: `${task.color}25` }}
                     onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${task.color}55` }}
                     onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${task.color}25` }}>
-                    <span className="text-2xl">{task.icon}</span>
+                    <span className="text-lg sm:text-2xl">{task.icon}</span>
                     <div>
                       <p className="text-white font-bold text-xs leading-snug mb-1">{task.title}</p>
                       <p className="text-gray-500 text-[10px] leading-snug">{task.desc}</p>

@@ -817,7 +817,7 @@ export default function ServicesPage() {
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-bold text-white mb-3">{c.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">{c.desc}</p>
-                  <div className="grid grid-cols-2 gap-2 pt-4 border-t border-white/5">
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 pt-4 border-t border-white/5">
                     {c.results.map(r => (
                       <div key={r} className="flex items-start gap-1.5 text-xs text-green-400">
                         <CheckCircle className="w-3 h-3 flex-shrink-0 mt-0.5"/>
