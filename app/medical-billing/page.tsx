@@ -449,7 +449,7 @@ export default function MedicalBillingPage() {
                         <p className="text-[10px] font-black text-white leading-tight">{m.name}</p>
                         <p className="text-[9px] text-rose-300 font-semibold mt-0.5">{m.role}</p>
                         <p className="text-[8px] text-gray-600 mt-1">{m.sub}</p>
-                        <p className="text-[8px] text-gray-700 mt-1 italic">Details soon</p>
+                        <p className="text-[8px] text-gray-500 mt-1">Hiring soon</p>
                       </div>
                     </div>
                   ))}

@@ -51,10 +51,10 @@ const experiences = [
 ]
 
 const certifications = [
-  { name: 'Discovering SAP Generative AI Hub (AIG02)', issuer: 'SAP', year: 'Jul 2026', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', hot: true },
+  { name: 'Discovering SAP Generative AI Hub (AIG02)', issuer: 'SAP', year: 'Jun 2026', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', hot: true },
   { name: 'Developing AI Models with Python ML for SAP HANA', issuer: 'SAP', year: 'May 2026', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', hot: true },
   { name: 'AI-Driven Project Manager: 10X Productivity with GenAI', issuer: 'QAS', year: 'Dec 2025', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20', hot: true },
-  { name: 'Microsoft Certified: Azure Security Engineer Associate', issuer: 'Microsoft', year: 'Jul 2024', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', hot: false },
+  { name: 'Microsoft Certified: Azure Security Engineer Associate', issuer: 'Microsoft', year: 'Jul 2025 · Renewed Jul 2027', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', hot: true },
   { name: 'SAP Certified Technology Consultant — SAP S/4HANA Admin', issuer: 'SAP', year: 'Mar 2022', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20', hot: false },
   { name: 'SAP Certified Application Associate — SAP Analytics Cloud', issuer: 'SAP', year: 'Jan 2023', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20', hot: false },
   { name: 'PMP Training — 35 PDUs', issuer: 'PMI', year: 'Feb 2017', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', hot: false },
@@ -93,7 +93,7 @@ export default function ContactClient() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold uppercase tracking-widest mb-5">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"/>
-              Currently Accepting New Clients
+              Available for New Projects — MENA &amp; Remote
             </div>
             <h1 className="text-4xl sm:text-5xl font-black text-white mb-3">
               Request a Free{' '}

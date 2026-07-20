@@ -300,7 +300,7 @@ export default function AIToolsPage() {
       <ScrollReveal className="text-center mb-10">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-accent-blue/10 border border-accent-blue/30 text-accent-blue mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
-          Updated July 2026
+          Updated 2026
         </div>
         <h1 className="section-heading mb-4">
           Top 20 <span className="gradient-text">AI Tools</span>
@@ -389,7 +389,7 @@ export default function AIToolsPage() {
       {/* Footer note */}
       <ScrollReveal className="text-center mt-14">
         <p className="text-gray-600 text-sm">
-          🛠️ All tools personally evaluated by Waqas · Updated July 2026 · {tools.length} tools listed
+          🛠️ All tools personally evaluated by Waqas · Updated 2026 · {tools.length} tools listed
         </p>
       </ScrollReveal>
     </div>
