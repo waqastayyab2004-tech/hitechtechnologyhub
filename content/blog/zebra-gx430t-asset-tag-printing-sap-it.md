@@ -32,6 +32,26 @@ This is our actual unit, still in service at the SAP IT desk. Every IT asset tha
 
 ---
 
+
+## Why Zebra? The Industry Credentials
+
+![Zebra Technologies](/zebra-logo.svg)
+
+Zebra isn't just another hardware vendor. The numbers explain why enterprise IT teams around the world trust them:
+
+| Stat | What It Means |
+|------|--------------|
+| **80%+** of Fortune 500 companies work with Zebra | Your peers are already using this ecosystem |
+| **#1** global leader in thermal printing, barcode scanning, rugged mobile computing, RFID readers and retail task management software | Industry-standard, not niche |
+| **56+** years dedicated to frontline operations | This is all they do — not a side product |
+
+> *"Tap into the world's foundation for intelligent operations and discover countless ways to make your most critical workflows faster, simpler and more efficient. The result? Better experiences for your employees and the customers they serve every day."* — Zebra Technologies
+
+At SAP IT Riyadh, we are part of that 80%+ — and the reliability speaks for itself. The GX430t has been printing every working day for 3 years without a single hardware failure.
+
+![Zebra GX430t in warehouse operations](/zebra-gx430t-warehouse.jpg)
+
+---
 ## What the GX430t Does for Us
 
 The Zebra GX430t prints **QR code asset tags** for every piece of IT equipment we manage:
