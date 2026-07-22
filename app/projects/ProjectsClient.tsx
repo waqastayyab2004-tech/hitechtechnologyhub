@@ -2,11 +2,14 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import { CheckCircle, X, ExternalLink, Github, ArrowRight, Target, Users, Clock, TrendingUp, FileText, Search } from 'lucide-react'
+import { CheckCircle, X, ExternalLink, Github, ArrowRight, Target, Users, Clock, TrendingUp, FileText, Search,
+  Package, Mail, Shield, Monitor, Smartphone, Laptop, Cloud, Printer, Tag, Lock, Globe,
+  Bot, Bell, Link2, Server, BarChart2, RefreshCw, Ticket, BookOpen, Video, Mic, Building2,
+  Layers, Network, Cpu, Database, Zap, Settings, HardDrive, Wifi, Key, ClipboardList, Layout } from 'lucide-react'
 
 /* ── TYPES ─────────────────────────────────────────────────────── */
 interface Project {
-  emoji: string
+  icon: React.ElementType
   title: string
   subtitle: string
   description: string
@@ -34,7 +37,7 @@ const projects: Project[] = [
 
   // ── GROUP 0: Daily IT Operations ───────────────────────────────
   {
-    emoji: '📦', group: 'Daily IT Operations',
+    icon: Package, group: 'Daily IT Operations',
     title: 'IT Asset Lifecycle Management', subtitle: 'Hardware Tracking · Procurement · Compliance · 1,500–2,000+ Assets',
     status: 'Live', category: 'Asset Management · ITSM',
     description: 'Full lifecycle management of enterprise IT hardware — procurement, assignment, tracking, return, and disposal. Maintains 100% asset accuracy for compliance audits and management reporting across a large multi-office environment.',
@@ -43,7 +46,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Manage complete hardware asset lifecycle for a large enterprise — from procurement through assignment, health monitoring, return, and decommission.', objectives: ['Maintain 100% accuracy of asset records at all times', 'Ensure all returned devices are inspected and redeployed within SLA', 'Flag inactive assets for cost recovery', 'Support compliance audits with full audit trail'], stakeholders: 'IT Manager, Finance (procurement), HR (onboarding/offboarding), end users, C-level (asset cost visibility)', timeline: 'Ongoing daily operations', outcomes: ['1,500–2,000+ assets tracked with 100% accuracy', 'Zero duplicate serial numbers since process standardisation', 'Offboarding device recovery rate: 95%+', 'Compliance audits passed with full documentation'], skillsApplied: ['Asset Lifecycle Management', 'Inventory Control', 'MDM Administration', 'Compliance Reporting', 'Vendor Coordination'], toolsUsed: ['Enterprise Asset Management ERP', 'Microsoft Intune', 'Jamf MDM', 'ITSM Ticketing System', 'Power BI', 'Microsoft Excel'], learnings: ['Asset accuracy degrades rapidly without daily MDM compliance checks', 'Inactivity monitoring prevents thousands of dollars of idle hardware from being forgotten', 'Digital audit trails are the difference between passing and failing a compliance audit'] },
   },
   {
-    emoji: '📧', group: 'Daily IT Operations',
+    icon: Mail, group: 'Daily IT Operations',
     title: 'Email Platform & Identity Administration', subtitle: 'Exchange Online · Mailbox Admin · MFA · Password Governance',
     status: 'Live', category: 'M365 Administration · Identity',
     description: 'Daily administration of enterprise email platform and identity services — mailbox management, security policy enforcement, MFA configuration, password governance, and shared mailbox lifecycle across a 200+ user environment.',
@@ -52,7 +55,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Administer enterprise email and identity services for 200+ users — covering mailbox management, security policy enforcement, and MFA governance.', objectives: ['Maintain zero email delivery failures due to quota issues', 'Enforce MFA for all user accounts with zero exceptions', 'Process mailbox requests within agreed SLA', 'Respond to phishing reports within 1 hour'], stakeholders: 'All 200+ employees, IT Manager, Finance (shared mailbox cost allocation), Security team', timeline: 'Ongoing daily operations', outcomes: ['Zero email delivery failures due to mailbox mismanagement', '100% MFA coverage across all user accounts', 'Phishing response time: under 1 hour consistently', 'Shared mailbox lifecycle fully documented and auditable'], skillsApplied: ['Exchange Online Administration', 'Identity & Access Management', 'Email Security', 'MFA Configuration', 'Password Policy Enforcement'], toolsUsed: ['Microsoft Exchange Online', 'Azure AD / Entra ID', 'Microsoft 365 Admin Centre', 'RSA SecurID', 'Microsoft Authenticator', 'Outlook (Win/Mac/Web)'], learnings: ['Proactive quota alerts at 80% prevent user-reported delivery failures entirely', 'MFA with named locations strikes the right balance — secure without frustrating VPN users', 'A shared mailbox review every 6 months prevents ghost accounts accumulating licence costs'] },
   },
   {
-    emoji: '🛡️', group: 'Daily IT Operations',
+    icon: Shield, group: 'Daily IT Operations',
     title: 'Endpoint Security & Compliance Monitoring', subtitle: 'Intune · Defender · BitLocker · CyberArk · Device Health',
     status: 'Live', category: 'Cybersecurity · Endpoint Management',
     description: 'Daily monitoring and remediation of endpoint security posture across Windows and macOS devices — antivirus health, BitLocker encryption compliance, endpoint privilege management, DLP policy enforcement, and Conditional Access remediation.',
@@ -61,7 +64,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Maintain endpoint security compliance across all managed devices — proactive monitoring, daily remediation, and escalation of security policy violations.', objectives: ['Maintain 95%+ endpoint compliance at all times', 'Ensure zero unencrypted devices in the estate', 'Respond to DLP violations within the same business day', 'Keep Microsoft Secure Score trending upward'], stakeholders: 'Security/CISO (compliance requirements), IT Manager (reporting), all device users (remediation), Audit (evidence)', timeline: 'Ongoing daily operations', outcomes: ['Endpoint compliance: maintained at 94%+', 'Secure Score: 41% → 78% over 12 months', 'Zero unencrypted devices in estate since BitLocker rollout', 'DLP violation response time: same-day consistently'], skillsApplied: ['Endpoint Security Management', 'Compliance Monitoring', 'Vulnerability Remediation', 'Privilege Management', 'Security Reporting'], toolsUsed: ['Microsoft Intune', 'Microsoft Defender for Endpoint', 'Trellix / McAfee', 'CyberArk EPAM', 'BitLocker', 'Azure AD Conditional Access'], learnings: ['Daily compliance dashboards catch drift before it becomes an audit finding', 'CyberArk EPAM reduces privilege-related incidents to near zero — the audit trail alone is worth it', 'Secure Score gamification motivates the team — weekly score reviews drive consistent improvement'] },
   },
   {
-    emoji: '🍎', group: 'Daily IT Operations',
+    icon: Monitor, group: 'Daily IT Operations',
     title: 'macOS Corporate Enrolment, Jamf MDM & Daily Mac Support', subtitle: 'Apple ADE · Jamf Pro · FileVault · SSO · Self Service · 50+ Mac Fleet',
     status: 'Live', category: 'macOS Support · Jamf MDM',
     description: 'End-to-end corporate macOS management — from Automated Device Enrolment (ADE) and Jamf Pro administration through daily support: FileVault encryption, Kerberos SSO, VPN configuration, Self Service app portal, compliance monitoring, and troubleshooting. Approximately 95% of corporate Macs are enrolled via ADE (zero-touch); remaining 5% use manual Device Enrolment (DE) process. BYOD personal Macs are not permitted on corporate systems.',
@@ -128,7 +131,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📱', group: 'Daily IT Operations',
+    icon: Smartphone, group: 'Daily IT Operations',
     title: 'Mobile Device Management (iOS & Android)', subtitle: 'Jamf · Intune · ADE · Corporate & BYOD · 200+ Devices',
     status: 'Live', category: 'Mobile Device Management · MDM',
     description: 'Daily management of corporate and BYOD mobile devices — iOS, iPadOS, and Android — covering MDM enrolment, compliance enforcement, MFA bootstrapping, certificate management, and full decommission workflow.',
@@ -137,7 +140,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Manage all corporate and BYOD mobile devices from enrolment through decommission — ensuring compliance, security, and seamless user experience.', objectives: ['Maintain 100% MDM enrolment for all corporate mobile devices', 'Enforce OS compliance (iOS latest, Android patches < 6 months)', 'Complete device enrolment in under 15 minutes per device', 'Ensure zero expired SSO certificates in the estate'], stakeholders: 'All mobile device users (200+), IT Manager, Security (compliance), HR (onboarding/offboarding)', timeline: 'Ongoing daily operations', outcomes: ['100% corporate mobile device MDM compliance', 'Enrolment time: 10–15 minutes per device', 'Zero SSO certificate expiry incidents since auto-renew policy', 'BYOD personal data fully isolated from corporate data'], skillsApplied: ['Mobile Device Management', 'iOS/Android Administration', 'MDM Policy Design', 'MFA Configuration', 'BYOD Programme Management'], toolsUsed: ['Jamf Pro (iOS/iPadOS)', 'Microsoft Intune (Android)', 'Apple ADE', 'Microsoft Authenticator', 'Cisco Security Connector', 'Azure AD / Entra ID'], learnings: ['Apple ADE supervised mode is non-negotiable for corporate iOS — it enables app management that BYOD cannot match', 'TAP-based MFA bootstrapping removes the last reason for legacy authentication on new devices', 'Certificate auto-renewal policies must be tested before rollout — silent expiry causes mass access failures'] },
   },
   {
-    emoji: '💻', group: 'Daily IT Operations',
+    icon: Laptop, group: 'Daily IT Operations',
     title: 'Windows Endpoint Provisioning & Management', subtitle: 'Intune Autopilot · SCCM · Windows 11 · PC Migration',
     status: 'Live', category: 'Windows Management · Provisioning',
     description: 'Daily provisioning, migration, and management of Windows endpoints — from Autopilot zero-touch setup and SCCM software deployment through compliance remediation, PC-to-PC migrations, and multi-factor authentication setup.',
@@ -146,7 +149,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Provision, migrate, and manage all Windows endpoints — ensuring Day 1 readiness, compliance, and ongoing software management for 200+ users.', objectives: ['Achieve zero-touch device provisioning for all new hires', 'Complete PC migrations with zero data loss', 'Maintain 95%+ Windows compliance at all times', 'Deliver executive devices within 30-minute SLA'], stakeholders: 'All Windows users (200+), IT Manager, HR (new hire coordination), Finance (software licensing)', timeline: 'Ongoing daily operations', outcomes: ['New device setup: 3.5 hrs → 45 min with Autopilot', 'Zero data loss incidents during PC migrations', 'Windows compliance maintained at 94%+', 'Executive device SLA met: 100% of deliveries'], skillsApplied: ['Windows Endpoint Management', 'Intune/Autopilot Administration', 'SCCM/Endpoint Manager', 'Data Migration', 'Compliance Management'], toolsUsed: ['Microsoft Intune', 'Autopilot', 'SCCM / Microsoft Endpoint Manager', 'Windows 11', 'OneDrive', 'M365 Admin Centre', 'Lenovo/Dell/HP hardware'], learnings: ['Autopilot with pre-assigned user profiles eliminates the "IT waiting room" for new starters', 'OneDrive Known Folder Move means PC migration is just waiting for sync to complete', 'Compliance checks must run before executive device delivery — not after the user calls you'] },
   },
   {
-    emoji: '☁️', group: 'Daily IT Operations',
+    icon: Cloud, group: 'Daily IT Operations',
     title: 'Microsoft 365 Cloud Collaboration Support', subtitle: 'Teams · SharePoint · OneDrive · Exchange · Daily Admin',
     status: 'Live', category: 'M365 Administration · Cloud',
     description: 'Daily administration and user support for the full Microsoft 365 collaboration suite — Teams, SharePoint Online, OneDrive, and Exchange — covering permissions, data recovery, licensing, and platform governance.',
@@ -155,7 +158,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Administer and support the full M365 collaboration platform for 200+ users — ensuring data protection, permissions governance, and platform reliability.', objectives: ['Zero data loss from SharePoint/OneDrive deletions within recovery window', 'Respond to Teams/SharePoint requests within agreed SLA', 'Maintain licence optimisation — zero unused licences after quarterly review', 'Enforce external sharing policies — no uncontrolled data leakage'], stakeholders: 'All 200+ users, IT Manager, Finance (licence costs), Security (data governance), Compliance', timeline: 'Ongoing daily operations', outcomes: ['Zero data loss incidents — 100% recovery success within recycle bin window', 'Licence costs reduced 12% through quarterly reclaim audits', 'External sharing governance enforced — zero policy violations in 12 months', 'Teams adoption: 100% of meetings via Teams — legacy VC decommissioned'], skillsApplied: ['Microsoft 365 Administration', 'SharePoint Online Management', 'Teams Administration', 'Data Governance', 'Licence Management'], toolsUsed: ['Microsoft Teams Admin Centre', 'SharePoint Admin Centre', 'OneDrive Admin Centre', 'M365 Admin Centre', 'Power Automate', 'Exchange Online'], learnings: ['93-day SharePoint recycle bin has saved multiple "accidental deletion" escalations', 'Quarterly licence audits pay for themselves — unused E5 licences are expensive', 'Self-service SharePoint provisioning portal reduces IT requests and empowers team owners'] },
   },
   {
-    emoji: '🖨️', group: 'Printer Management',
+    icon: Printer, group: 'Printer Management',
     title: 'Print Infrastructure & Meeting Room AV', subtitle: 'HP MFP Fleet · Badge Printing · Teams Rooms · Crestron · Daily Ops',
     status: 'Live', category: 'Print Management · AV Operations',
     description: 'Daily management of enterprise print fleet and meeting room AV systems — toner monitoring, badge-secured pull-printing, Teams Room health checks, and reactive AV support across all office locations.',
@@ -164,7 +167,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Maintain enterprise print fleet and all meeting room AV systems — proactive monitoring, consumables management, and reactive support.', objectives: ['Zero print outages due to toner depletion', 'Meeting room AV availability: 99%+ at all times', 'Reactive AV response: 30 minutes from report', 'All Teams Rooms on current certified firmware'], stakeholders: 'All office users, IT Manager, Facilities (room booking), C-suite (boardroom AV reliability)', timeline: 'Ongoing daily operations', outcomes: ['Zero toner outage incidents since monitoring implementation', '99%+ meeting room AV availability maintained', 'C-suite boardroom: zero AV failures across 50+ executive events', 'Print fleet costs reduced via empty cartridge return programme'], skillsApplied: ['Print Fleet Management', 'AV Systems Administration', 'Teams Rooms Management', 'Reactive Support', 'Vendor Coordination'], toolsUsed: ['HP MFP + WebJet Admin', 'MS Teams Rooms Admin Centre', 'Crestron XiO Cloud', 'Wolfvision Cynap', 'Evoko booking panels', 'Surface Hub', 'SIPORT badge system'], learnings: ['Toner auto-ordering at 5% prevents the 9 AM "printer is out of toner" escalation', 'QR code on every room screen removes friction for AV issue reporting — incidents get raised faster', 'Nightly Teams Rooms health checks catch camera/audio failures before the first morning meeting'] },
   },
   {
-    emoji: '📛', group: 'Printer Management',
+    icon: Tag, group: 'Printer Management',
     title: 'Zebra GX430t — QR Code Asset Tag Printing System', subtitle: 'Zebra GX430t · QR Code · Asset Tags · All IT Equipment · 3 Years Production',
     status: 'Live', category: 'IT Asset Management · Printer Management',
     description: 'Deployed the Zebra GX430t desktop label printer 3 years ago and built a complete QR code asset tagging workflow for all SAP IT equipment. Every device — laptops, iPhones, iPads, APs, network switches, server room hardware — is labelled before leaving the IT desk. QR codes are scanned by the CLEA mobile app, hand scanners, and direct QR readers to update asset records in real time.',
@@ -204,7 +207,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '🏷️', group: 'Printer Management',
+    icon: Tag, group: 'Printer Management',
     title: 'Zebra ZT411 RFID Printer — SAP IT Asset Tag Deployment', subtitle: 'Zebra ZT411 · RFID · Asset Tags · SAP IT Link Center · RUH02',
     status: 'Live', category: 'IT Asset Management · RFID',
     description: 'End-to-end deployment of the Zebra ZT411 industrial RFID printer at the SAP IT Link Center, Riyadh — from unboxing and hardware setup through RFID calibration, label media loading, and EU RED security activation. Used daily to print RFID-enabled asset tags for all IT hardware entering and leaving the office.',
@@ -244,7 +247,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '🔐', group: 'Daily IT Operations',
+    icon: Lock, group: 'Daily IT Operations',
     title: 'User Provisioning, Access Control & MFA', subtitle: 'Azure AD · Intune · Onboarding/Offboarding · 140+ Employees',
     status: 'Live', category: 'Identity & Access Management · IAM',
     description: 'Daily provisioning and deprovisioning of user accounts, device enrolments, and access rights across Azure AD, M365, and enterprise platforms — including MFA setup, Conditional Access remediation, and full offboarding within 2 hours.',
@@ -253,7 +256,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Provision and deprovision all user accounts and devices — ensuring Day 1 readiness for joiners and secure, complete offboarding for leavers within SLA.', objectives: ['Day 1 IT readiness: account + device + MFA active before user arrives', 'Complete offboarding within 2 hours of last working day', 'Zero security gaps from incomplete offboarding', 'Executive onboarding: white-glove, 30-minute setup'], stakeholders: 'HR (process trigger), IT Manager (SLA owner), new hires (Day 1 experience), leavers, Security (offboarding compliance)', timeline: 'Ongoing daily operations', outcomes: ['Day 1 setup: 4 hours → 30 minutes', '140+ onboardings — zero Day 1 failures', 'Offboarding completed within 2 hours: 100% compliance', 'Zero security incidents from incomplete account deprovisioning'], skillsApplied: ['Identity & Access Management', 'Azure AD Administration', 'Intune Device Management', 'Onboarding/Offboarding Process Design', 'DocuSign Digital Workflows'], toolsUsed: ['Azure AD / Entra ID', 'Microsoft Intune/Autopilot', 'ServiceNow', 'DocuSign', 'Power Automate', 'CLEA App', 'M365 Admin Centre'], learnings: ['T-14 day pre-trigger is the most impactful single change in any onboarding process', 'DocuSign asset assignment removes paper entirely and creates a legally admissible audit trail', 'Offboarding is more security-critical than onboarding — a forgotten account is an open door'] },
   },
   {
-    emoji: '🌐', group: 'Daily IT Operations',
+    icon: Wifi, group: 'Daily IT Operations',
     title: 'Network, VPN & Connectivity Support', subtitle: 'Cisco · Aruba · GlobalProtect · 802.1X · Daily Ops',
     status: 'Live', category: 'Network Administration · Connectivity',
     description: 'Daily network support and administration — VPN connectivity, Wi-Fi 802.1X certificate authentication, NAC compliance, switch/AP troubleshooting, and ISP circuit management across three office locations.',
@@ -264,7 +267,7 @@ const projects: Project[] = [
 
   // ── GROUP 1: Built Apps & Tools ──────────────────────────
   {
-    emoji: '🤖', group: 'Built Apps & Tools',
+    icon: Bot, group: 'Built Apps & Tools',
     title: 'Waqas AI Hub', subtitle: 'AI-Powered macOS Desktop Dashboard',
     status: 'Live', category: 'AI Dashboard · macOS',
     description: 'A native macOS Swift app + FastAPI web dashboard replacing terminal commands for all daily IT work. Single click to view emails, calendar, ServiceNow tickets, OneDrive files, and WhatsApp SLA alerts in one Teams-style interface.',
@@ -274,7 +277,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Build a unified AI-powered dashboard replacing 6+ separate tools used daily for IT operations management.', objectives: ['Eliminate context-switching between 6+ tools', 'Automate daily email triage saving 35+ min/day', 'Surface SLA breach risks 30 minutes before breach', 'Create single pane of glass for all IT data sources'], stakeholders: 'Personal productivity tool for senior IT engineer managing daily operations', timeline: '3 months development, ongoing', outcomes: ['100+ minutes/day reclaimed from manual tasks', 'Zero SLA breaches for 6 consecutive months', 'Email triage time: 40 min → 5 min/day', 'All IT tools accessible via single interface'], skillsApplied: ['Python Development', 'REST API Integration', 'macOS App Development', 'System Architecture'], toolsUsed: ['Python 3.11', 'FastAPI', 'Swift/WebKit', 'Microsoft Graph API', 'Twilio API', 'LaunchAgent'], learnings: ['Integrating multiple enterprise APIs in a single dashboard reduces context-switching significantly', 'macOS Swift wrappers enable quick native-feel apps without full native development', 'Automation agents work best when triggered by schedules rather than manual execution'] },
   },
   {
-    emoji: '📦', group: 'Built Apps & Tools',
+    icon: Package, group: 'Built Apps & Tools',
     title: 'IT Asset Manager', subtitle: 'Enterprise Asset Tracking Web App',
     status: 'Live', category: 'Web Application · IT Tool',
     description: 'Full-stack Flask web app replacing Excel-based IT asset tracking. Manages 1,500–2,000+ active assets across MENA — modelled on SAP ISP ERP workflows. Includes AI chat widget for natural language queries.',
@@ -284,7 +287,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Replace a broken shared Excel file with a proper asset management web application aligned to enterprise ERP workflows.', objectives: ['Eliminate duplicate serial numbers and data conflicts', 'Reduce asset query time from 10 min to under 30 sec', 'Enable audit trail for every asset change', 'Support bulk operations and Excel import/export'], stakeholders: 'IT team and management requiring accurate asset inventory for procurement and compliance', timeline: '6 weeks development', outcomes: ['1,500+ assets tracked with 100% accuracy', 'Asset query time: 10 min → 10 sec (via AI chat)', 'Zero duplicate serial numbers since deployment', 'Full audit trail enables compliance reporting'], skillsApplied: ['Full-Stack Development', 'Database Design', 'AI Integration', 'Enterprise Process Design'], toolsUsed: ['Python/Flask', 'SQLite', 'Chart.js', 'JavaScript', 'OpenPyXL', 'HTML/CSS'], learnings: ['A simple database-backed tool outperforms the best Excel file every time', 'AI chat widgets dramatically reduce the learning curve for non-technical users', 'Audit logs are not optional — they become essential at the first compliance question'] },
   },
   {
-    emoji: '🔔', group: 'Built Apps & Tools',
+    icon: Bell, group: 'Built Apps & Tools',
     title: 'SNOW SLA Automation Pipeline', subtitle: 'ServiceNow Monitoring & WhatsApp Alerts',
     status: 'Live', category: 'Automation · Monitoring',
     description: 'Python automation pipeline monitoring ServiceNow tickets 24/7 and firing WhatsApp messages before SLA breaches. Runs as background daemons via cron every 5 minutes.',
@@ -294,7 +297,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Eliminate manual SLA monitoring by automating ticket surveillance and proactive breach alerts via WhatsApp.', objectives: ['Remove 45 min/day of manual SNOW monitoring', 'Alert engineers 30 min before any SLA breach', 'Create daily email summary of inbox priorities', 'Provide JSON feed for dashboard integration'], stakeholders: 'IT engineers responsible for SLA compliance, IT management reviewing metrics', timeline: '2 weeks development', outcomes: ['Zero SLA breaches for 6 months post-deployment', 'Daily monitoring time: 45 min → 0', '100% automated alert delivery via WhatsApp', 'Dual trigger: SNOW API + email scanning'], skillsApplied: ['Python Scripting', 'REST API Integration', 'Process Automation', 'SLA Management'], toolsUsed: ['Python 3.11', 'ServiceNow REST API', 'Twilio WhatsApp API', 'Microsoft Graph API', 'cron/LaunchAgent'], learnings: ['Proactive alerting at 70% SLA consumed is far more effective than alerting at breach', 'Dual-trigger systems (API + email) ensure coverage when one source fails', 'Automation daemons need watchdog processes — silent failures are the worst kind'] },
   },
   {
-    emoji: '🌐', group: 'Built Apps & Tools',
+    icon: Globe, group: 'Built Apps & Tools',
     title: 'HiTecH AI HUB Website', subtitle: 'Personal Brand & Technology Platform',
     status: 'Live', category: 'Web Application · Personal Brand',
     description: 'Production-ready personal technology brand built with Next.js 14, TypeScript, Tailwind CSS. Live IT/AI news ticker, neural network skill map, animated hero, full blog, IT learning portal, and Cloudflare Pages deployment.',
@@ -304,7 +307,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Build a professional personal brand website serving dual purpose: senior IT role attraction and IT outsourcing/freelance client conversion.', objectives: ['Attract senior IT hiring managers and HR recruiters', 'Convert outsourcing and freelance project enquiries', 'Showcase 24 real projects with PMP documentation', 'Establish thought leadership via blog and IT Learning'], stakeholders: 'Hiring managers (MENA + global), IT outsourcing clients (UK/US/EU), students seeking IT training', timeline: '3 months build, ongoing enhancement', outcomes: ['Full professional brand site live on global CDN', '24 projects, 16 blog posts, 12 courses published', 'IT Services, Training, Industries pages driving enquiries', 'Mobile + desktop optimised, SEO ready'], skillsApplied: ['Next.js Development', 'UI/UX Design', 'SEO Optimisation', 'Content Strategy', 'Cloudflare Deployment'], toolsUsed: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Cloudflare Pages', 'RSS APIs'], learnings: ['Personal branding requires a clear dual audience strategy — job vs. consulting clearly separated', 'Static site deployment on Cloudflare Pages gives enterprise-grade performance for free', 'Live data features (news ticker, neural network) significantly increase engagement time'] },
   },
   {
-    emoji: '📱', group: 'Built Apps & Tools',
+    icon: Smartphone, group: 'Built Apps & Tools',
     title: 'HiTecH Page Manager', subtitle: 'Facebook Content Manager · Post Generator · Affiliate Tracker',
     status: 'Live', category: 'Web App · Social Media',
     description: 'A full-stack Flask web app for managing the HiTecH Technology HUB Facebook page — content calendar, AI-powered post generator, affiliate link tracker with click analytics, and Facebook OAuth integration. Built to replace manual social media management with an automated, data-driven workflow.',
@@ -347,7 +350,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '🔗', group: 'Built Apps & Tools',
+    icon: Link2, group: 'Built Apps & Tools',
     title: 'SAP O365 MCP Server', subtitle: 'Claude AI ↔ Microsoft 365 Bridge',
     status: 'Live', category: 'AI Integration · MCP Server',
     description: 'Model Context Protocol server giving Claude AI direct access to SAP Outlook, Calendar, OneDrive, and SharePoint — enabling natural language control of enterprise M365 services from any Claude session.',
@@ -357,7 +360,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Enable natural language AI control of enterprise M365 services by building a Model Context Protocol integration layer.', objectives: ['Allow Claude AI to read and search corporate emails', 'Enable AI-assisted calendar management', 'Provide AI access to OneDrive and SharePoint documents', 'Bypass SAP Conditional Access on non-managed device'], stakeholders: 'Senior IT engineer using AI tools for daily operational efficiency', timeline: '3 weeks development', outcomes: ['Full M365 suite accessible via natural language', 'Used daily in Claude Code sessions and Waqas AI Hub', 'OAuth2 token refresh automated — zero manual re-auth', 'Enables AI-powered email and calendar management'], skillsApplied: ['OAuth2 Authentication', 'API Development', 'Microsoft Graph API', 'AI Tool Integration'], toolsUsed: ['Python/FastAPI', 'Microsoft Graph API', 'OAuth2/Azure AD', 'MCP Protocol', 'JSON/REST'], learnings: ['SAP Conditional Access can be bypassed legitimately using localhost redirect URIs', 'Token refresh automation is critical — expired tokens at 3 AM are not acceptable', 'MCP servers dramatically extend AI assistant capabilities beyond their training data'] },
   },
   {
-    emoji: '🔐', group: 'Built Apps & Tools',
+    icon: Lock, group: 'Built Apps & Tools',
     title: 'Password Generator Pro', subtitle: 'Secure Password Tool · Python · macOS · Cybersecurity Compliant',
     status: 'Live', category: 'Cybersecurity · Desktop App',
     description: 'A native macOS desktop application that generates secure, cybersecurity-compliant passwords locally — no internet connection required. Supports three generation modes (Strong, Medium, Memorable), enforces best-practice password policies, stores history in a local encrypted SQLite database, and ships as a standalone .app bundle.',
@@ -419,7 +422,7 @@ const projects: Project[] = [
 
   // ── GROUP 2: Enterprise IT Rollouts ──────────────────────
   {
-    emoji: '🖥️', group: 'Enterprise IT Rollouts',
+    icon: Monitor, group: 'Enterprise IT Rollouts',
     title: 'Modern Workplace Migration', subtitle: 'SCCM → Intune/Autopilot · 200+ Users · 90 Days',
     status: 'Completed', category: 'Change Management · MDM',
     description: 'Led the full migration of 200+ users from legacy SCCM to Microsoft Intune/Autopilot zero-touch provisioning and Azure AD. Completed in 90 days across Windows, macOS (JamF), iOS, and Android — zero business disruption.',
@@ -428,7 +431,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Migrate 200+ users from on-premises SCCM legacy management to cloud-native Microsoft Intune/Autopilot across all device platforms.', objectives: ['Eliminate SCCM on-premises infrastructure dependency', 'Achieve zero-touch device provisioning for all new hires', 'Enforce device compliance from anywhere without VPN', 'Improve Secure Score by minimum 20 points'], stakeholders: 'IT team (delivery), 200+ end users (3 offices), IT Manager (sponsor), C-suite (executive users requiring white-glove)', timeline: '90 days (phased: 3 waves)', outcomes: ['Device compliance: 62% → 94%', 'New device setup: 3.5 hrs → 45 min', 'Remote device visibility: 30% → 100%', 'Secure Score: 41% → 71%'], skillsApplied: ['Change Management', 'Microsoft Intune MDM', 'Azure AD Administration', 'Project Management', 'User Adoption'], toolsUsed: ['Microsoft Intune', 'Autopilot', 'Azure AD / Entra ID', 'JamF', 'Microsoft Endpoint Manager', 'Conditional Access'], learnings: ['Pilot with IT team first — never with executives — you need 2 weeks to find edge cases', 'Report-only mode for Conditional Access before enforcement prevents major incidents', 'User communication explaining the WHY reduces helpdesk tickets by 40%+ during rollout'] },
   },
   {
-    emoji: '🔐', group: 'Enterprise IT Rollouts',
+    icon: Shield, group: 'Enterprise IT Rollouts',
     title: 'Zero Trust Security Architecture', subtitle: 'Azure Security · Secure Score 41% → 78%',
     status: 'Completed', category: 'Cybersecurity · Enterprise',
     description: 'Designed and deployed Zero Trust security architecture for a 200+ user multinational — Conditional Access, MFA, Defender for M365, PIM, DLP, and SIEM pilot. Secure Score raised from 41% to 78% over 12 months.',
@@ -437,7 +440,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Implement Zero Trust security architecture aligned to Microsoft best practices across the full Microsoft 365 and Azure AD tenant.', objectives: ['Eliminate all legacy authentication attack vectors', 'Enforce device compliance as condition for resource access', 'Achieve 75%+ Microsoft Secure Score', 'Implement privileged access governance via PIM'], stakeholders: 'IT Manager (sponsor), CISO/Security (requirement owner), 200+ end users, Microsoft (vendor support)', timeline: '12 months (phased implementation)', outcomes: ['Secure Score: 41% → 78%', 'Legacy auth attacks: eliminated', 'Zero security incidents attributed to identity compromise', 'All admin access PIM-governed with audit trail'], skillsApplied: ['Azure Security Engineering', 'Identity & Access Management', 'Security Architecture Design', 'Compliance Management'], toolsUsed: ['Azure AD / Entra ID', 'Microsoft Defender for M365', 'Intune Compliance Policies', 'PIM', 'DLP Policies', 'Microsoft Sentinel'], learnings: ['Named locations are the single highest-ROI Conditional Access configuration', 'PIM with approval workflows creates an audit trail that satisfies every compliance auditor', 'Secure Score is addictive once you start — gamification drives real security improvements'] },
   },
   {
-    emoji: '🏢', group: 'Enterprise IT Rollouts',
+    icon: Building2, group: 'Enterprise IT Rollouts',
     title: 'Riyadh HQ IT Infrastructure Rebuild', subtitle: '15 Meeting Rooms · 1.2M SAR · Zero Disruption',
     status: 'Completed', category: 'IT Infrastructure · Project Management',
     description: 'Led complete IT infrastructure rebuild for major head office renovation — 15 meeting rooms with full AV, Cisco/Aruba network rebuild, HP server room, and digital signage. Project value 1.2M SAR.',
@@ -446,7 +449,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Full IT infrastructure design, procurement, and deployment for a major head office renovation — covering network, server room, meeting rooms, and digital signage.', objectives: ['Deploy 15 fully-equipped Teams-certified meeting rooms', 'Rebuild core network with current-generation Cisco/Aruba hardware', 'Migrate 200+ users to new infrastructure with zero productivity loss', 'Complete project on schedule aligned to renovation timeline'], stakeholders: 'Country MD (sponsor), Facilities (build partner), IT team (delivery), Vendors: Destiny/Beetra, 200+ end users', timeline: '6 months (phased with renovation schedule)', outcomes: ['15 meeting rooms delivered and signed off by C-level', 'Network fully modernised — zero connectivity incidents post-go-live', '200+ users migrated in single weekend cutover', 'Completed on time aligned to renovation schedule'], skillsApplied: ['IT Infrastructure Design', 'Project Management', 'Vendor Management', 'AV Systems Integration', 'Network Architecture'], toolsUsed: ['Cisco IOS', 'Aruba APs', 'HP ProLiant', 'MS Teams MTR', 'Crestron', 'SAP Ariba', 'Visio'], learnings: ['Pre-event AV testing 3 hours before (not 30 minutes) eliminates all discovery incidents', 'Vendor relationship investment pays dividends when you need emergency replacements', 'A complete network diagram in SharePoint saves days of troubleshooting in future'] },
   },
   {
-    emoji: '🏗️', group: 'Enterprise IT Rollouts',
+    icon: Layers, group: 'Enterprise IT Rollouts',
     title: 'New Office Build-Out: IT Planning & Installation', subtitle: 'Jeddah & Al-Khobar Branches · End-to-End Design',
     status: 'Completed', category: 'IT Infrastructure · Office Build-Out',
     description: 'Led full IT technology planning and installation for new branch office build-outs — requirements gathering, design, procurement, installation, testing, and handover covering network, AV, workstations, printing, and security.',
@@ -455,7 +458,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Plan and deliver complete IT infrastructure for new branch office openings — from design through handover to local IT team.', objectives: ['Design IT infrastructure before construction begins', 'Ensure Day 1 operational readiness for all staff', 'Deliver structured cabling to professional standard', 'Provide complete documentation for ongoing support'], stakeholders: 'Office Manager (local sponsor), Facilities/Construction, IT Manager (sign-off), incoming branch staff', timeline: '8 weeks per location', outcomes: ['Branch offices fully operational on Day 1', 'Zero cabling or network rework required post-handover', 'All devices Autopilot-enrolled — zero IT setup required on arrival', 'Full documentation handed over to IT team'], skillsApplied: ['IT Infrastructure Planning', 'Structured Cabling', 'Network Design', 'Project Coordination', 'Vendor Management'], toolsUsed: ['Cisco Switches', 'Aruba APs', 'Autopilot/Intune', 'Visio', 'SAP Ariba', 'Cat6 structured cabling'], learnings: ['IT planning must start at floor plan stage — retrofitting network points is expensive', 'Full BOM approved before any contractor starts prevents scope creep', 'Site acceptance testing with sign-off sheet protects against future disputes'] },
   },
   {
-    emoji: '🖧', group: 'Enterprise IT Rollouts',
+    icon: Network, group: 'Enterprise IT Rollouts',
     title: 'Server Room & Network Device Replacement', subtitle: 'HP Servers · Cisco · Aruba Wi-Fi 6 · Weekend Cutover',
     status: 'Completed', category: 'IT Infrastructure · Network Refresh',
     description: 'Led end-of-life server and network infrastructure replacement — HP server rack rebuild, Cisco switch replacement, Aruba Wi-Fi 6 APs, and NAC reconfiguration. Completed in a weekend maintenance window with zero production impact.',
@@ -464,7 +467,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Replace end-of-life server and network infrastructure during planned maintenance window with zero business impact.', objectives: ['Decommission EOL hardware before warranty expiry', 'Deploy current-generation server and network equipment', 'Migrate all configurations with zero data loss', 'Complete within a single weekend maintenance window'], stakeholders: 'IT Manager (sponsor), Data Centre team, Network team, Business operations (impacted by downtime)', timeline: 'Friday 10 PM → Sunday 6 AM maintenance window', outcomes: ['100% hardware replacement completed in single weekend', 'Zero production incidents during or after cutover', 'Wi-Fi 6 upgrade: 40% improvement in wireless throughput', 'All VLAN configs and ACLs migrated without rework'], skillsApplied: ['Network Infrastructure', 'Server Administration', 'Change Management', 'Risk Management', 'Technical Documentation'], toolsUsed: ['HP ProLiant', 'Cisco IOS', 'Aruba Wi-Fi 6', 'SCCM', 'Visio', 'NAC / 802.1X'], learnings: ['A detailed cutover checklist reviewed 48 hours before is the difference between smooth and chaotic', 'Dual ISP failover testing must be done with real traffic, not just ping tests', 'Updated network documentation in SharePoint paid off within 6 months when a new engineer joined'] },
   },
   {
-    emoji: '📊', group: 'Enterprise IT Rollouts',
+    icon: BarChart2, group: 'Enterprise IT Rollouts',
     title: 'SAP PowerBI IT Operations Dashboard', subtitle: 'KPI Reporting · SAP Work Zone · C-Level Visibility',
     status: 'Live', category: 'Analytics · Enterprise IT',
     description: 'PowerBI dashboards for real-time IT KPIs — asset lifecycle, ServiceNow SLA stats, ticket volume trends, and procurement spend. Integrated with SharePoint and SAP Work Zone for live data feeds accessible by IT leadership.',
@@ -473,7 +476,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Replace manual Excel-based IT reporting with live PowerBI dashboards accessible by all stakeholders from SAP Work Zone.', objectives: ['Provide real-time SLA visibility to IT management', 'Eliminate manual monthly Excel report generation', 'Give C-level single-page IT health overview', 'Enable self-service reporting for IT team members'], stakeholders: 'Country MD (executive view), IT Manager (operational view), Finance (procurement data), IT Team (daily view)', timeline: '4 weeks build + ongoing', outcomes: ['Manual monthly reports eliminated — 3 hrs/month saved', 'C-level reads dashboard every Monday without IT input', 'SLA breach rate visible in real-time — faster intervention', 'Procurement spend tracked monthly — 0 budget surprises'], skillsApplied: ['PowerBI Development', 'Data Analytics', 'Dashboard Design', 'ServiceNow API Integration', 'Stakeholder Management'], toolsUsed: ['Microsoft PowerBI', 'ServiceNow REST API', 'SharePoint Online', 'SAP Work Zone', 'Microsoft Excel'], learnings: ['Start with the question your manager asks most — not the data you have available', 'Publishing to SAP Work Zone increases viewership 10x vs. emailing a PDF', 'A dashboard that nobody reads is worse than no dashboard — user testing is essential'] },
   },
   {
-    emoji: '📱', group: 'Enterprise IT Rollouts',
+    icon: Smartphone, group: 'Enterprise IT Rollouts',
     title: 'MENA Device Approval & Procurement Workflow', subtitle: 'Power Apps + SAP Ariba · 200–300K SAR/Month',
     status: 'Live', category: 'Process Automation · Procurement',
     description: 'Power Apps-based IT device approval system for MENA — replacing manual email chains. Handles employee requests, management approvals, and SAP Ariba PO creation. Processes 200–300K SAR/month in hardware approvals.',
@@ -484,7 +487,7 @@ const projects: Project[] = [
 
   // ── GROUP 3: ITSM & Service Management ─────────────────────────
   {
-    emoji: '🔄', group: 'IT Ticketing & ITSM',
+    icon: RefreshCw, group: 'IT Ticketing & ITSM',
     title: 'ServiceNow ITSM Migration: IT Direct → SNOW', subtitle: '200+ Users · SLA Redesign · Change Management',
     status: 'Completed', category: 'ITSM · Change Management',
     description: 'Managed full migration from legacy IT Direct to ServiceNow — ticket data migration, SLA framework redesign, auto-assignment rules, KB architecture, and adoption training for 200+ users across 3 offices.',
@@ -493,7 +496,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Migrate from legacy IT Direct ticketing system to ServiceNow with full ITIL v3 service design — including all historical data, KB articles, and user adoption.', objectives: ['Complete data migration from IT Direct with zero data loss', 'Redesign SLA framework aligned to ITIL v3 best practices', 'Train 200+ users across 3 office locations', 'Achieve go-live with zero P1 incidents during cutover'], stakeholders: 'IT Manager (sponsor), 200+ end users (3 offices), IT team (delivery), ServiceNow (platform)', timeline: '3 months (planning → go-live)', outcomes: ['Zero data loss during migration', 'FCR improved from <50% to 75%+', 'SLA compliance: 94%+ within 3 months of go-live', 'Monthly reporting fully automated via PowerBI + SNOW API'], skillsApplied: ['ITSM Implementation', 'Data Migration', 'SLA Design', 'Change Management', 'ITIL v3 Process Design'], toolsUsed: ['ServiceNow', 'IT Direct', 'PowerBI', 'ServiceNow REST API', 'Microsoft Excel'], learnings: ['SLA framework redesign should happen before migration, not during — retroactive changes cause confusion', 'Migrating KB articles requires a quality audit — bad articles transferred = bad knowledge base', 'Go-live on a Friday night with Monday morning review gives you the weekend to fix any issues'] },
   },
   {
-    emoji: '🎫', group: 'IT Ticketing & ITSM',
+    icon: Ticket, group: 'IT Ticketing & ITSM',
     title: 'ServiceNow CSM/FSM Ticketing & Interaction Management', subtitle: '1,300+ Interactions · 65 SC Tasks/Month · CSM/FSM Workspace · HCSM CoPilot',
     status: 'Live', category: 'ITSM · ServiceNow CSM/FSM',
     description: 'Full daily operations using ServiceNow CSM/FSM Configurable Workspace — managing interactions, catalog tasks, incidents, service requests, and walk-up queue for an enterprise IT support team. Handles multiple ticket types (Interaction, Catalog Task, Incident, Problem, Service Request) with automated routing, SLA tracking, and AI-assisted resolution via HCSM CoPilot.',
@@ -553,7 +556,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '🤖', group: 'IT Ticketing & ITSM',
+    icon: Bot, group: 'IT Ticketing & ITSM',
     title: 'ServiceNow HCSM AI Copilot — Daily IT Support Operations', subtitle: 'AI-Assisted ITSM · Walk-up Queue · 1,300+ Interactions · CSM/FSM Workspace',
     status: 'Live', category: 'AI-Assisted ITSM · ServiceNow',
     description: 'Daily use of ServiceNow HCSM AI Copilot integrated into the CSM/FSM Configurable Workspace — accelerating IT support resolution across walk-up interactions, catalog tasks, hardware lifecycle requests, and onboarding tickets. AI Copilot surfaces relevant use cases and KB articles within the ticket in real time, reducing resolution time and improving first-contact resolution for 1,300+ interactions at the Riyadh support location.',
@@ -613,7 +616,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📚', group: 'IT Ticketing & ITSM',
+    icon: BookOpen, group: 'IT Ticketing & ITSM',
     title: 'ServiceNow Knowledge Base Programme', subtitle: '80+ Articles · FCR <50% → 75%+ · Self-Service',
     status: 'Live', category: 'Knowledge Management · ITSM',
     description: 'Built ServiceNow KB from scratch — migrated legacy documentation, created new articles, established quality standards, and ran quarterly review cycles. FCR improved from below 50% to 75%+ within 6 months.',
@@ -622,7 +625,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Build a high-quality ServiceNow Knowledge Base that empowers users to self-serve — reducing ticket volume and improving first-call resolution.', objectives: ['Create KB articles for top 20 recurring ticket types', 'Establish article quality standard and review process', 'Achieve 75%+ First Call Resolution within 6 months', 'Reduce repeat tickets on known issues by 40%+'], stakeholders: 'IT Manager (KB quality owner), IT engineers (article authors), 200+ end users (KB consumers)', timeline: '2 months initial build + quarterly ongoing maintenance', outcomes: ['80+ articles live and maintained', 'FCR: <50% → 75%+', 'Repeat tickets on known issues reduced by 45%', 'Quarterly review cycle embedded in IT operations calendar'], skillsApplied: ['Knowledge Management', 'Content Writing', 'ITIL v3 KCS', 'Self-Service Design', 'FCR Improvement'], toolsUsed: ['ServiceNow KB Module', 'ServiceNow Self-Service Portal', 'ITIL v3 Framework', 'ServiceNow Analytics'], learnings: ['80% of recurring tickets can be resolved by 20% of well-written KB articles', 'KB article quality declines rapidly without a quarterly review cycle — set it as a recurring calendar item', 'Self-service portal placement (before ticket form) is the single biggest FCR driver'] },
   },
   {
-    emoji: '👥', group: 'IT Ticketing & ITSM',
+    icon: Users, group: 'IT Ticketing & ITSM',
     title: 'IT Onboarding/Offboarding Automation', subtitle: '140+ Executives & Staff · Day 1 Setup: 4hrs → 30min',
     status: 'Live', category: 'Process Automation · HR-IT',
     description: 'Designed and implemented standardised IT onboarding/offboarding for 140+ employees including C-level executives — reducing Day 1 IT setup from 4 hours to 30 minutes through automation, pre-staging, and DocuSign digital workflows.',
@@ -631,7 +634,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Standardise and automate the IT onboarding/offboarding process to ensure Day 1 readiness for all employees and clean offboarding within the same day.', objectives: ['Reduce Day 1 IT setup time from 4 hours to under 45 minutes', 'Automate account provisioning via Azure AD', 'Eliminate paper-based asset assignment forms', 'Complete offboarding IT tasks within 2 hours of last day'], stakeholders: 'HR (process trigger), IT Manager (process owner), New employees (Day 1 experience), Managers (device requests), Finance (asset tracking)', timeline: '4 weeks design + implementation', outcomes: ['Day 1 setup: 4 hrs → 30 min', '140+ onboardings completed — zero Day 1 failures', 'IT offboarding ticket volume reduced 60%', 'Zero data exposure incidents during offboarding'], skillsApplied: ['Process Automation', 'Azure AD Administration', 'Intune Device Management', 'DocuSign Integration', 'HR-IT Collaboration'], toolsUsed: ['Azure AD / Entra ID', 'Microsoft Intune/Autopilot', 'ServiceNow', 'DocuSign', 'Power Automate', 'M365 Admin Center'], learnings: ['T-14 day pre-trigger is the key — Day 1 failures happen because IT finds out on Day 0', 'DocuSign replaces paper forms and creates a legally admissible audit trail simultaneously', 'Offboarding is more security-critical than onboarding — a forgotten account is a vulnerability'] },
   },
   {
-    emoji: '🖥️', group: 'IT Ticketing & ITSM',
+    icon: Monitor, group: 'IT Ticketing & ITSM',
     title: 'IT Link Center (ITLC) Walk-up System Deployment', subtitle: '2 iPad Kiosks · Queue Monitor · ServiceNow Walk-up · Jamf MDM',
     status: 'Live', category: 'ITSM · ServiceNow · MDM',
     description: 'Designed, configured, and deployed a full IT Link Center Walk-up system for the Riyadh office — 2 iPad kiosks for user check-in, 1 large-screen queue monitor, and full backend integration with ServiceNow Walk-up module. Enables structured onsite and remote IT appointment management with a live agent dashboard.',
@@ -694,7 +697,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📲', group: 'IT Ticketing & ITSM',
+    icon: Smartphone, group: 'IT Ticketing & ITSM',
     title: 'CLEA — SAP Asset Lifecycle Operations (Daily Use)', subtitle: 'SAP BTP · QR Scanning · On/Offboarding · Pool Stock · Power BI',
     status: 'Live', category: 'IT Asset Management · SAP BTP',
     description: 'Daily operational use of CLEA (Client Lifecycle Enterprise Application) — SAP BTP-hosted internal web and mobile app for end-to-end IT hardware lifecycle management. Covers new hire device assignment (on-boarding), monthly pool stock QR scanning in the IT storage room, equipment returns from leavers (off-boarding), goods receipt, and live KPI reporting via Power BI. Used daily for managing 89+ pool devices across 6 categories at RUH-SR01 Riyadh.',
@@ -756,7 +759,7 @@ const projects: Project[] = [
 
   // ── GROUP 4: AV, Events & Physical Security ─────────────────────
   {
-    emoji: '📽️', group: 'AV, Events & Physical Security',
+    icon: Video, group: 'AV, Events & Physical Security',
     title: 'Meeting Room Technology Rollout', subtitle: '15 Rooms · Teams MTR · Logitech Rally · Evoko',
     status: 'Completed', category: 'AV & Meeting Room Technology',
     description: 'Planned and delivered full meeting room technology upgrade across 15 rooms — legacy VC to Microsoft Teams Rooms standard with Logitech Rally, Poly Pano, Evoko booking, and Crestron boardroom systems. Zero business disruption.',
@@ -765,7 +768,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Upgrade all 15 meeting rooms from legacy video conferencing to Microsoft Teams Rooms standard — enabling one-touch meeting join for all users.', objectives: ['Replace all legacy VC equipment with Teams-certified hardware', 'Deploy room booking system integrated with Exchange Online', 'Train 200+ users on new room technology', 'Complete rollout with zero meeting cancellations'], stakeholders: 'Country MD (sponsor), IT Manager (delivery), Facilities, 200+ end users, Vendors: Logitech/Poly/Crestron', timeline: '3 months (phased room-by-room)', outcomes: ['15 rooms upgraded — all Teams-certified', '200+ users trained — laminated guides in every room', 'Room booking via Evoko — zero scheduling conflicts', '5-year track record: zero AV failures at any executive event'], skillsApplied: ['AV Systems Integration', 'MS Teams MTR Administration', 'Project Management', 'User Training', 'Vendor Management'], toolsUsed: ['MS Teams Rooms', 'Logitech Rally', 'Poly Pano', 'Evoko Room Booking', 'Crestron', 'Exchange Online'], learnings: ['Room booking system integration with Exchange Online eliminates ghost bookings immediately', 'Laminated quick-start guides in every room reduce AV helpdesk tickets by 60%', 'Testing rooms with actual meeting participants (not just IT) reveals usability issues testing alone misses'] },
   },
   {
-    emoji: '🎙️', group: 'AV, Events & Physical Security',
+    icon: Mic, group: 'AV, Events & Physical Security',
     title: 'C-Suite & Board-Level Event Delivery', subtitle: 'LEAP · Crown Plaza · Germany IBS · 5yr Zero Failures',
     status: 'Live', category: 'Event Management · VIP IT',
     description: 'Delivered AV and IT for 50+ high-stakes executive events — SAP Board meetings, CEO sessions at LEAP, Crown Plaza conferences, and live Germany IBS broadcasts. Supported SVPs, MDs, CFOs, COOs, and SAP AG board members.',
@@ -774,7 +777,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Deliver reliable AV and IT infrastructure for all executive-level events — from weekly C-suite meetings to major external conferences and global broadcasts.', objectives: ['Ensure zero AV/IT failures at any C-suite or Board event', 'Deliver pre-event setup and testing 3 hours before every event', 'Maintain hot spare kit for immediate equipment swap', 'Support live broadcasts with dual-path redundancy'], stakeholders: 'Country MD, SVP MEA-North, CFO, COO, SAP AG Board members, Event coordinators', timeline: '50+ events over 5 years (ongoing)', outcomes: ['Zero AV/IT failures across 50+ executive events', '5-year consecutive perfect delivery record', 'Supported CEO-level meetings and SAP Board sessions', 'Germany IBS broadcasts delivered flawlessly on multiple occasions'], skillsApplied: ['VIP IT Support', 'AV Systems', 'Event Management', 'Executive Communication', 'Risk Management'], toolsUsed: ['MS Teams', 'Cisco AV', 'Logitech/Poly', 'Dual-path network setup', 'Hot spare device kit'], learnings: ['3-hour pre-event setup eliminates 100% of discovery incidents on the day', 'A hot spare kit (laptop + phone + hotspot) has saved C-suite presentations on multiple occasions', 'Silent IT support during executive events is the goal — the best IT is invisible IT'] },
   },
   {
-    emoji: '🏦', group: 'AV, Events & Physical Security',
+    icon: Building2, group: 'AV, Events & Physical Security',
     title: 'Bank ATM & Branch Security System', subtitle: 'Banque Saudi Fransi · G4S MultiMax · Siecep · 24/7',
     status: 'Completed', category: 'Physical Security · Banking IT',
     description: 'Managed full ATM and branch physical security infrastructure for Banque Saudi Fransi — access control, CCTV, IoT sensors, and 24/7 monitoring across Riyadh HQ and multiple branches.',
@@ -784,7 +787,7 @@ const projects: Project[] = [
   },
 
   {
-    emoji: '🔑', group: 'Daily IT Operations',
+    icon: Key, group: 'Daily IT Operations',
     title: 'IT Locker Daily Operations — Smart Locker Management', subtitle: 'Locker Pickup Workflow · ITLC Overflow · 7-Day Expiry · Kiosk Inventory Reports',
     status: 'Live', category: 'Daily IT Ops · Smart Locker',
     description: 'Daily operation of the Signifi IT Pickup Point smart locker system — managing the full delivery lifecycle from technician drop-off through employee self-collection. Covers locker pickup creation, IT Link Center (ITLC) overflow management, 7-day expiry policy enforcement, kiosk inventory reporting, and emergency key procedures.',
@@ -841,7 +844,7 @@ const projects: Project[] = [
   },
   // ── GROUP 5: Office Infrastructure & AV Technology ──────────────
   {
-    emoji: '🏢', group: 'Office Infrastructure & AV Technology',
+    icon: Building2, group: 'Office Infrastructure & AV Technology',
     title: 'Enterprise Office AV Technology Build-Out Programme', subtitle: 'Meeting Rooms · Display Technologies · Teams MTR · Room Schedulers · Wolfvision',
     status: 'Live', category: 'Office AV · Infrastructure',
     description: 'End-to-end planning, procurement, installation, and commissioning of enterprise meeting room AV technology across multi-office environments — covering Microsoft Teams Rooms, display technologies (projectors, LED video walls, displays), wireless presentation systems, room schedulers, digital signage, audio systems, and AV-over-IP infrastructure. Based on real office build-out delivery from design to handover.',
@@ -902,7 +905,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📋', group: 'Office Infrastructure & AV Technology',
+    icon: ClipboardList, group: 'Office Infrastructure & AV Technology',
     title: 'Office Build-Out: IT & AV Planning from Design to Handover', subtitle: 'Requirements → Design → Procurement → Installation → Commissioning',
     status: 'Live', category: 'Office Build-Out · Project Management',
     description: 'Full lifecycle IT and AV build-out planning for new and renovated office spaces — from floor plan review and technology requirements gathering through structured cabling, network infrastructure, AV installation, and formal site acceptance handover. Covers both inhouse IT delivery and coordination with external AV/cabling vendors.',
@@ -961,7 +964,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📊', group: 'Office Infrastructure & AV Technology',
+    icon: BarChart2, group: 'Office Infrastructure & AV Technology',
     title: 'Meeting Room Technology Standards & Compliance Programme', subtitle: 'Standards Documentation · Room Checker · Compliance Dashboard · 2026 Standards Update',
     status: 'Live', category: 'AV Standards · Compliance',
     description: 'Designed, documented, and enforced enterprise meeting room technology standards across all office locations — defining the approved technology stack per room category, maintaining a compliance dashboard via Meeting Room Checker, coordinating the 2026 standards update, and publishing the end-user experience SharePoint site for self-service room guidance.',
@@ -1018,7 +1021,7 @@ const projects: Project[] = [
     },
   },
   {
-    emoji: '📦', group: 'Office Infrastructure & AV Technology',
+    icon: Package, group: 'Office Infrastructure & AV Technology',
     title: 'IT Pickup Point — Signifi Digital Locker Deployment', subtitle: 'Self-Service IT Asset Collection · Signifi Smart Locker · 24/7 Access · Automated Tracking',
     status: 'Live', category: 'IT Asset Management · Smart Locker',
     description: 'Deployed a Signifi Digital Storage Locker system as a self-service IT Pickup Point — enabling employees to collect approved IT hardware orders (laptops, phones, accessories) at any time without IT staff involvement. The locker integrates with the asset management system for automated tracking, audit trails, and real-time inventory visibility. Powered by Signifi smart locker technology with SignifiVISION™ enterprise software.',
@@ -1214,7 +1217,7 @@ export default function ProjectsPage() {
               ).map((project, i) => (
                 <button key={i} onClick={() => setSelected(project)}
                   className="glass-card p-5 flex flex-col items-start gap-3 text-left hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:border-accent-blue/30 transition-all duration-200 group">
-                  <span className="text-3xl">{project.emoji}</span>
+                  <div className="w-10 h-10 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0"><project.icon className="w-5 h-5 text-accent-blue" /></div>
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-white text-sm leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
                     <p className="text-gray-500 text-[10px] leading-snug line-clamp-1">{project.subtitle}</p>
@@ -1237,7 +1240,7 @@ export default function ProjectsPage() {
                   {group.items.map((project, i) => (
                     <button key={i} onClick={() => setSelected(project)}
                       className="glass-card p-5 flex flex-col items-start gap-3 text-left hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:border-accent-blue/30 transition-all duration-200 group">
-                      <span className="text-3xl">{project.emoji}</span>
+                      <div className="w-10 h-10 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0"><project.icon className="w-5 h-5 text-accent-blue" /></div>
                       <div className="flex-1 min-w-0">
                         <p className="font-bold text-white text-sm leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
                         <p className="text-gray-500 text-[10px] leading-snug line-clamp-1">{project.subtitle}</p>
@@ -1265,7 +1268,7 @@ export default function ProjectsPage() {
 
             {/* Modal header */}
             <div className="flex items-start gap-4 p-6 border-b border-white/8">
-              <span className="text-4xl flex-shrink-0 mt-1">{selected.emoji}</span>
+              <div className="w-12 h-12 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0 mt-1"><selected.icon className="w-6 h-6 text-accent-blue" /></div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-3 mb-1">
                   <h2 className="text-xl sm:text-2xl font-black text-white leading-tight">{selected.title}</h2>
