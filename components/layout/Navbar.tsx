@@ -11,6 +11,7 @@ import {
   GraduationCap, Cpu, Newspaper, Search,
 } from 'lucide-react'
 import GlobalSearch from '@/components/ui/GlobalSearch'
+import ThemeToggle from '@/components/ui/ThemeToggle'
 
 /* ── NAV STRUCTURE ─────────────────────────────────────────────
    Inspired by Vercel / Stripe / Linear:
@@ -167,7 +168,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-14">
 
             {/* ── Logo ── */}
-            <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
+            <div className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
               <style>{`
                 @keyframes logoGlow {
                   0%,100% { box-shadow: 0 0 10px rgba(59,130,246,0.3), 0 0 20px rgba(59,130,246,0.1); }
@@ -202,6 +204,8 @@ export default function Navbar() {
                 </span>
               </div>
             </Link>
+            <ThemeToggle />
+            </div>
 
             {/* ── Desktop Nav ── */}
             <nav className="hidden lg:flex items-center gap-1">

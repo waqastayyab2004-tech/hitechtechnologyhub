@@ -70,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" data-theme="dark" className="scroll-smooth">
       <head>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
         <script dangerouslySetInnerHTML={{ __html: `

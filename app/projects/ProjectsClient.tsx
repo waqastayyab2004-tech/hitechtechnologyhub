@@ -1095,11 +1095,6 @@ const GROUPS = [
   { key: 'Office Infrastructure & AV Technology',  label: '🏢 Office & AV Technology' },
 ]
 
-const statusColors: Record<string, string> = {
-  Live: 'bg-green-500/15 text-green-400 border-green-500/30',
-  Completed: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
-  'In Development': 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30',
-}
 
 /* ── PAGE ─────────────────────────────────────────────────────── */
 export default function ProjectsPage() {
@@ -1223,7 +1218,6 @@ export default function ProjectsPage() {
                     <p className="text-gray-500 text-[10px] leading-snug line-clamp-1">{project.subtitle}</p>
                   </div>
                   <div className="flex items-center justify-between w-full">
-                    <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border ${statusColors[project.status]}`}>{project.status}</span>
                     <span className="text-[10px] text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View →</span>
                   </div>
                 </button>
@@ -1246,7 +1240,6 @@ export default function ProjectsPage() {
                         <p className="text-gray-500 text-[10px] leading-snug line-clamp-1">{project.subtitle}</p>
                       </div>
                       <div className="flex items-center justify-between w-full">
-                        <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold border ${statusColors[project.status]}`}>{project.status}</span>
                         <span className="text-[10px] text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View →</span>
                       </div>
                     </button>
@@ -1272,9 +1265,6 @@ export default function ProjectsPage() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-3 mb-1">
                   <h2 className="text-xl sm:text-2xl font-black text-white leading-tight">{selected.title}</h2>
-                  <span className={`flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] font-bold border mt-1 ${statusColors[selected.status]}`}>
-                    {selected.status}
-                  </span>
                 </div>
                 <p className="text-accent-blue font-semibold text-sm mb-1">{selected.subtitle}</p>
                 <p className="text-gray-500 text-xs">{selected.category}</p>
