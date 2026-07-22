@@ -6,7 +6,7 @@ import {
   CheckCircle, ArrowRight, Lock, Star, Clock, Users,
   Award, ChevronDown, ChevronUp, Mail, Play, BookOpen,
   TrendingUp, Shield, Cloud, Server, Brain, Zap, Globe,
-  Home, Library, Search, Download,
+  Home, Library, Search, Download, Printer,
 } from 'lucide-react'
 
 /* ── DATA ─────────────────────────────────────────────────────── */
@@ -20,6 +20,7 @@ const sidebarCategories = [
   { icon: Cloud,    label: 'Microsoft 365 & Azure',  key: 'Microsoft 365 & Azure' },
   { icon: Server,   label: 'IT Infrastructure',      key: 'IT Infrastructure' },
   { icon: Globe,    label: 'Office & AV Technology', key: 'Office & AV Technology' },
+  { icon: Printer,  label: 'Printer Management',      key: 'Printer Management' },
   { icon: Globe,    label: 'E-Commerce',             key: 'E-Commerce' },
   { icon: Zap,      label: 'Digital Marketing',      key: 'Digital Marketing' },
   { icon: Award,    label: 'Career & IT Foundations',key: 'Career & IT Foundations' },
@@ -180,7 +181,7 @@ const courses = [
   {
     id: 107,
     title: 'Enterprise Print Services Management',
-    category: 'Corporate IT Training',
+    category: 'Printer Management',
     level: 'Beginner', duration: '1h', students: '100+', rating: 4.7,
     isFree: true, isPopular: false,
     img: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&q=80&auto=format&fit=crop',
@@ -673,7 +674,7 @@ const courses = [
   {
     id: 119,
     title: 'Zebra ZT411 RFID Printer: Setup, Calibration & Asset Tag Printing',
-    category: 'Corporate IT Training',
+    category: 'Printer Management',
     level: 'Intermediate', duration: '1h 30m', students: '40+', rating: 4.9,
     isFree: true, isPopular: false,
     img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop',

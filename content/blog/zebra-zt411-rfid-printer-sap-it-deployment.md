@@ -2,7 +2,7 @@
 title: "How I Deployed the Zebra ZT411 RFID Printer at SAP IT — Step by Step"
 date: "2026-07-22"
 excerpt: "From unboxing to printing live asset tags — a complete walkthrough of deploying the Zebra ZT411 RFID printer at the SAP IT Link Center in Riyadh, including EU RED security activation and RFID calibration."
-tags: ["RFID", "Zebra ZT411", "IT Asset Management", "SAP IT", "Hardware Deployment", "Asset Tagging"]
+tags: ["RFID", "Zebra ZT411", "Printer Management", "IT Asset Management", "SAP IT", "Hardware Deployment", "Asset Tagging"]
 ---
 
 ## Why We Needed an RFID Printer
@@ -178,7 +178,7 @@ The deployment took less than half a day. The operational benefit is permanent.
 
 date: "2026-07-22"
 excerpt: "From unboxing to printing live asset tags — a complete walkthrough of deploying the Zebra ZT411 RFID printer at the SAP IT Link Center in Riyadh, including EU RED security activation and RFID calibration."
-tags: ["RFID", "Zebra ZT411", "IT Asset Management", "SAP IT", "Hardware Deployment", "Asset Tagging"]
+tags: ["RFID", "Zebra ZT411", "Printer Management", "IT Asset Management", "SAP IT", "Hardware Deployment", "Asset Tagging"]
 ---
 
 ## Why We Needed an RFID Printer

@@ -155,7 +155,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Administer and support the full M365 collaboration platform for 200+ users — ensuring data protection, permissions governance, and platform reliability.', objectives: ['Zero data loss from SharePoint/OneDrive deletions within recovery window', 'Respond to Teams/SharePoint requests within agreed SLA', 'Maintain licence optimisation — zero unused licences after quarterly review', 'Enforce external sharing policies — no uncontrolled data leakage'], stakeholders: 'All 200+ users, IT Manager, Finance (licence costs), Security (data governance), Compliance', timeline: 'Ongoing daily operations', outcomes: ['Zero data loss incidents — 100% recovery success within recycle bin window', 'Licence costs reduced 12% through quarterly reclaim audits', 'External sharing governance enforced — zero policy violations in 12 months', 'Teams adoption: 100% of meetings via Teams — legacy VC decommissioned'], skillsApplied: ['Microsoft 365 Administration', 'SharePoint Online Management', 'Teams Administration', 'Data Governance', 'Licence Management'], toolsUsed: ['Microsoft Teams Admin Centre', 'SharePoint Admin Centre', 'OneDrive Admin Centre', 'M365 Admin Centre', 'Power Automate', 'Exchange Online'], learnings: ['93-day SharePoint recycle bin has saved multiple "accidental deletion" escalations', 'Quarterly licence audits pay for themselves — unused E5 licences are expensive', 'Self-service SharePoint provisioning portal reduces IT requests and empowers team owners'] },
   },
   {
-    emoji: '🖨️', group: 'Daily IT Operations',
+    emoji: '🖨️', group: 'Printer Management',
     title: 'Print Infrastructure & Meeting Room AV', subtitle: 'HP MFP Fleet · Badge Printing · Teams Rooms · Crestron · Daily Ops',
     status: 'Live', category: 'Print Management · AV Operations',
     description: 'Daily management of enterprise print fleet and meeting room AV systems — toner monitoring, badge-secured pull-printing, Teams Room health checks, and reactive AV support across all office locations.',
@@ -164,7 +164,7 @@ const projects: Project[] = [
     pmDetails: { scope: 'Maintain enterprise print fleet and all meeting room AV systems — proactive monitoring, consumables management, and reactive support.', objectives: ['Zero print outages due to toner depletion', 'Meeting room AV availability: 99%+ at all times', 'Reactive AV response: 30 minutes from report', 'All Teams Rooms on current certified firmware'], stakeholders: 'All office users, IT Manager, Facilities (room booking), C-suite (boardroom AV reliability)', timeline: 'Ongoing daily operations', outcomes: ['Zero toner outage incidents since monitoring implementation', '99%+ meeting room AV availability maintained', 'C-suite boardroom: zero AV failures across 50+ executive events', 'Print fleet costs reduced via empty cartridge return programme'], skillsApplied: ['Print Fleet Management', 'AV Systems Administration', 'Teams Rooms Management', 'Reactive Support', 'Vendor Coordination'], toolsUsed: ['HP MFP + WebJet Admin', 'MS Teams Rooms Admin Centre', 'Crestron XiO Cloud', 'Wolfvision Cynap', 'Evoko booking panels', 'Surface Hub', 'SIPORT badge system'], learnings: ['Toner auto-ordering at 5% prevents the 9 AM "printer is out of toner" escalation', 'QR code on every room screen removes friction for AV issue reporting — incidents get raised faster', 'Nightly Teams Rooms health checks catch camera/audio failures before the first morning meeting'] },
   },
   {
-    emoji: '🏷️', group: 'Daily IT Operations',
+    emoji: '🏷️', group: 'Printer Management',
     title: 'Zebra ZT411 RFID Printer — SAP IT Asset Tag Deployment', subtitle: 'Zebra ZT411 · RFID · Asset Tags · SAP IT Link Center · RUH02',
     status: 'Live', category: 'IT Asset Management · RFID',
     description: 'End-to-end deployment of the Zebra ZT411 industrial RFID printer at the SAP IT Link Center, Riyadh — from unboxing and hardware setup through RFID calibration, label media loading, and EU RED security activation. Used daily to print RFID-enabled asset tags for all IT hardware entering and leaving the office.',
@@ -1047,6 +1047,7 @@ const GROUPS = [
   { key: 'Built Apps & Tools',           label: '💻 Built Apps & Tools' },
   { key: 'Enterprise IT Rollouts',       label: '🏢 Enterprise IT Rollouts' },
   { key: 'IT Ticketing & ITSM',          label: '🎫 IT Ticketing & ITSM' },
+  { key: 'Printer Management',                     label: '🖨️ Printer Management' },
   { key: 'AV, Events & Physical Security',         label: '🎙️ AV, Events & Security' },
   { key: 'Office Infrastructure & AV Technology',  label: '🏢 Office & AV Technology' },
 ]
