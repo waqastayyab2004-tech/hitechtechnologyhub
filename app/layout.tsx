@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer'
 import BackToTop from '@/components/ui/BackToTop'
 import AIChatbot from '@/components/ui/AIChatbot'
 import HomeButton from '@/components/ui/HomeButton'
+import BackButton from '@/components/ui/BackButton'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.hitechtechnologyhub.com'),
@@ -83,6 +84,7 @@ export default function RootLayout({
       </head>
       <body className="bg-dark-900 text-gray-100 antialiased">
         <Navbar />
+        <BackButton />
         <main className="min-h-screen">{children}</main>
         <Footer />
         <BackToTop />
