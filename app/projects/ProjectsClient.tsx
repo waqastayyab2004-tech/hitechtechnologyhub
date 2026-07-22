@@ -1257,14 +1257,14 @@ export default function ProjectsPage() {
         <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto py-8 px-4"
           style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)' }}
           onClick={(e) => { if (e.target === e.currentTarget) close() }}>
-          <div className="w-full max-w-4xl bg-dark-800 border border-white/10 rounded-2xl shadow-2xl relative">
+          <div className="w-full max-w-4xl bg-dark-800 border border-white/10 rounded-2xl shadow-2xl relative max-h-[90vh] overflow-y-auto">
 
             {/* Modal header */}
-            <div className="flex items-start gap-4 p-6 border-b border-white/8">
+            <div className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 border-b border-white/8">
               <div className="w-12 h-12 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0 mt-1"><selected.icon className="w-6 h-6 text-accent-blue" /></div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-3 mb-1">
-                  <h2 className="text-xl sm:text-2xl font-black text-white leading-tight">{selected.title}</h2>
+                  <h2 className="text-base sm:text-2xl font-black text-white leading-tight">{selected.title}</h2>
                 </div>
                 <p className="text-accent-blue font-semibold text-sm mb-1">{selected.subtitle}</p>
                 <p className="text-gray-500 text-xs">{selected.category}</p>
@@ -1276,7 +1276,7 @@ export default function ProjectsPage() {
             </div>
 
             {/* Modal body */}
-            <div className="p-7 space-y-6">
+            <div className="p-4 sm:p-7 space-y-6">
 
               {/* Project Overview */}
               <div className="glass-card p-5">
@@ -1373,7 +1373,7 @@ export default function ProjectsPage() {
                 {/* Skills Applied */}
                 <div className="glass-card p-5">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-base">🎯</span>
+                    <Target className="w-4 h-4 text-accent-blue"/>
                     <h3 className="font-bold text-white text-xs uppercase tracking-wide">Skills Applied</h3>
                   </div>
                   <div className="space-y-1.5">
@@ -1389,7 +1389,7 @@ export default function ProjectsPage() {
                 {/* Tools Used */}
                 <div className="glass-card p-5">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-base">🛠️</span>
+                    <Settings className="w-4 h-4 text-cyan-400"/>
                     <h3 className="font-bold text-white text-xs uppercase tracking-wide">Tools & Technologies</h3>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -1404,7 +1404,7 @@ export default function ProjectsPage() {
                 {/* Key Learnings */}
                 <div className="glass-card p-5">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-base">💡</span>
+                    <TrendingUp className="w-4 h-4 text-yellow-400"/>
                     <h3 className="font-bold text-white text-xs uppercase tracking-wide">Key Learnings</h3>
                   </div>
                   <div className="space-y-2">

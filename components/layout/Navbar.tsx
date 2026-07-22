@@ -351,8 +351,8 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="lg:hidden fixed inset-0 z-40 bg-dark-900/98 backdrop-blur-2xl flex flex-col pt-14"
           >
-            {/* Scrollable content */}
-            <div className="flex-1 overflow-y-auto px-5 py-6 space-y-2">
+            {/* Scrollable content — centered vertically */}
+            <div className="flex-1 overflow-y-auto px-5 flex flex-col justify-center py-4 space-y-2">
 
               {/* Nav items */}
               {nav.map((item) => (
