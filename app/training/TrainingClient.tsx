@@ -677,7 +677,7 @@ const courses = [
     category: 'Printer Management',
     level: 'Intermediate', duration: '1h 30m', students: '40+', rating: 4.9,
     isFree: true, isPopular: false,
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop',
+    img: '/zebra-zt411-media-ribbon-video.png',
     instructor: 'Syed Waqas Tayyab',
     skills: ['Zebra ZT411', 'RFID Configuration', 'Label Media Loading', 'EU RED Compliance', 'Asset Tag Printing', 'Zebra Setup Utilities', 'SAP IT Operations'],
     description: 'Learn to unbox, install, configure, and operate the Zebra ZT411 industrial RFID printer for enterprise IT asset tagging. Covers hardware setup, RFID inlay calibration, label media loading, EU RED security activation, and daily operations — based on a real SAP IT deployment at the Riyadh IT Link Center.',

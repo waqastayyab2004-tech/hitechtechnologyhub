@@ -53,6 +53,12 @@ At our IT Link Center, I placed it on the equipment bench next to the asset stag
 
 The ZT411 uses thermal transfer printing — which means it needs a ribbon (ink roll) in addition to the label media.
 
+**Official Zebra video guide — watch this first:**
+
+[![ZT411 Media and Ribbon Loading](/zebra-zt411-media-ribbon-video.png)](https://www.zebra.com/content/dam/support-dam/en/documentation/unrestricted/video/0001/zt4x1-02-media-ribbon-loading.mp4)
+
+*Click the image above to watch the official Zebra ZT411 / ZT421 Media and Ribbon Loading video.*
+
 **Ribbon loading steps:**
 1. Open the top cover of the printer
 2. Unroll about 30cm of ribbon from the supply roll
