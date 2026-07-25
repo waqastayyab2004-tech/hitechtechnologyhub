@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Brain, ArrowRight, Clock, Star, Users, CheckCircle, BookOpen, Cpu, Zap, TrendingUp, Building2, Target, DollarSign, Linkedin, Globe, Briefcase, GraduationCap, FileText, Mail, Search } from 'lucide-react'
+import RobotCommunity from '@/components/ui/RobotCommunity'
 
 const TOOL_CATEGORIES = [
   { key: 'All',        label: 'All Tools',        icon: Brain    },
@@ -67,8 +68,14 @@ export default function AIToolsLearningPage() {
   )
 
   return (
-    <main className="min-h-screen bg-[#0a0f1e] pt-20 pb-20">
-      <div className="flex min-h-screen">
+    <main className="min-h-screen bg-[#0a0f1e] pt-20 pb-20 relative overflow-hidden">
+
+      {/* Robot community background — fills entire page */}
+      <div className="absolute inset-0 pointer-events-none" style={{zIndex:0}}>
+        <RobotCommunity className="opacity-40" />
+      </div>
+
+      <div className="flex min-h-screen relative" style={{zIndex:1}}>
 
         {/* ── LEFT LIBRARY SIDEBAR ── */}
         <aside className="hidden lg:flex flex-col w-64 shrink-0 border-r border-white/8 sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto self-start">
@@ -138,11 +145,11 @@ export default function AIToolsLearningPage() {
               <span className="text-xs font-semibold tracking-widest text-violet-400 uppercase">AI Tools Learning</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">
-              Stop Googling.<br/>
-              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">Start Building with AI.</span>
+              Beyond the Chatbot<br/>
+              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">Real AI Impact for Your Business</span>
             </h1>
             <p className="text-base text-gray-300 max-w-xl mb-2 leading-relaxed">
-              Real courses. Real tools. Zero toy examples. Each one built from production deployments — not demo videos.
+              Every course is built from real enterprise deployments — practical AI implementation that solves actual business problems, not chatbot demos or toy examples
             </p>
             {/* Collapsible detail */}
             <details className="max-w-xl mb-8 group">
