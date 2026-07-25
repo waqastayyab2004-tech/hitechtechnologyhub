@@ -85,25 +85,40 @@ export default function AIToolsLearningPage() {
             </p>
           </div>
 
-          {/* Right: instructor photo */}
-          <div className="hidden lg:flex flex-col items-center gap-3 shrink-0">
-            <div className="relative">
-              <div className="w-52 h-64 rounded-2xl overflow-hidden border border-violet-500/30 shadow-[0_0_40px_rgba(139,92,246,0.15)]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/waqas-ai-expert.png"
-                  alt="Waqas Syed — Senior IT Engineer & AI Consultant"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-violet-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-                15+ yrs Enterprise IT
+          {/* Right: instructor card — desktop only */}
+          <div className="hidden lg:flex flex-col shrink-0 w-72">
+            {/* Photo */}
+            <div className="relative rounded-2xl overflow-hidden border border-violet-500/30 shadow-[0_0_50px_rgba(139,92,246,0.18)] w-full h-80">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/waqas-ai-expert.png"
+                alt="Syed Waqas Tayyab — Corporate AI & IT Training Consultant"
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/80 via-transparent to-transparent" />
+              <span className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-violet-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                15+ Years Enterprise IT
               </span>
             </div>
-            <div className="mt-5 text-center">
-              <p className="text-white font-semibold text-sm">Waqas Syed</p>
-              <p className="text-gray-400 text-xs mt-0.5">Senior IT Engineer · SAP · AI Consultant</p>
-              <p className="text-violet-400 text-xs mt-0.5">Riyadh, Saudi Arabia</p>
+
+            {/* Bio card */}
+            <div className="mt-4 bg-white/4 border border-white/8 rounded-2xl p-5">
+              <p className="text-white font-bold text-base leading-tight mb-0.5">Syed Waqas Tayyab</p>
+              <p className="text-violet-400 text-xs font-semibold mb-3">Senior IT Engineer · SAP · AI & IT Corporate Trainer</p>
+              <p className="text-gray-300 text-xs leading-relaxed mb-3">
+                With over 15 years embedded inside global enterprise environments — including 11 years at SAP Saudi Arabia — Waqas brings a rare combination of hands-on IT engineering depth and practical AI implementation experience to every training engagement.
+              </p>
+              <p className="text-gray-400 text-xs leading-relaxed mb-4">
+                He has designed and delivered corporate sessions that move teams from AI curiosity to AI productivity — reducing operational costs, accelerating workflows, and building the internal confidence to sustain AI adoption without external dependency.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {['SAP BTP', 'Azure', 'ServiceNow', 'AI Automation', 'Corporate Training', 'M365'].map(s => (
+                  <span key={s} className="text-xs bg-violet-500/10 border border-violet-500/20 text-violet-300 px-2 py-0.5 rounded-full">{s}</span>
+                ))}
+              </div>
+              <p className="text-gray-500 text-xs mt-3 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" /> Available for corporate engagements · Riyadh, KSA &amp; Remote
+              </p>
             </div>
           </div>
 
