@@ -68,13 +68,13 @@ export default function AIToolsLearningPage() {
 
           {/* Enterprise value message */}
           <p className="text-xl text-gray-200 font-medium mb-3 max-w-3xl">
-            No hype. No toy examples. Real AI implementation for the real enterprise world.
+            Forget the hype — every course here is built from real enterprise deployments, practical AI implementation that solves actual business problems, not chatbot demos or toy examples.
           </p>
           <p className="text-base text-violet-300 italic max-w-3xl mb-5 leading-relaxed">
             &ldquo;Most companies are using AI like a search engine. The ones winning are using it as an operational layer — automating the repeated, accelerating the complex, and freeing humans to focus on what actually builds the business.&rdquo;
           </p>
-            <p className="text-base text-gray-300 max-w-3xl leading-relaxed mb-6">
-              These courses teach you how to implement AI tools based on <span className="text-white font-semibold">your specific use case</span> — not generic prompts. Whether you&apos;re an IT professional, team lead, or enterprise decision-maker, you&apos;ll learn how to deploy AI that reduces operational cost, cuts repetitive workload, and delivers measurable business impact. Humans focus on strategy and growth. AI handles the rest.
+          <p className="text-base text-gray-300 max-w-3xl leading-relaxed mb-6">
+            These courses teach you how to implement AI tools around <span className="text-white font-semibold">your specific use case</span>, not generic prompts that work in a demo and fail in production. Whether you are an IT professional, a team lead, or an enterprise decision-maker, you will learn how to deploy AI that measurably reduces operational cost, eliminates repetitive workload, and delivers real business impact. Let humans focus on strategy, growth and the decisions that matter — and let AI handle everything else.
           </p>
 
           <p className="text-sm text-gray-400 max-w-2xl">
@@ -192,7 +192,7 @@ export default function AIToolsLearningPage() {
                 &ldquo;Stop investing time in tasks AI can do in seconds. Invest that time back into the processes, decisions and relationships that only humans can drive. That&apos;s where real business growth happens.&rdquo;
               </p>
               <p className="text-gray-400 text-sm mt-3">
-                Available for: corporate training sessions · AI tool audits · implementation consulting · enterprise AI roadmaps
+                Engagements available across corporate AI training, tool audits, implementation consulting and enterprise AI strategy roadmaps.
               </p>
             </div>
             <div className="flex flex-col gap-3 shrink-0">
