@@ -16,38 +16,10 @@ const stats = [
 ]
 
 const cards = [
-  {
-    href: '/sap/certifications',
-    icon: Award,
-    label: 'Certifications',
-    desc: '5 SAP certs — Gen AI Developer, HANA ML, S/4HANA, Analytics Cloud, SAP Build',
-    color: 'from-blue-600 to-blue-800',
-    badge: '5 Certs',
-  },
-  {
-    href: '/sap/experience',
-    icon: Briefcase,
-    label: 'Experience',
-    desc: '11 yrs at SAP Saudi Arabia — IT Admin → Senior IT System Engineer & SPOC',
-    color: 'from-indigo-600 to-indigo-800',
-    badge: '11 Years',
-  },
-  {
-    href: '/sap/courses',
-    icon: BookOpen,
-    label: 'Courses I Teach',
-    desc: 'SAP IT Asset Lifecycle, CLEA BTP App, SAP Gen AI, SAP Build No-Code',
-    color: 'from-violet-600 to-violet-800',
-    badge: '6 Courses',
-  },
-  {
-    href: '/sap/skills',
-    icon: Cpu,
-    label: 'Skills & Tools',
-    desc: 'SAP BTP · SAP HANA · SAP ISP · SAP Ariba · AI Launchpad · S/4HANA',
-    color: 'from-sky-600 to-sky-800',
-    badge: '12+ Skills',
-  },
+  { href: '/sap/certifications', icon: Award,    label: 'Certifications',  desc: '5 SAP certs — Gen AI Developer, HANA ML, S/4HANA, Analytics Cloud, SAP Build', accent: '#3b82f6', badge: '5 Certs'   },
+  { href: '/sap/experience',     icon: Briefcase, label: 'Experience',      desc: '11 yrs at SAP Saudi Arabia — IT Admin → Senior IT System Engineer & SPOC',         accent: '#6366f1', badge: '11 Years'  },
+  { href: '/sap/courses',        icon: BookOpen,  label: 'Courses I Teach', desc: 'SAP IT Asset Lifecycle, CLEA BTP App, SAP Gen AI, SAP Build No-Code',               accent: '#8b5cf6', badge: '6 Courses' },
+  { href: '/sap/skills',         icon: Cpu,       label: 'Skills & Tools',  desc: 'SAP BTP · SAP HANA · SAP ISP · SAP Ariba · AI Launchpad · S/4HANA',                 accent: '#06b6d4', badge: '12+ Skills' },
 ]
 
 const recommendations = [
@@ -67,31 +39,37 @@ const recommendations = [
 
 export default function SapHubClient() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      {/* Hero */}
-      <div className="bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-900 text-white pt-24 pb-16">
-        <div className="max-w-6xl mx-auto px-6">
+    <div className="min-h-screen bg-dark-900">
+
+      {/* Hero — dark with subtle blue glow, matches site tone */}
+      <div className="relative pt-24 pb-16 border-b border-white/5 overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #0B1220 0%, #0d1a3a 60%, #0B1220 100%)' }}>
+        {/* Glow blobs */}
+        <div className="absolute top-0 left-1/3 w-96 h-64 bg-blue-600/10 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-72 h-48 bg-indigo-600/8 rounded-full blur-[60px] pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto px-6 relative">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.div variants={fade} className="flex items-center gap-2 mb-4">
-              <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">
+            <motion.div variants={fade} className="flex items-center gap-2 mb-5">
+              <span className="bg-blue-500/15 border border-blue-500/25 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full">
                 SAP Specialist
               </span>
-              <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
+              <span className="bg-white/5 border border-white/10 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
                 <MapPin className="w-3 h-3" /> Riyadh, Saudi Arabia
               </span>
             </motion.div>
-            <motion.h1 variants={fade} className="text-4xl md:text-5xl font-bold mb-3">
+            <motion.h1 variants={fade} className="text-4xl md:text-5xl font-bold text-white mb-3">
               SAP Hub
             </motion.h1>
-            <motion.p variants={fade} className="text-blue-100 text-lg md:text-xl max-w-2xl mb-8">
-              11 years as Senior IT System Engineer at SAP · 5 SAP Certifications · IT SPOC for SAP Saudi Arabia · Generative AI, HANA ML, S/4HANA & SAP BTP
+            <motion.p variants={fade} className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10">
+              11 years as Senior IT System Engineer at SAP · 5 SAP Certifications · IT SPOC for SAP Saudi Arabia · Generative AI, HANA ML, S/4HANA &amp; SAP BTP
             </motion.p>
-            {/* Stats */}
             <motion.div variants={stagger} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {stats.map((s) => (
-                <motion.div key={s.label} variants={fade} className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm">
-                  <p className="text-3xl font-bold">{s.value}</p>
-                  <p className="text-blue-200 text-sm mt-1">{s.label}</p>
+                <motion.div key={s.label} variants={fade}
+                  className="bg-white/5 border border-white/8 rounded-xl p-4 text-center">
+                  <p className="text-3xl font-bold text-white">{s.value}</p>
+                  <p className="text-gray-400 text-sm mt-1">{s.label}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -104,28 +82,31 @@ export default function SapHubClient() {
         <SapSidebar />
 
         <main className="flex-1 min-w-0">
-          {/* Quick-nav cards */}
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.h2 variants={fade} className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+
+            <motion.h2 variants={fade} className="text-2xl font-bold text-white mb-6">
               Explore SAP Profile
             </motion.h2>
+
+            {/* Nav cards */}
             <motion.div variants={stagger} className="grid sm:grid-cols-2 gap-5 mb-14">
-              {cards.map(({ href, icon: Icon, label, desc, color, badge }) => (
+              {cards.map(({ href, icon: Icon, label, desc, accent, badge }) => (
                 <motion.div key={href} variants={fade}>
-                  <Link href={href} className="group block rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-lg transition-shadow">
-                    <div className={`bg-gradient-to-br ${color} p-5 text-white`}>
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="bg-white/20 p-2 rounded-lg">
-                          <Icon className="w-5 h-5" />
+                  <Link href={href}
+                    className="group block rounded-2xl overflow-hidden border border-white/8 hover:border-white/15 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+                    <div className="p-5" style={{ background: `linear-gradient(135deg, ${accent}18 0%, ${accent}08 100%)`, borderBottom: `1px solid ${accent}20` }}>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="p-2 rounded-lg" style={{ background: `${accent}20`, border: `1px solid ${accent}30` }}>
+                          <Icon className="w-5 h-5" style={{ color: accent }} />
                         </div>
-                        <span className="bg-white/20 text-xs font-semibold px-2.5 py-1 rounded-full">{badge}</span>
+                        <span className="text-xs font-semibold px-2.5 py-1 rounded-full" style={{ background: `${accent}15`, color: accent, border: `1px solid ${accent}25` }}>{badge}</span>
                       </div>
-                      <h3 className="font-bold text-lg mb-1">{label}</h3>
-                      <p className="text-white/80 text-sm leading-relaxed">{desc}</p>
+                      <h3 className="font-bold text-lg text-white mb-1">{label}</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
                     </div>
-                    <div className="bg-white dark:bg-slate-900 px-5 py-3 flex items-center justify-between">
-                      <span className="text-sm font-medium text-blue-600 dark:text-blue-400">View {label}</span>
-                      <ArrowRight className="w-4 h-4 text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform" />
+                    <div className="bg-dark-800 px-5 py-3 flex items-center justify-between">
+                      <span className="text-sm font-medium" style={{ color: accent }}>View {label}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" style={{ color: accent }} />
                     </div>
                   </Link>
                 </motion.div>
@@ -134,24 +115,25 @@ export default function SapHubClient() {
 
             {/* Recommendations */}
             <motion.div variants={fade}>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                 LinkedIn Recommendations
               </h2>
               <div className="grid md:grid-cols-2 gap-5">
                 {recommendations.map((r) => (
-                  <div key={r.name} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
-                    <Quote className="w-8 h-8 text-blue-200 dark:text-blue-900 mb-3" />
-                    <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
-                    <div className="border-t border-slate-100 dark:border-slate-800 pt-4">
-                      <p className="font-semibold text-slate-900 dark:text-white text-sm">{r.name}</p>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">{r.title}</p>
-                      <p className="text-slate-400 text-xs mt-1">{r.date} · SAP colleague</p>
+                  <div key={r.name} className="glass-card p-6">
+                    <Quote className="w-8 h-8 text-blue-900 mb-3" />
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4">&ldquo;{r.text}&rdquo;</p>
+                    <div className="border-t border-white/8 pt-4">
+                      <p className="font-semibold text-white text-sm">{r.name}</p>
+                      <p className="text-gray-500 text-xs mt-0.5">{r.title}</p>
+                      <p className="text-gray-600 text-xs mt-1">{r.date} · SAP colleague</p>
                     </div>
                   </div>
                 ))}
               </div>
             </motion.div>
+
           </motion.div>
         </main>
       </div>

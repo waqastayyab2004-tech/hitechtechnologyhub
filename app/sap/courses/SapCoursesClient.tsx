@@ -94,19 +94,19 @@ export default function SapCoursesClient() {
   const coming = courses.filter((c) => !c.live)
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-dark-900">
       {/* Header */}
-      <div className="bg-gradient-to-br from-violet-700 via-violet-800 to-indigo-900 text-white pt-24 pb-12">
+      <div className="relative overflow-hidden border-b border-white/5 pt-24 pb-12" style={{background:'linear-gradient(135deg,#0B1220 0%,#0d1a3a 60%,#0B1220 100%)'}}><div className="absolute top-0 left-1/3 w-96 h-48 bg-blue-600/8 rounded-full blur-[70px] pointer-events-none"/>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center gap-2 mb-3">
-            <Link href="/sap" className="text-violet-200 hover:text-white text-sm transition-colors">SAP Hub</Link>
+            <Link href="/sap" className="text-gray-400 hover:text-white text-sm transition-colors">SAP Hub</Link>
             <span className="text-violet-300 text-sm">/</span>
             <span className="text-white text-sm font-medium">Courses I Teach</span>
           </div>
           <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
             <BookOpen className="w-9 h-9 text-violet-300" /> SAP Courses
           </h1>
-          <p className="text-violet-100 text-lg">Practical SAP courses built from 11 years of real enterprise experience at SAP Saudi Arabia</p>
+          <p className="text-gray-400 text-lg">Practical SAP courses built from 11 years of real enterprise experience at SAP Saudi Arabia</p>
         </div>
       </div>
 
@@ -118,11 +118,11 @@ export default function SapCoursesClient() {
 
             {/* Live courses */}
             <motion.div variants={fade} className="mb-12">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-5">Available Now</h2>
+              <h2 className="text-xl font-bold text-white mb-5">Available Now</h2>
               <div className="grid sm:grid-cols-2 gap-5">
                 {live.map((course) => (
                   <motion.div key={course.id} variants={fade}>
-                    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-md transition-shadow flex flex-col h-full">
+                    <div className="glass-card rounded-2xl overflow-hidden hover:shadow-md transition-shadow flex flex-col h-full">
                       <div className="bg-gradient-to-br from-violet-600 to-indigo-700 px-5 py-4 text-white">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-xs font-medium bg-white/20 px-2.5 py-0.5 rounded-full">{course.category}</span>
@@ -133,8 +133,8 @@ export default function SapCoursesClient() {
                         <h3 className="font-bold text-base leading-snug">{course.title}</h3>
                       </div>
                       <div className="px-5 py-4 flex flex-col flex-1">
-                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">{course.desc}</p>
-                        <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-4">
+                        <p className="text-gray-400 text-sm leading-relaxed mb-4">{course.desc}</p>
+                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
                           <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {course.duration}</span>
                           {course.students && <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {course.students}</span>}
                           {course.rating && <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" /> {course.rating}</span>}
@@ -164,12 +164,12 @@ export default function SapCoursesClient() {
 
             {/* Coming soon */}
             <motion.div variants={fade} className="mb-10">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Coming Soon</h2>
-              <p className="text-slate-500 dark:text-slate-400 text-sm mb-5">New SAP courses in development — based on certifications earned in 2026.</p>
+              <h2 className="text-xl font-bold text-white mb-2">Coming Soon</h2>
+              <p className="text-gray-500 text-sm mb-5">New SAP courses in development — based on certifications earned in 2026.</p>
               <div className="grid sm:grid-cols-2 gap-5">
                 {coming.map((course, i) => (
                   <motion.div key={i} variants={fade}>
-                    <div className="bg-white dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl overflow-hidden opacity-80">
+                    <div className="glass-card border border-dashed border-white/10 rounded-2xl overflow-hidden opacity-80">
                       <div className="bg-gradient-to-br from-slate-500 to-slate-700 px-5 py-4 text-white">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-xs font-medium bg-white/20 px-2.5 py-0.5 rounded-full">{course.category}</span>
@@ -180,17 +180,17 @@ export default function SapCoursesClient() {
                         <h3 className="font-bold text-base leading-snug">{course.title}</h3>
                       </div>
                       <div className="px-5 py-4">
-                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">{course.desc}</p>
+                        <p className="text-gray-400 text-sm leading-relaxed mb-4">{course.desc}</p>
                         <div className="flex flex-wrap gap-1.5 mb-5">
                           {course.skills.map((s) => (
-                            <span key={s} className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">
+                            <span key={s} className="text-xs bg-white/5 text-gray-500 px-2 py-0.5 rounded-full">
                               {s}
                             </span>
                           ))}
                         </div>
                         <Link
                           href="/contact"
-                          className="flex items-center justify-center gap-2 w-full border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                          className="flex items-center justify-center gap-2 w-full border border-white/10 text-gray-400 dark:text-slate-300 text-sm font-medium py-2.5 rounded-xl hover:bg-white/5 transition-colors"
                         >
                           Get Notified
                         </Link>
@@ -204,7 +204,7 @@ export default function SapCoursesClient() {
             {/* CTA */}
             <motion.div variants={fade} className="bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl p-6 text-white text-center">
               <h3 className="text-xl font-bold mb-2">Want to learn SAP directly from a Senior SAP Engineer?</h3>
-              <p className="text-violet-100 text-sm mb-5">11 years of hands-on SAP experience condensed into practical courses. Enquire about private training, group sessions or one-on-one mentoring.</p>
+              <p className="text-gray-400 text-sm mb-5">11 years of hands-on SAP experience condensed into practical courses. Enquire about private training, group sessions or one-on-one mentoring.</p>
               <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-violet-700 font-semibold px-6 py-2.5 rounded-xl hover:bg-violet-50 transition-colors text-sm">
                 Enquire Now <ArrowRight className="w-4 h-4" />
               </Link>

@@ -77,19 +77,19 @@ const roadmap = [
 
 export default function SapCertsClient() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-dark-900">
       {/* Header */}
-      <div className="bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-900 text-white pt-24 pb-12">
+      <div className="relative overflow-hidden border-b border-white/5 pt-24 pb-12" style={{background:'linear-gradient(135deg,#0B1220 0%,#0d1a3a 60%,#0B1220 100%)'}}><div className="absolute top-0 left-1/3 w-96 h-48 bg-blue-600/8 rounded-full blur-[70px] pointer-events-none"/>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center gap-2 mb-3">
-            <Link href="/sap" className="text-blue-200 hover:text-white text-sm transition-colors">SAP Hub</Link>
+            <Link href="/sap" className="text-gray-400 hover:text-white text-sm transition-colors">SAP Hub</Link>
             <span className="text-blue-300 text-sm">/</span>
             <span className="text-white text-sm font-medium">Certifications</span>
           </div>
           <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
             <Award className="w-9 h-9 text-yellow-400" /> SAP Certifications
           </h1>
-          <p className="text-blue-100 text-lg">5 SAP certifications earned across AI, HANA, S/4HANA, Analytics Cloud and Build</p>
+          <p className="text-gray-400 text-lg">5 SAP certifications earned across AI, HANA, S/4HANA, Analytics Cloud and Build</p>
         </div>
       </div>
 
@@ -101,20 +101,20 @@ export default function SapCertsClient() {
 
             {/* Cert timeline */}
             <motion.div variants={fade} className="mb-14">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">All Certifications</h2>
+              <h2 className="text-xl font-bold text-white mb-6">All Certifications</h2>
               <div className="relative">
                 {/* Vertical line */}
-                <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-800 hidden sm:block" />
+                <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-white/8 hidden sm:block" />
 
                 <div className="space-y-6">
                   {certs.map((cert, i) => (
                     <motion.div key={i} variants={fade} className="sm:pl-14 relative">
                       {/* Timeline dot */}
-                      <div className={`hidden sm:flex absolute left-3 top-5 w-5 h-5 rounded-full items-center justify-center ${cert.current ? 'bg-blue-600 ring-4 ring-blue-100 dark:ring-blue-950' : 'bg-slate-400 dark:bg-slate-600'}`}>
+                      <div className={`hidden sm:flex absolute left-3 top-5 w-5 h-5 rounded-full items-center justify-center ${cert.current ? 'bg-blue-600 ring-4 ring-blue-900/40' : 'bg-gray-600'}`}>
                         {cert.current && <span className="w-2 h-2 rounded-full bg-white" />}
                       </div>
 
-                      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-md transition-shadow">
+                      <div className="glass-card rounded-2xl overflow-hidden hover:shadow-md transition-shadow">
                         <div className={`${cert.color} px-5 py-4 text-white`}>
                           <div className="flex items-start justify-between gap-3">
                             <div>
@@ -127,7 +127,7 @@ export default function SapCertsClient() {
                           </div>
                         </div>
                         <div className="px-5 py-4">
-                          <div className="flex flex-wrap items-center gap-4 mb-3 text-sm text-slate-600 dark:text-slate-400">
+                          <div className="flex flex-wrap items-center gap-4 mb-3 text-sm text-gray-400">
                             <span className="flex items-center gap-1.5">
                               <Calendar className="w-4 h-4" /> Issued {cert.issued}
                             </span>
@@ -137,7 +137,7 @@ export default function SapCertsClient() {
                               </span>
                             )}
                             {cert.id && (
-                              <span className="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">
+                              <span className="font-mono text-xs bg-white/5 px-2 py-1 rounded">
                                 ID: {cert.id}
                               </span>
                             )}
@@ -154,7 +154,7 @@ export default function SapCertsClient() {
                               href={cert.verifyUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                              className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:underline"
                             >
                               <ExternalLink className="w-4 h-4" /> Verify Credential
                             </a>
@@ -168,18 +168,18 @@ export default function SapCertsClient() {
             </motion.div>
 
             {/* Roadmap */}
-            <motion.div variants={fade} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">SAP Certification Roadmap</h2>
+            <motion.div variants={fade} className="glass-card rounded-2xl p-6">
+              <h2 className="text-xl font-bold text-white mb-6">SAP Certification Roadmap</h2>
               <div className="flex flex-wrap items-center gap-2">
                 {roadmap.map((step, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <div className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium border
                       ${step.done
                         ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
-                        : 'bg-slate-50 dark:bg-slate-800 border-dashed border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400'
+                        : 'bg-white/4 border-dashed border-white/10 text-gray-500'
                       }`}>
                       {step.done
-                        ? <CheckCircle className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        ? <CheckCircle className="w-4 h-4 text-blue-400" />
                         : <span className="w-4 h-4 rounded-full border-2 border-slate-400 dark:border-slate-500 flex items-center justify-center text-xs">?</span>
                       }
                       <span>{step.label}</span>
@@ -188,7 +188,7 @@ export default function SapCertsClient() {
                       </span>
                     </div>
                     {i < roadmap.length - 1 && (
-                      <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 shrink-0" />
+                      <ArrowRight className="w-4 h-4 text-slate-300 dark:text-gray-400 shrink-0" />
                     )}
                   </div>
                 ))}
