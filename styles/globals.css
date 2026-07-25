@@ -18,14 +18,14 @@
   /* ── Dark theme (default) ── */
   :root,
   [data-theme="dark"] {
-    --bg-primary:    #0B1220;
-    --bg-secondary:  #111827;
-    --bg-tertiary:   #1F2937;
-    --text-primary:  #F9FAFB;
-    --text-secondary:#94a3b8;
-    --border-color:  rgba(255,255,255,0.08);
-    --card-bg:       #111827;
-    --nav-bg:        rgba(11,18,32,0.90);
+    --bg-primary:    #070c15;
+    --bg-secondary:  #0d1424;
+    --bg-tertiary:   #131d2e;
+    --text-primary:  #e8edf5;
+    --text-secondary:#8b9db5;
+    --border-color:  rgba(255,255,255,0.10);
+    --card-bg:       #0d1424;
+    --nav-bg:        rgba(7,12,21,0.92);
     --accent-blue:   #3B82F6;
     --accent-yellow: #FACC15;
   }
@@ -74,9 +74,60 @@
     width: 6px;
   }
 
-  ::-webkit-scrollbar-track { background: #111827; }
-  ::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: #0d1424; }
+  ::-webkit-scrollbar-thumb { background: #1a2640; border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
+}
+
+/* ── Dark theme — card elevation & text contrast overrides ── */
+
+/* Body: slightly off-white text reduces eye strain vs pure white */
+[data-theme="dark"] body,
+:root body {
+  color: #e8edf5;
+  line-height: 1.7;
+}
+
+/* Card depth — 3-layer separation so cards lift off the page */
+[data-theme="dark"] .glass-card,
+:root .glass-card {
+  background-color: #0d1424 !important;
+  border-color: rgba(255,255,255,0.09) !important;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 4px 20px rgba(0,0,0,0.4) !important;
+}
+
+/* Rounded cards throughout site get visible depth */
+[data-theme="dark"] .rounded-2xl,
+[data-theme="dark"] .rounded-xl,
+:root .rounded-2xl,
+:root .rounded-xl {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 4px 20px rgba(0,0,0,0.35);
+}
+
+/* Borders: slightly more visible so layout reads clearly */
+[data-theme="dark"] .border-white\/5,
+:root .border-white\/5 { border-color: rgba(255,255,255,0.08) !important; }
+[data-theme="dark"] .border-white\/8,
+:root .border-white\/8 { border-color: rgba(255,255,255,0.10) !important; }
+
+/* Text hierarchy — warm off-white top, readable mid-grey secondary */
+[data-theme="dark"] .text-white,
+:root .text-white { color: #e8edf5; }
+[data-theme="dark"] .text-gray-100,
+:root .text-gray-100 { color: #dde4f0; }
+[data-theme="dark"] .text-gray-300,
+:root .text-gray-300 { color: #a8bacf; }
+[data-theme="dark"] .text-gray-400,
+:root .text-gray-400 { color: #8b9db5; }
+[data-theme="dark"] .text-slate-400,
+:root .text-slate-400 { color: #8b9db5; }
+[data-theme="dark"] .text-slate-300,
+:root .text-slate-300 { color: #a8bacf; }
+
+/* Nav: deeper backdrop blur with clear bottom edge */
+[data-theme="dark"] header,
+:root header {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05), 0 4px 24px rgba(0,0,0,0.5) !important;
 }
 
 /* ── Light theme — flat overrides outside @layer so specificity wins ── */
