@@ -130,31 +130,35 @@ export default function AIToolsLearningPage() {
               <span className="text-white">AI Tools Learning</span>
             </div>
 
-            {/* Heading */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center">
-                <Brain className="w-5 h-5 text-violet-400"/>
+            {/* Heading — catchy hook at top, detail hidden behind Read More */}
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center">
+                <Brain className="w-4 h-4 text-violet-400"/>
               </div>
               <span className="text-xs font-semibold tracking-widest text-violet-400 uppercase">AI Tools Learning</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">
-              Learn the AI Tools That{' '}
-              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
-                Professionals Use
-              </span>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">
+              Stop Googling.<br/>
+              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">Start Building with AI.</span>
             </h1>
-            <p className="text-xl text-gray-200 font-medium mb-3 max-w-2xl">
-              Forget the hype — every course here is built from real enterprise deployments, practical AI implementation that solves actual business problems, not chatbot demos or toy examples.
+            <p className="text-base text-gray-300 max-w-xl mb-2 leading-relaxed">
+              Real courses. Real tools. Zero toy examples. Each one built from production deployments — not demo videos.
             </p>
-            <p className="text-base text-violet-300 italic max-w-2xl mb-5 leading-relaxed">
-              &ldquo;Most companies are using AI like a search engine. The ones winning are using it as an operational layer — automating the repeated, accelerating the complex, and freeing humans to focus on what actually builds the business.&rdquo;
-            </p>
-            <p className="text-base text-gray-300 max-w-2xl leading-relaxed mb-4">
-              These courses teach you how to implement AI tools around <span className="text-white font-semibold">your specific use case</span>, not generic prompts that work in a demo and fail in production. Whether you are an IT professional, a team lead, or an enterprise decision-maker, you will learn how to deploy AI that measurably reduces operational cost, eliminates repetitive workload, and delivers real business impact. Let humans focus on strategy, growth and the decisions that matter — and let AI handle everything else.
-            </p>
-            <p className="text-sm text-gray-400 max-w-xl mb-10">
-              Practical, free courses on the AI coding and productivity tools reshaping how IT professionals and developers work. Each course is built from real daily use — not toy examples.
-            </p>
+            {/* Collapsible detail */}
+            <details className="max-w-xl mb-8 group">
+              <summary className="text-xs text-violet-400 cursor-pointer hover:text-violet-300 transition-colors select-none list-none flex items-center gap-1 mb-2">
+                <span className="group-open:hidden">▸ Read more about this programme</span>
+                <span className="hidden group-open:inline">▾ Hide details</span>
+              </summary>
+              <div className="space-y-3 pt-2 border-t border-white/8">
+                <p className="text-sm text-violet-300 italic leading-relaxed">
+                  &ldquo;Most companies are using AI like a search engine. The ones winning are using it as an operational layer — automating the repeated, accelerating the complex, and freeing humans to focus on what actually builds the business.&rdquo;
+                </p>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  These courses teach you how to implement AI tools around <span className="text-white font-semibold">your specific use case</span> — not generic prompts that work in a demo and fail in production. Whether you are an IT professional, a team lead, or an enterprise decision-maker, you will learn how to deploy AI that measurably reduces operational cost, eliminates repetitive workload, and delivers real business impact.
+                </p>
+              </div>
+            </details>
 
             {/* Available Now */}
             {filteredLive.length > 0 && (
