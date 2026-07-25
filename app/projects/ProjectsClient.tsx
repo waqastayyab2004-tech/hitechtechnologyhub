@@ -420,6 +420,49 @@ const projects: Project[] = [
     },
   },
 
+  {
+    icon: BookOpen, group: 'Built Apps & Tools',
+    title: 'Claude Code 101 — Training Course', subtitle: 'AI Developer Workflow · Official Anthropic Skilljar Curriculum · Published Online',
+    status: 'Live', category: 'AI & Automation · Online Education',
+    description: 'Designed and published a professional online course on Claude Code — Anthropic\'s AI coding agent — following the official Skilljar learning path. Covers how Claude Code works, first prompt, daily workflows (explore → plan → code → commit), and full customisation with CLAUDE.md, Subagents, Skills, MCP servers, and Hooks. Published on hitechtechnologyhub.com and promoted across LinkedIn and Facebook.',
+    highlights: [
+      'Mirrors official Anthropic Skilljar curriculum: 5 modules, 28 lessons, course quiz',
+      'Module 1 — How Claude Code Works: agentic loop, permissions, tool use',
+      'Module 2 — Your First Prompt: install, launch, first command in under 10 min',
+      'Module 3 — Daily Workflows: explore → plan → code → commit cycle',
+      'Module 4 — Customising Claude Code: CLAUDE.md, Subagents, Skills, MCP, Hooks',
+      'Module 5 — Quiz: knowledge check with review and next-steps guidance',
+      'Published free on HiTecH AI HUB training page — accessible worldwide',
+      'Promoted via LinkedIn article, Facebook Page post, and website blog',
+    ],
+    tags: ['Claude Code', 'AI Coding', 'Anthropic', 'MCP', 'Subagents', 'CLAUDE.md', 'Online Course', 'LinkedIn', 'Facebook'],
+    pmDetails: {
+      scope: 'Design, structure, and publish a professional Claude Code course based on the official Anthropic Skilljar curriculum, then distribute it across social media and the personal brand website.',
+      objectives: [
+        'Mirror the official Anthropic learning path for credibility and relevance',
+        'Create a 5-module curriculum with lessons aligned to Skilljar topics',
+        'Publish course on hitechtechnologyhub.com/training',
+        'Drive traffic via LinkedIn and Facebook Page with real course content',
+        'Establish Waqas as a recognised AI tools educator in the MENA region',
+      ],
+      stakeholders: 'IT professionals, developers, and students in MENA looking to learn AI-assisted coding',
+      timeline: '1 week to design, publish, and promote',
+      outcomes: [
+        'Course live at hitechtechnologyhub.com/training/121',
+        'Blog article published with SEO-optimised content',
+        'LinkedIn + Facebook posts drafted and scheduled',
+        'First course in the Training & Learning content series',
+      ],
+      skillsApplied: ['Curriculum Design', 'Technical Writing', 'Claude Code', 'MCP Integration', 'Social Media Marketing', 'Next.js', 'Content Publishing'],
+      toolsUsed: ['Claude Code', 'Next.js 14', 'Tailwind CSS', 'LinkedIn', 'Facebook Page', 'HiTecH AI HUB CMS'],
+      learnings: [
+        'Aligning your course to an official vendor curriculum (Anthropic Skilljar) immediately boosts credibility',
+        'Free courses with real-world context outperform generic tutorials — specificity is the differentiator',
+        'One course = project card + blog article + 2 social posts: maximum output from minimum effort',
+      ],
+    },
+  },
+
   // ── GROUP 2: Enterprise IT Rollouts ──────────────────────
   {
     icon: Monitor, group: 'Enterprise IT Rollouts',

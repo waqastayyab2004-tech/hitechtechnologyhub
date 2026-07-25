@@ -8,7 +8,7 @@ import {
   Zap, Menu, X, ChevronDown,
   Server, Shield, Globe, Brain, BookOpen, Briefcase,
   FileText, Lightbulb, Code, Users, ArrowRight,
-  GraduationCap, Cpu, Newspaper, Search,
+  GraduationCap, Cpu, Newspaper, Search, Award,
 } from 'lucide-react'
 import GlobalSearch from '@/components/ui/GlobalSearch'
 import ThemeToggle from '@/components/ui/ThemeToggle'
@@ -52,7 +52,6 @@ const nav = [
           { href: '/projects', icon: Code,      label: 'Projects',   desc: '44 real implementations with PMP docs' },
           { href: '/about',    icon: Briefcase, label: 'Portfolio',   desc: 'CV, experience, certifications' },
           { href: '/research', icon: Newspaper, label: 'Research',    desc: 'Publications, open source & datasets' },
-          { href: '/sap',      icon: Cpu,       label: 'SAP Hub',     desc: '11 yrs at SAP · 5 certs · courses', badge: 'New' },
         ],
       },
       {
@@ -66,12 +65,13 @@ const nav = [
   },
   {
     label: 'Learn',
-    href: '/training',
-    seeAll: { href: '/training', label: 'Browse all courses' },
+    href: '/ai-tools-learning',
+    seeAll: { href: '/ai-tools-learning', label: 'Browse all AI courses' },
     dropdown: [
       {
         group: 'Courses & Content',
         items: [
+          { href: '/ai-tools-learning', icon: Brain, label: 'AI Tools Learning', desc: 'Claude Code, Cursor, Copilot & more — free courses', badge: 'New' },
           { href: '/training', icon: GraduationCap, label: 'IT Learning', desc: '12 courses — free & paid', badge: '12 Courses' },
           { href: '/insights', icon: Lightbulb, label: 'Insights', desc: 'IT topics, guides, and trends' },
           { href: '/resources', icon: Cpu, label: 'AI Tools', desc: 'Top 20 AI tools for IT professionals' },
@@ -89,6 +89,28 @@ const nav = [
   {
     label: 'Articles',
     href: '/blog',
+  },
+  {
+    label: 'SAP Hub',
+    href: '/sap',
+    seeAll: { href: '/sap', label: 'View SAP Hub' },
+    dropdown: [
+      {
+        group: 'SAP Profile',
+        items: [
+          { href: '/sap',                 icon: Cpu,          label: 'SAP Overview',      desc: '11 yrs at SAP · 5 certs · Riyadh KSA', badge: 'New' },
+          { href: '/sap/certifications',  icon: Award,        label: 'Certifications',    desc: 'SAP Gen AI, HANA ML, S/4HANA, Analytics Cloud' },
+          { href: '/sap/experience',      icon: Briefcase,    label: 'Experience',        desc: 'Senior IT System Engineer & SPOC at SAP' },
+        ],
+      },
+      {
+        group: 'SAP Learning',
+        items: [
+          { href: '/sap/courses',         icon: GraduationCap, label: 'Courses I Teach',  desc: 'SAP BTP, Asset Lifecycle, Gen AI, SAP Build' },
+          { href: '/sap/skills',          icon: Brain,         label: 'Skills & Tools',   desc: 'SAP ISP · Ariba · HANA · AI Launchpad · BTP' },
+        ],
+      },
+    ],
   },
 ]
 

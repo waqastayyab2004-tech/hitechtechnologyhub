@@ -794,6 +794,50 @@ const courses = [
     ],
   },
   {
+    id: 121,
+    title: 'Claude Code 101',
+    category: 'AI & Automation',
+    level: 'Beginner', duration: '2h', students: '0+', rating: 5.0,
+    isFree: true, isPopular: true,
+    img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format&fit=crop',
+    instructor: 'Syed Waqas Tayyab',
+    skills: ['Claude Code CLI', 'AI-Assisted Coding', 'CLAUDE.md', 'MCP Servers', 'Subagents', 'Skills', 'Hooks', 'Daily Workflow'],
+    description: 'The complete beginner course for Claude Code — Anthropic\'s agentic coding tool that understands your codebase, edits files, runs commands, and integrates with your developer tools. Based on the official Anthropic Skilljar curriculum.',
+    topics: [
+      'What is Claude Code and how it works',
+      'Installing Claude Code and your first prompt',
+      'Daily workflow: explore → plan → code → commit',
+      'Context management and code review',
+      'Customising with CLAUDE.md, Subagents, Skills, MCP, and Hooks',
+      'Course quiz',
+    ],
+    curriculum: [
+      { module: 'What is Claude Code?', lessons: [
+        'What is Claude Code? — agentic coding tool overview',
+        'How Claude Code works — files, commands, and self-correction',
+      ]},
+      { module: 'Your first prompt', lessons: [
+        'Installing Claude Code',
+        'Your first prompt',
+      ]},
+      { module: 'Daily workflows', lessons: [
+        'The explore → plan → code → commit workflow',
+        'Context management',
+        'Code review',
+      ]},
+      { module: 'Customizing Claude Code', lessons: [
+        'The CLAUDE.md file',
+        'Subagents',
+        'Skills',
+        'MCP',
+        'Hooks',
+      ]},
+      { module: 'Quiz', lessons: [
+        'Course quiz',
+      ]},
+    ],
+  },
+  {
     id: 1,
     title: 'IT Career Roadmap: From L1 to Senior Engineer',
     category: 'Career & IT Foundations',
