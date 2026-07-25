@@ -72,7 +72,7 @@ const nav = [
         group: 'Courses & Content',
         items: [
           { href: '/training',          icon: GraduationCap, label: 'IT Learning',    desc: 'IT, AI Tools, Cloud, Security — free & paid', badge: '12 Courses' },
-          { href: '/ai-tools-learning', icon: Brain,         label: 'AI Tools',       desc: 'Claude Code, Cursor, Copilot & more — free', badge: 'New' },
+          { href: '/ai-tools-learning', icon: Brain,         label: 'AI Learning — Corporate', desc: 'Claude Code, Cursor, Copilot & more — free', badge: 'New' },
           { href: '/insights',          icon: Lightbulb,     label: 'Insights',       desc: 'IT topics, guides, and trends' },
           { href: '/resources',         icon: Cpu,           label: 'AI Resources',   desc: 'Top 20 AI tools for IT professionals' },
           { href: '/research',          icon: Newspaper,     label: 'Research',       desc: 'Publications, open source & datasets', badge: 'New' },
