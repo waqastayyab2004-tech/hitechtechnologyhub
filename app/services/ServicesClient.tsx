@@ -448,10 +448,10 @@ export default function ServicesPage() {
             {/* Subtle diagonal lines bg */}
             <div className="absolute inset-0 opacity-10" style={{backgroundImage:'repeating-linear-gradient(120deg,transparent,transparent 40px,rgba(59,130,246,0.3) 40px,rgba(59,130,246,0.3) 41px)'}}/>
 
-            <div className="relative z-10 flex flex-col md:flex-row items-stretch">
+            <div className="relative z-10 flex flex-col-reverse md:flex-row items-stretch">
 
               {/* Left — text content */}
-              <div className="flex-1 p-8 md:p-10">
+              <div className="flex-1 p-6 md:p-10">
                 <h3 className="text-2xl font-black text-white mb-1">Syed Waqas Tayyab</h3>
                 <p className="text-accent-blue font-semibold text-sm mb-6">Senior IT System Engineer · IT Service Delivery Lead · AI Automation Specialist</p>
 
@@ -488,20 +488,18 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              {/* Right — photo with dark bg, cut-out style */}
+              {/* Right — photo */}
               <div className="relative md:w-72 flex-shrink-0 flex items-end justify-center overflow-hidden"
                 style={{background:'linear-gradient(180deg,#0d1e38 0%,#071020 100%)'}}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/waqas-pro.jpg"
                   alt="Syed Waqas Tayyab — IT Specialist"
-                  className="w-full h-80 md:h-full object-cover object-top"
-                  style={{objectPosition:'center 0%'}}
+                  className="w-full h-48 md:h-full object-cover object-top"
+                  style={{objectPosition:'center 10%'}}
                 />
-                {/* Bottom fade into dark */}
                 <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#071020] to-transparent"/>
-                {/* Side fade into content area */}
-                <div className="absolute top-0 left-0 bottom-0 w-10 bg-gradient-to-r from-[#0a1628] to-transparent"/>
+                <div className="absolute top-0 left-0 bottom-0 w-10 bg-gradient-to-r from-[#0a1628] to-transparent hidden md:block"/>
               </div>
 
             </div>
