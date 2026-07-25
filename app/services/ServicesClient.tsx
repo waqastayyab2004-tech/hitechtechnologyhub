@@ -341,7 +341,6 @@ const faqs = [
 /* ── PAGE COMPONENT ─────────────────────────────────────────────────────── */
 
 export default function ServicesPage() {
-  const [openProcess, setOpenProcess] = useState<number | null>(0)
   const [openFaq, setOpenFaq] = useState<number | null>(0)
 
   useEffect(() => { document.title = 'IT Services — Syed Waqas Tayyab' }, [])
@@ -466,24 +465,46 @@ export default function ServicesPage() {
       </section>
       {/* ── WHY CHOOSE ME ─────────────────────────────────────────────── */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="section-heading mb-3">Why I&apos;m a Trusted IT Outsourcing Partner</h2>
-          <p className="section-subheading">Clients choose me for measurable results — reduced downtime, stronger security, and IT that scales with their business.</p>
+        <div className="mb-14">
+          <p className="text-xs font-black uppercase tracking-widest text-accent-blue mb-2">Why Work With Me</p>
+          <h2 className="section-heading mb-3">A Trusted IT Outsourcing Partner</h2>
+          <p className="text-gray-400 text-lg max-w-2xl">Clients choose me for measurable results — reduced downtime, stronger security, and IT that scales with their business.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-          {whyCards.map((w, i) => (
-            <div key={i} className="glass-card p-7 hover:-translate-y-0.5 transition-transform duration-300">
-              <div className="w-11 h-11 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mb-4">
-                <w.icon className="w-5 h-5 text-accent-blue"/>
+        {/* Asymmetric grid: large feature left, 2-col grid right */}
+        <div className="grid lg:grid-cols-5 gap-5 mb-8">
+          {/* Featured card — spans 2 cols, larger */}
+          <div className="lg:col-span-2 glass-card p-8 flex flex-col justify-between border-l-4 border-accent-blue/50 hover:-translate-y-0.5 transition-transform duration-300">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mb-5">
+                <whyCards[0].icon className="w-6 h-6 text-accent-blue"/>
               </div>
-              <h3 className="font-bold text-white mb-2">{w.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{w.desc}</p>
+              <h3 className="font-bold text-white text-xl mb-3">{whyCards[0].title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{whyCards[0].desc}</p>
             </div>
-          ))}
+            <div className="mt-8 pt-6 border-t border-white/8">
+              <p className="text-5xl font-black text-accent-blue">80%</p>
+              <p className="text-gray-500 text-sm mt-1">reduction in unplanned outages reported by clients within 3 months</p>
+            </div>
+          </div>
+          {/* 2x2 grid right */}
+          <div className="lg:col-span-3 grid sm:grid-cols-2 gap-5">
+            {whyCards.slice(1).map((w, i) => (
+              <div key={i} className="glass-card p-6 hover:-translate-y-0.5 transition-transform duration-300 group">
+                <div className="w-10 h-10 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mb-4 group-hover:bg-accent-blue/20 transition-colors">
+                  <w.icon className="w-5 h-5 text-accent-blue"/>
+                </div>
+                <h3 className="font-bold text-white text-sm mb-2">{w.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{w.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white font-semibold text-lg">Explore what we can do for your business</p>
-          <Link href="#contact-form" className="btn-primary px-8 py-3 whitespace-nowrap">Contact Me</Link>
+        <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border border-accent-blue/15 bg-accent-blue/5">
+          <div>
+            <p className="text-white font-semibold">Ready to see what enterprise IT expertise looks like?</p>
+            <p className="text-gray-400 text-sm mt-0.5">Free 30-min consultation — no commitment, real advice.</p>
+          </div>
+          <Link href="#contact-form" className="btn-primary px-8 py-3 whitespace-nowrap flex-shrink-0">Book Free Consultation</Link>
         </div>
       </section>
 
@@ -510,117 +531,96 @@ export default function ServicesPage() {
 
       {/* ── SERVICES ──────────────────────────────────────────────────── */}
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-14">
+        {/* Core IT services */}
+        <div className="mb-6">
+          <p className="text-xs font-black uppercase tracking-widest text-accent-blue mb-2">Core IT Services</p>
           <h2 className="section-heading mb-3">IT Services Provided</h2>
-          <p className="section-subheading">Specialist services built on 15 years of hands-on enterprise experience — not templates, not theory.</p>
+          <p className="text-gray-400 max-w-2xl">Specialist services built on 15 years of hands-on enterprise experience — not templates, not theory.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
-          {services.map((svc, i) => (
-            <div key={i} className={`glass-card overflow-hidden flex flex-col border-l-4 ${svc.border} hover:-translate-y-1 transition-transform duration-300 ${(svc as any).isMedical ? 'ring-1 ring-rose-500/20' : ''}`}>
-              <div className="h-44 overflow-hidden relative">
+        {/* Stripe-style horizontal service rows */}
+        <div className="space-y-3 mb-16">
+          {services.filter(s => !(s as any).isMedical && !(s as any).isEcom && !(s as any).isDigital).map((svc, i) => (
+            <div key={i} className={`glass-card group hover:border-white/15 transition-all duration-200`}
+              style={{ borderLeft: `3px solid ${svc.color.replace('text-','').replace('-400','').replace('accent-blue','#3b82f6').includes('#') ? svc.color : ''}` }}>
+              <div className="p-6 flex flex-col lg:flex-row lg:items-center gap-5">
+                {/* Icon + title block */}
+                <div className="flex items-center gap-4 lg:w-72 shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-dark-700 border border-white/10 flex items-center justify-center shrink-0
+                    group-hover:border-white/20 transition-colors">
+                    <svc.icon className={`w-5 h-5 ${svc.color}`}/>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-sm leading-snug">{svc.title}</h3>
+                    <p className={`text-xs font-medium ${svc.color} mt-0.5`}>{svc.mode}</p>
+                  </div>
+                </div>
+                {/* Tagline */}
+                <p className="text-gray-400 text-sm lg:w-64 shrink-0 lg:border-l lg:border-white/8 lg:pl-5">{svc.tagline}</p>
+                {/* Deliverables — scrollable on mobile */}
+                <div className="flex flex-wrap gap-2 flex-1">
+                  {svc.deliverables.slice(0, 4).map(d => (
+                    <span key={d} className="flex items-center gap-1.5 text-xs text-gray-500 bg-white/3 border border-white/6 px-2.5 py-1 rounded-lg">
+                      <CheckCircle className={`w-3 h-3 ${svc.color} shrink-0`}/>
+                      {d}
+                    </span>
+                  ))}
+                  {svc.deliverables.length > 4 && (
+                    <span className="text-xs text-gray-600 px-2.5 py-1">+{svc.deliverables.length - 4} more</span>
+                  )}
+                </div>
+                {/* Tools */}
+                <div className="flex flex-wrap gap-1.5 lg:w-48 shrink-0 lg:border-l lg:border-white/8 lg:pl-5">
+                  {svc.tools.slice(0, 4).map(t => (
+                    <span key={t} className="tag text-[10px]">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Extended services — 3-col cards */}
+        <div className="mb-6">
+          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Extended Services</p>
+          <h3 className="text-2xl font-black text-white mb-3">Beyond Core IT</h3>
+          <p className="text-gray-400 max-w-2xl text-sm">Additional specialisms available through HiTecH Technology HUB — medical billing, e-commerce, and digital marketing.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.filter(s => (s as any).isMedical || (s as any).isEcom || (s as any).isDigital).map((svc, i) => (
+            <div key={i} className={`glass-card overflow-hidden flex flex-col border-l-4 ${svc.border} hover:-translate-y-1 transition-transform duration-300`}>
+              <div className="h-36 overflow-hidden relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={svc.img} alt={svc.title} className="w-full h-full object-cover"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 to-transparent"/>
                 <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-dark-900/80 border border-white/10 text-gray-300">{svc.mode}</span>
-                {/* HiTecH branding badge for medical */}
-                {(svc as any).isMedical && (
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-500/20 border border-rose-500/40 text-rose-300">
-                    HiTecH Technology HUB
-                  </span>
-                )}
               </div>
-              <div className="p-6 flex flex-col flex-1">
-                {/* Icon — use Heart for medical, otherwise service icon */}
-                <div className={`w-10 h-10 rounded-xl bg-dark-700 border border-white/10 flex items-center justify-center mb-4`}>
+              <div className="p-5 flex flex-col flex-1">
+                <div className="w-9 h-9 rounded-xl bg-dark-700 border border-white/10 flex items-center justify-center mb-3">
                   {(svc as any).isMedical
-                    ? <span className="text-xl">🏥</span>
-                    : <svc.icon className={`w-5 h-5 ${svc.color}`}/>
+                    ? <span className="text-lg">🏥</span>
+                    : <svc.icon className={`w-4 h-4 ${svc.color}`}/>
                   }
                 </div>
-                <h3 className="text-lg font-bold text-white mb-1">{svc.title}</h3>
-                <p className={`text-sm font-semibold ${svc.color} mb-4`}>{svc.tagline}</p>
-
-                {/* Medical — extra HiTecH branding tagline */}
-                {(svc as any).isMedical && (
-                  <p className="text-xs text-gray-500 italic mb-3 border-l-2 border-rose-500/40 pl-3">
-                    Delivered by HiTecH Technology HUB in partnership with certified HIPAA billing specialists (MTBC &amp; Bellmedex).
-                  </p>
-                )}
-
-                <div className="space-y-1.5 mb-5 flex-1">
-                  {svc.deliverables.map(d => (
+                <h3 className="text-base font-bold text-white mb-1">{svc.title}</h3>
+                <p className={`text-xs font-semibold ${svc.color} mb-3`}>{svc.tagline}</p>
+                <div className="space-y-1 mb-4 flex-1">
+                  {svc.deliverables.slice(0, 4).map(d => (
                     <div key={d} className="flex items-start gap-2 text-xs text-gray-500">
-                      <CheckCircle className={`w-3.5 h-3.5 ${svc.color} flex-shrink-0 mt-0.5`}/>
-                      {d}
+                      <CheckCircle className={`w-3 h-3 ${svc.color} shrink-0 mt-0.5`}/>
+                      {d.replace(/^[^\s]+ /, '')}
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/5">
-                  {svc.tools.map(t => (
-                    <span key={t} className="tag text-[10px]">{t}</span>
-                  ))}
-                </div>
-                {/* Medical billing — specialties + full details link */}
                 {(svc as any).isMedical && (
-                  <div className="mt-4 pt-4 border-t border-rose-500/15">
-                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Specialties</p>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {['Mental Health', 'Internal Medicine', 'Chiropractic', 'Family Medicine', 'Transportation', 'DME'].map(s => (
-                        <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-500/10 border border-rose-500/20 text-rose-300">{s}</span>
-                      ))}
-                    </div>
-                    <Link href="/medical-billing"
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-bold hover:bg-rose-500/20 transition-colors">
-                      <span>🏥</span> See Full Service Details &amp; Get Free Billing Audit →
-                    </Link>
-                  </div>
+                  <Link href="/medical-billing" className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-bold hover:bg-rose-500/20 transition-colors mt-auto">
+                    🏥 Full Service Details →
+                  </Link>
                 )}
-
-                {/* E-Commerce — platforms + CTA */}
-                {(svc as any).isEcom && (
-                  <div className="mt-4 pt-4 border-t border-amber-500/15">
-                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Platforms We Support</p>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {[
-                        { label: '📦 Amazon', color: 'text-orange-300 border-orange-500/25 bg-orange-500/10' },
-                        { label: '🛍️ eBay', color: 'text-blue-300 border-blue-500/25 bg-blue-500/10' },
-                        { label: '🌙 Noon', color: 'text-yellow-300 border-yellow-500/25 bg-yellow-500/10' },
-                        { label: '🛒 Shopify', color: 'text-green-300 border-green-500/25 bg-green-500/10' },
-                        { label: '🎨 Etsy', color: 'text-pink-300 border-pink-500/25 bg-pink-500/10' },
-                        { label: '🌐 AliExpress', color: 'text-red-300 border-red-500/25 bg-red-500/10' },
-                      ].map(p => (
-                        <span key={p.label} className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${p.color}`}>{p.label}</span>
-                      ))}
-                    </div>
-                    <Link href="/contact"
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold hover:bg-amber-500/20 transition-colors">
-                      <span>🛒</span> Get Free E-Commerce Consultation →
-                    </Link>
-                  </div>
-                )}
-
-                {/* Digital Marketing — social icons + CTA */}
-                {(svc as any).isDigital && (
-                  <div className="mt-4 pt-4 border-t border-pink-500/15">
-                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Platforms & Networks</p>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {[
-                        { label: '📘 LinkedIn', color: 'text-blue-300 border-blue-500/25 bg-blue-500/10' },
-                        { label: '📸 Instagram', color: 'text-pink-300 border-pink-500/25 bg-pink-500/10' },
-                        { label: '📘 Facebook', color: 'text-indigo-300 border-indigo-500/25 bg-indigo-500/10' },
-                        { label: '▶️ YouTube', color: 'text-red-300 border-red-500/25 bg-red-500/10' },
-                        { label: '🐦 X/Twitter', color: 'text-sky-300 border-sky-500/25 bg-sky-500/10' },
-                        { label: '🎵 TikTok', color: 'text-fuchsia-300 border-fuchsia-500/25 bg-fuchsia-500/10' },
-                        { label: '🔍 Google SEO', color: 'text-green-300 border-green-500/25 bg-green-500/10' },
-                      ].map(p => (
-                        <span key={p.label} className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${p.color}`}>{p.label}</span>
-                      ))}
-                    </div>
-                    <Link href="/contact"
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-bold hover:bg-pink-500/20 transition-colors">
-                      <span>📱</span> Get Free Digital Marketing Consultation →
-                    </Link>
-                  </div>
+                {((svc as any).isEcom || (svc as any).isDigital) && (
+                  <Link href="/contact" className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-colors mt-auto
+                    ${(svc as any).isEcom ? 'bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20' : 'bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20'}`}>
+                    Get Free Consultation →
+                  </Link>
                 )}
               </div>
             </div>
@@ -630,39 +630,32 @@ export default function ServicesPage() {
 
       {/* ── PROCESS ───────────────────────────────────────────────────── */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/30">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h2 className="section-heading mb-3">How We Work Together</h2>
-            <p className="section-subheading">A transparent, step-by-step process recognised for being purposeful and effective.</p>
+            <p className="text-xs font-black uppercase tracking-widest text-accent-blue mb-2">How We Work</p>
+            <h2 className="section-heading mb-3">From First Call to Full Delivery</h2>
+            <p className="text-gray-400 max-w-2xl">A transparent, step-by-step process — purposeful, documented, and with no surprises.</p>
           </div>
-          <div className="space-y-3">
+          {/* Horizontal step bar */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-0 relative">
+            {/* Connector line — desktop only */}
+            <div className="hidden md:block absolute top-7 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-accent-blue/30 to-transparent" style={{zIndex:0}}/>
             {processSteps.map((step, i) => (
-              <div key={i} className="glass-card overflow-hidden">
-                <button
-                  onClick={() => setOpenProcess(openProcess === i ? null : i)}
-                  className="w-full flex items-center justify-between p-6 text-left"
-                >
-                  <div className="flex items-center gap-4">
-                    <span className="text-accent-blue font-black text-lg w-8 flex-shrink-0">{step.num}</span>
-                    <h3 className="font-bold text-white">{step.title}</h3>
-                  </div>
-                  {openProcess === i
-                    ? <ChevronUp className="w-5 h-5 text-accent-blue flex-shrink-0"/>
-                    : <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0"/>}
-                </button>
-                {openProcess === i && (
-                  <div className="px-6 pb-6 border-t border-white/5 pt-4">
-                    <p className="text-gray-400 text-sm leading-relaxed mb-3">{step.detail}</p>
-                    {step.bullets.length > 0 && (
-                      <ul className="space-y-1.5">
-                        {step.bullets.map(b => (
-                          <li key={b} className="flex items-start gap-2 text-sm text-gray-500">
-                            <CheckCircle className="w-3.5 h-3.5 text-accent-blue flex-shrink-0 mt-0.5"/>
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+              <div key={i} className="relative flex flex-col items-center text-center px-4 mb-8 md:mb-0" style={{zIndex:1}}>
+                {/* Number circle */}
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 font-black text-lg
+                  bg-gradient-to-br from-accent-blue/20 to-accent-blue/5 border border-accent-blue/30 text-accent-blue">
+                  {step.num}
+                </div>
+                <h3 className="font-bold text-white text-sm mb-2 leading-snug">{step.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{step.detail.split('—')[0].trim()}</p>
+                {step.bullets.length > 0 && (
+                  <div className="mt-3 text-left w-full max-w-[160px]">
+                    {step.bullets.slice(0, 2).map(b => (
+                      <p key={b} className="text-[10px] text-gray-600 flex items-start gap-1 mb-1">
+                        <span className="text-accent-blue mt-0.5">·</span>{b}
+                      </p>
+                    ))}
                   </div>
                 )}
               </div>
@@ -797,16 +790,17 @@ export default function ServicesPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/30">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
+            <p className="text-xs font-black uppercase tracking-widest text-accent-blue mb-2">Proven Results</p>
             <h2 className="section-heading mb-3">Project Case Studies</h2>
-            <p className="section-subheading">Real engagements, real outcomes — delivered across enterprise environments in MENA and beyond.</p>
+            <p className="text-gray-400 max-w-2xl">Real engagements, real outcomes — delivered across enterprise environments in MENA and beyond.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {caseStudies.map((c, i) => (
-              <div key={i} className="glass-card overflow-hidden flex flex-col">
-                <div className="h-48 overflow-hidden relative">
+              <div key={i} className="glass-card overflow-hidden flex flex-col group hover:-translate-y-0.5 transition-transform duration-200">
+                <div className="h-40 overflow-hidden relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.img} alt={c.title} className="w-full h-full object-cover"/>
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 to-transparent"/>
+                  <img src={c.img} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/95 via-dark-900/40 to-transparent"/>
                   <div className="absolute bottom-3 left-4 flex items-center gap-2">
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-dark-900/80 border border-white/10 text-gray-300">{c.sector}</span>
                     <span className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] bg-dark-900/80 border border-white/10 text-gray-400">
@@ -815,15 +809,20 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="font-bold text-white mb-3">{c.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">{c.desc}</p>
-                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 pt-4 border-t border-white/5">
-                    {c.results.map(r => (
-                      <div key={r} className="flex items-start gap-1.5 text-xs text-green-400">
-                        <CheckCircle className="w-3 h-3 flex-shrink-0 mt-0.5"/>
-                        {r}
-                      </div>
-                    ))}
+                  <h3 className="font-bold text-white mb-2 leading-snug">{c.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-1">{c.desc}</p>
+                  {/* Metric highlights — large numbers */}
+                  <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/5">
+                    {c.results.map(r => {
+                      const num = r.match(/[\d%→+]+/g)?.[0] || ''
+                      const label = r.replace(num, '').replace(/^[\s:–—-]+/, '').trim()
+                      return (
+                        <div key={r} className="bg-white/3 rounded-xl p-3">
+                          <p className="text-accent-blue font-black text-lg leading-none">{num}</p>
+                          <p className="text-gray-500 text-[10px] mt-1 leading-snug">{label}</p>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               </div>
