@@ -77,27 +77,27 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
               </div>
             </div>
             <div className="relative">
-              <Search className="w-3.5 h-3.5 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2"/>
+              <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"/>
               <input
                 placeholder="Search articles…"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full bg-dark-700 border border-white/10 rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-accent-blue/50"
+                className="w-full bg-dark-700 border border-white/10 rounded-lg pl-8 pr-3 py-2 text-xs text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent-blue/50"
               />
             </div>
           </div>
           <nav className="p-3 flex-1">
-            <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold px-2 mb-2">Topics</p>
+            <p className="text-xs text-gray-300 uppercase tracking-widest font-semibold px-2 mb-2">Topics</p>
             {CATEGORIES.map(cat => (
               <button key={cat.key}
                 onClick={() => { setActiveCategory(cat.key); setSearchQuery('') }}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors mb-0.5 ${
                   activeCategory === cat.key && !searchQuery
                     ? 'bg-accent-blue/10 text-accent-blue border border-accent-blue/20'
-                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}>
                 <span>{cat.label}</span>
-                <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${activeCategory === cat.key && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/5 text-gray-500'}`}>
+                <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${activeCategory === cat.key && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/8 text-gray-400'}`}>
                   {catCount(cat.key)}
                 </span>
               </button>
@@ -114,7 +114,7 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
               <button key={cat.key}
                 onClick={() => { setActiveCategory(cat.key); setSearchQuery('') }}
                 className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
-                  activeCategory === cat.key ? 'bg-accent-blue border-accent-blue text-white' : 'bg-dark-700 border-white/10 text-gray-400'
+                  activeCategory === cat.key ? 'bg-accent-blue border-accent-blue text-white' : 'bg-dark-700 border-white/10 text-gray-300'
                 }`}>
                 {cat.key === 'All' ? 'All' : cat.label}
               </button>
@@ -126,7 +126,7 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
             <h1 className="text-2xl font-black text-white mb-1">
               {searchQuery ? `Search: "${searchQuery}"` : activeCategory === 'All' ? 'All Articles' : CATEGORIES.find(c => c.key === activeCategory)?.label ?? activeCategory}
             </h1>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-300 text-sm">
               {filtered.length} article{filtered.length !== 1 ? 's' : ''} · Written from 15+ years of real enterprise IT experience
             </p>
           </div>
@@ -143,14 +143,14 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
                 <div className="flex-1">
                   <span className="inline-block text-[10px] font-black uppercase tracking-widest text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-full mb-3">★ Featured</span>
                   <h2 className="text-xl font-black text-white mb-2 group-hover:text-accent-blue transition-colors leading-snug">{featured.title}</h2>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-3 line-clamp-2">{featured.excerpt}</p>
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-3 line-clamp-3">{featured.excerpt}</p>
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400">
                     <span className="flex items-center gap-1"><Calendar className="w-3 h-3"/> {formatDate(featured.date)}</span>
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3"/> {featured.readTime}</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {featured.tags.slice(0, 4).map(t => (
-                      <span key={t} className="text-[10px] bg-white/5 border border-white/8 text-gray-400 px-2 py-0.5 rounded-full">{t}</span>
+                      <span key={t} className="text-xs bg-white/8 border border-white/12 text-gray-300 px-2.5 py-0.5 rounded-full">{t}</span>
                     ))}
                   </div>
                 </div>
@@ -170,16 +170,16 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
                 <Link key={post.slug} href={`/blog/${post.slug}`}
                   className="glass-card p-5 flex flex-col group hover:-translate-y-0.5 transition-all duration-200 hover:border-accent-blue/25">
                   <div className="w-full h-1 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple mb-4 flex-shrink-0"/>
-                  <h3 className="font-bold text-white text-sm leading-snug mb-2 group-hover:text-accent-blue transition-colors line-clamp-2 flex-shrink-0">
+                  <h3 className="font-bold text-gray-100 text-sm leading-snug mb-2 group-hover:text-accent-blue transition-colors line-clamp-3 flex-shrink-0">
                     {post.title}
                   </h3>
-                  <p className="text-gray-500 text-xs leading-relaxed flex-1 mb-3 line-clamp-3">{post.excerpt}</p>
+                  <p className="text-gray-300 text-xs leading-relaxed flex-1 mb-3 line-clamp-3">{post.excerpt}</p>
                   <div className="flex flex-wrap gap-1.5 mb-3">
                     {post.tags.slice(0, 3).map(t => (
-                      <span key={t} className="text-[10px] bg-white/5 border border-white/8 text-gray-500 px-2 py-0.5 rounded-full">{t}</span>
+                      <span key={t} className="text-xs bg-white/8 border border-white/12 text-gray-300 px-2.5 py-0.5 rounded-full">{t}</span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between text-[10px] text-gray-600 flex-shrink-0">
+                  <div className="flex items-center justify-between text-xs text-gray-400 flex-shrink-0">
                     <span className="flex items-center gap-1"><Calendar className="w-3 h-3"/> {formatDate(post.date)}</span>
                     <span className="flex items-center gap-1"><Clock className="w-3 h-3"/> {post.readTime}</span>
                   </div>
