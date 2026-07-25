@@ -473,10 +473,11 @@ export default function ServicesPage() {
         {/* Asymmetric grid: large feature left, 2-col grid right */}
         <div className="grid lg:grid-cols-5 gap-5 mb-8">
           {/* Featured card — spans 2 cols, larger */}
+          {(() => { const FeaturedIcon = whyCards[0].icon; return (
           <div className="lg:col-span-2 glass-card p-8 flex flex-col justify-between border-l-4 border-accent-blue/50 hover:-translate-y-0.5 transition-transform duration-300">
             <div>
               <div className="w-12 h-12 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mb-5">
-                <whyCards[0].icon className="w-6 h-6 text-accent-blue"/>
+                <FeaturedIcon className="w-6 h-6 text-accent-blue"/>
               </div>
               <h3 className="font-bold text-white text-xl mb-3">{whyCards[0].title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed">{whyCards[0].desc}</p>
@@ -486,6 +487,7 @@ export default function ServicesPage() {
               <p className="text-gray-500 text-sm mt-1">reduction in unplanned outages reported by clients within 3 months</p>
             </div>
           </div>
+          )})()}
           {/* 2x2 grid right */}
           <div className="lg:col-span-3 grid sm:grid-cols-2 gap-5">
             {whyCards.slice(1).map((w, i) => (
