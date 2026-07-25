@@ -65,17 +65,17 @@ const nav = [
   },
   {
     label: 'Learn',
-    href: '/ai-tools-learning',
-    seeAll: { href: '/ai-tools-learning', label: 'Browse all AI courses' },
+    href: '/training',
+    seeAll: { href: '/training', label: 'Browse all courses' },
     dropdown: [
       {
         group: 'Courses & Content',
         items: [
-          { href: '/ai-tools-learning', icon: Brain, label: 'AI Tools Learning', desc: 'Claude Code, Cursor, Copilot & more — free courses', badge: 'New' },
-          { href: '/training', icon: GraduationCap, label: 'IT Learning', desc: '12 courses — free & paid', badge: '12 Courses' },
-          { href: '/insights', icon: Lightbulb, label: 'Insights', desc: 'IT topics, guides, and trends' },
-          { href: '/resources', icon: Cpu, label: 'AI Tools', desc: 'Top 20 AI tools for IT professionals' },
-          { href: '/research', icon: Newspaper, label: 'Research', desc: 'Publications, open source & datasets', badge: 'New' },
+          { href: '/training',          icon: GraduationCap, label: 'IT Learning',    desc: 'IT, AI Tools, Cloud, Security — free & paid', badge: '12 Courses' },
+          { href: '/ai-tools-learning', icon: Brain,         label: 'AI Tools',       desc: 'Claude Code, Cursor, Copilot & more — free', badge: 'New' },
+          { href: '/insights',          icon: Lightbulb,     label: 'Insights',       desc: 'IT topics, guides, and trends' },
+          { href: '/resources',         icon: Cpu,           label: 'AI Resources',   desc: 'Top 20 AI tools for IT professionals' },
+          { href: '/research',          icon: Newspaper,     label: 'Research',       desc: 'Publications, open source & datasets', badge: 'New' },
         ],
       },
       {
