@@ -91,20 +91,20 @@ export default function AIToolsLearningPage() {
             <div className="relative rounded-2xl overflow-hidden border border-violet-500/30 shadow-[0_0_50px_rgba(139,92,246,0.18)] w-full h-80">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/waqas-ai-expert.png"
+                src="/waqas-trainer.jpg"
                 alt="Syed Waqas Tayyab — Corporate AI & IT Training Consultant"
                 className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/80 via-transparent to-transparent" />
               <span className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-violet-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-                15+ Years Enterprise IT
+                Corporate AI &amp; IT Trainer
               </span>
             </div>
 
             {/* Bio card */}
             <div className="mt-4 bg-white/4 border border-white/8 rounded-2xl p-5">
               <p className="text-white font-bold text-base leading-tight mb-0.5">Syed Waqas Tayyab</p>
-              <p className="text-violet-400 text-xs font-semibold mb-3">Senior IT Engineer · SAP · AI & IT Corporate Trainer</p>
+              <p className="text-violet-400 text-xs font-semibold mb-3">Corporate AI & IT Coach · Trainer · SAP Senior Engineer</p>
               <p className="text-gray-300 text-xs leading-relaxed mb-3">
                 With over 15 years embedded inside global enterprise environments — including 11 years at SAP Saudi Arabia — Waqas brings a rare combination of hands-on IT engineering depth and practical AI implementation experience to every training engagement.
               </p>
