@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "rm -rf .next out && next dev",
-    "dev:fresh": "rm -rf .next out && next dev",
-    "build": "next build",
+    "dev": "rm -rf .next && next dev",
+    "dev:fresh": "rm -rf .next && next dev",
+    "build": "pkill -f 'next dev' 2>/dev/null; rm -rf .next && next build",
     "start": "next start",
     "lint": "next lint",
     "export": "next build"
