@@ -47,39 +47,66 @@ export default function AIToolsLearningPage() {
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
-            <span className="text-white">AI Tools Learning</span>
-          </div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center">
-              <Brain className="w-5 h-5 text-violet-400" />
+        <div className="mb-12 flex flex-col lg:flex-row lg:items-start gap-10">
+
+          {/* Left: text content */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <span>/</span>
+              <span className="text-white">AI Tools Learning</span>
             </div>
-            <span className="text-xs font-semibold tracking-widest text-violet-400 uppercase">AI Tools Learning</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center">
+                <Brain className="w-5 h-5 text-violet-400" />
+              </div>
+              <span className="text-xs font-semibold tracking-widest text-violet-400 uppercase">AI Tools Learning</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Learn the AI Tools That{' '}
+              <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
+                Professionals Use
+              </span>
+            </h1>
+
+            {/* Enterprise value message */}
+            <p className="text-xl text-gray-200 font-medium mb-3 max-w-2xl">
+              Forget the hype — every course here is built from real enterprise deployments, practical AI implementation that solves actual business problems, not chatbot demos or toy examples.
+            </p>
+            <p className="text-base text-violet-300 italic max-w-2xl mb-5 leading-relaxed">
+              &ldquo;Most companies are using AI like a search engine. The ones winning are using it as an operational layer — automating the repeated, accelerating the complex, and freeing humans to focus on what actually builds the business.&rdquo;
+            </p>
+            <p className="text-base text-gray-300 max-w-2xl leading-relaxed mb-6">
+              These courses teach you how to implement AI tools around <span className="text-white font-semibold">your specific use case</span>, not generic prompts that work in a demo and fail in production. Whether you are an IT professional, a team lead, or an enterprise decision-maker, you will learn how to deploy AI that measurably reduces operational cost, eliminates repetitive workload, and delivers real business impact. Let humans focus on strategy, growth and the decisions that matter — and let AI handle everything else.
+            </p>
+
+            <p className="text-sm text-gray-400 max-w-xl">
+              Practical, free courses on the AI coding and productivity tools reshaping how IT professionals and developers work. Each course is built from real daily use — not toy examples.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Learn the AI Tools That{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
-              Professionals Use
-            </span>
-          </h1>
 
-          {/* Enterprise value message */}
-          <p className="text-xl text-gray-200 font-medium mb-3 max-w-3xl">
-            Forget the hype — every course here is built from real enterprise deployments, practical AI implementation that solves actual business problems, not chatbot demos or toy examples.
-          </p>
-          <p className="text-base text-violet-300 italic max-w-3xl mb-5 leading-relaxed">
-            &ldquo;Most companies are using AI like a search engine. The ones winning are using it as an operational layer — automating the repeated, accelerating the complex, and freeing humans to focus on what actually builds the business.&rdquo;
-          </p>
-          <p className="text-base text-gray-300 max-w-3xl leading-relaxed mb-6">
-            These courses teach you how to implement AI tools around <span className="text-white font-semibold">your specific use case</span>, not generic prompts that work in a demo and fail in production. Whether you are an IT professional, a team lead, or an enterprise decision-maker, you will learn how to deploy AI that measurably reduces operational cost, eliminates repetitive workload, and delivers real business impact. Let humans focus on strategy, growth and the decisions that matter — and let AI handle everything else.
-          </p>
+          {/* Right: instructor photo */}
+          <div className="hidden lg:flex flex-col items-center gap-3 shrink-0">
+            <div className="relative">
+              <div className="w-52 h-64 rounded-2xl overflow-hidden border border-violet-500/30 shadow-[0_0_40px_rgba(139,92,246,0.15)]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/waqas-ai-expert.png"
+                  alt="Waqas Syed — Senior IT Engineer & AI Consultant"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-violet-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
+                15+ yrs Enterprise IT
+              </span>
+            </div>
+            <div className="mt-5 text-center">
+              <p className="text-white font-semibold text-sm">Waqas Syed</p>
+              <p className="text-gray-400 text-xs mt-0.5">Senior IT Engineer · SAP · AI Consultant</p>
+              <p className="text-violet-400 text-xs mt-0.5">Riyadh, Saudi Arabia</p>
+            </div>
+          </div>
 
-          <p className="text-sm text-gray-400 max-w-2xl">
-            Practical, free courses on the AI coding and productivity tools reshaping how IT professionals and developers work. Each course is built from real daily use — not toy examples.
-          </p>
         </div>
 
         {/* Available Courses */}
