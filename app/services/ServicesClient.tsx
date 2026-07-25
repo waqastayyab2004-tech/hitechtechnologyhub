@@ -6,7 +6,7 @@ import {
   Shield, Cloud, Server, Zap, Monitor, Headphones,
   ArrowRight, MapPin, Wifi, Star, Users, TrendingUp, Award,
   Settings, Lock, Layers, CheckCircle, ChevronDown, ChevronUp,
-  Globe, Cpu, Database, Code, Phone, Mail,
+  Globe, Cpu, Database, Code, Phone, Mail, Bot, Brain, Sparkles,
 } from 'lucide-react'
 
 /* ── DATA ──────────────────────────────────────────────────────────────── */
@@ -36,18 +36,39 @@ const whyCards = [
 const deliveryModels = [
   {
     icon: Users,
+    badge: '⭐ Top Rated',
     title: 'Shared IT Specialist',
-    desc: 'A cost-effective model where you get senior IT expertise shared across defined service areas. Ideal for SMBs and growing teams who need high-quality support without a full-time hire. Resources and expertise are available on demand.',
+    desc: 'Senior IT expertise shared across defined service areas — on demand, without a full-time hire. Ideal for SMBs and growing teams who need enterprise-grade support at a fraction of the cost.',
   },
   {
     icon: Star,
+    badge: '🏆 Most Popular',
     title: 'Dedicated IT Consultant',
-    desc: 'A personalised engagement with full focus on your environment. Deep knowledge of your systems, committed availability, and a single point of accountability. Best for enterprises with complex or regulated IT requirements.',
+    desc: 'Full-focus engagement with deep knowledge of your environment, committed availability, and a single point of accountability. Best for enterprises with complex or regulated IT requirements.',
   },
   {
     icon: TrendingUp,
+    badge: '🔥 High Demand',
     title: 'Staff Augmentation',
-    desc: 'Seamlessly integrate a senior IT specialist into your existing team. Whether short-term for a project or long-term for capacity, I plug directly into your workflows, tools, and communication channels.',
+    desc: 'A senior IT specialist plugged directly into your existing team — short-term for a project or long-term for capacity. I integrate into your workflows, tools, and communication channels from day one.',
+  },
+  {
+    icon: Bot,
+    badge: '🤖 AI — New',
+    title: 'AI Workflow Automation',
+    desc: 'End-to-end AI automation of your operational workflows — email triage, ticket routing, SLA monitoring, and reporting. Reduce manual overhead by 60–80% using production-grade AI agents built on Claude, OpenAI, and MCP.',
+  },
+  {
+    icon: Brain,
+    badge: '🤖 AI — New',
+    title: 'Corporate AI Training',
+    desc: 'Hands-on AI training tailored to your team and industry. From Claude Code to ChatGPT for enterprise — your staff learns to deploy AI that actually works in production, not just demos. Live sessions, real use cases, measurable adoption.',
+  },
+  {
+    icon: Sparkles,
+    badge: '🤖 AI — New',
+    title: 'AI Strategy & Roadmap',
+    desc: 'A structured AI adoption roadmap built around your business. Identify the highest-ROI automation opportunities, select the right tools, and deliver a phased implementation plan your leadership can approve and your team can execute.',
   },
 ]
 
@@ -393,6 +414,30 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ── DELIVERY MODELS ───────────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="section-heading mb-3">The Right Service Delivery Model for You</h2>
+            <p className="section-subheading">Whether you need flexible part-time support, a dedicated specialist, AI automation, or team augmentation — we have a model that fits.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {deliveryModels.map((m, i) => (
+              <div key={i} className="glass-card p-7 border-t-4 border-accent-blue/50 hover:-translate-y-0.5 transition-transform duration-300">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center">
+                    <m.icon className="w-6 h-6 text-accent-blue"/>
+                  </div>
+                  <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-white/8 text-gray-300 border border-white/10">{m.badge}</span>
+                </div>
+                <h3 className="font-black text-white text-lg mb-3">{m.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{m.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── MEET THE EXPERT ──────────────────────────────────────────── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-dark-800/50 border-y border-white/8">
         <div className="max-w-5xl mx-auto">
@@ -507,27 +552,6 @@ export default function ServicesPage() {
             <p className="text-gray-400 text-sm mt-0.5">Free 30-min consultation — no commitment, real advice.</p>
           </div>
           <Link href="#contact-form" className="btn-primary px-8 py-3 whitespace-nowrap flex-shrink-0">Book Free Consultation</Link>
-        </div>
-      </section>
-
-      {/* ── DELIVERY MODELS ───────────────────────────────────────────── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="section-heading mb-3">The Right Service Delivery Model for You</h2>
-            <p className="section-subheading">Whether you need flexible part-time support, a dedicated specialist, or team augmentation — we have a model that fits.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {deliveryModels.map((m, i) => (
-              <div key={i} className="glass-card p-7 border-t-4 border-accent-blue/50 hover:-translate-y-0.5 transition-transform duration-300">
-                <div className="w-12 h-12 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mb-5">
-                  <m.icon className="w-6 h-6 text-accent-blue"/>
-                </div>
-                <h3 className="font-black text-white text-lg mb-3">{m.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{m.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
