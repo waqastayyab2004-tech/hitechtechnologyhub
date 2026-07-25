@@ -51,7 +51,8 @@ const nav = [
         items: [
           { href: '/projects', icon: Code,      label: 'Projects',   desc: '44 real implementations with PMP docs' },
           { href: '/about',    icon: Briefcase, label: 'Portfolio',   desc: 'CV, experience, certifications' },
-          { href: '/research', icon: Newspaper, label: 'Research',    desc: 'Publications, open source & datasets', badge: 'New' },
+          { href: '/research', icon: Newspaper, label: 'Research',    desc: 'Publications, open source & datasets' },
+          { href: '/sap',      icon: Cpu,       label: 'SAP Hub',     desc: '11 yrs at SAP · 5 certs · courses', badge: 'New' },
         ],
       },
       {
