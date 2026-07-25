@@ -210,7 +210,7 @@ export default function Hero() {
       </div>
 
       {/* ── Main content (z-10) ── */}
-      <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 flex flex-col items-center text-center gap-4 overflow-hidden" style={{zIndex:10}}>
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pt-28 pb-10 flex flex-col items-center text-center gap-4 overflow-hidden" style={{zIndex:10}}>
 
         {/* Available badge */}
         <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
@@ -318,7 +318,7 @@ export default function Hero() {
       {/* ── Human + AI Collaboration Scene ── */}
       <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8 }}
-        className="relative w-full max-w-3xl mx-auto px-4 pb-24"
+        className="relative w-full max-w-5xl mx-auto px-4 pb-24"
         style={{zIndex:10}}>
 
         <style>{`
