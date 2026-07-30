@@ -13,6 +13,10 @@ featured: false
 <p style="background:#0f172a; color:#475569; font-size:0.72rem; padding:6px 12px; margin:0; text-align:right;">Syed Waqas Tayyab · IT Expert & AI Engineer · HiTecH Technology HUB</p>
 </div>
 
+<div style="margin: 1.5rem 0; display:flex; justify-content:center;">
+<img src="/mde-logo.png" alt="Microsoft Defender for Endpoint" style="max-width:340px; width:100%;"/>
+</div>
+
 # Microsoft Defender for Endpoint in the Enterprise: A Practical IT Support Guide
 
 Most documentation on Microsoft Defender for Endpoint (MDE) is written for security architects. This guide is written for the IT support engineer who owns the daily operations: the person handling the "my laptop is slow" ticket, the developer exclusion request, the post-repair re-onboarding, and the L3 escalation package.
@@ -33,6 +37,11 @@ Key differences:
 - **Visibility lives in the portal.** The security team monitors device health, alert status, and compliance from the MDE portal — not from the local machine.
 
 For IT support, this means: **you cannot fix most MDE issues locally.** Your job is to diagnose correctly, apply what you can (raise the right ticket, re-run onboarding where needed), and escalate with the right artefacts.
+
+<div style="margin: 2rem 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background:#fff; padding: 1.5rem;">
+<img src="/mde-architecture.png" alt="Microsoft Defender for Endpoint — capability architecture: Threat & Vulnerability Management, Attack Surface Reduction, Next Generation Protection, EDR, Auto Investigation, Microsoft Threat Experts" style="width:100%; display:block;"/>
+<p style="color:#64748b; font-size:0.72rem; margin: 0.5rem 0 0; text-align:center;">Microsoft Defender for Endpoint — unified capability architecture across clients, servers, mobile, and network devices</p>
+</div>
 
 ---
 
