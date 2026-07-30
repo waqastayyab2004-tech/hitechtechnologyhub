@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {
   ArrowLeft, Clock, Users, Star, Award, CheckCircle,
   Play, ChevronDown, ChevronUp, BookOpen, Shield,
-  Briefcase, Globe, Mail,
+  Briefcase, Globe, Mail, Brain, Trophy, RotateCcw,
 } from 'lucide-react'
 
 const courses = [
@@ -311,8 +311,57 @@ const courses = [
   },
   { id: 117, title: 'Office AV Technology: Plan, Install & Commission Meeting Room Tech', category: 'Office & AV Technology', level: 'Intermediate', duration: '3h', students: '75+', rating: 4.9, isFree: true, img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop', skills: ['MS Teams Rooms', 'AV Over IP', 'Room Schedulers', 'Wolfvision Cynap Pure', 'Digital Signage', 'Display Technologies', 'Audio Systems', 'Office Build-Out'], description: 'Learn how to plan, install, configure, and commission enterprise office AV technology — meeting room standards, Microsoft Teams Rooms, display technologies, wireless presentation, room schedulers, audio systems, AV-over-IP, and digital signage. Based on real delivery managing 15+ meeting rooms.', whatYouLearn: ['Define meeting room technology standards by room category', 'Deploy and configure Microsoft Teams Rooms hardware', 'Select and install display technologies and audio systems', 'Set up Wolfvision Cynap Pure wireless presentation for BYOD use', 'Commission room schedulers with Exchange/Teams integration and deliver formal site acceptance'], curriculum: [{ module: 'Module 1 — Meeting Room Standards & Technology Selection', lessons: ['Meeting room categories: XS huddle (1-4), Small/Med (5-10), Large (10-20), Boardroom/VIP (20+)', 'Technology matrix: approved AV stack per room category', 'Microsoft Teams Rooms certified hardware: bars, cameras, audio, compute units', 'Display selection: screen size formula, throw ratio for projectors', 'AV Over IP vs. traditional HDMI: when to use each', 'Building a Bill of Materials (BOM) before procurement'] }, { module: 'Module 2 — Microsoft Teams Rooms Deployment', lessons: ['Teams Rooms hardware setup: unboxing, mounting, cable management', 'Initial configuration: Teams Rooms Pro licence, account setup, domain join', 'One-touch meeting join: verifying calendar integration with Exchange/M365', 'Teams Rooms Admin Centre: monitoring room health and peripheral status', 'Nightly health check: actioning amber/red status', 'Common Teams Rooms issues and on-site remediation'] }, { module: 'Module 3 — Display & Audio Technologies', lessons: ['Display types: LCD panels, interactive flat panels, LED video walls, projectors', 'Display mounts and trolleys: fixed wall, flush, motorised, and mobile', 'Digital flipcharts: interactive whiteboard setup and network integration', 'Audio design: ceiling mic coverage zones, table boundary mics, gooseneck placement', 'Handheld and lavalier microphones: wireless frequency management', 'Loud speaker placement: coverage calculation, feedback prevention', 'AV calibration: audio levels, display brightness standardisation'] }, { module: 'Module 4 — Wireless Presentation & Room Schedulers', lessons: ['Wolfvision Cynap Pure: what it is and why it replaces HDMI cables', 'Cynap Pure installation: network connection, vSolution Link Pro portal', 'BYOD wireless presentation: Windows, macOS, iOS, Android without cables', 'Cynap Pure troubleshooting: connectivity, firmware updates, factory reset', 'Room schedulers (eDoorplates): Crestron vs. Evoko comparison', 'Doorplate setup: network join, Exchange/Teams calendar binding', 'Booking panel behaviour: check-in, ad-hoc booking, auto-release after 10 min'] }, { module: 'Module 5 — Digital Signage, Build-Out & Handover', lessons: ['Digital signage architecture: content management, display network, scheduling', 'Digital Signage portal: registering screens, playlists, display duration', 'AV Over IP: encoder/decoder setup, VLAN requirements', 'Office build-out checklist: floor plan review to site acceptance sign-off', 'Vendor management: scoping AV contractor work, quality checks', 'Site acceptance testing: AV, network, booking, wireless — formal sign-off', 'Handover documentation: network diagram, AV config sheet, warranty register'] }] },
   { id: 118, title: 'IT Pickup Point: Deploy & Manage Smart Lockers for Self-Service IT Asset Collection', category: 'Office & AV Technology', level: 'Intermediate', duration: '2h', students: '55+', rating: 4.9, isFree: true, img: '/it-pickup-locker-2.jpg', skills: ['Signifi Digital Locker', 'Smart Locker Management', 'IT Asset Automation', 'SignifiVISION', 'Self-Service IT', 'Audit Trail', 'ITAM Integration', 'Deployment Readiness'], description: 'Learn to deploy and operate a Signifi Digital Storage Locker IT Pickup Point — from the 11-point pre-installation readiness checklist through to daily operations. Covers the complete delivery status lifecycle, step-by-step locker and ITLC pickup procedures, 7-day expiry policy, kiosk inventory reporting, emergency key protocol, and deployment cost management. Based on a real production deployment.', whatYouLearn: ['Execute the complete locker pickup workflow: app entry → technician drop-off → employee QR/PIN collection', 'Manage the IT Link Center (ITLC) as an overflow pickup channel for oversized items', 'Apply the 7-day expiry policy: identify uncollected items and move to ITLC correctly', 'Generate and interpret kiosk inventory and delivery reports in Excel', 'Complete the 11-point Signifi deployment readiness checklist to avoid costly on-site abort fees'], curriculum: [{ module: 'Module 1 — Smart Locker Fundamentals & Delivery Workflow', lessons: ['What is a Signifi digital storage locker and how it replaces manual IT asset handoff', 'Delivery status lifecycle: Pending Technician Drop-off → Pending Customer Pickup → Complete', 'Two pickup channels: Smart Locker (self-service QR/PIN) vs. IT Link Center (staff-assisted)', 'When to use ITLC instead of locker: item too large, employee requested it, or locker unavailable', 'Signifi at scale: 350M+ transactions/year, 45+ countries, 85+ API integrations', 'Compliance advantage: authenticated digital audit trail eliminates sign-out sheets permanently'] }, { module: 'Module 2 — Deployment Planning & Installation', lessons: ['Placement strategy: lobby vs. IT room vs. floor — what drives the decision', 'Physical requirements: floor space, power supply, network connectivity (LAN/Wi-Fi)', 'Compartment size planning: small (phones/accessories), medium (tablets), large (laptops/MacBooks)', 'Branding and signage: "IT Pickup Point" label, wayfinding, QR code instructions on-screen', 'Network configuration: locker IP assignment, firewall rules for SignifiVISION cloud connectivity', 'First-time setup: physical commissioning, screen boot, admin login, locker ID registration'] }, { module: 'Module 3 — SignifiVISION Software Administration', lessons: ['SignifiVISION dashboard: real-time locker status, compartment occupancy', 'User management: adding employees, assigning access levels, linking to corporate directory', 'Compartment assignment: assigning a specific locker slot to a user or order', 'Notification configuration: email/SMS templates for "your item is ready to collect"', 'Personalised alerts: locker full, item not collected after X hours, access failure', 'Reporting: transaction history, user access log, asset dwell time, utilisation rate'] }, { module: 'Module 4 — Asset Management Integration', lessons: ['End-to-end workflow: SAP Ariba order approved → IT loads locker → employee notified → collects → CLEA updated', 'ServiceNow integration: fulfilment ticket automatically linked to locker assignment number', 'CLEA/SAP ISP update on collection: asset status changes from "In Stock" to "Assigned" automatically', 'Return workflow: employee deposits device → locker records return → ticket auto-raised', 'API integration: Signifi 85+ API integrations — connecting to SAP, ServiceNow, and MDM tools', 'Audit trail: every collection event — user ID, timestamp, compartment, asset serial — stored in SignifiVISION'] }, { module: 'Module 5 — Daily Operations & Troubleshooting', lessons: ['Daily checklist: load approved orders, verify compartment availability, check notification queue', 'Employee experience: receive notification → arrive at locker → authenticate → collect', 'Authentication methods: PIN code, QR code, badge tap, biometric (model dependent)', 'Common issues: compartment stuck, employee locked out, notification not received — resolution steps', 'UV sanitisation cycle: when to run, how to verify completion, compliance logging', 'Escalation path: locker hardware fault → Signifi support → temporary manual handoff protocol', 'Monthly maintenance: clean touch screen, check connections, review access logs'] }] },
-  { id: 119, title: 'Zebra ZT411 RFID Printer: Setup, Calibration & Asset Tag Printing', category: 'Printer Management', level: 'Intermediate', duration: '1h 30m', students: '40+', rating: 4.9, isFree: true, img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop', skills: ['Zebra ZT411', 'RFID Configuration', 'Label Media Loading', 'EU RED Compliance', 'Asset Tag Printing', 'Zebra Setup Utilities', 'SAP IT Operations'], description: 'Learn to unbox, install, configure, and operate the Zebra ZT411 industrial RFID printer for enterprise IT asset tagging. Covers hardware setup, RFID inlay calibration, label media loading, EU RED security activation, and daily operations — based on a real SAP IT deployment at the Riyadh IT Link Center.', whatYouLearn: ['Unbox and install the Zebra ZT411 hardware safely and correctly', 'Load RFID inlay media and thermal transfer ribbon', 'Calibrate the RFID encoder and verify read/write to the inlay', 'Activate the EU RED security profile for wireless compliance', 'Print and verify SAP-format RFID asset tags in production'], curriculum: [{ module: 'Module 1 — RFID Printer Fundamentals & Hardware Overview', lessons: ['What is RFID and why enterprise IT uses it for asset tracking', 'Zebra ZT411 hardware tour: print engine, RFID encoder, media path, connectivity ports', 'Difference between thermal transfer and direct thermal printing — which to use for asset tags', 'RFID inlay types: UHF vs. HF — SAP IT uses UHF (ISO 18000-6C / EPC Gen2)', 'Unboxing checklist: verify all components before installation', 'Placement guidelines: clearance, ventilation, network proximity, and cable management'] }, { module: 'Module 2 — Hardware Installation & Media Loading', lessons: ['Step-by-step: open media compartment and thread the label path correctly', 'Loading RFID inlay label rolls: positioning the inlay over the RFID antenna window', 'Thermal transfer ribbon loading: match ribbon width to media width', 'Closing the print mechanism: correct latch tension for consistent print quality', 'Power-on sequence and initial self-test print', 'Common media loading errors and how to resolve them without reprinting waste'] }, { module: 'Module 3 — RFID Calibration & Encoder Setup', lessons: ['Why RFID calibration is required after every media change', 'Running the RFID calibration routine via the ZT411 front panel', 'RFID read/write verification: confirming the encoder programmes the inlay correctly', 'Adjusting RFID power level for optimal read range without interference', 'Testing with Zebra Setup Utilities: send a test label, verify RFID data in the tag', 'Troubleshooting void labels: causes and corrective actions'] }, { module: 'Module 4 — EU RED Security Activation & Compliance', lessons: ['What is EU RED and why SAP mandates it for wireless devices', 'Locating the EU RED security settings on the ZT411', 'Step-by-step: activate the EU RED security profile', 'Verifying activation: confirming the printer operates within approved frequency bands', 'SAP global wireless compliance policy: what happens if a non-compliant device is found', 'Documentation: record the activation in the asset management system'] }, { module: 'Module 5 — Daily Operations & Asset Tag Printing', lessons: ['SAP IT asset tagging workflow: from procurement to RFID tag to assignment', 'Printing asset tags: selecting the correct label format and RFID data structure', 'Label quality checks: scan every tag before applying it to a device', 'Applying RFID tags correctly: surface preparation, placement, orientation', 'Daily printer maintenance: printhead cleaning, platen roller inspection', 'Following SAP KB1349185 (printer setup) and KB1349678 (label printing guide)'] }] },
+  { id: 119, title: 'Zebra ZT411R RFID Printer: Full Setup, Calibration & Asset Tag Printing', category: 'Printer Management', level: 'Intermediate', duration: '2h', students: '40+', rating: 4.9, isFree: true, isPopular: true, img: '/zebra-zt411-rfid-calibration-complete.webp', skills: ['Zebra ZT411R', 'RFID Configuration', 'ZebraNet Print Server', 'Label Media Loading', 'EU RED Compliance', 'Zebra Setup Utilities', 'Network Printing', 'CLEA App', 'IT Asset Management'], description: 'Complete end-to-end course on deploying and operating the Zebra ZT411R industrial RFID printer — from unboxing through manual media calibration, RFID calibration, EU RED security activation via Zebra Setup Utilities, wired network registration, ZebraNet print server configuration, CLEA integration, and daily asset tag operations. Based on a real production deployment.', whatYouLearn: ['Unbox and install the Zebra ZT411R correctly — including placement for RFID accuracy', 'Load RFID inlay media and thermal transfer ribbon without causing void tags', 'Perform manual media calibration (Pause + Cancel) and verify single-label feed', 'Run RFID calibration with correct regional settings — full 5-minute cycle', 'Activate EU RED compliance by sending a Security Setup File via Zebra Setup Utilities', 'Register the printer on the corporate network and obtain a stable DHCP reservation', 'Configure ZebraNet print server and verify via the printer web interface', 'Integrate with CLEA for real-time RFID asset record updates', 'Diagnose and fix VOID labels, label gaps, QR code offsets, and scanner issues'], curriculum: [{ module: 'Module 1 — RFID Printer Fundamentals & Hardware Overview', lessons: ['What is RFID and why enterprise IT uses it for asset tracking', 'Zebra ZT411R hardware tour: print engine, RFID encoder, ZebraNet print server, media path, ports', 'Thermal transfer vs. direct thermal printing — why thermal transfer for durable RFID asset tags', 'RFID inlay types: UHF vs. HF — enterprise IT standard is UHF (ISO 18000-6C / EPC Gen2)', 'RFID label specification: 60×25mm Synthetic RFID Coated Acrylic, 400 labels/roll', 'Unboxing checklist and placement guidelines: clearance, ventilation, away from UHF emitters'] }, { module: 'Module 2 — Hardware Installation & Media Loading', lessons: ['Ribbon loading: threading the ribbon path correctly, attaching to take-up spindle', 'Why ribbon width must match label width — printhead wear and print edge quality', 'Loading RFID inlay label rolls: positioning the inlay directly over the RFID antenna window', 'Media guide adjustment: push firmly against label edges — loose guides cause calibration failures', 'Power-on sequence and initial test print to confirm mechanical setup', 'Reference videos: Ribbon and Label Position, Sensor label Adjust, Where the Sensor must light'] }, { module: 'Module 3 — Manual Media Calibration', lessons: ['Why manual calibration is required after every label roll change', 'Step-by-step: Press and hold Pause + Cancel to enter manual calibration mode', 'Why the ribbon must be removed during calibration — sensor reads label backing only', 'Verifying calibration: press Feed and confirm exactly one label advances', 'What causes multi-label feeds and how to repeat the calibration correctly', 'Reference: Printer Calibration document and sensor adjustment video'] }, { module: 'Module 4 — RFID Calibration & Encoder Setup', lessons: ['Why RFID calibration is separate from media calibration — inlay position varies per roll', 'Front panel navigation: Menu → RFID Icon → RFID Calibrate → Start Calibration', 'Selecting the correct country/region code — this affects RF output compliance', 'Understanding calibration time: a full successful cycle takes more than 5 minutes', 'If calibration finishes quickly — why this means it failed and how to retry', 'Verify after calibration: print a test label and confirm RFID data reads back correctly'] }, { module: 'Module 5 — EU RED Security Activation via Zebra Setup Utilities', lessons: ['What EU RED is and why all RF-emitting equipment requires compliance activation', 'Why this requires Zebra Setup Utilities + Windows PC — not the front panel alone', 'Download and install Zebra Printer Setup Utilities for Windows from zebra.com/support', 'Connect the printer to your computer via USB Type-A to Type-B cable', 'Select the printer in Zebra Setup Utilities and open Open Communication With Printer', 'Paste the Security Setup File contents into the Direct Communication window and click Send to Printer', 'Reading the response window: what a successful activation response looks like', 'Set Head Close Action to No Motion to prevent label waste on printhead open/close'] }, { module: 'Module 6 — Network Registration & Print Server Setup', lessons: ['Disable Power Save / Energy Star before network connection — prevents port deactivation', 'Connect via Ethernet (DHCP) — how to find the assigned IP address on the printer display', 'Contact the Printer Team: provide MAC address and current IP for hostname and DHCP reservation', 'Why print queues must wait until DHCP reservation is confirmed — silent IP change breaks all queues', 'Accessing the ZebraNet print server web interface: Status READY, RFID READY, link status check', 'Print server pages: View/Modify Settings, RFID Log, Alert Setup, Directory Listing, Printer Controls', 'SNMP alert configuration: Cold Start broadcast for network monitoring'] }, { module: 'Module 7 — CLEA Integration, Daily Operations & Troubleshooting', lessons: ['How RFID tags printed by the ZT411R feed into the CLEA asset lifecycle management system', 'Daily tagging workflow: asset record → print → verify RFID → apply → update system', 'Label quality check before applying: scan every tag — catch void tags before they reach a device', 'Troubleshooting: VOID message — RFID calibration not completed correctly, repeat calibration', 'Troubleshooting: label gap between prints — sensor position issue, run manual calibration', 'Troubleshooting: QR code / barcode offset — adjust fine-tuning in the label template code', 'Troubleshooting: scanner cannot scan anything — set keyboard mode in Desktop123 software', 'Ordering replacement labels: LABEL SYNTHETIC 60×25MM RFID COATED ACRYLIC 76.2MM 400/R'] }] },
   { id: 121, title: 'Claude Code 101', category: 'AI & Automation', level: 'Beginner', duration: '2h', students: '0+', rating: 5.0, isFree: false, img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format&fit=crop', skills: ['Claude Code CLI', 'AI-Assisted Coding', 'CLAUDE.md', 'MCP Servers', 'Subagents', 'Skills', 'Hooks', 'Daily Workflow'], description: 'The complete beginner course for Claude Code — Anthropic\'s agentic coding tool that understands your codebase, edits files, runs commands, and integrates with your developer tools. Based on the official Anthropic Skilljar curriculum. Available in terminal, VS Code, Claude Desktop, and JetBrains.', whatYouLearn: ['Understand what Claude Code is and how it differs from Claude.ai', 'Install Claude Code and write your first prompt in minutes', 'Apply the daily explore → plan → code → commit workflow', 'Manage context effectively in large codebases', 'Customise Claude Code with CLAUDE.md, Subagents, Skills, MCP, and Hooks'], curriculum: [{ module: 'What is Claude Code?', lessons: ['What is Claude Code? — agentic coding tool overview', 'How Claude Code works — files, commands, and self-correction'] }, { module: 'Your first prompt', lessons: ['Installing Claude Code', 'Your first prompt'] }, { module: 'Daily workflows', lessons: ['The explore → plan → code → commit workflow', 'Context management', 'Code review'] }, { module: 'Customizing Claude Code', lessons: ['The CLAUDE.md file', 'Subagents', 'Skills', 'MCP', 'Hooks'] }, { module: 'Quiz', lessons: ['Course quiz'] }] },
+  { id: 122, title: 'Microsoft Defender for Endpoint: Enterprise Deployment & Support', category: 'Cybersecurity', level: 'Intermediate', duration: '3h', students: '80+', rating: 4.9, isFree: true, isPopular: true, img: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80&auto=format&fit=crop', skills: ['Microsoft Defender for Endpoint', 'EDR', 'Endpoint Security', 'Microsoft Intune', 'Tamper Protection', 'Performance Tuning', 'mdatp CLI', 'PowerShell', 'Exclusion Management', 'L3 Escalation'], description: 'A practical, operations-focused course on Microsoft Defender for Endpoint (MDE) in an enterprise environment — covering centralised policy management, performance tuning, developer exclusion workflows, L1/L2 troubleshooting on both Windows and macOS, and L3 escalation procedures. Includes a hands-on assessment to test your knowledge.', whatYouLearn: ['Understand how MDE is deployed and managed centrally via MDM (Intune) and why Tamper Protection prevents local changes', 'Apply enterprise-standard performance tuning: CPU throttling, scan scheduling, and network drive exclusions', 'Handle developer exclusion requests end-to-end — from ticket creation through policy sync', 'Diagnose and resolve high-CPU MDE issues on macOS using mdatp CLI diagnostics', 'Capture and analyse Windows MpPerformanceRecording (.etl) files to identify top scanned files', 'Escalate unresolved MDE issues to L3 with the correct diagnostic artefact package'], curriculum: [
+    { module: 'Module 1 — MDE Architecture & Enterprise Management', lessons: [
+      'What is Microsoft Defender for Endpoint — EDR, antivirus, and threat intelligence in one platform',
+      'MDE deployment models: standalone vs. MDM-managed (Intune) vs. SCCM co-managed',
+      'Why centralised management via MDM is the enterprise standard — consistency, auditability, no local override',
+      'Tamper Protection: what it blocks, why it is enabled by default, and why users cannot change it',
+      'Policy sync lifecycle: how MDM pushes MDE config to enrolled devices and the expected propagation delay',
+      'MDE licensing: Plan 1 vs. Plan 2 feature differences — EDR, auto-investigation, threat analytics',
+    ]},
+    { module: 'Module 2 — Enterprise Performance Tuning', lessons: [
+      'Why MDE can cause high CPU: real-time scanning, signature updates, and cloud telemetry behaviour',
+      'CPU throttling: ScanAvgCPULoadFactor setting — recommended range and how it limits scan impact',
+      'Scan type selection: Quick Scan vs. Full Scan — enterprise default and scheduling best practice',
+      'Disabling scan-after-update: why this is standard in large estates and the compliance trade-off',
+      'Network drive exclusions: SMB/UNC paths — why real-time scanning over network file shares creates latency',
+      'Default developer directory exclusions: what is typically excluded and why (build tools, IDEs, VMs)',
+      'Verifying applied exclusions on macOS: mdatp exclusion list command output and what to look for',
+    ]},
+    { module: 'Module 3 — Developer Exclusion Request Workflow', lessons: [
+      'Why developers need additional exclusions: compilation, code scanning, and container workloads',
+      'Common exclusion types: IDE processes, file extensions, Docker/container runtimes, hypervisor processes',
+      'Tamper Protection and the ticket requirement: why users cannot self-serve exclusions',
+      'What to include in an exclusion request ticket: device hostname, user role/team, specific paths or processes',
+      'IT support role: gathering the right information, routing the ticket to the security/MDM team',
+      'Policy group assignment: how the backend team applies developer exclusion profiles via MDM',
+      'Timelines: typical policy propagation time after approval and how to confirm the exclusion is active',
+    ]},
+    { module: 'Module 4 — Troubleshooting MDE: macOS & Windows', lessons: [
+      'macOS: identifying wdavdaemon high-CPU in Activity Monitor and confirming it is MDE',
+      'macOS: mdatp health — checking sensor status, real-time protection state, and cloud connectivity',
+      'macOS: mdatp exclusion list — confirming expected paths are listed',
+      'macOS: real-time scan monitoring — using eslogger to identify which files are being scanned',
+      'Windows: MpPerformanceRecording — capturing an .etl recording of scan activity',
+      'Windows: Get-MpPerformanceReport — reading the top-files output and identifying scan hot-spots',
+      'Windows: common PowerShell commands for MDE health and event log review',
+      'Device re-onboarding after hardware repair: why motherboard/logic board replacement requires re-onboarding and how to do it via MDM',
+    ]},
+    { module: 'Module 5 — L3 Escalation & Advanced Scenarios', lessons: [
+      'When to escalate: defining the boundary between L1/L2 resolution and L3 backend security team involvement',
+      'MDE Analyzer: running the built-in diagnostic tool and collecting the output bundle',
+      'Procmon for MDE: capturing process activity to identify scanning conflicts with third-party software',
+      'Combining artefacts: MDE Analyzer + Procmon log + .etl recording — the full L3 escalation package',
+      'MDE not appearing active on device: sensor health check, Intune compliance status, onboarding script re-run',
+      'Post-escalation: what happens at L3 — cloud policy review, exclusion backend change, firmware-level EDR issues',
+    ]},
+    { module: 'Assessment — Test Your MDE Knowledge', lessons: [
+      'Assessment: Microsoft Defender for Endpoint Enterprise Support',
+    ]},
+  ]},
   { id: 120, title: 'Zebra GX430t: QR Code Asset Tag Printing for Enterprise IT', category: 'Printer Management', level: 'Beginner', duration: '1h', students: '60+', rating: 4.8, isFree: true, img: '/zebra-gx430t-printer.jpg', skills: ['Zebra GX430t', 'QR Code Label Printing', 'Asset Tagging Workflow', 'CLEA App Scanning', 'IT Asset Management'], description: 'Learn to set up and operate the Zebra GX430t desktop label printer for enterprise IT asset tagging. Based on a real 3-year SAP IT production deployment.', whatYouLearn: ['Set up the Zebra GX430t printer and install drivers', 'Load label media and run auto-calibration', 'Design and print QR code asset tag templates', 'Apply tags to all IT device types correctly', 'Scan with CLEA mobile app and hand scanners for real-time asset updates'], curriculum: [{ module: 'Module 1 — Zebra GX430t Overview & Setup', lessons: ['GX430t hardware tour: direct thermal printing, no ribbon required', 'Unboxing and placement: USB connection, ventilation, desk positioning', 'Driver installation via Zebra Setup Utilities on Windows', 'Printer self-test: running a configuration label to verify setup', 'Connecting to the network: shared printer vs. direct USB configuration'] }, { module: 'Module 2 — Label Media Loading & Calibration', lessons: ['Opening the media compartment: correct label threading path', 'Loading the label roll: aligning guides to label width exactly', 'Running auto-calibration: press feed button, printer detects label size', 'Verifying calibration: test print confirms correct label positioning', 'Common loading errors: roll shift, misaligned guides, incorrect media type'] }, { module: 'Module 3 — QR Code Label Template Design', lessons: ['ZPL basics for IT asset labels', 'Designing the SAP asset tag: Equipment No. + Serial No. + QR code', 'QR code data structure: encoding SAP number and serial in one code', 'Label size and font selection for maximum scan reliability', 'Testing the template: print and verify QR code scans correctly before going live'] }, { module: 'Module 4 — Asset Tagging Workflow', lessons: ['When to print: every device gets a tag before it leaves the IT desk', 'Surface preparation: alcohol wipe, correct positioning by device type', 'Label placement standards: laptops, phones, tablets, APs, network devices', 'QR code verification after application: scan before handing over', 'Handling server room equipment: rack units, switches, patch panels, APs'] }, { module: 'Module 5 — CLEA App & Scanner Integration', lessons: ['CLEA mobile app: point camera at QR code to open asset record instantly', 'Updating asset status via CLEA: Stock → Assigned in one scan', 'Hand scanner for bulk stock takes: scanning 50+ items in minutes', 'Troubleshooting failed scans: faded print, partial damage, wrong orientation', 'Monthly maintenance: printhead cleaning to prevent gradual quality degradation'] }] },
 ]
 
@@ -322,7 +371,201 @@ const levelColor: Record<string, string> = {
   Advanced: 'bg-red-500/15 text-red-400 border-red-500/30',
 }
 
+const MDE_QUESTIONS = [
+  {
+    q: 'A developer reports their laptop is extremely slow whenever they run a build. You check mdatp exclusion list on macOS and the build output directory is not listed. What is the correct next action?',
+    options: [
+      'Ask the user to disable Tamper Protection and add the exclusion themselves',
+      'Raise an IT support ticket requesting the device be assigned to the developer exclusion policy group',
+      'Uninstall MDE temporarily to confirm it is the cause',
+      'Add the exclusion directly via the mdatp CLI on the device',
+    ],
+    answer: 1,
+    explanation: 'Tamper Protection prevents local changes to MDE settings. The correct path is an IT ticket routed to the MDM/security team who can assign the device to the developer policy group.',
+  },
+  {
+    q: 'After a motherboard replacement on a managed Windows laptop, the user\'s device no longer appears active in the endpoint security portal. What should you do?',
+    options: [
+      'Re-install the OS from scratch',
+      'Raise a P1 security incident immediately',
+      'Re-apply the MDM onboarding profile — trigger a device sync or re-run the onboarding script',
+      'Wait 48 hours for the portal to auto-detect the device',
+    ],
+    answer: 2,
+    explanation: 'Hardware identity changes after a motherboard swap can invalidate the MDE onboarding state. Re-pushing the MDM profile re-onboards the device and restores portal visibility.',
+  },
+  {
+    q: 'You are capturing a Windows performance recording to identify what MDE is scanning. Which PowerShell command starts the recording?',
+    options: [
+      'Get-MpComputerStatus -RecordTo C:\\recording.etl',
+      'Start-MpScan -ScanType Performance',
+      'New-MpPerformanceRecording -RecordTo C:\\recording.etl',
+      'mdatp health --record C:\\recording.etl',
+    ],
+    answer: 2,
+    explanation: 'New-MpPerformanceRecording captures an .etl recording of Defender scan activity. You then analyse it with Get-MpPerformanceReport to find top scanned files.',
+  },
+  {
+    q: 'A user insists they need to add their own MDE exclusion immediately and does not want to raise a ticket. How do you explain why this is not possible?',
+    options: [
+      'Local admin rights are required and IT can grant them temporarily',
+      'Tamper Protection is enabled centrally via MDM — no local override is permitted for any user or admin',
+      'MDE exclusions require a reboot and the user should wait until end of day',
+      'The user can use Windows Defender Security Centre to add exclusions directly',
+    ],
+    answer: 1,
+    explanation: 'In an MDM-managed enterprise deployment, Tamper Protection blocks all local changes to MDE settings — including exclusions. All changes must flow through the policy management team via an IT ticket.',
+  },
+  {
+    q: 'You need to escalate an MDE issue to the L3 backend security team. Which combination of artefacts should you include?',
+    options: [
+      'A screenshot of Activity Monitor and the user\'s email describing the problem',
+      'MDE Analyzer logs + Procmon log + MpPerformanceRecording .etl file',
+      'mdatp health output only — the security team will request anything else they need',
+      'Event Viewer export and a list of installed applications',
+    ],
+    answer: 1,
+    explanation: 'A complete L3 escalation package includes MDE Analyzer logs (built-in diagnostic), a Procmon capture (process activity), and the .etl performance recording. Submitting all three prevents the ticket being returned for more information.',
+  },
+]
+
+function AssessmentModule({ index }: { index: number }) {
+  const [started, setStarted] = useState(false)
+  const [current, setCurrent] = useState(0)
+  const [selected, setSelected] = useState<number | null>(null)
+  const [answers, setAnswers] = useState<(number | null)[]>(Array(MDE_QUESTIONS.length).fill(null))
+  const [showResult, setShowResult] = useState(false)
+
+  const q = MDE_QUESTIONS[current]
+  const score = answers.filter((a, i) => a === MDE_QUESTIONS[i].answer).length
+
+  function handleSelect(i: number) {
+    if (selected !== null) return
+    setSelected(i)
+    const updated = [...answers]
+    updated[current] = i
+    setAnswers(updated)
+  }
+
+  function handleNext() {
+    if (current < MDE_QUESTIONS.length - 1) {
+      setCurrent(current + 1)
+      setSelected(answers[current + 1])
+    } else {
+      setShowResult(true)
+    }
+  }
+
+  function handleReset() {
+    setCurrent(0)
+    setSelected(null)
+    setAnswers(Array(MDE_QUESTIONS.length).fill(null))
+    setShowResult(false)
+    setStarted(false)
+  }
+
+  if (!started) {
+    return (
+      <div className="border border-purple-500/30 rounded-xl overflow-hidden">
+        <div className="w-full flex items-center gap-3 px-5 py-4 bg-purple-900/20">
+          <span className="w-7 h-7 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+            <Brain className="w-4 h-4 text-purple-400" />
+          </span>
+          <span className="flex-1 text-white font-bold text-sm leading-snug">Assessment — Test Your MDE Knowledge</span>
+          <span className="text-gray-500 text-xs mr-2 flex-shrink-0">{MDE_QUESTIONS.length} questions</span>
+        </div>
+        <div className="bg-dark-900/40 border-t border-white/5 px-5 py-5">
+          <p className="text-gray-300 text-sm mb-4">Test what you've learned in this course with {MDE_QUESTIONS.length} scenario-based questions covering MDE policy management, performance troubleshooting, exclusion workflows, and escalation procedures.</p>
+          <button onClick={() => setStarted(true)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm transition-colors">
+            <Brain className="w-4 h-4" /> Start Assessment
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  if (showResult) {
+    const pct = Math.round((score / MDE_QUESTIONS.length) * 100)
+    const passed = pct >= 80
+    return (
+      <div className="border border-purple-500/30 rounded-xl overflow-hidden">
+        <div className="w-full flex items-center gap-3 px-5 py-4 bg-purple-900/20">
+          <span className="w-7 h-7 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+            <Trophy className="w-4 h-4 text-purple-400" />
+          </span>
+          <span className="flex-1 text-white font-bold text-sm">Assessment Complete</span>
+        </div>
+        <div className="bg-dark-900/40 border-t border-white/5 px-5 py-6 text-center">
+          <div className={`text-5xl font-black mb-2 ${passed ? 'text-green-400' : 'text-yellow-400'}`}>{pct}%</div>
+          <p className="text-white font-bold text-base mb-1">{passed ? 'Passed — well done!' : 'Keep studying'}</p>
+          <p className="text-gray-400 text-sm mb-5">{score} of {MDE_QUESTIONS.length} correct</p>
+          <div className="space-y-3 text-left mb-5">
+            {MDE_QUESTIONS.map((item, i) => {
+              const correct = answers[i] === item.answer
+              return (
+                <div key={i} className={`rounded-lg p-3 border text-sm ${correct ? 'border-green-500/20 bg-green-500/5' : 'border-red-500/20 bg-red-500/5'}`}>
+                  <p className={`font-semibold mb-1 ${correct ? 'text-green-400' : 'text-red-400'}`}>{correct ? '✓' : '✗'} Q{i + 1}: {item.q.slice(0, 80)}…</p>
+                  {!correct && <p className="text-gray-400 text-xs">{item.explanation}</p>}
+                </div>
+              )
+            })}
+          </div>
+          <button onClick={handleReset}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-dark-700 hover:bg-dark-600 border border-white/10 text-white font-bold text-sm transition-colors">
+            <RotateCcw className="w-4 h-4" /> Retake Assessment
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="border border-purple-500/30 rounded-xl overflow-hidden">
+      <div className="w-full flex items-center gap-3 px-5 py-4 bg-purple-900/20">
+        <span className="w-7 h-7 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+          <Brain className="w-4 h-4 text-purple-400" />
+        </span>
+        <span className="flex-1 text-white font-bold text-sm">Question {current + 1} of {MDE_QUESTIONS.length}</span>
+        <span className="text-gray-500 text-xs mr-2">{Math.round(((current) / MDE_QUESTIONS.length) * 100)}% done</span>
+      </div>
+      <div className="bg-dark-900/40 border-t border-white/5 px-5 py-5">
+        <p className="text-white font-semibold text-sm leading-relaxed mb-4">{q.q}</p>
+        <div className="space-y-2 mb-5">
+          {q.options.map((opt, i) => {
+            let cls = 'border border-white/10 text-gray-300 bg-dark-800/60 hover:bg-dark-700/60'
+            if (selected !== null) {
+              if (i === q.answer) cls = 'border-green-500/50 bg-green-500/10 text-green-300'
+              else if (i === selected) cls = 'border-red-500/50 bg-red-500/10 text-red-300'
+              else cls = 'border-white/5 text-gray-500 bg-dark-800/40'
+            }
+            return (
+              <button key={i} onClick={() => handleSelect(i)}
+                className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-colors ${cls}`}>
+                <span className="font-bold mr-2">{String.fromCharCode(65 + i)}.</span>{opt}
+              </button>
+            )
+          })}
+        </div>
+        {selected !== null && (
+          <p className="text-gray-400 text-xs mb-4 italic">{q.explanation}</p>
+        )}
+        <div className="flex items-center justify-between">
+          <span className="text-gray-600 text-xs">{answers.filter(a => a !== null).length} answered</span>
+          <button onClick={handleNext} disabled={selected === null}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm transition-colors">
+            {current < MDE_QUESTIONS.length - 1 ? 'Next Question →' : 'See Results'}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function ModuleAccordion({ mod, index }: { mod: { module: string; lessons: string[] }; index: number }) {
+  const isAssessment = mod.module.toLowerCase().startsWith('assessment')
+  if (isAssessment) return <AssessmentModule index={index} />
+
   const [open, setOpen] = useState(index === 0)
   return (
     <div className="border border-white/8 rounded-xl overflow-hidden">
