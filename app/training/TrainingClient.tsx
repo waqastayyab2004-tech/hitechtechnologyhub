@@ -962,7 +962,7 @@ const courses = [
   {
     id: 123,
     title: 'Nexthink Amplify: Real-Time Endpoint Visibility for IT Support',
-    category: 'AI & Automation',
+    category: 'Corporate IT Training',
     level: 'Intermediate', duration: '2h', students: '65+', rating: 4.9,
     isFree: false, isPopular: true,
     img: '/nexthink-logo.png',
