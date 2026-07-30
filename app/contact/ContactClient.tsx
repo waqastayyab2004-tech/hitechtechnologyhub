@@ -43,7 +43,7 @@ const experiences = [
     period: '2012 – 2015', duration: '3 yrs',
     color: 'border-red-500', badge: 'bg-red-500/10 text-red-400 border-red-500/20',
     points: [
-      'ATM and branch physical security — Siecep, G4S MultiMax, CCTV, IoT sensors',
+      'ATM and branch physical security — ATM security systems, enterprise access control, CCTV, IoT sensors',
       'Access control management and 24/7 security command centre operations',
       'BMC Remedy incident tracking and security audit support',
     ],

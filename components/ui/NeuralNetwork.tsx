@@ -54,7 +54,7 @@ const DOMAINS = [
     link: undefined,
     did: [
       'System Security Officer at Banque Saudi Fransi (2012–2015) — ATM/branch security, 24/7 monitoring',
-      'Administered access control (G4S MultiMax), CCTV, alarm systems across all branches',
+      'Administered enterprise access control systems, CCTV, alarm systems across all branches',
       'Deployed Intune MDM/MAM policies across SAP enterprise',
       'Configured MFA & Conditional Access for SAP Azure AD tenant',
       'Managed Microsoft Defender for M365 security posture',

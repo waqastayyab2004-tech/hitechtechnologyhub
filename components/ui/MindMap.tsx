@@ -43,7 +43,7 @@ const MAP = {
     },
     {
       id: 'sap', label: 'SAP &\nEnterprise', color: '#ec4899', glow: 'rgba(236,72,153,0.7)', icon: '🟠', angle: 180,
-      leaves: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP / Ariba', 'SAP Work Zone', 'SAP Build Apps', 'SAP ISP ERP'],
+      leaves: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP / Ariba', 'SAP Work Zone', 'SAP Build Apps', 'enterprise asset ERP'],
       link: undefined,
     },
     {

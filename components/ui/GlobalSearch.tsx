@@ -80,7 +80,7 @@ const COURSES: ResultItem[] = [
   { type: 'course', title: 'Build Social Media Manager App with Python',    href: '/training/113', desc: 'Python · Digital Marketing · 3h',               tags: ['Python','Marketing'] },
   { type: 'course', title: 'Build Password Generator App with Python',      href: '/training/114', desc: 'Python · Security · App Dev · 2h',              tags: ['Python','Security'] },
   { type: 'course', title: 'CLEA App: Asset Lifecycle Management',          href: '/training/115', desc: 'ITSM · Asset Management · 2h',                  tags: ['ITSM','Asset','CLEA'] },
-  { type: 'course', title: 'ServiceNow CSM/FSM + HCSM AI Copilot',         href: '/training/116', desc: 'ServiceNow · AI Copilot · ITSM',                tags: ['ServiceNow','AI','ITSM'] },
+  { type: 'course', title: 'ServiceNow CSM/FSM + ITSM AI Copilot',         href: '/training/116', desc: 'ServiceNow · AI Copilot · ITSM',                tags: ['ServiceNow','AI','ITSM'] },
   { type: 'course', title: 'Office AV Technology — Build-Out & Commission', href: '/training/117', desc: 'AV · Teams Rooms · Wolfvision · 3h',            tags: ['AV','Office','Teams'] },
   { type: 'course', title: 'IT Pickup Point: Signifi Smart Locker',         href: '/training/118', desc: 'Smart Locker · IT Ops · 2h',                    tags: ['Locker','IT Ops'] },
   { type: 'course', title: 'Zebra ZT411R RFID Printer: Setup & Calibration',href: '/training/119', desc: 'Zebra · RFID · Asset Tagging · 2h',             tags: ['Zebra','RFID','Printer','Asset'] },

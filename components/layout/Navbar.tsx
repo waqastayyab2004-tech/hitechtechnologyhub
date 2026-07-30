@@ -107,7 +107,7 @@ const nav = [
         group: 'SAP Learning',
         items: [
           { href: '/sap/courses',         icon: GraduationCap, label: 'Courses I Teach',  desc: 'SAP BTP, Asset Lifecycle, Gen AI, SAP Build' },
-          { href: '/sap/skills',          icon: Brain,         label: 'Skills & Tools',   desc: 'SAP ISP · Ariba · HANA · AI Launchpad · BTP' },
+          { href: '/sap/skills',          icon: Brain,         label: 'Skills & Tools',   desc: 'enterprise asset management system · Ariba · HANA · AI Launchpad · BTP' },
         ],
       },
     ],

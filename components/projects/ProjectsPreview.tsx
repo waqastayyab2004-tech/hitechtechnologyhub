@@ -20,7 +20,7 @@ const projects = [
     iconAlt: 'IT Asset Manager',
     title: 'IT Asset Manager',
     subtitle: 'Enterprise Asset Tracking Web App',
-    description: 'Full-stack web app replacing Excel for IT asset tracking at SAP IT RUH02. Dashboard analytics, Excel import/export, bulk actions, and an AI chat widget.',
+    description: 'Full-stack web app replacing Excel for IT asset tracking at enterprise IT. Dashboard analytics, Excel import/export, bulk actions, and an AI chat widget.',
     tags: ['Python', 'Flask', 'SQLite', 'Chart.js'],
     status: 'Live',
     github: 'https://github.com/waqas-syed',

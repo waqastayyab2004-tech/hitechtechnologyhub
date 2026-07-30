@@ -30,7 +30,7 @@ const skillGroups: SkillGroup[] = [
     skills: [
       { name: 'SAP S/4HANA',       proficiency: 'Expert'       },
       { name: 'SAP BTP',            proficiency: 'Advanced'     },
-      { name: 'SAP ISP',            proficiency: 'Expert'       },
+      { name: 'Enterprise Asset ERP', proficiency: 'Expert'     },
       { name: 'SAP Ariba',          proficiency: 'Advanced'     },
       { name: 'SAP Build',          proficiency: 'Advanced'     },
       { name: 'SAP Basis',          proficiency: 'Intermediate' },
