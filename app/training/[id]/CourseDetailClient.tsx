@@ -649,7 +649,7 @@ export default function CourseDetailClient({ id }: { id: number }) {
                 </div>
               ) : (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={course.img} alt={course.title} className="w-full h-40 object-cover rounded-xl mb-5" />
+                <img src={course.img} alt={course.title} className={`w-full h-40 rounded-xl mb-5 ${course.img.startsWith('/mde') ? 'object-contain bg-white p-4' : 'object-cover'}`} />
               )}
               <div className="text-2xl font-black text-white mb-1">{course.isFree ? 'Free' : '$'}</div>
               <p className="text-gray-400 text-xs mb-5">{course.isFree ? 'No sign-up required · Enrol instantly' : 'Contact for pricing and schedule'}</p>
