@@ -1347,15 +1347,29 @@ export default function TrainingPage() {
             {/* Library */}
             <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold px-2 mb-2">Library</p>
             {sidebarCategories.map(cat => (
-              <button key={cat.key} onClick={() => setActiveCategory(cat.key)}
-                className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors mb-0.5 ${
-                  activeCategory === cat.key
-                    ? 'bg-accent-blue/10 text-accent-blue border border-accent-blue/20'
-                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
-                }`}>
-                <cat.icon className="w-4 h-4 flex-shrink-0"/>
-                {cat.label}
-              </button>
+              <div key={cat.key}>
+                <button onClick={() => setActiveCategory(cat.key)}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors mb-0.5 ${
+                    activeCategory === cat.key
+                      ? 'bg-accent-blue/10 text-accent-blue border border-accent-blue/20'
+                      : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                  }`}>
+                  <cat.icon className="w-4 h-4 flex-shrink-0"/>
+                  {cat.label}
+                </button>
+                {/* Sub-link: Cybersecurity / IT Security under Corporate IT Training */}
+                {cat.key === 'Corporate IT Training' && (
+                  <button onClick={() => setActiveCategory('Cybersecurity & Azure')}
+                    className={`w-full flex items-center gap-2.5 pl-9 pr-3 py-1.5 rounded-lg text-xs font-medium transition-colors mb-0.5 ${
+                      activeCategory === 'Cybersecurity & Azure'
+                        ? 'bg-red-500/10 text-red-400 border border-red-500/20'
+                        : 'text-gray-500 hover:bg-white/5 hover:text-white'
+                    }`}>
+                    <Shield className="w-3.5 h-3.5 flex-shrink-0"/>
+                    Cybersecurity / IT Security
+                  </button>
+                )}
+              </div>
             ))}
 
             {/* Trending */}
