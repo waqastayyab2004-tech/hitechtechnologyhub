@@ -61,7 +61,7 @@ const projects: Project[] = [
     description: 'Daily monitoring and remediation of endpoint security posture across Windows and macOS devices — antivirus health, BitLocker encryption compliance, endpoint privilege management, DLP policy enforcement, and Conditional Access remediation.',
     highlights: ['Antivirus DAT update compliance checked daily — non-compliant devices escalated within 24 hours', 'BitLocker (XTS-AES 256-bit): recovery key escrow verified; non-compliant devices remediated within 3 months', 'CyberArk EPAM: privilege requests reviewed, agent health monitored, 30-day data retention enforced', 'DLP violations reviewed and actioned: user education or policy escalation within same day', 'Conditional Access failures: compliance remediation workflow run — device unblocked within grace period', 'Microsoft Defender for Endpoint: EDR alerts triaged, Secure Score improvement tracked weekly'],
     tags: ['Microsoft Defender', 'BitLocker', 'CyberArk EPAM', 'Microsoft Intune', 'DLP', 'Conditional Access', 'Endpoint Security'],
-    pmDetails: { scope: 'Maintain endpoint security compliance across all managed devices — proactive monitoring, daily remediation, and escalation of security policy violations.', objectives: ['Maintain 95%+ endpoint compliance at all times', 'Ensure zero unencrypted devices in the estate', 'Respond to DLP violations within the same business day', 'Keep Microsoft Secure Score trending upward'], stakeholders: 'Security/CISO (compliance requirements), IT Manager (reporting), all device users (remediation), Audit (evidence)', timeline: 'Ongoing daily operations', outcomes: ['Endpoint compliance: maintained at 94%+', 'Secure Score: 41% → 78% over 12 months', 'Zero unencrypted devices in estate since BitLocker rollout', 'DLP violation response time: same-day consistently'], skillsApplied: ['Endpoint Security Management', 'Compliance Monitoring', 'Vulnerability Remediation', 'Privilege Management', 'Security Reporting'], toolsUsed: ['Microsoft Intune', 'Microsoft Defender for Endpoint', 'Trellix / McAfee', 'CyberArk EPAM', 'BitLocker', 'Azure AD Conditional Access'], learnings: ['Daily compliance dashboards catch drift before it becomes an audit finding', 'CyberArk EPAM reduces privilege-related incidents to near zero — the audit trail alone is worth it', 'Secure Score gamification motivates the team — weekly score reviews drive consistent improvement'] },
+    pmDetails: { scope: 'Maintain endpoint security compliance across all managed devices — proactive monitoring, daily remediation, and escalation of security policy violations.', objectives: ['Maintain 95%+ endpoint compliance at all times', 'Ensure zero unencrypted devices in the estate', 'Respond to DLP violations within the same business day', 'Keep Microsoft Secure Score trending upward'], stakeholders: 'Security/CISO (compliance requirements), IT Manager (reporting), all device users (remediation), Audit (evidence)', timeline: 'Ongoing daily operations', outcomes: ['Endpoint compliance: maintained at 94%+', 'Secure Score: 41% → 78% over 12 months', 'Zero unencrypted devices in estate since BitLocker rollout', 'DLP violation response time: same-day consistently'], skillsApplied: ['Endpoint Security Management', 'Compliance Monitoring', 'Vulnerability Remediation', 'Privilege Management', 'Security Reporting'], toolsUsed: ['Microsoft Intune', 'Microsoft Defender for Endpoint', 'Nexthink Amplify', 'Trellix / McAfee', 'CyberArk EPAM', 'BitLocker', 'Azure AD Conditional Access'], learnings: ['Daily compliance dashboards catch drift before it becomes an audit finding', 'CyberArk EPAM reduces privilege-related incidents to near zero — the audit trail alone is worth it', 'Secure Score gamification motivates the team — weekly score reviews drive consistent improvement'] },
   },
   {
     icon: Monitor, group: 'Daily IT Operations',
@@ -1145,6 +1145,48 @@ const projects: Project[] = [
 
 
   // ── GROUP 6: Cybersecurity ──────────────────────────────────────
+  {
+    icon: Shield, group: 'Cybersecurity',
+    title: 'Nexthink Amplify — Real-Time Endpoint Visibility for IT Support', subtitle: 'Nexthink Amplify · Endpoint Analytics · Remote Actions · ITSM Integration · MTTR Reduction',
+    status: 'Live', category: 'Cybersecurity · Endpoint Operations',
+    description: 'Operational use of Nexthink Amplify as a browser-based plugin integrated with the ITSM ticketing platform — providing real-time endpoint health data, AI-guided diagnostics, and one-click remote actions directly from within a support ticket. Enables L1 agents to diagnose and resolve device issues without contacting the user or escalating to L2/L3.',
+    highlights: [
+      'Real-time endpoint visibility: CPU, memory, boot time, app crashes, network latency, disk space, patch status — all visible the moment a ticket opens',
+      'One-click remote actions: clear app cache, restart services, collect logs, check Wi-Fi signal — without remote desktop connection',
+      'ITSM integration: Amplify reads device/username from ticket automatically — zero manual lookup',
+      'First Contact Resolution (FCR) improvement: L1 agents resolve issues at tier 1 using guided diagnostic checklists',
+      'MTTR reduction: diagnosis time from 15–30 mins to 2–3 mins for common device complaints',
+      'Audit trail: all diagnostic actions and remote remediations automatically logged against the ticket',
+      'Proactive detection: identifies device degradation patterns (crash spikes, compliance drift, patch gaps) before users report them',
+      'Use cases: slow laptop (high CPU), Teams call drops (Wi-Fi), post-re-image compliance check, recurring app crashes with 7-day crash count data',
+    ],
+    tags: ['Nexthink Amplify', 'Endpoint Analytics', 'IT Operations', 'ITSM Integration', 'Remote Actions', 'FCR Improvement', 'MTTR Reduction', 'Proactive IT'],
+    pmDetails: {
+      scope: 'Day-to-day use of Nexthink Amplify integrated into the ITSM platform — leveraging real-time endpoint telemetry, remote diagnostic actions, and AI-guided troubleshooting to improve IT support quality and speed.',
+      objectives: [
+        'Reduce average ticket diagnosis time using real-time device data',
+        'Increase First Contact Resolution rate at L1 using guided diagnostics',
+        'Eliminate unnecessary L2/L3 escalations for common device performance complaints',
+        'Ensure all remote actions are automatically logged for audit and compliance',
+      ],
+      stakeholders: 'End users (device performance), L1/L2 IT support agents (tooling), IT Manager (FCR/MTTR metrics), Security team (compliance visibility)',
+      timeline: 'Ongoing — daily operational tool',
+      outcomes: [
+        'Slow laptop tickets diagnosed in under 3 minutes using CPU/process telemetry',
+        'Teams call drop issues resolved at L1 via Wi-Fi signal data — no L2 escalation',
+        'Post-re-image compliance state verified instantly via Amplify without MDM portal login',
+        'Recurring crash cases escalated with 7-day crash count data pre-captured — no manual log collection',
+      ],
+      skillsApplied: ['Endpoint Analytics', 'IT Support Operations', 'Remote Diagnostics', 'ITSM Tooling', 'Performance Troubleshooting', 'Proactive IT Monitoring'],
+      toolsUsed: ['Nexthink Amplify', 'Nexthink Infinity Platform', 'ITSM Ticketing System', 'Microsoft Intune', 'Microsoft Defender for Endpoint'],
+      learnings: [
+        'Real-time endpoint data eliminates the most time-consuming part of L1 support: asking the user to describe what they see',
+        'Guided diagnostic checklists are the single biggest lever for FCR improvement — agents follow the same path every time, nothing is missed',
+        'One-click remote actions are only useful if agents trust the data — Nexthink telemetry accuracy is what makes this possible',
+        'Proactive detection of crash spikes or compliance drift prevents incident storms — catching 10 devices degrading is better than handling 10 separate tickets',
+      ],
+    },
+  },
   {
     icon: Shield, group: 'Cybersecurity',
     title: 'Microsoft Defender for Endpoint — Enterprise Deployment & Support', subtitle: 'MDE · EDR · Intune Policy · Exclusion Management · Performance Tuning',

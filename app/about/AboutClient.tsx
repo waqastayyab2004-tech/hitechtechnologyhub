@@ -38,7 +38,7 @@ const completedTraining = [
   { name: 'ITSM Basics Training Achievement', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2024' },
   // AI & Emerging Tech
   { name: 'Apple Intelligence & AI Features for Enterprise', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2026' },
-  { name: 'Introduction to Digital Adoption Platform', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2025' },
+  { name: 'Introduction to Nexthink Amplify (Endpoint Visibility)', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2025' },
   { name: 'Report Knowledge Gap & Flag Article Workflow', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2025' },
   // Onboarding & Access
   { name: 'IT Support Onboarding — EMEA Region', domain: 'IT Onboarding', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', year: '2023' },
@@ -759,6 +759,7 @@ export default function PortfolioPage() {
                 { skill: 'Cybersecurity',              pct: 91, color: '#ef4444' },
                 { skill: 'Cloud Computing',            pct: 89, color: '#0ea5e9' },
                 { skill: 'AI & Automation',            pct: 88, color: '#f59e0b' },
+                { skill: 'Nexthink Amplify',           pct: 87, color: '#8b5cf6' },
                 { skill: 'Python & FastAPI',           pct: 82, color: '#10b981' },
                 { skill: 'IT Asset Management',        pct: 99, color: '#06b6d4' },
               ].map(({ skill, pct, color }) => (
