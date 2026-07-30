@@ -873,7 +873,7 @@ const courses = [
     category: 'Cybersecurity & Azure',
     level: 'Intermediate', duration: '3h', students: '80+', rating: 4.9,
     isFree: false, isPopular: true,
-    img: '/mde-logo.png',
+    img: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80&auto=format&fit=crop',
     instructor: 'Syed Waqas Tayyab',
     skills: ['Microsoft Defender for Endpoint', 'EDR', 'Endpoint Security', 'Microsoft Intune', 'Tamper Protection', 'Performance Tuning', 'mdatp CLI', 'PowerShell', 'Exclusion Management'],
     description: 'Microsoft Defender for Endpoint is an enterprise-grade endpoint security platform built into the Windows operating system designed to help protect businesses against sophisticated cyber threats. It offers comprehensive protection, detection, and response capabilities, including next-generation antivirus, endpoint detection and response (EDR), threat and vulnerability management, and attack surface reduction. Microsoft Defender for Endpoint is a unified solution that can help organizations simplify their security stack and enhance their overall security posture.',
