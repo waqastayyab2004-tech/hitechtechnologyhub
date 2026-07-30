@@ -2,7 +2,7 @@
 title: "IT Asset Management Done Right: Lessons From 1,500+ Devices Across 3 Offices"
 date: "2026-07-13"
 excerpt: "Managing 1,500–2,000 IT assets across three offices for 15 years. Laptops, mobiles, tablets, monitors, printers, servers. Here are the non-obvious practices that keep asset data accurate, audits clean, and procurement running without surprises."
-tags: ["IT Asset Management", "Enterprise IT", "ServiceNow", "SAP ISP", "Best Practices", "IT Operations"]
+tags: ["IT Asset Management", "Enterprise IT", "ServiceNow", "Best Practices", "IT Operations"]
 author: "Waqas Syed"
 readTime: "7 min read"
 featured: false
@@ -36,7 +36,7 @@ Every asset management failure I've seen starts with a serial number problem. Du
 
 **The rule:** Serial number is mandatory, unique, verified at time of entry. No exceptions.
 
-In a database-backed system, enforce this at the schema level with a `UNIQUE` constraint. In SAP ISP (our enterprise asset ERP), every equipment record has a mandatory serial number field validated against the asset tag.
+In a database-backed system, enforce this at the schema level with a `UNIQUE` constraint. In our enterprise asset management system, every equipment record has a mandatory serial number field validated against the asset tag.
 
 When a device arrives from a vendor, the serial number goes into the system before the device leaves the receiving area. Not later. Not "when we get a chance." Before it moves.
 
@@ -83,7 +83,7 @@ Set up an MDM compliance dashboard showing devices not checked in for 30+ days. 
 - Devices in storage that should be redeployed
 - Devices assigned to roles that no longer exist
 
-We flag every device inactive for 6 months as "review required" in SAP ISP. Every quarter, the IT team does a physical sweep of flagged devices. We consistently find 3–5% of our fleet sitting unused — that's 45–100 devices that could be redeployed instead of procured new.
+We flag every device inactive for 6 months as "review required" in our enterprise asset management system. Every quarter, the IT team does a physical sweep of flagged devices. We consistently find 3–5% of our fleet sitting unused — that's 45–100 devices that could be redeployed instead of procured new.
 
 At an average laptop cost of ~4,000 SAR, this is a meaningful budget saving.
 
@@ -143,7 +143,7 @@ In our setup:
 1. Device request raised in SAP Ariba
 2. PO approved and sent to vendor
 3. Delivery confirmation triggers an IT intake ticket in ServiceNow
-4. IT engineer receives device, scans serial number into SAP ISP
+4. IT engineer receives device, scans serial number into enterprise asset management system
 5. Asset record linked to PO number and delivery date
 6. Device enrolled in MDM and assigned to user
 7. IT ticket closed — record complete

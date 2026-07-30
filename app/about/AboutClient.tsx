@@ -74,7 +74,7 @@ const experience = [
     highlights: [
       'Location responsible for SAP Saudi Arabia — 3 offices (Riyadh 200+ users, Jeddah, Al-Khobar)',
       'IT SPOC for C-level executives including SVP MEA-North, MDs, COO, CFO — CEO & Board level events',
-      'Manage 1,500–2,000+ active IT assets via SAP ISP ERP — procurement via SAP Ariba (MENA, ~200–300K/mo)',
+      'Manage 1,500–2,000+ active IT assets via enterprise asset ERP — procurement via SAP Ariba (MENA, ~200–300K/mo)',
       'Full ServiceNow ticket lifecycle: 50–60/month per user, 1,000–1,500/year total; KB creation & quality checks',
       'Led 140+ employee onboardings/offboardings including Executives — DocuSign, CLEA, SNOW',
       'Modern Workplace: Intune/Autopilot, SCCM, Azure AD (Entra ID), JamF, iOS/Android MDM',
@@ -84,7 +84,7 @@ const experience = [
       'SAP system analysis: PowerBI dashboards, SharePoint sites, SAP Work Zone, SAP JAM automation',
       'Vendor coordination: Destiny, Beetra — OBO/renovations up to 1.2M SAR; Jeddah, Riyadh, Al-Khobar',
     ],
-    skills: ['ServiceNow', 'SAP Ariba', 'Azure AD / Entra ID', 'Intune / Autopilot', 'M365', 'Python AI', 'SAP ISP', 'SNOW', 'DocuSign', 'Power Apps', 'PowerBI', 'SAP Build', 'CLEA App', 'ITIL v3'],
+    skills: ['ServiceNow', 'SAP Ariba', 'Azure AD / Entra ID', 'Intune / Autopilot', 'M365', 'Python AI', 'enterprise asset management system', 'SNOW', 'DocuSign', 'Power Apps', 'PowerBI', 'SAP Build', 'CLEA App', 'ITIL v3'],
   },
   {
     role: 'IT Support Specialist (IT SPOC)',
@@ -94,7 +94,7 @@ const experience = [
     color: 'border-white/15',
     badge: 'text-accent-blue',
     highlights: [
-      'Single point of contact for IT across 3 Saudi Arabia SAP office locations (EMEA Global IT team)',
+      'Single point of contact for IT across 3 Saudi Arabia SAP office locations (EMEA IT team)',
       'Network: HP Servers, Cisco Switches, Routers, WAN, NAC Controllers, Aruba Wireless',
       'SCCM, MDM, MS Azure Cloud, Azure AAD — Windows/macOS/Linux OS deployment & mass deployment',
       'Configuring SAP-certified software on iOS, Android, Windows, and Mac platforms',
@@ -104,7 +104,7 @@ const experience = [
       'Video conferencing: Cisco, Aruba Wireless, Logitech Rally, Evoko, Poly Pano, DiBo, Skype4Business',
       'Maintained and updated SAP S/4HANA, SAP Analytics Cloud, and SAP BTP operations',
     ],
-    skills: ['SAP S/4HANA', 'HP Servers', 'Cisco / Aruba', 'Windows / macOS / Linux', 'SCCM', 'Intune', 'Azure AAD', 'MDM', 'Trellix / McAfee', 'Teams AV', 'OTX App', 'IT Direct'],
+    skills: ['SAP S/4HANA', 'HP Servers', 'Cisco / Aruba', 'Windows / macOS / Linux', 'SCCM', 'Intune', 'Azure AAD', 'MDM', 'Trellix / McAfee', 'Teams AV', 'internal IT ordering app', 'IT Direct'],
   },
   {
     role: 'System Security Officer',
@@ -114,13 +114,13 @@ const experience = [
     color: 'border-white/15',
     badge: 'text-accent-blue',
     highlights: [
-      'Managed ATM & branch security systems — Siecep ATM security management tool',
-      'G4S MultiMax access control — Head office & branches; employee access cards from Security command center',
+      'Managed ATM & branch security systems — ATM security management tool',
+      'enterprise access control system — Head office & branches; employee access cards from Security command center',
       'CCTV, IoT sensors, Burglar & Fire alarm systems — testing & maintenance',
       'IT ticket management via BMC Remedy system — monitoring & processing',
-      'Security tools: Access Control, Sicep, Vanguard, MultiMax, BMS Remedy — 24/7 business continuity',
+      'Security tools: Access Control, ATM security system, Vanguard, access control system, BMS Remedy — 24/7 business continuity',
     ],
-    skills: ['BMC Remedy', 'Access Control', 'CCTV', 'ATM Security', 'Sicep', 'Vanguard', 'MultiMax', 'Incident Response'],
+    skills: ['BMC Remedy', 'Access Control', 'CCTV', 'ATM Security', 'ATM security system', 'Vanguard', 'access control system', 'Incident Response'],
   },
   {
     role: 'Network Administrator',
@@ -152,8 +152,8 @@ const projects = [
     emoji: '📦',
     title: 'IT Asset Manager',
     subtitle: 'Enterprise Web App',
-    desc: 'Full-stack Flask app replacing Excel-based asset tracking at SAP. KPI dashboard, Excel import/export, AI chat widget, full audit log. Modelled on real SAP ISP ERP workflows.',
-    tags: ['Python', 'Flask', 'SQLite', 'Chart.js', 'SAP ISP'],
+    desc: 'Full-stack Flask app replacing Excel-based asset tracking at SAP. KPI dashboard, Excel import/export, AI chat widget, full audit log. Modelled on real enterprise IT asset system workflows.',
+    tags: ['Python', 'Flask', 'SQLite', 'Chart.js', 'enterprise asset management system'],
     status: 'Live',
     color: 'border-white/15',
   },
@@ -188,7 +188,7 @@ const projects = [
     emoji: '📊',
     title: 'SNOW SLA Predictor',
     subtitle: 'Python ML Model',
-    desc: 'ML model on real SAP ServiceNow ticket data predicting SLA breaches before they happen — scikit-learn Random Forest pipeline on 1,500+ tickets/year data.',
+    desc: 'ML model on real enterprise IT operations ServiceNow ticket data predicting SLA breaches before they happen — scikit-learn Random Forest pipeline on 1,500+ tickets/year data.',
     tags: ['Python', 'scikit-learn', 'Pandas', 'ServiceNow API'],
     status: 'In Dev',
     color: 'border-yellow-500',
@@ -220,7 +220,7 @@ const skillDomains = [
     color: 'text-accent-blue',
     bg: 'bg-accent-blue/10',
     link: undefined,
-    items: ['ServiceNow ITSM', 'ServiceNow CSM/FSM Workspace', 'IT Direct (BMC)', 'SLA & KPI Management (IRT/MPT)', 'ITIL v3', 'Incident Management', 'Problem Management (Preventive Measures)', 'Change Management', 'Asset Lifecycle (SAP ISP)', 'KB Creation & Templates', 'ServiceNow Walk-up Module', 'Walk-up Queue & Channel Management', 'HCSM AI Copilot (Daily Use)', 'Catalog Task Management', 'Interaction Management (Phone/Chat/Walk-up)'],
+    items: ['ServiceNow ITSM', 'ServiceNow CSM/FSM Workspace', 'IT Direct (BMC)', 'SLA & KPI Management (IRT/MPT)', 'ITIL v3', 'Incident Management', 'Problem Management (Preventive Measures)', 'Change Management', 'Asset Lifecycle (enterprise asset management system)', 'KB Creation & Templates', 'ServiceNow Walk-up Module', 'Walk-up Queue & Channel Management', 'ITSM AI Copilot (Daily Use)', 'Catalog Task Management', 'Interaction Management (Phone/Chat/Walk-up)'],
   },
   {
     icon: Shield,
@@ -236,7 +236,7 @@ const skillDomains = [
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
     link: undefined,
-    items: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP', 'SAP Ariba (Procurement)', 'SAP Build Apps', 'SAP Work Zone / JAM', 'SAP ISP (Asset ERP)', 'CLEA Lifecycle App', 'OTX Ordering App', 'SAP HANA ML'],
+    items: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP', 'SAP Ariba (Procurement)', 'SAP Build Apps', 'SAP Work Zone / JAM', 'enterprise asset management system', 'CLEA Lifecycle App', 'internal IT ordering app', 'SAP HANA ML'],
   },
   {
     icon: Cpu,
@@ -244,7 +244,7 @@ const skillDomains = [
     color: 'text-indigo-400',
     bg: 'bg-indigo-500/10',
     link: undefined,
-    items: ['Microsoft 365 Admin', 'Exchange Online', 'SharePoint / OneDrive', 'Teams Admin & MTR', 'M365 Copilot', 'SCCM / Configuration Mgr', 'JamF (macOS MDM)', 'Digital Signage (SVM / ITLC)', 'Evoko / Crestron / Poly Pano', 'PassVault / Secret Management'],
+    items: ['Microsoft 365 Admin', 'Exchange Online', 'SharePoint / OneDrive', 'Teams Admin & MTR', 'M365 Copilot', 'SCCM / Configuration Mgr', 'JamF (macOS MDM)', 'Digital Signage (SVM / ITLC)', 'Evoko / Crestron / Poly Pano', 'corporate password vault / Secret Management'],
   },
   {
     icon: Brain,
@@ -582,7 +582,7 @@ export default function PortfolioPage() {
             <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
                 { icon: "🤖", title: "AI Tools in Production", desc: "Built & deployed 4 AI automation tools used daily at SAP. Not just familiar with AI — actively building with it in production.", tag: "Rare Combination", tc: "text-yellow-400 bg-yellow-500/10 border-yellow-500/25" },
-                { icon: "📊", title: "Zero SLA Breaches — 6 Months", desc: "1,300+ interactions managed via ServiceNow CSM/FSM with HCSM AI Copilot. 96%+ SLA compliance sustained consistently.", tag: "Proven Track Record", tc: "text-green-400 bg-green-500/10 border-green-500/25" },
+                { icon: "📊", title: "Zero SLA Breaches — 6 Months", desc: "1,300+ interactions managed via ServiceNow CSM/FSM with ITSM AI Copilot. 96%+ SLA compliance sustained consistently.", tag: "Proven Track Record", tc: "text-green-400 bg-green-500/10 border-green-500/25" },
                 { icon: "🏢", title: "End-to-End Office Build-Outs", desc: "Full IT & AV delivery for 3 offices — floor plan to handover. Teams Rooms, Cisco networking, structured cabling, signage.", tag: "Project Delivery", tc: "text-blue-400 bg-blue-500/10 border-blue-500/25" },
                 { icon: "🛡️", title: "Azure Security Engineer", desc: "Raised Microsoft Secure Score 41% → 78%. Zero Trust, Conditional Access, PIM — all live at 200+ user enterprise.", tag: "Microsoft Certified", tc: "text-cyan-400 bg-cyan-500/10 border-cyan-500/25" },
                 { icon: "🌍", title: "MENA Specialist — 15+ Years", desc: "Location responsible SAP Saudi Arabia across 3 offices. Fluent Arabic + English. Iqama transferable. Deep MENA enterprise IT knowledge.", tag: "Local + Global", tc: "text-orange-400 bg-orange-500/10 border-orange-500/25" },
@@ -802,7 +802,7 @@ export default function PortfolioPage() {
                   { role: 'IT AI Engineer', focus: 'Python · LLMs · Enterprise AI Automation · SAP AI Hub · MLOps', priority: '★ Top Target', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/25' },
                   { role: 'IT Service Delivery Manager', focus: 'IT Operations Lead · 200+ users · MENA multinationals', priority: '★ Top Target', color: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/25' },
                   { role: 'IT Consultant', focus: 'Enterprise IT Advisory · Azure Security · M365 · SAP Systems', priority: 'High Value', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
-                  { role: 'ServiceNow Platform Administrator', focus: 'ITSM Specialist · CSM/FSM · HCSM AI Copilot · SLA Design', priority: 'Premium Pay', color: 'text-purple-400 bg-purple-500/10 border-purple-500/25' },
+                  { role: 'ServiceNow Platform Administrator', focus: 'ITSM Specialist · CSM/FSM · ITSM AI Copilot · SLA Design', priority: 'Premium Pay', color: 'text-purple-400 bg-purple-500/10 border-purple-500/25' },
                   { role: 'IT Infrastructure & Workplace Tech Lead', focus: 'AV · Smart Office · Office Build-Outs · Vision 2030', priority: 'High Value', color: 'text-blue-400 bg-blue-500/10 border-blue-500/25' },
                 ].map(t => (
                   <div key={t.role} className="flex items-start gap-3 p-3 rounded-xl bg-white/3 border border-white/6 hover:bg-white/5 transition-colors">

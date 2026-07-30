@@ -1,7 +1,7 @@
 ---
 title: "Take Control of Your IT Operations with Zebra RFID & QR Code Asset Tracking"
 date: "2026-07-22"
-excerpt: "Zebra RFID and QR code technology automates IT asset tracking, reduces errors and delivers real-time insights — empowering smarter decisions. Here is how I built this at SAP IT Riyadh using the Zebra GX430t printer over 3 years."
+excerpt: "Zebra RFID and QR code technology automates IT asset tracking, reduces errors and delivers real-time insights — empowering smarter decisions. Here is how I built this in enterprise IT operations using the Zebra GX430t printer over 3 years."
 tags: ["Zebra GX430t", "Printer Management", "IT Asset Management", "QR Code", "Asset Tagging", "SAP IT", "CLEA App", "RFID"]
 ---
 
@@ -10,7 +10,7 @@ tags: ["Zebra GX430t", "Printer Management", "IT Asset Management", "QR Code", "
 > *"Zebra RFID automates data capture, reduces errors and delivers timely insights across your operations — empowering smarter, faster decision making. Track key moments across assets, inventory, employees and more to unlock efficiencies and reach your full business potential."*
 > — Zebra Technologies
 
-This is not marketing language — it is exactly what happened when we implemented QR code and RFID asset tracking at SAP IT Riyadh.
+This is not marketing language — it is exactly what happened when we implemented QR code and RFID asset tracking in enterprise IT operations.
 
 Before we had a labelling system, asset management meant:
 - Manual serial number lookups that took minutes per device
@@ -26,9 +26,9 @@ After we deployed the **Zebra GX430t** for QR code tagging, then the **Zebra ZT4
 
 Before we deployed the Zebra ZT411 RFID printer, there was the **Zebra GX430t** — a compact desktop thermal transfer label printer that I set up three years ago and has been running every day since.
 
-![Zebra GX430t at SAP IT Riyadh](/zebra-gx430t-printer.jpg)
+![Zebra GX430t at the IT desk](/zebra-gx430t-printer.jpg)
 
-This is our actual unit, still in service at the SAP IT desk. Every IT asset that has left our office in the last three years carries a label that came out of this printer.
+This is our actual unit, still in service at the IT desk. Every IT asset that has left our office in the last three years carries a label that came out of this printer.
 
 ---
 
@@ -47,7 +47,7 @@ Zebra isn't just another hardware vendor. The numbers explain why enterprise IT 
 
 > *"Tap into the world's foundation for intelligent operations and discover countless ways to make your most critical workflows faster, simpler and more efficient. The result? Better experiences for your employees and the customers they serve every day."* — Zebra Technologies
 
-At SAP IT Riyadh, we are part of that 80%+ — and the reliability speaks for itself. The GX430t has been printing every working day for 3 years without a single hardware failure.
+At the Riyadh office, we are part of that 80%+ — and the reliability speaks for itself. The GX430t has been printing every working day for 3 years without a single hardware failure.
 
 ![Zebra GX430t in warehouse operations](/zebra-gx430t-warehouse.jpg)
 
@@ -75,7 +75,7 @@ QR codes give us far more flexibility than traditional barcodes:
 - **Mobile scanning** — any phone camera can read them, no dedicated scanner required
 - **CLEA app integration** — our custom asset lifecycle app auto-scans QR codes to update asset status directly
 - **Hand scanner support** — dedicated QR/barcode scanners for bulk stock operations
-- **More data density** — a QR code can encode the full SAP Equipment Number + Serial Number in one scan
+- **More data density** — a QR code can encode the full Equipment Number + Serial Number in one scan
 - **Durability** — QR codes remain readable even when partially damaged (error correction built-in)
 
 ---
@@ -88,10 +88,10 @@ This is the end-to-end process we follow for every asset:
 New device is unpacked and staged at the IT desk. ServiceNow ticket is raised.
 
 ### 2. Asset record created
-SAP Equipment Number and Serial Number entered into the asset management system.
+Equipment Number and Serial Number entered into the asset management system.
 
 ### 3. QR label printed on GX430t
-Label is printed with the SAP Equipment Number, Serial Number, and a QR code encoding both. Takes under 10 seconds.
+Label is printed with the Equipment Number, Serial Number, and a QR code encoding both. Takes under 10 seconds.
 
 ### 4. Label applied
 Clean the device surface with an alcohol wipe. Apply the label in the standard position:
@@ -120,7 +120,7 @@ Once labels are applied, the QR codes are used throughout the asset lifecycle:
 **Hand Scanner:**
 - Used for bulk stock takes — scan 50+ items in minutes
 - Auto-populates asset fields in the system
-- Connects to SAP IT asset management via API
+- Connects to the IT asset management system via API
 
 **Direct IT Link Center Scanning:**
 - When a user brings a device to the IT desk, scan the QR code to pull up the record immediately
@@ -135,7 +135,7 @@ The GX430t is simpler to set up than the ZT411 — no RFID calibration required.
 1. **Media loading:** lift the top cover, thread the label roll through the guides, close the cover
 2. **Self-calibration:** press the feed button to run auto-calibration — the printer detects label size automatically
 3. **Driver installation:** install Zebra Setup Utilities, add the printer via USB or network
-4. **Label template:** configure the ZPL template for SAP format (Equipment No. + Serial + QR code)
+4. **Label template:** configure the ZPL template for the required format (Equipment No. + Serial + QR code)
 5. **Test print:** print one test label, verify QR code scans correctly before going live
 
 **Connection:** we use USB for direct connection at the IT desk. The printer has been running on the same USB cable for 3 years without issue.
@@ -167,15 +167,15 @@ The GX430t is simpler to set up than the ZT411 — no RFID calibration required.
 | Label type | QR / barcode | QR / barcode + RFID inlay |
 | Best for | Desktop, moderate volume | High volume, RFID tagging |
 | Setup complexity | Simple | Requires RFID calibration |
-| Use at SAP IT | All QR asset tags | RFID asset tags (new programme) |
+| Use at IT desk | All QR asset tags | RFID asset tags (new programme) |
 
-Both printers serve different purposes. The GX430t handles all QR code labelling. The ZT411 adds RFID capability for the SAP global RFID programme. Together they cover every asset tagging requirement in our IT operation.
+Both printers serve different purposes. The GX430t handles all QR code labelling. The ZT411 adds RFID capability for the global RFID programme. Together they cover every asset tagging requirement in our IT operation.
 
 ---
 
 ## References
 
 - Zebra GX430t User Guide (PDF)
-- SAP IT Asset Management Workflow — RUH02
-- CLEA App — SAP Asset Lifecycle Operations
-- SAP KB1349678 — RFID Label Printing & Labelling Guide
+- IT Asset Management Workflow — Riyadh office
+- CLEA App — IT Asset Lifecycle Operations
+- IT KB1349678 — RFID Label Printing & Labelling Guide

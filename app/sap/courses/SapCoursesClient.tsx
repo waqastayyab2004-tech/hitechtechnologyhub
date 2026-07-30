@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BookOpen, Clock, Users, Star, ArrowRight, Lock } from 'lucide-react'
+import { BookOpen, Clock, Users, Star, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import SapSidebar from '../SapSidebar'
 
@@ -11,7 +11,7 @@ const stagger = { show: { transition: { staggerChildren: 0.1 } } }
 const courses = [
   {
     id: 115,
-    title: 'CLEA App: SAP IT Asset Lifecycle Management',
+    title: 'CLEA App: Enterprise IT Asset Lifecycle Management',
     category: 'SAP BTP & Development',
     level: 'Intermediate',
     duration: '2h',
@@ -19,79 +19,110 @@ const courses = [
     rating: 4.9,
     isFree: true,
     live: true,
-    skills: ['SAP BTP', 'SAP ISP', 'Asset Lifecycle', 'Power BI Integration', 'CLEA Application'],
-    desc: 'Build and operate the CLEA (Client Lifecycle Enterprise Application) — a real SAP BTP app that replaces Excel-based IT asset tracking with automated lifecycle workflows.',
+    skills: ['SAP BTP', 'Asset Lifecycle', 'ERP Integration', 'Power BI Integration', 'CLEA Application'],
+    desc: 'Build and operate the CLEA (Client Lifecycle Enterprise Application) — a SAP BTP app that replaces Excel-based IT asset tracking with automated lifecycle workflows.',
   },
   {
     id: 101,
     title: 'IT Asset Lifecycle Management for Enterprise Support',
-    category: 'SAP IT Operations',
+    category: 'Enterprise IT Operations',
     level: 'Beginner',
     duration: '1h',
     students: '320+',
     rating: 4.8,
     isFree: true,
     live: true,
-    skills: ['SAP ISP', 'SAP Ariba', 'Asset Procurement', 'ERP Workflows', 'Power BI'],
-    desc: 'End-to-end IT asset lifecycle workflows built from real SAP operations — procurement via SAP Ariba, device tracking in SAP ISP, and decommission processes.',
+    skills: ['Asset Procurement', 'ERP Workflows', 'IT Asset Tracking', 'Power BI', 'Decommission Process'],
+    desc: 'End-to-end IT asset lifecycle workflows — procurement, device tracking via ERP, and decommission processes. Based on real enterprise IT operations.',
   },
   {
     id: 119,
-    title: 'Zebra ZT411 RFID Printer — SAP IT Deployment',
-    category: 'SAP IT Operations',
+    title: 'Zebra ZT411 RFID Printer — Enterprise IT Deployment',
+    category: 'Enterprise IT Operations',
     level: 'Intermediate',
     duration: '1h 30m',
     students: '110+',
     rating: 4.7,
     isFree: true,
     live: true,
-    skills: ['RFID Asset Tagging', 'SAP IT Deployment', 'ZPL Label Programming', 'Enterprise Asset Management'],
-    desc: 'Deploy and configure the Zebra ZT411 RFID industrial printer for SAP IT asset tagging — from ZPL label design to SAP-format RFID tag encoding.',
+    skills: ['RFID Asset Tagging', 'ZPL Label Programming', 'Enterprise Asset Management', 'Network Printing'],
+    desc: 'Deploy and configure the Zebra ZT411 RFID industrial printer for enterprise IT asset tagging — from ZPL label design to RFID tag encoding and network integration.',
   },
   {
     id: 120,
-    title: 'Zebra GX430t QR Code Printer — SAP Asset Tagging',
-    category: 'SAP IT Operations',
+    title: 'Zebra GX430t QR Code Printer — Enterprise Asset Tagging',
+    category: 'Enterprise IT Operations',
     level: 'Beginner',
     duration: '1h',
     students: '95+',
     rating: 4.8,
     isFree: true,
     live: true,
-    skills: ['QR Code Label Printing', 'SAP Asset Tagging', 'ZPL Programming', 'IT Inventory Management'],
-    desc: 'Set up the Zebra GX430t for SAP IT production asset tagging — QR code label design, printer calibration, and integration with SAP asset management workflows.',
+    skills: ['QR Code Label Printing', 'Enterprise Asset Tagging', 'ZPL Programming', 'IT Inventory Management'],
+    desc: 'Set up the Zebra GX430t for enterprise IT asset tagging — QR code label design, printer calibration, and integration with asset management workflows.',
   },
+]
+
+const teachCourses = [
   {
-    id: null,
-    title: 'SAP Generative AI Developer — Full Course (C_AIG)',
+    cert: 'C_AIG_2604',
+    certLabel: 'SAP Certified — Generative AI Developer',
+    title: 'SAP Generative AI Developer (C_AIG_2604) — 1-on-1 Coaching',
     category: 'SAP AI & Machine Learning',
     level: 'Advanced',
-    duration: '4h',
-    students: null,
-    rating: null,
-    isFree: false,
-    live: false,
-    skills: ['SAP AI Launchpad', 'SAP AI Core', 'Large Language Models (LLMs)', 'Generative AI for Enterprise', 'Prompt Engineering'],
-    desc: 'Deep-dive course covering the full SAP Generative AI Developer (C_AIG_2604) certification path — from SAP AI Core architecture to production GenAI deployments on SAP BTP.',
+    duration: 'Flexible',
+    skills: ['SAP AI Core', 'SAP AI Launchpad', 'Large Language Models', 'Generative AI for Enterprise', 'Prompt Engineering', 'SAP BTP'],
+    desc: 'Personalised coaching to prepare you for the C_AIG_2604 certification — covering SAP AI Core architecture, AI Launchpad, LLM integration, and production GenAI deployments on SAP BTP. Taught by a certified holder.',
+    color: 'bg-gradient-to-br from-blue-600 to-indigo-700',
   },
   {
-    id: null,
-    title: 'SAP Build No-Code Automation',
+    cert: null,
+    certLabel: 'SAP — Python ML Client for SAP HANA (Verified Badge)',
+    title: 'AI Models with Python & SAP HANA — Practical Course',
+    category: 'SAP AI & Machine Learning',
+    level: 'Intermediate',
+    duration: 'Flexible',
+    skills: ['Python for SAP HANA', 'Machine Learning', 'SAP HANA Cloud', 'ML Algorithms', 'Data Science'],
+    desc: 'Hands-on coaching on building and deploying machine learning models using the Python ML Client for SAP HANA. Covers ML algorithms, model training, and integration with SAP HANA Cloud.',
+    color: 'bg-gradient-to-br from-violet-600 to-purple-700',
+  },
+  {
+    cert: null,
+    certLabel: 'SAP — Compose and Automate with SAP Build (Verified Badge)',
+    title: 'SAP Build No-Code Automation — Beginner to Ready',
     category: 'SAP Build & Low-Code',
     level: 'Beginner',
-    duration: '2h',
-    students: null,
-    rating: null,
-    isFree: true,
-    live: false,
+    duration: 'Flexible',
     skills: ['SAP Build', 'Business Process Automation', 'No-Code App Development', 'SAP Workflow', 'Process Modelling'],
-    desc: 'Learn to build automated business processes and apps with SAP Build — no coding required. Based on the SAP "Compose and Automate with SAP Build the No-Code Way" certification.',
+    desc: 'Learn to automate business processes and build apps without writing code using SAP Build. Ideal for business users and IT professionals looking to accelerate workflows on SAP.',
+    color: 'bg-gradient-to-br from-sky-600 to-blue-700',
+  },
+  {
+    cert: null,
+    certLabel: 'SAP Certified Application Associate — SAP Analytics Cloud: Planning',
+    title: 'SAP Analytics Cloud Planning — Associate Prep & Practical',
+    category: 'SAP Analytics',
+    level: 'Intermediate',
+    duration: 'Flexible',
+    skills: ['SAP Analytics Cloud', 'Planning & Forecasting', 'Data Visualization', 'Business Intelligence', 'Dashboard Design'],
+    desc: 'Coaching for the SAP Analytics Cloud Planning associate certification — planning models, data connections, forecasting, and dashboard design. Taught by a certified associate.',
+    color: 'bg-gradient-to-br from-emerald-600 to-teal-700',
+  },
+  {
+    cert: null,
+    certLabel: 'SAP Certified Technology Associate — SAP S/4HANA System Administration',
+    title: 'SAP S/4HANA System Administration — Associate Prep',
+    category: 'SAP S/4HANA',
+    level: 'Intermediate',
+    duration: 'Flexible',
+    skills: ['SAP S/4HANA', 'System Administration', 'SAP Basis', 'HANA Database', 'Transport Management'],
+    desc: 'Structured coaching to prepare for the SAP S/4HANA System Administration associate certification — covering Basis administration, HANA database management, and transport processes.',
+    color: 'bg-gradient-to-br from-orange-600 to-red-700',
   },
 ]
 
 export default function SapCoursesClient() {
   const live = courses.filter((c) => c.live)
-  const coming = courses.filter((c) => !c.live)
 
   return (
     <div className="min-h-screen bg-dark-900">
@@ -106,7 +137,7 @@ export default function SapCoursesClient() {
           <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
             <BookOpen className="w-9 h-9 text-violet-300" /> SAP Courses
           </h1>
-          <p className="text-gray-400 text-lg">Practical SAP courses built from 11 years of real enterprise experience at SAP Saudi Arabia</p>
+          <p className="text-gray-400 text-lg">Personalised SAP coaching from a certified SAP engineer — 1-on-1 sessions, group training, and practical courses</p>
         </div>
       </div>
 
@@ -116,9 +147,57 @@ export default function SapCoursesClient() {
         <main className="flex-1 min-w-0">
           <motion.div initial="hidden" animate="show" variants={stagger}>
 
-            {/* Live courses */}
+            {/* Certification-based coaching — TOP */}
             <motion.div variants={fade} className="mb-12">
-              <h2 className="text-xl font-bold text-white mb-5">Available Now</h2>
+              <h2 className="text-xl font-bold text-white mb-1">Learn from My SAP Certifications</h2>
+              <p className="text-gray-500 text-sm mb-6">
+                I hold 5 SAP certifications — and offer personalised 1-on-1 coaching and group sessions for each. Contact me to discuss your learning goals, schedule, and format.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-5">
+                {teachCourses.map((course, i) => (
+                  <motion.div key={i} variants={fade}>
+                    <div className="glass-card rounded-2xl overflow-hidden flex flex-col h-full border border-white/8 hover:border-white/15 transition-all">
+                      <div className={`${course.color} px-5 py-4 text-white`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-medium bg-white/20 px-2.5 py-0.5 rounded-full">{course.category}</span>
+                          <span className="text-xs font-semibold bg-yellow-400/90 text-yellow-900 px-2.5 py-0.5 rounded-full">1-on-1 Available</span>
+                        </div>
+                        <h3 className="font-bold text-base leading-snug mb-2">{course.title}</h3>
+                        <p className="text-[10px] text-white/60 flex items-center gap-1">
+                          🏅 {course.certLabel}
+                        </p>
+                      </div>
+                      <div className="px-5 py-4 flex flex-col flex-1">
+                        <p className="text-gray-400 text-sm leading-relaxed mb-4">{course.desc}</p>
+                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                          <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {course.duration}</span>
+                          <span className="capitalize">{course.level}</span>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5 mb-5">
+                          {course.skills.map((s) => (
+                            <span key={s} className="text-xs bg-blue-950/40 text-blue-300 px-2 py-0.5 rounded-full">{s}</span>
+                          ))}
+                        </div>
+                        <div className="mt-auto">
+                          <a
+                            href="https://wa.me/966505803073?text=Hi%20Waqas%2C%20I%20am%20interested%20in%20learning%20from%20your%20SAP%20certification%20course"
+                            target="_blank" rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors"
+                          >
+                            Contact to Learn <ArrowRight className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* More courses — available on training page */}
+            <motion.div variants={fade} className="mb-12">
+              <h2 className="text-xl font-bold text-white mb-1">More Courses</h2>
+              <p className="text-gray-500 text-sm mb-6">Practical IT courses available in the Learning section — enterprise IT operations, printer management, asset lifecycle, and more.</p>
               <div className="grid sm:grid-cols-2 gap-5">
                 {live.map((course) => (
                   <motion.div key={course.id} variants={fade}>
@@ -155,45 +234,6 @@ export default function SapCoursesClient() {
                             View Course <ArrowRight className="w-4 h-4" />
                           </Link>
                         </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Coming soon */}
-            <motion.div variants={fade} className="mb-10">
-              <h2 className="text-xl font-bold text-white mb-2">Coming Soon</h2>
-              <p className="text-gray-500 text-sm mb-5">New SAP courses in development — based on certifications earned in 2026.</p>
-              <div className="grid sm:grid-cols-2 gap-5">
-                {coming.map((course, i) => (
-                  <motion.div key={i} variants={fade}>
-                    <div className="glass-card border border-dashed border-white/10 rounded-2xl overflow-hidden opacity-80">
-                      <div className="bg-gradient-to-br from-slate-500 to-slate-700 px-5 py-4 text-white">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs font-medium bg-white/20 px-2.5 py-0.5 rounded-full">{course.category}</span>
-                          <span className="flex items-center gap-1 text-xs font-semibold bg-white/20 px-2.5 py-0.5 rounded-full">
-                            <Lock className="w-3 h-3" /> Coming Soon
-                          </span>
-                        </div>
-                        <h3 className="font-bold text-base leading-snug">{course.title}</h3>
-                      </div>
-                      <div className="px-5 py-4">
-                        <p className="text-gray-400 text-sm leading-relaxed mb-4">{course.desc}</p>
-                        <div className="flex flex-wrap gap-1.5 mb-5">
-                          {course.skills.map((s) => (
-                            <span key={s} className="text-xs bg-white/5 text-gray-500 px-2 py-0.5 rounded-full">
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-                        <Link
-                          href="/contact"
-                          className="flex items-center justify-center gap-2 w-full border border-white/10 text-gray-400 dark:text-slate-300 text-sm font-medium py-2.5 rounded-xl hover:bg-white/5 transition-colors"
-                        >
-                          Get Notified
-                        </Link>
                       </div>
                     </div>
                   </motion.div>

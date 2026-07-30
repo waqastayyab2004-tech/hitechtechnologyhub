@@ -1,329 +1,302 @@
 ---
-title: "How I Deployed the Zebra ZT411 RFID Printer at SAP IT — Step by Step"
-date: "2026-07-22"
-excerpt: "From unboxing to printing live asset tags — a complete walkthrough of deploying the Zebra ZT411 RFID printer at the SAP IT Link Center in Riyadh, including EU RED security activation and RFID calibration."
-tags: ["RFID", "Zebra ZT411", "Printer Management", "IT Asset Management", "SAP IT", "Hardware Deployment", "Asset Tagging"]
+title: "How I Deployed the Zebra ZT411R RFID Printer — End-to-End Configuration Guide"
+date: "2026-07-27"
+excerpt: "From unboxing to Status: READY — a complete walkthrough covering manual media calibration, RFID calibration, EU RED security activation via Zebra Setup Utilities, wired network registration, ZebraNet print server setup, and daily asset tag operations."
+tags: ["RFID", "Zebra ZT411", "Printer Management", "IT Asset Management", "Hardware Deployment", "Asset Tagging", "Network Printing", "ZPL", "EU RED"]
 ---
 
-## Why We Needed an RFID Printer
+## Why We Needed an Industrial RFID Printer
 
-At SAP IT in Riyadh, every hardware asset — laptops, iPhones, iPads, monitors — needs to be tagged before it leaves the IT Link Center. For years, we used barcode labels. But as our asset count grew past 1,500 devices, the limitations became clear: barcodes require line-of-sight scanning, they wear out, and bulk audits take hours.
+Every hardware asset entering or leaving the IT office needs to be tagged before it moves. For years, barcode labels handled this — but as the device count grew past 1,500 units, the limitations became clear: barcodes need line-of-sight, they wear out in high-traffic areas, and bulk audits still require scanning each device one at a time.
 
-The SAP global RFID programme changed that. With RFID-enabled asset tags, we can read device information from a distance, perform bulk scans in seconds, and tie every device to a verified audit trail in ServiceNow. The **Zebra ZT411** is the printer that makes it possible.
-
----
-
-## The Hardware: Zebra ZT411 Industrial RFID Printer
-
-![Zebra ZT411](/zebra-zt411-printer.svg)
-
-The ZT411 is an industrial-grade label printer with a built-in UHF RFID encoder. It handles thermal transfer printing (for durable, scratch-resistant labels) and programmes RFID inlays in the same pass — one label, one swipe, both barcode and RFID data encoded simultaneously.
-
-**Key specs for IT asset tagging:**
-- Print resolution: 203 or 300 dpi (we use 300 for small asset tags)
-- RFID frequency: UHF 902–928 MHz (ISO 18000-6C / EPC Gen2) — the SAP standard
-- Connectivity: USB, Serial, Ethernet, Wi-Fi (optional)
-- Media width: up to 4.5 inches — more than enough for standard asset tags
-- Industrial build: metal chassis, rated for continuous production use
+RFID-enabled asset tags change that. A single RFID reader can log dozens of devices in seconds, and the data ties back to the asset management system automatically. The **Zebra ZT411R** is the industrial printer that makes this possible — and this post is the deployment guide I wish I had before I started.
 
 ---
 
-## Step 1: Unboxing and Placement
+## The Hardware: Zebra ZTC ZT411R-203dpi ZPL
 
-Following **SAP KB1349185**, the first step is a full unboxing verification before powering anything on.
+The ZT411R is an industrial-grade thermal transfer label printer with a built-in UHF RFID encoder. It prints and programmes RFID inlays in a single pass — one label, barcode and RFID data encoded simultaneously.
+
+**Confirmed specs from production deployment:**
+- **Model:** ZTC ZT411R-203dpi ZPL
+- **Print method:** Thermal Transfer
+- **Resolution:** 203 dpi
+- **RFID:** UHF encoder built-in, ZBI 2.1, RFID status READY in production
+- **Connectivity:** Internal Wired PrintServer (ZebraNet), USB, Serial
+- **Firmware:** V92.21.34Z (current production release)
+- **Language:** ZPL II
+- **Memory:** ~63MB onboard flash, ~7.6MB RAM — full font library loaded
+
+**RFID label specification used in production:**
+- LABEL SYNTHETIC 60×25MM RFID COATED ACRYLIC ADH 76.2MM 400/Roll
+- Order through your local vendor / field IT procurement channel
+
+---
+
+## Reference Documents
+
+Before starting, gather the following documents. These cover the complete setup process end-to-end:
+
+| Document | What it covers |
+|----------|---------------|
+| 1-Printer_unbox__Install_Supplies.docx | Unboxing, ribbon and media loading |
+| 2-EU_RED_Security-Active_Printer.docx | EU RED security activation via Zebra Setup Utilities |
+| 3-Printer_network_registration_steps.docx | Network connection and Printer Team registration |
+| KB - printer setup.docx | Full printer configuration reference |
+| KB - RFID labels printing.docx | Label printing workflow and label specs |
+| KB - RFID scanner setup.docx | Scanner configuration (keyboard mode via Desktop123) |
+| KB - scanning process.docx | RFID scanning process documentation |
+| Printer Calibration.docx | Manual calibration step-by-step |
+| Label Adjuster.MOV | Video: label position adjustment |
+| RFID Calibration Process.MOV | Video: full RFID calibration walkthrough |
+| Ribbon and Label Position.MOV | Video: ribbon and label loading |
+| Sensor label Adjust.MOV | Video: sensor adjustment |
+| Where the Sensor must light.MOV | Video: correct sensor indicator position |
+
+All documents and videos are available in the shared IT printer resources folder.
+
+---
+
+## Step 1: Unboxing and Physical Installation
+
+Before powering on, complete a full physical verification.
 
 **Unboxing checklist:**
-- Zebra ZT411 printer unit ✓
-- Power cable ✓
-- USB cable ✓
-- Quick start guide ✓
-- No physical damage to the print head or platen roller ✓
+- Printer unit — no damage to printhead, platen roller, or chassis
+- Power cable
+- USB cable
+- Quick start guide
+- RFID antenna module seated correctly in the base
 
-**Placement guidelines:**
-- At least 4 inches of clearance on all sides for ventilation
+**Placement requirements:**
 - Flat, stable surface — vibration causes RFID calibration drift
-- Network port within 2 metres (we use Ethernet for stable connectivity)
-- Away from other UHF emitters — nearby RFID readers can interfere
+- At least 4 inches of clearance on all sides for ventilation
+- Network port within cable reach — always prefer wired Ethernet over Wi-Fi for production
+- Away from other UHF emitters — nearby RFID readers interfere with calibration
 
-At our IT Link Center, I placed it on the equipment bench next to the asset staging area — devices can be tagged immediately after being logged in ServiceNow.
+Place the printer at the asset staging area so devices can be tagged immediately after being logged.
 
 ---
 
-## Step 2: Loading the Ribbon
+## Step 2: Loading the Ribbon (Thermal Transfer)
 
-The ZT411 uses thermal transfer printing — which means it needs a ribbon (ink roll) in addition to the label media.
+> Reference video: **Ribbon and Label Position.MOV**
 
-**Official Zebra video guide — watch this first:**
+The ZT411R requires a ribbon in addition to label media (thermal transfer printing).
 
-[![ZT411 Media and Ribbon Loading](/zebra-zt411-media-ribbon-video.png)](https://www.zebra.com/content/dam/support-dam/en/documentation/unrestricted/video/0001/zt4x1-02-media-ribbon-loading.mp4)
-
-*Click the image above to watch the official Zebra ZT411 / ZT421 Media and Ribbon Loading video.*
-
-**Ribbon loading steps:**
-1. Open the top cover of the printer
-2. Unroll about 30cm of ribbon from the supply roll
-3. Thread the ribbon leader (clear or darker end first depending on ribbon type) through the ribbon path — over the print head and onto the take-up spindle
-4. Attach the ribbon to the take-up spindle and rotate it manually until the ribbon is taut with no wrinkles
+1. Open the top cover
+2. Unroll approximately 30cm of ribbon from the supply roll
+3. Thread the ribbon leader through the ribbon path — over the printhead and onto the take-up spindle
+4. Attach to the take-up spindle and rotate manually until taut with no wrinkles
 5. Close the top cover
 
-**Critical:** match ribbon width to label width. A narrower ribbon leaves unprinted edges and accelerates print head wear.
+**Critical:** match ribbon width to label width. A narrower ribbon leaves unprinted edges and accelerates printhead wear.
 
 ---
 
 ## Step 3: Loading RFID Media
 
-**Media loading steps:**
-1. Open the media compartment (the top lid lifts fully)
-2. Thread the label roll through the media guides
-3. **Critical:** position the label roll so the RFID inlay passes directly over the RFID antenna window in the base of the printer — if the inlay misses the antenna, you get void tags
-4. Feed the media through to the tear bar and close the lid
+> Reference video: **Ribbon and Label Position.MOV** · **Sensor label Adjust.MOV** · **Where the Sensor must light.MOV**
 
-**Test print:** before doing anything with RFID, run a basic test print from the front panel. If the label comes out clean with sharp text, the mechanical setup is correct.
+RFID media loading requires more care than a standard label printer — the RFID inlay must align precisely with the antenna window inside the printer.
 
----
-
-## Step 4: RFID Calibration
-
-Every time you change the media roll, you must recalibrate the RFID encoder. Different rolls have slightly different inlay positions — calibration tells the printer exactly where the antenna is on each label.
-
-**Calibration procedure:**
-1. Load the new media roll
-2. On the front panel: **Menu → RFID → Calibrate RFID**
-3. The printer feeds and voids several labels while measuring inlay position
-4. When calibration completes, a "RFID Calibration OK" message confirms success
-
-**Verify:** print one test label and scan it with the Zebra RFD40 scanner (KB1349722). The scanner should read the EPC data correctly. If it returns a void read, run calibration again.
-
----
-
-## Step 5: EU RED Security Activation
-
-This step is **mandatory** for SAP. The EU Radio Equipment Directive (RED) governs wireless devices and SAP's global policy requires compliance on all RF-emitting equipment.
-
-**Activation steps:**
-1. On the front panel: **Menu → Network → Wireless → EU RED Mode**
-2. Set EU RED to **Enabled**
-3. Confirm the frequency range locks to the approved EU band
-4. Save — setting persists through power cycles
-
-**Document it.** Record the EU RED activation in the asset management system against the printer's serial number.
-
----
-
-## Step 6: Daily Asset Tag Printing Workflow
-
-1. **ServiceNow ticket raised** — new device arrives or is staged for assignment
-2. **Asset record created** in ServiceNow with SAP Equipment Number and Serial Number
-3. **Label printed** — select the SAP asset tag format, print one label per device
-4. **RFID verified** — scan the freshly printed tag before applying it
-5. **Label applied** — clean the device surface, apply the tag in the standard position
-6. **SNOW record updated** — asset status updated to reflect the tagged state
-
-We follow the full labelling guide in **SAP KB1349678**.
-
----
-
-## The Real Challenges — What the Manual Doesn't Tell You
-
-These are the three issues that cost the most time during the actual deployment. None of them are in the quick start guide.
-
-### Challenge 1: Label Paper and Roll Alignment — Sensor Calibration Failures
-
-This was the biggest frustration. The ZT411 has a **label gap sensor** and an **RFID antenna window** — both must be perfectly aligned for the printer to work correctly. Getting one right and missing the other causes either:
-- Blank labels (mechanical feed works, but no print)
-- Void RFID tags (print works, but inlay not over the antenna)
-- Continuous calibration failures — both auto and manual
-
-**What actually fixes it:**
-1. Feed the roll slowly and watch the inlay position as it enters the print area — you can see the antenna window through the base
-2. The RFID inlay must pass **directly over** the circular antenna window — not just close, exactly over it
-3. If auto-calibration fails repeatedly, run **manual calibration**: Menu → RFID → Calibrate RFID → Manual — this lets you adjust the offset manually
-4. After each media guide adjustment, run a test print **before** running RFID calibration — confirm the paper path is stable first
-5. If manual calibration also fails, the most common cause is the media guides being even slightly off — push them firmly against the label edges and try again
-
-> **Lesson learned:** the tolerance on RFID inlay alignment is tighter than it looks. 2mm off-centre is enough to cause consistent void tags. Take the time to get the alignment right on the first roll — it saves hours later.
-
-### Challenge 2: Network Registration and IP Whitelisting
-
-The ZT411 connects over Ethernet. In a corporate SAP network, that means:
-- The printer's **MAC address must be registered** in the network access control (NAC) system before it gets a stable IP
-- The IP address assigned to the printer must be **whitelisted** so it can communicate with print servers and the asset management system
-- If the printer uses DHCP (default), the IP can change after a reboot — breaking any hardcoded print queue references
-
-**What we did:**
-1. Connected the printer and let it pull a DHCP address
-2. Found the MAC address via: **Menu → Network → Ethernet → MAC Address**
-3. Raised a ServiceNow ticket to register the MAC in NAC and request a **DHCP reservation** (same IP every time)
-4. Submitted a firewall change request to whitelist the printer IP for the print server
-5. Only after the IP was confirmed stable did we configure the print queue on workstations
-
-> **Lesson learned:** don't configure print queues until the IP is reserved. One DHCP lease renewal after a power cut breaks all connected workstations silently.
-
----
-
-## What This Enables
-
-With the Zebra ZT411 operational, every device that passes through SAP IT Riyadh gets an RFID-enabled asset tag before it leaves. That means:
-
-- **Bulk audits in minutes** — no more scanning one device at a time
-- **Verified chain of custody** — every tag tied to a ServiceNow record
-- **Global SAP RFID programme alignment** — RUH02 now matches 45+ SAP locations worldwide
-- **Reduced audit discrepancies** — RFID reads are more reliable than barcode in real-world conditions
-
-The deployment took less than half a day. The operational benefit is permanent.
-
----
-
-## References
-
-- SAP KB1349185 — OTX Zebra ZT411 RFID printer setup
-- SAP KB1349678 — OTX RFID Label Printing & Labelling Guide
-- SAP KB1349722 — OTX Zebra RFD40 RFID scanner setup
-- [Zebra ZT411 Ribbon Loading Guide](https://support.zebra.com/article/ZT411-ZT421-Ribbon-Loading)
-- SAP Global Wireless Compliance Policy (EU RED)
-
-date: "2026-07-22"
-excerpt: "From unboxing to printing live asset tags — a complete walkthrough of deploying the Zebra ZT411 RFID printer at the SAP IT Link Center in Riyadh, including EU RED security activation and RFID calibration."
-tags: ["RFID", "Zebra ZT411", "Printer Management", "IT Asset Management", "SAP IT", "Hardware Deployment", "Asset Tagging"]
----
-
-## Why We Needed an RFID Printer
-
-At SAP IT in Riyadh, every hardware asset — laptops, iPhones, iPads, monitors — needs to be tagged before it leaves the IT Link Center. For years, we used barcode labels. But as our asset count grew past 1,500 devices, the limitations became clear: barcodes require line-of-sight scanning, they wear out, and bulk audits take hours.
-
-The SAP global RFID programme changed that. With RFID-enabled asset tags, we can read device information from a distance, perform bulk scans in seconds, and tie every device to a verified audit trail in ServiceNow. The Zebra ZT411 is the printer that makes it possible.
-
-This post documents exactly how I deployed it — every step, in order, as it actually happened.
-
----
-
-## The Hardware: Zebra ZT411 Industrial RFID Printer
-
-The ZT411 is an industrial-grade label printer with a built-in UHF RFID encoder. It handles thermal transfer printing (for durable, scratch-resistant labels) and programmes RFID inlays in the same pass — one label, one swipe, both barcode and RFID data encoded simultaneously.
-
-Key specs relevant to IT asset tagging:
-- **Print resolution:** 203 or 300 dpi (we use 300 for small asset tags)
-- **RFID frequency:** UHF 902–928 MHz (ISO 18000-6C / EPC Gen2) — the SAP standard
-- **Connectivity:** USB, Serial, Ethernet, Wi-Fi (optional)
-- **Media width:** up to 4.5 inches — more than enough for standard asset tags
-
----
-
-## Step 1: Unboxing and Placement
-
-Following **SAP KB1349185**, the first step is a full unboxing verification before powering anything on.
-
-Checklist:
-- Zebra ZT411 printer unit
-- Power cable
-- USB cable
-- Quick start guide
-- No physical damage to the print head or platen roller
-
-**Placement matters.** The ZT411 needs:
-- At least 4 inches of clearance on all sides for ventilation
-- A flat, stable surface — vibration causes RFID calibration drift
-- Network port within 2 metres (we use Ethernet for stable connectivity)
-- Away from other UHF emitters — nearby RFID readers can interfere
-
-At our IT Link Center, I placed it on the equipment bench, next to the asset staging area — so devices can be tagged immediately after being logged in ServiceNow.
-
----
-
-## Step 2: Loading RFID Media and Ribbon
-
-This is the step most people get wrong the first time.
-
-**Media loading:**
 1. Open the media compartment (top lid lifts fully)
 2. Thread the label roll through the media guides
-3. **Critical:** position the label roll so the RFID inlay passes directly over the RFID antenna window in the base of the printer — if the inlay misses the antenna, you get void tags
-4. Feed the media through to the tear bar and close the lid
+3. **Critical:** position the roll so the RFID inlay passes directly over the RFID antenna window in the base — even 2mm off-centre causes consistent void tags
+4. Push the media guides firmly against the label edges — loose guides cause feed errors and calibration failures
+5. Feed media through to the tear bar
 
-**Ribbon loading (thermal transfer):**
-1. Open the ribbon compartment
-2. Thread the ribbon from the supply spindle over the print head and onto the take-up spindle
-3. Match ribbon width to label width — a narrower ribbon causes unprinted edges and head wear
-
-**Test print:** before doing anything with RFID, run a basic test print from the front panel. If the label comes out clean with sharp text, the mechanical setup is correct.
+**Run a basic test print** before proceeding to calibration. Clean text and sharp edges confirm the mechanical setup is correct.
 
 ---
 
-## Step 3: RFID Calibration
+## Step 4: Manual Media Calibration
 
-Every time you change the media roll, you must recalibrate the RFID encoder. Different rolls have slightly different inlay positions — calibration tells the printer exactly where the antenna is on each label.
+> Reference: **Printer Calibration.docx** · Video: **Sensor label Adjust.MOV**
 
-**Calibration procedure:**
-1. Load the new media roll
-2. On the front panel: **Menu → RFID → Calibrate RFID**
-3. The printer will feed and void several labels while measuring inlay position
-4. When calibration completes, a "RFID Calibration OK" message confirms success
+Manual calibration is required after every roll change. It teaches the gap sensor exactly where each label starts and ends.
 
-**Verify with a test tag:**
-After calibration, print one test label and scan it with the Zebra RFD40 scanner (covered in KB1349722). The scanner should read the EPC data correctly. If it returns a void read, run calibration again — sometimes the first pass needs repeating with a fresh roll.
+1. Press and hold **Pause** and **Cancel** simultaneously for a few seconds — the printer enters manual calibration mode
+2. Follow the on-screen prompts
+3. **Important:** when prompted, remove the ribbon — the sensor must read the label backing without the ribbon in place
+4. Once calibration completes, press **Feed** to test — the printer should advance exactly one label at a time
+5. If it feeds more than one label, calibration did not complete — repeat the process
 
----
-
-## Step 4: EU RED Security Activation
-
-This step is **mandatory** for SAP. The EU Radio Equipment Directive (RED) governs wireless devices in the EU and regions that align to it. SAP's global wireless policy requires EU RED compliance on all RF-emitting equipment — including RFID printers.
-
-A non-compliant printer operating outside its approved frequency band can cause interference and violates SAP's IT security baseline.
-
-**Activation steps:**
-1. On the front panel: **Menu → Network → Wireless → EU RED Mode**
-2. Set EU RED to **Enabled**
-3. Confirm the frequency range locks to the approved EU band
-4. Save the setting — it persists through power cycles
-
-**Document it.** I recorded the EU RED activation in the asset management system against the printer's serial number, with the date and my name. If a compliance audit happens, this entry is the proof.
+> Each time a label roll runs out and a new one is loaded, this calibration must be repeated.
 
 ---
 
-## Step 5: Daily Asset Tag Printing Workflow
+## Step 5: RFID Calibration
 
-With the printer calibrated and compliant, here is the daily workflow we follow:
+> Reference: **KB - printer setup.docx** · Video: **RFID Calibration Process.MOV**
 
-1. **ServiceNow ticket raised** — a new device arrives or is staged for assignment
-2. **Asset record created** in ServiceNow with SAP Equipment Number and Serial Number
-3. **Label printed** — select the SAP asset tag format, print one label per device
-4. **RFID verified** — scan the freshly printed tag before applying it
-5. **Label applied** — clean the device surface, apply the tag in the standard position (bottom-left rear panel for laptops, back for phones)
-6. **SNOW record updated** — asset status updated to reflect the tagged state
+RFID calibration is separate from media calibration and must be performed after every roll change.
 
-We follow the full label printing and labelling guide in **SAP KB1349678**.
+1. Navigate to **Menu → RFID Icon → RFID Calibrate → Start Calibration**
+2. When prompted, select your **country/region** from the list
+3. The calibration runs automatically — it takes **more than 5 minutes** to complete properly
+4. **If it finishes in under 2 minutes, it has not completed** — run it again
+
+**Verify:** print a test label and confirm the RFID data reads back correctly. A void read means calibration needs repeating before loading a full production roll.
+
+![Zebra ZT411 — RFID Calibration Complete screen with green tick, RFID label media loaded and ready](/zebra-zt411-rfid-calibration-complete.webp)
+
+*RFID Calibration Complete — green tick confirms the encoder is aligned and ready for production.*
 
 ---
 
-## Common Issues and How to Fix Them
+## Step 6: EU RED Security Activation via Zebra Setup Utilities
 
-| Problem | Cause | Fix |
-|---------|-------|-----|
-| Void labels (no RFID data) | Inlay not over antenna | Reposition media, re-calibrate |
-| Poor print quality | Worn printhead or wrong darkness setting | Clean printhead, adjust darkness |
-| RFID read errors after printing | Calibration needed | Run RFID calibration from menu |
-| Label not advancing correctly | Media guides too tight or too loose | Adjust guides to label width |
-| EU RED warning on startup | Setting reset after firmware update | Re-activate EU RED mode |
+> Reference: **2-EU_RED_Security-Active_Printer.docx**
+
+EU RED (Radio Equipment Directive) compliance is mandatory for all RF-emitting equipment. The ZT411R ships with certain connectivity and management functions disabled by default when EU RED is active. To restore these functions correctly, a **Security Setup File** must be sent to the printer using **Zebra Printer Setup Utilities for Windows**.
+
+**This is not done from the front panel alone — it requires a Windows computer and a USB cable.**
+
+### Step 6.1 — Download Zebra Printer Setup Utilities
+
+Download **Zebra Printer Setup Utilities for Windows** from [zebra.com/support](https://zebra.com/support). Install and open it on your Windows computer.
+
+A video guide is available — watch from the beginning until 2:10 minutes for the relevant section.
+
+### Step 6.2 — Connect the Printer via USB
+
+Connect the ZT411R to your Windows computer using a standard USB Type-A to Type-B cable (the square-ended printer cable). The printer will appear in Zebra Setup Utilities.
+
+### Step 6.3 — Select the Printer
+
+In Zebra Setup Utilities, the printer list will show your ZT411R. Select it to highlight it.
+
+### Step 6.4 — Open Communication with Printer
+
+Under **Printer Configuration**, click **Open Communication With Printer**. This opens the **Direct Communication** window — a text interface for sending commands directly to the printer.
+
+### Step 6.5 — Send the Security Setup File
+
+1. Paste the contents of the **Security Setup File** (provided in the reference document **2-EU_RED_Security-Active_Printer.docx**) into the top section of the Direct Communication window
+2. Click **Send to Printer**
+3. Watch the bottom window — responses appear as the code executes on the printer
+4. When the response shows `{"protect":{"status":0,"operation":"setup"}}{"protect":{"status":100,"operation":"configure-one"}}` — the setup has completed successfully
+5. Close the Direct Communication window
+
+This process restores management functions while keeping the printer compliant with EU RED regulations.
+
+---
+
+## Step 7: Head Close Action — Prevent Label Waste
+
+Navigate to: **Settings → Head Close Action → No Motion**
+
+This prevents the printer from feeding a label every time the printhead is opened and closed, which wastes media.
+
+---
+
+## Step 8: Disable Sleep Mode / Power Save
+
+Before connecting to the corporate network:
+
+1. Navigate to **Settings** on the printer screen
+2. Locate **Power Save** or **Energy Star**
+3. Set to **Disabled** or **Off**
+
+**Why this matters:** network teams monitor switch port activity. A sleeping printer appears idle and the port can be disabled — causing a silent loss of network connectivity and a potential IP address change on reconnect, which breaks all print queues.
+
+---
+
+## Step 9: Network Registration
+
+> Reference: **3-Printer_network_registration_steps.docx**
+
+1. Connect the printer to the corporate network via Ethernet cable (DHCP)
+2. If needed, raise a ticket for switch port activation
+3. Find the assigned IP address on the printer display: **Network → Wired → Wired IP Address**
+4. **Contact the Printer Team** — provide the printer's MAC address and assigned IP. They will assign a hostname, create a DHCP reservation (stable IP), and register the printer in the network directory. Some users do not have access to the network portal, so this step must be handled by the Printer Team
+5. Only after IP is confirmed stable — configure print queues on workstations
+
+> Do not configure print queues until the DHCP reservation is in place. One IP change after a reboot breaks all connected workstations silently.
+
+---
+
+## Step 10: Verify Full Configuration
+
+Once everything is configured, open the printer's IP address in a browser to confirm:
+
+- **Status: READY** ✓
+- **RFID Status: READY** ✓
+- **ZebraNet Print Server:** Link Good, 100Mb/s, Bidirectional ✓
+- **Firmware:** current version ✓
+- **RTC date/time:** set correctly ✓
+
+**Key printer settings confirmed in production:**
+
+| Parameter | Value |
+|-----------|-------|
+| Print mode | Thermal Transfer |
+| ZPL mode | ZPL II |
+| Head Close Action | No Motion |
+| Power Save | Disabled |
+| RFID | ZBI 2.1, Status READY |
+| Firmware | V92.21.34Z |
+
+---
+
+## CLEA Integration
+
+Once the printer is fully operational, it integrates with the **CLEA** asset lifecycle management system. RFID tags printed by the ZT411R are scanned via the CLEA mobile app and hand scanners, updating asset records in real time. This is the primary workflow for all new IT equipment entering the office.
+
+---
+
+## Daily Asset Tag Printing Workflow
+
+1. New device arrives — asset record created in the IT asset management system
+2. Label printed — select the correct label format (60×25mm RFID), print one label per device
+3. RFID verified — scan the freshly printed tag to confirm data before applying
+4. Label applied — clean the device surface, apply in the standard position
+5. Asset record updated — status updated to tagged/assigned in the system
+
+---
+
+## Troubleshooting
+
+| Problem | Likely Cause | Fix |
+|---------|-------------|-----|
+| VOID message on labels | RFID calibration not completed correctly | Repeat RFID calibration steps |
+| Label gap between each print | Incorrect sensor position | Run manual calibration; watch sensor position videos |
+| QR/barcode in wrong position on label | Label template offset | Adjust fine-tuning in the label template code |
+| Scanner cannot scan anything | Scanner not in keyboard mode | Set keyboard mode in scanner config using Desktop123 software |
+| Calibration fails repeatedly | Media guides not firm against label edges | Push guides firmly to label width, retry |
+| Printer feeds multiple labels | Manual calibration incomplete | Repeat Pause + Cancel with ribbon removed |
+| Print server not accessible | Printer got a new DHCP IP | Check IP on screen, request DHCP reservation from Printer Team |
+| RFID calibration completes in under 2 min | Calibration did not run fully | Run Start Calibration again |
+| Network port disabled | Sleep mode was enabled | Disable Power Save, contact network team to re-enable port |
 
 ---
 
 ## What This Enables
 
-With the Zebra ZT411 operational, every device that passes through the SAP IT Link Center in Riyadh gets an RFID-enabled asset tag before it leaves. That means:
+With the Zebra ZT411R fully operational:
 
-- **Bulk audits in minutes** — no more scanning one device at a time
-- **Verified chain of custody** — every tag tied to a ServiceNow record
-- **Global SAP RFID programme alignment** — RUH02 now matches the standard used across 45+ SAP locations worldwide
-- **Reduced audit discrepancies** — RFID reads are more reliable than barcode scans in real-world conditions
+- **Status: READY** — confirmed via printer web interface, accessible from any authorised workstation on the network
+- **RFID encoding on every label** — every device tagged in a single print pass
+- **Bulk audits in minutes** — RFID readers log multiple devices simultaneously
+- **Full chain of custody** — every RFID tag tied to a record in the asset management system
+- **CLEA integration** — RFID tags scanned via mobile app for real-time asset record updates
+- **Network-connected** — print from any authorised workstation via ZebraNet print server
 
-The deployment took less than half a day. The operational benefit is permanent.
+The full deployment — from unboxing to first production tag — takes less than one working day when the reference documents are followed in order.
+
+![Zebra ZT411 — Home screen showing Print Status: Idle, RFID label roll loaded](/zebra-zt411-home-screen-idle.webp)
+
+*Printer home screen — Print Status Idle, RFID label media loaded and ready for the next job.*
+
+![Zebra ZT411 — Print Status screen, Idle, RFID labels visible in output slot](/zebra-zt411-print-status-idle.webp)
+
+*Print Status screen — printer fully configured, Idle, connected to network (NETWORK indicator lit green).*
 
 ---
 
 ## References
 
-- SAP KB1349185 — OTX Zebra ZT411 RFID printer setup
-- SAP KB1349678 — OTX RFID Label Printing & Labelling Guide
-- SAP KB1349722 — OTX Zebra RFD40 RFID scanner setup
-- Zebra ZT411 User Guide
-- SAP Global Wireless Compliance Policy (EU RED)
+- Zebra ZT411 / ZT421 Ribbon Media Sensor Manual Calibration — [support.zebra.com](https://support.zebra.com/article/ZT411-ZT421-Ribbon-Media-Sensor-Manual-Calibration)
+- Zebra Printer Setup Utilities for Windows — [zebra.com/support](https://support.zebra.com)
+- Zebra Support Centre — Drivers, Firmware, Documentation, Warranty Check — [support.zebra.com](https://support.zebra.com)

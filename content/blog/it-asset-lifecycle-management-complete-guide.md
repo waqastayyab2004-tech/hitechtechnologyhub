@@ -310,7 +310,7 @@ The final step: mark the asset as "Disposed" in the register, attach the disposa
 
 | Function | Enterprise Tools |
 |----------|----------------|
-| Asset register | ServiceNow ITAM, SAP ISP, or custom web app |
+| Asset register | ServiceNow ITAM, enterprise asset management system, or custom web app |
 | Procurement workflow | SAP Ariba, Power Apps + SharePoint |
 | Device enrollment | Intune/Autopilot (Windows), JamF (macOS), ABM (iOS) |
 | Compliance monitoring | Microsoft Intune compliance policies |
@@ -375,4 +375,4 @@ When you operate at that standard, the compliance question, the security questio
 
 ---
 
-*Waqas Syed is a Senior IT System Engineer and IT Service Delivery Lead with 15+ years managing enterprise IT operations across multinational environments in MENA. He has managed 2,000+ active IT assets using SAP ISP ERP, SAP Ariba procurement, Microsoft Intune/Autopilot, and JamF. He writes about enterprise IT leadership, AI automation, and strategic IT management at HiTecH AI HUB.*
+*Waqas Syed is a Senior IT System Engineer and IT Service Delivery Lead with 15+ years managing enterprise IT operations across multinational environments in MENA. He has managed 2,000+ active IT assets using enterprise asset ERP, SAP Ariba procurement, Microsoft Intune/Autopilot, and JamF. He writes about enterprise IT leadership, AI automation, and strategic IT management at HiTecH AI HUB.*

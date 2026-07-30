@@ -1,7 +1,7 @@
 ---
 title: "IT Pickup Point: How Smart Lockers Are Transforming Enterprise IT Asset Distribution"
 date: "2026-07-14"
-excerpt: "Physical handoffs, sign-out sheets, and scheduling IT staff for hardware collection are solved problems. Here's how deploying a Signifi Digital Storage Locker as an IT Pickup Point — powered by SignifiVISION and integrated with SAP and ServiceNow — removes the last manual step in IT asset distribution."
+excerpt: "Physical handoffs, sign-out sheets, and scheduling IT staff for hardware collection are solved problems. Here's how deploying a Signifi Digital Storage Locker as an IT Pickup Point — powered by SignifiVISION and integrated with the enterprise asset management system and ServiceNow — removes the last manual step in IT asset distribution."
 tags: ["IT Asset Management", "Smart Locker", "Signifi", "Self-Service IT", "Enterprise IT", "IT Operations", "ITAM"]
 author: "Waqas Syed"
 readTime: "7 min read"
@@ -33,7 +33,7 @@ Our device distribution workflow was well-designed up to a point:
 4. IT engineer retrieves the device from the storage room
 5. **IT engineer schedules a meeting with the employee to hand it over**
 6. Both parties sign a handover document
-7. IT engineer updates the asset record in SAP ISP
+7. IT engineer updates the asset record in the enterprise asset management system
 
 Steps 1–4 and 7 were essentially automated or near-automated. Step 5 was a calendar problem. Step 6 was a paper problem. Step 7 was a follow-up problem.
 
@@ -57,10 +57,10 @@ We deployed it in the office lobby, branded as **"IT Pickup Point"** — a visib
 ## How the End-to-End Workflow Works
 
 **Before (manual):**
-> SAP Ariba approval → IT retrieves device → schedules handover meeting → physical sign-out → SAP ISP update
+> SAP Ariba approval → IT retrieves device → schedules handover meeting → physical sign-out → enterprise asset management system update
 
 **After (automated with smart locker):**
-> SAP Ariba approval → IT loads device into locker compartment → SignifiVISION sends employee notification → employee authenticates at locker → collects device → CLEA/SAP ISP record updated automatically
+> SAP Ariba approval → IT loads device into locker compartment → SignifiVISION sends employee notification → employee authenticates at locker → collects device → CLEA/enterprise asset management system record updated automatically
 
 The IT engineer's role shifts from "appointment maker and device handler" to "stock manager" — they load the locker when orders are ready, and the system handles everything else.
 
@@ -82,7 +82,7 @@ The Signifi system is purpose-built for IT asset management (ITAM) and what the 
 - Centralised management of multiple lockers across multiple locations from a single portal
 - Personalized alerts: item not collected after defined hours, compartment full, access failure
 - Audit log: every event — user identity, timestamp, compartment, asset — stored and retrievable
-- 85+ API integrations for connection to SAP, ServiceNow, MDM tools, and HR systems
+- 85+ API integrations for connection to enterprise asset management systems, ServiceNow, MDM tools, and HR systems
 
 **At scale:** Signifi processes 350+ million transactions annually across 45+ countries with 2.2+ million daily users. The platform is proven at enterprise scale.
 
@@ -131,7 +131,7 @@ We put the locker in the lobby, not the IT room. Visibility and accessibility ar
 Employees don't think about the locker until they receive the notification. That message needs to contain exactly what they need: where the locker is, how to authenticate, what to do if something goes wrong. We refined this message twice before collection rates reached target.
 
 **3. Integration removes the last manual step.**
-Without integration, someone still has to update the asset record after collection. With CLEA and SAP ISP integration, the collection event triggers the record update automatically. The locker only delivers its full value when it's connected to the asset management system — not running as a standalone appliance.
+Without integration, someone still has to update the asset record after collection. With CLEA and enterprise asset management system integration, the collection event triggers the record update automatically. The locker only delivers its full value when it's connected to the asset management system — not running as a standalone appliance.
 
 ---
 

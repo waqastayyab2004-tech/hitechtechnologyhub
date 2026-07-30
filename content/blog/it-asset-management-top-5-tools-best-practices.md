@@ -47,13 +47,13 @@ Every platform below handles these differently. The differences matter.
 
 **Best for:** SAP-centric enterprises needing tight ERP + ITSM + procurement integration
 
-SAP's CLEA (Client Lifecycle Enterprise Application), hosted on SAP BTP (Business Technology Platform), is built specifically for the employee hardware lifecycle. It's not a general discovery tool — it's a workflow engine tied directly to HR events, procurement POs, and the SAP ISP asset ERP.
+SAP's CLEA (Client Lifecycle Enterprise Application), hosted on SAP BTP (Business Technology Platform), is built specifically for the employee hardware lifecycle. It's not a general discovery tool — it's a workflow engine tied directly to HR events, procurement POs, and the enterprise asset management system.
 
 **What it does well:**
 
 The three-module structure — On-Boarding, Asset Management Operations, Off-Boarding — maps exactly to how hardware actually moves in an enterprise. When HR creates a new hire in the system, a pending on-boarding task appears in CLEA for IT. When a leaver is confirmed, the off-boarding calendar triggers IT recovery. The workflow is event-driven rather than manually initiated.
 
-The mobile scanning workflow for pool stock is the standout feature. Using the CLEA mobile app, an IT engineer can scan every device in the storage room with the phone camera — the system marks them as present, flags missing ones, and closes the inventory cycle. For a storage room with 89 devices across 6 categories (laptops, MacBooks, iPhones, iPads, Android, monitors), this takes under an hour.
+The mobile scanning workflow for pool stock is the standout feature. Using the CLEA mobile app, an IT engineer can scan every device in the storage room with the phone camera — the system marks them as present, flags missing ones, and closes the inventory cycle. For a storage room with 89 pool devices across 6 categories live tracked, this takes under an hour.
 
 **Goods Receipt integration** directly with SAP Ariba POs means every new device entering the estate has a traceable procurement chain — PO number, vendor, delivery date, ABC classification.
 
@@ -63,7 +63,7 @@ The mobile scanning workflow for pool stock is the standout feature. Using the C
 
 **Where it's limited:** CLEA is purpose-built for SAP environments. It doesn't do network discovery, software licence tracking, or patch compliance — those live in other SAP tools.
 
-**My implementation:** Monthly IT Storage Room Inventory scan at RUH-SR01, Riyadh — 89 devices across 6 categories verified in a 5-day cycle. Day 1 device readiness for all new hires. Zero hardware discrepancies in 12 months.
+**My implementation:** Monthly IT storage room Inventory scan at IT storage room, Riyadh — 89 pool devices across 6 categories live tracked verified in a 5-day cycle. Day 1 device readiness for all new hires. Zero hardware discrepancies in 12 months.
 
 ---
 
@@ -171,13 +171,13 @@ The best ITAM programmes run on events: new hire → device assigned; leaver con
 
 Every platform provides a "system of record." None of them can account for a device sitting in a drawer, stolen from a desk, or quietly taken home by a contractor. Monthly or quarterly physical scans — using mobile barcode/QR scanning — are the only way to verify the system matches reality.
 
-For 89 pool devices, the CLEA mobile scan takes under an hour. For 1,500+ assigned devices, a quarterly spot-check of 20% of the estate catches most discrepancies without requiring a full physical audit.
+For 89 pool devices across 6 categories live tracked, the CLEA mobile scan takes under an hour. For 1,500+ assigned devices, a quarterly spot-check of 20% of the estate catches most discrepancies without requiring a full physical audit.
 
 ### 3. One Source of Truth — With Integration, Not Duplication
 
-The biggest ITAM failure mode is data fragmentation: asset in SAP ISP, device in Intune, ticket in ServiceNow, order in SAP Ariba — four systems, four records, zero synchronisation.
+The biggest ITAM failure mode is data fragmentation: asset in enterprise asset management system, device in Intune, ticket in ServiceNow, order in SAP Ariba — four systems, four records, zero synchronisation.
 
-The goal isn't to pick one system and abandon the others. It's to define which system owns which attribute and make the others consume it. In my implementation: SAP ISP owns the asset record (serial number, model, cost, warranty). CLEA owns the lifecycle workflow (assignment, return, status). ServiceNow owns the ticket and user event log. Intune owns the compliance state. Power BI consumes all four.
+The goal isn't to pick one system and abandon the others. It's to define which system owns which attribute and make the others consume it. In my implementation: enterprise asset management system owns the asset record (serial number, model, cost, warranty). CLEA owns the lifecycle workflow (assignment, return, status). ServiceNow owns the ticket and user event log. Intune owns the compliance state. Power BI consumes all four.
 
 ### 4. ABC Classification Is Operational Intelligence
 

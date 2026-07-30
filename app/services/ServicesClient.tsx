@@ -7,6 +7,7 @@ import {
   ArrowRight, MapPin, Wifi, Star, Users, TrendingUp, Award,
   Settings, Lock, Layers, CheckCircle, ChevronDown, ChevronUp,
   Globe, Cpu, Database, Code, Phone, Mail, Bot, Brain, Sparkles,
+  Building2, Laptop, UserCheck, Briefcase, Clock, CalendarCheck,
 } from 'lucide-react'
 
 /* ── DATA ──────────────────────────────────────────────────────────────── */
@@ -359,6 +360,33 @@ const faqs = [
   { q: 'How quickly can you start?', a: 'Typically within 1–2 weeks of proposal agreement — NDA, access setup, and onboarding. For urgent situations, faster start is possible. Contact me to discuss your timeline.' },
 ]
 
+const engagementTypes = [
+  { icon: Clock, label: 'Short-Term', desc: 'Days to weeks — project sprints, cover, urgent deployments', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20' },
+  { icon: CalendarCheck, label: 'Long-Term', desc: 'Months to years — embedded specialist, managed service', color: 'text-accent-blue', bg: 'bg-accent-blue/10', border: 'border-accent-blue/20' },
+  { icon: Briefcase, label: 'Permanent', desc: 'Full-time placement — hire through us, no agency fees', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20' },
+]
+
+const consultants: {
+  name: string; role: string; level: string; skills: string[]; location: string;
+  available: string; engagements: string[]; bio: string; contact?: string;
+}[] = [
+  // ─── ADD YOUR CONSULTANTS HERE ──────────────────────────────────────────────
+  // Copy the block below and fill in the details for each person:
+  //
+  // {
+  //   name: 'Full Name',
+  //   role: 'Job Title',
+  //   level: 'Senior | Mid | Junior | Lead',
+  //   skills: ['Skill 1', 'Skill 2', 'Skill 3'],
+  //   location: 'City, Country · Onsite / Remote',
+  //   available: 'Immediate | 2 Weeks Notice | From [Month]',
+  //   engagements: ['Short-Term', 'Long-Term', 'Permanent'],   // pick 1–3
+  //   bio: 'One or two sentences about background and what they deliver.',
+  //   contact: 'WhatsApp or email (optional)',
+  // },
+  // ────────────────────────────────────────────────────────────────────────────
+]
+
 /* ── PAGE COMPONENT ─────────────────────────────────────────────────────── */
 
 export default function ServicesPage() {
@@ -438,8 +466,208 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── MEET THE EXPERT ──────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-dark-800/50 border-y border-white/8">
+      {/* ── ONSITE & REMOTE STAFFING ──────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col lg:flex-row gap-12 items-start mb-16">
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-blue/10 border border-accent-blue/20 text-accent-blue text-xs font-bold uppercase tracking-widest mb-6">
+                <Users className="w-3.5 h-3.5"/> Onsite &amp; Remote IT Staffing
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-5">
+                The Right IT Professional.<br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-cyan-400">
+                  Deployed for Your Project.
+                </span>
+              </h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6 max-w-xl">
+                We have a network of top-tier IT professionals — engineers, consultants, architects, and specialists — ready to be placed onsite at your location or deployed remotely, exactly when you need them.
+              </p>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-xl border-l-2 border-accent-blue/40 pl-4">
+                Whether you need one specialist for a two-week deployment, a team for a six-month infrastructure project, or a permanent senior hire — we match the right person to the right job. No guesswork. No generic CVs. Tell us your requirement and we build your shortlist.
+              </p>
+            </div>
+
+            {/* Right — 3 capability cards */}
+            <div className="lg:w-96 space-y-4 flex-shrink-0">
+              {[
+                { icon: Building2, title: 'Onsite Deployment', desc: 'Professionals placed at your office, data centre, or project site — hands-on delivery from day one.', color: 'text-accent-blue' },
+                { icon: Laptop, title: 'Remote Specialists', desc: 'Fully remote IT talent integrated into your tools, systems, and team — no location barrier.', color: 'text-cyan-400' },
+                { icon: UserCheck, title: 'Right Person, Right Job', desc: 'We discuss your exact requirement and match skill, experience level, and availability — not just a CV match.', color: 'text-purple-400' },
+              ].map((c, i) => {
+                const Icon = c.icon
+                return (
+                  <div key={i} className="glass-card p-5 flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className={`w-5 h-5 ${c.color}`}/>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white text-sm mb-1">{c.title}</h3>
+                      <p className="text-gray-500 text-xs leading-relaxed">{c.desc}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Engagement type strip */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            {engagementTypes.map((e, i) => {
+              const Icon = e.icon
+              return (
+                <div key={i} className={`glass-card p-6 flex items-center gap-5 border ${e.border}`}>
+                  <div className={`w-12 h-12 rounded-xl ${e.bg} border ${e.border} flex items-center justify-center flex-shrink-0`}>
+                    <Icon className={`w-6 h-6 ${e.color}`}/>
+                  </div>
+                  <div>
+                    <h3 className={`font-black text-base mb-1 ${e.color}`}>{e.label}</h3>
+                    <p className="text-gray-500 text-xs leading-snug">{e.desc}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* CTA banner */}
+          <div className="relative rounded-2xl overflow-hidden p-8 md:p-10"
+            style={{background:'linear-gradient(135deg,#0a1a35 0%,#0d2040 50%,#0a1628 100%)'}}>
+            <div className="absolute inset-0 opacity-10"
+              style={{backgroundImage:'repeating-linear-gradient(120deg,transparent,transparent 40px,rgba(59,130,246,0.4) 40px,rgba(59,130,246,0.4) 41px)'}}/>
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <h3 className="text-2xl font-black text-white mb-2">Let&apos;s Discuss Your Requirement</h3>
+                <p className="text-gray-300 text-sm max-w-lg leading-relaxed">
+                  Tell us the role, the skills, the location, and how long you need them — we&apos;ll match you with the right professional from our network and handle the deployment logistics.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+                <a href="https://wa.me/966505803073" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-green-500/15 border border-green-500/30 text-green-400 text-sm font-bold hover:bg-green-500/25 transition-colors whitespace-nowrap">
+                  <Phone className="w-4 h-4"/> WhatsApp Us
+                </a>
+                <a href="#contact-form"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-blue-500 transition-colors whitespace-nowrap">
+                  Send a Brief <ArrowRight className="w-4 h-4"/>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── IT TALENT POOL ────────────────────────────────────────────── */}
+      <section id="talent-pool" className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/30">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="text-xs font-black uppercase tracking-widest text-accent-blue mb-2">Available Professionals</p>
+              <h2 className="section-heading mb-3">IT Talent Pool</h2>
+              <p className="text-gray-400 max-w-2xl">
+                A curated roster of vetted IT professionals available for short-term, long-term, and permanent engagements — onsite or remote. Each profile is a real person, not a job board listing.
+              </p>
+            </div>
+            <a href="#contact-form"
+              className="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-blue/10 border border-accent-blue/25 text-accent-blue text-sm font-bold hover:bg-accent-blue/20 transition-colors whitespace-nowrap">
+              Submit a Requirement <ArrowRight className="w-4 h-4"/>
+            </a>
+          </div>
+
+          {/* Consultant cards — renders when consultants array is populated */}
+          {consultants.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {consultants.map((c, i) => (
+                <div key={i} className="glass-card p-6 flex flex-col hover:-translate-y-0.5 transition-transform duration-200">
+                  {/* Header row */}
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-blue/20 to-purple-500/10 border border-white/10 flex items-center justify-center text-lg font-black text-white flex-shrink-0">
+                      {c.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </div>
+                    <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-500/10 border border-green-500/25 text-green-400 whitespace-nowrap">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/> {c.available}
+                    </span>
+                  </div>
+                  {/* Name + role */}
+                  <h3 className="font-black text-white text-base mb-0.5">{c.name}</h3>
+                  <p className="text-accent-blue text-xs font-semibold mb-1">{c.role}</p>
+                  <p className="text-gray-600 text-[10px] mb-3 flex items-center gap-1">
+                    <MapPin className="w-3 h-3"/> {c.location}
+                  </p>
+                  {/* Bio */}
+                  <p className="text-gray-400 text-xs leading-relaxed mb-4 flex-1">{c.bio}</p>
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {c.skills.map(s => (
+                      <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-accent-blue/10 border border-accent-blue/20 text-accent-blue">{s}</span>
+                    ))}
+                  </div>
+                  {/* Engagement types */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {c.engagements.map(e => {
+                      const cfg = engagementTypes.find(t => t.label === e)
+                      return (
+                        <span key={e} className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${cfg?.border ?? 'border-white/10'} ${cfg?.color ?? 'text-gray-400'}`}>{e}</span>
+                      )
+                    })}
+                  </div>
+                  {/* Level badge */}
+                  <div className="pt-4 border-t border-white/8 flex items-center justify-between">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-black bg-white/5 border border-white/10 text-gray-400 uppercase tracking-wide">{c.level}</span>
+                    <a href={c.contact ? `mailto:${c.contact}` : '#contact-form'}
+                      className="text-xs font-bold text-accent-blue hover:text-cyan-400 transition-colors flex items-center gap-1">
+                      Enquire <ArrowRight className="w-3 h-3"/>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Empty state — shown until profiles are added */
+            <div className="glass-card p-12 text-center mb-12 border border-dashed border-white/10">
+              <div className="w-16 h-16 rounded-2xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mx-auto mb-5">
+                <Users className="w-8 h-8 text-accent-blue"/>
+              </div>
+              <h3 className="text-xl font-black text-white mb-3">Profiles Coming Soon</h3>
+              <p className="text-gray-500 text-sm max-w-md mx-auto leading-relaxed mb-6">
+                We are currently onboarding vetted IT professionals to this roster. Send us your requirement now — we&apos;ll match you from our network immediately.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://wa.me/966505803073" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-green-500/15 border border-green-500/30 text-green-400 text-sm font-bold hover:bg-green-500/25 transition-colors">
+                  <Phone className="w-4 h-4"/> WhatsApp: +966 505 803 073
+                </a>
+                <a href="mailto:waqastayyab2004@gmail.com"
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent-blue/10 border border-accent-blue/20 text-accent-blue text-sm font-bold hover:bg-accent-blue/20 transition-colors">
+                  <Mail className="w-4 h-4"/> Email Us Your Brief
+                </a>
+              </div>
+            </div>
+          )}
+
+          {/* Are you a consultant? CTA */}
+          <div className="glass-card p-7 flex flex-col md:flex-row items-center justify-between gap-6 border border-accent-blue/15 bg-accent-blue/3">
+            <div className="flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0">
+                <Briefcase className="w-5 h-5 text-accent-blue"/>
+              </div>
+              <div>
+                <h3 className="font-black text-white text-base mb-1">Are You an IT Professional Looking for Work?</h3>
+                <p className="text-gray-400 text-sm max-w-lg">
+                  We place experienced IT consultants, engineers, and specialists with clients across MENA and globally. If you are available for short-term, long-term, or permanent roles — get in touch and we will add you to our talent pool.
+                </p>
+              </div>
+            </div>
+            <a href="mailto:waqastayyab2004@gmail.com?subject=IT Professional — Talent Pool Application"
+              className="flex-shrink-0 flex items-center gap-2 px-7 py-3.5 rounded-xl bg-accent-blue text-white text-sm font-bold hover:bg-blue-500 transition-colors whitespace-nowrap">
+              Submit Your Profile <ArrowRight className="w-4 h-4"/>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── MEET THE EXPERT ──────────────────────────────────────────── */}      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-dark-800/50 border-y border-white/8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-black text-white mb-8">Meet Your IT Specialist</h2>
 
@@ -603,52 +831,19 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        {/* Extended services — 3-col cards */}
-        <div className="mb-6">
-          <p className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">Extended Services</p>
-          <h3 className="text-2xl font-black text-white mb-3">Beyond Core IT</h3>
-          <p className="text-gray-400 max-w-2xl text-sm">Additional specialisms available through HiTecH Technology HUB — medical billing, e-commerce, and digital marketing.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {services.filter(s => (s as any).isMedical || (s as any).isEcom || (s as any).isDigital).map((svc, i) => (
-            <div key={i} className={`glass-card overflow-hidden flex flex-col border-l-4 ${svc.border} hover:-translate-y-1 transition-transform duration-300`}>
-              <div className="h-36 overflow-hidden relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={svc.img} alt={svc.title} className="w-full h-full object-cover"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 to-transparent"/>
-                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-dark-900/80 border border-white/10 text-gray-300">{svc.mode}</span>
-              </div>
-              <div className="p-5 flex flex-col flex-1">
-                <div className="w-9 h-9 rounded-xl bg-dark-700 border border-white/10 flex items-center justify-center mb-3">
-                  {(svc as any).isMedical
-                    ? <span className="text-lg">🏥</span>
-                    : <svc.icon className={`w-4 h-4 ${svc.color}`}/>
-                  }
-                </div>
-                <h3 className="text-base font-bold text-white mb-1">{svc.title}</h3>
-                <p className={`text-xs font-semibold ${svc.color} mb-3`}>{svc.tagline}</p>
-                <div className="space-y-1 mb-4 flex-1">
-                  {svc.deliverables.slice(0, 4).map(d => (
-                    <div key={d} className="flex items-start gap-2 text-xs text-gray-500">
-                      <CheckCircle className={`w-3 h-3 ${svc.color} shrink-0 mt-0.5`}/>
-                      {d.replace(/^[^\s]+ /, '')}
-                    </div>
-                  ))}
-                </div>
-                {(svc as any).isMedical && (
-                  <Link href="/medical-billing" className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-bold hover:bg-rose-500/20 transition-colors mt-auto">
-                    🏥 Full Service Details →
-                  </Link>
-                )}
-                {((svc as any).isEcom || (svc as any).isDigital) && (
-                  <Link href="/contact" className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold transition-colors mt-auto
-                    ${(svc as any).isEcom ? 'bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20' : 'bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20'}`}>
-                    Get Free Consultation →
-                  </Link>
-                )}
-              </div>
+        {/* Medical Billing link card */}
+        <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-between gap-5 border border-rose-500/15 bg-rose-500/3 mt-4">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center flex-shrink-0 text-xl">🏥</div>
+            <div>
+              <h3 className="font-black text-white text-base mb-0.5">Medical Billing &amp; RCM Outsourcing</h3>
+              <p className="text-gray-400 text-sm">Full Revenue Cycle Management for US healthcare practices — coding, claims, A/R, denials, and reporting. HIPAA certified.</p>
             </div>
-          ))}
+          </div>
+          <Link href="/medical-billing"
+            className="flex-shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm font-bold hover:bg-rose-500/20 transition-colors whitespace-nowrap">
+            View Full Details <ArrowRight className="w-4 h-4"/>
+          </Link>
         </div>
       </section>
 
@@ -684,112 +879,6 @@ export default function ServicesPage() {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── MEET THE BILLING EXPERT ──────────────────────────────────── */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-dark-800/30">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="section-heading mb-3">Meet Our Medical Billing Expert</h2>
-            <p className="section-subheading">Our dedicated RCM specialist manages all medical billing operations — so you can focus entirely on patient care.</p>
-          </div>
-
-          <div className="glass-card overflow-hidden">
-            <div className="flex flex-col md:flex-row">
-              {/* Photo */}
-              <div className="md:w-64 flex-shrink-0 relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/mujahid-profile.jpg" alt="Mujahid Hussain — Medical Billing Expert"
-                  className="w-full h-72 md:h-full object-cover object-top"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent md:bg-gradient-to-l"/>
-              </div>
-
-              {/* Info */}
-              <div className="flex-1 p-8">
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-2xl font-black text-white mb-1">Mujahid Hussain</h3>
-                    <p className="text-accent-blue font-semibold text-sm">Team Lead Operations · Medical Billing & RCM Specialist</p>
-                    <p className="text-gray-500 text-xs mt-1">Bellmedex Medical Billing Company · 2021 – Present</p>
-                  </div>
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-green-500/10 border border-green-500/30 text-green-400 whitespace-nowrap">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>
-                    Available for RCM Projects
-                  </span>
-                </div>
-
-                {/* Stats */}
-                <div className="flex flex-wrap gap-6 mb-5 pb-5 border-b border-white/8">
-                  {[
-                    { v: '4+', l: 'Years RCM Experience' },
-                    { v: 'HIPAA', l: 'Certified' },
-                    { v: '98%+', l: 'Clean Claim Rate' },
-                    { v: '8+', l: 'Billing Platforms' },
-                  ].map(s => (
-                    <div key={s.l}>
-                      <div className="text-xl font-black gradient-text">{s.v}</div>
-                      <div className="text-gray-500 text-xs mt-0.5">{s.l}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="text-gray-400 text-sm leading-relaxed mb-5">
-                  A highly motivated and results-driven RCM professional with deep expertise in Medical Billing, AR management, denial resolution, and team leadership. Currently serving as Team Lead Operations at Bellmedex Medical Billing Company, supervising billing teams, training staff, and driving revenue cycle performance for US healthcare practices.
-                </p>
-
-                {/* Skills */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-                  <div>
-                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">RCM Expertise</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {['AR Management', 'Denial Management', 'Payment Posting', 'VOB', 'Prior Auth', 'Appeals', 'Team Leadership', 'Revenue Cycle'].map(s => (
-                        <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-accent-blue/10 border border-accent-blue/20 text-accent-blue">{s}</span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Billing Platforms</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {['eClinicalWorks', 'Trizetto', 'Kareo', 'Simple Practice', 'TheraNest', 'Medifusion', 'My Client Plus', 'Genesis'].map(s => (
-                        <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-dark-700 border border-white/10 text-gray-400">{s}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Specialties */}
-                <div className="mb-5">
-                  <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold mb-2">Specialties</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {['Mental Health', 'Internal Medicine', 'Chiropractic', 'Family Medicine', 'Transportation / NEMT', 'DME'].map(s => (
-                      <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-500/10 border border-rose-500/20 text-rose-300">{s}</span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Contact */}
-                <div className="pt-5 border-t border-white/8">
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-3">Medical Billing Inquiries — Contact Directly</p>
-                  <div className="flex flex-wrap gap-3">
-                    <a href="https://wa.me/923451525845" target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-colors">
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                      WhatsApp: +92 345 152 5845
-                    </a>
-                    <a href="mailto:adnanhamdani32@gmail.com"
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-blue/10 border border-accent-blue/25 text-accent-blue text-xs font-semibold hover:bg-accent-blue/20 transition-colors">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                      adnanhamdani32@gmail.com
-                    </a>
-                  </div>
-                  <p className="text-[10px] text-gray-600 mt-3 italic">
-                    For IT services, cybersecurity, and general enquiries — contact Waqas directly via WhatsApp (+966 505 803 073) or email waqastayyab2004@gmail.com
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

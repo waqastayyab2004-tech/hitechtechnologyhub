@@ -19,7 +19,7 @@ const cards = [
   { href: '/sap/certifications', icon: Award,    label: 'Certifications',  desc: '5 SAP certs — Gen AI Developer, HANA ML, S/4HANA, Analytics Cloud, SAP Build', accent: '#3b82f6', badge: '5 Certs'   },
   { href: '/sap/experience',     icon: Briefcase, label: 'Experience',      desc: '11 yrs at SAP Saudi Arabia — IT Admin → Senior IT System Engineer & SPOC',         accent: '#6366f1', badge: '11 Years'  },
   { href: '/sap/courses',        icon: BookOpen,  label: 'Courses I Teach', desc: 'SAP IT Asset Lifecycle, CLEA BTP App, SAP Gen AI, SAP Build No-Code',               accent: '#8b5cf6', badge: '6 Courses' },
-  { href: '/sap/skills',         icon: Cpu,       label: 'Skills & Tools',  desc: 'SAP BTP · SAP HANA · SAP ISP · SAP Ariba · AI Launchpad · S/4HANA',                 accent: '#06b6d4', badge: '12+ Skills' },
+  { href: '/sap/skills',         icon: Cpu,       label: 'Skills & Tools',  desc: 'SAP BTP · SAP HANA · enterprise asset management system · SAP Ariba · AI Launchpad · S/4HANA',                 accent: '#06b6d4', badge: '12+ Skills' },
 ]
 
 const recommendations = [
