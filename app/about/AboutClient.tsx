@@ -6,12 +6,46 @@ import {
   Cpu, Zap, Shield, Cloud, Brain, Network, Briefcase, Star, Phone,
   MessageCircle, Globe, Users, TrendingUp, Award, Mail, Linkedin,
   Facebook, CheckCircle, Calendar, MapPin, GraduationCap, ExternalLink,
-  Download, Code, Server, Database, ChevronDown, ChevronUp,
+  Download, Code, Server, Database, ChevronDown, ChevronUp, BookOpen,
 } from 'lucide-react'
 import NeuralNetwork from '@/components/ui/NeuralNetwork'
 import MindMap from '@/components/ui/MindMap'
 
-/* ─── DATA ─────────────────────────────────────────────────────────── */
+/* ─── COMPLETED TRAINING ───────────────────────────────────────────── */
+const completedTraining = [
+  // Cybersecurity
+  { name: 'Endpoint Security & macOS Compliance', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'Modern Authentication & Identity Management', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'Microsoft Defender for Endpoints', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'Enterprise IT Security Training Achievement', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'Temporary Admin Access Management', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'BitLocker Hard Drive Encryption', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'Data Protection & Secure Communication', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'macOS FileVault Recovery', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  // IT Operations & ITSM
+  { name: 'IT Asset Management & Inventory Process', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
+  { name: 'Hardware Return Process & Procedures', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
+  { name: 'Ad-hoc Walk-up IT Support', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
+  { name: 'Equipment Goods Receipt & Procurement Process', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
+  { name: 'IT Incident Auto-Dispatching & Queue Management', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
+  { name: 'General IT Support Training Achievement', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
+  // ITSM Platform
+  { name: 'ITSM Platform Basics & Ticketing Workflow', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  { name: 'ITSM GenAI Copilot for IT Support', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  { name: 'Knowledge Base Article Creation', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  { name: 'Knowledge Management & KB Strategy', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  { name: 'Runbook Creation & Documentation', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  { name: 'ITSM Basics Training Achievement', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  // AI & Emerging Tech
+  { name: 'Apple Intelligence & AI Features for Enterprise', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2026' },
+  { name: 'Introduction to Digital Adoption Platform', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2026' },
+  { name: 'Report Knowledge Gap & Flag Article Workflow', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2026' },
+  // Onboarding & Access
+  { name: 'IT Support Onboarding — EMEA Region', domain: 'IT Onboarding', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', year: '2026' },
+  { name: 'KBA Access Management & Request Procedures', domain: 'IT Onboarding', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', year: '2026' },
+]
+
+const TRAINING_DOMAINS = ['All', 'Cybersecurity', 'IT Operations', 'ITSM', 'AI & Emerging Tech', 'IT Onboarding']
 
 const certifications = [
   { name: 'Azure Security Engineer Associate', issuer: 'Microsoft', year: '2024', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/25' },
@@ -266,6 +300,7 @@ const contacts = [
 export default function PortfolioPage() {
   const [expandedJob, setExpandedJob] = useState<number | null>(0)
   const [showAllCerts, setShowAllCerts] = useState(false)
+  const [trainingDomain, setTrainingDomain] = useState('All')
 
   const displayedCerts = showAllCerts ? certifications : certifications.slice(0, 6)
 
@@ -931,6 +966,51 @@ export default function PortfolioPage() {
               </button>
             </div>
           )}
+        </section>
+
+        {/* ── COMPLETED TRAINING ───────────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<BookOpen className="w-5 h-5 text-green-400" />} title="Completed Training" />
+          <p className="text-gray-400 text-sm mb-5">{completedTraining.length} enterprise IT courses completed · All 100% · 2026</p>
+
+          {/* Domain filter */}
+          <div className="flex flex-wrap gap-2 mb-5">
+            {TRAINING_DOMAINS.map(d => (
+              <button key={d} onClick={() => setTrainingDomain(d)}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${
+                  trainingDomain === d
+                    ? 'bg-accent-blue text-white border-accent-blue'
+                    : 'bg-dark-800 text-gray-400 border-white/10 hover:border-white/30 hover:text-white'
+                }`}>
+                {d}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {completedTraining
+              .filter(t => trainingDomain === 'All' || t.domain === trainingDomain)
+              .map((t) => (
+                <div key={t.name} className={`glass-card p-4 border ${t.border} flex items-start gap-3`}>
+                  <div className={`w-8 h-8 rounded-lg ${t.bg} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                    <BookOpen className={`w-4 h-4 ${t.color}`} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-white text-sm font-semibold leading-snug mb-1">{t.name}</div>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`text-xs font-medium ${t.color}`}>{t.domain} · {t.year}</span>
+                      <span className="flex items-center gap-1 text-green-400 text-xs font-bold flex-shrink-0">
+                        <CheckCircle className="w-3 h-3" /> 100%
+                      </span>
+                    </div>
+                    {/* Progress bar */}
+                    <div className="mt-2 h-1 rounded-full bg-white/5 overflow-hidden">
+                      <div className="h-full w-full rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
         </section>
 
         {/* ── DAILY OPERATIONS CTA ──────────────────────────────────── */}
