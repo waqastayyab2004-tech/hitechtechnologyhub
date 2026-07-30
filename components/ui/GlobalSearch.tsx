@@ -42,12 +42,14 @@ const ARTICLES: ResultItem[] = [
   { type: 'article', title: 'Intune Autopilot: Modern Workplace Deployment',             href: '/blog/intune-autopilot-modern-workplace-deployment', desc: 'Intune · Autopilot · Microsoft 365',                 tags: ['Intune','Microsoft'] },
   { type: 'article', title: 'IT Admin to AI Engineer Roadmap',                           href: '/blog/it-admin-to-ai-engineer-roadmap',        desc: 'Career · AI · Certification',                               tags: ['Career','AI'] },
   { type: 'article', title: 'IT Asset Lifecycle Management Complete Guide',              href: '/blog/it-asset-lifecycle-management-complete-guide', desc: 'Asset Management · ITAM · Enterprise',             tags: ['ITAM'] },
-  { type: 'article', title: 'IT Asset Management Best Practices: 1500 Devices',         href: '/blog/it-asset-management-best-practices-1500-devices', desc: 'ITAM · Enterprise · SAP',                      tags: ['ITAM','SAP'] },
+  { type: 'article', title: 'IT Asset Management Best Practices: 1500 Devices',         href: '/blog/it-asset-management-best-practices-1500-devices', desc: 'ITAM · Enterprise',                            tags: ['ITAM'] },
   { type: 'article', title: 'IT Asset Management in a Multinational',                    href: '/blog/it-asset-management-multinational',      desc: 'ITAM · Global · Strategy',                                  tags: ['ITAM'] },
   { type: 'article', title: 'Top 5 IT Asset Management Tools & Best Practices',         href: '/blog/it-asset-management-top-5-tools-best-practices', desc: 'ITAM · Tools · Comparison',                    tags: ['ITAM','Tools'] },
   { type: 'article', title: 'IT Career in the AI Era: Stay Relevant',                   href: '/blog/it-career-ai-era-stay-relevant',         desc: 'Career · AI · Upskilling',                                  tags: ['Career','AI'] },
-  { type: 'article', title: 'IT Pickup Point: Signifi Smart Locker Enterprise',         href: '/blog/it-pickup-point-signifi-smart-locker-enterprise', desc: 'Smart Locker · IT Operations',                 tags: ['IT Ops'] },
+  { type: 'article', title: 'IT Pickup Point: Signifi Smart Locker Enterprise',         href: '/blog/it-pickup-point-signifi-smart-locker-enterprise', desc: 'Smart Locker · IT Operations',                 tags: ['IT Ops','Locker'] },
   { type: 'article', title: 'Microsoft 365 Admin Enterprise Guide',                     href: '/blog/microsoft-365-admin-enterprise-guide',   desc: 'M365 · Exchange · Admin',                                   tags: ['Microsoft','M365'] },
+  { type: 'article', title: 'Microsoft Defender for Endpoint: Enterprise IT Support Guide', href: '/blog/ms-defender-endpoint-enterprise-support', desc: 'MDE · EDR · Endpoint Security · Intune',            tags: ['MDE','Defender','Cybersecurity','Endpoint','EDR','Intune'] },
+  { type: 'article', title: 'Nexthink Amplify: Real-Time Endpoint Visibility for IT Support', href: '/blog/nexthink-amplify-it-operations', desc: 'Nexthink · Endpoint Analytics · FCR · MTTR · IT Ops',   tags: ['Nexthink','Amplify','Endpoint','FCR','MTTR','IT Operations','Analytics'] },
   { type: 'article', title: 'Power BI for IT Teams',                                    href: '/blog/powerbi-for-it-teams',                   desc: 'Power BI · Analytics · IT',                                 tags: ['PowerBI','Analytics'] },
   { type: 'article', title: 'Python Password Generator App Walkthrough',                href: '/blog/python-password-generator-app-walkthrough', desc: 'Python · Security · App Dev',                          tags: ['Python','Security'] },
   { type: 'article', title: 'SAP Ariba: IT Procurement Guide',                          href: '/blog/sap-ariba-it-procurement-guide',         desc: 'SAP · Ariba · Procurement',                                 tags: ['SAP'] },
@@ -58,45 +60,53 @@ const ARTICLES: ResultItem[] = [
   { type: 'article', title: 'VIP IT Support for Executives',                            href: '/blog/vip-it-support-executives',              desc: 'VIP · C-Suite · IT Support',                                tags: ['VIP','Support'] },
   { type: 'article', title: 'WhatsApp + ServiceNow SLA Alerts with Python',             href: '/blog/whatsapp-servicenow-sla-alerts-python',  desc: 'Python · WhatsApp · ServiceNow · Automation',              tags: ['Python','ServiceNow'] },
   { type: 'article', title: 'Windows Automation Tips for IT Admins',                    href: '/blog/windows-automation-tips',                desc: 'Windows · PowerShell · Automation',                         tags: ['Windows','Automation'] },
-  { type: 'article', title: 'Zero Trust: Secure Score 41 to 78',                        href: '/blog/zero-trust-secure-score-41-to-78',       desc: 'Zero Trust · Azure · Security Score',                       tags: ['Security','Azure'] },
+  { type: 'article', title: 'Zebra ZT411R RFID Printer — Enterprise Asset Tag Deployment', href: '/blog/zebra-zt411-rfid-printer-sap-it-deployment', desc: 'Zebra · RFID · Asset Tagging · IT Ops',           tags: ['Zebra','RFID','Asset'] },
+  { type: 'article', title: 'Zero Trust: Secure Score 41 to 78',                        href: '/blog/zero-trust-secure-score-41-to-78',       desc: 'Zero Trust · Azure · Security Score',                       tags: ['Security','Azure','ZeroTrust'] },
 ]
 
 const COURSES: ResultItem[] = [
-  { type: 'course', title: 'IT Asset Lifecycle Management',                 href: '/training/101', desc: 'Corporate IT · Intermediate · 1h' },
-  { type: 'course', title: 'Corporate Email Administration (Exchange)',      href: '/training/102', desc: 'Corporate IT · Intermediate · 1h' },
-  { type: 'course', title: 'macOS Device Management (Jamf)',                 href: '/training/103', desc: 'Corporate IT · Intermediate · 2h' },
-  { type: 'course', title: 'Meeting Room Technology & AV Support',          href: '/training/104', desc: 'Corporate IT · Beginner · 1h' },
-  { type: 'course', title: 'Corporate Network & VPN Support',               href: '/training/105', desc: 'Corporate IT · Intermediate · 1h' },
-  { type: 'course', title: 'IT Onboarding & Offboarding Processes',         href: '/training/106', desc: 'Corporate IT · Beginner · 1h' },
-  { type: 'course', title: 'Enterprise Print Services Management',          href: '/training/107', desc: 'Corporate IT · Beginner · 1h' },
-  { type: 'course', title: 'Mobile Device Management iOS & Android',        href: '/training/108', desc: 'Corporate IT · Intermediate · 1h 30m' },
-  { type: 'course', title: 'Information Security Awareness',                href: '/training/109', desc: 'Corporate IT · Beginner · 30m' },
-  { type: 'course', title: 'Self-Service Password Reset & MFA Recovery',    href: '/training/110', desc: 'Corporate IT · Beginner · 30m' },
-  { type: 'course', title: 'ITLC Walk-up Kiosk & Queue Monitor Setup',      href: '/training/111', desc: 'ITSM · Intermediate · 1h 30m' },
-  { type: 'course', title: 'Corporate Cybersecurity in Practice',           href: '/training/112', desc: 'Security · Intermediate · 4h · 8 modules' },
-  { type: 'course', title: 'Build Social Media Manager App with Python',    href: '/training/113', desc: 'Python · Digital Marketing · 3h' },
-  { type: 'course', title: 'Build Password Generator App with Python',      href: '/training/114', desc: 'Python · Security · 2h' },
-  { type: 'course', title: 'CLEA App: SAP Asset Lifecycle Management',      href: '/training/115', desc: 'SAP · ITSM · 2h' },
-  { type: 'course', title: 'ServiceNow CSM/FSM + HCSM AI Copilot',         href: '/training/116', desc: 'ServiceNow · AI · IT Ticketing' },
-  { type: 'course', title: 'Office AV Technology — Build-Out & Commission', href: '/training/117', desc: 'AV · Office Tech · Intermediate' },
-  { type: 'course', title: 'IT Pickup Point: Signifi Smart Locker',         href: '/training/118', desc: 'IT Ops · Smart Locker · Intermediate' },
-  { type: 'course', title: 'IT Service Delivery with Python & AI',          href: '/training/3',   desc: 'Python · AI · Automation' },
-  { type: 'course', title: 'ServiceNow ITSM Administration',                href: '/training/9',   desc: 'ServiceNow · ITSM · Enterprise' },
+  { type: 'course', title: 'IT Asset Lifecycle Management',                 href: '/training/101', desc: 'Corporate IT · Intermediate · 1h',              tags: ['ITAM','Asset'] },
+  { type: 'course', title: 'Corporate Email Administration (Exchange)',      href: '/training/102', desc: 'Corporate IT · Exchange Online · 1h',           tags: ['Email','Exchange','Microsoft'] },
+  { type: 'course', title: 'macOS Device Management (Jamf)',                 href: '/training/103', desc: 'macOS · Jamf · MDM · 2h',                       tags: ['macOS','Jamf','MDM'] },
+  { type: 'course', title: 'Meeting Room Technology & AV Support',          href: '/training/104', desc: 'AV · Teams Rooms · 1h',                         tags: ['AV','Teams'] },
+  { type: 'course', title: 'Corporate Network & VPN Support',               href: '/training/105', desc: 'Network · VPN · Cisco · 1h',                    tags: ['Network','VPN'] },
+  { type: 'course', title: 'IT Onboarding & Offboarding Processes',         href: '/training/106', desc: 'HR IT · Identity · Intune · 1h',                tags: ['Onboarding','Identity'] },
+  { type: 'course', title: 'Enterprise Print Services Management',          href: '/training/107', desc: 'Print · HP MFP · 1h',                           tags: ['Print','HP'] },
+  { type: 'course', title: 'Mobile Device Management iOS & Android',        href: '/training/108', desc: 'MDM · iOS · Android · Intune · 1h 30m',         tags: ['MDM','iOS','Android'] },
+  { type: 'course', title: 'Information Security Awareness',                href: '/training/109', desc: 'Security · Phishing · 30m',                     tags: ['Security','Awareness'] },
+  { type: 'course', title: 'Self-Service Password Reset & MFA Recovery',    href: '/training/110', desc: 'MFA · SSPR · Identity · 30m',                   tags: ['MFA','Password','Identity'] },
+  { type: 'course', title: 'ITLC Walk-up Kiosk & Queue Monitor Setup',      href: '/training/111', desc: 'ITSM · Walk-up · ServiceNow · 1h 30m',          tags: ['ITSM','ServiceNow','Kiosk'] },
+  { type: 'course', title: 'Corporate Cybersecurity in Practice',           href: '/training/112', desc: 'Cybersecurity · Zero Trust · 4h',               tags: ['Cybersecurity','ZeroTrust','Security'] },
+  { type: 'course', title: 'Build Social Media Manager App with Python',    href: '/training/113', desc: 'Python · Digital Marketing · 3h',               tags: ['Python','Marketing'] },
+  { type: 'course', title: 'Build Password Generator App with Python',      href: '/training/114', desc: 'Python · Security · App Dev · 2h',              tags: ['Python','Security'] },
+  { type: 'course', title: 'CLEA App: Asset Lifecycle Management',          href: '/training/115', desc: 'ITSM · Asset Management · 2h',                  tags: ['ITSM','Asset','CLEA'] },
+  { type: 'course', title: 'ServiceNow CSM/FSM + HCSM AI Copilot',         href: '/training/116', desc: 'ServiceNow · AI Copilot · ITSM',                tags: ['ServiceNow','AI','ITSM'] },
+  { type: 'course', title: 'Office AV Technology — Build-Out & Commission', href: '/training/117', desc: 'AV · Teams Rooms · Wolfvision · 3h',            tags: ['AV','Office','Teams'] },
+  { type: 'course', title: 'IT Pickup Point: Signifi Smart Locker',         href: '/training/118', desc: 'Smart Locker · IT Ops · 2h',                    tags: ['Locker','IT Ops'] },
+  { type: 'course', title: 'Zebra ZT411R RFID Printer: Setup & Calibration',href: '/training/119', desc: 'Zebra · RFID · Asset Tagging · 2h',             tags: ['Zebra','RFID','Printer','Asset'] },
+  { type: 'course', title: 'Zebra GX430t: QR Code Asset Tag Printing',      href: '/training/120', desc: 'Zebra · QR Code · Asset Tagging · 1h',          tags: ['Zebra','QR','Printer','Asset'] },
+  { type: 'course', title: 'Claude Code 101',                               href: '/training/121', desc: 'Claude · AI Coding · Agentic AI · 2h',          tags: ['Claude','AI','Coding'] },
+  { type: 'course', title: 'Microsoft Defender for Endpoint: Enterprise Deployment & Support', href: '/training/122', desc: 'MDE · EDR · Endpoint Security · Intune · 3h', tags: ['MDE','Defender','Endpoint','EDR','Cybersecurity','Intune','Security'] },
+  { type: 'course', title: 'Nexthink Amplify: Real-Time Endpoint Visibility for IT Support',   href: '/training/123', desc: 'Nexthink · Endpoint Analytics · FCR · Remote Actions · 2h', tags: ['Nexthink','Amplify','Endpoint','Analytics','FCR','MTTR','IT Support'] },
+  { type: 'course', title: 'IT Service Delivery with Python & AI',          href: '/training/3',   desc: 'Python · AI · Automation',                      tags: ['Python','AI'] },
+  { type: 'course', title: 'ServiceNow ITSM Administration',                href: '/training/9',   desc: 'ServiceNow · ITSM · Enterprise',                tags: ['ServiceNow','ITSM'] },
 ]
 
 const PROJECTS: ResultItem[] = [
-  { type: 'project', title: 'IT Asset Manager (Flask App)',         href: '/projects', desc: 'Python · Flask · SQLite · Excel sync' },
-  { type: 'project', title: 'Waqas AI Hub Dashboard',              href: '/projects', desc: 'FastAPI · Python · ServiceNow · M365' },
-  { type: 'project', title: 'ITLC Walk-up Kiosk Deployment',       href: '/projects', desc: 'ServiceNow · Queue Mgmt · Daily Ops' },
-  { type: 'project', title: 'CLEA Asset Lifecycle Operations',      href: '/projects', desc: 'SAP · Asset Lifecycle · AI Automation' },
-  { type: 'project', title: 'Password Generator Pro',              href: '/projects', desc: 'Python · Security · Web App' },
-  { type: 'project', title: 'HiTecH Page Manager',                 href: '/projects', desc: 'React · CMS · Content Management' },
-  { type: 'project', title: 'HiTecH AI HUB Website',               href: '/projects', desc: 'Next.js · Tailwind · Cloudflare Pages' },
-  { type: 'project', title: 'SCCM → Intune Migration',             href: '/projects', desc: 'Intune · Autopilot · Enterprise IT' },
-  { type: 'project', title: 'ServiceNow ITSM Implementation',       href: '/projects', desc: 'ServiceNow · ITSM · SAP' },
-  { type: 'project', title: 'Azure Security Hardening',             href: '/projects', desc: 'Azure · Zero Trust · Secure Score 78' },
-  { type: 'project', title: 'Microsoft 365 Tenant Deployment',     href: '/projects', desc: 'M365 · Exchange · Teams · Intune' },
-  { type: 'project', title: 'SAP S/4HANA Rollout Support',         href: '/projects', desc: 'SAP · ERP · Change Management' },
+  { type: 'project', title: 'IT Asset Manager (Flask App)',                  href: '/projects', desc: 'Python · Flask · SQLite · Excel sync',           tags: ['Python','Flask','Asset'] },
+  { type: 'project', title: 'Waqas AI Hub Dashboard',                       href: '/projects', desc: 'FastAPI · Python · ServiceNow · M365',            tags: ['AI','Python','Dashboard'] },
+  { type: 'project', title: 'ITLC Walk-up Kiosk Deployment',                href: '/projects', desc: 'ServiceNow · Queue Mgmt · Daily Ops',             tags: ['ServiceNow','ITSM'] },
+  { type: 'project', title: 'CLEA Asset Lifecycle Operations',               href: '/projects', desc: 'Asset Lifecycle · RFID · IT Ops',                 tags: ['Asset','RFID','CLEA'] },
+  { type: 'project', title: 'Password Generator Pro',                       href: '/projects', desc: 'Python · Security · Desktop App',                 tags: ['Python','Security'] },
+  { type: 'project', title: 'HiTecH Page Manager',                          href: '/projects', desc: 'React · CMS · Content Management',                tags: ['React','CMS'] },
+  { type: 'project', title: 'HiTecH AI HUB Website',                        href: '/projects', desc: 'Next.js · Tailwind · Cloudflare Pages',           tags: ['NextJS','Web'] },
+  { type: 'project', title: 'SCCM → Intune Migration',                      href: '/projects', desc: 'Intune · Autopilot · Enterprise IT',              tags: ['Intune','Microsoft'] },
+  { type: 'project', title: 'ServiceNow ITSM Implementation',                href: '/projects', desc: 'ServiceNow · ITSM · Enterprise',                  tags: ['ServiceNow','ITSM'] },
+  { type: 'project', title: 'Azure Security Hardening',                      href: '/projects', desc: 'Azure · Zero Trust · Secure Score 78',            tags: ['Azure','Security','ZeroTrust'] },
+  { type: 'project', title: 'Microsoft 365 Tenant Deployment',              href: '/projects', desc: 'M365 · Exchange · Teams · Intune',                tags: ['Microsoft','M365'] },
+  { type: 'project', title: 'Nexthink Amplify — Endpoint Visibility',       href: '/projects', desc: 'Nexthink · Endpoint Analytics · FCR · MTTR',      tags: ['Nexthink','Amplify','Endpoint','FCR','Analytics','IT Support'] },
+  { type: 'project', title: 'Microsoft Defender for Endpoint — Enterprise', href: '/projects', desc: 'MDE · EDR · Intune · Endpoint Security',           tags: ['MDE','Defender','Endpoint','EDR','Cybersecurity','Intune'] },
+  { type: 'project', title: 'Zebra ZT411R RFID Printer Deployment',         href: '/projects', desc: 'Zebra · RFID · Asset Tagging · Enterprise',       tags: ['Zebra','RFID','Printer','Asset'] },
 ]
 
 const ALL_ITEMS: ResultItem[] = [...PAGES, ...ARTICLES, ...COURSES, ...PROJECTS]
@@ -109,12 +119,12 @@ const TYPE_META: Record<ResultItem['type'], { label: string; icon: React.Element
 }
 
 const QUICK_LINKS: ResultItem[] = [
-  { type: 'page',    title: 'IT Services',        href: '/services',  desc: 'View all services'    },
-  { type: 'article', title: 'Latest Articles',    href: '/blog',      desc: '28 articles'          },
-  { type: 'course',  title: 'Browse Courses',     href: '/training',  desc: '22 free & paid'       },
-  { type: 'project', title: 'All Projects',       href: '/projects',  desc: '44 projects'          },
-  { type: 'page',    title: 'Contact / Hire',     href: '/contact',   desc: 'Free consultation'    },
-  { type: 'page',    title: 'Portfolio',          href: '/about',     desc: 'CV & certifications'  },
+  { type: 'page',    title: 'IT Services',        href: '/services',  desc: 'View all services'       },
+  { type: 'article', title: 'Latest Articles',    href: '/blog',      desc: '30+ articles'            },
+  { type: 'course',  title: 'Browse Courses',     href: '/training',  desc: '25 free & paid'          },
+  { type: 'project', title: 'All Projects',       href: '/projects',  desc: '45+ projects'            },
+  { type: 'page',    title: 'Contact / Hire',     href: '/contact',   desc: 'Free consultation'       },
+  { type: 'page',    title: 'Portfolio',          href: '/about',     desc: 'CV & certifications'     },
 ]
 
 function score(item: ResultItem, q: string): number {
@@ -258,7 +268,7 @@ export default function GlobalSearch({ open, onClose }: Props) {
                   <div className="flex flex-col items-center justify-center py-12 gap-2">
                     <Search className="w-8 h-8 text-gray-700" />
                     <p className="text-sm text-gray-500">No results for <span className="text-white">&ldquo;{query}&rdquo;</span></p>
-                    <p className="text-xs text-gray-700">Try &ldquo;azure&rdquo;, &ldquo;python&rdquo;, &ldquo;servicenow&rdquo;, &ldquo;courses&rdquo;</p>
+                    <p className="text-xs text-gray-700">Try &ldquo;nexthink&rdquo;, &ldquo;defender&rdquo;, &ldquo;azure&rdquo;, &ldquo;servicenow&rdquo;, &ldquo;python&rdquo;</p>
                   </div>
                 ) : (
                   <div className="py-2">
