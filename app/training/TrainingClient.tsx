@@ -872,7 +872,7 @@ const courses = [
     title: 'Microsoft Defender for Endpoint: Enterprise Deployment & Support',
     category: 'Cybersecurity & Azure',
     level: 'Intermediate', duration: '3h', students: '80+', rating: 4.9,
-    isFree: true, isPopular: true,
+    isFree: false, isPopular: true,
     img: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80&auto=format&fit=crop',
     instructor: 'Syed Waqas Tayyab',
     skills: ['Microsoft Defender for Endpoint', 'EDR', 'Endpoint Security', 'Microsoft Intune', 'Tamper Protection', 'Performance Tuning', 'mdatp CLI', 'PowerShell', 'Exclusion Management'],
