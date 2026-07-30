@@ -14,35 +14,35 @@ import MindMap from '@/components/ui/MindMap'
 /* ─── COMPLETED TRAINING ───────────────────────────────────────────── */
 const completedTraining = [
   // Cybersecurity
-  { name: 'Endpoint Security & macOS Compliance', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
-  { name: 'Modern Authentication & Identity Management', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
+  { name: 'Endpoint Security & macOS Compliance', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2024' },
+  { name: 'Modern Authentication & Identity Management', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2023' },
   { name: 'Microsoft Defender for Endpoints', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
   { name: 'Enterprise IT Security Training Achievement', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
-  { name: 'Temporary Admin Access Management', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
-  { name: 'BitLocker Hard Drive Encryption', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
-  { name: 'Data Protection & Secure Communication', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
-  { name: 'macOS FileVault Recovery', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2026' },
-  // IT Operations & ITSM
-  { name: 'IT Asset Management & Inventory Process', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
-  { name: 'Hardware Return Process & Procedures', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
-  { name: 'Ad-hoc Walk-up IT Support', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
-  { name: 'Equipment Goods Receipt & Procurement Process', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
-  { name: 'IT Incident Auto-Dispatching & Queue Management', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
+  { name: 'Temporary Admin Access Management', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2025' },
+  { name: 'BitLocker Hard Drive Encryption', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2024' },
+  { name: 'Data Protection & Secure Communication', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2023' },
+  { name: 'macOS FileVault Recovery', domain: 'Cybersecurity', color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20', year: '2025' },
+  // IT Operations
+  { name: 'IT Asset Management & Inventory Process', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2023' },
+  { name: 'Hardware Return Process & Procedures', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2023' },
+  { name: 'Ad-hoc Walk-up IT Support', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2024' },
+  { name: 'Equipment Goods Receipt & Procurement Process', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2024' },
+  { name: 'IT Incident Auto-Dispatching & Queue Management', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2025' },
   { name: 'General IT Support Training Achievement', domain: 'IT Operations', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', year: '2026' },
   // ITSM Platform
-  { name: 'ITSM Platform Basics & Ticketing Workflow', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  { name: 'ITSM Platform Basics & Ticketing Workflow', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2023' },
   { name: 'ITSM GenAI Copilot for IT Support', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
-  { name: 'Knowledge Base Article Creation', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
-  { name: 'Knowledge Management & KB Strategy', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
-  { name: 'Runbook Creation & Documentation', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
-  { name: 'ITSM Basics Training Achievement', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2026' },
+  { name: 'Knowledge Base Article Creation', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2023' },
+  { name: 'Knowledge Management & KB Strategy', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2024' },
+  { name: 'Runbook Creation & Documentation', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2025' },
+  { name: 'ITSM Basics Training Achievement', domain: 'ITSM', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', year: '2024' },
   // AI & Emerging Tech
   { name: 'Apple Intelligence & AI Features for Enterprise', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2026' },
-  { name: 'Introduction to Digital Adoption Platform', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2026' },
-  { name: 'Report Knowledge Gap & Flag Article Workflow', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2026' },
+  { name: 'Introduction to Digital Adoption Platform', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2025' },
+  { name: 'Report Knowledge Gap & Flag Article Workflow', domain: 'AI & Emerging Tech', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/20', year: '2025' },
   // Onboarding & Access
-  { name: 'IT Support Onboarding — EMEA Region', domain: 'IT Onboarding', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', year: '2026' },
-  { name: 'KBA Access Management & Request Procedures', domain: 'IT Onboarding', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', year: '2026' },
+  { name: 'IT Support Onboarding — EMEA Region', domain: 'IT Onboarding', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', year: '2023' },
+  { name: 'KBA Access Management & Request Procedures', domain: 'IT Onboarding', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20', year: '2024' },
 ]
 
 const TRAINING_DOMAINS = ['All', 'Cybersecurity', 'IT Operations', 'ITSM', 'AI & Emerging Tech', 'IT Onboarding']
@@ -971,7 +971,7 @@ export default function PortfolioPage() {
         {/* ── COMPLETED TRAINING ───────────────────────────────────── */}
         <section>
           <SectionHeader icon={<BookOpen className="w-5 h-5 text-green-400" />} title="Completed Training" />
-          <p className="text-gray-400 text-sm mb-5">{completedTraining.length} enterprise IT courses completed · All 100% · 2026</p>
+          <p className="text-gray-400 text-sm mb-5">{completedTraining.length} enterprise IT courses completed · All 100% · 2023–2026</p>
 
           {/* Domain filter */}
           <div className="flex flex-wrap gap-2 mb-5">
