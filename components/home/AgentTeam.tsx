@@ -1,94 +1,62 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { Bot } from 'lucide-react'
 
 const AGENTS = [
   {
-    id: 'nexus',
-    name: 'NEXUS-W1',
-    role: 'AI Command Hub',
-    specialty: 'Orchestration & Strategy',
-    icon: '🤖',
-    color: '#06B6D4',
-    glow: 'rgba(6,182,212,0.8)',
+    id: 'nexus', name: 'NEXUS-W1', role: 'AI Command Hub',
+    specialty: 'Orchestration & Strategy', label: 'AI',
+    color: '#06B6D4', glow: 'rgba(6,182,212,0.8)',
     tags: ['LLMs', 'Agentic AI', 'Orchestration'],
-    cx: 400, cy: 220, // centre
-    isHub: true,
+    cx: 400, cy: 220, isHub: true,
   },
   {
-    id: 'azure',
-    name: 'AzureGuard',
-    role: 'Cybersecurity Agent',
-    specialty: 'Azure Security · Zero Trust · Intune',
-    icon: '🛡️',
-    color: '#EF4444',
-    glow: 'rgba(239,68,68,0.7)',
+    id: 'azure', name: 'AzureGuard', role: 'Cybersecurity Agent',
+    specialty: 'Azure Security · Zero Trust · Intune', label: 'SEC',
+    color: '#EF4444', glow: 'rgba(239,68,68,0.7)',
     tags: ['Azure', 'Zero Trust', 'MDM'],
     cx: 400, cy: 60,
   },
   {
-    id: 'cloud',
-    name: 'CloudOps',
-    role: 'Cloud & M365 Agent',
-    specialty: 'Azure · M365 · SharePoint · Teams',
-    icon: '☁️',
-    color: '#3B82F6',
-    glow: 'rgba(59,130,246,0.7)',
+    id: 'cloud', name: 'CloudOps', role: 'Cloud & M365 Agent',
+    specialty: 'Azure · M365 · SharePoint · Teams', label: 'M365',
+    color: '#3B82F6', glow: 'rgba(59,130,246,0.7)',
     tags: ['M365', 'Azure', 'SharePoint'],
     cx: 610, cy: 120,
   },
   {
-    id: 'snow',
-    name: 'SNOWBot',
-    role: 'ITSM & ServiceNow Agent',
-    specialty: 'ServiceNow · SLA · ITIL · Ticketing',
-    icon: '🎫',
-    color: '#10B981',
-    glow: 'rgba(16,185,129,0.7)',
+    id: 'snow', name: 'SNOWBot', role: 'ITSM & ServiceNow Agent',
+    specialty: 'ServiceNow · SLA · ITIL · Ticketing', label: 'ITSM',
+    color: '#10B981', glow: 'rgba(16,185,129,0.7)',
     tags: ['ServiceNow', 'ITIL', 'SLA'],
     cx: 680, cy: 280,
   },
   {
-    id: 'infra',
-    name: 'InfraBot',
-    role: 'IT Infrastructure Agent',
-    specialty: 'Cisco · Aruba · Servers · LAN/WAN',
-    icon: '🖥️',
-    color: '#8B5CF6',
-    glow: 'rgba(139,92,246,0.7)',
+    id: 'infra', name: 'InfraBot', role: 'IT Infrastructure Agent',
+    specialty: 'Cisco · Aruba · Servers · LAN/WAN', label: 'NET',
+    color: '#8B5CF6', glow: 'rgba(139,92,246,0.7)',
     tags: ['Cisco', 'Servers', 'Network'],
     cx: 580, cy: 400,
   },
   {
-    id: 'ai',
-    name: 'MLOps',
-    role: 'AI & Automation Agent',
-    specialty: 'Python · ML · Power Apps · FastAPI',
-    icon: '⚡',
-    color: '#F59E0B',
-    glow: 'rgba(245,158,11,0.7)',
+    id: 'ai', name: 'MLOps', role: 'AI & Automation Agent',
+    specialty: 'Python · ML · Power Apps · FastAPI', label: 'ML',
+    color: '#F59E0B', glow: 'rgba(245,158,11,0.7)',
     tags: ['Python ML', 'Automation', 'AI'],
     cx: 220, cy: 400,
   },
   {
-    id: 'asset',
-    name: 'AssetTrack',
-    role: 'IT Asset Management Agent',
-    specialty: 'SAP Ariba · Lifecycle · PowerBI',
-    icon: '📦',
-    color: '#F97316',
-    glow: 'rgba(249,115,22,0.7)',
+    id: 'asset', name: 'AssetTrack', role: 'IT Asset Management Agent',
+    specialty: 'SAP Ariba · Lifecycle · PowerBI', label: 'ASSET',
+    color: '#F97316', glow: 'rgba(249,115,22,0.7)',
     tags: ['SAP Ariba', 'Assets', 'PowerBI'],
     cx: 120, cy: 280,
   },
   {
-    id: 'sap',
-    name: 'SAPxpert',
-    role: 'SAP & Enterprise Agent',
-    specialty: 'SAP S/4HANA · BTP · Analytics Cloud',
-    icon: '🟠',
-    color: '#FB923C',
-    glow: 'rgba(251,146,60,0.7)',
+    id: 'sap', name: 'SAPxpert', role: 'SAP & Enterprise Agent',
+    specialty: 'SAP S/4HANA · BTP · Analytics Cloud', label: 'SAP',
+    color: '#FB923C', glow: 'rgba(251,146,60,0.7)',
     tags: ['SAP', 'S/4HANA', 'BTP'],
     cx: 190, cy: 120,
   },
@@ -121,7 +89,9 @@ export default function AgentTeam() {
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-white/8">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-sm">🤖</div>
+          <div className="w-8 h-8 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+            <Bot className="w-4 h-4 text-cyan-400" />
+          </div>
           <div>
             <p className="text-xs font-black text-white tracking-widest uppercase">HiTecH AI Agent Team</p>
             <p className="text-[10px] text-gray-500">Click any agent node to explore</p>
@@ -228,11 +198,12 @@ export default function AgentTeam() {
                     filter="url(#node-glow)"
                     stroke={node.color} strokeWidth={isActive ? 2 : 1.5}
                     opacity={active && !isActive ? 0.4 : 1} />
-                  {/* Icon — bigger */}
-                  <text x={node.cx} y={node.cy - 4} textAnchor="middle"
-                    fontSize={isActive ? 24 : 20}
+                  {/* Label inside node */}
+                  <text x={node.cx} y={node.cy - 2} textAnchor="middle"
+                    fontSize={isActive ? 11 : 9} fontWeight="900" fill="white"
+                    fontFamily="'Inter',monospace" opacity={0.95}
                     style={{ userSelect: 'none' }}>
-                    {node.icon}
+                    {node.label}
                   </text>
                   {/* Name */}
                   <text x={node.cx} y={node.cy + 14} textAnchor="middle"

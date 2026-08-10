@@ -667,9 +667,222 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ── HOW ORGANISATIONS USE IT ─────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-xs font-black uppercase tracking-widest text-accent-blue mb-2">Enterprise IT Structure</p>
+            <h2 className="text-3xl font-black text-white mb-3">Large IT Team Structure</h2>
+            <p className="text-gray-400 text-sm max-w-2xl mx-auto leading-relaxed">
+              Click any role to see responsibilities, tools, and key skills. Top-level organisations rely on a structured internal IT function — from helpdesk to CIO.
+            </p>
+          </div>
+
+          {/* Org Chart with clickable nodes */}
+          {(() => {
+            const ORG: Record<string, { title: string; reports: string; focus: string; tools: string[]; skills: string[] }> = {
+              'CIO': {
+                title: 'Chief Information Officer',
+                reports: 'Reports to: CEO / Board',
+                focus: 'Sets IT strategy, technology vision, budget, and aligns IT with business objectives. Responsible for all technology decisions at the executive level.',
+                tools: ['Executive dashboards', 'PowerBI', 'ERP systems', 'Board reporting tools'],
+                skills: ['IT Strategy', 'Budget Management', 'Digital Transformation', 'Executive Leadership', 'Vendor Governance'],
+              },
+              'VP of IT': {
+                title: 'Vice President of IT',
+                reports: 'Reports to: CIO',
+                focus: 'Translates CIO strategy into operational plans. Manages all IT directors, oversees major projects, and ensures service delivery across all IT domains.',
+                tools: ['ITSM platforms', 'Project tracking (Jira)', 'ServiceNow', 'PowerBI'],
+                skills: ['IT Operations Management', 'ITIL', 'Project Management', 'Stakeholder Communication', 'Change Management'],
+              },
+              'Applications & Systems Director': {
+                title: 'Applications & Systems Director',
+                reports: 'Reports to: VP of IT',
+                focus: 'Owns all business applications — ERP, CRM, SaaS platforms, and internal systems. Manages application lifecycle, integrations, and vendor relationships.',
+                tools: ['SAP', 'Salesforce', 'ServiceNow', 'Microsoft 365', 'Azure Integration Services'],
+                skills: ['Application Lifecycle Management', 'ERP Administration', 'Systems Integration', 'SaaS Governance', 'Vendor Management'],
+              },
+              'IT Operations Director': {
+                title: 'IT Operations Director',
+                reports: 'Reports to: VP of IT',
+                focus: 'Oversees all IT infrastructure and support operations — servers, network, endpoints, helpdesk, and service delivery. Accountable for uptime and SLA compliance.',
+                tools: ['Intune', 'Jamf', 'Cisco IOS', 'Aruba', 'ServiceNow', 'Nexthink', 'HP iLO'],
+                skills: ['IT Service Management', 'ITIL', 'Infrastructure Operations', 'SLA Management', 'Team Leadership'],
+              },
+              'Security & Compliance Director': {
+                title: 'Security & Compliance Director',
+                reports: 'Reports to: VP of IT',
+                focus: 'Owns cybersecurity strategy, compliance frameworks, risk management, and incident response. Ensures Zero Trust architecture and regulatory adherence.',
+                tools: ['Microsoft Defender for Endpoint', 'Azure Sentinel', 'CyberArk', 'Conditional Access', 'DLP'],
+                skills: ['Zero Trust Architecture', 'Risk Management', 'GDPR/ISO Compliance', 'Incident Response', 'Security Governance'],
+              },
+              'IT Strategy & Architecture': {
+                title: 'IT Strategy & Architecture Director',
+                reports: 'Reports to: VP of IT',
+                focus: 'Designs enterprise technology architecture, evaluates new technologies, and ensures all systems align with long-term business strategy.',
+                tools: ['Azure Architecture', 'Visio/draw.io', 'PowerBI', 'Cloud platforms', 'TOGAF frameworks'],
+                skills: ['Enterprise Architecture', 'Cloud Strategy', 'Technology Evaluation', 'TOGAF', 'Digital Transformation'],
+              },
+              'Business Apps Manager': {
+                title: 'Business Applications Manager',
+                reports: 'Reports to: Applications & Systems Director',
+                focus: 'Manages day-to-day operations of business applications — user access, upgrades, integrations, and support for ERP, CRM, and SaaS tools.',
+                tools: ['SAP', 'Salesforce', 'Microsoft Power Platform', 'ServiceNow', 'Jira'],
+                skills: ['Application Support', 'ERP Administration', 'User Provisioning', 'System Integration', 'Change Management'],
+              },
+              'Infra Manager': {
+                title: 'Infrastructure Manager',
+                reports: 'Reports to: IT Operations Director',
+                focus: 'Manages physical and cloud infrastructure — servers, storage, networking, and endpoint management platforms. Ensures availability and capacity.',
+                tools: ['Microsoft Intune', 'Jamf Pro', 'Cisco IOS', 'Aruba Central', 'HP ProLiant/iLO', 'Azure'],
+                skills: ['Infrastructure Management', 'Network Administration', 'MDM', 'Cloud Infrastructure', 'Capacity Planning'],
+              },
+              'Security Ops Manager': {
+                title: 'Security Operations Manager',
+                reports: 'Reports to: Security & Compliance Director',
+                focus: 'Runs day-to-day security operations — endpoint protection, threat monitoring, vulnerability management, and security incident handling.',
+                tools: ['Microsoft Defender for Endpoint', 'Azure Sentinel', 'BIOS Protector', 'Nexthink', 'CyberArk EPAM'],
+                skills: ['SOC Operations', 'Threat Detection', 'Endpoint Security', 'Vulnerability Management', 'Incident Response'],
+              },
+              'Enterprise Architect': {
+                title: 'Enterprise Architect',
+                reports: 'Reports to: IT Strategy & Architecture Director',
+                focus: 'Designs and governs the technology blueprint — cloud architecture, integration patterns, data flows, and technology standards across the organisation.',
+                tools: ['Azure Architecture Centre', 'Visio', 'TOGAF', 'draw.io', 'AWS/Azure/GCP'],
+                skills: ['Solution Architecture', 'Cloud Design', 'TOGAF', 'API Design', 'Technology Roadmapping'],
+              },
+              'ERP/CRP Admin': {
+                title: 'ERP / CRM Administrator',
+                reports: 'Reports to: Business Apps Manager',
+                focus: 'Administers ERP and CRM platforms — user access, data integrity, configuration changes, reporting, and first-line support for business users.',
+                tools: ['SAP ERP', 'Salesforce', 'Microsoft Dynamics', 'ServiceNow', 'Power BI'],
+                skills: ['ERP Administration', 'Data Management', 'Report Building', 'User Training', 'System Configuration'],
+              },
+              'Sys Admin & Infra Engineer': {
+                title: 'Systems Administrator & Infrastructure Engineer',
+                reports: 'Reports to: Infra Manager',
+                focus: 'Operates and maintains servers, storage, endpoints, and core network. Handles deployments, monitoring, patching, and Tier 2/3 technical support.',
+                tools: ['Microsoft Intune', 'Jamf Pro', 'SCCM', 'Cisco CLI', 'Aruba', 'HP iLO', 'Azure AD', 'Active Directory'],
+                skills: ['Windows/macOS/Linux Administration', 'Network Engineering', 'MDM', 'Scripting (PowerShell)', 'Virtualisation'],
+              },
+              'Help Desk / IT Support Center': {
+                title: 'Help Desk / IT Support Center',
+                reports: 'Reports to: Infra Manager / IT Operations Director',
+                focus: 'First and second-line support for all users — ticket logging, triage, password resets, device setup, mobile MDM (iOS/Android/iPad), and SLA management.',
+                tools: ['ServiceNow CSM/FSM', 'Jira Service Management', 'Microsoft 365 Admin', 'Intune', 'Jamf', 'Nexthink Amplify', 'Teams'],
+                skills: ['ITIL Incident Management', 'SLA Monitoring', 'Endpoint Support', 'Mobile MDM', 'User Communication', 'FCR Improvement'],
+              },
+            }
+
+            const [activeNode, setActiveNode] = (useState as Function)<string|null>(null)
+            const active = activeNode ? ORG[activeNode] : null
+
+            const Node = ({ label, top = false, wide = false }: { label: string; top?: boolean; wide?: boolean }) => (
+              <button
+                onClick={() => setActiveNode(activeNode === label ? null : label)}
+                className={`w-full px-3 py-3 rounded-xl text-white font-bold text-center leading-snug transition-all duration-150 border-2 ${
+                  activeNode === label
+                    ? 'border-cyan-400 scale-105 shadow-[0_0_20px_rgba(34,211,238,0.4)]'
+                    : 'border-transparent hover:border-blue-400/50 hover:scale-105'
+                } ${wide ? 'col-span-2' : ''}`}
+                style={{
+                  background: top
+                    ? 'linear-gradient(135deg,#3b82f6,#1d4ed8)'
+                    : activeNode === label
+                      ? 'linear-gradient(135deg,#0e7490,#1e40af)'
+                      : 'linear-gradient(135deg,#1e40af,#1e3a8a)',
+                  boxShadow: top ? '0 0 20px rgba(59,130,246,0.4)' : undefined,
+                  fontSize: top ? '0.875rem' : '0.75rem',
+                }}
+              >
+                {label}
+                <span className="block text-[10px] font-semibold mt-0.5 opacity-60">click for details</span>
+              </button>
+            )
+
+            return (
+              <>
+                <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#0a1628] to-[#0d2040] p-8 overflow-x-auto mb-4">
+                  <div className="min-w-[640px]">
+                    <div className="flex justify-center mb-4"><Node label="CIO" top /></div>
+                    <div className="flex justify-center mb-4"><div className="w-0.5 h-6 bg-blue-500/50"/></div>
+                    <div className="flex justify-center mb-4"><Node label="VP of IT" top /></div>
+                    <div className="flex justify-center"><div className="w-0.5 h-4 bg-blue-500/50"/></div>
+                    <div className="flex justify-center mb-0"><div className="w-3/4 h-0.5 bg-blue-500/50"/></div>
+                    <div className="grid grid-cols-4 gap-3 mb-1">
+                      {[0,1,2,3].map(i => <div key={i} className="flex justify-center"><div className="w-0.5 h-4 bg-blue-500/50"/></div>)}
+                    </div>
+                    <div className="grid grid-cols-4 gap-3 mb-1">
+                      {['Applications & Systems Director','IT Operations Director','Security & Compliance Director','IT Strategy & Architecture'].map(t => <Node key={t} label={t}/>)}
+                    </div>
+                    <div className="grid grid-cols-4 gap-3 mb-1">
+                      {[0,1,2,3].map(i => <div key={i} className="flex justify-center"><div className="w-0.5 h-4 bg-blue-500/40"/></div>)}
+                    </div>
+                    <div className="grid grid-cols-4 gap-3 mb-1">
+                      {['Business Apps Manager','Infra Manager','Security Ops Manager','Enterprise Architect'].map(t => <Node key={t} label={t}/>)}
+                    </div>
+                    <div className="grid grid-cols-4 gap-3 mb-1">
+                      {[true,true,false,false].map((s,i) => <div key={i} className="flex justify-center">{s && <div className="w-0.5 h-4 bg-blue-500/40"/>}</div>)}
+                    </div>
+                    <div className="grid grid-cols-4 gap-3">
+                      <Node label="ERP/CRP Admin"/>
+                      <Node label="Sys Admin & Infra Engineer"/>
+                      <Node label="Help Desk / IT Support Center" wide/>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Detail panel */}
+                {active && (
+                  <div className="mb-6 rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-[#0e1e38] to-[#0a1628] p-6 animate-fade-in">
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div>
+                        <h3 className="text-lg font-black text-white">{active.title}</h3>
+                        <p className="text-xs text-cyan-400 font-semibold mt-0.5">{active.reports}</p>
+                      </div>
+                      <button onClick={() => setActiveNode(null)}
+                        className="text-gray-500 hover:text-white text-xl leading-none flex-shrink-0">✕</button>
+                    </div>
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4">{active.focus}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">Tools & Platforms</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {active.tools.map(t => <span key={t} className="px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-500/15 border border-blue-500/25 text-blue-300">{t}</span>)}
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-xs font-black uppercase tracking-widest text-cyan-400 mb-2">Key Skills</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {active.skills.map(s => <span key={s} className="px-2 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">{s}</span>)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            )
+          })()}
+
+          {/* 3-column explainer */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { tier: 'Tier 1 — Helpdesk', color: '#22c55e', desc: 'First point of contact for all IT requests. Handles password resets, software installs, ticket logging, and basic device support using ServiceNow, Jira, and Microsoft 365.' },
+              { tier: 'Tier 2 — Technical Support', color: '#3b82f6', desc: 'Escalated endpoint and identity issues. Manages Azure AD, Intune, Jamf, MDM for iOS/Android/iPad, VPN, network connectivity, and root-cause analysis.' },
+              { tier: 'Tier 3 — Engineering', color: '#8b5cf6', desc: 'Core infrastructure, security architecture, and change management. Owns servers, Cisco/Aruba networks, Zero Trust, Microsoft Defender, and P1 incident leadership.' },
+            ].map(t => (
+              <div key={t.tier} className="p-5 rounded-xl border border-white/8 bg-white/2">
+                <div className="text-xs font-black uppercase tracking-widest mb-2" style={{ color: t.color }}>{t.tier}</div>
+                <p className="text-gray-400 text-sm leading-relaxed">{t.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── MEET THE EXPERT ──────────────────────────────────────────── */}      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-dark-800/50 border-y border-white/8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-black text-white mb-8">Meet Your IT Specialist</h2>
+          <h2 className="text-2xl font-black text-white mb-8">Meet Your IT Consultant (Expert)</h2>
 
           {/* Card — dark navy background, photo right like reference */}
           <div className="relative rounded-2xl overflow-hidden" style={{background:'linear-gradient(135deg,#0a1628 60%,#0d2040 100%)'}}>

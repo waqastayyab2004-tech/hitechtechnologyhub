@@ -1285,37 +1285,37 @@ export default function ProjectsPage() {
         <aside className="hidden lg:flex flex-col w-64 flex-shrink-0 border-r border-white/8 min-h-screen sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto">
           <div className="p-4 border-b border-white/8">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-accent-blue flex items-center justify-center">
-                <FileText className="w-4 h-4 text-white"/>
+              <div className="w-9 h-9 rounded-lg bg-accent-blue flex items-center justify-center">
+                <FileText className="w-5 h-5 text-white"/>
               </div>
               <div>
-                <p className="text-xs font-black text-white">Projects</p>
-                <p className="text-[10px] text-accent-blue font-semibold">43 projects · PMP documented</p>
+                <p className="text-sm font-black text-white">Projects</p>
+                <p className="text-xs text-accent-blue font-semibold">43 projects · PMP documented</p>
               </div>
             </div>
             <div className="relative">
-              <Search className="w-3.5 h-3.5 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2"/>
+              <Search className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2"/>
               <input
                 placeholder="Search projects…"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full bg-dark-700 border border-white/10 rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-accent-blue/50"
+                className="w-full bg-dark-700 border border-white/10 rounded-lg pl-9 pr-3 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-accent-blue/50"
               />
             </div>
           </div>
           <nav className="p-3 flex-1">
-            <p className="text-[10px] text-gray-600 uppercase tracking-widest font-semibold px-2 mb-2">Categories</p>
+            <p className="text-xs text-gray-500 uppercase tracking-widest font-bold px-2 mb-3">Categories</p>
             {GROUPS.map(g => {
               const count = g.key === 'All' ? projects.length : projects.filter(p => p.group === g.key).length
               return (
                 <button key={g.key} onClick={() => { setActiveGroup(g.key ?? 'All'); setSearchQuery('') }}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors mb-0.5 ${
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors mb-1 ${
                     activeGroup === (g.key ?? "") && !searchQuery
                       ? 'bg-accent-blue/10 text-accent-blue border border-accent-blue/20'
-                      : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
                   }`}>
                   <span>{g.key === 'All' ? 'All Projects' : (g.label ?? '').replace(/^[^\s]+\s/, '')}</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${activeGroup === (g.key ?? "") && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/5 text-gray-500'}`}>
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeGroup === (g.key ?? "") && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/8 text-gray-400'}`}>
                     {count}
                   </span>
                 </button>
@@ -1347,8 +1347,8 @@ export default function ProjectsPage() {
             <div className="flex flex-wrap gap-6 mt-3">
               {stats.map(s => (
                 <div key={s.l} className="text-center">
-                  <div className="text-lg font-black gradient-text">{s.v}</div>
-                  <div className="text-gray-500 text-[10px] mt-0.5">{s.l}</div>
+                  <div className="text-xl font-black gradient-text">{s.v}</div>
+                  <div className="text-gray-400 text-xs mt-0.5">{s.l}</div>
                 </div>
               ))}
             </div>
@@ -1364,13 +1364,13 @@ export default function ProjectsPage() {
               ).map((project, i) => (
                 <button key={i} onClick={() => setSelected(project)}
                   className="glass-card p-5 flex flex-col items-start gap-3 text-left hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:border-accent-blue/30 transition-all duration-200 group">
-                  <div className="w-10 h-10 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0"><project.icon className="w-5 h-5 text-accent-blue" /></div>
+                  <div className="w-11 h-11 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0"><project.icon className="w-5 h-5 text-accent-blue" /></div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-bold text-white text-sm leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
-                    <p className="text-gray-500 text-[10px] leading-snug line-clamp-1">{project.subtitle}</p>
+                    <p className="font-bold text-white text-base leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
+                    <p className="text-gray-400 text-xs leading-snug line-clamp-2">{project.subtitle}</p>
                   </div>
                   <div className="flex items-center justify-between w-full">
-                    <span className="text-[10px] text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View →</span>
+                    <span className="text-xs text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View →</span>
                   </div>
                 </button>
               ))}
@@ -1379,20 +1379,20 @@ export default function ProjectsPage() {
             groupedFiltered.map(group => (
               <div key={group.key} className="mb-10" id={group.key === 'Daily IT Operations' ? 'daily-operations' : undefined}>
                 <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-sm font-black text-gray-300 uppercase tracking-widest">{(group.label ?? "").replace(/^[^\s]+\s/, "")}</h2>
-                  <span className="text-[10px] text-gray-500 bg-white/5 px-2 py-0.5 rounded-full">{group.items.length}</span>
+                  <h2 className="text-base font-black text-white uppercase tracking-widest">{(group.label ?? "").replace(/^[^\s]+\s/, "")}</h2>
+                  <span className="text-xs text-gray-400 bg-white/8 px-2.5 py-0.5 rounded-full font-bold">{group.items.length}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {group.items.map((project, i) => (
                     <button key={i} onClick={() => setSelected(project)}
                       className="glass-card p-5 flex flex-col items-start gap-3 text-left hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:border-accent-blue/30 transition-all duration-200 group">
-                      <div className="w-10 h-10 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0"><project.icon className="w-5 h-5 text-accent-blue" /></div>
+                      <div className="w-11 h-11 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0"><project.icon className="w-5 h-5 text-accent-blue" /></div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-white text-sm leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
-                        <p className="text-gray-500 text-[10px] leading-snug line-clamp-1">{project.subtitle}</p>
+                        <p className="font-bold text-white text-base leading-snug mb-1 group-hover:text-accent-blue transition-colors line-clamp-2">{project.title}</p>
+                        <p className="text-gray-400 text-xs leading-snug line-clamp-2">{project.subtitle}</p>
                       </div>
                       <div className="flex items-center justify-between w-full">
-                        <span className="text-[10px] text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View →</span>
+                        <span className="text-xs text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity font-semibold">View →</span>
                       </div>
                     </button>
                   ))}

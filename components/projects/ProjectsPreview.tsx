@@ -1,55 +1,45 @@
 import Link from 'next/link'
-import { Github, ExternalLink, ArrowRight, CheckCircle } from 'lucide-react'
+import { Github, ExternalLink, ArrowRight, CheckCircle, Bell, BarChart3 } from 'lucide-react'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 
 const projects = [
   {
-    icon: '/app-wahub.png',
-    iconAlt: 'Waqas AI Hub',
+    icon: '/app-wahub.png', iconAlt: 'Waqas AI Hub',
+    iconComponent: null,
     title: 'Waqas AI Hub',
     subtitle: 'AI-Powered macOS Desktop Dashboard',
     description: 'Native macOS app + FastAPI web dashboard for all daily SAP IT work. Gmail, SAP O365, ServiceNow tickets, and WhatsApp SLA alerts — all in one click.',
     tags: ['FastAPI', 'Python', 'Swift', 'SAP O365', 'Twilio'],
-    status: 'Live',
-    github: 'https://github.com/waqas-syed',
-    demo: '#',
-    color: 'border-accent-blue',
+    status: 'Live', github: 'https://github.com/waqas-syed', demo: '#',
+    color: 'border-accent-blue', iconColor: '#3b82f6',
   },
   {
-    icon: '/app-itasset.png',
-    iconAlt: 'IT Asset Manager',
+    icon: '/app-itasset.png', iconAlt: 'IT Asset Manager',
+    iconComponent: null,
     title: 'IT Asset Manager',
     subtitle: 'Enterprise Asset Tracking Web App',
     description: 'Full-stack web app replacing Excel for IT asset tracking at enterprise IT. Dashboard analytics, Excel import/export, bulk actions, and an AI chat widget.',
     tags: ['Python', 'Flask', 'SQLite', 'Chart.js'],
-    status: 'Live',
-    github: 'https://github.com/waqas-syed',
-    demo: '#',
-    color: 'border-cyan-500',
+    status: 'Live', github: 'https://github.com/waqas-syed', demo: '#',
+    color: 'border-cyan-500', iconColor: '#06b6d4',
   },
   {
-    icon: null,
-    iconEmoji: '🔔',
+    icon: null, iconAlt: '', iconComponent: Bell,
     title: 'SNOW SLA Automation',
     subtitle: 'ServiceNow Monitoring + WhatsApp Alerts',
     description: 'Python daemon that monitors ServiceNow 24/7 and sends WhatsApp messages 30 minutes before SLA breaches. Zero manual checking required.',
     tags: ['Python', 'ServiceNow', 'Twilio', 'Cron'],
-    status: 'Live',
-    github: 'https://github.com/waqas-syed',
-    demo: '#',
-    color: 'border-green-500',
+    status: 'Live', github: 'https://github.com/waqas-syed', demo: '#',
+    color: 'border-green-500', iconColor: '#10b981',
   },
   {
-    icon: null,
-    iconEmoji: '📊',
+    icon: null, iconAlt: '', iconComponent: BarChart3,
     title: 'SNOW SLA Predictor',
     subtitle: 'Python ML on Real ServiceNow Data',
     description: 'ML model using real SAP ServiceNow ticket data to predict SLA breaches before they happen. Demonstrates AI + SAP BTP integration for management.',
     tags: ['Python', 'scikit-learn', 'SAP BTP', 'ServiceNow'],
-    status: 'In Development',
-    github: '#',
-    demo: '#',
-    color: 'border-yellow-500',
+    status: 'In Development', github: '#', demo: '#',
+    color: 'border-yellow-500', iconColor: '#f59e0b',
   },
 ]
 
@@ -80,11 +70,12 @@ export default function ProjectsPreview() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={project.icon} alt={project.iconAlt} className="w-full h-full object-cover" />
                     </div>
-                  ) : (
-                    <div className="w-14 h-14 rounded-xl bg-dark-700 border border-white/10 flex items-center justify-center text-2xl">
-                      {project.iconEmoji}
+                  ) : project.iconComponent ? (
+                    <div className="w-14 h-14 rounded-xl border border-white/10 flex items-center justify-center"
+                      style={{ background: `${project.iconColor}15`, borderColor: `${project.iconColor}30` }}>
+                      <project.iconComponent className="w-7 h-7" style={{ color: project.iconColor }} />
                     </div>
-                  )}
+                  ) : null}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">

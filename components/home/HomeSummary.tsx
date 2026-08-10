@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Shield, BookOpen, FileText, FolderOpen, Zap, Cloud, Server, Brain, Network, Code } from 'lucide-react'
+import { ArrowRight, Shield, BookOpen, FileText, FolderOpen, Zap, Cloud, Server, Brain, Network, Bot, Package, Bell, Lock, LayoutDashboard } from 'lucide-react'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 
 /* ── Services summary ───────────────────────────────────────────── */
@@ -16,7 +16,8 @@ const SERVICES = [
 
 /* ── Featured article ───────────────────────────────────────────── */
 const FEATURED_ARTICLE = {
-  emoji: '🤖',
+  icon: Bot,
+  iconColor: '#f59e0b',
   tag: 'AI Automation',
   tagColor: '#f59e0b',
   title: 'How I Built a Real-Time AI Dashboard That Replaced 5 Tools',
@@ -26,7 +27,7 @@ const FEATURED_ARTICLE = {
 
 /* ── Featured project ───────────────────────────────────────────── */
 const FEATURED_PROJECT = {
-  emoji: '📦',
+  icon: Package,
   color: '#10b981',
   title: 'IT Asset Manager',
   subtitle: 'Flask Web App · 1,500+ assets tracked',
@@ -36,7 +37,7 @@ const FEATURED_PROJECT = {
 
 /* ── Featured course ────────────────────────────────────────────── */
 const FEATURED_COURSE = {
-  emoji: '🤖',
+  icon: Bot,
   title: 'AI Tools for IT Professionals',
   students: '800+',
   level: 'All levels',
@@ -45,25 +46,25 @@ const FEATURED_COURSE = {
 
 /* ── Courses ────────────────────────────────────────────────────── */
 const COURSES = [
-  { emoji: '🤖', title: 'AI Tools for IT Professionals',   students: '800+', level: 'All levels'  },
-  { emoji: '🛡️', title: 'Azure Security & Zero Trust',     students: '600+', level: 'Intermediate' },
-  { emoji: '🎫', title: 'ServiceNow Basics for IT Teams',   students: '350+', level: 'Beginner'    },
+  { icon: Bot,    color: '#f59e0b', title: 'AI Tools for IT Professionals',   students: '800+', level: 'All levels'  },
+  { icon: Shield, color: '#ef4444', title: 'Azure Security & Zero Trust',     students: '600+', level: 'Intermediate' },
+  { icon: FileText, color: '#3b82f6', title: 'ServiceNow Basics for IT Teams', students: '350+', level: 'Beginner'   },
 ]
 
 /* ── Recent articles ────────────────────────────────────────────── */
 const ARTICLES = [
-  { emoji: '🤖', tag: 'AI',         tagColor: '#f59e0b', title: 'Top AI Tools Every IT Engineer Must Know in 2026',     href: '/blog' },
-  { emoji: '🛡️', tag: 'Security',  tagColor: '#ef4444', title: 'Zero Trust Architecture: A Practical Enterprise Guide', href: '/blog' },
-  { emoji: '☁️', tag: 'Cloud',     tagColor: '#0ea5e9', title: 'Microsoft 365 Copilot — What IT Admins Need to Know',   href: '/blog' },
-  { emoji: '⚡', tag: 'Automation', tagColor: '#f59e0b', title: 'How I Built a WhatsApp SLA Alert Bot with Python',      href: '/blog' },
+  { icon: Bot,       iconColor: '#f59e0b', tag: 'AI',         tagColor: '#f59e0b', title: 'Top AI Tools Every IT Engineer Must Know in 2026',     href: '/blog' },
+  { icon: Shield,    iconColor: '#ef4444', tag: 'Security',   tagColor: '#ef4444', title: 'Zero Trust Architecture: A Practical Enterprise Guide', href: '/blog' },
+  { icon: Cloud,     iconColor: '#0ea5e9', tag: 'Cloud',      tagColor: '#0ea5e9', title: 'Microsoft 365 Copilot — What IT Admins Need to Know',   href: '/blog' },
+  { icon: Zap,       iconColor: '#f59e0b', tag: 'Automation', tagColor: '#f59e0b', title: 'How I Built a WhatsApp SLA Alert Bot with Python',      href: '/blog' },
 ]
 
 /* ── Projects ───────────────────────────────────────────────────── */
 const PROJECTS = [
-  { emoji: '🤖', color: '#3b82f6', title: 'Waqas AI Hub',         subtitle: 'macOS AI Dashboard',             status: 'Live'      },
-  { emoji: '📦', color: '#10b981', title: 'IT Asset Manager',      subtitle: 'Flask Web App · 1,500+ assets',  status: 'Live'      },
-  { emoji: '🔔', color: '#f59e0b', title: 'SNOW SLA Pipeline',     subtitle: 'WhatsApp Alerts · Python',       status: 'Live'      },
-  { emoji: '🔐', color: '#ef4444', title: 'Zero Trust Rollout',    subtitle: 'Secure Score 41% → 78%',         status: 'Completed' },
+  { icon: LayoutDashboard, color: '#3b82f6', title: 'Waqas AI Hub',      subtitle: 'macOS AI Dashboard',            status: 'Live'      },
+  { icon: Package,         color: '#10b981', title: 'IT Asset Manager',   subtitle: 'Flask Web App · 1,500+ assets', status: 'Live'      },
+  { icon: Bell,            color: '#f59e0b', title: 'SNOW SLA Pipeline',  subtitle: 'WhatsApp Alerts · Python',      status: 'Live'      },
+  { icon: Lock,            color: '#ef4444', title: 'Zero Trust Rollout', subtitle: 'Secure Score 41% → 78%',        status: 'Completed' },
 ]
 
 const statusColor: Record<string, string> = {
@@ -160,7 +161,10 @@ export default function HomeSummary() {
                 <Link href={FEATURED_PROJECT.href}
                   className="glass-card p-5 flex items-start gap-4 hover:-translate-y-0.5 transition-all duration-200 group border border-white/6 hover:border-green-500/25"
                   style={{ borderLeftWidth: 3, borderLeftColor: `${FEATURED_PROJECT.color}60` }}>
-                  <span className="text-3xl flex-shrink-0">{FEATURED_PROJECT.emoji}</span>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${FEATURED_PROJECT.color}15`, border: `1px solid ${FEATURED_PROJECT.color}30` }}>
+                    <FEATURED_PROJECT.icon className="w-5 h-5" style={{ color: FEATURED_PROJECT.color }} />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-[10px] font-black uppercase tracking-wider text-purple-400 mb-1">Featured Project</p>
                     <h3 className="text-white text-sm font-bold mb-0.5 group-hover:text-green-400 transition-colors">{FEATURED_PROJECT.title}</h3>
@@ -177,7 +181,10 @@ export default function HomeSummary() {
                   {ARTICLES.map((a) => (
                     <Link key={a.title} href={a.href}
                       className="flex items-start gap-3 group py-2 border-b border-white/5 last:border-0 last:pb-0">
-                      <span className="text-base flex-shrink-0 mt-0.5">{a.emoji}</span>
+                      <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
+                        style={{ background: `${a.iconColor}15`, border: `1px solid ${a.iconColor}25` }}>
+                        <a.icon className="w-3.5 h-3.5" style={{ color: a.iconColor }} />
+                      </div>
                       <p className="text-gray-300 text-xs leading-snug group-hover:text-white transition-colors">{a.title}</p>
                     </Link>
                   ))}
@@ -215,7 +222,10 @@ export default function HomeSummary() {
               <ScrollReveal key={c.title} delay={i * 0.07}>
                 <Link href="/training"
                   className="glass-card p-5 flex items-start gap-4 hover:-translate-y-0.5 transition-all duration-200 group h-full border border-white/6 hover:border-emerald-500/25">
-                  <span className="text-3xl flex-shrink-0">{c.emoji}</span>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${c.color}15`, border: `1px solid ${c.color}30` }}>
+                    <c.icon className="w-5 h-5" style={{ color: c.color }} />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-white text-sm font-bold mb-1.5 group-hover:text-emerald-400 transition-colors leading-snug">{c.title}</h3>
                     <div className="flex items-center gap-2 flex-wrap">
@@ -245,7 +255,10 @@ export default function HomeSummary() {
                 <Link href="/projects"
                   className="glass-card p-5 flex items-start gap-4 hover:-translate-y-0.5 transition-all duration-200 group h-full"
                   style={{ borderLeftWidth: 3, borderLeftColor: `${p.color}60` }}>
-                  <span className="text-3xl flex-shrink-0">{p.emoji}</span>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${p.color}15`, border: `1px solid ${p.color}30` }}>
+                    <p.icon className="w-5 h-5" style={{ color: p.color }} />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-white text-sm font-bold mb-0.5 group-hover:text-purple-400 transition-colors">{p.title}</h3>
                     <p className="text-gray-500 text-xs mb-2">{p.subtitle}</p>

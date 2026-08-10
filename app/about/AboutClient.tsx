@@ -7,6 +7,7 @@ import {
   MessageCircle, Globe, Users, TrendingUp, Award, Mail, Linkedin,
   Facebook, CheckCircle, Calendar, MapPin, GraduationCap, ExternalLink,
   Download, Code, Server, Database, ChevronDown, ChevronUp, BookOpen,
+  Bot, BarChart3, Building2, Package, Smartphone, Monitor, Printer, Lock, Settings,
 } from 'lucide-react'
 import NeuralNetwork from '@/components/ui/NeuralNetwork'
 import MindMap from '@/components/ui/MindMap'
@@ -581,16 +582,18 @@ export default function PortfolioPage() {
             </div>
             <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
-                { icon: "🤖", title: "AI Tools in Production", desc: "Built & deployed 4 AI automation tools used daily at SAP. Not just familiar with AI — actively building with it in production.", tag: "Rare Combination", tc: "text-yellow-400 bg-yellow-500/10 border-yellow-500/25" },
-                { icon: "📊", title: "Zero SLA Breaches — 6 Months", desc: "1,300+ interactions managed via ServiceNow CSM/FSM with ITSM AI Copilot. 96%+ SLA compliance sustained consistently.", tag: "Proven Track Record", tc: "text-green-400 bg-green-500/10 border-green-500/25" },
-                { icon: "🏢", title: "End-to-End Office Build-Outs", desc: "Full IT & AV delivery for 3 offices — floor plan to handover. Teams Rooms, Cisco networking, structured cabling, signage.", tag: "Project Delivery", tc: "text-blue-400 bg-blue-500/10 border-blue-500/25" },
-                { icon: "🛡️", title: "Azure Security Engineer", desc: "Raised Microsoft Secure Score 41% → 78%. Zero Trust, Conditional Access, PIM — all live at 200+ user enterprise.", tag: "Microsoft Certified", tc: "text-cyan-400 bg-cyan-500/10 border-cyan-500/25" },
-                { icon: "🌍", title: "MENA Specialist — 15+ Years", desc: "Location responsible SAP Saudi Arabia across 3 offices. Fluent Arabic + English. Iqama transferable. Deep MENA enterprise IT knowledge.", tag: "Local + Global", tc: "text-orange-400 bg-orange-500/10 border-orange-500/25" },
-                { icon: "🎓", title: "MBA + 13 Certifications", desc: "MBA (UK) · Azure Security · SAP AI Hub (AIG02) · ITIL v3 · PMP. Business thinking + technical depth — not just a technician.", tag: "Academic + Professional", tc: "text-purple-400 bg-purple-500/10 border-purple-500/25" },
+                { icon: Bot,           color: '#f59e0b', title: "AI Tools in Production",        desc: "Built & deployed 4 AI automation tools used daily at SAP. Not just familiar with AI — actively building with it in production.", tag: "Rare Combination", tc: "text-yellow-400 bg-yellow-500/10 border-yellow-500/25" },
+                { icon: BarChart3,     color: '#10b981', title: "Zero SLA Breaches — 6 Months",  desc: "1,300+ interactions managed via ServiceNow CSM/FSM with ITSM AI Copilot. 96%+ SLA compliance sustained consistently.", tag: "Proven Track Record", tc: "text-green-400 bg-green-500/10 border-green-500/25" },
+                { icon: Building2,     color: '#3b82f6', title: "End-to-End Office Build-Outs",   desc: "Full IT & AV delivery for 3 offices — floor plan to handover. Teams Rooms, Cisco networking, structured cabling, signage.", tag: "Project Delivery", tc: "text-blue-400 bg-blue-500/10 border-blue-500/25" },
+                { icon: Shield,        color: '#06b6d4', title: "Azure Security Engineer",        desc: "Raised Microsoft Secure Score 41% → 78%. Zero Trust, Conditional Access, PIM — all live at 200+ user enterprise.", tag: "Microsoft Certified", tc: "text-cyan-400 bg-cyan-500/10 border-cyan-500/25" },
+                { icon: Globe,         color: '#f97316', title: "MENA Specialist — 15+ Years",    desc: "Location responsible SAP Saudi Arabia across 3 offices. Fluent Arabic + English. Iqama transferable. Deep MENA enterprise IT knowledge.", tag: "Local + Global", tc: "text-orange-400 bg-orange-500/10 border-orange-500/25" },
+                { icon: GraduationCap, color: '#8b5cf6', title: "MBA + 13 Certifications",        desc: "MBA (UK) · Azure Security · SAP AI Hub (AIG02) · ITIL v3 · PMP. Business thinking + technical depth — not just a technician.", tag: "Academic + Professional", tc: "text-purple-400 bg-purple-500/10 border-purple-500/25" },
               ].map(e => (
                 <div key={e.title} className="p-4 rounded-xl bg-white/3 border border-white/6 hover:bg-white/5 hover:border-white/10 transition-all flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl flex-shrink-0">{e.icon}</span>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${e.color}15`, border: `1px solid ${e.color}30` }}>
+                      <e.icon className="w-4 h-4" style={{ color: e.color }} />
+                    </div>
                     <h3 className="text-white text-sm font-bold leading-snug">{e.title}</h3>
                   </div>
                   <p className="text-gray-400 text-xs leading-relaxed flex-1">{e.desc}</p>
@@ -625,8 +628,10 @@ export default function PortfolioPage() {
             </div>
             <div className="relative z-10 p-7 md:p-10">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0 border border-cyan-500/30"
-                  style={{ background: 'rgba(6,182,212,0.15)' }}>⚙️</div>
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 border border-cyan-500/30"
+                  style={{ background: 'rgba(6,182,212,0.15)' }}>
+                  <Settings className="w-8 h-8 text-cyan-400" />
+                </div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     <span className="text-xs font-black uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/25 px-3 py-1 rounded-full">Live Daily · Enterprise IT</span>
@@ -649,23 +654,25 @@ export default function PortfolioPage() {
               {/* 10 task area cards */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
                 {[
-                  { icon: '📦', title: 'IT Asset Lifecycle',     desc: '1,500–2,000+ devices · procurement to disposal',  color: '#f97316' },
-                  { icon: '📧', title: 'Email & Identity',       desc: 'Exchange Online · MFA · mailbox governance',       color: '#3b82f6' },
-                  { icon: '🛡️', title: 'Endpoint Security',      desc: 'Intune · Defender · BitLocker · CyberArk',         color: '#ef4444' },
-                  { icon: '🍎', title: 'macOS Fleet (Jamf)',      desc: 'FileVault · SSO certs · Self Service apps',        color: '#a3a3a3' },
-                  { icon: '📱', title: 'Mobile MDM',             desc: 'iOS/Android · ADE · Intune · compliance',          color: '#8b5cf6' },
-                  { icon: '💻', title: 'Windows Provisioning',   desc: 'Autopilot · SCCM · Day 1 ready in 45 min',        color: '#06b6d4' },
-                  { icon: '☁️', title: 'M365 Cloud Admin',       desc: 'Teams · SharePoint · OneDrive · 200+ users',      color: '#0ea5e9' },
-                  { icon: '🖨️', title: 'Print & Meeting AV',     desc: 'HP MFP fleet · Teams Rooms · Crestron · AV',      color: '#f59e0b' },
-                  { icon: '🔐', title: 'User Provisioning',      desc: 'Azure AD · onboarding · Day 1 in 30 min',         color: '#10b981' },
-                  { icon: '🌐', title: 'Network & VPN',          desc: 'Cisco · Aruba · 802.1X · GlobalProtect',          color: '#6366f1' },
+                  { icon: Package,     title: 'IT Asset Lifecycle',     desc: '1,500–2,000+ devices · procurement to disposal',  color: '#f97316' },
+                  { icon: Mail,        title: 'Email & Identity',        desc: 'Exchange Online · MFA · mailbox governance',       color: '#3b82f6' },
+                  { icon: Shield,      title: 'Endpoint Security',       desc: 'Intune · Defender · BitLocker · CyberArk',         color: '#ef4444' },
+                  { icon: Monitor,     title: 'macOS Fleet (Jamf)',       desc: 'FileVault · SSO certs · Self Service apps',        color: '#a3a3a3' },
+                  { icon: Smartphone,  title: 'Mobile MDM',              desc: 'iOS/Android · ADE · Intune · compliance',          color: '#8b5cf6' },
+                  { icon: Cpu,         title: 'Windows Provisioning',    desc: 'Autopilot · SCCM · Day 1 ready in 45 min',         color: '#06b6d4' },
+                  { icon: Cloud,       title: 'M365 Cloud Admin',        desc: 'Teams · SharePoint · OneDrive · 200+ users',       color: '#0ea5e9' },
+                  { icon: Printer,     title: 'Print & Meeting AV',      desc: 'HP MFP fleet · Teams Rooms · Crestron · AV',       color: '#f59e0b' },
+                  { icon: Lock,        title: 'User Provisioning',       desc: 'Azure AD · onboarding · Day 1 in 30 min',          color: '#10b981' },
+                  { icon: Network,     title: 'Network & VPN',           desc: 'Cisco · Aruba · 802.1X · GlobalProtect',           color: '#6366f1' },
                 ].map((task) => (
                   <Link key={task.title} href="/projects"
                     className="group flex flex-col gap-2 p-4 rounded-xl border transition-all hover:-translate-y-0.5 hover:shadow-lg"
                     style={{ background: `${task.color}08`, borderColor: `${task.color}25` }}
                     onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${task.color}55` }}
                     onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${task.color}25` }}>
-                    <span className="text-lg sm:text-2xl">{task.icon}</span>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${task.color}15`, border: `1px solid ${task.color}30` }}>
+                      <task.icon className="w-4 h-4" style={{ color: task.color }} />
+                    </div>
                     <div>
                       <p className="text-white font-bold text-xs leading-snug mb-1">{task.title}</p>
                       <p className="text-gray-500 text-[10px] leading-snug">{task.desc}</p>
@@ -695,7 +702,9 @@ export default function PortfolioPage() {
             className="block mb-6 p-5 rounded-2xl border-2 border-cyan-500/40 bg-gradient-to-r from-cyan-500/10 via-cyan-500/5 to-transparent hover:border-cyan-400/60 hover:from-cyan-500/15 transition-all group">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-3xl flex-shrink-0">⚙️</div>
+                <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center flex-shrink-0">
+                  <Settings className="w-7 h-7 text-cyan-400" />
+                </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/25 px-2 py-0.5 rounded-full">Daily IT Operations</span>
@@ -1024,7 +1033,7 @@ export default function PortfolioPage() {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                  ⚙️ Daily Operations · 10 Technical Areas
+                  <Settings className="w-3 h-3" /> Daily Operations · 10 Technical Areas
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black text-white mb-2">
                   See My Daily IT Skillset in Action
@@ -1043,7 +1052,7 @@ export default function PortfolioPage() {
                   href="/projects#daily-operations"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 hover:border-cyan-400/60 transition-all whitespace-nowrap"
                 >
-                  ⚙️ View 10 Daily Ops Cards
+                  <Settings className="w-4 h-4" /> View 10 Daily Ops Cards
                 </Link>
                 <Link
                   href="/projects"

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Search } from 'lucide-react'
+import { ArrowRight, Search, MapPin, Globe, Bot, Zap } from 'lucide-react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -238,16 +238,16 @@ export default function Hero() {
           </span>
         </motion.p>
 
-        {/* Subline — short, punchy, no wrapping paragraph */}
+        {/* Subline — icon chips, no emoji */}
         <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex flex-wrap items-center justify-center gap-2 text-sm text-gray-400">
-          <span>🌍 Onsite across <strong className="text-white">MENA</strong></span>
+          className="flex flex-wrap items-center justify-center gap-2 text-sm text-gray-300">
+          <span className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" />Onsite across <strong className="text-white">MENA</strong></span>
           <span className="text-white/20">·</span>
-          <span>🌐 <strong className="text-white">Remote</strong> worldwide</span>
+          <span className="inline-flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" /><strong className="text-white">Remote</strong> worldwide</span>
           <span className="text-white/20">·</span>
-          <span>🤖 AI automation &amp; Azure security</span>
+          <span className="inline-flex items-center gap-1.5"><Bot className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" />AI automation &amp; Azure security</span>
           <span className="text-white/20">·</span>
-          <span>⚡ 15+ years experience</span>
+          <span className="inline-flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent-blue flex-shrink-0" />15+ years experience</span>
         </motion.div>
 
         {/* CTAs */}

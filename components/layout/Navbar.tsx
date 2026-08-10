@@ -222,7 +222,7 @@ export default function Navbar() {
                   <span className="text-accent-blue">HiTecH</span>
                   <span className="text-white"> AI HUB</span>
                 </span>
-                <span className="logo-tag text-[9px] text-gray-500 font-medium tracking-wide hidden sm:block mt-0.5">
+                <span className="logo-tag text-[10px] text-gray-400 font-medium tracking-wide hidden sm:block mt-0.5">
                   IT Consulting · Training · AI
                 </span>
               </div>
@@ -238,10 +238,10 @@ export default function Navbar() {
                   onMouseLeave={scheduleClose}>
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+                    className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-150 ${
                       isActive(item)
                         ? 'text-white bg-white/8'
-                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                        : 'text-gray-200 hover:text-white hover:bg-white/8'
                     }`}
                     onClick={() => item.dropdown && setActiveDropdown(null)}
                   >
@@ -267,7 +267,7 @@ export default function Navbar() {
                           {item.dropdown.map((group, gi) => (
                             <div key={gi}>
                               {gi > 0 && <div className="h-px bg-white/6 my-2" />}
-                              <p className="text-[10px] text-gray-600 font-semibold uppercase tracking-widest px-2 py-1">{group.group}</p>
+                              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest px-2 py-1">{group.group}</p>
                               {group.items.map((di) => (
                                 <Link key={di.href + di.label} href={di.href}
                                   className="flex items-start gap-3 px-2.5 py-2.5 rounded-xl hover:bg-white/6 transition-colors duration-150 group/item"

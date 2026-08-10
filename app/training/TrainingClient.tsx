@@ -986,6 +986,92 @@ const courses = [
       { module: 'Assessment — Test Your Nexthink Amplify Knowledge', lessons: ['Assessment: Nexthink Amplify for IT Support'] },
     ],
   },
+
+  // ── TIER 1–3 IT SUPPORT COURSES ─────────────────────────────────
+  {
+    id: 124,
+    title: 'IT Support Tier 1: Helpdesk & Service Desk Essentials',
+    category: 'Corporate IT Training',
+    level: 'Beginner', duration: '2h', students: '0+', rating: 5.0,
+    isFree: false, isPopular: true,
+    img: 'https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=400&q=80&auto=format&fit=crop',
+    instructor: 'Syed Waqas Tayyab',
+    skills: ['ServiceNow', 'Jira Service Management', 'Microsoft 365', 'Azure AD', 'Password Reset', 'Ticket Logging', 'SLA Management', 'ITIL v3'],
+    description: 'Master the foundations of enterprise IT support at Tier 1 — ticket logging, SOP-based triage, password resets, software installs, and professional user communication using ServiceNow, Jira Service Management, and Microsoft 365.',
+    topics: [
+      'ITSM tools: ServiceNow, Jira Service Management, Freshservice, Zendesk — ticket lifecycle',
+      'Priority matrix P1–P4, SLA IRT/MPT timers, and acting before breach',
+      'Password resets, MFA setup, and Microsoft 365 software activations',
+      'Basic hardware support: device collection, peripherals, asset record updates',
+      'User communication: walk-up, phone, chat, closing templates, escalation etiquette',
+    ],
+    curriculum: [
+      { module: 'Module 1 — The Role of Tier 1 IT Support', lessons: ['L1 vs. L2 vs. L3 — what each tier owns', 'ITIL v3 incident lifecycle', 'Key KPIs: FCR, SLA compliance, CSAT', 'ITSM tools landscape: ServiceNow, Jira, Freshservice, Zendesk'] },
+      { module: 'Module 2 — Ticket Logging & Triage', lessons: ['Incident vs. Service Request', 'ServiceNow and Jira: creating tickets correctly', 'Priority matrix P1–P4', 'SLA timers and acting before breach'] },
+      { module: 'Module 3 — Common Tier 1 Resolutions', lessons: ['Password reset via SSPR and Azure AD', 'MFA setup: Authenticator, SMS, RSA SecurID', 'Microsoft 365 activation and Outlook fixes', 'Basic VPN and Wi-Fi troubleshooting'] },
+      { module: 'Module 4 — Hardware & Mobile Device Support', lessons: ['Device collection, peripheral setup, loaner devices', 'iOS/Android enrolment basics: Company Portal, Wi-Fi, MFA', 'iPad and tablet corporate setup workflow', 'Asset record update after hardware swap'] },
+      { module: 'Module 5 — User Communication & Professionalism', lessons: ['Walk-up queue, phone, chat support', 'Closing templates and satisfaction surveys', 'Escalation to Tier 2 — what to document', 'De-escalation techniques for frustrated users'] },
+    ],
+  },
+  {
+    id: 125,
+    title: 'IT Support Tier 2: Desktop & Technical Support',
+    category: 'Corporate IT Training',
+    level: 'Intermediate', duration: '3h', students: '0+', rating: 5.0,
+    isFree: false, isPopular: true,
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&auto=format&fit=crop',
+    instructor: 'Syed Waqas Tayyab',
+    skills: ['Azure AD / Entra ID', 'Microsoft Intune', 'Jamf Pro', 'SCCM', 'ServiceNow', 'Jira', 'GlobalProtect VPN', '802.1X', 'Windows 11', 'macOS', 'iOS MDM', 'Android MDM'],
+    description: 'Handle escalated Tier 2 requests independently — Azure AD, Intune/Jamf endpoint management, MDM for iOS/Android/iPad/tablets, VPN and 802.1X network diagnosis, and advanced OS repairs. Based on real enterprise IT supporting 200+ users across 3 offices.',
+    topics: [
+      'Azure AD / Entra ID: account management, MFA troubleshooting, Conditional Access errors',
+      'Windows 11 and macOS: Intune compliance, Autopilot, Jamf Pro, FileVault, Kerberos SSO',
+      'Mobile MDM: iOS/iPadOS (Jamf/Intune), Android (Intune), corporate and BYOD enrolment',
+      'Network escalations: GlobalProtect VPN, 802.1X Wi-Fi, NAC quarantine, DNS, VLAN',
+      'PC-to-PC migration, OS reinstall, root-cause analysis, ServiceNow/Jira documentation',
+    ],
+    curriculum: [
+      { module: 'Module 1 — Identity & Access Management', lessons: ['Azure AD / Entra ID: users, groups, licences, roles', 'MFA troubleshooting and Conditional Access errors', 'On-prem Active Directory: OU structure, AD Connect sync', 'ServiceNow and Jira escalation documentation'] },
+      { module: 'Module 2 — Windows Endpoint Troubleshooting', lessons: ['Intune compliance remediation and Autopilot failures', 'SCCM software deployment and logs', 'Windows 11 upgrades, BitLocker, Event Viewer', 'Recovery options: Startup Repair, Reset This PC, clean reinstall'] },
+      { module: 'Module 3 — macOS & Mobile Device Management', lessons: [
+        'Jamf Pro: ADE/DE enrolment, FileVault, Kerberos SSO, Self Service',
+        'Apple ADE: zero-touch iOS/iPadOS enrolment for iPhones, iPads, corporate tablets',
+        'Microsoft Intune: iOS/iPadOS supervised mode, Android Enterprise work profile, BYOD',
+        'Samsung Knox, Android MDM profiles, app deployment and compliance policies',
+        'MDM for tablets: iPad shared device mode, Android tablet kiosk configuration',
+        'Temporary Access Pass (TAP): MFA bootstrapping for new mobile devices',
+        'Mobile SSO certificates: 3-month validity, auto-renewal via Jamf, 802.1X Wi-Fi on mobile',
+        'Decommission workflow: Find My disabled → MDM wipe → factory reset → asset update',
+      ]},
+      { module: 'Module 4 — Network & Connectivity Diagnosis', lessons: ['GlobalProtect VPN and 802.1X Wi-Fi auth', 'NAC quarantine, DNS, VLAN troubleshooting', 'Aruba Wireless and ISP failover', 'Escalation criteria to Tier 3'] },
+      { module: 'Module 5 — Advanced Desktop Operations', lessons: ['PC-to-PC migration with OneDrive', 'OS reinstall and Autopilot re-enrolment', 'Root-cause analysis and KB article creation', 'Escalation package for Tier 3'] },
+    ],
+  },
+  {
+    id: 126,
+    title: 'IT Support Tier 3: System Engineering & Infrastructure',
+    category: 'Corporate IT Training',
+    level: 'Advanced', duration: '4h', students: '0+', rating: 5.0,
+    isFree: false, isPopular: true,
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80&auto=format&fit=crop',
+    instructor: 'Syed Waqas Tayyab',
+    skills: ['Azure AD Tenant Admin', 'Microsoft 365', 'Cisco IOS', 'Aruba Wi-Fi 6', 'HP ProLiant', 'Zero Trust', 'Conditional Access', 'PIM', 'ServiceNow Advanced', 'Jira', 'PowerBI', 'P1 Incident Response'],
+    description: 'Expert-level IT infrastructure — HP server and Cisco/Aruba network administration, full M365 tenant management, Zero Trust security architecture, infrastructure change projects, and P1 major incident leadership. Based on real Tier 3 SAP IT responsibilities that raised Secure Score from 41% to 78%.',
+    topics: [
+      'HP ProLiant servers, Cisco switches, Aruba Wi-Fi 6, NAC, and ISP dual-path failover',
+      'M365 tenant: Exchange, Teams, SharePoint, Intune policy design, licence optimisation',
+      'Zero Trust: Conditional Access, PIM, MDE, DLP, Microsoft Sentinel SIEM basics',
+      'Infrastructure change projects: phased rollout, SAP Ariba procurement, cutover planning',
+      'P1 incident leadership, vendor escalation (Microsoft/Cisco/HP), RCA methodology',
+    ],
+    curriculum: [
+      { module: 'Module 1 — Server & Core Network Administration', lessons: ['HP ProLiant: iLO, RAID, firmware, rack management', 'Cisco IOS: VLAN, STP, PoE, port mirroring', 'Aruba Wi-Fi 6: AP placement, RF planning, Aruba Central', 'NAC, ISP failover, network documentation standards'] },
+      { module: 'Module 2 — Microsoft 365 Tenant Management', lessons: ['Exchange, Teams, SharePoint, OneDrive admin', 'Intune compliance and configuration profiles', 'Licence cost optimisation and quarterly audit', 'ServiceNow/Jira integration with M365 alerts'] },
+      { module: 'Module 3 — Zero Trust Security Architecture', lessons: ['Conditional Access policy design and legacy auth blocking', 'PIM just-in-time access and audit trail', 'MDE onboarding, Secure Score roadmap, DLP labels', 'Microsoft Sentinel: connectors, rules, incident triage'] },
+      { module: 'Module 4 — Infrastructure Projects & Change Management', lessons: ['Project lifecycle: plan → deploy → test → hand over', 'Phased rollout and SAP Ariba procurement', 'Weekend cutover: checklist, rollback, go/no-go', 'PowerBI and Jira for project tracking and reporting'] },
+      { module: 'Module 5 — Vendor Management & P1 Response', lessons: ['Microsoft/Cisco/HP support escalation paths', 'ServiceNow Major Incident process and bridge call leadership', 'RCA: 5-whys, permanent fix vs. workaround', 'Vendor SLA tracking and credit claims'] },
+    ],
+  },
   {
     id: 3,
     title: 'ServiceNow Basics: Your First ITSM Dashboard',
@@ -1243,7 +1329,7 @@ function CourseCard({ course, size = 'normal' }: { course: typeof courses[0], si
         <span className={`absolute top-2 left-2 px-2.5 py-1 rounded-full text-[10px] font-black ${
           course.isFree ? 'bg-green-500/20 border border-green-500/40 text-green-300' : 'bg-accent-blue/20 border border-accent-blue/40 text-accent-blue'
         }`}>
-          {course.isFree ? '🎁 Free' : '$ Inquire'}
+          {course.isFree ? 'Free' : '$ Inquire'}
         </span>
         {/* Popular */}
         {course.isPopular && (
