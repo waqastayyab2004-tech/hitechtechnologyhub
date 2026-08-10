@@ -68,23 +68,36 @@ const NODES = AGENTS.filter(a => !a.isHub)
 export default function AgentTeam() {
   const [active, setActive] = useState<string | null>(null)
   const [pulse, setPulse] = useState(0)
-  const rafRef = useRef<number>()
-  const startRef = useRef<number>(0)
+  const rafRef    = useRef<number>()
+  const startRef  = useRef<number>(0)
+  const wrapRef   = useRef<HTMLDivElement>(null)
+  const visibleRef = useRef(false)
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { visibleRef.current = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    if (wrapRef.current) observer.observe(wrapRef.current)
+
     const animate = (ts: number) => {
-      if (!startRef.current) startRef.current = ts
-      setPulse((ts - startRef.current) / 1000)
+      if (visibleRef.current) {
+        if (!startRef.current) startRef.current = ts
+        setPulse((ts - startRef.current) / 1000)
+      }
       rafRef.current = requestAnimationFrame(animate)
     }
     rafRef.current = requestAnimationFrame(animate)
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      observer.disconnect()
+    }
   }, [])
 
   const activeAgent = active ? AGENTS.find(a => a.id === active) : null
 
   return (
-    <div className="w-full rounded-2xl border border-white/8 bg-dark-800/40 backdrop-blur-sm overflow-hidden">
+    <div ref={wrapRef} className="w-full rounded-2xl border border-white/8 bg-dark-800/40 backdrop-blur-sm overflow-hidden">
 
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-white/8">

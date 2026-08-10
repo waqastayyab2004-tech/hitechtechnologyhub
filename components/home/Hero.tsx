@@ -489,7 +489,7 @@ export default function Hero() {
               </div>
               <div className="bot-glow relative w-24 h-24 rounded-full border-2 border-cyan-400/60 overflow-hidden bg-dark-900 z-10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/nexus-bot.jpg" alt="Waqas Agentic Bot" className="w-full h-full object-cover object-top"/>
+                <img src="/nexus-bot.jpg" alt="Waqas Agentic Bot" loading="lazy" className="w-full h-full object-cover object-top"/>
               </div>
               <span className="absolute bottom-3 right-3 w-3.5 h-3.5 bg-cyan-400 rounded-full border-2 border-dark-900 shadow-[0_0_8px_rgba(6,182,212,.9)] animate-pulse z-20" />
             </div>

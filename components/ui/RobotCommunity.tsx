@@ -189,6 +189,7 @@ export default function RobotCommunity({ className = '' }: { className?: string 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const botsRef   = useRef<Bot[]>([])
   const rafRef    = useRef<number>(0)
+  const visibleRef = useRef(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -199,7 +200,9 @@ export default function RobotCommunity({ className = '' }: { className?: string 
     const resize = () => {
       canvas.width  = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
-      botsRef.current = makeBots(18, canvas.width, canvas.height)
+      // Reduce bots on mobile for performance
+      const isMobile = canvas.width < 768
+      botsRef.current = makeBots(isMobile ? 7 : 18, canvas.width, canvas.height)
     }
     resize()
     window.addEventListener('resize', resize)
@@ -207,37 +210,44 @@ export default function RobotCommunity({ className = '' }: { className?: string 
     let startTime = performance.now()
 
     const loop = (now: number) => {
+      if (!visibleRef.current) {
+        rafRef.current = requestAnimationFrame(loop)
+        return
+      }
       const t = (now - startTime) / 1000
       const w = canvas.width
       const h = canvas.height
 
       ctx.clearRect(0, 0, w, h)
 
-      // Update positions
       botsRef.current.forEach(b => {
         b.x += b.vx
         b.y += b.vy
-        // wrap around edges
         if (b.x < -50)  b.x = w + 50
         if (b.x > w + 50) b.x = -50
         if (b.y < -50)  b.y = h + 50
         if (b.y > h + 50) b.y = -50
       })
 
-      // Draw connections first (behind bots)
       drawConnections(ctx, botsRef.current)
-
-      // Draw each bot
       botsRef.current.forEach(b => drawBot(ctx, b, t))
 
       rafRef.current = requestAnimationFrame(loop)
     }
+
+    // Only animate when visible
+    const observer = new IntersectionObserver(
+      ([entry]) => { visibleRef.current = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    observer.observe(canvas)
 
     rafRef.current = requestAnimationFrame(loop)
 
     return () => {
       cancelAnimationFrame(rafRef.current)
       window.removeEventListener('resize', resize)
+      observer.disconnect()
     }
   }, [])
 

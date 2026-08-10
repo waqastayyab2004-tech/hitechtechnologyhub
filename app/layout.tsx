@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -6,6 +7,20 @@ import BackToTop from '@/components/ui/BackToTop'
 import AIChatbot from '@/components/ui/AIChatbot'
 import HomeButton from '@/components/ui/HomeButton'
 import BackButton from '@/components/ui/BackButton'
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-mono',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.hitechtechnologyhub.com'),
@@ -70,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" data-theme="dark" className="scroll-smooth">
+    <html lang="en" data-theme="dark" className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
         <script dangerouslySetInnerHTML={{ __html: `
