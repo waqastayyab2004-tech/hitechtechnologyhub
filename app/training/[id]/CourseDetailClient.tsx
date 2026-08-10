@@ -635,7 +635,7 @@ function AssessmentModule({ index }: { index: number }) {
           <span className="text-gray-500 text-xs mr-2 flex-shrink-0">{MDE_QUESTIONS.length} questions</span>
         </div>
         <div className="bg-dark-900/40 border-t border-white/5 px-5 py-5">
-          <p className="text-gray-300 text-sm mb-4">Test what you've learned in this course with {MDE_QUESTIONS.length} scenario-based questions covering MDE policy management, performance troubleshooting, exclusion workflows, and escalation procedures.</p>
+          <p className="text-gray-300 text-sm mb-4">Test what you&apos;ve learned in this course with {MDE_QUESTIONS.length} scenario-based questions covering MDE policy management, performance troubleshooting, exclusion workflows, and escalation procedures.</p>
           <button onClick={() => setStarted(true)}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm transition-colors">
             <Brain className="w-4 h-4" /> Start Assessment
@@ -723,10 +723,9 @@ function AssessmentModule({ index }: { index: number }) {
 }
 
 function ModuleAccordion({ mod, index }: { mod: { module: string; lessons: string[] }; index: number }) {
+  const [open, setOpen] = useState(index === 0)
   const isAssessment = mod.module.toLowerCase().startsWith('assessment')
   if (isAssessment) return <AssessmentModule index={index} />
-
-  const [open, setOpen] = useState(index === 0)
   return (
     <div className="border border-white/8 rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)}

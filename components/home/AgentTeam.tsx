@@ -289,7 +289,7 @@ export default function AgentTeam() {
             <div className="h-full flex flex-col gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-3xl">{activeAgent.icon}</span>
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-xs font-black" style={{ background: `${activeAgent.color}20`, color: activeAgent.color, border: `1px solid ${activeAgent.color}40` }}>{activeAgent.label}</span>
                   <div>
                     <p className="font-black text-white text-sm">{activeAgent.name}</p>
                     <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: activeAgent.color }}>{activeAgent.role}</p>
@@ -324,7 +324,7 @@ export default function AgentTeam() {
                   {NODES.map(n => (
                     <button key={n.id} onClick={() => setActive(n.id)}
                       className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors text-left">
-                      <span className="text-sm flex-shrink-0">{n.icon}</span>
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-md text-[10px] font-black flex-shrink-0" style={{ background: `${n.color}20`, color: n.color }}>{n.label}</span>
                       <div className="min-w-0">
                         <p className="text-[11px] font-bold text-white truncate">{n.name}</p>
                         <p className="text-[10px] truncate" style={{ color: n.color }}>{n.role}</p>
