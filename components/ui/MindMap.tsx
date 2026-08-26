@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { Ticket, Shield, Cloud, Monitor, Zap, Package, Cpu, Target, Settings, Brain } from 'lucide-react'
 
 /* ── Mind Map Data ─────────────────────────────────────────────────
    Central node: Syed Waqas Tayyab
@@ -12,47 +13,47 @@ const MAP = {
   center: { label: 'Syed Waqas\nTayyab', sub: '15+ yrs · Senior IT', color: '#3b82f6', glow: 'rgba(59,130,246,0.8)' },
   branches: [
     {
-      id: 'itsm', label: 'ITSM &\nServiceNow', color: '#10b981', glow: 'rgba(16,185,129,0.7)', icon: '🎫', angle: -90,
+      id: 'itsm', label: 'ITSM &\nServiceNow', color: '#10b981', glow: 'rgba(16,185,129,0.7)', icon: Ticket, angle: -90,
       leaves: ['ServiceNow Admin', 'SLA Design (ITIL v3)', 'KB Management', 'Auto-Assignment Rules', '1,500+ Tickets/yr', 'IT Direct → SNOW Migration'],
       link: undefined,
     },
     {
-      id: 'cyber', label: 'Cybersecurity\n& Azure', color: '#ef4444', glow: 'rgba(239,68,68,0.7)', icon: '🛡️', angle: -45,
+      id: 'cyber', label: 'Cybersecurity\n& Azure', color: '#ef4444', glow: 'rgba(239,68,68,0.7)', icon: Shield, angle: -45,
       leaves: ['Azure Security Eng.', 'Zero Trust Architecture', 'Conditional Access', 'Intune / Autopilot', 'Defender for M365', 'Secure Score 41%→78%'],
       link: undefined,
     },
     {
-      id: 'cloud', label: 'Cloud &\nMicrosoft 365', color: '#3b82f6', glow: 'rgba(59,130,246,0.7)', icon: '☁️', angle: 0,
+      id: 'cloud', label: 'Cloud &\nMicrosoft 365', color: '#3b82f6', glow: 'rgba(59,130,246,0.7)', icon: Cloud, angle: 0,
       leaves: ['M365 Tenant Admin', 'Exchange Online', 'SharePoint / Teams', 'Azure AD / Entra ID', 'M365 Copilot', 'PowerShell Automation'],
       link: undefined,
     },
     {
-      id: 'infra', label: 'IT\nInfrastructure', color: '#8b5cf6', glow: 'rgba(139,92,246,0.7)', icon: '🖥️', angle: 45,
+      id: 'infra', label: 'IT\nInfrastructure', color: '#8b5cf6', glow: 'rgba(139,92,246,0.7)', icon: Monitor, angle: 45,
       leaves: ['Cisco / Aruba Network', 'HP Servers & Racking', 'LAN / WAN / VPN', 'Office Build-Outs', 'Server Room Mgmt', 'NAC Controllers'],
       link: undefined,
     },
     {
-      id: 'ai', label: 'AI &\nAutomation', color: '#f59e0b', glow: 'rgba(245,158,11,0.7)', icon: '⚡', angle: 90,
+      id: 'ai', label: 'AI &\nAutomation', color: '#f59e0b', glow: 'rgba(245,158,11,0.7)', icon: Zap, angle: 90,
       leaves: ['Python Automation', 'Power Apps / Automate', 'SAP AI Hub (AIG02)', 'FastAPI Agents', 'WhatsApp Alert Bots', 'ML on SNOW Data'],
       link: undefined,
     },
     {
-      id: 'asset', label: 'IT Asset\nManagement', color: '#f97316', glow: 'rgba(249,115,22,0.7)', icon: '📦', angle: 135,
+      id: 'asset', label: 'IT Asset\nManagement', color: '#f97316', glow: 'rgba(249,115,22,0.7)', icon: Package, angle: 135,
       leaves: ['2,000+ Device Lifecycle', 'SAP Ariba Procurement', 'LPA Inventory Scans', 'Warranty Tracking', 'Disposal & Certs', 'DocuSign Workflows'],
       link: undefined,
     },
     {
-      id: 'sap', label: 'SAP &\nEnterprise', color: '#ec4899', glow: 'rgba(236,72,153,0.7)', icon: '🟠', angle: 180,
+      id: 'sap', label: 'SAP &\nEnterprise', color: '#ec4899', glow: 'rgba(236,72,153,0.7)', icon: Cpu, angle: 180,
       leaves: ['SAP S/4HANA Admin', 'SAP Analytics Cloud', 'SAP BTP / Ariba', 'SAP Work Zone', 'SAP Build Apps', 'enterprise asset ERP'],
       link: undefined,
     },
     {
-      id: 'lead', label: 'Leadership\n& Strategy', color: '#06b6d4', glow: 'rgba(6,182,212,0.7)', icon: '🎯', angle: -135,
+      id: 'lead', label: 'Leadership\n& Strategy', color: '#06b6d4', glow: 'rgba(6,182,212,0.7)', icon: Target, angle: -135,
       leaves: ['MBA · UK', 'C-Suite IT Support', 'Vendor Management', 'PMP 35 PDUs', 'Change Management', 'MENA IT Strategy'],
       link: undefined,
     },
     {
-      id: 'dailyops', label: 'Daily IT\nOperations', color: '#22d3ee', glow: 'rgba(34,211,238,0.7)', icon: '⚙️', angle: -112,
+      id: 'dailyops', label: 'Daily IT\nOperations', color: '#22d3ee', glow: 'rgba(34,211,238,0.7)', icon: Settings, angle: -112,
       leaves: ['Asset Lifecycle Mgmt', 'Endpoint Security', 'macOS & Mobile MDM', 'Windows Provisioning', 'M365 Cloud Admin', 'Network & VPN Ops', 'Email & Identity', 'Print & AV Mgmt', 'User Provisioning', '802.1X & NAC'],
       link: '/projects#daily-operations',
     },
@@ -104,7 +105,9 @@ export default function MindMap() {
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-white/8">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-lg">🧠</div>
+          <div className="w-9 h-9 rounded-xl bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center">
+            <Brain className="w-5 h-5 text-accent-blue" />
+          </div>
           <div>
             <p className="text-sm font-black text-white tracking-wide">IT Expertise Mind Map</p>
             <p className="text-[10px] text-gray-500">Click any branch to explore — 9 domains · 58 skills</p>
@@ -202,8 +205,11 @@ export default function MindMap() {
                       filter="url(#glow)"
                       stroke={branch.color} strokeWidth={isActive ? 2 : 1.5} />
                     {/* Icon */}
-                    <text x={bp.x} y={bp.y - 4} textAnchor="middle" fontSize={isActive ? 16 : 14}
-                      style={{ userSelect: 'none' }}>{branch.icon}</text>
+                    <foreignObject x={bp.x - 10} y={bp.y - 18} width={20} height={20}>
+                      <div style={{display:'flex',alignItems:'center',justifyContent:'center',width:20,height:20}}>
+                        {(() => { const Icon = branch.icon; return <Icon style={{width:isActive?13:11,height:isActive?13:11,color:branch.color}} /> })()}
+                      </div>
+                    </foreignObject>
                     {/* Label */}
                     {branch.label.split('\n').map((line, li) => (
                       <text key={li} x={bp.x} y={bp.y + 10 + li * 9} textAnchor="middle"
@@ -257,7 +263,7 @@ export default function MindMap() {
           {activeBranch ? (
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">{activeBranch.icon}</span>
+                {(() => { const Icon = activeBranch.icon; return <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{background:`${activeBranch.color}20`}}><Icon className="w-4 h-4" style={{color:activeBranch.color}} /></div> })()}
                 <div>
                   <p className="text-sm font-black text-white leading-tight">{activeBranch.label.replace('\n', ' ')}</p>
                   <p className="text-[10px] uppercase tracking-widest font-bold mt-0.5" style={{ color: activeBranch.color }}>
@@ -277,7 +283,7 @@ export default function MindMap() {
                 <Link href={activeBranch.link}
                   className="mt-2 flex items-center justify-center gap-2 w-full px-3 py-2.5 rounded-xl text-xs font-bold border transition-all hover:scale-[1.02]"
                   style={{ background: `${activeBranch.color}18`, border: `1px solid ${activeBranch.color}50`, color: activeBranch.color }}>
-                  ⚙️ View All Daily Ops Cards →
+                  View All Daily Ops Cards →
                 </Link>
               )}
             </div>
@@ -289,7 +295,7 @@ export default function MindMap() {
                 {MAP.branches.map(b => (
                   <button key={b.id} onClick={() => setActive(b.id)}
                     className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors text-left">
-                    <span className="text-sm flex-shrink-0">{b.icon}</span>
+                    {(() => { const Icon = b.icon; return <Icon className="w-3.5 h-3.5 flex-shrink-0" style={{color:b.color}} /> })()}
                     <div className="min-w-0">
                       <p className="text-[11px] font-bold text-white truncate">{b.label.replace('\n', ' ')}</p>
                       <p className="text-[9px]" style={{ color: b.color }}>{b.leaves.length} skills</p>

@@ -7,6 +7,7 @@ import BackToTop from '@/components/ui/BackToTop'
 import AIChatbot from '@/components/ui/AIChatbot'
 import HomeButton from '@/components/ui/HomeButton'
 import BackButton from '@/components/ui/BackButton'
+import WeatherWidget from '@/components/home/WeatherWidget'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -105,6 +106,7 @@ export default function RootLayout({
         <BackToTop />
         <AIChatbot />
         <HomeButton />
+        <WeatherWidget />
       </body>
     </html>
   )

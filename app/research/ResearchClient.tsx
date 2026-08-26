@@ -7,6 +7,8 @@ import {
   Brain, Shield, Sparkles, FileText, FlaskConical,
   FolderGit2, Database, Mic, Award, ExternalLink, ChevronRight,
   BookOpen, Cpu, Zap, Clock, Github, User,
+  Bot, Package, Microscope, Lock, Ticket, Smartphone, HardDrive, Globe,
+  Rocket, BarChart2, Linkedin,
 } from 'lucide-react'
 
 const fadeUp = {
@@ -113,7 +115,7 @@ const OPEN_SOURCE = [
     tags: ['Python', 'Claude API', 'ServiceNow', 'FastAPI'],
     status: 'Active',
     link: null,
-    icon: '🤖',
+    icon: Bot,
   },
   {
     name: 'AI Asset Intelligence Platform',
@@ -121,7 +123,7 @@ const OPEN_SOURCE = [
     tags: ['Python', 'Flask', 'SQLite', 'ML', 'AI Search'],
     status: 'Active',
     link: null,
-    icon: '📦',
+    icon: Package,
   },
   {
     name: 'AIOps Research Lab',
@@ -129,7 +131,7 @@ const OPEN_SOURCE = [
     tags: ['Python', 'AIOps', 'ML', 'Observability', 'Research'],
     status: 'In Progress',
     link: null,
-    icon: '🔬',
+    icon: Microscope,
   },
   {
     name: 'RAG Security Framework',
@@ -137,7 +139,7 @@ const OPEN_SOURCE = [
     tags: ['RAG', 'LLM', 'Security', 'Python', 'Vector DB'],
     status: 'In Progress',
     link: null,
-    icon: '🔐',
+    icon: Lock,
   },
   {
     name: 'AI Ticket Classifier',
@@ -145,7 +147,7 @@ const OPEN_SOURCE = [
     tags: ['Python', 'LLM', 'ServiceNow', 'NLP'],
     status: 'In Progress',
     link: null,
-    icon: '🎫',
+    icon: Ticket,
   },
   {
     name: 'WhatsApp SLA Monitor',
@@ -153,7 +155,7 @@ const OPEN_SOURCE = [
     tags: ['Python', 'Twilio', 'ServiceNow', 'Automation'],
     status: 'Active',
     link: null,
-    icon: '📲',
+    icon: Smartphone,
   },
 ]
 
@@ -163,14 +165,14 @@ const DATASETS = [
     desc: 'Anonymised ServiceNow incident dataset covering 3 years of L1/L2 IT support — categories, resolution times, assignment groups, and SLA outcomes.',
     status: 'Coming Soon',
     tags: ['ITSM', 'ServiceNow', 'NLP', 'Classification'],
-    icon: '🗂️',
+    icon: Database,
   },
   {
     name: 'IT Asset Lifecycle Records',
     desc: 'Hardware asset data including procurement, assignment, LPA scan history, and disposal — useful for predictive refresh modelling.',
     status: 'Coming Soon',
     tags: ['Asset Management', 'ML', 'SAP'],
-    icon: '💾',
+    icon: HardDrive,
   },
 ]
 
@@ -228,17 +230,17 @@ export default function ResearchClient() {
             className="flex flex-wrap gap-3 mt-4">
             <a href="https://orcid.org/0009-0005-6754-3864" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-all">
-              🆔 ORCID Profile
+              <FileText className="w-3.5 h-3.5" /> ORCID Profile
               <ExternalLink className="w-3 h-3" />
             </a>
             <a href="https://www.linkedin.com/in/syedwaqastayyab/" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0A66C2]/10 border border-[#0A66C2]/20 text-[#4A9FE0] text-xs font-semibold hover:bg-[#0A66C2]/20 transition-all">
-              💼 LinkedIn Profile
+              <Linkedin className="w-3.5 h-3.5" /> LinkedIn Profile
               <ExternalLink className="w-3 h-3" />
             </a>
             <a href="https://github.com/waqastayyab2004-tech" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 text-xs font-semibold hover:bg-white/10 transition-all">
-              🐙 GitHub
+              <Github className="w-3.5 h-3.5" /> GitHub
               <ExternalLink className="w-3 h-3" />
             </a>
           </motion.div>
@@ -318,32 +320,32 @@ export default function ResearchClient() {
               <div className="flex flex-col gap-0">
                 {[
                   {
-                    icon: '🆔', label: 'ORCID', color: 'border-green-500/30 bg-green-500/8 text-green-400',
+                    icon: FileText, label: 'ORCID', color: 'border-green-500/30 bg-green-500/8 text-green-400',
                     mine: 'ORCID 0009-0005-6754-3864 — registered and active. Every paper I publish will be permanently linked to this ID.',
                     href: 'https://orcid.org/0009-0005-6754-3864',
                   },
                   {
-                    icon: '📄', label: 'Research Papers', color: 'border-accent-blue/30 bg-accent-blue/8 text-accent-blue',
+                    icon: BookOpen, label: 'Research Papers', color: 'border-accent-blue/30 bg-accent-blue/8 text-accent-blue',
                     mine: 'Currently in Literature Review on "Enterprise AI Copilot for IT Operations." Expected Q4 2026. Writing from 15 years of real enterprise experience — not theory.',
                     href: null,
                   },
                   {
-                    icon: '🌐', label: 'HiTecH AI HUB', color: 'border-cyan-500/30 bg-cyan-500/8 text-cyan-400',
+                    icon: Globe, label: 'HiTecH AI HUB', color: 'border-cyan-500/30 bg-cyan-500/8 text-cyan-400',
                     mine: 'This website — built entirely by me using Next.js, TypeScript, and Claude AI. It\'s both a portfolio and a live demonstration of what I build.',
                     href: 'https://www.hitechtechnologyhub.com',
                   },
                   {
-                    icon: '🐙', label: 'GitHub', color: 'border-violet-500/30 bg-violet-500/8 text-violet-400',
+                    icon: Github, label: 'GitHub', color: 'border-violet-500/30 bg-violet-500/8 text-violet-400',
                     mine: 'Active repos: Enterprise IT Copilot, AI Asset Intelligence Platform, AIOps Research Lab, RAG Security Framework. Real tools, not toy projects.',
                     href: 'https://github.com/waqastayyab2004-tech',
                   },
                   {
-                    icon: '💼', label: 'LinkedIn + CV', color: 'border-orange-500/30 bg-orange-500/8 text-orange-400',
+                    icon: Linkedin, label: 'LinkedIn + CV', color: 'border-orange-500/30 bg-orange-500/8 text-orange-400',
                     mine: '15+ years at SAP, 13+ certifications including Azure Security & SAP AI Hub, MBA from Buckinghamshire University UK. Every claim is verified.',
                     href: 'https://www.linkedin.com/in/syedwaqastayyab/',
                   },
                   {
-                    icon: '🚀', label: 'AI Engineer Career', color: 'border-pink-500/30 bg-pink-500/8 text-pink-400',
+                    icon: Rocket, label: 'AI Engineer Career', color: 'border-pink-500/30 bg-pink-500/8 text-pink-400',
                     mine: 'The goal: Senior AI/ML Engineer or AI Research Engineer role in enterprise tech. This entire ecosystem is built to make that transition undeniable.',
                     href: null,
                   },
@@ -351,8 +353,8 @@ export default function ResearchClient() {
                   <div key={node.label} className="flex gap-4">
                     {/* Left: icon + connector line */}
                     <div className="flex flex-col items-center flex-shrink-0" style={{width:44}}>
-                      <div className={`w-11 h-11 rounded-xl border flex items-center justify-center text-xl flex-shrink-0 ${node.color}`}>
-                        {node.icon}
+                      <div className={`w-11 h-11 rounded-xl border flex items-center justify-center flex-shrink-0 ${node.color}`}>
+                        {(() => { const Icon = node.icon; return <Icon className="w-5 h-5" /> })()}
                       </div>
                       {i < arr.length - 1 && (
                         <div className="w-px flex-1 bg-white/10 my-1" style={{minHeight:24}} />
@@ -544,7 +546,7 @@ export default function ResearchClient() {
                 className="p-5 rounded-2xl bg-dark-800/60 border border-white/8 hover:border-accent-blue/20 transition-colors flex flex-col gap-3">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xl">{p.icon}</span>
+                    {(() => { const Icon = p.icon; return <div className="w-8 h-8 rounded-lg bg-white/6 flex items-center justify-center flex-shrink-0"><Icon className="w-4 h-4 text-gray-300" /></div> })()}
                     <h3 className="font-bold text-white text-sm">{p.name}</h3>
                   </div>
                   <span className={`flex-shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold ${
@@ -580,7 +582,7 @@ export default function ResearchClient() {
               <motion.div key={d.name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{once:true}}
                 className="p-5 rounded-2xl bg-dark-800/60 border border-dashed border-white/10 hover:border-accent-blue/20 transition-colors">
                 <div className="flex items-center gap-2.5 mb-2">
-                  <span className="text-xl">{d.icon}</span>
+                  {(() => { const Icon = d.icon; return <div className="w-8 h-8 rounded-lg bg-white/6 flex items-center justify-center flex-shrink-0"><Icon className="w-4 h-4 text-gray-400" /></div> })()}
                   <h3 className="font-bold text-white text-sm">{d.name}</h3>
                   <span className="ml-auto px-2 py-0.5 rounded-full text-[10px] font-bold bg-gray-500/10 border border-gray-500/20 text-gray-500">{d.status}</span>
                 </div>

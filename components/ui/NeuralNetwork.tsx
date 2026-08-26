@@ -2,13 +2,22 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import {
+  Settings, Shield, Cpu, Monitor, Bot, Cloud, Terminal, Target,
+  Ticket, ClipboardList, BarChart2, AlertCircle, Search, RefreshCw,
+  Package, Wrench, Eye, Lock, Globe, Smartphone, Brain, Link2, Zap,
+  TrendingUp, GraduationCap, Users, Award, Key, Wifi, Server,
+  HardDrive, Layers, GitBranch, Database, Mail, MessageSquare,
+  Printer, Mic, ShoppingCart, FlaskConical, Activity, Rocket,
+  DollarSign, PenLine, Tv, Network,
+} from 'lucide-react'
 
 /* ── Domain data with full experience context ─────────────────────── */
 const DOMAINS = [
   {
     id: 'itsm',
     label: 'IT Service\nDelivery',
-    icon: '⚙️',
+    icon: Settings,
     color: '#3B82F6',
     angle: 270,
     stat: '10+ yrs · 100+ projects',
@@ -32,21 +41,21 @@ const DOMAINS = [
     tools: ['ServiceNow', 'SAP Ariba', 'ITIL v3', 'Intune', 'Azure AD', 'M365'],
     certs: ['ITIL v3 Foundation', 'PMP — 35 PDUs'],
     subSkills: [
-      { id: 's1', label: 'ServiceNow ITSM', icon: '🎫' },
-      { id: 's2', label: 'ITIL v3',         icon: '📋' },
-      { id: 's3', label: 'SLA & KPI',       icon: '📊' },
-      { id: 's4', label: 'Incident Mgmt',   icon: '🚨' },
-      { id: 's5', label: 'Problem Mgmt',    icon: '🔍' },
-      { id: 's6', label: 'Change Mgmt',     icon: '🔄' },
-      { id: 's7', label: 'Asset Lifecycle', icon: '📦' },
-      { id: 's8', label: 'Field Service',   icon: '🛠️' },
-      { id: 's9', label: 'Monitoring',      icon: '👁️' },
+      { id: 's1', label: 'ServiceNow ITSM', icon: Ticket },
+      { id: 's2', label: 'ITIL v3',         icon: ClipboardList },
+      { id: 's3', label: 'SLA & KPI',       icon: BarChart2 },
+      { id: 's4', label: 'Incident Mgmt',   icon: AlertCircle },
+      { id: 's5', label: 'Problem Mgmt',    icon: Search },
+      { id: 's6', label: 'Change Mgmt',     icon: RefreshCw },
+      { id: 's7', label: 'Asset Lifecycle', icon: Package },
+      { id: 's8', label: 'Field Service',   icon: Wrench },
+      { id: 's9', label: 'Monitoring',      icon: Eye },
     ],
   },
   {
     id: 'cyber',
     label: 'Cybersecurity\n& Azure',
-    icon: '🛡️',
+    icon: Shield,
     color: '#EF4444',
     angle: 315,
     stat: 'Azure Security Certified · CCNA Security',
@@ -71,21 +80,21 @@ const DOMAINS = [
     tools: ['Azure Security Center', 'Intune', 'Defender for M365', 'Entra ID', 'Conditional Access', 'CCNA Security'],
     certs: ['Azure Security Engineer Associate (2024)', 'CCNA Security (2013)'],
     subSkills: [
-      { id: 'c1', label: 'Azure Security',  icon: '☁️' },
-      { id: 'c2', label: 'Zero Trust',      icon: '🔒' },
-      { id: 'c3', label: 'Intune MDM',      icon: '📱' },
-      { id: 'c4', label: 'Defender M365',   icon: '🛡️' },
-      { id: 'c5', label: 'MFA & CA',        icon: '🔑' },
-      { id: 'c6', label: 'CCNA Security',   icon: '🌐' },
-      { id: 'c7', label: 'Endpoint Sec',    icon: '💻' },
-      { id: 'c8', label: 'Net Hardening',   icon: '🔐' },
-      { id: 'c9', label: 'Sec Audits',      icon: '📝' },
+      { id: 'c1', label: 'Azure Security',  icon: Cloud },
+      { id: 'c2', label: 'Zero Trust',      icon: Lock },
+      { id: 'c3', label: 'Intune MDM',      icon: Smartphone },
+      { id: 'c4', label: 'Defender M365',   icon: Shield },
+      { id: 'c5', label: 'MFA & CA',        icon: Key },
+      { id: 'c6', label: 'CCNA Security',   icon: Network },
+      { id: 'c7', label: 'Endpoint Sec',    icon: Monitor },
+      { id: 'c8', label: 'Net Hardening',   icon: Lock },
+      { id: 'c9', label: 'Sec Audits',      icon: ClipboardList },
     ],
   },
   {
     id: 'sap',
     label: 'SAP\nEnterprise',
-    icon: '🟠',
+    icon: Cpu,
     color: '#F97316',
     angle: 0,
     stat: '11+ yrs SAP · 5 certifications',
@@ -110,20 +119,20 @@ const DOMAINS = [
     tools: ['SAP S/4HANA', 'SAP BTP', 'SAP Ariba', 'SAP Analytics Cloud', 'SAP Build', 'SAP HANA ML', 'SAP Gen AI Hub'],
     certs: ['SAP S/4HANA System Admin (2022)', 'SAP Analytics Cloud (2023)', 'SAP Python ML for HANA (2026)', 'SAP Build No-Code (2023)', 'SAP Gen AI Hub AIG02 (2026)'],
     subSkills: [
-      { id: 'p1', label: 'SAP S/4HANA',    icon: '🏗️' },
-      { id: 'p2', label: 'SAP Analytics',  icon: '📈' },
-      { id: 'p3', label: 'SAP BTP',        icon: '☁️' },
-      { id: 'p4', label: 'SAP Ariba',      icon: '🛒' },
-      { id: 'p5', label: 'SAP Build',      icon: '🔨' },
-      { id: 'p6', label: 'SAP HANA ML',    icon: '🧪' },
-      { id: 'p7', label: 'SAP IT Ops',     icon: '⚙️' },
-      { id: 'p8', label: 'SAP Copilot AI', icon: '🤖' },
+      { id: 'p1', label: 'SAP S/4HANA',    icon: Layers },
+      { id: 'p2', label: 'SAP Analytics',  icon: TrendingUp },
+      { id: 'p3', label: 'SAP BTP',        icon: Cloud },
+      { id: 'p4', label: 'SAP Ariba',      icon: ShoppingCart },
+      { id: 'p5', label: 'SAP Build',      icon: Wrench },
+      { id: 'p6', label: 'SAP HANA ML',    icon: FlaskConical },
+      { id: 'p7', label: 'SAP IT Ops',     icon: Settings },
+      { id: 'p8', label: 'SAP Copilot AI', icon: Bot },
     ],
   },
   {
     id: 'm365',
     label: 'Microsoft\n365',
-    icon: '💼',
+    icon: Monitor,
     color: '#6366F1',
     angle: 45,
     stat: 'M365 Admin Certified · 11+ yrs',
@@ -148,21 +157,21 @@ const DOMAINS = [
     tools: ['Exchange Online', 'Teams', 'SharePoint', 'OneDrive', 'M365 Copilot', 'Intune', 'Power Automate', 'Compliance Center'],
     certs: ['Microsoft 365 Admin (2020)', 'M365 Copilot First Look (2023)'],
     subSkills: [
-      { id: 'm1', label: 'M365 Admin',      icon: '🖥️' },
-      { id: 'm2', label: 'Exchange Online', icon: '📧' },
-      { id: 'm3', label: 'SharePoint',      icon: '📂' },
-      { id: 'm4', label: 'Teams Admin',     icon: '💬' },
-      { id: 'm5', label: 'M365 Copilot',   icon: '🤖' },
-      { id: 'm6', label: 'OneDrive',        icon: '☁️' },
-      { id: 'm7', label: 'Intune Policies', icon: '📋' },
-      { id: 'm8', label: 'Dig. Signage',    icon: '📺' },
-      { id: 'm9', label: 'Meeting Room AV', icon: '🎤' },
+      { id: 'm1', label: 'M365 Admin',      icon: Monitor },
+      { id: 'm2', label: 'Exchange Online', icon: Mail },
+      { id: 'm3', label: 'SharePoint',      icon: Database },
+      { id: 'm4', label: 'Teams Admin',     icon: MessageSquare },
+      { id: 'm5', label: 'M365 Copilot',   icon: Bot },
+      { id: 'm6', label: 'OneDrive',        icon: Cloud },
+      { id: 'm7', label: 'Intune Policies', icon: ClipboardList },
+      { id: 'm8', label: 'Dig. Signage',    icon: Tv },
+      { id: 'm9', label: 'Meeting Room AV', icon: Mic },
     ],
   },
   {
     id: 'ai',
     label: 'AI &\nAutomation',
-    icon: '🤖',
+    icon: Bot,
     color: '#A855F7',
     angle: 90,
     stat: '4 live AI apps · hours saved daily',
@@ -187,22 +196,22 @@ const DOMAINS = [
     tools: ['Claude AI', 'GPT-4', 'Gemini', 'FastAPI', 'Flask', 'scikit-learn', 'Pandas', 'Next.js', 'n8n', 'Twilio', 'REST APIs'],
     certs: ['SAP Python ML for HANA (2026)', 'AI-Driven Project Manager (2025)', 'SAP Gen AI Hub AIG02 (2026)'],
     subSkills: [
-      { id: 'a1',  label: 'Agentic AI',      icon: '🧠' },
-      { id: 'a2',  label: 'Python ML',       icon: '🐍' },
-      { id: 'a3',  label: 'LLMs & Prompts',  icon: '💬' },
-      { id: 'a4',  label: 'RAG Pipelines',   icon: '🔗' },
-      { id: 'a5',  label: 'FastAPI / Flask', icon: '⚡' },
-      { id: 'a6',  label: 'Next.js / React', icon: '⚛️' },
-      { id: 'a7',  label: 'n8n / Make',      icon: '🔄' },
-      { id: 'a8',  label: 'REST APIs',       icon: '🌐' },
-      { id: 'a9',  label: 'scikit / Pandas', icon: '📊' },
-      { id: 'a10', label: 'Claude / GPT',    icon: '✨' },
+      { id: 'a1',  label: 'Agentic AI',      icon: Brain },
+      { id: 'a2',  label: 'Python ML',       icon: Activity },
+      { id: 'a3',  label: 'LLMs & Prompts',  icon: MessageSquare },
+      { id: 'a4',  label: 'RAG Pipelines',   icon: Link2 },
+      { id: 'a5',  label: 'FastAPI / Flask', icon: Zap },
+      { id: 'a6',  label: 'Next.js / React', icon: Globe },
+      { id: 'a7',  label: 'n8n / Make',      icon: RefreshCw },
+      { id: 'a8',  label: 'REST APIs',       icon: Network },
+      { id: 'a9',  label: 'scikit / Pandas', icon: BarChart2 },
+      { id: 'a10', label: 'Claude / GPT',    icon: Bot },
     ],
   },
   {
     id: 'infra',
     label: 'Infra &\nCloud',
-    icon: '☁️',
+    icon: Cloud,
     color: '#06B6D4',
     angle: 135,
     stat: '15+ yrs infrastructure · 3 offices',
@@ -227,21 +236,21 @@ const DOMAINS = [
     tools: ['Azure', 'Cisco', 'Aruba', 'HP Servers', 'Windows Server', 'Linux', 'Active Directory', 'Group Policy', 'WSUS', 'Hyper-V'],
     certs: ['CCNA Security (2013)', 'Azure Security Engineer (2024)'],
     subSkills: [
-      { id: 'i1', label: 'Azure Cloud',      icon: '☁️' },
-      { id: 'i2', label: 'IaaS / PaaS',      icon: '🏗️' },
-      { id: 'i3', label: 'Cisco / Aruba',    icon: '🌐' },
-      { id: 'i4', label: 'LAN / WAN',        icon: '🔌' },
-      { id: 'i5', label: 'HP Servers',       icon: '🖥️' },
-      { id: 'i6', label: 'Windows Server',   icon: '🪟' },
-      { id: 'i7', label: 'Linux Admin',      icon: '🐧' },
-      { id: 'i8', label: 'Active Directory', icon: '📁' },
-      { id: 'i9', label: 'Group Policy',     icon: '📋' },
+      { id: 'i1', label: 'Azure Cloud',      icon: Cloud },
+      { id: 'i2', label: 'IaaS / PaaS',      icon: Layers },
+      { id: 'i3', label: 'Cisco / Aruba',    icon: Network },
+      { id: 'i4', label: 'LAN / WAN',        icon: Wifi },
+      { id: 'i5', label: 'HP Servers',       icon: Server },
+      { id: 'i6', label: 'Windows Server',   icon: Monitor },
+      { id: 'i7', label: 'Linux Admin',      icon: Terminal },
+      { id: 'i8', label: 'Active Directory', icon: Database },
+      { id: 'i9', label: 'Group Policy',     icon: ClipboardList },
     ],
   },
   {
     id: 'dev',
     label: 'DevOps &\nProgramming',
-    icon: '⌨️',
+    icon: Terminal,
     color: '#10B981',
     angle: 180,
     stat: '4 live apps · full-stack Python & JS',
@@ -266,21 +275,21 @@ const DOMAINS = [
     tools: ['Python', 'FastAPI', 'Flask', 'Next.js 14', 'TypeScript', 'SQLite', 'PowerShell', 'Bash', 'Git', 'Docker', 'Swift'],
     certs: ['BSc IT — University of Greenwich UK (2010)'],
     subSkills: [
-      { id: 'd1', label: 'Python',           icon: '🐍' },
-      { id: 'd2', label: 'TypeScript',       icon: '📘' },
-      { id: 'd3', label: 'Bash / Shell',     icon: '💻' },
-      { id: 'd4', label: 'PowerShell',       icon: '🪟' },
-      { id: 'd5', label: 'Git & GitHub',     icon: '🐙' },
-      { id: 'd6', label: 'Docker',           icon: '🐳' },
-      { id: 'd7', label: 'CI/CD',            icon: '🔄' },
-      { id: 'd8', label: 'Swift macOS',      icon: '🍎' },
-      { id: 'd9', label: 'SQL / SQLite',     icon: '🗄️' },
+      { id: 'd1', label: 'Python',           icon: Activity },
+      { id: 'd2', label: 'TypeScript',       icon: Globe },
+      { id: 'd3', label: 'Bash / Shell',     icon: Terminal },
+      { id: 'd4', label: 'PowerShell',       icon: Monitor },
+      { id: 'd5', label: 'Git & GitHub',     icon: GitBranch },
+      { id: 'd6', label: 'Docker',           icon: Layers },
+      { id: 'd7', label: 'CI/CD',            icon: RefreshCw },
+      { id: 'd8', label: 'Swift macOS',      icon: Cpu },
+      { id: 'd9', label: 'SQL / SQLite',     icon: Database },
     ],
   },
   {
     id: 'leadership',
     label: 'Leadership\n& Strategy',
-    icon: '🎯',
+    icon: Target,
     color: '#F59E0B',
     angle: 225,
     stat: 'MBA · PMP · 1M+ community',
@@ -305,20 +314,20 @@ const DOMAINS = [
     tools: ['ServiceNow', 'SAP Ariba', 'M365 Copilot', 'PowerPoint', 'Excel', 'Power BI'],
     certs: ['MBA iMBA — Buckinghamshire New Univ UK (2023)', 'PMP — 35 PDUs (2017)', 'ITIL v3 Foundation (2017)', 'AI-Driven Project Manager (2025)'],
     subSkills: [
-      { id: 'l1', label: 'MBA (iMBA)',       icon: '🎓' },
-      { id: 'l2', label: 'PMP 35 PDUs',      icon: '📋' },
-      { id: 'l3', label: 'Team Training',    icon: '👥' },
-      { id: 'l4', label: 'AI Strategy',      icon: '🚀' },
-      { id: 'l5', label: 'Vendor Mgmt',      icon: '🤝' },
-      { id: 'l6', label: 'Procurement',      icon: '💰' },
-      { id: 'l7', label: '1M+ Community',    icon: '📱' },
-      { id: 'l8', label: 'Tech Writing',     icon: '✍️' },
+      { id: 'l1', label: 'MBA (iMBA)',       icon: GraduationCap },
+      { id: 'l2', label: 'PMP 35 PDUs',      icon: ClipboardList },
+      { id: 'l3', label: 'Team Training',    icon: Users },
+      { id: 'l4', label: 'AI Strategy',      icon: Rocket },
+      { id: 'l5', label: 'Vendor Mgmt',      icon: Users },
+      { id: 'l6', label: 'Procurement',      icon: DollarSign },
+      { id: 'l7', label: '1M+ Community',    icon: Globe },
+      { id: 'l8', label: 'Tech Writing',     icon: PenLine },
     ],
   },
   {
     id: 'dailyops',
     label: 'Daily IT\nOperations',
-    icon: '⚙️',
+    icon: Settings,
     color: '#22D3EE',
     angle: 247,
     stat: '10 areas · 200+ users · daily',
@@ -347,16 +356,16 @@ const DOMAINS = [
     tools: ['Jamf Pro', 'Microsoft Intune', 'Exchange Online', 'Azure AD', 'Cisco/Aruba', 'BitLocker', 'Defender', 'Teams Rooms', 'ServiceNow', 'GlobalProtect VPN'],
     certs: ['Microsoft Intune / Autopilot (Modern Mgmt) — 2021', 'Azure Security Engineer Associate — 2024', 'ITIL v3 Foundation — 2017', 'Microsoft 365 Admin — 2020'],
     subSkills: [
-      { id: 'do1', label: 'Asset Lifecycle',   icon: '📦' },
-      { id: 'do2', label: 'Email & Identity',  icon: '📧' },
-      { id: 'do3', label: 'Endpoint Security', icon: '🛡️' },
-      { id: 'do4', label: 'macOS MDM (Jamf)',  icon: '🍎' },
-      { id: 'do5', label: 'Mobile MDM',        icon: '📱' },
-      { id: 'do6', label: 'Win Autopilot',     icon: '💻' },
-      { id: 'do7', label: 'M365 Cloud',        icon: '☁️' },
-      { id: 'do8', label: 'Print & AV',        icon: '🖨️' },
-      { id: 'do9', label: 'User Provisioning', icon: '🔐' },
-      { id: 'do10', label: 'Network & VPN',    icon: '🌐' },
+      { id: 'do1',  label: 'Asset Lifecycle',   icon: Package },
+      { id: 'do2',  label: 'Email & Identity',  icon: Mail },
+      { id: 'do3',  label: 'Endpoint Security', icon: Shield },
+      { id: 'do4',  label: 'macOS MDM (Jamf)',  icon: Monitor },
+      { id: 'do5',  label: 'Mobile MDM',        icon: Smartphone },
+      { id: 'do6',  label: 'Win Autopilot',     icon: Terminal },
+      { id: 'do7',  label: 'M365 Cloud',        icon: Cloud },
+      { id: 'do8',  label: 'Print & AV',        icon: Printer },
+      { id: 'do9',  label: 'User Provisioning', icon: Lock },
+      { id: 'do10', label: 'Network & VPN',     icon: Network },
     ],
   },
 ]
@@ -469,7 +478,11 @@ export default function NeuralNetwork() {
                     strokeWidth={isAct?2.5:1.2} strokeDasharray={isAct?'none':'5 4'} opacity={isAct?1:0.4}/>
                   <circle cx={p.x} cy={p.y} r={nr} fill={isAct?`url(#rg-${d.id})`:'#060e1c'}
                     stroke={d.color} strokeWidth={isAct?3:2} filter="url(#g4)"/>
-                  <text x={p.x} y={p.y+11} textAnchor="middle" fontSize={isAct?36:30}>{d.icon}</text>
+                  <foreignObject x={p.x-14} y={p.y-14} width={28} height={28}>
+                    <div style={{display:'flex',alignItems:'center',justifyContent:'center',width:28,height:28}}>
+                      {(() => { const Icon = d.icon; return <Icon style={{width:isAct?20:16,height:isAct?20:16,color:d.color}} /> })()}
+                    </div>
+                  </foreignObject>
                   <circle cx={p.x+nr*0.72} cy={p.y-nr*0.72} r="12"
                     fill="#040812" stroke={d.color} strokeWidth="1.8"/>
                   <text x={p.x+nr*0.72} y={p.y-nr*0.72+5} textAnchor="middle" fontSize="11"
@@ -493,7 +506,11 @@ export default function NeuralNetwork() {
             <circle cx={CX} cy={CY} r="44" fill="none" stroke="#8B5CF6" strokeWidth="1.2"
               opacity="0.2" strokeDasharray="4 7" transform={`rotate(${-t*18} ${CX} ${CY})`}/>
             <circle cx={CX} cy={CY} r="34" fill="#060f22" stroke="#3B82F6" strokeWidth="2.5" filter="url(#g8)"/>
-            <text x={CX} y={CY+8} textAnchor="middle" fontSize="32" filter="url(#g4)">🧠</text>
+            <foreignObject x={CX-14} y={CY-18} width={28} height={28}>
+              <div style={{display:'flex',alignItems:'center',justifyContent:'center',width:28,height:28}}>
+                <Brain style={{width:22,height:22,color:'#60a5fa'}} />
+              </div>
+            </foreignObject>
             <text x={CX} y={CY+28} textAnchor="middle" fontFamily="'Courier New',monospace"
               fontSize="9" fontWeight="900" fill="#60A5FA" opacity="0.9" letterSpacing="3">WAQAS</text>
           </svg>
@@ -508,9 +525,9 @@ export default function NeuralNetwork() {
                 <button key={d.id} onClick={() => setActive(d.id)}
                   className="flex items-center gap-3 px-3 py-3 rounded-xl text-left transition-all duration-150 hover:scale-[1.01] w-full"
                   style={{background:`${d.color}10`,border:`1px solid ${d.color}28`}}>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-3xl"
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{background:`${d.color}20`,border:`1px solid ${d.color}40`}}>
-                    {d.icon}
+                    {(() => { const Icon = d.icon; return <Icon style={{width:22,height:22,color:d.color}} /> })()}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-bold text-sm font-mono leading-snug" style={{color:d.color}}>
@@ -530,9 +547,9 @@ export default function NeuralNetwork() {
               </button>
               <div className="flex items-center gap-3 px-3 py-3 rounded-xl"
                 style={{background:`${activeDomain.color}12`,border:`1px solid ${activeDomain.color}35`}}>
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 text-4xl"
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{background:`${activeDomain.color}20`,border:`1px solid ${activeDomain.color}40`}}>
-                  {activeDomain.icon}
+                  {(() => { const Icon = activeDomain.icon; return <Icon style={{width:26,height:26,color:activeDomain.color}} /> })()}
                 </div>
                 <div>
                   <h4 className="font-black text-white text-sm font-mono leading-tight">
@@ -544,9 +561,9 @@ export default function NeuralNetwork() {
               {activeDomain.subSkills.map(sk => (
                 <div key={sk.id} className="flex items-center gap-3 px-3 py-2 rounded-lg"
                   style={{background:`${activeDomain.color}08`,border:`1px solid ${activeDomain.color}20`}}>
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-xl"
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
                     style={{background:`${activeDomain.color}15`}}>
-                    {sk.icon}
+                    {(() => { const Icon = sk.icon; return <Icon style={{width:16,height:16,color:activeDomain.color}} /> })()}
                   </div>
                   <span className="text-sm font-mono font-semibold" style={{color:activeDomain.color}}>{sk.label}</span>
                 </div>
@@ -555,7 +572,7 @@ export default function NeuralNetwork() {
                 <Link href={activeDomain.link}
                   className="mt-1 flex items-center justify-center gap-2 w-full px-3 py-3 rounded-xl text-sm font-black font-mono tracking-wider transition-all hover:scale-[1.02]"
                   style={{background:`${activeDomain.color}20`,border:`1px solid ${activeDomain.color}50`,color:activeDomain.color}}>
-                  ⚙️ VIEW PROJECT CARDS →
+                  VIEW PROJECT CARDS →
                 </Link>
               )}
             </div>
@@ -569,8 +586,10 @@ export default function NeuralNetwork() {
 
           {/* Panel header */}
           <div className="flex items-center gap-4 px-6 py-4 border-b border-white/5">
-            <span className="text-4xl">{activeDomain.icon}</span>
-            <div className="flex-1 min-w-0">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{background:`${activeDomain.color}20`,border:`1px solid ${activeDomain.color}40`}}>
+              {(() => { const Icon = activeDomain.icon; return <Icon style={{width:24,height:24,color:activeDomain.color}} /> })()}
+            </div>            <div className="flex-1 min-w-0">
               <h4 className="text-white font-black font-mono text-xl tracking-wider">
                 {activeDomain.label.replace('\n',' ')}
               </h4>
@@ -587,7 +606,7 @@ export default function NeuralNetwork() {
             {/* What I Did */}
             <div className="rounded-xl p-5" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}}>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-lg">🏆</span>
+                <Award className="w-4 h-4 text-yellow-400" />
                 <h5 className="text-white font-black font-mono text-sm tracking-wider">WHAT I DID</h5>
               </div>
               <ul className="space-y-2.5">
@@ -603,7 +622,7 @@ export default function NeuralNetwork() {
             {/* What I Can Do */}
             <div className="rounded-xl p-5" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}}>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-lg">⚡</span>
+                <Zap className="w-4 h-4 text-blue-400" />
                 <h5 className="text-white font-black font-mono text-sm tracking-wider">WHAT I CAN DO</h5>
               </div>
               <ul className="space-y-2.5">
@@ -621,7 +640,7 @@ export default function NeuralNetwork() {
               {/* Tools */}
               <div className="rounded-xl p-5 flex-1" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}}>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-lg">🛠️</span>
+                  <Wrench className="w-4 h-4 text-gray-400" />
                   <h5 className="text-white font-black font-mono text-sm tracking-wider">TOOLS & TECH</h5>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -636,7 +655,7 @@ export default function NeuralNetwork() {
               {/* Certs */}
               <div className="rounded-xl p-5" style={{background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}}>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-lg">🎓</span>
+                  <GraduationCap className="w-4 h-4 text-purple-400" />
                   <h5 className="text-white font-black font-mono text-sm tracking-wider">CERTIFICATIONS</h5>
                 </div>
                 <ul className="space-y-1.5">
@@ -657,10 +676,8 @@ export default function NeuralNetwork() {
               {activeDomain.subSkills.map(sk => (
                 <div key={sk.id} className="flex flex-col items-center gap-1.5 p-3 rounded-xl text-center"
                   style={{background:`${activeDomain.color}0c`,border:`1px solid ${activeDomain.color}25`}}>
-                  <span className="text-2xl">{sk.icon}</span>
-                  <span className="text-xs font-mono font-bold leading-tight" style={{color:activeDomain.color}}>
-                    {sk.label}
-                  </span>
+                  {(() => { const Icon = sk.icon; return <Icon style={{width:18,height:18,color:activeDomain.color}} /> })()}
+                  <span className="text-xs font-mono font-bold leading-tight" style={{color:activeDomain.color}}>{sk.label}</span>
                 </div>
               ))}
             </div>
@@ -669,7 +686,7 @@ export default function NeuralNetwork() {
                 <Link href={activeDomain.link}
                   className="inline-flex items-center gap-3 px-8 py-3 rounded-xl font-black text-sm font-mono tracking-wider transition-all hover:scale-105"
                   style={{background:`${activeDomain.color}20`,border:`2px solid ${activeDomain.color}60`,color:activeDomain.color}}>
-                  ⚙️ VIEW 10 DAILY OPS PROJECT CARDS →
+                  VIEW 10 DAILY OPS PROJECT CARDS →
                 </Link>
               </div>
             )}

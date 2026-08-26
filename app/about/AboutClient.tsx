@@ -8,6 +8,7 @@ import {
   Facebook, CheckCircle, Calendar, MapPin, GraduationCap, ExternalLink,
   Download, Code, Server, Database, ChevronDown, ChevronUp, BookOpen,
   Bot, BarChart3, Building2, Package, Smartphone, Monitor, Printer, Lock, Settings,
+  PenLine, FlaskConical, FileText, ArrowRight, Bell, Link2,
 } from 'lucide-react'
 import NeuralNetwork from '@/components/ui/NeuralNetwork'
 import MindMap from '@/components/ui/MindMap'
@@ -139,9 +140,9 @@ const experience = [
   },
 ]
 
-const projects = [
+const projects: { icon: React.ElementType; title: string; subtitle: string; desc: string; tags: string[]; status: string; color: string }[] = [
   {
-    emoji: '🤖',
+    icon: Bot,
     title: 'Waqas AI Hub',
     subtitle: 'macOS AI Dashboard',
     desc: 'Native macOS Swift app + FastAPI backend integrating Gmail, SAP Outlook, Calendar, ServiceNow tickets, and WhatsApp SLA alerts in one dashboard.',
@@ -150,7 +151,7 @@ const projects = [
     color: 'border-white/15',
   },
   {
-    emoji: '📦',
+    icon: Package,
     title: 'IT Asset Manager',
     subtitle: 'Enterprise Web App',
     desc: 'Full-stack Flask app replacing Excel-based asset tracking at SAP. KPI dashboard, Excel import/export, AI chat widget, full audit log. Modelled on real enterprise IT asset system workflows.',
@@ -159,7 +160,7 @@ const projects = [
     color: 'border-white/15',
   },
   {
-    emoji: '🔔',
+    icon: Bell,
     title: 'SNOW SLA Pipeline',
     subtitle: 'WhatsApp Automation',
     desc: 'Python daemons polling ServiceNow every 5 min — fires WhatsApp via Twilio 30 min before SLA breach. Zero manual checking.',
@@ -168,7 +169,7 @@ const projects = [
     color: 'border-green-500',
   },
   {
-    emoji: '🌐',
+    icon: Globe,
     title: 'HiTecH AI HUB',
     subtitle: 'Personal Brand Website',
     desc: 'This site — Next.js 14, TypeScript, Tailwind CSS, live IT news ticker, AI neural network, blog, hire page. Deployed on Cloudflare Pages.',
@@ -177,7 +178,7 @@ const projects = [
     color: 'border-purple-500',
   },
   {
-    emoji: '🔗',
+    icon: Link2,
     title: 'SAP O365 MCP Server',
     subtitle: 'Claude AI ↔ M365 Bridge',
     desc: 'MCP server giving Claude AI direct access to SAP Outlook, Calendar, OneDrive, SharePoint via OAuth2 + Microsoft Graph API.',
@@ -186,7 +187,7 @@ const projects = [
     color: 'border-orange-500',
   },
   {
-    emoji: '📊',
+    icon: BarChart3,
     title: 'SNOW SLA Predictor',
     subtitle: 'Python ML Model',
     desc: 'ML model on real enterprise IT operations ServiceNow ticket data predicting SLA breaches before they happen — scikit-learn Random Forest pipeline on 1,500+ tickets/year data.',
@@ -195,7 +196,7 @@ const projects = [
     color: 'border-yellow-500',
   },
   {
-    emoji: '📊',
+    icon: BarChart3,
     title: 'SAP PowerBI IT Dashboard',
     subtitle: 'KPI & Analytics Automation',
     desc: 'PowerBI dashboards for IT KPIs, asset lifecycle, ticket SLAs, and onboarding stats. Integrated with SharePoint and SAP Work Zone for live data feeds.',
@@ -204,7 +205,7 @@ const projects = [
     color: 'border-sky-500',
   },
   {
-    emoji: '📱',
+    icon: Smartphone,
     title: 'SAP MENA Device Approval System',
     subtitle: 'Power Apps Automation',
     desc: 'Power Apps-based device approval workflow for MENA region — replacing manual email chains. Handled 200–300K SAR/month in device procurement approvals via SAP Ariba integration.',
@@ -289,11 +290,11 @@ const stats = [
 ]
 
 const contacts = [
-  { icon: Phone,         label: '+966 505803073',        href: 'tel:+966505803073',                                          color: 'text-green-400',  bg: 'bg-green-500/10',  emoji: '📞' },
-  { icon: MessageCircle, label: 'WhatsApp',               href: 'https://wa.me/966505803073',                                 color: 'text-emerald-400', bg: 'bg-emerald-500/10', emoji: '💬' },
-  { icon: Mail,          label: 'waqastayyab2004@gmail.com', href: 'mailto:waqastayyab2004@gmail.com',                       color: 'text-red-400',    bg: 'bg-red-500/10',    emoji: '✉️' },
-  { icon: Linkedin,      label: 'syedwaqastayyab',        href: 'https://www.linkedin.com/in/syedwaqastayyab/',              color: 'text-blue-400',   bg: 'bg-blue-500/10',   emoji: '🔗' },
-  { icon: Facebook,      label: 'HiTech Technology HUB',  href: 'https://www.facebook.com/profile.php?id=61551726961739',    color: 'text-indigo-400', bg: 'bg-indigo-500/10', emoji: '👍' },
+  { icon: Phone,         label: '+966 505803073',        href: 'tel:+966505803073',                                          color: 'text-green-400',  bg: 'bg-green-500/10'  },
+  { icon: MessageCircle, label: 'WhatsApp',               href: 'https://wa.me/966505803073',                                 color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
+  { icon: Mail,          label: 'waqastayyab2004@gmail.com', href: 'mailto:waqastayyab2004@gmail.com',                       color: 'text-red-400',    bg: 'bg-red-500/10'    },
+  { icon: Linkedin,      label: 'syedwaqastayyab',        href: 'https://www.linkedin.com/in/syedwaqastayyab/',              color: 'text-blue-400',   bg: 'bg-blue-500/10'   },
+  { icon: Facebook,      label: 'HiTech Technology HUB',  href: 'https://www.facebook.com/profile.php?id=61551726961739',    color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
 ]
 
 /* ─── PAGE ─────────────────────────────────────────────────────────── */
@@ -434,12 +435,12 @@ export default function PortfolioPage() {
                 {/* Floating tech tags around the photo */}
                 <div className="mt-8 flex flex-wrap justify-center gap-2 max-w-xs">
                   {[
-                    { label: '☁️ Azure Security', text: '#93c5fd', border: 'rgba(59,130,246,0.4)', bg: 'rgba(59,130,246,0.12)' },
-                    { label: '🟠 SAP S/4HANA',   text: '#fdba74', border: 'rgba(249,115,22,0.4)',  bg: 'rgba(249,115,22,0.12)' },
-                    { label: '🤖 AI / ML',        text: '#c4b5fd', border: 'rgba(139,92,246,0.4)', bg: 'rgba(139,92,246,0.12)' },
-                    { label: '🎫 ServiceNow',     text: '#86efac', border: 'rgba(34,197,94,0.4)',  bg: 'rgba(34,197,94,0.12)'  },
-                    { label: '💼 M365 Admin',     text: '#a5b4fc', border: 'rgba(99,102,241,0.4)', bg: 'rgba(99,102,241,0.12)' },
-                    { label: '🐍 Python',         text: '#fde68a', border: 'rgba(234,179,8,0.4)',  bg: 'rgba(234,179,8,0.12)'  },
+                    { label: 'Azure Security', text: '#93c5fd', border: 'rgba(59,130,246,0.4)', bg: 'rgba(59,130,246,0.12)' },
+                    { label: 'SAP S/4HANA',   text: '#fdba74', border: 'rgba(249,115,22,0.4)',  bg: 'rgba(249,115,22,0.12)' },
+                    { label: 'AI / ML',        text: '#c4b5fd', border: 'rgba(139,92,246,0.4)', bg: 'rgba(139,92,246,0.12)' },
+                    { label: 'ServiceNow',     text: '#86efac', border: 'rgba(34,197,94,0.4)',  bg: 'rgba(34,197,94,0.12)'  },
+                    { label: 'M365 Admin',     text: '#a5b4fc', border: 'rgba(99,102,241,0.4)', bg: 'rgba(99,102,241,0.12)' },
+                    { label: 'Python',         text: '#fde68a', border: 'rgba(234,179,8,0.4)',  bg: 'rgba(234,179,8,0.12)'  },
                   ].map((t) => (
                     <div key={t.label}
                       className="px-3 py-1.5 rounded-lg text-xs font-semibold backdrop-blur-sm"
@@ -927,7 +928,9 @@ export default function PortfolioPage() {
             {projects.map((p) => (
               <div key={p.title} className={`glass-card border-l-4 ${p.color} p-5 hover:-translate-y-0.5 transition-all duration-200`}>
                 <div className="flex items-start justify-between mb-3">
-                  <div className="text-3xl">{p.emoji}</div>
+                  <div className="w-9 h-9 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center flex-shrink-0">
+                    {(() => { const Icon = p.icon; return <Icon className="w-4.5 h-4.5 text-gray-300" /> })()}
+                  </div>
                   <span className={`text-xs font-bold px-2 py-1 rounded-full border ${p.status === 'Live' ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'}`}>
                     {p.status}
                   </span>
@@ -950,7 +953,87 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        {/* ── CERTIFICATIONS ───────────────────────────────────────── */}
+        {/* ── RESEARCH & PUBLICATIONS ──────────────────────────────── */}
+        <section>
+          <SectionHeader icon={<FlaskConical className="w-5 h-5 text-purple-400" />} title="Research & Publications" />
+
+          {/* Intro banner */}
+          <div className="glass-card p-6 mb-6 border border-purple-500/20 bg-gradient-to-br from-purple-900/10 to-blue-900/10">
+            <div className="flex flex-col md:flex-row gap-5 items-start">
+              <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
+                <FlaskConical className="w-6 h-6 text-purple-400" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-white font-bold text-base mb-1">From Practitioner to Published Researcher</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-3">
+                  My goal is to bridge the gap between enterprise IT practice and academic research — a gap that costs both sides. Practitioners solve problems that academics study in theory. I am working toward publishing original research grounded in real enterprise deployments across MENA, targeting peer-reviewed journals and recognised global universities.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['IEEE Transactions', 'ACM CSCW', 'Int. Journal of Information Management', 'Computers & Security'].map(j => (
+                    <span key={j} className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 font-medium">{j}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Research areas grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            {[
+              { icon: Brain,     color: 'text-blue-400',   bg: 'bg-blue-500/10',   border: 'border-blue-500/20',   title: 'AI in Enterprise IT Operations', desc: 'Empirical study of AI automation impact on SLA compliance, ticket resolution time, and IT engineer productivity in large-scale SAP/ITSM environments.' },
+              { icon: Shield,    color: 'text-red-400',    bg: 'bg-red-500/10',    border: 'border-red-500/20',    title: 'Cybersecurity Governance in Emerging Markets', desc: 'Analysis of Zero Trust adoption, Microsoft Secure Score uplift, and PDPL/NCA compliance patterns in Saudi Arabia enterprise organisations.' },
+              { icon: BarChart3, color: 'text-green-400',  bg: 'bg-green-500/10',  border: 'border-green-500/20',  title: 'IT Asset Lifecycle & RFID Automation', desc: 'Quantifying accuracy, cost, and time savings from RFID-enabled asset tracking vs traditional manual audits across 1,500+ device enterprise fleets.' },
+              { icon: Globe,     color: 'text-cyan-400',   bg: 'bg-cyan-500/10',   border: 'border-cyan-500/20',   title: 'Digital Transformation in MENA', desc: 'Examining Vision 2030 technology adoption barriers and enablers — cloud readiness, talent gaps, and governance frameworks across KSA enterprise sectors.' },
+              { icon: Bot,       color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20', title: 'Multiagent AI Systems in IT Support', desc: 'Design patterns and failure modes of multiagent orchestration applied to real-time incident detection, SLA prediction, and alert routing in enterprise ITSM.' },
+              { icon: FileText,  color: 'text-pink-400',   bg: 'bg-pink-500/10',   border: 'border-pink-500/20',   title: 'IT Career Transition to AI Engineering', desc: 'Longitudinal self-study on reskilling pathways for senior IT professionals transitioning into AI/ML engineering roles — certification efficacy and portfolio-based hiring.' },
+            ].map(r => {
+              const Icon = r.icon
+              return (
+                <div key={r.title} className={`glass-card p-5 border ${r.border} hover:-translate-y-0.5 transition-all duration-200`}>
+                  <div className={`w-9 h-9 rounded-lg ${r.bg} flex items-center justify-center mb-3`}>
+                    <Icon className={`w-4.5 h-4.5 ${r.color}`} />
+                  </div>
+                  <h4 className="text-white font-bold text-sm mb-2 leading-snug">{r.title}</h4>
+                  <p className="text-gray-400 text-xs leading-relaxed">{r.desc}</p>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Published articles row */}
+          <div className="glass-card p-5 border border-white/8">
+            <div className="flex items-center gap-2 mb-4">
+              <PenLine className="w-4 h-4 text-purple-400" />
+              <p className="text-sm font-bold text-white">My Blogs — Analyst & Strategist Writing</p>
+              <span className="ml-auto text-xs text-gray-500">Original research-backed articles</span>
+            </div>
+            <div className="space-y-3">
+              <Link href="/blog?topic=My+Blogs" className="flex items-center justify-between p-3 rounded-lg bg-dark-700/50 border border-white/6 hover:border-purple-500/30 hover:bg-purple-900/10 transition-all group">
+                <div>
+                  <p className="text-sm font-semibold text-gray-100 group-hover:text-purple-300 transition-colors leading-snug">My Top 10 Strategic Technology Trends for 2026 — Why Every IT Leader Must Act Now</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Analyst · Strategist · Tech Consultant · Aug 2026 · 11 min read</p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-purple-400 flex-shrink-0 ml-3 transition-colors" />
+              </Link>
+            </div>
+            <div className="mt-4">
+              <Link href="/blog" className="text-xs text-purple-400 hover:text-purple-300 transition-colors inline-flex items-center gap-1 font-semibold">
+                View all My Blogs <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Collaboration CTA */}
+          <div className="mt-5 p-5 rounded-xl border border-dashed border-purple-500/30 bg-purple-900/5 text-center">
+            <p className="text-gray-300 text-sm mb-1 font-semibold">Open to Academic Collaboration</p>
+            <p className="text-gray-500 text-xs leading-relaxed max-w-xl mx-auto mb-3">
+              If you are a researcher, academic institution, or journal editor interested in co-authoring empirical research on enterprise AI, IT automation, or cybersecurity governance in emerging markets — I welcome the conversation. Practitioner data from real deployments is what most academic AI research lacks.
+            </p>
+            <a href="mailto:waqastayyab2004@gmail.com" className="inline-flex items-center gap-2 text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
+              <Mail className="w-3.5 h-3.5" /> waqastayyab2004@gmail.com
+            </a>
+          </div>
+        </section>
         <section>
           <SectionHeader icon={<Award className="w-5 h-5 text-yellow-400" />} title="Certifications & Education" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

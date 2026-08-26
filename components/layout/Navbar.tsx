@@ -8,7 +8,7 @@ import {
   Zap, Menu, X, ChevronDown,
   Server, Shield, Globe, Brain, BookOpen, Briefcase,
   FileText, Lightbulb, Code, Users, ArrowRight,
-  GraduationCap, Cpu, Newspaper, Search, Award,
+  GraduationCap, Cpu, Newspaper, Search, Award, TrendingUp, Youtube,
 } from 'lucide-react'
 import GlobalSearch from '@/components/ui/GlobalSearch'
 import ThemeToggle from '@/components/ui/ThemeToggle'
@@ -71,17 +71,12 @@ const nav = [
       {
         group: 'Courses & Content',
         items: [
-          { href: '/training',          icon: GraduationCap, label: 'IT Learning',    desc: 'IT, AI Tools, Cloud, Security — free & paid', badge: '12 Courses' },
+          { href: '/training',          icon: GraduationCap, label: 'IT Learning',    desc: 'IT, AI Tools, Cloud, Security — free & paid', badge: '38 Courses' },
           { href: '/ai-tools-learning', icon: Brain,         label: 'AI Learning — Corporate', desc: 'Claude Code, Cursor, Copilot & more — free', badge: 'New' },
           { href: '/insights',          icon: Lightbulb,     label: 'Insights',       desc: 'IT topics, guides, and trends' },
           { href: '/resources',         icon: Cpu,           label: 'AI Resources',   desc: 'Top 20 AI tools for IT professionals' },
           { href: '/research',          icon: Newspaper,     label: 'Research',       desc: 'Publications, open source & datasets', badge: 'New' },
-        ],
-      },
-      {
-        group: 'Free Downloads',
-        items: [
-          { href: '/training', icon: FileText, label: 'CV Templates', desc: '5 free Word templates — download now', badge: 'Free' },
+          { href: '/learn/youtube',     icon: Youtube,       label: 'YouTube Learning',  desc: 'Watch IT, AI & Cloud tutorials in-site', badge: 'New' },
         ],
       },
     ],
@@ -89,6 +84,34 @@ const nav = [
   {
     label: 'Articles',
     href: '/blog',
+  },
+  {
+    label: 'Career Resources',
+    href: '/careers',
+    seeAll: { href: '/careers', label: 'View Career Opportunity Hub' },
+    dropdown: [
+      {
+        group: 'Job Search Tools',
+        items: [
+          { href: '/careers/jobs',      icon: Search,        label: 'Find Jobs',           desc: 'Browse Saudi Arabia jobs from LinkedIn, Indeed & more', badge: 'Free' },
+          { href: '/careers/tracker',   icon: Briefcase,     label: 'Application Tracker', desc: 'Track every application Saved → Offer' },
+        ],
+      },
+      {
+        group: 'AI-Powered Tools',
+        items: [
+          { href: '/careers/resume',    icon: FileText,      label: 'Resume Tools',        desc: 'Match score + tailored resume generator', badge: 'AI' },
+          { href: '/careers/interview', icon: Users,         label: 'Interview Prep',       desc: 'Role-specific questions + answer guidance', badge: 'AI' },
+        ],
+      },
+      {
+        group: 'Free Resources',
+        items: [
+          { href: '/training',  icon: FileText,   label: 'CV Templates',        desc: '5 free Word templates — download now', badge: 'Free' },
+          { href: '/careers',   icon: TrendingUp, label: 'Career Opportunity',  desc: 'All-in-one free job-search platform', badge: 'Free' },
+        ],
+      },
+    ],
   },
   {
     label: 'SAP Hub',
@@ -231,14 +254,14 @@ export default function Navbar() {
             </div>
 
             {/* ── Desktop Nav ── */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5">
               {nav.map((item) => (
                 <div key={item.label} className="relative"
                   onMouseEnter={() => item.dropdown && openDropdown(item.label)}
                   onMouseLeave={scheduleClose}>
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-150 ${
+                    className={`flex items-center gap-1 px-2.5 py-2 rounded-lg text-[13px] font-semibold whitespace-nowrap transition-all duration-150 ${
                       isActive(item)
                         ? 'text-white bg-white/8'
                         : 'text-gray-200 hover:text-white hover:bg-white/8'
@@ -308,11 +331,11 @@ export default function Navbar() {
             </nav>
 
             {/* ── Desktop Right: Search + Status + CTA ── */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-2">
               {/* Search button */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/8 text-gray-400 hover:text-white transition-all duration-150 group"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/8 text-gray-400 hover:text-white transition-all duration-150 group"
               >
                 <Search className="w-3.5 h-3.5" />
                 <span className="text-xs text-gray-500 group-hover:text-gray-300 hidden xl:block">Search...</span>
@@ -320,12 +343,12 @@ export default function Navbar() {
                   ⌘K
                 </kbd>
               </button>
-              <span className="flex items-center gap-1.5 text-xs text-green-400 font-medium">
+              <span className="hidden xl:flex items-center gap-1.5 text-xs text-green-400 font-medium whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
                 Open to Work
               </span>
               <Link href="/contact"
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent-blue hover:bg-blue-500 text-white text-sm font-bold transition-all duration-200 shadow-[0_0_16px_rgba(59,130,246,0.3)] hover:shadow-[0_0_24px_rgba(59,130,246,0.5)]">
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-accent-blue hover:bg-blue-500 text-white text-[13px] font-bold whitespace-nowrap transition-all duration-200 shadow-[0_0_16px_rgba(59,130,246,0.3)] hover:shadow-[0_0_24px_rgba(59,130,246,0.5)]">
                 Contact Us
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>

@@ -11,17 +11,17 @@ interface Message {
 }
 
 const QUICK_CHIPS = [
-  { label: '💼 Services & rates',   text: 'What IT services do you offer and what are the rates?' },
-  { label: '🏆 Skills & certs',     text: 'What are Waqas skills and certifications?' },
-  { label: '📚 Free courses',       text: 'What free IT courses are available?' },
-  { label: '🤝 How to hire',        text: 'How can I hire Waqas for a project?' },
-  { label: '🤖 AI & automation',    text: 'What AI and automation projects has Waqas built?' },
-  { label: '📞 Contact details',    text: 'How can I contact Waqas?' },
+  { label: 'Services & rates',   text: 'What IT services do you offer and what are the rates?' },
+  { label: 'Skills & certs',     text: 'What are Waqas skills and certifications?' },
+  { label: 'Free courses',       text: 'What free IT courses are available?' },
+  { label: 'How to hire',        text: 'How can I hire Waqas for a project?' },
+  { label: 'AI & automation',    text: 'What AI and automation projects has Waqas built?' },
+  { label: 'Contact details',    text: 'How can I contact Waqas?' },
 ]
 
 const CHAT_API = '/api/chat'
 
-const GREETING = `Hi! I'm Waqas AI ChatBot 🤖
+const GREETING = `Hi! I'm Waqas AI ChatBot
 
 Ask me anything about:
 • Waqas's skills & experience

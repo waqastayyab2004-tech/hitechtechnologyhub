@@ -7,6 +7,7 @@ import {
   Award, ChevronDown, ChevronUp, Mail, Play, BookOpen,
   TrendingUp, Shield, Cloud, Server, Brain, Zap, Globe,
   Home, Library, Search, Download, Printer,
+  Bot, ShoppingCart, Monitor, Wrench, Briefcase, Rocket,
 } from 'lucide-react'
 
 /* ── DATA ─────────────────────────────────────────────────────── */
@@ -1304,10 +1305,10 @@ const courses = [
 ]
 
 const featuredTracks = [
-  { title: 'IT Infrastructure & Security', icon: '🛡️', courses: 3, color: 'from-blue-600/30 to-blue-900/20', border: 'border-blue-500/20', skills: ['Azure Security', 'Zero Trust', 'Cisco Networking', 'Intune'] },
-  { title: 'AI & Automation Engineer', icon: '🤖', courses: 2, color: 'from-purple-600/30 to-purple-900/20', border: 'border-purple-500/20', skills: ['Python', 'AI Tools', 'ServiceNow API', 'Power Automate'] },
-  { title: 'E-Commerce & Digital Business', icon: '🛒', courses: 4, color: 'from-amber-600/30 to-amber-900/20', border: 'border-amber-500/20', skills: ['Amazon FBA', 'Shopify', 'Digital Marketing', 'SEO'] },
-  { title: 'Microsoft 365 Expert', icon: '☁️', courses: 2, color: 'from-sky-600/30 to-sky-900/20', border: 'border-sky-500/20', skills: ['Exchange Online', 'Teams Admin', 'Intune', 'Copilot'] },
+  { title: 'IT Infrastructure & Security', icon: Shield, courses: 3, color: 'from-blue-600/30 to-blue-900/20', border: 'border-blue-500/20', skills: ['Azure Security', 'Zero Trust', 'Cisco Networking', 'Intune'] },
+  { title: 'AI & Automation Engineer', icon: Bot, courses: 2, color: 'from-purple-600/30 to-purple-900/20', border: 'border-purple-500/20', skills: ['Python', 'AI Tools', 'ServiceNow API', 'Power Automate'] },
+  { title: 'E-Commerce & Digital Business', icon: ShoppingCart, courses: 4, color: 'from-amber-600/30 to-amber-900/20', border: 'border-amber-500/20', skills: ['Amazon FBA', 'Shopify', 'Digital Marketing', 'SEO'] },
+  { title: 'Microsoft 365 Expert', icon: Cloud, courses: 2, color: 'from-sky-600/30 to-sky-900/20', border: 'border-sky-500/20', skills: ['Exchange Online', 'Teams Admin', 'Intune', 'Copilot'] },
 ]
 
 /* ── COURSE CARD ──────────────────────────────────────────────── */
@@ -1512,49 +1513,6 @@ export default function TrainingPage() {
             )}
           </div>
 
-          {/* ── FREE RESOURCES — CV Templates ────────────────── */}
-          {activeCategory === 'All' && (
-            <section className="mb-10">
-              <div className="rounded-2xl border border-green-500/20 bg-gradient-to-br from-green-500/5 to-dark-800/60 overflow-hidden">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-5 border-b border-green-500/15">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">🎁</span>
-                    <div>
-                      <h2 className="text-base font-black text-white">Free Downloads — Professional CV Templates</h2>
-                      <p className="text-xs text-gray-500">Industry-specific Word templates built by a senior IT practitioner.</p>
-                    </div>
-                  </div>
-                  <span className="flex-shrink-0 px-3 py-1.5 rounded-full text-[10px] font-black bg-green-500/15 border border-green-500/30 text-green-400 uppercase tracking-widest">100% Free · No Sign-up</span>
-                </div>
-                <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-                  {[
-                    { file: 'CV-IT-Support-Engineer-L1-L2.docx', title: 'IT Support Engineer', level: 'L1 / L2', icon: '🖥️', color: 'text-sky-400 border-sky-500/25 bg-sky-500/8', desc: 'Perfect for your first IT role or moving from L1 to L2. Includes ServiceNow, M365, AD skills.', exp: 'Entry Level · 0–3 years' },
-                    { file: 'CV-Senior-IT-Engineer.docx', title: 'Senior IT Engineer', level: 'Senior / Lead', icon: '🔧', color: 'text-blue-400 border-blue-500/25 bg-blue-500/8', desc: 'For senior engineers targeting IT manager or specialist roles at multinationals.', exp: 'Senior Level · 8+ years' },
-                    { file: 'CV-Azure-Security-Engineer.docx', title: 'Azure Security Engineer', level: 'Security / Cloud', icon: '🛡️', color: 'text-red-400 border-red-500/25 bg-red-500/8', desc: 'Optimised for Azure Security Engineer roles. Highlights Zero Trust, Defender, Conditional Access.', exp: 'Mid–Senior · 5+ years' },
-                    { file: 'CV-IT-Consultant.docx', title: 'IT Consultant', level: 'Consulting / ITSM', icon: '💼', color: 'text-purple-400 border-purple-500/25 bg-purple-500/8', desc: 'For freelance IT consultants and contract roles. Strong on ITSM, ServiceNow, client management.', exp: 'All Levels' },
-                    { file: 'CV-Career-Change-Into-IT.docx', title: 'Career Change into IT', level: 'Beginner / Switcher', icon: '🚀', color: 'text-emerald-400 border-emerald-500/25 bg-emerald-500/8', desc: 'Structured for career changers — highlights transferable skills and IT certifications.', exp: 'Career Switcher' },
-                  ].map(t => (
-                    <a key={t.file} href={`/cv-templates/${t.file}`} download
-                      className={`flex flex-col gap-3 p-4 rounded-xl border ${t.color} hover:-translate-y-0.5 transition-all duration-200 group`}>
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl">{t.icon}</span>
-                        <span className={`text-[9px] font-black px-2 py-0.5 rounded-full border ${t.color}`}>{t.level}</span>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-xs mb-1 group-hover:underline">{t.title}</p>
-                        <p className="text-gray-500 text-[10px] leading-snug mb-2">{t.desc}</p>
-                        <p className="text-[9px] text-gray-600">{t.exp}</p>
-                      </div>
-                      <div className="flex items-center gap-1 text-[10px] font-bold mt-auto" style={{color: 'inherit'}}>
-                        <Download className="w-3 h-3"/> Download .docx
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </section>
-          )}
-
           {/* ── Learning Paths ────────────────────────────────── */}
           {activeCategory === 'All' && (
             <section className="mb-10">
@@ -1563,7 +1521,7 @@ export default function TrainingPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                 {featuredTracks.map((track, i) => (
                   <div key={i} className={`rounded-xl border ${track.border} bg-gradient-to-br ${track.color} p-5 hover:-translate-y-0.5 transition-transform duration-200 cursor-pointer`}>
-                    <span className="text-3xl mb-3 block">{track.icon}</span>
+                    {(() => { const Icon = track.icon; return <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{background:'rgba(255,255,255,0.06)',border:'1px solid rgba(255,255,255,0.1)'}}><Icon className="w-5 h-5 text-gray-300" /></div> })()}
                     <h3 className="font-black text-white text-sm mb-1">{track.title}</h3>
                     <p className="text-gray-400 text-[11px] mb-3">{track.courses} courses</p>
                     <div className="flex flex-wrap gap-1">
@@ -1798,7 +1756,7 @@ export default function TrainingPage() {
                         <select required className="w-full bg-dark-700 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-300 focus:outline-none focus:border-accent-blue/50">
                           <option value="">Select a course…</option>
                           {courses.map(c => (
-                            <option key={c.id} value={c.title}>{c.isFree ? '🎁 Free — ' : '🎓 Paid — '}{c.title}</option>
+                            <option key={c.id} value={c.title}>{c.isFree ? 'Free — ' : 'Paid — '}{c.title}</option>
                           ))}
                           <option value="corporate">Corporate / Team Training (custom)</option>
                         </select>

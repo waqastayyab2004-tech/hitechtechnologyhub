@@ -11,6 +11,7 @@
     "export": "next build"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.120.0",
     "@tailwindcss/typography": "^0.5.20",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.3.8",

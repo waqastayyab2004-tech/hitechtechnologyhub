@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Calendar, Clock, Search, BookOpen } from 'lucide-react'
+import { Calendar, Clock, Search, BookOpen, PenLine } from 'lucide-react'
 
 function formatDate(dateStr: string): string {
   try {
@@ -31,6 +31,8 @@ const CATEGORIES = [
   { key: 'IT Career',            label: 'IT Career & Learning', tags: ['IT Career', 'Career', 'MLOps', 'Self-Taught', 'AI Engineering'] },
 ]
 
+const MY_BLOGS_TAG = 'My Blogs'
+
 function matchesCategory(tags: string[], catKey: string): boolean {
   if (catKey === 'All') return true
   const cat = CATEGORIES.find(c => c.key === catKey)
@@ -43,22 +45,40 @@ function matchesCategory(tags: string[], catKey: string): boolean {
 export default function BlogClient({ posts }: { posts: Post[] }) {
   const [activeCategory, setActiveCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
+  const [showMyBlogs, setShowMyBlogs] = useState(false)
 
-  const filtered = useMemo(() => posts.filter(p => {
-    const matchesCat = matchesCategory(p.tags, activeCategory)
-    const matchesSearch = !searchQuery ||
-      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()))
-    return matchesCat && matchesSearch
-  }), [posts, activeCategory, searchQuery])
+  const myBlogsPosts = useMemo(() => posts.filter(p => p.tags.includes(MY_BLOGS_TAG)), [posts])
 
-  const featured = activeCategory === 'All' && !searchQuery ? posts.find(p => p.featured) : undefined
+  const filtered = useMemo(() => {
+    const base = showMyBlogs ? myBlogsPosts : posts
+    return base.filter(p => {
+      const matchesCat = showMyBlogs ? true : matchesCategory(p.tags, activeCategory)
+      const matchesSearch = !searchQuery ||
+        p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()))
+      return matchesCat && matchesSearch
+    })
+  }, [posts, myBlogsPosts, activeCategory, searchQuery, showMyBlogs])
+
+  const featured = activeCategory === 'All' && !searchQuery && !showMyBlogs ? posts.find(p => p.featured) : undefined
   const articles = featured ? filtered.filter(p => !p.featured) : filtered
 
   const catCount = (key: string) => key === 'All'
     ? posts.length
     : posts.filter(p => matchesCategory(p.tags, key)).length
+
+  function selectCategory(key: string) {
+    setShowMyBlogs(false)
+    setActiveCategory(key)
+    setSearchQuery('')
+  }
+
+  function selectMyBlogs() {
+    setShowMyBlogs(true)
+    setActiveCategory('All')
+    setSearchQuery('')
+  }
 
   return (
     <div className="min-h-screen bg-dark-900 pt-20">
@@ -87,17 +107,44 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
             </div>
           </div>
           <nav className="p-3 flex-1">
+            {/* ── My Blogs section ── */}
+            <div className="mb-4">
+              <p className="text-xs text-gray-300 uppercase tracking-widest font-semibold px-2 mb-2">My Blogs</p>
+              <button
+                onClick={selectMyBlogs}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold transition-all mb-0.5 border ${
+                  showMyBlogs
+                    ? 'bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 border-purple-500/30'
+                    : 'text-gray-300 hover:bg-white/5 hover:text-white border-transparent'
+                }`}>
+                <span className="flex items-center gap-2">
+                  <PenLine className="w-3.5 h-3.5 flex-shrink-0"/>
+                  <span>Waqas Blogs</span>
+                </span>
+                <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${showMyBlogs ? 'bg-purple-500/20 text-purple-300' : 'bg-white/8 text-gray-400'}`}>
+                  {myBlogsPosts.length}
+                </span>
+              </button>
+              {showMyBlogs && (
+                <div className="mx-3 mt-1 mb-2 px-2.5 py-2 rounded-lg bg-purple-900/10 border border-purple-500/10 text-[10px] text-purple-300/70 leading-relaxed">
+                  Research-backed analysis · Strategist &amp; Tech Consultant perspective
+                </div>
+              )}
+            </div>
+
+            <div className="h-px bg-white/8 mx-2 mb-3"/>
+
             <p className="text-xs text-gray-300 uppercase tracking-widest font-semibold px-2 mb-2">Topics</p>
             {CATEGORIES.map(cat => (
               <button key={cat.key}
-                onClick={() => { setActiveCategory(cat.key); setSearchQuery('') }}
+                onClick={() => selectCategory(cat.key)}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors mb-0.5 ${
-                  activeCategory === cat.key && !searchQuery
+                  !showMyBlogs && activeCategory === cat.key && !searchQuery
                     ? 'bg-accent-blue/10 text-accent-blue border border-accent-blue/20'
                     : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}>
                 <span>{cat.label}</span>
-                <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${activeCategory === cat.key && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/8 text-gray-400'}`}>
+                <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${!showMyBlogs && activeCategory === cat.key && !searchQuery ? 'bg-accent-blue/20 text-accent-blue' : 'bg-white/8 text-gray-400'}`}>
                   {catCount(cat.key)}
                 </span>
               </button>
@@ -110,11 +157,18 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
 
           {/* Mobile pills */}
           <div className="lg:hidden flex gap-2 overflow-x-auto pb-3 mb-4 scrollbar-hide">
+            <button
+              onClick={selectMyBlogs}
+              className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
+                showMyBlogs ? 'bg-purple-600 border-purple-600 text-white' : 'bg-dark-700 border-white/10 text-gray-300'
+              }`}>
+              ✍️ My Blogs
+            </button>
             {CATEGORIES.map(cat => (
               <button key={cat.key}
-                onClick={() => { setActiveCategory(cat.key); setSearchQuery('') }}
+                onClick={() => selectCategory(cat.key)}
                 className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
-                  activeCategory === cat.key ? 'bg-accent-blue border-accent-blue text-white' : 'bg-dark-700 border-white/10 text-gray-300'
+                  !showMyBlogs && activeCategory === cat.key ? 'bg-accent-blue border-accent-blue text-white' : 'bg-dark-700 border-white/10 text-gray-300'
                 }`}>
                 {cat.key === 'All' ? 'All' : cat.label}
               </button>
@@ -124,10 +178,18 @@ export default function BlogClient({ posts }: { posts: Post[] }) {
           {/* Header */}
           <div className="mb-6">
             <h1 className="text-2xl font-black text-white mb-1">
-              {searchQuery ? `Search: "${searchQuery}"` : activeCategory === 'All' ? 'All Articles' : CATEGORIES.find(c => c.key === activeCategory)?.label ?? activeCategory}
+              {showMyBlogs
+                ? 'My Blogs'
+                : searchQuery
+                  ? `Search: "${searchQuery}"`
+                  : activeCategory === 'All'
+                    ? 'All Articles'
+                    : CATEGORIES.find(c => c.key === activeCategory)?.label ?? activeCategory}
             </h1>
             <p className="text-gray-300 text-sm">
-              {filtered.length} article{filtered.length !== 1 ? 's' : ''} · Written from 15+ years of real enterprise IT experience
+              {showMyBlogs
+                ? `${filtered.length} article${filtered.length !== 1 ? 's' : ''} · Original research & analysis by Waqas Syed — Analyst · Strategist · Tech Consultant`
+                : `${filtered.length} article${filtered.length !== 1 ? 's' : ''} · Written from 15+ years of real enterprise IT experience`}
             </p>
           </div>
 
