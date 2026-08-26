@@ -13,7 +13,7 @@ const BOARDS = [
     name: 'Bayt.com',
     desc: 'Top Middle East job portal — millions of KSA listings',
     color: 'from-blue-600 to-blue-800',
-    icon: '💼',
+    logo: 'https://www.google.com/s2/favicons?domain=bayt.com&sz=64',
     url: (q: string) =>
       `https://www.bayt.com/en/saudi-arabia/jobs/${q ? `?q%5Btitle_cont%5D=${encodeURIComponent(q)}` : ''}`,
   },
@@ -21,7 +21,7 @@ const BOARDS = [
     name: 'Gulf Naukri',
     desc: 'Saudi Arabia & Gulf region specialists',
     color: 'from-orange-500 to-red-600',
-    icon: '🏢',
+    logo: 'https://www.google.com/s2/favicons?domain=gulfnaukri.com&sz=64',
     url: (q: string) =>
       `https://www.gulfnaukri.com/jobs${q ? `?q=${encodeURIComponent(q)}&l=Saudi+Arabia` : '?l=Saudi+Arabia'}`,
   },
@@ -29,7 +29,7 @@ const BOARDS = [
     name: 'Naukrigulf',
     desc: 'Leading Gulf jobs board — Riyadh, Jeddah, Dammam',
     color: 'from-yellow-500 to-orange-500',
-    icon: '🌟',
+    logo: 'https://www.google.com/s2/favicons?domain=naukrigulf.com&sz=64',
     url: (q: string) =>
       `https://www.naukrigulf.com/search-jobs${q ? `?q=${encodeURIComponent(q)}&l=saudi-arabia` : '?l=saudi-arabia'}`,
   },
@@ -37,7 +37,7 @@ const BOARDS = [
     name: 'Tanqeeb',
     desc: 'Saudi-first job platform — local & expat roles',
     color: 'from-emerald-500 to-teal-600',
-    icon: '🇸🇦',
+    logo: 'https://www.google.com/s2/favicons?domain=tanqeeb.com&sz=64',
     url: (q: string) =>
       `https://www.tanqeeb.com/jobs${q ? `?search=${encodeURIComponent(q)}&country=SA` : '?country=SA'}`,
   },
@@ -45,15 +45,15 @@ const BOARDS = [
     name: 'LinkedIn Jobs',
     desc: 'Professional network — all industries in KSA',
     color: 'from-blue-500 to-blue-700',
-    icon: '🔗',
+    logo: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=64',
     url: (q: string) =>
       `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(q || 'jobs')}&location=Saudi+Arabia`,
   },
   {
     name: 'Indeed KSA',
-    desc: 'World\'s largest job site — Saudi Arabia edition',
+    desc: "World's largest job site — Saudi Arabia edition",
     color: 'from-violet-500 to-purple-700',
-    icon: '🔍',
+    logo: 'https://www.google.com/s2/favicons?domain=sa.indeed.com&sz=64',
     url: (q: string) =>
       `https://sa.indeed.com/jobs?q=${encodeURIComponent(q || '')}&l=Saudi+Arabia`,
   },
@@ -61,7 +61,7 @@ const BOARDS = [
     name: 'Glassdoor',
     desc: 'Jobs + company reviews & salary insights',
     color: 'from-green-500 to-emerald-700',
-    icon: '🏷️',
+    logo: 'https://www.google.com/s2/favicons?domain=glassdoor.com&sz=64',
     url: (q: string) =>
       `https://www.glassdoor.com/Job/saudi-arabia-${encodeURIComponent(q || 'jobs')}-jobs-SRCH_IL.0,12_IN195.htm`,
   },
@@ -69,7 +69,7 @@ const BOARDS = [
     name: 'Wuzzuf',
     desc: 'Leading Middle East & MENA job search',
     color: 'from-pink-500 to-rose-600',
-    icon: '⚡',
+    logo: 'https://www.google.com/s2/favicons?domain=wuzzuf.net&sz=64',
     url: (q: string) =>
       `https://wuzzuf.net/search/jobs/?q=${encodeURIComponent(q || '')}&a=hpb`,
   },
@@ -199,7 +199,8 @@ export default function JobsPage() {
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${board.color} opacity-0 group-hover:opacity-5 transition-opacity duration-200`} />
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">{board.icon}</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={board.logo} alt={board.name} className="w-8 h-8 rounded-lg object-contain bg-white/5 p-1" />
                   <ExternalLink className="w-3.5 h-3.5 text-gray-600 group-hover:text-gray-400 transition-colors" />
                 </div>
                 <div>
