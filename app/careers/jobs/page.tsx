@@ -4,35 +4,40 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import {
   Search, MapPin, ExternalLink, Briefcase, Clock,
-  RefreshCw, ChevronLeft, Bookmark, AlertCircle, Info,
+  RefreshCw, ChevronLeft, Bookmark, AlertCircle,
 } from 'lucide-react'
-import type { NormalizedJob } from '@/app/api/careers/jobs/route'
+
+const RAPIDAPI_KEY = process.env.NEXT_PUBLIC_RAPIDAPI_KEY ?? ''
 
 const CATEGORIES = [
-  { value: 'all',              label: 'All Jobs' },
-  { value: 'it-jobs',          label: 'IT & Tech' },
-  { value: 'engineering-jobs', label: 'Engineering' },
-  { value: 'accounting-finance-jobs', label: 'Finance' },
-  { value: 'healthcare-nursing-jobs', label: 'Healthcare' },
-  { value: 'sales-jobs',       label: 'Sales' },
-  { value: 'hr-jobs',          label: 'HR' },
-  { value: 'management-jobs',  label: 'Management' },
+  { value: 'all',         label: 'All Jobs' },
+  { value: 'IT',          label: 'IT & Tech' },
+  { value: 'Engineering', label: 'Engineering' },
+  { value: 'Finance',     label: 'Finance' },
+  { value: 'Healthcare',  label: 'Healthcare' },
+  { value: 'Sales',       label: 'Sales' },
+  { value: 'HR',          label: 'HR' },
+  { value: 'Management',  label: 'Management' },
 ]
 
-const CITIES = ['All Cities', 'Riyadh', 'Jeddah', 'Dammam', 'Khobar', 'Mecca', 'Medina', 'Tabuk', 'Abha']
+const CITIES = ['All Cities', 'Riyadh', 'Jeddah', 'Dammam', 'Khobar', 'Mecca', 'Medina', 'Tabuk', 'Abha',
+                'Dubai', 'Abu Dhabi', 'Kuwait City', 'Doha', 'Manama', 'Muscat']
 
 const SOURCE_COLORS: Record<string, { bg: string; text: string; dot: string }> = {
-  linkedin:      { bg: 'bg-blue-500/10 border-blue-500/25',   text: 'text-blue-400',    dot: 'bg-blue-400' },
-  indeed:        { bg: 'bg-violet-500/10 border-violet-500/25', text: 'text-violet-400', dot: 'bg-violet-400' },
-  glassdoor:     { bg: 'bg-emerald-500/10 border-emerald-500/25', text: 'text-emerald-400', dot: 'bg-emerald-400' },
-  'baytcom':     { bg: 'bg-orange-500/10 border-orange-500/25', text: 'text-orange-400', dot: 'bg-orange-400' },
-  naukrigulf:    { bg: 'bg-yellow-500/10 border-yellow-500/25', text: 'text-yellow-400', dot: 'bg-yellow-400' },
-  adzuna:        { bg: 'bg-cyan-500/10 border-cyan-500/25',    text: 'text-cyan-400',    dot: 'bg-cyan-400' },
-  remotive:      { bg: 'bg-gray-500/10 border-gray-500/25',    text: 'text-gray-400',    dot: 'bg-gray-400' },
+  LinkedIn:   { bg: 'bg-blue-500/10 border-blue-500/25',    text: 'text-blue-400',    dot: 'bg-blue-400' },
+  Indeed:     { bg: 'bg-violet-500/10 border-violet-500/25', text: 'text-violet-400', dot: 'bg-violet-400' },
+  Glassdoor:  { bg: 'bg-emerald-500/10 border-emerald-500/25', text: 'text-emerald-400', dot: 'bg-emerald-400' },
+  Bayt:       { bg: 'bg-orange-500/10 border-orange-500/25', text: 'text-orange-400', dot: 'bg-orange-400' },
+  Naukrigulf: { bg: 'bg-yellow-500/10 border-yellow-500/25', text: 'text-yellow-400', dot: 'bg-yellow-400' },
+  Tanqeeb:    { bg: 'bg-pink-500/10 border-pink-500/25',    text: 'text-pink-400',    dot: 'bg-pink-400' },
+  default:    { bg: 'bg-gray-500/10 border-gray-500/25',    text: 'text-gray-400',    dot: 'bg-gray-400' },
 }
 
-function sourceStyle(source: string) {
-  return SOURCE_COLORS[source] ?? SOURCE_COLORS.adzuna
+function sourceStyle(publisher: string) {
+  for (const [key, val] of Object.entries(SOURCE_COLORS)) {
+    if (publisher?.toLowerCase().includes(key.toLowerCase())) return val
+  }
+  return SOURCE_COLORS.default
 }
 
 function timeAgo(date: string) {
@@ -44,59 +49,105 @@ function timeAgo(date: string) {
   return `${Math.floor(days / 30)}mo ago`
 }
 
-interface ApiResponse {
-  jobs: NormalizedJob[]
-  total: number
-  sources: string[]
-  configuredKeys: { adzuna: boolean; jsearch: boolean }
-  cachedAt: string
+interface Job {
+  id: string
+  title: string
+  company: string
+  companyLogo?: string
+  location: string
+  city?: string
+  country?: string
+  url: string
+  jobType: string
+  salary?: string
+  tags: string[]
+  postedAt: string
+  publisher: string
+}
+
+function normalizeJSearch(item: any): Job {
+  const salaryMin = item.job_min_salary
+  const salaryMax = item.job_max_salary
+  const currency  = item.job_salary_currency ?? 'SAR'
+  const salary = salaryMin && salaryMax
+    ? `${currency} ${Math.round(salaryMin/1000)}k–${Math.round(salaryMax/1000)}k`
+    : salaryMin ? `${currency} ${Math.round(salaryMin/1000)}k+`
+    : undefined
+
+  return {
+    id:          item.job_id,
+    title:       item.job_title,
+    company:     item.employer_name,
+    companyLogo: item.employer_logo ?? undefined,
+    location:    [item.job_city, item.job_state, item.job_country].filter(Boolean).join(', '),
+    city:        item.job_city ?? item.job_state ?? undefined,
+    country:     item.job_country ?? undefined,
+    url:         item.job_apply_link,
+    jobType:     item.job_employment_type?.replace('_', ' ')?.toLowerCase() ?? 'full time',
+    salary,
+    tags:        item.job_required_skills?.slice(0, 5) ?? [],
+    postedAt:    item.job_posted_at_datetime_utc ?? new Date().toISOString(),
+    publisher:   item.job_publisher ?? 'JSearch',
+  }
+}
+
+async function fetchJSearchJobs(query: string): Promise<Job[]> {
+  const res = await fetch(
+    `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(query)}&num_pages=2&page=1`,
+    {
+      headers: {
+        'X-RapidAPI-Key':  RAPIDAPI_KEY,
+        'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
+      },
+    }
+  )
+  if (!res.ok) throw new Error(`JSearch error: ${res.status}`)
+  const data = await res.json()
+  return (data.data ?? []).map(normalizeJSearch)
 }
 
 export default function JobsPage() {
-  const [data, setData]           = useState<ApiResponse | null>(null)
+  const [jobs, setJobs]           = useState<Job[]>([])
   const [loading, setLoading]     = useState(true)
   const [error, setError]         = useState('')
   const [search, setSearch]       = useState('')
   const [category, setCategory]   = useState('all')
   const [city, setCity]           = useState('All Cities')
-  const [query, setQuery]         = useState('')
+  const [activeQuery, setActiveQuery] = useState('')
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
   const fetchJobs = useCallback(async () => {
+    if (!RAPIDAPI_KEY) {
+      setError('NEXT_PUBLIC_RAPIDAPI_KEY is not set. Add it in Cloudflare Pages → Settings → Environment Variables.')
+      setLoading(false)
+      return
+    }
     setLoading(true); setError('')
     try {
-      const params = new URLSearchParams({ category })
-      if (query) params.set('q', query)
-      const res  = await fetch(`/api/careers/jobs?${params}`)
-      const json = await res.json()
-      if (!res.ok) throw new Error(json.error ?? 'Failed to load jobs')
-      setData(json)
+      const cat  = category !== 'all' ? `${category} ` : ''
+      const loc  = city !== 'All Cities' ? city : 'Saudi Arabia'
+      const q    = activeQuery ? `${activeQuery} jobs in ${loc}` : `${cat}jobs in ${loc}`
+      const results = await fetchJSearchJobs(q)
+      setJobs(results)
       setLastUpdated(new Date())
     } catch (e: any) {
-      setError(e.message)
+      setError(e.message ?? 'Failed to load jobs')
     } finally {
-      setLoading(false)
-    }
-  }, [category, query])
+      setLoading(false) }
+  }, [category, city, activeQuery])
 
   useEffect(() => { fetchJobs() }, [fetchJobs])
 
-  const handleSearch = (e: React.FormEvent) => { e.preventDefault(); setQuery(search) }
+  const handleSearch = (e: React.FormEvent) => { e.preventDefault(); setActiveQuery(search) }
 
-  const saveJob = (job: NormalizedJob) => {
+  const saveJob = (job: Job) => {
     const existing = JSON.parse(localStorage.getItem('career_tracker') || '[]')
     if (existing.find((j: any) => j.jobId === job.id)) { alert('Already saved!'); return }
-    const entry = { id: Date.now(), jobId: job.id, title: job.title, company: job.company, url: job.url, status: 'saved', location: job.location, salary: job.salary ?? '', notes: '', dateAdded: new Date().toISOString() }
+    const entry = { id: Date.now(), jobId: job.id, title: job.title, company: job.company, url: job.url,
+      status: 'saved', location: job.location, salary: job.salary ?? '', notes: '', dateAdded: new Date().toISOString() }
     localStorage.setItem('career_tracker', JSON.stringify([entry, ...existing]))
     alert(`"${job.title}" saved to tracker!`)
   }
-
-  const filteredJobs = (data?.jobs ?? []).filter(j => {
-    if (city === 'All Cities') return true
-    return j.location?.toLowerCase().includes(city.toLowerCase()) || j.city?.toLowerCase().includes(city.toLowerCase())
-  })
-
-  const noKeys = data && !data.configuredKeys.adzuna && !data.configuredKeys.jsearch
 
   return (
     <div className="min-h-screen bg-dark-900 pt-20">
@@ -107,58 +158,34 @@ export default function JobsPage() {
           <ChevronLeft className="w-4 h-4" /> Back to Career Hub
         </Link>
 
-        <div className="flex items-start justify-between flex-wrap gap-3 mb-2">
+        <div className="flex items-start justify-between flex-wrap gap-3 mb-5">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <h1 className="text-3xl font-black text-white">Jobs in Saudi Arabia</h1>
-              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">🇸🇦 KSA</span>
+              <h1 className="text-3xl font-black text-white">Jobs in Saudi Arabia &amp; Middle East</h1>
+              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">🇸🇦 KSA &amp; GCC</span>
             </div>
-            <p className="text-gray-500 text-sm">Live listings aggregated from LinkedIn, Indeed, Glassdoor, Bayt &amp; more — auto-refreshed hourly.</p>
+            <p className="text-gray-500 text-sm">
+              Live listings from LinkedIn, Indeed KSA, Glassdoor, Bayt, Naukrigulf &amp; more — powered by JSearch.
+            </p>
           </div>
           <div className="flex items-center gap-2 text-xs text-gray-600">
             {lastUpdated && <span>Updated {lastUpdated.toLocaleTimeString()}</span>}
-            <button onClick={fetchJobs} className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors border border-white/8 px-3 py-1.5 rounded-lg hover:bg-white/5">
+            <button onClick={fetchJobs}
+              className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors border border-white/8 px-3 py-1.5 rounded-lg hover:bg-white/5">
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} /> Refresh
             </button>
           </div>
         </div>
 
-        {/* Source badges */}
-        {data?.sources && data.sources.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-5">
-            {data.sources.map(s => (
-              <span key={s} className="inline-flex items-center gap-1.5 text-[10px] font-bold text-gray-400 bg-white/5 border border-white/8 px-2.5 py-1 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                {s}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {/* No keys warning */}
-        {noKeys && (
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-amber-500/8 border border-amber-500/25 text-amber-300 text-sm mb-5">
-            <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold mb-0.5">Add API keys to unlock Saudi Arabia jobs from LinkedIn, Indeed &amp; Bayt</p>
-              <p className="text-xs text-amber-500">
-                1. <strong>Adzuna</strong> — free at <a href="https://developer.adzuna.com" target="_blank" rel="noopener noreferrer" className="underline">developer.adzuna.com</a> →  add ADZUNA_APP_ID + ADZUNA_APP_KEY to .env.local{' '}
-                &nbsp;·&nbsp;
-                2. <strong>JSearch</strong> — free at <a href="https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch" target="_blank" rel="noopener noreferrer" className="underline">rapidapi.com</a> → add RAPIDAPI_KEY to .env.local
-              </p>
-              <p className="text-xs text-amber-600 mt-1">Showing remote jobs as fallback in the meantime.</p>
-            </div>
-          </div>
-        )}
-
         {/* Filters */}
         <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2 mb-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-            <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search job title, skills, company..."
+            <input value={search} onChange={e => setSearch(e.target.value)}
+              placeholder="Search job title, skills, company..."
               className="w-full pl-10 pr-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-accent-blue/50" />
           </div>
-          <select value={category} onChange={e => { setCategory(e.target.value) }}
+          <select value={category} onChange={e => setCategory(e.target.value)}
             className="px-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white text-sm focus:outline-none focus:border-accent-blue/50">
             {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
           </select>
@@ -166,15 +193,16 @@ export default function JobsPage() {
             className="px-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white text-sm focus:outline-none focus:border-accent-blue/50">
             {CITIES.map(c => <option key={c}>{c}</option>)}
           </select>
-          <button type="submit" className="px-6 py-3 rounded-xl bg-accent-blue hover:bg-blue-500 text-white font-bold text-sm transition-all">
+          <button type="submit"
+            className="px-6 py-3 rounded-xl bg-accent-blue hover:bg-blue-500 text-white font-bold text-sm transition-all">
             Search
           </button>
         </form>
 
         {/* Count row */}
         <div className="text-xs text-gray-600 mb-5">
-          {loading ? 'Loading jobs...' : `${filteredJobs.length} jobs found in Saudi Arabia`}
-          {city !== 'All Cities' && ` · Filtered: ${city}`}
+          {loading ? 'Fetching live jobs...' : `${jobs.length} live jobs found`}
+          {city !== 'All Cities' && ` · ${city}`}
         </div>
 
         {/* Error */}
@@ -191,16 +219,16 @@ export default function JobsPage() {
               <div key={i} className="p-5 rounded-2xl border border-white/6 bg-dark-800/60 animate-pulse h-52" />
             ))}
           </div>
-        ) : filteredJobs.length === 0 ? (
+        ) : jobs.length === 0 ? (
           <div className="text-center py-20 text-gray-500 border border-white/6 rounded-2xl">
             <Briefcase className="w-10 h-10 mx-auto mb-3 opacity-30" />
             <p className="font-semibold">No jobs found</p>
-            <p className="text-xs mt-1">Try a different search, category, or city</p>
+            <p className="text-xs mt-1">Try a different search or city</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredJobs.map(job => {
-              const style = sourceStyle(job.source)
+            {jobs.map(job => {
+              const style = sourceStyle(job.publisher)
               return (
                 <div key={job.id}
                   className="p-5 rounded-2xl border border-white/8 bg-dark-800/60 hover:border-white/16 transition-all duration-200 flex flex-col gap-3 group">
@@ -210,7 +238,8 @@ export default function JobsPage() {
                     <div className="flex items-start gap-3 min-w-0">
                       {job.companyLogo ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={job.companyLogo} alt={job.company} className="w-9 h-9 rounded-lg object-contain bg-white/5 p-1 flex-shrink-0" />
+                        <img src={job.companyLogo} alt={job.company}
+                          className="w-9 h-9 rounded-lg object-contain bg-white/5 p-1 flex-shrink-0" />
                       ) : (
                         <div className="w-9 h-9 rounded-lg bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0 text-accent-blue font-black text-sm">
                           {job.company?.[0] ?? '?'}
@@ -222,7 +251,7 @@ export default function JobsPage() {
                     </div>
                     <span className={`inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full border flex-shrink-0 ${style.bg} ${style.text}`}>
                       <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${style.dot}`} />
-                      {job.sourceLabel}
+                      {job.publisher}
                     </span>
                   </div>
 
@@ -233,9 +262,15 @@ export default function JobsPage() {
 
                   {/* Meta */}
                   <div className="flex flex-wrap gap-2 text-xs text-gray-500">
-                    <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{job.city || job.location?.split(',')[0] || 'Saudi Arabia'}</span>
-                    <span className="flex items-center gap-1"><Briefcase className="w-3 h-3" />{job.jobType}</span>
-                    <span className="flex items-center gap-1 ml-auto"><Clock className="w-3 h-3" />{timeAgo(job.postedAt)}</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3 h-3" />{job.city || job.location?.split(',')[0] || 'Saudi Arabia'}
+                    </span>
+                    <span className="flex items-center gap-1 capitalize">
+                      <Briefcase className="w-3 h-3" />{job.jobType}
+                    </span>
+                    <span className="flex items-center gap-1 ml-auto">
+                      <Clock className="w-3 h-3" />{timeAgo(job.postedAt)}
+                    </span>
                   </div>
 
                   {/* Salary */}
@@ -246,7 +281,7 @@ export default function JobsPage() {
                   )}
 
                   {/* Tags */}
-                  {job.tags?.length > 0 && (
+                  {job.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {job.tags.slice(0, 4).map(t => (
                         <span key={t} className="text-[10px] text-gray-500 bg-white/4 border border-white/8 px-2 py-0.5 rounded-full">{t}</span>
@@ -276,10 +311,9 @@ export default function JobsPage() {
           </div>
         )}
 
-        {/* Bottom note */}
-        {!loading && filteredJobs.length > 0 && (
+        {!loading && jobs.length > 0 && (
           <p className="text-center text-xs text-gray-700 mt-8">
-            Jobs auto-refresh every hour · <button onClick={fetchJobs} className="text-gray-500 hover:text-gray-300 underline transition-colors">Refresh now</button>
+            Live jobs from JSearch · <button onClick={fetchJobs} className="text-gray-500 hover:text-gray-300 underline transition-colors">Refresh now</button>
           </p>
         )}
       </div>
