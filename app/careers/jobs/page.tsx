@@ -4,42 +4,90 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import {
   Search, MapPin, ExternalLink, Briefcase, Clock,
-  RefreshCw, ChevronLeft, Bookmark, AlertCircle,
+  ChevronLeft, Bookmark, Globe,
 } from 'lucide-react'
 
-const RAPIDAPI_KEY = process.env.NEXT_PUBLIC_RAPIDAPI_KEY || 'c7ab47aedamsh79674eb55041da6p17a442jsn3237f9e7d80f'
-const ADZUNA_APP_ID  = process.env.NEXT_PUBLIC_ADZUNA_APP_ID  || ''
-const ADZUNA_APP_KEY = process.env.NEXT_PUBLIC_ADZUNA_APP_KEY || ''
-
-const CATEGORIES = [
-  { value: 'all',         label: 'All Jobs' },
-  { value: 'IT',          label: 'IT & Tech' },
-  { value: 'Engineering', label: 'Engineering' },
-  { value: 'Finance',     label: 'Finance' },
-  { value: 'Healthcare',  label: 'Healthcare' },
-  { value: 'Sales',       label: 'Sales' },
-  { value: 'HR',          label: 'HR' },
-  { value: 'Management',  label: 'Management' },
+/* ── KSA Job Boards ───────────────────────────────────────────── */
+const BOARDS = [
+  {
+    name: 'Bayt.com',
+    desc: 'Top Middle East job portal — millions of KSA listings',
+    color: 'from-blue-600 to-blue-800',
+    icon: '💼',
+    url: (q: string) =>
+      `https://www.bayt.com/en/saudi-arabia/jobs/${q ? `?q%5Btitle_cont%5D=${encodeURIComponent(q)}` : ''}`,
+  },
+  {
+    name: 'Gulf Naukri',
+    desc: 'Saudi Arabia & Gulf region specialists',
+    color: 'from-orange-500 to-red-600',
+    icon: '🏢',
+    url: (q: string) =>
+      `https://www.gulfnaukri.com/jobs${q ? `?q=${encodeURIComponent(q)}&l=Saudi+Arabia` : '?l=Saudi+Arabia'}`,
+  },
+  {
+    name: 'Naukrigulf',
+    desc: 'Leading Gulf jobs board — Riyadh, Jeddah, Dammam',
+    color: 'from-yellow-500 to-orange-500',
+    icon: '🌟',
+    url: (q: string) =>
+      `https://www.naukrigulf.com/search-jobs${q ? `?q=${encodeURIComponent(q)}&l=saudi-arabia` : '?l=saudi-arabia'}`,
+  },
+  {
+    name: 'Tanqeeb',
+    desc: 'Saudi-first job platform — local & expat roles',
+    color: 'from-emerald-500 to-teal-600',
+    icon: '🇸🇦',
+    url: (q: string) =>
+      `https://www.tanqeeb.com/jobs${q ? `?search=${encodeURIComponent(q)}&country=SA` : '?country=SA'}`,
+  },
+  {
+    name: 'LinkedIn Jobs',
+    desc: 'Professional network — all industries in KSA',
+    color: 'from-blue-500 to-blue-700',
+    icon: '🔗',
+    url: (q: string) =>
+      `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(q || 'jobs')}&location=Saudi+Arabia`,
+  },
+  {
+    name: 'Indeed KSA',
+    desc: 'World\'s largest job site — Saudi Arabia edition',
+    color: 'from-violet-500 to-purple-700',
+    icon: '🔍',
+    url: (q: string) =>
+      `https://sa.indeed.com/jobs?q=${encodeURIComponent(q || '')}&l=Saudi+Arabia`,
+  },
+  {
+    name: 'Glassdoor',
+    desc: 'Jobs + company reviews & salary insights',
+    color: 'from-green-500 to-emerald-700',
+    icon: '🏷️',
+    url: (q: string) =>
+      `https://www.glassdoor.com/Job/saudi-arabia-${encodeURIComponent(q || 'jobs')}-jobs-SRCH_IL.0,12_IN195.htm`,
+  },
+  {
+    name: 'Wuzzuf',
+    desc: 'Leading Middle East & MENA job search',
+    color: 'from-pink-500 to-rose-600',
+    icon: '⚡',
+    url: (q: string) =>
+      `https://wuzzuf.net/search/jobs/?q=${encodeURIComponent(q || '')}&a=hpb`,
+  },
 ]
 
-const CITIES = ['All Cities', 'Riyadh', 'Jeddah', 'Dammam', 'Khobar', 'Mecca', 'Medina', 'Tabuk', 'Abha',
-                'Dubai', 'Abu Dhabi', 'Kuwait City', 'Doha', 'Manama', 'Muscat']
-
-const SOURCE_COLORS: Record<string, { bg: string; text: string; dot: string }> = {
-  LinkedIn:   { bg: 'bg-blue-500/10 border-blue-500/25',    text: 'text-blue-400',    dot: 'bg-blue-400' },
-  Indeed:     { bg: 'bg-violet-500/10 border-violet-500/25', text: 'text-violet-400', dot: 'bg-violet-400' },
-  Glassdoor:  { bg: 'bg-emerald-500/10 border-emerald-500/25', text: 'text-emerald-400', dot: 'bg-emerald-400' },
-  Bayt:       { bg: 'bg-orange-500/10 border-orange-500/25', text: 'text-orange-400', dot: 'bg-orange-400' },
-  Naukrigulf: { bg: 'bg-yellow-500/10 border-yellow-500/25', text: 'text-yellow-400', dot: 'bg-yellow-400' },
-  Tanqeeb:    { bg: 'bg-pink-500/10 border-pink-500/25',    text: 'text-pink-400',    dot: 'bg-pink-400' },
-  default:    { bg: 'bg-gray-500/10 border-gray-500/25',    text: 'text-gray-400',    dot: 'bg-gray-400' },
-}
-
-function sourceStyle(publisher: string) {
-  for (const [key, val] of Object.entries(SOURCE_COLORS)) {
-    if (publisher?.toLowerCase().includes(key.toLowerCase())) return val
-  }
-  return SOURCE_COLORS.default
+/* ── Remotive remote jobs ─────────────────────────────────────── */
+interface RemoteJob {
+  id: number
+  url: string
+  title: string
+  company_name: string
+  company_logo: string
+  category: string
+  tags: string[]
+  job_type: string
+  publication_date: string
+  candidate_required_location: string
+  salary: string
 }
 
 function timeAgo(date: string) {
@@ -51,100 +99,50 @@ function timeAgo(date: string) {
   return `${Math.floor(days / 30)}mo ago`
 }
 
-interface Job {
-  id: string
-  title: string
-  company: string
-  companyLogo?: string
-  location: string
-  city?: string
-  country?: string
-  url: string
-  jobType: string
-  salary?: string
-  tags: string[]
-  postedAt: string
-  publisher: string
-}
-
-function normalizeAdzuna(item: any): Job {
-  const salaryMin = item.salary_min
-  const salaryMax = item.salary_max
-  const salary = salaryMin && salaryMax && salaryMin > 0
-    ? `SAR ${Math.round(salaryMin/1000)}k–${Math.round(salaryMax/1000)}k`
-    : undefined
-
-  return {
-    id:          item.id,
-    title:       item.title,
-    company:     item.company?.display_name ?? 'Unknown',
-    companyLogo: undefined,
-    location:    item.location?.display_name ?? 'Saudi Arabia',
-    city:        item.location?.area?.[2] ?? item.location?.area?.[1] ?? undefined,
-    country:     'SA',
-    url:         item.redirect_url,
-    jobType:     item.contract_type ?? 'full time',
-    salary,
-    tags:        [],
-    postedAt:    item.created ?? new Date().toISOString(),
-    publisher:   'Adzuna',
-  }
-}
-
-async function fetchAdzunaJobs(query: string, location: string): Promise<Job[]> {
-  const params = new URLSearchParams({
-    app_id:           ADZUNA_APP_ID,
-    app_key:          ADZUNA_APP_KEY,
-    results_per_page: '20',
-    'content-type':   'application/json',
-  })
-  if (query)    params.set('what', query)
-  if (location && location !== 'All Cities') params.set('where', location)
-  const res = await fetch(`https://api.adzuna.com/v1/api/jobs/sa/search/1?${params}`)
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}))
-    throw new Error(err.exception ?? `Adzuna error: ${res.status}`)
-  }
-  const data = await res.json()
-  return (data.results ?? []).map(normalizeAdzuna)
-}
+const REMOTE_CATEGORIES = [
+  { value: '',                    label: 'All Remote' },
+  { value: 'software-dev',       label: 'Software Dev' },
+  { value: 'devops-sysadmin',    label: 'DevOps / Cloud' },
+  { value: 'data',               label: 'Data & AI' },
+  { value: 'product',            label: 'Product' },
+  { value: 'backend',            label: 'Backend' },
+  { value: 'frontend',           label: 'Frontend' },
+]
 
 export default function JobsPage() {
-  const [jobs, setJobs]           = useState<Job[]>([])
-  const [loading, setLoading]     = useState(true)
-  const [error, setError]         = useState('')
-  const [search, setSearch]       = useState('')
-  const [city, setCity]           = useState('All Cities')
-  const [activeQuery, setActiveQuery] = useState('')
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
+  const [search, setSearch]           = useState('')
+  const [submitted, setSubmitted]     = useState('')
+  const [remoteJobs, setRemoteJobs]   = useState<RemoteJob[]>([])
+  const [remoteLoading, setRemoteLoading] = useState(true)
+  const [remoteCat, setRemoteCat]     = useState('')
 
-  const fetchJobs = useCallback(async () => {
-    if (!ADZUNA_APP_ID || !ADZUNA_APP_KEY) {
-      setError('Add NEXT_PUBLIC_ADZUNA_APP_ID and NEXT_PUBLIC_ADZUNA_APP_KEY in Cloudflare → Settings → Environment Variables. Register free at developer.adzuna.com')
-      setLoading(false)
-      return
-    }
-    setLoading(true); setError('')
+  const fetchRemote = useCallback(async () => {
+    setRemoteLoading(true)
     try {
-      const results = await fetchAdzunaJobs(activeQuery, city)
-      setJobs(results)
-      setLastUpdated(new Date())
-    } catch (e: any) {
-      setError(e.message ?? 'Failed to load jobs')
-    } finally {
-      setLoading(false)
-    }
-  }, [city, activeQuery])
+      const params = new URLSearchParams({ limit: '12' })
+      if (remoteCat) params.set('category', remoteCat)
+      if (submitted)  params.set('search', submitted)
+      const res  = await fetch(`https://remotive.com/api/remote-jobs?${params}`)
+      const data = await res.json()
+      setRemoteJobs(data.jobs ?? [])
+    } catch { setRemoteJobs([]) }
+    finally  { setRemoteLoading(false) }
+  }, [remoteCat, submitted])
 
-  useEffect(() => { fetchJobs() }, [fetchJobs])
+  useEffect(() => { fetchRemote() }, [fetchRemote])
 
-  const handleSearch = (e: React.FormEvent) => { e.preventDefault(); setActiveQuery(search) }
+  const handleSearch = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(search) }
 
-  const saveJob = (job: Job) => {
+  const openAll = () => {
+    BOARDS.forEach(b => window.open(b.url(submitted || search), '_blank', 'noopener'))
+  }
+
+  const saveJob = (job: RemoteJob) => {
     const existing = JSON.parse(localStorage.getItem('career_tracker') || '[]')
     if (existing.find((j: any) => j.jobId === job.id)) { alert('Already saved!'); return }
-    const entry = { id: Date.now(), jobId: job.id, title: job.title, company: job.company, url: job.url,
-      status: 'saved', location: job.location, salary: job.salary ?? '', notes: '', dateAdded: new Date().toISOString() }
+    const entry = { id: Date.now(), jobId: job.id, title: job.title, company: job.company_name,
+      url: job.url, status: 'saved', location: job.candidate_required_location, salary: job.salary ?? '',
+      notes: '', dateAdded: new Date().toISOString() }
     localStorage.setItem('career_tracker', JSON.stringify([entry, ...existing]))
     alert(`"${job.title}" saved to tracker!`)
   }
@@ -158,126 +156,151 @@ export default function JobsPage() {
           <ChevronLeft className="w-4 h-4" /> Back to Career Hub
         </Link>
 
-        <div className="flex items-start justify-between flex-wrap gap-3 mb-5">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <h1 className="text-3xl font-black text-white">Jobs in Saudi Arabia &amp; Middle East</h1>
-              <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">🇸🇦 KSA &amp; GCC</span>
-            </div>
-            <p className="text-gray-500 text-sm">
-              Live listings from LinkedIn, Indeed KSA, Glassdoor, Bayt, Naukrigulf &amp; more — powered by JSearch.
-            </p>
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-1">
+            <h1 className="text-3xl font-black text-white">Jobs in Saudi Arabia &amp; Middle East</h1>
+            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">🇸🇦 KSA &amp; GCC</span>
           </div>
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            {lastUpdated && <span>Updated {lastUpdated.toLocaleTimeString()}</span>}
-            <button onClick={fetchJobs}
-              className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors border border-white/8 px-3 py-1.5 rounded-lg hover:bg-white/5">
-              <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} /> Refresh
-            </button>
-          </div>
+          <p className="text-gray-500 text-sm">Search across 8 major KSA job boards at once, or browse remote-friendly global roles below.</p>
         </div>
 
-        {/* Filters */}
-        <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2 mb-3">
+        {/* ── Search bar ── */}
+        <form onSubmit={handleSearch} className="flex gap-2 mb-6">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-            <input value={search} onChange={e => setSearch(e.target.value)}
-              placeholder="Search job title, skills, company..."
-              className="w-full pl-10 pr-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-accent-blue/50" />
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="e.g. SAP Consultant, IT Manager, Cloud Engineer..."
+              className="w-full pl-10 pr-4 py-3.5 rounded-xl bg-dark-800 border border-white/10 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-accent-blue/50"
+            />
           </div>
-          <select value={city} onChange={e => setCity(e.target.value)}
-            className="px-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white text-sm focus:outline-none focus:border-accent-blue/50">
-            {CITIES.map(c => <option key={c}>{c}</option>)}
-          </select>
           <button type="submit"
             className="px-6 py-3 rounded-xl bg-accent-blue hover:bg-blue-500 text-white font-bold text-sm transition-all">
             Search
           </button>
+          <button type="button" onClick={openAll}
+            className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all flex items-center gap-2 whitespace-nowrap">
+            <Globe className="w-4 h-4" /> Open All Boards
+          </button>
         </form>
 
-        {/* Count row */}
-        <div className="text-xs text-gray-600 mb-5">
-          {loading ? 'Fetching live jobs...' : `${jobs.length} live jobs found`}
-          {city !== 'All Cities' && ` · ${city}`}
-        </div>
-
-        {/* Error */}
-        {error && (
-          <div className="flex items-start gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm mb-4">
-            <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> {error}
-          </div>
-        )}
-
-        {/* Job grid */}
-        {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <div key={i} className="p-5 rounded-2xl border border-white/6 bg-dark-800/60 animate-pulse h-52" />
+        {/* ── KSA Job Boards Grid ── */}
+        <div className="mb-10">
+          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">KSA &amp; Gulf Job Boards</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {BOARDS.map(board => (
+              <a
+                key={board.name}
+                href={board.url(submitted || search)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-4 rounded-2xl border border-white/8 bg-dark-800/60 hover:border-white/20 hover:bg-dark-800 transition-all duration-200 flex flex-col gap-2 overflow-hidden"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${board.color} opacity-0 group-hover:opacity-5 transition-opacity duration-200`} />
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl">{board.icon}</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-gray-600 group-hover:text-gray-400 transition-colors" />
+                </div>
+                <div>
+                  <p className="font-bold text-white text-sm">{board.name}</p>
+                  <p className="text-[11px] text-gray-500 leading-snug mt-0.5 line-clamp-2">{board.desc}</p>
+                </div>
+                {(submitted || search) && (
+                  <span className="text-[10px] text-accent-blue bg-accent-blue/10 border border-accent-blue/20 px-2 py-0.5 rounded-full w-fit mt-1">
+                    Search: &ldquo;{submitted || search}&rdquo;
+                  </span>
+                )}
+              </a>
             ))}
           </div>
-        ) : jobs.length === 0 ? (
-          <div className="text-center py-20 text-gray-500 border border-white/6 rounded-2xl">
-            <Briefcase className="w-10 h-10 mx-auto mb-3 opacity-30" />
-            <p className="font-semibold">No jobs found</p>
-            <p className="text-xs mt-1">Try a different search or city</p>
+          {(submitted || search) && (
+            <p className="text-xs text-gray-600 mt-3">
+              Click any board to search for <span className="text-gray-400">&ldquo;{submitted || search}&rdquo;</span> ·
+              <button onClick={openAll} className="text-emerald-500 hover:text-emerald-400 ml-1 underline transition-colors">
+                Open all 8 boards at once
+              </button>
+            </p>
+          )}
+        </div>
+
+        {/* ── Remote Jobs (Remotive) ── */}
+        <div>
+          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+            <div>
+              <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Remote-Friendly Global Roles</h2>
+              <p className="text-xs text-gray-600 mt-0.5">Live from Remotive — open to worldwide applicants including Saudi Arabia</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <select value={remoteCat} onChange={e => setRemoteCat(e.target.value)}
+                className="px-3 py-1.5 rounded-lg bg-dark-800 border border-white/10 text-gray-400 text-xs focus:outline-none">
+                {REMOTE_CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
+              </select>
+            </div>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {jobs.map(job => {
-              const style = sourceStyle(job.publisher)
-              return (
+
+          {remoteLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="p-5 rounded-2xl border border-white/6 bg-dark-800/60 animate-pulse h-44" />
+              ))}
+            </div>
+          ) : remoteJobs.length === 0 ? (
+            <div className="text-center py-12 text-gray-500 border border-white/6 rounded-2xl">
+              <Briefcase className="w-8 h-8 mx-auto mb-2 opacity-30" />
+              <p className="text-sm">No remote jobs found — try a different category</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {remoteJobs.map(job => (
                 <div key={job.id}
                   className="p-5 rounded-2xl border border-white/8 bg-dark-800/60 hover:border-white/16 transition-all duration-200 flex flex-col gap-3 group">
 
-                  {/* Company + source */}
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-start gap-3 min-w-0">
-                      {job.companyLogo ? (
+                      {job.company_logo ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={job.companyLogo} alt={job.company}
+                        <img src={job.company_logo} alt={job.company_name}
                           className="w-9 h-9 rounded-lg object-contain bg-white/5 p-1 flex-shrink-0" />
                       ) : (
                         <div className="w-9 h-9 rounded-lg bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center flex-shrink-0 text-accent-blue font-black text-sm">
-                          {job.company?.[0] ?? '?'}
+                          {job.company_name?.[0] ?? '?'}
                         </div>
                       )}
-                      <div className="min-w-0">
-                        <p className="text-xs text-gray-500 truncate">{job.company}</p>
-                      </div>
+                      <p className="text-xs text-gray-500 truncate pt-1">{job.company_name}</p>
                     </div>
-                    <span className={`inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full border flex-shrink-0 ${style.bg} ${style.text}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${style.dot}`} />
-                      {job.publisher}
+                    <span className="inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded-full border flex-shrink-0 bg-gray-500/10 border-gray-500/25 text-gray-400">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse" />
+                      Remote
                     </span>
                   </div>
 
-                  {/* Title */}
                   <h3 className="font-bold text-white text-sm leading-snug group-hover:text-accent-blue transition-colors line-clamp-2">
                     {job.title}
                   </h3>
 
-                  {/* Meta */}
                   <div className="flex flex-wrap gap-2 text-xs text-gray-500">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />{job.city || job.location?.split(',')[0] || 'Saudi Arabia'}
+                      <MapPin className="w-3 h-3" />
+                      {job.candidate_required_location || 'Worldwide'}
                     </span>
-                    <span className="flex items-center gap-1 capitalize">
-                      <Briefcase className="w-3 h-3" />{job.jobType}
+                    <span className="flex items-center gap-1">
+                      <Briefcase className="w-3 h-3" />
+                      {job.job_type || 'full time'}
                     </span>
                     <span className="flex items-center gap-1 ml-auto">
-                      <Clock className="w-3 h-3" />{timeAgo(job.postedAt)}
+                      <Clock className="w-3 h-3" />
+                      {timeAgo(job.publication_date)}
                     </span>
                   </div>
 
-                  {/* Salary */}
                   {job.salary && (
                     <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/8 border border-emerald-500/20 px-2.5 py-1 rounded-lg w-fit">
                       {job.salary}
                     </span>
                   )}
 
-                  {/* Tags */}
-                  {job.tags.length > 0 && (
+                  {job.tags?.length > 0 && (
                     <div className="flex flex-wrap gap-1">
                       {job.tags.slice(0, 4).map(t => (
                         <span key={t} className="text-[10px] text-gray-500 bg-white/4 border border-white/8 px-2 py-0.5 rounded-full">{t}</span>
@@ -285,7 +308,6 @@ export default function JobsPage() {
                     </div>
                   )}
 
-                  {/* Actions */}
                   <div className="flex gap-2 mt-auto pt-1">
                     <a href={job.url} target="_blank" rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-accent-blue hover:bg-blue-500 text-white font-semibold text-xs transition-all">
@@ -302,16 +324,10 @@ export default function JobsPage() {
                     </Link>
                   </div>
                 </div>
-              )
-            })}
-          </div>
-        )}
-
-        {!loading && jobs.length > 0 && (
-          <p className="text-center text-xs text-gray-700 mt-8">
-            Live jobs from JSearch · <button onClick={fetchJobs} className="text-gray-500 hover:text-gray-300 underline transition-colors">Refresh now</button>
-          </p>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
