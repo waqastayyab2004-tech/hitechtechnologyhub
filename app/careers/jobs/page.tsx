@@ -14,64 +14,80 @@ const BOARDS = [
     desc: 'Top Middle East job portal — millions of KSA listings',
     color: 'from-blue-600 to-blue-800',
     logo: 'https://www.google.com/s2/favicons?domain=bayt.com&sz=64',
-    url: (q: string) =>
-      `https://www.bayt.com/en/saudi-arabia/jobs/${q ? `?q%5Btitle_cont%5D=${encodeURIComponent(q)}` : ''}`,
+    home: 'https://www.bayt.com',
+    url: (q: string) => q
+      ? `https://www.bayt.com/en/saudi-arabia/jobs/?q%5Btitle_cont%5D=${encodeURIComponent(q)}`
+      : 'https://www.bayt.com/en/saudi-arabia/jobs/',
   },
   {
     name: 'Gulf Naukri',
     desc: 'Saudi Arabia & Gulf region specialists',
     color: 'from-orange-500 to-red-600',
     logo: 'https://www.google.com/s2/favicons?domain=gulfnaukri.com&sz=64',
-    url: (q: string) =>
-      `https://www.gulfnaukri.com/jobs${q ? `?q=${encodeURIComponent(q)}&l=Saudi+Arabia` : '?l=Saudi+Arabia'}`,
+    home: 'https://www.gulfnaukri.com',
+    url: (q: string) => q
+      ? `https://www.gulfnaukri.com/jobs?q=${encodeURIComponent(q)}&l=Saudi+Arabia`
+      : 'https://www.gulfnaukri.com',
   },
   {
     name: 'Naukrigulf',
     desc: 'Leading Gulf jobs board — Riyadh, Jeddah, Dammam',
     color: 'from-yellow-500 to-orange-500',
     logo: 'https://www.google.com/s2/favicons?domain=naukrigulf.com&sz=64',
-    url: (q: string) =>
-      `https://www.naukrigulf.com/search-jobs${q ? `?q=${encodeURIComponent(q)}&l=saudi-arabia` : '?l=saudi-arabia'}`,
+    home: 'https://www.naukrigulf.com',
+    url: (q: string) => q
+      ? `https://www.naukrigulf.com/search-jobs?q=${encodeURIComponent(q)}&l=saudi-arabia`
+      : 'https://www.naukrigulf.com',
   },
   {
     name: 'Tanqeeb',
     desc: 'Saudi-first job platform — local & expat roles',
     color: 'from-emerald-500 to-teal-600',
     logo: 'https://www.google.com/s2/favicons?domain=tanqeeb.com&sz=64',
-    url: (q: string) =>
-      `https://www.tanqeeb.com/jobs${q ? `?search=${encodeURIComponent(q)}&country=SA` : '?country=SA'}`,
+    home: 'https://www.tanqeeb.com',
+    url: (q: string) => q
+      ? `https://www.tanqeeb.com/jobs?search=${encodeURIComponent(q)}&country=SA`
+      : 'https://www.tanqeeb.com',
   },
   {
     name: 'LinkedIn Jobs',
     desc: 'Professional network — all industries in KSA',
     color: 'from-blue-500 to-blue-700',
     logo: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=64',
-    url: (q: string) =>
-      `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(q || 'jobs')}&location=Saudi+Arabia`,
+    home: 'https://www.linkedin.com/jobs',
+    url: (q: string) => q
+      ? `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(q)}&location=Saudi+Arabia`
+      : 'https://www.linkedin.com/jobs',
   },
   {
     name: 'Indeed KSA',
     desc: "World's largest job site — Saudi Arabia edition",
     color: 'from-violet-500 to-purple-700',
     logo: 'https://www.google.com/s2/favicons?domain=sa.indeed.com&sz=64',
-    url: (q: string) =>
-      `https://sa.indeed.com/jobs?q=${encodeURIComponent(q || '')}&l=Saudi+Arabia`,
+    home: 'https://sa.indeed.com',
+    url: (q: string) => q
+      ? `https://sa.indeed.com/jobs?q=${encodeURIComponent(q)}`
+      : 'https://sa.indeed.com',
   },
   {
     name: 'Glassdoor',
     desc: 'Jobs + company reviews & salary insights',
     color: 'from-green-500 to-emerald-700',
     logo: 'https://www.google.com/s2/favicons?domain=glassdoor.com&sz=64',
-    url: (q: string) =>
-      `https://www.glassdoor.com/Job/saudi-arabia-${encodeURIComponent(q || 'jobs')}-jobs-SRCH_IL.0,12_IN195.htm`,
+    home: 'https://www.glassdoor.com',
+    url: (q: string) => q
+      ? `https://www.glassdoor.com/Job/saudi-arabia-${encodeURIComponent(q)}-jobs-SRCH_IL.0,12_IN195.htm`
+      : 'https://www.glassdoor.com/Job/saudi-arabia-jobs-SRCH_IL.0,12_IN195.htm',
   },
   {
     name: 'Wuzzuf',
     desc: 'Leading Middle East & MENA job search',
     color: 'from-pink-500 to-rose-600',
     logo: 'https://www.google.com/s2/favicons?domain=wuzzuf.net&sz=64',
-    url: (q: string) =>
-      `https://wuzzuf.net/search/jobs/?q=${encodeURIComponent(q || '')}&a=hpb`,
+    home: 'https://wuzzuf.net',
+    url: (q: string) => q
+      ? `https://wuzzuf.net/search/jobs/?q=${encodeURIComponent(q)}`
+      : 'https://wuzzuf.net',
   },
 ]
 
@@ -134,7 +150,7 @@ export default function JobsPage() {
   const handleSearch = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(search) }
 
   const openAll = () => {
-    BOARDS.forEach(b => window.open(b.url(submitted || search), '_blank', 'noopener'))
+    BOARDS.forEach(b => window.open(b.home, '_blank', 'noopener'))
   }
 
   const saveJob = (job: RemoteJob) => {
@@ -192,7 +208,7 @@ export default function JobsPage() {
             {BOARDS.map(board => (
               <a
                 key={board.name}
-                href={board.url(submitted || search)}
+                href={board.home}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative p-4 rounded-2xl border border-white/8 bg-dark-800/60 hover:border-white/20 hover:bg-dark-800 transition-all duration-200 flex flex-col gap-2 overflow-hidden"
@@ -207,22 +223,9 @@ export default function JobsPage() {
                   <p className="font-bold text-white text-sm">{board.name}</p>
                   <p className="text-[11px] text-gray-500 leading-snug mt-0.5 line-clamp-2">{board.desc}</p>
                 </div>
-                {(submitted || search) && (
-                  <span className="text-[10px] text-accent-blue bg-accent-blue/10 border border-accent-blue/20 px-2 py-0.5 rounded-full w-fit mt-1">
-                    Search: &ldquo;{submitted || search}&rdquo;
-                  </span>
-                )}
               </a>
             ))}
           </div>
-          {(submitted || search) && (
-            <p className="text-xs text-gray-600 mt-3">
-              Click any board to search for <span className="text-gray-400">&ldquo;{submitted || search}&rdquo;</span> ·
-              <button onClick={openAll} className="text-emerald-500 hover:text-emerald-400 ml-1 underline transition-colors">
-                Open all 8 boards at once
-              </button>
-            </p>
-          )}
         </div>
 
         {/* ── Remote Jobs (Remotive) ── */}
