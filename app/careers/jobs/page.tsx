@@ -7,7 +7,7 @@ import {
   RefreshCw, ChevronLeft, Bookmark, AlertCircle,
 } from 'lucide-react'
 
-const RAPIDAPI_KEY = process.env.NEXT_PUBLIC_RAPIDAPI_KEY ?? ''
+const RAPIDAPI_KEY = process.env.NEXT_PUBLIC_RAPIDAPI_KEY || 'c7ab47aedamsh79674eb55041da6p17a442jsn3237f9e7d80f'
 
 const CATEGORIES = [
   { value: 'all',         label: 'All Jobs' },
