@@ -8,6 +8,8 @@ import {
 } from 'lucide-react'
 
 const RAPIDAPI_KEY = process.env.NEXT_PUBLIC_RAPIDAPI_KEY || 'c7ab47aedamsh79674eb55041da6p17a442jsn3237f9e7d80f'
+const ADZUNA_APP_ID  = process.env.NEXT_PUBLIC_ADZUNA_APP_ID  || ''
+const ADZUNA_APP_KEY = process.env.NEXT_PUBLIC_ADZUNA_APP_KEY || ''
 
 const CATEGORIES = [
   { value: 'all',         label: 'All Jobs' },
@@ -65,45 +67,46 @@ interface Job {
   publisher: string
 }
 
-function normalizeJSearch(item: any): Job {
-  const salaryMin = item.job_min_salary
-  const salaryMax = item.job_max_salary
-  const currency  = item.job_salary_currency ?? 'SAR'
-  const salary = salaryMin && salaryMax
-    ? `${currency} ${Math.round(salaryMin/1000)}k–${Math.round(salaryMax/1000)}k`
-    : salaryMin ? `${currency} ${Math.round(salaryMin/1000)}k+`
+function normalizeAdzuna(item: any): Job {
+  const salaryMin = item.salary_min
+  const salaryMax = item.salary_max
+  const salary = salaryMin && salaryMax && salaryMin > 0
+    ? `SAR ${Math.round(salaryMin/1000)}k–${Math.round(salaryMax/1000)}k`
     : undefined
 
   return {
-    id:          item.job_id,
-    title:       item.job_title,
-    company:     item.employer_name,
-    companyLogo: item.employer_logo ?? undefined,
-    location:    [item.job_city, item.job_state, item.job_country].filter(Boolean).join(', '),
-    city:        item.job_city ?? item.job_state ?? undefined,
-    country:     item.job_country ?? undefined,
-    url:         item.job_apply_link,
-    jobType:     item.job_employment_type?.replace('_', ' ')?.toLowerCase() ?? 'full time',
+    id:          item.id,
+    title:       item.title,
+    company:     item.company?.display_name ?? 'Unknown',
+    companyLogo: undefined,
+    location:    item.location?.display_name ?? 'Saudi Arabia',
+    city:        item.location?.area?.[2] ?? item.location?.area?.[1] ?? undefined,
+    country:     'SA',
+    url:         item.redirect_url,
+    jobType:     item.contract_type ?? 'full time',
     salary,
-    tags:        item.job_required_skills?.slice(0, 5) ?? [],
-    postedAt:    item.job_posted_at_datetime_utc ?? new Date().toISOString(),
-    publisher:   item.job_publisher ?? 'JSearch',
+    tags:        [],
+    postedAt:    item.created ?? new Date().toISOString(),
+    publisher:   'Adzuna',
   }
 }
 
-async function fetchJSearchJobs(query: string): Promise<Job[]> {
-  const res = await fetch(
-    `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(query)}&num_pages=2&page=1`,
-    {
-      headers: {
-        'X-RapidAPI-Key':  RAPIDAPI_KEY,
-        'X-RapidAPI-Host': 'jsearch.p.rapidapi.com',
-      },
-    }
-  )
-  if (!res.ok) throw new Error(`JSearch error: ${res.status}`)
+async function fetchAdzunaJobs(query: string, location: string): Promise<Job[]> {
+  const params = new URLSearchParams({
+    app_id:           ADZUNA_APP_ID,
+    app_key:          ADZUNA_APP_KEY,
+    results_per_page: '20',
+    'content-type':   'application/json',
+  })
+  if (query)    params.set('what', query)
+  if (location && location !== 'All Cities') params.set('where', location)
+  const res = await fetch(`https://api.adzuna.com/v1/api/jobs/sa/search/1?${params}`)
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err.exception ?? `Adzuna error: ${res.status}`)
+  }
   const data = await res.json()
-  return (data.data ?? []).map(normalizeJSearch)
+  return (data.results ?? []).map(normalizeAdzuna)
 }
 
 export default function JobsPage() {
@@ -111,30 +114,27 @@ export default function JobsPage() {
   const [loading, setLoading]     = useState(true)
   const [error, setError]         = useState('')
   const [search, setSearch]       = useState('')
-  const [category, setCategory]   = useState('all')
   const [city, setCity]           = useState('All Cities')
   const [activeQuery, setActiveQuery] = useState('')
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
   const fetchJobs = useCallback(async () => {
-    if (!RAPIDAPI_KEY) {
-      setError('NEXT_PUBLIC_RAPIDAPI_KEY is not set. Add it in Cloudflare Pages → Settings → Environment Variables.')
+    if (!ADZUNA_APP_ID || !ADZUNA_APP_KEY) {
+      setError('Add NEXT_PUBLIC_ADZUNA_APP_ID and NEXT_PUBLIC_ADZUNA_APP_KEY in Cloudflare → Settings → Environment Variables. Register free at developer.adzuna.com')
       setLoading(false)
       return
     }
     setLoading(true); setError('')
     try {
-      const cat  = category !== 'all' ? `${category} ` : ''
-      const loc  = city !== 'All Cities' ? city : 'Saudi Arabia'
-      const q    = activeQuery ? `${activeQuery} jobs in ${loc}` : `${cat}jobs in ${loc}`
-      const results = await fetchJSearchJobs(q)
+      const results = await fetchAdzunaJobs(activeQuery, city)
       setJobs(results)
       setLastUpdated(new Date())
     } catch (e: any) {
       setError(e.message ?? 'Failed to load jobs')
     } finally {
-      setLoading(false) }
-  }, [category, city, activeQuery])
+      setLoading(false)
+    }
+  }, [city, activeQuery])
 
   useEffect(() => { fetchJobs() }, [fetchJobs])
 
@@ -185,10 +185,6 @@ export default function JobsPage() {
               placeholder="Search job title, skills, company..."
               className="w-full pl-10 pr-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-accent-blue/50" />
           </div>
-          <select value={category} onChange={e => setCategory(e.target.value)}
-            className="px-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white text-sm focus:outline-none focus:border-accent-blue/50">
-            {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
-          </select>
           <select value={city} onChange={e => setCity(e.target.value)}
             className="px-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white text-sm focus:outline-none focus:border-accent-blue/50">
             {CITIES.map(c => <option key={c}>{c}</option>)}
