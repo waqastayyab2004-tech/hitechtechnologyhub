@@ -1,6 +1,19 @@
-export async function onRequestPost(context) {
-  const { request, env } = context
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url)
+    const path = url.pathname
 
+    // Handle AI resume endpoint
+    if ((path === '/api/careers/ai/' || path === '/api/careers/ai') && request.method === 'POST') {
+      return handleAI(request, env)
+    }
+
+    // All other requests → serve static files
+    return env.ASSETS.fetch(request)
+  }
+}
+
+async function handleAI(request, env) {
   const apiKey = env.ANTHROPIC_API_KEY
   if (!apiKey || !apiKey.startsWith('sk-ant-')) {
     return json({ error: 'ANTHROPIC_API_KEY not configured', setupRequired: true }, 503)
@@ -92,7 +105,6 @@ Respond ONLY with valid JSON in this exact format:
     })
 
     if (!res.ok) {
-      const err = await res.text()
       return json({ error: `Anthropic API error: ${res.status}` }, 500)
     }
 
@@ -108,7 +120,7 @@ Respond ONLY with valid JSON in this exact format:
     const parsed = JSON.parse(jsonMatch[0])
     return json(parsed)
 
-  } catch (err) {
+  } catch {
     return json({ error: 'AI request failed. Please try again.' }, 500)
   }
 }
