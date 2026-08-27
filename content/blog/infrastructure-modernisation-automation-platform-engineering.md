@@ -30,7 +30,7 @@ This article is written from two perspectives I hold simultaneously: the hands-o
 Most infrastructure modernisation programmes fail — not because of technology, but because of approach. Common failure patterns I have seen:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#f87171; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">⚠️ The Most Common Modernisation Mistakes</p>
+<p style="color:#f87171; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">▲ The Most Common Modernisation Mistakes</p>
 <div style="display:flex; flex-direction:column; gap:0.85rem;">
 <div style="display:flex; gap:0.75rem;"><span style="color:#f87171; font-weight:700; flex-shrink:0; font-size:0.9rem;">01</span><div><p style="color:#e2e8f0; font-weight:700; margin:0 0 0.2rem; font-size:0.9rem;">Lift-and-shift without rearchitecting</p><p style="color:#94a3b8; font-size:0.82rem; margin:0;">Moving VMs to cloud and calling it "cloud migration." You inherit all the same problems at 3x the cost.</p></div></div>
 <div style="display:flex; gap:0.75rem;"><span style="color:#f87171; font-weight:700; flex-shrink:0; font-size:0.9rem;">02</span><div><p style="color:#e2e8f0; font-weight:700; margin:0 0 0.2rem; font-size:0.9rem;">Automating bad processes</p><p style="color:#94a3b8; font-size:0.82rem; margin:0;">Automating a broken process makes it break faster and at scale. Fix the process first.</p></div></div>
@@ -51,25 +51,25 @@ When I approach modernisation for any organisation, I frame it around four conne
 <div style="margin: 2rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
 
 <div style="background: #0f172a; border: 1px solid rgba(59,130,246,0.25); border-radius: 12px; padding: 1.25rem;">
-<div style="width:36px; height:36px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">☁️</div>
+<div style="width:36px; height:36px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">◆</div>
 <p style="color:#60a5fa; font-weight:700; margin:0 0 0.4rem; font-size:0.9rem;">1. Cloud & Hybrid Architecture</p>
 <p style="color:#94a3b8; font-size:0.8rem; margin:0; line-height:1.5;">Right-sizing workloads across on-prem, private cloud, and public cloud. Not everything belongs in Azure or AWS — but everything needs a deliberate placement decision.</p>
 </div>
 
 <div style="background: #0f172a; border: 1px solid rgba(16,185,129,0.25); border-radius: 12px; padding: 1.25rem;">
-<div style="width:36px; height:36px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">⚙️</div>
+<div style="width:36px; height:36px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">◆</div>
 <p style="color:#34d399; font-weight:700; margin:0 0 0.4rem; font-size:0.9rem;">2. Infrastructure as Code (IaC)</p>
 <p style="color:#94a3b8; font-size:0.8rem; margin:0; line-height:1.5;">Every environment defined in version-controlled code. Terraform, Bicep, Ansible. No more snowflake servers. No more "it works on my machine."</p>
 </div>
 
 <div style="background: #0f172a; border: 1px solid rgba(139,92,246,0.25); border-radius: 12px; padding: 1.25rem;">
-<div style="width:36px; height:36px; border-radius:8px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">🔄</div>
+<div style="width:36px; height:36px; border-radius:8px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">◆</div>
 <p style="color:#a78bfa; font-weight:700; margin:0 0 0.4rem; font-size:0.9rem;">3. CI/CD & Release Automation</p>
 <p style="color:#94a3b8; font-size:0.8rem; margin:0; line-height:1.5;">Automated pipelines from code commit to production. Zero-downtime deployments. Rollback in seconds, not hours. Every release is an event, not an incident.</p>
 </div>
 
 <div style="background: #0f172a; border: 1px solid rgba(245,158,11,0.25); border-radius: 12px; padding: 1.25rem;">
-<div style="width:36px; height:36px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">📊</div>
+<div style="width:36px; height:36px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:0.75rem; font-size:1rem;">◆</div>
 <p style="color:#fbbf24; font-weight:700; margin:0 0 0.4rem; font-size:0.9rem;">4. Observability & Self-Healing</p>
 <p style="color:#94a3b8; font-size:0.8rem; margin:0; line-height:1.5;">Full-stack monitoring, structured logging, distributed tracing. Alerts that fire before users notice. Automated remediation for the most common failure classes.</p>
 </div>
@@ -87,7 +87,7 @@ When I approach modernisation for any organisation, I frame it around four conne
 Using **Microsoft Intune + Autopilot + Azure Update Manager**, we rebuilt the entire lifecycle:
 
 <div style="margin: 1.5rem 0; background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#60a5fa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">⚡ What the Automation Delivered</p>
+<p style="color:#60a5fa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ What the Automation Delivered</p>
 <div style="display:flex; flex-direction:column; gap:0.7rem;">
 <div style="display:flex; justify-content:space-between; align-items:center; padding:0.6rem 0; border-bottom:1px solid rgba(255,255,255,0.05);">
 <span style="color:#cbd5e1; font-size:0.85rem;">New device provisioning time</span>
@@ -121,7 +121,7 @@ Using **Microsoft Intune + Autopilot + Azure Update Manager**, we rebuilt the en
 **The Modernisation:**
 
 <div style="margin: 1.5rem 0; background: #0f172a; border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#a78bfa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">🎫 ITSM Automation Stack</p>
+<p style="color:#a78bfa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ ITSM Automation Stack</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="display:flex; gap:0.75rem; color:#cbd5e1; font-size:0.85rem;"><span style="color:#a78bfa;">→</span><strong>Auto-categorisation:</strong> ML-based ticket routing reduced misroutes by 73%</li>
 <li style="display:flex; gap:0.75rem; color:#cbd5e1; font-size:0.85rem;"><span style="color:#a78bfa;">→</span><strong>Predictive SLA alerting:</strong> WhatsApp + email alerts fire at 60% SLA consumed, not at breach</li>
@@ -182,7 +182,7 @@ This is where Platform Engineering intersects with financial management — a co
 We introduced **Terraform + Ansible + Azure DevOps pipelines** for full IaC coverage:
 
 <div style="margin: 1.5rem 0; background: #0f172a; border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#34d399; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">🔧 IaC Transformation — Before & After</p>
+<p style="color:#34d399; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ IaC Transformation — Before & After</p>
 <div style="display:flex; flex-direction:column; gap:0.6rem;">
 <div style="display:flex; gap:1rem; padding:0.7rem 0; border-bottom:1px solid rgba(255,255,255,0.05);">
 <span style="color:#94a3b8; font-size:0.82rem; width:180px; flex-shrink:0;">Environment rebuild time</span>
@@ -260,7 +260,7 @@ After years of building and modernising infrastructure at scale, these are the p
 <div style="margin: 2rem 0; display:flex; flex-direction:column; gap:1rem;">
 
 <div style="display:flex; gap:1rem; padding:1.25rem; background:#0f172a; border:1px solid rgba(59,130,246,0.2); border-radius:12px; align-items:flex-start;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;">🔑</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.35rem;">Rule 1: If you did it twice manually, automate it on the third time</p>
 <p style="color:#94a3b8; font-size:0.85rem; margin:0; line-height:1.6;">The instinct to "just do it quickly this time" is the enemy of a modern platform. The third time a task comes around, it will come a fourth and fifth time. Automate it now and never think about it again.</p>
@@ -268,7 +268,7 @@ After years of building and modernising infrastructure at scale, these are the p
 </div>
 
 <div style="display:flex; gap:1rem; padding:1.25rem; background:#0f172a; border:1px solid rgba(16,185,129,0.2); border-radius:12px; align-items:flex-start;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;">📖</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.35rem;">Rule 2: If it is not in code, it does not exist</p>
 <p style="color:#94a3b8; font-size:0.85rem; margin:0; line-height:1.6;">Infrastructure that lives only in someone's memory is a liability. Runbooks, configurations, network topologies, access policies — if they are not documented and version-controlled, they will eventually cause an outage when the person who remembers them is unavailable.</p>
@@ -276,7 +276,7 @@ After years of building and modernising infrastructure at scale, these are the p
 </div>
 
 <div style="display:flex; gap:1rem; padding:1.25rem; background:#0f172a; border:1px solid rgba(245,158,11,0.2); border-radius:12px; align-items:flex-start;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;">📈</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.35rem;">Rule 3: Show the number before you ask for the budget</p>
 <p style="color:#94a3b8; font-size:0.85rem; margin:0; line-height:1.6;">Every modernisation initiative I have successfully funded was backed by a number: hours saved, risk quantified, cost reduced, compliance incidents avoided. Engineering without a business case is engineering for its own sake. Know what your work is worth in the language of the business.</p>
@@ -292,7 +292,7 @@ After years of building and modernising infrastructure at scale, these are the p
 If you are a Platform Engineer or IT leader reading this and wondering where to start, here is the practical sequence:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#60a5fa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">🚀 Modernisation Starter Sequence</p>
+<p style="color:#60a5fa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ Modernisation Starter Sequence</p>
 <div style="display:flex; flex-direction:column; gap:0.85rem;">
 <div style="display:flex; gap:0.75rem; align-items:flex-start;">
 <span style="background:rgba(59,130,246,0.2); color:#60a5fa; font-weight:900; font-size:0.75rem; width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.1rem;">1</span>
@@ -324,27 +324,27 @@ If you are a Platform Engineer or IT leader reading this and wondering where to 
 <div style="margin: 2rem 0; display:flex; flex-direction:column; gap:0.75rem;">
 
 <a href="https://learn.microsoft.com/en-us/azure/architecture/framework/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">☁️</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div><p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">Microsoft Azure Well-Architected Framework</p><p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">learn.microsoft.com — Reliability, security, performance, cost optimisation pillars</p></div>
 </a>
 
 <a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">⚡</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div><p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">AWS Well-Architected Framework</p><p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">aws.amazon.com — Infrastructure best practices across operational excellence, security, cost</p></div>
 </a>
 
 <a href="https://www.terraform.io/docs" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">🔧</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div><p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">Terraform Documentation</p><p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">terraform.io — Infrastructure as Code reference, providers, modules, best practices</p></div>
 </a>
 
 <a href="https://www.cio.com/category/infrastructure/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">💼</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div><p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">CIO.com — Infrastructure</p><p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">cio.com — Infrastructure modernisation, cloud strategy, IT leadership articles</p></div>
 </a>
 
 <a href="https://www.gartner.com/en/information-technology/insights/infrastructure-operations" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">📊</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div><p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">Gartner — Infrastructure & Operations</p><p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">gartner.com — Research on I&O leadership, automation trends, platform engineering</p></div>
 </a>
 

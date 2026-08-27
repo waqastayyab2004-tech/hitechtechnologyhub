@@ -32,7 +32,7 @@ Certifications are genuinely useful. I'm not dismissing them. A PMP tells your e
 But here is what certifications cannot teach you:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#f87171; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">❌ What No IT Certification Teaches You</p>
+<p style="color:#f87171; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">✗ What No IT Certification Teaches You</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.75rem;">
 <li style="display:flex; align-items:flex-start; gap:0.75rem;"><span style="color:#f87171; font-weight:700; flex-shrink:0;">→</span><span style="color:#cbd5e1; font-size:0.9rem;">How your IT decision affects the company's P&L</span></li>
 <li style="display:flex; align-items:flex-start; gap:0.75rem;"><span style="color:#f87171; font-weight:700; flex-shrink:0;">→</span><span style="color:#cbd5e1; font-size:0.9rem;">How to present a CapEx vs OpEx infrastructure argument to a CFO</span></li>
@@ -124,12 +124,12 @@ The reason is simple. At a certain point in your career, the question stops bein
 - Can you build a relationship with a CEO who has never written a line of code?
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#60a5fa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">💡 The MBA Advantage in Enterprise IT</p>
+<p style="color:#60a5fa; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ The MBA Advantage in Enterprise IT</p>
 <div style="display:flex; flex-direction:column; gap:1rem;">
 
 <div style="display:flex; gap:1rem; align-items:flex-start;">
 <div style="width:36px; height:36px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-<span style="font-size:1rem;">📊</span>
+<span style="font-size:1rem;">◆</span>
 </div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.25rem;">Financial Literacy</p>
@@ -139,7 +139,7 @@ The reason is simple. At a certain point in your career, the question stops bein
 
 <div style="display:flex; gap:1rem; align-items:flex-start;">
 <div style="width:36px; height:36px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-<span style="font-size:1rem;">🏢</span>
+<span style="font-size:1rem;">◆</span>
 </div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.25rem;">Organisational Behaviour</p>
@@ -149,7 +149,7 @@ The reason is simple. At a certain point in your career, the question stops bein
 
 <div style="display:flex; gap:1rem; align-items:flex-start;">
 <div style="width:36px; height:36px; border-radius:8px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-<span style="font-size:1rem;">🌍</span>
+<span style="font-size:1rem;">◆</span>
 </div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.25rem;">Industry & Market Context</p>
@@ -159,7 +159,7 @@ The reason is simple. At a certain point in your career, the question stops bein
 
 <div style="display:flex; gap:1rem; align-items:flex-start;">
 <div style="width:36px; height:36px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-<span style="font-size:1rem;">🤝</span>
+<span style="font-size:1rem;">◆</span>
 </div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.25rem;">Executive Communication</p>
@@ -169,7 +169,7 @@ The reason is simple. At a certain point in your career, the question stops bein
 
 <div style="display:flex; gap:1rem; align-items:flex-start;">
 <div style="width:36px; height:36px; border-radius:8px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-<span style="font-size:1rem;">⚡</span>
+<span style="font-size:1rem;">◆</span>
 </div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.25rem;">Strategic Thinking</p>
@@ -257,7 +257,7 @@ The table makes the trade-off clear. Certifications are efficient and targeted. 
 This is important: I am not saying every IT professional should get an MBA. The sweet spot is specific:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#34d399; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">✅ The MBA is the Right Move If You Are:</p>
+<p style="color:#34d399; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">✓ The MBA is the Right Move If You Are:</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="display:flex; gap:0.75rem; color:#cbd5e1; font-size:0.9rem;"><span style="color:#34d399;">•</span>A mid-career IT professional (5–10 years experience) who has hit a leadership ceiling</li>
 <li style="display:flex; gap:0.75rem; color:#cbd5e1; font-size:0.9rem;"><span style="color:#34d399;">•</span>Targeting a CIO, IT Director, or Head of Technology role within 5 years</li>
@@ -268,7 +268,7 @@ This is important: I am not saying every IT professional should get an MBA. The 
 </div>
 
 <div style="margin: 1.5rem 0; background: #0f172a; border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#f87171; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">⚠️ Stick with Certifications If You Are:</p>
+<p style="color:#f87171; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">▲ Stick with Certifications If You Are:</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="display:flex; gap:0.75rem; color:#cbd5e1; font-size:0.9rem;"><span style="color:#f87171;">•</span>Early in your career (under 3 years experience) — build technical depth first</li>
 <li style="display:flex; gap:0.75rem; color:#cbd5e1; font-size:0.9rem;"><span style="color:#f87171;">•</span>In a highly specialised technical role where depth matters more than breadth</li>
@@ -284,7 +284,7 @@ This is important: I am not saying every IT professional should get an MBA. The 
 <div style="margin: 2rem 0; display:flex; flex-direction:column; gap:0.75rem;">
 
 <a href="https://www.hbs.edu/mba/" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">🎓</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">Harvard Business School — MBA Programme</p>
 <p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">hbs.edu — Technology & Operations Management, AI Leadership curriculum</p>
@@ -292,7 +292,7 @@ This is important: I am not saying every IT professional should get an MBA. The 
 </a>
 
 <a href="https://www.london.edu/masters-degrees/mba" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">🎓</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">London Business School — MBA</p>
 <p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">london.edu — Career outcomes data, flexible duration, tech-sector placements</p>
@@ -300,7 +300,7 @@ This is important: I am not saying every IT professional should get an MBA. The 
 </a>
 
 <a href="https://sloanreview.mit.edu" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">📖</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(139,92,246,0.15); border:1px solid rgba(139,92,246,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">MIT Sloan Management Review</p>
 <p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">sloanreview.mit.edu — Technology leadership, digital transformation research</p>
@@ -308,7 +308,7 @@ This is important: I am not saying every IT professional should get an MBA. The 
 </a>
 
 <a href="https://www.cio.com" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">💼</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">CIO.com — IT Leadership & Career</p>
 <p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">cio.com — Careers section: MBA in IT, CIO skills, executive leadership</p>
@@ -316,7 +316,7 @@ This is important: I am not saying every IT professional should get an MBA. The 
 </a>
 
 <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; text-decoration:none; color:inherit;">
-<div style="width:40px; height:40px; border-radius:8px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">📊</div>
+<div style="width:40px; height:40px; border-radius:8px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0; font-size:0.9rem;">McKinsey Digital Insights</p>
 <p style="color:#64748b; font-size:0.78rem; margin:0.2rem 0 0;">mckinsey.com — Digital transformation, technology leadership research</p>
