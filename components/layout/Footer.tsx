@@ -111,7 +111,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <Link href="/research" className="text-gray-600 text-xs hover:text-accent-blue transition-colors">Research</Link>
             <Link href="/sitemap.xml" className="text-gray-600 text-xs hover:text-accent-blue transition-colors">Sitemap</Link>
-            <a href="/admin" className="text-gray-700 text-xs hover:text-gray-500 transition-colors">⚙️ CMS</a>
+            <a href="/admin" className="text-gray-700 text-xs hover:text-gray-500 transition-colors">◆ CMS</a>
             <p className="text-gray-700 text-xs flex items-center gap-1">
               Built with <Heart className="w-3 h-3 text-red-500 mx-0.5" /> Next.js
             </p>

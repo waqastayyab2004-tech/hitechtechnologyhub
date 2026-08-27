@@ -21,11 +21,11 @@ Claude Code is Anthropic's AI assistant that runs directly in your terminal. Unl
 
 | Feature | ChatGPT / Claude.ai | Claude Code |
 |---------|---------------------|-------------|
-| Reads your files | ❌ | ✅ |
-| Runs terminal commands | ❌ | ✅ |
-| Edits code directly | ❌ | ✅ |
-| Remembers project context | ❌ | ✅ (CLAUDE.md) |
-| Works offline | ❌ | ❌ |
+| Reads your files | ✗ | ✓ |
+| Runs terminal commands | ✗ | ✓ |
+| Edits code directly | ✗ | ✓ |
+| Remembers project context | ✗ | ✓ (CLAUDE.md) |
+| Works offline | ✗ | ✗ |
 
 ## Installation
 

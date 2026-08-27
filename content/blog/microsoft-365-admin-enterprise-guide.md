@@ -197,7 +197,7 @@ Run this monthly. Any account with no sign-in in 90 days gets flagged for review
 Every 10 points of Secure Score represents real risk reduction. It's not just a vanity metric.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Use Entra ID Sign-in Logs as your first debugging tool for access issues — it shows exactly which Conditional Access policy blocked a sign-in and why, saving hours of guesswork.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Set a Teams creation policy that limits new team creation to admins and approved owners — ungoverned Teams sprawl becomes an audit and security problem within months.</li>

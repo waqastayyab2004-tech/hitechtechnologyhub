@@ -86,12 +86,12 @@ const rcmServices = [
 ]
 
 const specialties = [
-  { name: 'Mental Health', icon: '🧠' },
-  { name: 'Internal Medicine', icon: '⚕️' },
-  { name: 'Chiropractic', icon: '🦴' },
-  { name: 'Family Medicine', icon: '👨‍👩‍👧' },
-  { name: 'Transportation', icon: '🚑' },
-  { name: 'DME / Durable Medical Equipment', icon: '🏥' },
+  { name: 'Mental Health', icon: '◆' },
+  { name: 'Internal Medicine', icon: '◆' },
+  { name: 'Chiropractic', icon: '◆' },
+  { name: 'Family Medicine', icon: '◆' },
+  { name: 'Transportation', icon: '◆' },
+  { name: 'DME / Durable Medical Equipment', icon: '◆' },
 ]
 
 const platforms = [
@@ -267,11 +267,11 @@ export default function MedicalBillingPage() {
                 {/* Skill tags — like in screenshot */}
                 <div className="flex flex-wrap justify-center gap-1.5 max-w-[200px]">
                   {[
-                    { label: '🏥 Medical Billing', color: 'border-rose-500/40 text-rose-300 bg-rose-500/8' },
-                    { label: '💳 AR Management', color: 'border-orange-500/40 text-orange-300 bg-orange-500/8' },
-                    { label: '🔍 Denial Mgmt', color: 'border-purple-500/40 text-purple-300 bg-purple-500/8' },
-                    { label: '📋 ICD-10/CPT', color: 'border-cyan-500/40 text-cyan-300 bg-cyan-500/8' },
-                    { label: '⚕️ HIPAA Certified', color: 'border-green-500/40 text-green-300 bg-green-500/8' },
+                    { label: '◆ Medical Billing', color: 'border-rose-500/40 text-rose-300 bg-rose-500/8' },
+                    { label: '◆ AR Management', color: 'border-orange-500/40 text-orange-300 bg-orange-500/8' },
+                    { label: '◆ Denial Mgmt', color: 'border-purple-500/40 text-purple-300 bg-purple-500/8' },
+                    { label: '◆ ICD-10/CPT', color: 'border-cyan-500/40 text-cyan-300 bg-cyan-500/8' },
+                    { label: '◆ HIPAA Certified', color: 'border-green-500/40 text-green-300 bg-green-500/8' },
                   ].map(t => (
                     <span key={t.label} className={`px-2.5 py-1 rounded-full text-[10px] font-semibold border ${t.color} whitespace-nowrap`}>
                       {t.label}
@@ -358,7 +358,7 @@ export default function MedicalBillingPage() {
 
                 {/* Education + contact */}
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/8">
-                  <p className="text-xs text-gray-500">🎓 BS Computer Science — University of AJK Muzaffarabad &nbsp;·&nbsp; English · Urdu · Hindko</p>
+                  <p className="text-xs text-gray-500">◆ BS Computer Science — University of AJK Muzaffarabad &nbsp;·&nbsp; English · Urdu · Hindko</p>
                   <div className="flex flex-wrap gap-2">
                     <a href="https://wa.me/966505803073" target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-green-500/10 border border-green-500/25 text-green-400 text-xs font-bold hover:bg-green-500/20 transition-colors">
@@ -429,11 +429,11 @@ export default function MedicalBillingPage() {
                 {/* Level 3 — Team Members */}
                 <div className="flex justify-center gap-4">
                   {[
-                    { name: 'Team Member', role: 'AR Specialist', sub: 'Accounts Receivable', icon: '💼', color: 'border-rose-500/40 shadow-[0_0_12px_rgba(239,68,68,0.2)]' },
-                    { name: 'Team Member', role: 'Billing Coder', sub: 'ICD-10 / CPT Coding', icon: '📋', color: 'border-orange-500/40 shadow-[0_0_12px_rgba(249,115,22,0.2)]' },
-                    { name: 'Team Member', role: 'Denial Analyst', sub: 'Denial & Appeals', icon: '🔍', color: 'border-purple-500/40 shadow-[0_0_12px_rgba(139,92,246,0.2)]' },
-                    { name: 'Team Member', role: 'Payment Poster', sub: 'EOB / ERA Processing', icon: '💳', color: 'border-cyan-500/40 shadow-[0_0_12px_rgba(6,182,212,0.2)]' },
-                    { name: 'Team Member', role: 'VOB Specialist', sub: 'Eligibility & Auth', icon: '✅', color: 'border-green-500/40 shadow-[0_0_12px_rgba(16,185,129,0.2)]' },
+                    { name: 'Team Member', role: 'AR Specialist', sub: 'Accounts Receivable', icon: '◆', color: 'border-rose-500/40 shadow-[0_0_12px_rgba(239,68,68,0.2)]' },
+                    { name: 'Team Member', role: 'Billing Coder', sub: 'ICD-10 / CPT Coding', icon: '◆', color: 'border-orange-500/40 shadow-[0_0_12px_rgba(249,115,22,0.2)]' },
+                    { name: 'Team Member', role: 'Denial Analyst', sub: 'Denial & Appeals', icon: '◆', color: 'border-purple-500/40 shadow-[0_0_12px_rgba(139,92,246,0.2)]' },
+                    { name: 'Team Member', role: 'Payment Poster', sub: 'EOB / ERA Processing', icon: '◆', color: 'border-cyan-500/40 shadow-[0_0_12px_rgba(6,182,212,0.2)]' },
+                    { name: 'Team Member', role: 'VOB Specialist', sub: 'Eligibility & Auth', icon: '✓', color: 'border-green-500/40 shadow-[0_0_12px_rgba(16,185,129,0.2)]' },
                   ].map((m, i) => (
                     <div key={i} className="flex flex-col items-center">
                       {/* Connector up */}
@@ -466,7 +466,7 @@ export default function MedicalBillingPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-dark-900/60 border-b border-white/8">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-2 mb-6">
-            <span className="text-2xl">⚕️</span>
+            <span className="text-2xl">◆</span>
             <h2 className="text-2xl font-black text-white">Head of Medical Services</h2>
           </div>
 
@@ -501,11 +501,11 @@ export default function MedicalBillingPage() {
                 {/* Skill tags */}
                 <div className="flex flex-wrap justify-center gap-1.5 max-w-[210px]">
                   {[
-                    { label: '🏥 Emergency Medicine', color: 'border-emerald-500/40 text-emerald-300 bg-emerald-500/8' },
-                    { label: '🩺 MRCEM Qualified', color: 'border-blue-500/40 text-blue-300 bg-blue-500/8' },
-                    { label: '💉 ATLS Certified', color: 'border-purple-500/40 text-purple-300 bg-purple-500/8' },
-                    { label: '❤️ ACLS Provider', color: 'border-rose-500/40 text-rose-300 bg-rose-500/8' },
-                    { label: '🧒 APLS Certified', color: 'border-yellow-500/40 text-yellow-300 bg-yellow-500/8' },
+                    { label: '◆ Emergency Medicine', color: 'border-emerald-500/40 text-emerald-300 bg-emerald-500/8' },
+                    { label: '◆ MRCEM Qualified', color: 'border-blue-500/40 text-blue-300 bg-blue-500/8' },
+                    { label: '◆ ATLS Certified', color: 'border-purple-500/40 text-purple-300 bg-purple-500/8' },
+                    { label: '◆ ACLS Provider', color: 'border-rose-500/40 text-rose-300 bg-rose-500/8' },
+                    { label: '◆ APLS Certified', color: 'border-yellow-500/40 text-yellow-300 bg-yellow-500/8' },
                   ].map(t => (
                     <span key={t.label} className={`px-2.5 py-1 rounded-full text-[10px] font-semibold border ${t.color} whitespace-nowrap`}>
                       {t.label}
@@ -594,7 +594,7 @@ export default function MedicalBillingPage() {
                       'FCPS Residency (Medicine) — College of Physicians & Surgeons Pakistan (CPSP)',
                       'Family Medicine Certificate (USA) — APPNA MERIT · One Year Online Course',
                     ].map((e, i) => (
-                      <p key={i} className="text-xs text-gray-500">🎓 {e}</p>
+                      <p key={i} className="text-xs text-gray-500">◆ {e}</p>
                     ))}
                   </div>
                 </div>
@@ -602,7 +602,7 @@ export default function MedicalBillingPage() {
                 {/* Contact */}
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/8">
                   <div className="text-xs text-gray-500">
-                    🌍 Cork, Ireland &nbsp;·&nbsp; LinkedIn: dr-syed-abbas-419188b3 &nbsp;·&nbsp; Languages: English · Urdu
+                    ◆ Cork, Ireland &nbsp;·&nbsp; LinkedIn: dr-syed-abbas-419188b3 &nbsp;·&nbsp; Languages: English · Urdu
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <a href="https://wa.me/966505803073" target="_blank" rel="noopener noreferrer"

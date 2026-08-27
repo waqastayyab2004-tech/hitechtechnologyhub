@@ -37,37 +37,37 @@ const whyCards = [
 const deliveryModels = [
   {
     icon: Users,
-    badge: '⭐ Top Rated',
+    badge: '◆ Top Rated',
     title: 'Shared IT Specialist',
     desc: 'Senior IT expertise shared across defined service areas — on demand, without a full-time hire. Ideal for SMBs and growing teams who need enterprise-grade support at a fraction of the cost.',
   },
   {
     icon: Star,
-    badge: '🏆 Most Popular',
+    badge: '◆ Most Popular',
     title: 'Dedicated IT Consultant',
     desc: 'Full-focus engagement with deep knowledge of your environment, committed availability, and a single point of accountability. Best for enterprises with complex or regulated IT requirements.',
   },
   {
     icon: TrendingUp,
-    badge: '🔥 High Demand',
+    badge: '◆ High Demand',
     title: 'Staff Augmentation',
     desc: 'A senior IT specialist plugged directly into your existing team — short-term for a project or long-term for capacity. I integrate into your workflows, tools, and communication channels from day one.',
   },
   {
     icon: Bot,
-    badge: '🤖 AI — New',
+    badge: '◆ AI — New',
     title: 'AI Workflow Automation',
     desc: 'End-to-end AI automation of your operational workflows — email triage, ticket routing, SLA monitoring, and reporting. Reduce manual overhead by 60–80% using production-grade AI agents built on Claude, OpenAI, and MCP.',
   },
   {
     icon: Brain,
-    badge: '🤖 AI — New',
+    badge: '◆ AI — New',
     title: 'Corporate AI Training',
     desc: 'Hands-on AI training tailored to your team and industry. From Claude Code to ChatGPT for enterprise — your staff learns to deploy AI that actually works in production, not just demos. Live sessions, real use cases, measurable adoption.',
   },
   {
     icon: Sparkles,
-    badge: '🤖 AI — New',
+    badge: '◆ AI — New',
     title: 'AI Strategy & Roadmap',
     desc: 'A structured AI adoption roadmap built around your business. Identify the highest-ROI automation opportunities, select the right tools, and deliver a phased implementation plan your leadership can approve and your team can execute.',
   },
@@ -236,13 +236,13 @@ const services = [
     border: 'border-l-pink-500',
     isDigital: true,
     deliverables: [
-      '📘 LinkedIn strategy for B2B and professional brand building',
-      '📸 Instagram & Facebook page setup, content & ads',
-      '▶️ YouTube channel setup and video SEO optimisation',
-      '🐦 Twitter/X and TikTok profile management',
-      '🔍 SEO setup: Google ranking, keyword strategy, meta tags',
-      '📧 Email marketing: list building, campaigns, automation',
-      '💰 Google Ads & Meta Ads setup and management',
+      '◆ LinkedIn strategy for B2B and professional brand building',
+      '◆ Instagram & Facebook page setup, content & ads',
+      '→ YouTube channel setup and video SEO optimisation',
+      '◆ Twitter/X and TikTok profile management',
+      '◆ SEO setup: Google ranking, keyword strategy, meta tags',
+      '◆ Email marketing: list building, campaigns, automation',
+      '◆ Google Ads & Meta Ads setup and management',
       'Google Analytics (GA4) + Search Console setup & reporting',
       'Content calendar planning and scheduling tools setup',
       'Personal brand strategy for IT consultants & freelancers',
@@ -1040,7 +1040,7 @@ export default function ServicesPage() {
         {/* Medical Billing link card */}
         <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-between gap-5 border border-rose-500/15 bg-rose-500/3 mt-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center flex-shrink-0 text-xl">🏥</div>
+            <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center flex-shrink-0 text-xl">◆</div>
             <div>
               <h3 className="font-black text-white text-base mb-0.5">Medical Billing &amp; RCM Outsourcing</h3>
               <p className="text-gray-400 text-sm">Full Revenue Cycle Management for US healthcare practices — coding, claims, A/R, denials, and reporting. HIPAA certified.</p>

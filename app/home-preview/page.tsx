@@ -5,14 +5,14 @@ import { useState, useEffect } from 'react'
 
 /* ── Ticker items ──────────────────────────────────────────────── */
 const TICKER = [
-  '🚀 AI Automation · Built 4 live enterprise AI tools',
-  '🛡️ Azure Security Engineer · Certified 2024',
-  '📦 IT Asset Manager · 1,500–2,000+ devices tracked',
-  '🎫 ServiceNow · 96%+ SLA compliance · 1,000+ tickets/yr',
-  '☁️ M365 Admin · 200+ users · 3 offices · Riyadh KSA',
-  '🤖 Claude AI · MCP integration · natural language IT ops',
-  '🌐 Next.js Website · Live on Cloudflare · 1M+ community',
-  '⚙️ Daily IT Ops · 10 domains · endpoint to network',
+  '◆ AI Automation · Built 4 live enterprise AI tools',
+  '◆ Azure Security Engineer · Certified 2024',
+  '◆ IT Asset Manager · 1,500–2,000+ devices tracked',
+  '◆ ServiceNow · 96%+ SLA compliance · 1,000+ tickets/yr',
+  '◆ M365 Admin · 200+ users · 3 offices · Riyadh KSA',
+  '◆ Claude AI · MCP integration · natural language IT ops',
+  '◆ Next.js Website · Live on Cloudflare · 1M+ community',
+  '◆ Daily IT Ops · 10 domains · endpoint to network',
 ]
 
 /* ── Nav items matching actual site ───────────────────────────── */
@@ -27,37 +27,37 @@ const NAV = [
 /* ── Site sections — what each page does ─────────────────────── */
 const SECTIONS = [
   {
-    emoji: '💼', title: 'IT Services',       href: '/services',
+    emoji: '◆', title: 'IT Services',       href: '/services',
     color: '#3b82f6', badge: 'Hire Me',
     desc: 'L1–L3 support, Azure Security, M365 admin, ServiceNow ITSM, AI automation, and IT Asset Management — onsite across MENA or remote worldwide.',
     tags: ['Cisco · Aruba', 'Intune/Autopilot', 'Azure AD', 'ServiceNow', 'M365 Admin', 'AI Automation'],
   },
   {
-    emoji: '🗂️', title: 'Projects',          href: '/projects',
+    emoji: '◆', title: 'Projects',          href: '/projects',
     color: '#8b5cf6', badge: '34 Projects',
     desc: '34 real enterprise projects with full PMP documentation — scope, outcomes, tools, and SLAs. From Zero Trust rollouts to AI dashboards.',
     tags: ['Daily IT Ops', 'Enterprise Rollouts', 'AI Tools Built', 'ITSM Implementations'],
   },
   {
-    emoji: '🎓', title: 'IT Learning',        href: '/training',
+    emoji: '◆', title: 'IT Learning',        href: '/training',
     color: '#10b981', badge: '12 Free Courses',
     desc: 'Free IT courses for beginners through seniors — AI tools, cybersecurity, M365, ServiceNow, IT career roadmap, and more.',
     tags: ['AI for IT Pros', 'Azure Security', 'ServiceNow Basics', 'IT Career Roadmap'],
   },
   {
-    emoji: '📰', title: 'Articles',           href: '/blog',
+    emoji: '◆', title: 'Articles',           href: '/blog',
     color: '#f59e0b', badge: '18 Articles',
     desc: 'Practical IT and AI articles written from 15+ years of real enterprise experience — no fluff, no theory.',
     tags: ['AI & Automation', 'Cybersecurity', 'Cloud & M365', 'IT Career Tips'],
   },
   {
-    emoji: '⚙️', title: 'Daily IT Ops',       href: '/projects#daily-operations',
+    emoji: '◆', title: 'Daily IT Ops',       href: '/projects#daily-operations',
     color: '#22d3ee', badge: '10 Areas',
     desc: 'A deep look at 10 technical areas I manage daily — MDM, endpoint security, M365 admin, provisioning, network, AV and more.',
     tags: ['Jamf MDM', 'Intune', 'Exchange Online', 'Cisco/Aruba', 'Teams Rooms'],
   },
   {
-    emoji: '👤', title: 'Portfolio',           href: '/about',
+    emoji: '◆', title: 'Portfolio',           href: '/about',
     color: '#ec4899', badge: 'Full CV',
     desc: '15+ years of experience, 13 certifications, full work history, interactive skill map, and downloadable CV.',
     tags: ['Azure Security Cert', 'SAP AI Hub', 'MBA · UK', 'ITIL v3', 'PMP'],
@@ -77,17 +77,17 @@ const STATS = [
 /* ── Who this site is for ─────────────────────────────────────── */
 const AUDIENCES = [
   {
-    icon: '🏢', title: 'Hiring Managers & Recruiters',
+    icon: '◆', title: 'Hiring Managers & Recruiters',
     desc: 'Looking for a senior IT or AI engineer for a full-time role in MENA or remote? View the full portfolio, download the CV, and contact directly.',
     cta: 'View Portfolio', href: '/about', color: '#3b82f6',
   },
   {
-    icon: '💡', title: 'Businesses & IT Managers',
+    icon: '◆', title: 'Businesses & IT Managers',
     desc: 'Need IT consulting, M365 administration, ServiceNow setup, or AI automation? Outsource to a certified enterprise IT specialist.',
     cta: 'View Services', href: '/services', color: '#8b5cf6',
   },
   {
-    icon: '📚', title: 'IT Professionals & Students',
+    icon: '◆', title: 'IT Professionals & Students',
     desc: 'Learning IT, AI, Azure, or ServiceNow? Access 12 free courses, 18 articles, and real enterprise project documentation.',
     cta: 'Start Learning', href: '/training', color: '#10b981',
   },
@@ -118,7 +118,7 @@ export default function HomePreviewPage() {
 
       {/* ── PREVIEW BANNER ─────────────────────────────────────────── */}
       <div className="sticky top-0 z-50 bg-yellow-500 text-black text-center py-2 px-4 text-sm font-black tracking-wide">
-        👁️ PREVIEW ONLY — This is the new Home page design. Not live yet.&nbsp;
+         PREVIEW ONLY — This is the new Home page design. Not live yet.&nbsp;
         <Link href="/" className="underline font-black">View current Home →</Link>
       </div>
 
@@ -155,7 +155,7 @@ export default function HomePreviewPage() {
               </h1>
               <p className="text-xl font-bold text-blue-400 mb-1">Senior IT System Engineer · IT Service Delivery Lead</p>
               <p className="text-sm text-gray-400 mb-6 flex items-center gap-2">
-                📍 Riyadh, Saudi Arabia · SAP · 15+ Years · Iqama Transferable
+                ◆ Riyadh, Saudi Arabia · SAP · 15+ Years · Iqama Transferable
               </p>
 
               {/* Summary */}
@@ -177,16 +177,16 @@ export default function HomePreviewPage() {
               {/* CTAs */}
               <div className="flex flex-wrap gap-3 mb-8">
                 <Link href="/about" className="btn-primary px-6 py-3 text-sm font-bold inline-flex items-center gap-2">
-                  👤 View Portfolio
+                  ◆ View Portfolio
                 </Link>
                 <Link href="/services" className="btn-outline px-6 py-3 text-sm font-semibold inline-flex items-center gap-2">
-                  💼 Hire / Outsource IT
+                  ◆ Hire / Outsource IT
                 </Link>
                 <Link href="/training" className="px-6 py-3 rounded-xl text-sm font-semibold inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 hover:bg-emerald-500/20 transition-all">
-                  🎓 Free IT Courses
+                  ◆ Free IT Courses
                 </Link>
                 <a href="/Waqas-Syed-CV.pdf" download className="px-6 py-3 rounded-xl text-sm font-semibold inline-flex items-center gap-2 bg-white/5 border border-white/15 text-gray-300 hover:bg-white/10 transition-all">
-                  📄 Download CV
+                  ◆ Download CV
                 </a>
               </div>
 
@@ -381,7 +381,7 @@ export default function HomePreviewPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5 text-center"
         style={{ background: 'linear-gradient(to bottom, rgba(8,14,24,1), rgba(15,23,42,1))' }}>
         <div className="max-w-2xl mx-auto">
-          <div className="text-4xl mb-4">🤝</div>
+          <div className="text-4xl mb-4">◆</div>
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Ready to work together?</h2>
           <p className="text-gray-400 text-base mb-8 leading-relaxed">
             Whether you need a senior IT hire, an outsourced IT specialist, or free IT education —
@@ -400,7 +400,7 @@ export default function HomePreviewPage() {
             </Link>
           </div>
           <p className="text-gray-600 text-xs mt-6">
-            📍 Riyadh, Saudi Arabia · Remote Worldwide · waqastayyab2004@gmail.com
+            ◆ Riyadh, Saudi Arabia · Remote Worldwide · waqastayyab2004@gmail.com
           </p>
         </div>
       </section>

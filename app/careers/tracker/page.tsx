@@ -22,7 +22,7 @@ const COLUMNS: { key: Status; label: string; color: string; bg: string }[] = [
   { key: 'saved',     label: 'Saved',     color: 'text-gray-400',    bg: 'border-gray-500/30 bg-gray-500/8' },
   { key: 'applied',   label: 'Applied',   color: 'text-blue-400',    bg: 'border-blue-500/30 bg-blue-500/8' },
   { key: 'interview', label: 'Interview', color: 'text-yellow-400',  bg: 'border-yellow-500/30 bg-yellow-500/8' },
-  { key: 'offer',     label: 'Offer 🎉',  color: 'text-emerald-400', bg: 'border-emerald-500/30 bg-emerald-500/8' },
+  { key: 'offer',     label: 'Offer ',  color: 'text-emerald-400', bg: 'border-emerald-500/30 bg-emerald-500/8' },
   { key: 'rejected',  label: 'Rejected',  color: 'text-red-400',     bg: 'border-red-500/30 bg-red-500/8' },
 ]
 

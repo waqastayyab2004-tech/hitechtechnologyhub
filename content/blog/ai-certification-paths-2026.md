@@ -202,7 +202,7 @@ Programmes may include data preparation, data analysis, model development, visua
 </div>
 
 <div style="display:flex; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; align-items:flex-start;">
-<div style="width:44px; height:44px; border-radius:8px; background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.25); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">🔷</div>
+<div style="width:44px; height:44px; border-radius:8px; background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.25); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.2rem; font-size:0.9rem;">IBM</p>
 <p style="color:#94a3b8; font-size:0.8rem; margin:0; line-height:1.5;">AI & data science certifications for enterprise AI adoption. Key certs: IBM AI Engineering Professional, IBM Data Science Professional (via Coursera). Enterprise-grade, recognised by large organisations globally.</p>
@@ -226,7 +226,7 @@ Programmes may include data preparation, data analysis, model development, visua
 </div>
 
 <div style="display:flex; gap:1rem; padding:1rem 1.25rem; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:12px; align-items:flex-start;">
-<div style="width:44px; height:44px; border-radius:8px; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">🔐</div>
+<div style="width:44px; height:44px; border-radius:8px; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">◆</div>
 <div>
 <p style="color:#e2e8f0; font-weight:700; margin:0 0 0.2rem; font-size:0.9rem;">ISACA</p>
 <p style="color:#94a3b8; font-size:0.8rem; margin:0; line-height:1.5;">AI governance, risk & assurance certifications. Best for IT auditors, risk managers, and CISOs who need to govern AI responsibly. Increasingly relevant as EU AI Act and regulatory compliance requirements grow.</p>

@@ -15,18 +15,18 @@ interface WeatherData {
 }
 
 const WMO: Record<number, { label: string; icon: string }> = {
-  0:  { label: 'Clear sky',          icon: '☀️' },
-  1:  { label: 'Mainly clear',       icon: '🌤️' },
-  2:  { label: 'Partly cloudy',      icon: '⛅' },
-  3:  { label: 'Overcast',           icon: '☁️' },
-  45: { label: 'Foggy',              icon: '🌫️' },
-  48: { label: 'Icy fog',            icon: '🌫️' },
-  51: { label: 'Light drizzle',      icon: '🌦️' },
-  61: { label: 'Light rain',         icon: '🌧️' },
-  63: { label: 'Rain',               icon: '🌧️' },
-  65: { label: 'Heavy rain',         icon: '🌧️' },
-  80: { label: 'Showers',            icon: '🌦️' },
-  95: { label: 'Thunderstorm',       icon: '⛈️' },
+  0:  { label: 'Clear sky',          icon: '◆' },
+  1:  { label: 'Mainly clear',       icon: '◆' },
+  2:  { label: 'Partly cloudy',      icon: '◆' },
+  3:  { label: 'Overcast',           icon: '◆' },
+  45: { label: 'Foggy',              icon: '◆' },
+  48: { label: 'Icy fog',            icon: '◆' },
+  51: { label: 'Light drizzle',      icon: '◆' },
+  61: { label: 'Light rain',         icon: '◆' },
+  63: { label: 'Rain',               icon: '◆' },
+  65: { label: 'Heavy rain',         icon: '◆' },
+  80: { label: 'Showers',            icon: '◆' },
+  95: { label: 'Thunderstorm',       icon: '▲' },
 }
 
 type Status = 'idle' | 'locating' | 'loading' | 'done' | 'error'
@@ -59,7 +59,7 @@ export default function WeatherWidget() {
           const w   = await weatherRes.json()
           const geo = geoRes.ok ? await geoRes.json() : null
           const c   = w.current
-          const wmo = WMO[c.weather_code as number] ?? { label: 'Unknown', icon: '🌡️' }
+          const wmo = WMO[c.weather_code as number] ?? { label: 'Unknown', icon: '◆' }
 
           setWeather({
             city:        geo?.address?.city ?? geo?.address?.town ?? geo?.address?.village ?? 'Your Location',
@@ -91,7 +91,7 @@ export default function WeatherWidget() {
   if (status === 'idle' || status === 'locating' || status === 'loading') {
     return (
       <div className={`${base} flex items-center gap-2.5 px-4 py-3 text-gray-500`}>
-        <span className="text-xl animate-pulse">🌍</span>
+        <span className="text-xl animate-pulse">◆</span>
         <span className="text-xs">{status === 'locating' ? 'Detecting location…' : 'Loading weather…'}</span>
       </div>
     )

@@ -345,7 +345,7 @@ export default function AIToolsPage() {
                 </span>
                 {tool.highlight && (
                   <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-accent-blue/15 text-accent-blue border border-accent-blue/30">
-                    ⭐ Top Pick
+                    ◆ Top Pick
                   </span>
                 )}
               </div>
@@ -389,7 +389,7 @@ export default function AIToolsPage() {
       {/* Footer note */}
       <ScrollReveal className="text-center mt-14">
         <p className="text-gray-600 text-sm">
-          🛠️ All tools personally evaluated by Waqas · Updated 2026 · {tools.length} tools listed
+          ◆ All tools personally evaluated by Waqas · Updated 2026 · {tools.length} tools listed
         </p>
       </ScrollReveal>
     </div>

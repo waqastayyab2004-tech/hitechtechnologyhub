@@ -28,7 +28,7 @@ This is not a company-specific problem. This is a universal IT problem.
 Most IT teams think about assets as: *buy → assign → forget*. The real lifecycle is:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.25rem;">📦 IT Asset Lifecycle Stages</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.25rem;">◆ IT Asset Lifecycle Stages</p>
 <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
 <span style="background:rgba(59,130,246,0.15); border:1px solid rgba(59,130,246,0.3); color:#60a5fa; padding:6px 14px; border-radius:999px; font-size:0.8rem; font-weight:600;">1. Request & Approval</span>
 <span style="color:#475569; padding:6px 4px; font-size:0.85rem;">→</span>
@@ -154,7 +154,7 @@ Build that habit in your team, and your asset data will always be accurate. Accu
 That's the real value of good asset management.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Make warranty expiry date a mandatory field and run a monthly report filtering assets expiring in the next 6 months — this eliminates surprise budget requests entirely.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Update the asset record at the moment of every transaction (assignment, repair, return, disposal) — real-time accuracy is far less effort than a quarterly reconciliation audit.</li>

@@ -20,7 +20,7 @@ Every IT engineer in a multinational company knows the feeling: you spend more t
 The honest breakdown of my day before automation:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">⏱ Where My Time Actually Went (Before AI)</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ Where My Time Actually Went (Before AI)</p>
 <div style="display:flex; flex-direction:column; gap:0.75rem;">
 <div>
   <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="color:#e2e8f0; font-size:0.85rem;">Checking & triaging emails</span><span style="color:#60a5fa; font-weight:700;">22%</span></div>
@@ -194,7 +194,7 @@ If you're in corporate IT and want to start automating, here's the priority orde
 Start small. One script. One problem. The compounding effect is real.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Start with one automation that solves a pain you feel every single day — motivation and relevance keep you going when the code gets hard.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Use the Microsoft Graph API for email and calendar automation — it's the most accessible enterprise API and has excellent Python SDKs.</li>

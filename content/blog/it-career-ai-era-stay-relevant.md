@@ -158,7 +158,7 @@ I started that transition in 2022 by learning Python and building my first autom
 That's the opportunity. It's available to anyone willing to start.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Automate something you use every day before building something new — real-world automation teaches APIs, error handling, and production reliability far faster than any tutorial.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Get cloud certified in the platform your employer uses — the certification forces you to understand the security model, not just the administration tasks you already know.</li>

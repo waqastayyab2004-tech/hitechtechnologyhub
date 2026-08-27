@@ -24,7 +24,7 @@ The Azure Security Engineer Associate certification (AZ-500) changed that. But t
 Before diving into controls, you need to understand what you're defending against. In a multinational IT environment, the real threats are:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.25rem;">🔴 Top Security Incidents in Enterprise IT (by frequency)</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1.25rem;">● Top Security Incidents in Enterprise IT (by frequency)</p>
 <div style="display:flex; flex-direction:column; gap:0.75rem;">
 <div>
   <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="color:#e2e8f0; font-size:0.85rem;">Phishing / Credential Theft</span><span style="color:#f87171; font-weight:700;">38%</span></div>
@@ -145,13 +145,13 @@ This matrix eliminated **100% of legacy auth attacks** in our environment.
 
 | Layer | Tool | Priority |
 |-------|------|----------|
-| Identity | Azure AD + MFA + PIM | 🔴 Critical |
-| Device | Intune + Autopilot + JamF | 🔴 Critical |
-| Email | Defender for M365 + Safe Links | 🔴 Critical |
-| Endpoint | Defender Antivirus + EDR | 🟡 High |
-| Network | Azure Firewall + Conditional Access | 🟡 High |
-| Monitoring | Microsoft Sentinel (SIEM) | 🟢 Important |
-| Backup | OneDrive + SharePoint versioning | 🟢 Important |
+| Identity | Azure AD + MFA + PIM | ● Critical |
+| Device | Intune + Autopilot + JamF | ● Critical |
+| Email | Defender for M365 + Safe Links | ● Critical |
+| Endpoint | Defender Antivirus + EDR | ○ High |
+| Network | Azure Firewall + Conditional Access | ○ High |
+| Monitoring | Microsoft Sentinel (SIEM) | ● Important |
+| Backup | OneDrive + SharePoint versioning | ● Important |
 
 ## The Human Layer Is Still the Weakest
 
@@ -164,7 +164,7 @@ After all the technical controls, the most effective security improvement I made
 Humans are the firewall that Intune can't configure. Invest in them.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Always enable Conditional Access policies in report-only mode for at least two weeks before enforcing — it shows exactly who would have been blocked without the outage.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Document all corporate office IP ranges before deploying named locations — incorrect trusted locations are the leading cause of MFA lockout complaints.</li>

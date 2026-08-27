@@ -56,7 +56,7 @@ SAP Ariba is SAP's cloud procurement platform. For IT, the flow looks like this:
   <p style="color:#64748b; font-size:0.72rem; margin:2px 0 0;">Confirm in Ariba, invoice paid</p>
 </div>
 </div>
-<p style="color:#475569; font-size:0.78rem; margin-top:0.75rem;">⚠️ The GR step is critical — the vendor doesn't get paid until you confirm receipt. Many IT teams forget this and create payment disputes.</p>
+<p style="color:#475569; font-size:0.78rem; margin-top:0.75rem;">▲ The GR step is critical — the vendor doesn't get paid until you confirm receipt. Many IT teams forget this and create payment disputes.</p>
 </div>
 
 ## The 5 Mistakes That Delay IT Procurement
@@ -172,7 +172,7 @@ The biggest driver of improvement was simple: education. Once every person who c
 Procurement is not just an admin task. Done well, it's a competitive advantage: faster equipment availability, better vendor relationships, and clean financial records that pass audit.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Get your cost centre and GL account codes from Finance before you ever need to raise a PR — wrong codes send orders into a budget hold that can delay delivery by a week.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Always search the approved vendor catalogue before using free text — catalogue items skip manual procurement review and can cut 2–3 days from your cycle time.</li>

@@ -175,7 +175,7 @@ export default function JobsPage() {
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-1">
             <h1 className="text-3xl font-black text-white">Jobs in Saudi Arabia &amp; Middle East</h1>
-            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">🇸🇦 KSA &amp; GCC</span>
+            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400"> KSA &amp; GCC</span>
           </div>
           <p className="text-gray-500 text-sm">Search across 8 major KSA job boards at once, or browse remote-friendly global roles below.</p>
         </div>

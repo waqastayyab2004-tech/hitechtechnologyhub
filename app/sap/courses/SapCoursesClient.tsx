@@ -164,7 +164,7 @@ export default function SapCoursesClient() {
                         </div>
                         <h3 className="font-bold text-base leading-snug mb-2">{course.title}</h3>
                         <p className="text-[10px] text-white/60 flex items-center gap-1">
-                          🏅 {course.certLabel}
+                          ◆ {course.certLabel}
                         </p>
                       </div>
                       <div className="px-5 py-4 flex flex-col flex-1">

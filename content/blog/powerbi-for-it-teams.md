@@ -38,7 +38,7 @@ Four users, four different dashboards — or four pages in one dashboard with th
 ## The IT Operations Dashboard Architecture
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(245,158,11,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">📊 IT Dashboard Page Structure</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ IT Dashboard Page Structure</p>
 <div style="display:flex; flex-direction:column; gap:0.5rem;">
 <div style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25); border-radius:8px; padding:12px 16px;">
   <p style="color:#fbbf24; font-weight:700; font-size:0.85rem; margin:0;">Page 1: Executive Summary — SLA %, open tickets, critical issues</p>
@@ -123,7 +123,7 @@ Which tickets are oldest? By engineer? By category? This one prevents SLA breach
   <rect width="480" height="170" fill="#0f172a" rx="12"/>
   <text x="240" y="22" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="sans-serif">Dashboard Design Principles — Right vs Wrong</text>
   <!-- Headers -->
-  <text x="140" y="42" fill="#f87171" font-size="10" font-weight="700" text-anchor="middle" font-family="sans-serif">❌ Wrong</text>
+  <text x="140" y="42" fill="#f87171" font-size="10" font-weight="700" text-anchor="middle" font-family="sans-serif">✗ Wrong</text>
   <text x="340" y="42" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle" font-family="sans-serif">✓ Right</text>
   <!-- Rows -->
   <text x="20" y="62" fill="#64748b" font-size="9" font-family="sans-serif">Colour</text>
@@ -182,7 +182,7 @@ The best dashboard in the world fails if people don't open it. Adoption tactics 
 The goal is to become *the source of truth* for IT metrics. Once your dashboard is the thing people reference in meetings, it will always be maintained because there's a clear cost to letting it go stale.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Interview each dashboard audience before building anything — ask "what question do you need answered every week?" and build exactly that, nothing more.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Connect ServiceNow to PowerBI via the REST API rather than CSV exports — real-time refresh means your dashboard is always current without manual effort.</li>

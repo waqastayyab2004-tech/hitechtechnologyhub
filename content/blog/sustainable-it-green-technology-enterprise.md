@@ -25,7 +25,7 @@ This article is not about recycling bins in server rooms. It is about the strate
 Let us start with numbers that should be on every CTO's dashboard.
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">🌍 Global IT Sustainability — Key Figures (2025–2026)</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ Global IT Sustainability — Key Figures (2025–2026)</p>
 <div style="display:flex; flex-direction:column; gap:0.75rem;">
 <div>
   <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="color:#e2e8f0; font-size:0.85rem;">Global IT sector share of carbon emissions</span><span style="color:#10b981; font-weight:700;">~4% of total</span></div>
@@ -101,26 +101,26 @@ In my operations, **100% of disposed devices carried documented disposal certifi
 ### Pillar 4: Cloud and Infrastructure Efficiency
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">☁️ Cloud vs On-Premises — Sustainability Comparison</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ Cloud vs On-Premises — Sustainability Comparison</p>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
 <div style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.2); border-radius:8px; padding:1rem;">
   <p style="color:#f87171; font-weight:700; font-size:0.9rem; margin-bottom:0.5rem;">On-Premises Data Centre</p>
   <ul style="list-style:none; padding:0; margin:0; font-size:0.82rem; color:#94a3b8;">
-    <li style="margin-bottom:0.35rem;">⚡ PUE typically 1.5–2.0</li>
-    <li style="margin-bottom:0.35rem;">🏢 Dedicated cooling for peak load</li>
-    <li style="margin-bottom:0.35rem;">📊 Server utilisation often 5–15%</li>
-    <li style="margin-bottom:0.35rem;">🔄 Full hardware refresh cycle cost</li>
-    <li>🌡️ Cooling = 30–40% of energy use</li>
+    <li style="margin-bottom:0.35rem;">◆ PUE typically 1.5–2.0</li>
+    <li style="margin-bottom:0.35rem;">◆ Dedicated cooling for peak load</li>
+    <li style="margin-bottom:0.35rem;">◆ Server utilisation often 5–15%</li>
+    <li style="margin-bottom:0.35rem;">◆ Full hardware refresh cycle cost</li>
+    <li>◆ Cooling = 30–40% of energy use</li>
   </ul>
 </div>
 <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); border-radius:8px; padding:1rem;">
   <p style="color:#34d399; font-weight:700; font-size:0.9rem; margin-bottom:0.5rem;">Hyperscale Cloud (Azure/AWS)</p>
   <ul style="list-style:none; padding:0; margin:0; font-size:0.82rem; color:#94a3b8;">
-    <li style="margin-bottom:0.35rem;">⚡ PUE as low as 1.1–1.2</li>
-    <li style="margin-bottom:0.35rem;">🌱 Renewable energy commitments</li>
-    <li style="margin-bottom:0.35rem;">📊 Server utilisation 65–80%+</li>
-    <li style="margin-bottom:0.35rem;">🔄 Hardware managed at hyperscale</li>
-    <li>💧 Advanced cooling technology</li>
+    <li style="margin-bottom:0.35rem;">◆ PUE as low as 1.1–1.2</li>
+    <li style="margin-bottom:0.35rem;">◆ Renewable energy commitments</li>
+    <li style="margin-bottom:0.35rem;">◆ Server utilisation 65–80%+</li>
+    <li style="margin-bottom:0.35rem;">◆ Hardware managed at hyperscale</li>
+    <li>◆ Advanced cooling technology</li>
   </ul>
 </div>
 </div>
@@ -185,7 +185,7 @@ This is not idealism. It is what intelligent, measurable IT governance looks lik
 ---
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.05)); border: 1px solid rgba(16,185,129,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#34d399; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips — Green IT for Enterprise Leaders</p>
+<p style="color:#34d399; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips — Green IT for Enterprise Leaders</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#10b981;">▸</span> Audit your device age distribution before buying anything new — you likely have 15–20% of your fleet that could run for another 2 years with a RAM upgrade costing a fraction of replacement.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#10b981;">▸</span> Make EPEAT Gold and Energy Star mandatory in your procurement policy — it costs nothing to add to your vendor requirements and signals strategic intent to suppliers.</li>

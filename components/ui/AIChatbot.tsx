@@ -35,35 +35,35 @@ How can I help you today?`
 const FALLBACK: { pattern: RegExp; reply: string }[] = [
   {
     pattern: /hire|work|project|freelance|consult/i,
-    reply: `Waqas is available for:\n\n• IT Service Delivery Lead\n• IT Infrastructure Consulting\n• AI & Automation projects\n• Azure Security assessments\n• SAP & ServiceNow integrations\n\n📧 waqastayyab2004@gmail.com\n📞 +966 505803073\n\nVisit the /hire page for full details!`,
+    reply: `Waqas is available for:\n\n• IT Service Delivery Lead\n• IT Infrastructure Consulting\n• AI & Automation projects\n• Azure Security assessments\n• SAP & ServiceNow integrations\n\n◆ waqastayyab2004@gmail.com\n◆ +966 505803073\n\nVisit the /hire page for full details!`,
   },
   {
     pattern: /skill|expert|know|experience|speciali/i,
-    reply: `Waqas has 15+ years across:\n\n🔵 IT Service Delivery & ITSM\n🔵 Azure Security (Certified)\n🔵 SAP S/4HANA & Analytics Cloud\n🔵 ServiceNow ITSM\n🔵 Microsoft 365 Admin\n🔵 AI/ML & Agentic AI\n🔵 CCNA Security & Networking\n\n100+ projects delivered across MENA!`,
+    reply: `Waqas has 15+ years across:\n\n● IT Service Delivery & ITSM\n● Azure Security (Certified)\n● SAP S/4HANA & Analytics Cloud\n● ServiceNow ITSM\n● Microsoft 365 Admin\n● AI/ML & Agentic AI\n● CCNA Security & Networking\n\n100+ projects delivered across MENA!`,
   },
   {
     pattern: /cert|certif|qualify|degree|mba/i,
-    reply: `13 certifications including:\n\n🏆 Azure Security Engineer Associate\n🏆 SAP Python ML / SAP HANA (2026)\n🏆 SAP S/4HANA Technology Consultant\n🏆 SAP Analytics Cloud\n🏆 CCNA Security\n🏆 ITIL v3 Foundation\n🏆 PMP Training (35 PDUs)\n🎓 MBA — Buckinghamshire Uni, UK`,
+    reply: `13 certifications including:\n\n◆ Azure Security Engineer Associate\n◆ SAP Python ML / SAP HANA (2026)\n◆ SAP S/4HANA Technology Consultant\n◆ SAP Analytics Cloud\n◆ CCNA Security\n◆ ITIL v3 Foundation\n◆ PMP Training (35 PDUs)\n◆ MBA — Buckinghamshire Uni, UK`,
   },
   {
     pattern: /contact|email|phone|whatsapp|reach|call/i,
-    reply: `Reach Waqas directly:\n\n📧 waqastayyab2004@gmail.com\n📞 +966 505803073\n💬 WhatsApp: wa.me/966505803073\n💼 LinkedIn: /in/syedwaqastayyab\n\n📍 Riyadh, Saudi Arabia · Open to MENA + Remote!`,
+    reply: `Reach Waqas directly:\n\n◆ waqastayyab2004@gmail.com\n◆ +966 505803073\n◆ WhatsApp: wa.me/966505803073\n◆ LinkedIn: /in/syedwaqastayyab\n\n◆ Riyadh, Saudi Arabia · Open to MENA + Remote!`,
   },
   {
     pattern: /price|cost|rate|charge|budget|pay/i,
-    reply: `Freelance services from:\n\n💰 AI Automation: From $500\n💰 IT Infrastructure: From $600\n💰 Azure Security: From $600\n💰 Web App Dev: From $800\n💰 SAP Integration: From $1,000\n💰 M365 Advisory: From $400\n\n📧 waqastayyab2004@gmail.com for custom quotes`,
+    reply: `Freelance services from:\n\n◆ AI Automation: From $500\n◆ IT Infrastructure: From $600\n◆ Azure Security: From $600\n◆ Web App Dev: From $800\n◆ SAP Integration: From $1,000\n◆ M365 Advisory: From $400\n\n◆ waqastayyab2004@gmail.com for custom quotes`,
   },
   {
     pattern: /hello|hi|hey|greet|good/i,
-    reply: `Hello! 👋 Great to meet you!\n\nI'm NEXUS-W1 — Waqas's AI bot.\n\nWaqas is a Senior IT Engineer with 15+ years at SAP, Azure Security certified, MBA graduate, and AI/ML enthusiast with 100+ projects delivered.\n\nWhat would you like to know?`,
+    reply: `Hello!  Great to meet you!\n\nI'm NEXUS-W1 — Waqas's AI bot.\n\nWaqas is a Senior IT Engineer with 15+ years at SAP, Azure Security certified, MBA graduate, and AI/ML enthusiast with 100+ projects delivered.\n\nWhat would you like to know?`,
   },
   {
     pattern: /ai|ml|machine|automat|robot|agentic|python/i,
-    reply: `Waqas's AI expertise:\n\n🤖 SAP HANA Python ML (certified 2026)\n🤖 Agentic AI & LLM pipelines\n🤖 Claude AI integration\n🤖 ServiceNow automation\n🤖 FastAPI + Next.js dashboards\n🤖 WhatsApp alert systems\n\nHe built this chatbot and website! 😄`,
+    reply: `Waqas's AI expertise:\n\n◆ SAP HANA Python ML (certified 2026)\n◆ Agentic AI & LLM pipelines\n◆ Claude AI integration\n◆ ServiceNow automation\n◆ FastAPI + Next.js dashboards\n◆ WhatsApp alert systems\n\nHe built this chatbot and website! `,
   },
   {
     pattern: /sap|servicenow|azure|cloud|m365|microsoft/i,
-    reply: `Waqas's enterprise stack:\n\n• 11+ years at SAP Riyadh\n• ServiceNow ITSM admin & automation\n• Azure Security Engineer (certified)\n• M365 full-stack admin (Copilot too)\n• SAP BTP, Ariba, Analytics Cloud\n• SAP S/4HANA system admin\n\nNeed SAP or Azure help? He's your expert! 🚀`,
+    reply: `Waqas's enterprise stack:\n\n• 11+ years at SAP Riyadh\n• ServiceNow ITSM admin & automation\n• Azure Security Engineer (certified)\n• M365 full-stack admin (Copilot too)\n• SAP BTP, Ariba, Analytics Cloud\n• SAP S/4HANA system admin\n\nNeed SAP or Azure help? He's your expert! ◆`,
   },
 ]
 
@@ -71,7 +71,7 @@ function getFallbackReply(input: string): string {
   for (const { pattern, reply } of FALLBACK) {
     if (pattern.test(input)) return reply
   }
-  return `Thanks for your message! For a full answer, contact Waqas directly:\n\n📧 waqastayyab2004@gmail.com\n📞 +966 505803073\n\nOr explore:\n• /hire — full profile & services\n• /blog — free tech articles\n• /contact — send a message`
+  return `Thanks for your message! For a full answer, contact Waqas directly:\n\n◆ waqastayyab2004@gmail.com\n◆ +966 505803073\n\nOr explore:\n• /hire — full profile & services\n• /blog — free tech articles\n• /contact — send a message`
 }
 
 function now() {
@@ -156,7 +156,7 @@ export default function AIChatbot() {
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
               className="bg-dark-800/90 backdrop-blur-sm border border-accent-blue/30 rounded-xl px-3 py-1.5 text-xs text-accent-blue font-medium shadow-glow whitespace-nowrap"
             >
-              Waqas AI ChatBot 🤖
+              Waqas AI ChatBot ◆
             </motion.div>
           )}
         </AnimatePresence>

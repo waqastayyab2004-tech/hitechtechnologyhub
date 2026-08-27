@@ -179,16 +179,16 @@ The message needs to communicate urgency without noise. After a few iterations, 
 
 ```python
 def format_alert(ticket: dict, minutes_remaining: int) -> str:
-    priority_labels = {"1": "🔴 P1 CRITICAL", "2": "🟠 P2 HIGH", "3": "🟡 P3 MEDIUM"}
+    priority_labels = {"1": "● P1 CRITICAL", "2": "◆ P2 HIGH", "3": "○ P3 MEDIUM"}
     priority = ticket.get("priority", "4")
-    label = priority_labels.get(priority, "🔵 P4 LOW")
+    label = priority_labels.get(priority, "● P4 LOW")
     
     if minutes_remaining <= 0:
-        urgency = "⚠️ SLA BREACHED"
+        urgency = "▲ SLA BREACHED"
     elif minutes_remaining <= 15:
-        urgency = f"🚨 {minutes_remaining} MIN TO BREACH"
+        urgency = f"▲ {minutes_remaining} MIN TO BREACH"
     else:
-        urgency = f"⏰ {minutes_remaining} min remaining"
+        urgency = f"◆ {minutes_remaining} min remaining"
     
     return (
         f"{label} — {urgency}\n"

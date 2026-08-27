@@ -30,22 +30,22 @@ IT Asset Management (ITAM) is frequently treated as an administrative task — t
 A mature ITAM programme delivers:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">📊 What ITAM Delivers to the Business</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ What ITAM Delivers to the Business</p>
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
 <div style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.2); border-radius:8px; padding:0.875rem;">
-  <p style="color:#60a5fa; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">💰 Financial Control</p>
+  <p style="color:#60a5fa; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">◆ Financial Control</p>
   <p style="color:#64748b; font-size:0.8rem; margin:0;">Know exactly what you own, what it cost, and when to refresh — eliminating surprise capital expenditures</p>
 </div>
 <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); border-radius:8px; padding:0.875rem;">
-  <p style="color:#34d399; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">🛡️ Security & Compliance</p>
+  <p style="color:#34d399; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">◆ Security & Compliance</p>
   <p style="color:#64748b; font-size:0.8rem; margin:0;">Every device tracked and compliant — no unmanaged endpoints, no data exposure on retired hardware</p>
 </div>
 <div style="background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.2); border-radius:8px; padding:0.875rem;">
-  <p style="color:#a78bfa; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">⚙️ Operational Efficiency</p>
+  <p style="color:#a78bfa; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">◆ Operational Efficiency</p>
   <p style="color:#64748b; font-size:0.8rem; margin:0;">Right device in the right hands on Day 1 — onboarding and offboarding execute without delays</p>
 </div>
 <div style="background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.2); border-radius:8px; padding:0.875rem;">
-  <p style="color:#fbbf24; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">🌱 Sustainability</p>
+  <p style="color:#fbbf24; font-weight:700; font-size:0.85rem; margin-bottom:0.4rem;">◆ Sustainability</p>
   <p style="color:#64748b; font-size:0.8rem; margin:0;">Extend device life, reduce e-waste, and document certified disposal — meeting ESG and regulatory requirements</p>
 </div>
 </div>
@@ -325,7 +325,7 @@ The final step: mark the asset as "Disposed" in the register, attach the disposa
 After implementing a structured lifecycle programme across a 2,000+ device fleet:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">📈 ITAM Programme Outcomes</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ ITAM Programme Outcomes</p>
 <div style="display:flex; flex-direction:column; gap:0.75rem;">
 <div>
   <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="color:#e2e8f0; font-size:0.85rem;">Asset register accuracy (vs. physical audit)</span><span style="color:#10b981; font-weight:700;">99%+</span></div>
@@ -363,7 +363,7 @@ When you operate at that standard, the compliance question, the security questio
 ---
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips — IT Asset Lifecycle</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips — IT Asset Lifecycle</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Capture the warranty expiry date at receiving — not six months later when you realise you have no coverage. This single field prevents more budget surprises than any other piece of data in your asset register.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Never base your refresh cycle purely on device age. A 4-year-old laptop running M365 and basic productivity tools efficiently costs nothing to extend. A 2-year-old device with a failed motherboard and three repair incidents has already exceeded its useful life.</li>

@@ -918,10 +918,10 @@ export default function CourseDetailClient({ id }: { id: number }) {
                   {/* Feature pills */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {[
-                      { label: 'Terminal', icon: '⌨', desc: 'Works in any terminal' },
-                      { label: 'VS Code', icon: '🔵', desc: 'IDE extension' },
-                      { label: 'JetBrains', icon: '🟠', desc: 'IntelliJ + friends' },
-                      { label: 'Claude Desktop', icon: '🤖', desc: 'Desktop app' },
+                      { label: 'Terminal', icon: '◆', desc: 'Works in any terminal' },
+                      { label: 'VS Code', icon: '●', desc: 'IDE extension' },
+                      { label: 'JetBrains', icon: '◆', desc: 'IntelliJ + friends' },
+                      { label: 'Claude Desktop', icon: '◆', desc: 'Desktop app' },
                     ].map(f => (
                       <div key={f.label} className="bg-white/4 border border-white/10 rounded-xl p-3 text-center">
                         <div className="text-xl mb-1">{f.icon}</div>

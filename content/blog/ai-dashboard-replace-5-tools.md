@@ -144,7 +144,7 @@ for ticket in my_tickets:
     minutes_remaining = calculate_sla_remaining(ticket)
     if minutes_remaining <= 30:
         send_whatsapp(
-            f"⚠️ SLA ALERT: {ticket['number']} - {ticket['short_description']}\n"
+            f"▲ SLA ALERT: {ticket['number']} - {ticket['short_description']}\n"
             f"Priority: {ticket['priority']} | {minutes_remaining} min remaining"
         )
 ```

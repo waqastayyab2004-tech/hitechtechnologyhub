@@ -159,7 +159,7 @@ Some users had legitimate exceptions — medical devices, specialist software, u
 After 90 days, the results across a few hundred devices:
 
 <div style="margin: 2rem 0; background: #0f172a; border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 1.5rem;">
-<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">📊 Before vs After Modern Workplace Rollout</p>
+<p style="color:#94a3b8; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:1rem;">◆ Before vs After Modern Workplace Rollout</p>
 <div style="display:flex; flex-direction:column; gap:0.75rem;">
 <div>
   <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="color:#e2e8f0; font-size:0.85rem;">Device compliance rate</span><span style="color:#34d399; font-weight:700;">62% → 94%</span></div>
@@ -197,7 +197,7 @@ The 90-day timeline was aggressive but achievable. The key was the phased approa
 Modern device management is not optional in 2026. It's the foundation of enterprise security.
 
 <div style="margin: 2.5rem 0; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,182,212,0.05)); border: 1px solid rgba(59,130,246,0.25); border-radius: 14px; padding: 1.75rem;">
-<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">💡 Pro Tips</p>
+<p style="color:#60a5fa; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:1rem;">◆ Pro Tips</p>
 <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Always run your Conditional Access policies in report-only mode for 2 weeks before enforcing — this reveals who would be blocked without any user impact.</li>
 <li style="color:#cbd5e1; font-size:0.88rem; padding-left:1.25rem; position:relative;"><span style="position:absolute;left:0;color:#3b82f6;">▸</span> Start your Intune pilot with the IT team — run every policy on yourselves first so you catch configuration issues before they affect business users.</li>

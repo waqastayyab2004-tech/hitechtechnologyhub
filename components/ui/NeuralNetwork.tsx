@@ -404,7 +404,7 @@ export default function NeuralNetwork() {
       {/* Header */}
       <div className="flex items-center gap-3 px-6 pt-5 pb-3 border-b border-white/5">
         <div className="w-10 h-10 rounded-xl flex items-center justify-center text-2xl"
-          style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}>🧠</div>
+          style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}>◆</div>
         <div>
           <h3 className="text-white font-black text-base tracking-widest font-mono">NEURAL SKILL NETWORK</h3>
           <p className="text-gray-500 text-xs font-mono tracking-wider">CLICK A NODE TO EXPAND FULL EXPERIENCE</p>

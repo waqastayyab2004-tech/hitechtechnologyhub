@@ -1237,14 +1237,14 @@ const projects: Project[] = [
 /* ── GROUPS ─────────────────────────────────────────────────────── */
 const GROUPS = [
   { key: 'All',                          label: 'All Projects' },
-  { key: 'Daily IT Operations',          label: '⚙️ Daily IT Operations' },
-  { key: 'Built Apps & Tools',           label: '💻 Built Apps & Tools' },
-  { key: 'Enterprise IT Rollouts',       label: '🏢 Enterprise IT Rollouts' },
-  { key: 'IT Ticketing & ITSM',          label: '🎫 IT Ticketing & ITSM' },
-  { key: 'Printer Management',                     label: '🖨️ Printer Management' },
-  { key: 'AV, Events & Physical Security',         label: '🎙️ AV, Events & Security' },
-  { key: 'Office Infrastructure & AV Technology',  label: '🏢 Office & AV Technology' },
-  { key: 'Cybersecurity',                          label: '🛡️ Cybersecurity' },
+  { key: 'Daily IT Operations',          label: '◆ Daily IT Operations' },
+  { key: 'Built Apps & Tools',           label: '◆ Built Apps & Tools' },
+  { key: 'Enterprise IT Rollouts',       label: '◆ Enterprise IT Rollouts' },
+  { key: 'IT Ticketing & ITSM',          label: '◆ IT Ticketing & ITSM' },
+  { key: 'Printer Management',                     label: '◆ Printer Management' },
+  { key: 'AV, Events & Physical Security',         label: '◆ AV, Events & Security' },
+  { key: 'Office Infrastructure & AV Technology',  label: '◆ Office & AV Technology' },
+  { key: 'Cybersecurity',                          label: '◆ Cybersecurity' },
 ]
 
 

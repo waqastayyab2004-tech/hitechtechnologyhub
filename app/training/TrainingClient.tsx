@@ -1540,7 +1540,7 @@ export default function TrainingPage() {
           {(activeCategory === 'Corporate IT Training' || activeCategory === 'All') && (
             <section className="mb-10">
               <div className="flex items-center gap-3 mb-5">
-                <span className="text-lg">⚙️</span>
+                <span className="text-lg">◆</span>
                 <h2 className="text-base font-black text-white">Corporate IT Training</h2>
                 <span className="text-xs bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 px-2.5 py-0.5 rounded-full font-bold">
                   {courses.filter(c => c.category === 'Corporate IT Training').length} courses · Free
@@ -1573,7 +1573,7 @@ export default function TrainingPage() {
           {(activeCategory === 'IT Ticketing & ITSM' || activeCategory === 'All') && (
             <section className="mb-10">
               <div className="flex items-center gap-3 mb-5">
-                <span className="text-lg">🎫</span>
+                <span className="text-lg">◆</span>
                 <h2 className="text-base font-black text-white">IT Ticketing & ITSM</h2>
                 <span className="text-xs bg-green-500/10 border border-green-500/25 text-green-400 px-2.5 py-0.5 rounded-full font-bold">
                   {courses.filter(c => c.category === 'IT Ticketing & ITSM').length} courses · Free
