@@ -2,7 +2,7 @@
 title: "Driving Infrastructure Modernisation & Automation: A Platform Engineer's Playbook"
 date: "2026-08-27"
 excerpt: "From legacy on-premise to cloud-native, automated, and self-healing infrastructure — how a Platform IT Engineer thinks about modernisation, what real use cases look like, and how to lead this transformation inside any organisation."
-tags: ["Infrastructure", "Automation", "Cloud", "Platform Engineering", "IT Leadership", "DevOps"]
+tags: ["My Blogs", "Infrastructure", "Automation", "Cloud", "Platform Engineering", "IT Leadership", "DevOps"]
 author: "Syed Waqas Tayyab"
 readTime: "12 min read"
 featured: true

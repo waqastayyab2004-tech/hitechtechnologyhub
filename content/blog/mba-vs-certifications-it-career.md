@@ -2,7 +2,7 @@
 title: "Why an MBA Matters More Than PMP in IT — Business Skills Are the Real Career Ceiling"
 date: "2026-08-27"
 excerpt: "Technical certifications get you in the door. An MBA is what gets you to the top floor. After years in enterprise IT, here's why I believe every serious IT professional should understand business — not just technology."
-tags: ["Career", "MBA", "Leadership", "IT Strategy", "Management"]
+tags: ["My Blogs", "Career", "MBA", "Leadership", "IT Strategy", "Management"]
 author: "Syed Waqas Tayyab"
 readTime: "10 min read"
 featured: true
