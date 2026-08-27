@@ -1,135 +1,148 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { ChevronLeft, MessageSquare, Loader2, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronLeft, ExternalLink, MessageSquare, ChevronDown, ChevronUp, Lightbulb } from 'lucide-react'
+import { useState } from 'react'
 
-const WORKER_URL = 'https://ai-proxy.aisite.workers.dev'
+const SECTIONS = [
+  {
+    category: 'Technical',
+    color: '#3b82f6',
+    questions: [
+      { q: 'Walk me through your experience with [technology on the JD].', hint: 'Be specific — name the version, scale of deployment, and a measurable outcome. Gulf employers value hands-on depth over theoretical knowledge.' },
+      { q: 'How have you handled a major system outage or critical incident?', hint: 'Use the STAR format. Emphasise your communication with stakeholders, speed of response, and the post-incident review. In KSA, enterprise SLA adherence is a top concern.' },
+      { q: 'Describe your experience with cloud platforms (AWS / Azure / GCP).', hint: 'Name specific services you have used in production, not just studied. Certifications are a strong signal — mention them. Vision 2030 projects heavily favour cloud-first candidates.' },
+      { q: 'What is your approach to IT security and compliance?', hint: 'Reference frameworks like ISO 27001, NESA, or NCA (Saudi National Cybersecurity Authority). Showing local regulatory awareness is a strong differentiator in KSA.' },
+    ],
+  },
+  {
+    category: 'Behavioural',
+    color: '#8b5cf6',
+    questions: [
+      { q: 'Tell me about a time you led a cross-functional team through a complex IT project.', hint: 'Highlight stakeholder management, timeline delivery, and how you handled cultural and language differences. In Gulf organisations, relationship-building (wasta culture) is often as important as technical skill.' },
+      { q: 'Describe a situation where you had to manage a difficult stakeholder or client.', hint: 'Show patience and diplomacy. In the Middle East, direct confrontation is avoided — demonstrate that you de-escalated gracefully and reached a collaborative outcome.' },
+      { q: 'Give an example of adapting quickly to a new technology or process.', hint: 'Gulf IT environments change rapidly with Vision 2030 digital transformation. Show learning agility — mention self-study, certifications, or on-the-job upskilling.' },
+      { q: 'How have you handled working in a multicultural team?', hint: 'Almost universal in GCC organisations. Demonstrate cultural sensitivity, inclusive communication, and experience managing or collaborating with diverse nationalities.' },
+    ],
+  },
+  {
+    category: 'HR & General',
+    color: '#10b981',
+    questions: [
+      { q: 'Why do you want to work in Saudi Arabia / the Gulf region?', hint: 'Be genuine but also practical. Mention career growth, the scale of Vision 2030 projects, or specific sector interest (NEOM, ARAMCO, banking, telecom). Avoid only mentioning salary.' },
+      { q: 'What are your salary expectations?', hint: 'Research market rates on Bayt.com or GulfTalent first. Quote a range, not a fixed number. Remember: Gulf packages often include housing, transport, and medical allowances — factor these in.' },
+      { q: 'Where do you see yourself in 3–5 years?', hint: 'Align with the employer\'s growth trajectory. If interviewing at a Vision 2030-aligned org, mention contributing to national digital transformation goals.' },
+      { q: 'Do you have a valid Iqama / work permit, or will you require visa sponsorship?', hint: 'Be clear and factual. If you need sponsorship, confirm you understand the process and timeline. Many Gulf employers prefer candidates already on a transferable Iqama.' },
+    ],
+  },
+]
 
-type InterviewType = 'technical' | 'behavioural' | 'hr'
+const CULTURE_TIPS = [
+  { title: 'Dress Code', body: 'Formal business attire for all interviews — even virtual ones. Conservative is always safer in KSA.' },
+  { title: 'Greetings', body: 'A firm handshake is standard with male interviewers. Wait for female interviewers to initiate. Use "Mr/Dr + surname" until invited to use first names.' },
+  { title: 'Timing', body: 'Arrive 10–15 minutes early. Punctuality signals professionalism. Prayer times may affect interview scheduling — be flexible.' },
+  { title: 'Humility + Confidence', body: 'Balance confidence with humility. Boasting is poorly received. Let your achievements speak through specific examples, not self-praise.' },
+  { title: 'Wasta & Referrals', body: 'Referrals carry weight in Gulf hiring. If you have a mutual contact at the company, mention it respectfully at the start.' },
+]
 
-interface Question { question: string; hint: string }
-
-const TYPES: { key: InterviewType; label: string; desc: string; color: string }[] = [
-  { key: 'technical',   label: 'Technical',   desc: 'Role-specific skills, coding, architecture, tools', color: '#3b82f6' },
-  { key: 'behavioural', label: 'Behavioural', desc: 'STAR-method situational questions from past experience', color: '#8b5cf6' },
-  { key: 'hr',          label: 'HR & General', desc: 'Culture fit, motivation, salary, career goals', color: '#10b981' },
+const RESOURCES = [
+  { name: 'Bayt.com Interview Tips', desc: 'Gulf-specific interview preparation guides', url: 'https://www.bayt.com/en/career-article/' },
+  { name: 'GulfTalent Advice', desc: 'Salary benchmarks and career guides for GCC IT roles', url: 'https://www.gulftalent.com/resources/advice' },
+  { name: 'LinkedIn Interview Prep', desc: 'Free AI interview practice with feedback', url: 'https://www.linkedin.com/interview-prep/' },
+  { name: 'Glassdoor — Saudi Arabia', desc: 'Real interview questions from candidates at Gulf companies', url: 'https://www.glassdoor.com/Interview/saudi-arabia-interview-questions-SRCH_IL.0,12_IN195.htm' },
+  { name: 'ITIL & ITSM Foundation', desc: 'Widely demanded certification across KSA enterprise IT', url: 'https://www.axelos.com/certifications/itil-service-management' },
+  { name: 'AWS Training & Certification', desc: 'Cloud skills in high demand across Vision 2030 projects', url: 'https://aws.amazon.com/training/' },
 ]
 
 export default function InterviewPage() {
-  const [jobDesc, setJobDesc]     = useState('')
-  const [type, setType]           = useState<InterviewType>('technical')
-  const [loading, setLoading]     = useState(false)
-  const [error, setError]         = useState('')
-  const [questions, setQuestions] = useState<Question[]>([])
-  const [openIdx, setOpenIdx]     = useState<number | null>(null)
+  const [openIdx, setOpenIdx] = useState<string | null>(null)
 
-  const generate = async () => {
-    if (!jobDesc.trim()) { setError('Please paste a job description first.'); return }
-    setLoading(true); setError(''); setQuestions([])
-    try {
-      const res = await fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'interview', jobDescription: jobDesc, interviewType: type }),
-      })
-      if (!res.ok) throw new Error(`AI error: ${res.status}`)
-      const data = await res.json()
-      if (data.error) throw new Error(data.error)
-      setQuestions(data.questions ?? [])
-      setOpenIdx(0)
-    } catch (e: any) { setError(e.message) }
-    finally { setLoading(false) }
-  }
-
-  const selected = TYPES.find(t => t.key === type)!
+  const toggle = (key: string) => setOpenIdx(openIdx === key ? null : key)
 
   return (
     <div className="min-h-screen bg-dark-900 pt-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
 
         <Link href="/careers" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-300 transition-colors mb-4">
           <ChevronLeft className="w-4 h-4" /> Back to Career Hub
         </Link>
-        <h1 className="text-3xl font-black text-white mb-1">Interview Preparation</h1>
-        <p className="text-gray-500 text-sm mb-6">AI-generated questions and answer guidance based on the actual job description.</p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left: Input */}
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Job Description</label>
-              <textarea value={jobDesc} onChange={e => setJobDesc(e.target.value)} rows={12}
-                placeholder="Paste the full job description here — the more detail, the better the questions..."
-                className="w-full px-4 py-3 rounded-xl bg-dark-800 border border-white/10 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-accent-blue/50 resize-none leading-relaxed" />
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+              <MessageSquare className="w-5 h-5 text-blue-400" />
             </div>
-
             <div>
-              <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Interview Type</label>
-              <div className="grid grid-cols-1 gap-2">
-                {TYPES.map(t => (
-                  <button key={t.key} onClick={() => setType(t.key)}
-                    className={`flex items-start gap-3 p-3.5 rounded-xl border text-left transition-all ${type === t.key ? 'border-opacity-60 bg-opacity-10' : 'border-white/8 bg-dark-800/60 hover:border-white/16'}`}
-                    style={type === t.key ? { borderColor: `${t.color}60`, background: `${t.color}10` } : {}}>
-                    <div className="w-3 h-3 rounded-full mt-0.5 flex-shrink-0 border-2 transition-all"
-                      style={{ borderColor: t.color, background: type === t.key ? t.color : 'transparent' }} />
-                    <div>
-                      <p className="text-sm font-bold text-white">{t.label}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">{t.desc}</p>
-                    </div>
-                  </button>
-                ))}
-              </div>
+              <h1 className="text-3xl font-black text-white">Interview Preparation</h1>
+              <p className="text-gray-500 text-sm">Middle East IT sector — common questions, cultural tips, and key resources</p>
             </div>
-
-            {error && (
-              <div className="flex items-start gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
-                <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" /> {error}
-              </div>
-            )}
-
-            <button onClick={generate} disabled={loading}
-              className="w-full py-3.5 rounded-xl bg-accent-blue hover:bg-blue-500 disabled:opacity-50 text-white font-bold text-sm transition-all shadow-[0_0_20px_rgba(59,130,246,0.25)] inline-flex items-center justify-center gap-2">
-              {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Generating Questions...</> : <><MessageSquare className="w-4 h-4" /> Generate {selected.label} Questions</>}
-            </button>
           </div>
+        </div>
 
-          {/* Right: Questions */}
-          <div>
-            {questions.length > 0 ? (
+        {/* Question sections */}
+        <div className="space-y-6 mb-10">
+          {SECTIONS.map(section => (
+            <div key={section.category}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: section.color }}>{section.category} Questions</p>
               <div className="space-y-2">
-                <div className="flex items-center justify-between mb-3">
-                  <p className="text-xs font-bold uppercase tracking-widest" style={{ color: selected.color }}>
-                    {selected.label} Questions · {questions.length} total
-                  </p>
-                  <span className="text-xs text-gray-600">Click to expand answers</span>
-                </div>
-                {questions.map((q, i) => (
-                  <div key={i} className="rounded-xl border border-white/8 bg-dark-800/60 overflow-hidden">
-                    <button onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                      className="w-full flex items-start gap-3 p-4 text-left hover:bg-white/3 transition-colors">
-                      <span className="text-sm font-black flex-shrink-0 font-mono" style={{ color: selected.color }}>Q{i + 1}</span>
-                      <p className="flex-1 text-sm text-white font-semibold leading-snug">{q.question}</p>
-                      {openIdx === i ? <ChevronUp className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" /> : <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />}
-                    </button>
-                    {openIdx === i && (
-                      <div className="px-4 pb-4 pt-0">
-                        <div className="p-3 rounded-lg border-l-2 bg-dark-900/60" style={{ borderColor: selected.color }}>
-                          <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: selected.color }}>Answer Guidance</p>
-                          <p className="text-sm text-gray-300 leading-relaxed">{q.hint}</p>
+                {section.questions.map((item, i) => {
+                  const key = `${section.category}-${i}`
+                  return (
+                    <div key={key} className="rounded-xl border border-white/8 bg-dark-800/60 overflow-hidden">
+                      <button onClick={() => toggle(key)}
+                        className="w-full flex items-start gap-3 p-4 text-left hover:bg-white/3 transition-colors">
+                        <span className="text-xs font-black font-mono flex-shrink-0 mt-0.5" style={{ color: section.color }}>Q{i + 1}</span>
+                        <p className="flex-1 text-sm text-white font-semibold leading-snug">{item.q}</p>
+                        {openIdx === key
+                          ? <ChevronUp className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />
+                          : <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />}
+                      </button>
+                      {openIdx === key && (
+                        <div className="px-4 pb-4">
+                          <div className="p-3 rounded-lg border-l-2 bg-dark-900/60" style={{ borderColor: section.color }}>
+                            <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: section.color }}>Answer Guidance</p>
+                            <p className="text-sm text-gray-300 leading-relaxed">{item.hint}</p>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  )
+                })}
               </div>
-            ) : (
-              <div className="h-full flex flex-col items-center justify-center text-gray-600 border border-white/6 rounded-2xl p-10 text-center min-h-64">
-                <MessageSquare className="w-10 h-10 mb-3 opacity-25" />
-                <p className="font-semibold text-sm">Questions will appear here</p>
-                <p className="text-xs mt-1">Paste a job description, choose interview type, and click Generate</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Culture tips */}
+        <div className="p-6 rounded-2xl border border-amber-500/20 bg-amber-500/5 mb-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Lightbulb className="w-5 h-5 text-amber-400" />
+            <h2 className="font-bold text-white">Gulf Interview Culture Tips</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {CULTURE_TIPS.map((t, i) => (
+              <div key={i} className="p-3 rounded-xl bg-dark-800/60 border border-white/6">
+                <p className="text-xs font-bold text-amber-300 mb-1">{t.title}</p>
+                <p className="text-xs text-gray-400 leading-relaxed">{t.body}</p>
               </div>
-            )}
+            ))}
+          </div>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Further Resources</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {RESOURCES.map((r, i) => (
+              <a key={i} href={r.url} target="_blank" rel="noopener noreferrer"
+                className="group flex items-start gap-3 p-4 rounded-xl border border-white/8 bg-dark-800/60 hover:border-white/20 hover:bg-dark-800 transition-all">
+                <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-accent-blue flex-shrink-0 mt-0.5 transition-colors" />
+                <div>
+                  <p className="text-sm font-semibold text-white group-hover:text-accent-blue transition-colors">{r.name}</p>
+                  <p className="text-xs text-gray-500 mt-0.5 leading-snug">{r.desc}</p>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </div>
