@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, MessageSquare, Loader2, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react'
 
-const AI_KEY = process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY ?? ''
+const WORKER_URL = 'https://ai-proxy.aisite.workers.dev'
 
 type InterviewType = 'technical' | 'behavioural' | 'hr'
 
@@ -28,43 +28,15 @@ export default function InterviewPage() {
     if (!jobDesc.trim()) { setError('Please paste a job description first.'); return }
     setLoading(true); setError(''); setQuestions([])
     try {
-      const typeLabel = type === 'technical' ? 'Technical' : type === 'behavioural' ? 'Behavioural (STAR method)' : 'HR & General'
-      const prompt = `You are an expert interview coach.
-
-Based on the job description below, generate 8 ${typeLabel} interview questions with concise answer guidance for each.
-
-JOB DESCRIPTION:
-${jobDesc}
-
-Respond ONLY with valid JSON in this exact format:
-{
-  "questions": [
-    {
-      "question": "<interview question>",
-      "hint": "<2-3 sentence guidance on how to answer well>"
-    }
-  ]
-}`
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch(WORKER_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': AI_KEY,
-          'anthropic-version': '2023-06-01',
-        },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-5',
-          max_tokens: 2048,
-          messages: [{ role: 'user', content: prompt }],
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'interview', jobDescription: jobDesc, interviewType: type }),
       })
       if (!res.ok) throw new Error(`AI error: ${res.status}`)
       const data = await res.json()
-      const text = data.content?.[0]?.text ?? ''
-      const m = text.match(/\{[\s\S]*\}/)
-      if (!m) throw new Error('Could not parse AI response')
-      const parsed = JSON.parse(m[0])
-      setQuestions(parsed.questions ?? [])
+      if (data.error) throw new Error(data.error)
+      setQuestions(data.questions ?? [])
       setOpenIdx(0)
     } catch (e: any) { setError(e.message) }
     finally { setLoading(false) }

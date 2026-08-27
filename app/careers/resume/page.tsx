@@ -4,26 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, BarChart2, FileText, Copy, Check, Loader2, AlertCircle } from 'lucide-react'
 
-const AI_KEY = process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY ?? ''
-
-async function callAnthropic(prompt: string): Promise<string> {
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': AI_KEY,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-5',
-      max_tokens: 2048,
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  })
-  if (!res.ok) throw new Error(`AI error: ${res.status}`)
-  const data = await res.json()
-  return data.content?.[0]?.text ?? ''
-}
+const WORKER_URL = 'https://ai-proxy.aisite.workers.dev'
 
 type Tab = 'match' | 'generate'
 
@@ -39,6 +20,12 @@ function parseJSON(text: string) {
   const m = text.match(/\{[\s\S]*\}/)
   if (!m) throw new Error('Could not parse AI response')
   return JSON.parse(m[0])
+}
+
+async function workerPost(body: object) {
+  const res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+  if (!res.ok) throw new Error(`AI error: ${res.status}`)
+  return res.json()
 }
 
 function ScoreRing({ score }: { score: number }) {
@@ -77,26 +64,9 @@ export default function ResumePage() {
     if (!jobDesc.trim() || !resume.trim()) { setError('Please paste both the job description and your resume.'); return }
     setLoading(true); setError(''); setMatchResult(null)
     try {
-      const prompt = `You are a professional career coach and ATS expert.
-
-Given the job description and resume below, provide a detailed match analysis.
-
-JOB DESCRIPTION:
-${jobDesc}
-
-RESUME:
-${resume}
-
-Respond ONLY with valid JSON in this exact format:
-{
-  "score": <number 0-100>,
-  "verdict": "<one sentence summary>",
-  "matched": ["<skill or keyword>", ...],
-  "missing": ["<skill or gap>", ...],
-  "recommendations": ["<actionable tip>", "<actionable tip>", "<actionable tip>"]
-}`
-      const text = await callAnthropic(prompt)
-      setMatchResult(parseJSON(text))
+      const data = await workerPost({ action: 'match', jobDescription: jobDesc, resume })
+      if (data.error) throw new Error(data.error)
+      setMatchResult(data)
     } catch (e: any) { setError(e.message) }
     finally { setLoading(false) }
   }
@@ -105,27 +75,9 @@ Respond ONLY with valid JSON in this exact format:
     if (!jobDesc.trim() || !resume.trim()) { setError('Please paste both the job description and your resume.'); return }
     setLoading(true); setError(''); setGenerated('')
     try {
-      const prompt = `You are an expert resume writer.
-
-Given the job description and the candidate's current resume, generate a tailored, ATS-optimised resume in clean markdown.
-
-JOB DESCRIPTION:
-${jobDesc}
-
-CURRENT RESUME:
-${resume}
-
-Guidelines:
-- Mirror key terms from the job description naturally
-- Quantify achievements wherever possible
-- Lead with a strong 2-sentence professional summary
-- Keep it to 1-2 pages
-- Use clean markdown with ## headers and bullet points
-- Do NOT invent qualifications the candidate doesn't have
-
-Respond with the full tailored resume in markdown only, no preamble.`
-      const text = await callAnthropic(prompt)
-      setGenerated(text)
+      const data = await workerPost({ action: 'generate', jobDescription: jobDesc, resume })
+      if (data.error) throw new Error(data.error)
+      setGenerated(data.result)
     } catch (e: any) { setError(e.message) }
     finally { setLoading(false) }
   }
