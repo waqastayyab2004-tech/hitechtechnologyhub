@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ChevronLeft, MessageSquare, Loader2, AlertCircle, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { ChevronLeft, MessageSquare, Loader2, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react'
+
+const AI_KEY = process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY ?? ''
 
 type InterviewType = 'technical' | 'behavioural' | 'hr'
 
@@ -15,23 +17,54 @@ const TYPES: { key: InterviewType; label: string; desc: string; color: string }[
 ]
 
 export default function InterviewPage() {
-  const [jobDesc, setJobDesc]           = useState('')
-  const [type, setType]                 = useState<InterviewType>('technical')
-  const [loading, setLoading]           = useState(false)
-  const [error, setError]               = useState('')
-  const [setupRequired, setSetupRequired] = useState(false)
-  const [questions, setQuestions]       = useState<Question[]>([])
-  const [openIdx, setOpenIdx]           = useState<number | null>(null)
+  const [jobDesc, setJobDesc]     = useState('')
+  const [type, setType]           = useState<InterviewType>('technical')
+  const [loading, setLoading]     = useState(false)
+  const [error, setError]         = useState('')
+  const [questions, setQuestions] = useState<Question[]>([])
+  const [openIdx, setOpenIdx]     = useState<number | null>(null)
 
   const generate = async () => {
     if (!jobDesc.trim()) { setError('Please paste a job description first.'); return }
-    setLoading(true); setError(''); setQuestions([]); setSetupRequired(false)
+    setLoading(true); setError(''); setQuestions([])
     try {
-      const res  = await fetch('/api/careers/ai/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'interview', jobDescription: jobDesc, interviewType: type }) })
+      const typeLabel = type === 'technical' ? 'Technical' : type === 'behavioural' ? 'Behavioural (STAR method)' : 'HR & General'
+      const prompt = `You are an expert interview coach.
+
+Based on the job description below, generate 8 ${typeLabel} interview questions with concise answer guidance for each.
+
+JOB DESCRIPTION:
+${jobDesc}
+
+Respond ONLY with valid JSON in this exact format:
+{
+  "questions": [
+    {
+      "question": "<interview question>",
+      "hint": "<2-3 sentence guidance on how to answer well>"
+    }
+  ]
+}`
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': AI_KEY,
+          'anthropic-version': '2023-06-01',
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-5',
+          max_tokens: 2048,
+          messages: [{ role: 'user', content: prompt }],
+        }),
+      })
+      if (!res.ok) throw new Error(`AI error: ${res.status}`)
       const data = await res.json()
-      if (data.setupRequired) { setSetupRequired(true); return }
-      if (data.error) throw new Error(data.error)
-      setQuestions(data.questions ?? [])
+      const text = data.content?.[0]?.text ?? ''
+      const m = text.match(/\{[\s\S]*\}/)
+      if (!m) throw new Error('Could not parse AI response')
+      const parsed = JSON.parse(m[0])
+      setQuestions(parsed.questions ?? [])
       setOpenIdx(0)
     } catch (e: any) { setError(e.message) }
     finally { setLoading(false) }
@@ -76,16 +109,6 @@ export default function InterviewPage() {
                 ))}
               </div>
             </div>
-
-            {setupRequired && (
-              <div className="flex items-start gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-300 text-sm">
-                <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-semibold mb-0.5">Anthropic API key required</p>
-                  <p className="text-xs text-amber-500">Add your real key to <code className="bg-white/10 px-1 rounded">.env.local</code> → <code className="bg-white/10 px-1 rounded">ANTHROPIC_API_KEY=sk-ant-...</code> then restart. Get a free key at <a href="https://console.anthropic.com" target="_blank" rel="noopener noreferrer" className="underline">console.anthropic.com</a>.</p>
-                </div>
-              </div>
-            )}
 
             {error && (
               <div className="flex items-start gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
