@@ -86,6 +86,28 @@ const nav = [
     href: '/blog',
   },
   {
+    label: 'SAP Hub',
+    href: '/sap',
+    seeAll: { href: '/sap', label: 'View SAP Hub' },
+    dropdown: [
+      {
+        group: 'SAP Profile',
+        items: [
+          { href: '/sap',                 icon: Cpu,          label: 'SAP Overview',      desc: '11 yrs at SAP · 5 certs · Riyadh KSA', badge: 'New' },
+          { href: '/sap/certifications',  icon: Award,        label: 'Certifications',    desc: 'SAP Gen AI, HANA ML, S/4HANA, Analytics Cloud' },
+          { href: '/sap/experience',      icon: Briefcase,    label: 'Experience',        desc: 'Senior IT System Engineer & SPOC at SAP' },
+        ],
+      },
+      {
+        group: 'SAP Learning',
+        items: [
+          { href: '/sap/courses',         icon: GraduationCap, label: 'Courses I Teach',  desc: 'SAP BTP, Asset Lifecycle, Gen AI, SAP Build' },
+          { href: '/sap/skills',          icon: Brain,         label: 'Skills & Tools',   desc: 'enterprise asset management system · Ariba · HANA · AI Launchpad · BTP' },
+        ],
+      },
+    ],
+  },
+  {
     label: 'Career Resources',
     href: '/careers',
     seeAll: { href: '/careers', label: 'View Career Opportunity Hub' },
@@ -109,28 +131,6 @@ const nav = [
         items: [
           { href: '/training',  icon: FileText,   label: 'CV Templates',        desc: '5 free Word templates — download now', badge: 'Free' },
           { href: '/careers',   icon: TrendingUp, label: 'Career Opportunity',  desc: 'All-in-one free job-search platform', badge: 'Free' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'SAP Hub',
-    href: '/sap',
-    seeAll: { href: '/sap', label: 'View SAP Hub' },
-    dropdown: [
-      {
-        group: 'SAP Profile',
-        items: [
-          { href: '/sap',                 icon: Cpu,          label: 'SAP Overview',      desc: '11 yrs at SAP · 5 certs · Riyadh KSA', badge: 'New' },
-          { href: '/sap/certifications',  icon: Award,        label: 'Certifications',    desc: 'SAP Gen AI, HANA ML, S/4HANA, Analytics Cloud' },
-          { href: '/sap/experience',      icon: Briefcase,    label: 'Experience',        desc: 'Senior IT System Engineer & SPOC at SAP' },
-        ],
-      },
-      {
-        group: 'SAP Learning',
-        items: [
-          { href: '/sap/courses',         icon: GraduationCap, label: 'Courses I Teach',  desc: 'SAP BTP, Asset Lifecycle, Gen AI, SAP Build' },
-          { href: '/sap/skills',          icon: Brain,         label: 'Skills & Tools',   desc: 'enterprise asset management system · Ariba · HANA · AI Launchpad · BTP' },
         ],
       },
     ],
