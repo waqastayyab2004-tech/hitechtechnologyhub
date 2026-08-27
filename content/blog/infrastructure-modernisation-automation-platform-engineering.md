@@ -3,7 +3,7 @@ title: "Driving Infrastructure Modernisation & Automation: A Platform Engineer's
 date: "2026-08-27"
 excerpt: "From legacy on-premise to cloud-native, automated, and self-healing infrastructure — how a Platform IT Engineer thinks about modernisation, what real use cases look like, and how to lead this transformation inside any organisation."
 tags: ["My Blogs", "Infrastructure", "Automation", "Cloud", "Platform Engineering", "IT Leadership", "DevOps"]
-author: "Syed Waqas Tayyab"
+author: "Waqas Syed"
 readTime: "12 min read"
 featured: true
 ---
@@ -358,4 +358,4 @@ Infrastructure modernisation is not a destination. It is the operating model of 
 
 As a Platform IT Engineer and leader, your job is to build that invisible foundation — and to tell the story of its value in language that the entire organisation can understand and support.
 
-*— Waqas Syed, Senior IT Systems Engineer, SAP Riyadh*
+*— Waqas Syed, IT Consultant*

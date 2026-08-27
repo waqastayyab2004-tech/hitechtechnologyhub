@@ -3,7 +3,7 @@ title: "AI Certification in 2026 — Your Complete Path to Validated AI Skills"
 date: "2026-08-27"
 excerpt: "AI certifications are no longer optional for IT and tech professionals. From Machine Learning to Generative AI, here is every provider, every path, and exactly how to advance your career with validated AI credentials."
 tags: ["My Blogs", "AI", "Certifications", "Machine Learning", "IT Career & Learning", "Career"]
-author: "Syed Waqas Tayyab"
+author: "Waqas Syed"
 readTime: "11 min read"
 featured: true
 ---
@@ -338,4 +338,4 @@ The AI transformation in Saudi Arabia under Vision 2030 is creating enormous dem
 </a>
 </div>
 
-*— Waqas Syed, Senior IT Systems Engineer, SAP Riyadh*
+*— Waqas Syed, IT Consultant*

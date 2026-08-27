@@ -3,7 +3,7 @@ title: "Why an MBA Matters More Than PMP in IT — Business Skills Are the Real 
 date: "2026-08-27"
 excerpt: "Technical certifications get you in the door. An MBA is what gets you to the top floor. After years in enterprise IT, here's why I believe every serious IT professional should understand business — not just technology."
 tags: ["My Blogs", "Career", "MBA", "Leadership", "IT Strategy", "Management"]
-author: "Syed Waqas Tayyab"
+author: "Waqas Syed"
 readTime: "10 min read"
 featured: true
 ---
@@ -335,4 +335,4 @@ My view has not changed after more than a decade in enterprise IT: the professio
 
 If you have the technical foundation — and you do — the MBA is not a distraction from your IT career. It is the multiplier that makes everything you already know worth significantly more.
 
-*— Waqas Syed, Senior IT Systems Engineer, SAP Riyadh*
+*— Waqas Syed, IT Consultant*
